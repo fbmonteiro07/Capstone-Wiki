@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SemiCap — Process & WFE Capex Flow · Capstone</title>
+<style>
+:root{
+  --navy:#0B1F3A;--navy2:#142C50;--accent:#E88B00;--accent2:#FFB347;
+  --grey:#5A6170;--line:#D8DCE3;--paper:#FBFBF8;--soft:#EEF3FA;--card:#FFFFFF;
+  --asml:#E88B00;--amat:#0F5499;--lrcx:#1E8A4C;--tel:#7A3FB0;--klac:#C0392B;--oth:#9AA3B2;
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif;background:var(--paper);color:#16202C;line-height:1.55}
+header.top{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:38px 50px 30px;border-bottom:5px solid var(--accent)}
+header.top .tag{letter-spacing:.2em;font-size:.74rem;text-transform:uppercase;color:var(--accent2);font-weight:700}
+header.top h1{font-size:2.15rem;margin:.25em 0 .15em;font-weight:800;letter-spacing:-.01em}
+header.top p{margin:0;color:#cdd5e1;font-size:1rem;max-width:880px}
+main{max-width:1240px;margin:0 auto;padding:0 36px 80px}
+.section-tag{display:inline-block;background:var(--navy);color:#fff;padding:5px 14px;border-radius:3px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin:48px 0 6px}
+h2{font-size:1.55rem;color:var(--navy);margin:.1em 0 .2em;font-weight:800;letter-spacing:-.005em}
+.sub{color:var(--grey);font-size:.98rem;margin:0 0 22px;max-width:900px}
+
+/* ---------- PART 1: process loop ---------- */
+.loop{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:10px 0 8px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 3px 14px rgba(11,31,58,.05);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(11,31,58,.13)}
+.pcard .bar{height:7px}
+.pcard .body{padding:13px 13px 15px}
+.pcard .step{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);font-weight:700}
+.pcard h3{margin:3px 0 2px;font-size:1.02rem;color:var(--navy);font-weight:800}
+.pcard .pct{font-size:1.5rem;font-weight:800;color:var(--navy);line-height:1;margin:6px 0 2px}
+.pcard .pct span{font-size:.7rem;color:var(--grey);font-weight:600}
+.pcard .lead{font-size:.78rem;color:#33404f;margin-top:7px;border-top:1px dashed var(--line);padding-top:7px}
+.pcard .lead b{color:var(--navy)}
+.loopbar{display:flex;align-items:center;justify-content:center;gap:14px;background:var(--navy);color:#fff;border-radius:10px;padding:11px 18px;margin:14px 0 4px;font-weight:700;font-size:.92rem;letter-spacing:.01em}
+.loopbar .o{color:var(--accent2)}
+
+/* ---------- PART 2: sankey ---------- */
+.flowwrap{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 4px 20px rgba(11,31,58,.06);padding:20px 24px 14px;margin-top:8px}
+.toggle{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:4px}
+.toggle .lbl{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);font-weight:700;margin-right:4px}
+.tbtn{border:1.5px solid var(--navy);background:#fff;color:var(--navy);font-weight:700;font-size:.95rem;padding:9px 22px;border-radius:30px;cursor:pointer;transition:all .15s;font-family:inherit}
+.tbtn:hover{background:var(--soft)}
+.tbtn.active{background:var(--navy);color:#fff;box-shadow:0 4px 12px rgba(11,31,58,.22)}
+.tbtn .d{font-size:.7rem;font-weight:600;opacity:.8;display:block;margin-top:1px}
+.flowgrid{display:grid;grid-template-columns:1fr 250px;gap:16px;align-items:start}
+@media(max-width:980px){.flowgrid{grid-template-columns:1fr}.loop{grid-template-columns:repeat(2,1fr)}}
+svg#sankey{width:100%;height:auto;display:block}
+.ribbon{transition:opacity .2s}
+.node-label{font-size:12.5px;font-weight:700;fill:var(--navy);paint-order:stroke;stroke:#fff;stroke-width:3.5px;stroke-linejoin:round}
+.node-sub{font-size:11px;font-weight:600;fill:var(--grey);paint-order:stroke;stroke:#fff;stroke-width:3px}
+.col-cap{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;fill:var(--grey)}
+.legend{background:var(--soft);border-radius:12px;padding:16px 16px 10px}
+.legend h4{margin:0 0 10px;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
+.lrow{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid #e2e8f1;font-size:.9rem}
+.lrow:last-child{border-bottom:none}
+.lrow .nm{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--navy)}
+.lrow .sw{width:13px;height:13px;border-radius:3px;flex:none}
+.lrow .v{font-variant-numeric:tabular-nums;font-weight:700;color:var(--navy)}
+.lrow .v small{color:var(--grey);font-weight:600}
+.note{font-size:.8rem;color:var(--grey);font-style:italic;margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+#tip{position:fixed;pointer-events:none;background:var(--navy);color:#fff;padding:7px 11px;border-radius:7px;font-size:.82rem;font-weight:600;opacity:0;transition:opacity .12s;z-index:50;box-shadow:0 6px 18px rgba(0,0,0,.25);white-space:nowrap}
+#tip b{color:var(--accent2)}
+.headline{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 2px}
+.chip{background:var(--soft);border:1px solid var(--line);border-radius:30px;padding:7px 15px;font-size:.86rem;font-weight:700;color:var(--navy)}
+.chip b{color:var(--accent)}
+footer{margin-top:50px;padding:22px 50px;background:var(--navy);color:#9aa6b8;font-size:.8rem}
+footer b{color:#fff}
+</style></head>
+<body>
+<div id="tip"></div>
+<header class="top">
+  <div class="tag">Capstone Research · SemiCap · May 2026</div>
+  <h1>How a fab works — and where each WFE dollar goes</h1>
+  <p>First, the six process steps every wafer passes through. Then an interactive flow: click a product and watch $1,000 of wafer-fab-equipment spend run from the product, through the process steps, into the equipment makers. Company totals = Capstone v3 dollar-split (unchanged).</p>
+</header>
+<main>
+
+<!-- ============ PART 1 ============ -->
+<span class="section-tag">Part 1 · The Process</span>
+<h2>The fab is a loop — six buckets, repeated 50–100× per wafer</h2>
+<p class="sub">A chip is 80–120 stacked layers. Each layer is one full pass through these steps. The % is share of total WFE; the names are who leads that bucket.</p>
+
+<div class="loop" id="loopCards"></div>
+<div class="loopbar">
+  <span class="o">↻</span> REPEAT per layer &nbsp;·&nbsp; ~80–120 layers per chip &nbsp;·&nbsp; <span class="o">→</span> exit to back-end (dicing / packaging / test)
+</div>
+
+<!-- ============ PART 2 ============ -->
+<span class="section-tag">Part 2 · Where the money flows</span>
+<h2>$1,000 of WFE → process steps → equipment makers</h2>
+<p class="sub">The mix changes completely by product. Toggle below: in <b>NAND</b> watch litho collapse and etch/deposition balloon; in <b>DRAM</b> litho is the biggest single block. Hover any ribbon or node for the dollars.</p>
+
+<div class="flowwrap">
+  <div class="toggle">
+    <span class="lbl">Product</span>
+    <button class="tbtn active" data-p="logic">Logic / Foundry<span class="d">$74.8B WFE pool</span></button>
+    <button class="tbtn" data-p="dram">DRAM<span class="d">$30.2B WFE pool</span></button>
+    <button class="tbtn" data-p="nand">NAND<span class="d">$11.2B WFE pool</span></button>
+  </div>
+  <div class="headline" id="headline"></div>
+  <div class="flowgrid">
+    <svg id="sankey" viewBox="0 0 1180 660" preserveAspectRatio="xMidYMid meet" aria-label="WFE capex flow"></svg>
+    <div>
+      <div class="legend">
+        <h4>Company capture · per $1,000</h4>
+        <div id="legend"></div>
+      </div>
+      <div class="note">Company totals are the Capstone v3 split (your numbers, unchanged). The middle process layer is attributed from each company's equipment profile, so bucket heights are emergent — they show <i>why</i> the product mix shifts the dollars.</div>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>
+  <div><b>Capstone Research</b> · Felipe Monteiro · May 2026 · Process primer + WFE capex-flow visualizer</div>
+  <div style="margin-top:6px">Company $-split: SemiCap_Intensity_DollarSplit.md (v3). Process shares cross-checked vs Jefferies WFE Model (may26) &amp; BofA Arya 28-Apr-26. Self-contained — no external dependencies.</div>
+</footer>
+
+<script>
+// ---------- DATA ----------
+const COMPANIES = [
+  {k:'ASML', c:'#E88B00'},
+  {k:'AMAT', c:'#0F5499'},
+  {k:'LRCX', c:'#1E8A4C'},
+  {k:'TEL',  c:'#7A3FB0'},
+  {k:'KLAC', c:'#C0392B'},
+  {k:'Others', c:'#9AA3B2'},
+];
+const BUCKETS = [
+  {k:'Lithography',     c:'#E88B00'},
+  {k:'Deposition',      c:'#2E7DB8'},
+  {k:'Etch',            c:'#1E8A4C'},
+  {k:'Process Control', c:'#C0392B'},
+  {k:'Clean / CMP',     c:'#C98A2B'},
+  {k:'Back-end / Test', c:'#7A3FB0'},
+];
+// Capstone v3 dollar-split per $1,000 (HEADLINE — unchanged)
+const MATRIX = {
+  logic: {ASML:233, AMAT:184, LRCX:137, TEL:94,  KLAC:91, Others:261},
+  dram:  {ASML:321, AMAT:197, LRCX:121, TEL:124, KLAC:79, Others:158},
+  nand:  {ASML:46,  AMAT:103, LRCX:224, TEL:143, KLAC:68, Others:416},
+};
+const POOL = {logic:'$74.8B', dram:'$30.2B', nand:'$11.2B'};
+const PNAME= {logic:'Logic / Foundry', dram:'DRAM', nand:'NAND'};
+// Each company's spend attributed across process buckets (process profile)
+const WEIGHTS = {
+  ASML:   {'Lithography':1.0},
+  AMAT:   {'Deposition':0.45,'Clean / CMP':0.30,'Etch':0.15,'Process Control':0.10},
+  LRCX:   {'Etch':0.60,'Deposition':0.40},
+  TEL:    {'Etch':0.55,'Deposition':0.30,'Clean / CMP':0.15},
+  KLAC:   {'Process Control':1.0},
+  Others: {'Clean / CMP':0.32,'Deposition':0.22,'Etch':0.18,'Back-end / Test':0.12,'Lithography':0.08,'Process Control':0.08},
+};
+// Process overview cards (share of WFE + leaders)
+const PROC = [
+  {step:'01', name:'Deposition', pct:'24%', c:'#2E7DB8', lead:'<b>AMAT</b> · ASMI · LRCX · TEL'},
+  {step:'02', name:'Lithography', pct:'22%', c:'#E88B00', lead:'<b>ASML</b> 85% · 100% EUV'},
+  {step:'03', name:'Etch', pct:'21%', c:'#1E8A4C', lead:'<b>LRCX</b> 50% · TEL 25%'},
+  {step:'04', name:'Clean / CMP / Implant', pct:'15%', c:'#C98A2B', lead:'Screen · <b>AMAT</b> · Kokusai'},
+  {step:'05', name:'Process Control', pct:'13%', c:'#C0392B', lead:'<b>KLAC</b> 55% · Onto · Nova'},
+  {step:'06', name:'Back-end / Test', pct:'5%', c:'#7A3FB0', lead:'BESI · Advantest · TER'},
+];
+
+// ---------- PART 1 render ----------
+document.getElementById('loopCards').innerHTML = PROC.map(p=>`
+  <div class="pcard">
+    <div class="bar" style="background:${p.c}"></div>
+    <div class="body">
+      <div class="step">Step ${p.step}</div>
+      <h3>${p.name}</h3>
+      <div class="pct">${p.pct} <span>of WFE</span></div>
+      <div class="lead">${p.lead}</div>
+    </div>
+  </div>`).join('');
+
+// ---------- PART 2 sankey ----------
+const SVG = document.getElementById('sankey');
+const NS='http://www.w3.org/2000/svg';
+const W=1180,H=660, TOP=44, BOT=24;
+const colX={prod:70, bucket:560, comp:1010};
+const wNode={prod:30, bucket:34, comp:34};
+const tip=document.getElementById('tip');
+
+function el(tag,attrs){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
+function showTip(html,evt){tip.innerHTML=html;tip.style.opacity=1;moveTip(evt);}
+function moveTip(evt){tip.style.left=(evt.clientX+14)+'px';tip.style.top=(evt.clientY+14)+'px';}
+function hideTip(){tip.style.opacity=0;}
+
+function ribbon(x0,y0,x1,y1,w,fill,op,tipHtml){
+  const cx0=x0+(x1-x0)*0.5, cx1=x0+(x1-x0)*0.5;
+  const d=`M${x0},${y0} C${cx0},${y0} ${cx1},${y1} ${x1},${y1} L${x1},${y1+w} C${cx1},${y1+w} ${cx0},${y0+w} ${x0},${y0+w} Z`;
+  const p=el('path',{d,fill,'fill-opacity':op,class:'ribbon'});
+  p.addEventListener('mouseenter',e=>{p.setAttribute('fill-opacity',Math.min(op+0.28,0.95));showTip(tipHtml,e);});
+  p.addEventListener('mousemove',moveTip);
+  p.addEventListener('mouseleave',()=>{p.setAttribute('fill-opacity',op);hideTip();});
+  return p;
+}
+
+function draw(product){
+  while(SVG.firstChild) SVG.removeChild(SVG.firstChild);
+  const m=MATRIX[product];
+  // flows[company][bucket]
+  const flow={}, bucketTot={}, compTot={};
+  BUCKETS.forEach(b=>bucketTot[b.k]=0);
+  COMPANIES.forEach(co=>{
+    compTot[co.k]=m[co.k]; flow[co.k]={};
+    const w=WEIGHTS[co.k];
+    for(const b in w){const v=m[co.k]*w[b]; flow[co.k][b]=v; bucketTot[b]+=v;}
+  });
+  const total=1000;
+  const usableB=H-TOP-BOT-(BUCKETS.length-1)*9;
+  const usableC=H-TOP-BOT-(COMPANIES.length-1)*9;
+  const scaleB=usableB/total, scaleC=usableC/total;
+
+  // node y positions
+  const bucketY={}; let yb=TOP;
+  BUCKETS.forEach(b=>{bucketY[b.k]={y:yb,h:bucketTot[b.k]*scaleB}; yb+=bucketTot[b.k]*scaleB+9;});
+  const compY={}; let yc=TOP;
+  COMPANIES.forEach(co=>{compY[co.k]={y:yc,h:compTot[co.k]*scaleC}; yc+=compTot[co.k]*scaleC+9;});
+  // product node uses the bucket scale so its outgoing ribbons stack exactly to its height
+  const prodNode={y:TOP+(BUCKETS.length-1)*9/2, h:total*scaleB};
+
+  // column captions
+  SVG.appendChild(Object.assign(el('text',{x:colX.prod+wNode.prod/2,y:24,'text-anchor':'middle',class:'col-cap'}),{textContent:'PRODUCT'}));
+  SVG.appendChild(Object.assign(el('text',{x:colX.bucket+wNode.bucket/2,y:24,'text-anchor':'middle',class:'col-cap'}),{textContent:'PROCESS STEP'}));
+  SVG.appendChild(Object.assign(el('text',{x:colX.comp+wNode.comp/2,y:24,'text-anchor':'middle',class:'col-cap'}),{textContent:'EQUIPMENT MAKER'}));
+
+  // STAGE 1 ribbons: product -> bucket (colored by bucket)
+  let offP=0;
+  BUCKETS.forEach(b=>{
+    if(bucketTot[b.k]<=0) return;
+    const w=bucketTot[b.k]*scaleB;
+    const y0=prodNode.y+offP, y1=bucketY[b.k].y;
+    SVG.appendChild(ribbon(colX.prod+wNode.prod, y0, colX.bucket, y1, w, b.c, 0.34,
+       `<b>${b.k}</b> &nbsp;$${Math.round(bucketTot[b.k])} / $1,000 &nbsp;(${(bucketTot[b.k]/10).toFixed(0)}%)`));
+    offP+=w;
+  });
+
+  // STAGE 2 ribbons: bucket -> company (colored by company)
+  const offBucket={}; BUCKETS.forEach(b=>offBucket[b.k]=0);
+  const offComp={}; COMPANIES.forEach(co=>offComp[co.k]=0);
+  // iterate company-major so company stacks stay in company order; but to keep bucket side ordered, iterate buckets outer
+  BUCKETS.forEach(b=>{
+    COMPANIES.forEach(co=>{
+      const v=flow[co.k][b.k]; if(!v) return;
+      const w=v*scaleB; // value conserved; use bucket scale for height consistency
+      const y0=bucketY[b.k].y+offBucket[b.k];
+      const y1=compY[co.k].y+offComp[co.k];
+      SVG.appendChild(ribbon(colX.bucket+wNode.bucket, y0, colX.comp, y1, w, co.c, 0.42,
+         `<b>${co.k}</b> in ${b.k}: $${Math.round(v)} / $1,000`));
+      offBucket[b.k]+=w; offComp[co.k]+=w;
+    });
+  });
+
+  // NODES: product
+  SVG.appendChild(el('rect',{x:colX.prod,y:prodNode.y,width:wNode.prod,height:prodNode.h,rx:4,fill:'#0B1F3A'}));
+  const pl=el('text',{x:colX.prod-10,y:prodNode.y+prodNode.h/2,'text-anchor':'middle',class:'node-label',transform:`rotate(-90 ${colX.prod-10} ${prodNode.y+prodNode.h/2})`});
+  pl.textContent=`$1,000 · ${PNAME[product]}`; SVG.appendChild(pl);
+
+  // NODES: buckets
+  BUCKETS.forEach(b=>{
+    if(bucketTot[b.k]<=0) return;
+    const n=bucketY[b.k];
+    SVG.appendChild(el('rect',{x:colX.bucket,y:n.y,width:wNode.bucket,height:Math.max(n.h,1),rx:4,fill:b.c}));
+    const t=el('text',{x:colX.bucket-9,y:n.y+n.h/2-3,'text-anchor':'end',class:'node-label'});
+    t.textContent=b.k; SVG.appendChild(t);
+    const s=el('text',{x:colX.bucket-9,y:n.y+n.h/2+12,'text-anchor':'end',class:'node-sub'});
+    s.textContent=`${(bucketTot[b.k]/10).toFixed(0)}%`; SVG.appendChild(s);
+  });
+
+  // NODES: companies
+  COMPANIES.forEach(co=>{
+    const n=compY[co.k];
+    SVG.appendChild(el('rect',{x:colX.comp,y:n.y,width:wNode.comp,height:Math.max(n.h,1),rx:4,fill:co.c}));
+    const t=el('text',{x:colX.comp+wNode.comp+10,y:n.y+n.h/2-3,'text-anchor':'start',class:'node-label'});
+    t.textContent=co.k; SVG.appendChild(t);
+    const s=el('text',{x:colX.comp+wNode.comp+10,y:n.y+n.h/2+12,'text-anchor':'start',class:'node-sub'});
+    s.textContent=`$${m[co.k]} · ${(m[co.k]/10).toFixed(0)}%`; SVG.appendChild(s);
+  });
+
+  // legend + headline
+  document.getElementById('legend').innerHTML = COMPANIES.map(co=>`
+    <div class="lrow"><span class="nm"><span class="sw" style="background:${co.c}"></span>${co.k}</span>
+    <span class="v">$${m[co.k]} <small>· ${(m[co.k]/10).toFixed(0)}%</small></span></div>`).join('');
+  const top5=1000-m.Others;
+  const lead=COMPANIES.filter(c=>c.k!=='Others').reduce((a,c)=>m[c.k]>m[a]? c.k:a, 'ASML');
+  document.getElementById('headline').innerHTML=`
+    <div class="chip">Pool: <b>${POOL[product]}</b> WFE</div>
+    <div class="chip">Top-5 capture: <b>${(top5/10).toFixed(0)}%</b></div>
+    <div class="chip">Biggest winner: <b>${lead} ($${m[lead]})</b></div>
+    <div class="chip">Litho intensity: <b>${(bucketTot['Lithography']/10).toFixed(0)}%</b></div>`;
+}
+
+// toggle wiring
+document.querySelectorAll('.tbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    SVG.style.opacity=0;
+    setTimeout(()=>{draw(btn.dataset.p); SVG.style.opacity=1;},120);
+  });
+});
+SVG.style.transition='opacity .12s';
+draw('logic');
+</script>
+</body></html>
