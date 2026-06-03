@@ -45,7 +45,7 @@
     <h1>SemiCap Dashboard — ASML & Peers</h1>
     <div class="meta">Source: ASML_Peers_SemiCap_v15.xlsx · Snapshot 27-Apr-2026 · Capstone Buyside</div>
   </div>
-  <div class="meta">Tabs: WFE Capex · Bottom-Up · WFE Share · Services · P/E Comps · Process → WFE $</div>
+  <div class="meta">Tabs: WFE Capex · Bottom-Up · WFE Share · Services · P/E Comps · Process → WFE $ · China</div>
 </header>
 <nav id="nav">
   <button data-tab="capex" class="active">1 · WFE Capex Spend</button>
@@ -56,6 +56,7 @@
   <button data-tab="pe">6 · P/E Comps</button>
   <button data-tab="trx">7 · Transcripts Evolution</button>
   <button data-tab="process">8 · Process → WFE $</button>
+  <button data-tab="china">9 · China % of Revenue</button>
 </nav>
 <main>
 
@@ -115,6 +116,29 @@
     <div class="scroll">
       <table id="tBU"><thead><tr id="tBUh"></tr></thead><tbody id="tBUb"></tbody></table>
     </div>
+  </div>
+
+  <!-- CAPSTONE INDUSTRY ASSUMPTIONS (top-down) -->
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--accent)">
+    <h2 class="sec">Capstone Industry Assumptions — Top-Down Framework</h2>
+    <p class="note">Capstone top-down estimates from the model's <b>Industry Assumptions</b> tab: Industry CapEx → WFE → sub-segment $bn → ATE. Source: SEMI World Fab Forecast · Bernstein · BofA WFE model · VLSI Research · 10-Ks.</p>
+    <div class="scroll">
+      <table id="tIA"><thead><tr id="tIAh"></tr></thead><tbody id="tIAb"></tbody></table>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Capstone vs Street — Customer CapEx ($bn)</h2>
+    <table>
+      <thead><tr><th>Customer</th><th>Capstone 2026E</th><th>Cons 2026E</th><th>Street-Hi 2026E</th><th>Capstone 2027E</th><th>Cons 2027E</th><th>Street-Hi 2027E</th></tr></thead>
+      <tbody>
+        <tr><td><b>TSMC</b></td><td>56.0</td><td>55.1</td><td>58.3</td><td>70.0</td><td>63.5</td><td>75.5</td></tr>
+        <tr><td><b>Samsung</b></td><td class="up">62.0</td><td>48.1</td><td>66.9</td><td class="up">81.0</td><td>51.6</td><td>90.6</td></tr>
+        <tr><td><b>SK Hynix</b></td><td class="up">47.0</td><td>30.3</td><td>51.2</td><td class="up">67.0</td><td>35.6</td><td>65.1</td></tr>
+        <tr><td><b>Micron</b></td><td class="up">38.0</td><td>26.1</td><td>31.5</td><td>52.0</td><td>37.5</td><td>53.0</td></tr>
+      </tbody>
+    </table>
+    <p class="note"><b>Read-through:</b> Capstone's top-down customer capex runs <b>above consensus</b> on memory — SK Hynix '26 (47 vs cons 30) and Micron '26 (38 vs cons 26) are the bull-case WFE drivers; Samsung sits between cons and Street-high. TSMC is broadly in line with the Street. Memory above-cons is the swing factor behind the >$140bn '26 WFE call.</p>
   </div>
 </section>
 
@@ -622,6 +646,37 @@
   </div>
 </section>
 
+<!-- TAB 9: CHINA % OF REVENUE -->
+<section id="china">
+  <div class="grid three">
+    <div class="card"><h3>ASML China 2024</h3><div class="kpi">41.5%</div><div class="sub">peak year · DUV pull-forward</div></div>
+    <div class="card"><h3>ASML China 2025</h3><div class="kpi">33.4%</div><div class="sub dn">normalizing (mgmt guides ~25% '26)</div></div>
+    <div class="card"><h3>AMAT China 2025</h3><div class="kpi">29.7%</div><div class="sub dn">off 34% '24 peak</div></div>
+    <div class="card"><h3>KLAC China 2025</h3><div class="kpi">31.4%</div><div class="sub dn">off 41% '24 peak</div></div>
+    <div class="card"><h3>LRCX China 2025</h3><div class="kpi">36.2%</div><div class="sub">stickiest — trailing-edge etch/dep</div></div>
+    <div class="card"><h3>TEL China 2025</h3><div class="kpi">36.3%</div><div class="sub dn">off 45% '24 peak</div></div>
+  </div>
+
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec">China as % of Revenue — by Vendor (geographic mix)</h2>
+      <div class="chart-tall"><canvas id="cChinaPct"></canvas></div>
+    </div>
+    <div class="card">
+      <h2 class="sec">China Revenue ($bn) — by Vendor</h2>
+      <div class="chart-tall"><canvas id="cChinaBn"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">China % of Revenue — History by Vendor</h2>
+    <div class="scroll">
+      <table id="tChina"><thead><tr id="tChinah"></tr></thead><tbody id="tChinab"></tbody></table>
+    </div>
+    <p class="note">Geographic revenue mix (ship-to China) from the model's <b>WFE (SEG-GEO)</b> tab — equipment/system revenue by region, annualized. China surged into a 2024 peak (ASML 41.5%, KLAC 41%, TEL 45%) on a DUV/mature-node pull-forward ahead of export controls, then normalized through 2025. ASML management guides China to a structural <b>~25%</b> of '26 sales; LRCX is the stickiest (trailing-edge etch/dep). 2026E–2027E not modeled at the geographic level. TER (Semi-Test) excluded — minimal China exposure.</p>
+  </div>
+</section>
+
 </main>
 
 <script>
@@ -777,6 +832,22 @@ const buRows = [
 ];
 buBody.innerHTML = buRows.map(([n,arr])=>`<tr><td>${n}</td>${arr.map(v=>'<td>'+v.toLocaleString()+'</td>').join('')}</tr>`).join('');
 
+// Capstone Industry Assumptions — top-down framework table
+const CAPEX_IND=[62,65,80,101,96,115,156,191,171,173,189,240,307,400,462,462];
+const ATE_MKT=[2.8,3.1,4.1,4.2,4.4,6,7.5,6.2,4.9,5.6,6.8,8,9.3,10.2,10.8,11.2];
+const WFE_CAPEX_PCT=[53,59,71,63,57,62,56,49,56,58,58,66,70,65,65,65];
+document.getElementById('tIAh').innerHTML='<th>Metric</th>'+YRS.map(y=>`<th>${y}</th>`).join('');
+const iaRows=[
+ ['Industry CapEx ($bn)', CAPEX_IND.map(v=>v.toLocaleString())],
+ ['WFE ($bn)', WFE],
+ ['WFE / CapEx (%)', WFE_CAPEX_PCT.map(v=>v+'%')],
+ ['Litho — ASML ($bn)', LITHO],
+ ['Etch + Dep — LRCX/AMAT/TEL ($bn)', ETCH],
+ ['Process Control — KLAC ($bn)', PROC],
+ ['ATE — TER ($bn, ex-WFE)', ATE_MKT],
+];
+document.getElementById('tIAb').innerHTML=iaRows.map(([n,arr])=>`<tr><td>${n}</td>${arr.map(v=>'<td>'+v+'</td>').join('')}</tr>`).join('');
+
 // TAB 3 share
 new Chart(cShareTot,{type:'line',data:{labels:YRS,datasets:[
   ds('ASML',SHARE_TOT.ASML,C.asml),ds('AMAT',SHARE_TOT.AMAT,C.amat),
@@ -789,23 +860,25 @@ new Chart(cShareSub,{type:'line',data:{labels:YRS,datasets:[
   ds('TER in ATE',SHARE_SUB['TER (ATE)'],C.ter),
 ]},options:{scales:{y:{title:{display:true,text:'% share of sub-segment'}}}}});
 
-// TAB 4 services
-new Chart(cSvc,{type:'bar',data:{labels:YRS,datasets:[
-  {label:'ASML IBM',data:SVC['ASML IBM'].map(v=>v/1000),backgroundColor:C.asml},
-  {label:'AMAT AGS',data:SVC['AMAT AGS'].map(v=>v/1000),backgroundColor:C.amat},
-  {label:'KLAC Service',data:SVC['KLAC Service'].map(v=>v/1000),backgroundColor:C.klac},
-  {label:'LRCX CSBG',data:SVC['LRCX CSBG'].map(v=>v/1000),backgroundColor:C.lrcx},
+// TAB 4 services — estimates truncated to end at 2028E (drop 2029E/2030E)
+const SVC_YRS=YRS.slice(0,14);          // 2015 … 2028E
+const svcSlice=a=>a.slice(0,14);
+new Chart(cSvc,{type:'bar',data:{labels:SVC_YRS,datasets:[
+  {label:'ASML IBM',data:svcSlice(SVC['ASML IBM']).map(v=>v/1000),backgroundColor:C.asml},
+  {label:'AMAT AGS',data:svcSlice(SVC['AMAT AGS']).map(v=>v/1000),backgroundColor:C.amat},
+  {label:'KLAC Service',data:svcSlice(SVC['KLAC Service']).map(v=>v/1000),backgroundColor:C.klac},
+  {label:'LRCX CSBG',data:svcSlice(SVC['LRCX CSBG']).map(v=>v/1000),backgroundColor:C.lrcx},
 ]},options:{scales:{x:{stacked:true},y:{stacked:true,title:{display:true,text:'$bn'}}}}});
-new Chart(cSvcPct,{type:'line',data:{labels:YRS,datasets:[
-  ds('ASML',SVC_PCT.ASML,C.asml),ds('AMAT',SVC_PCT.AMAT,C.amat),
-  ds('KLAC',SVC_PCT.KLAC,C.klac),ds('LRCX',SVC_PCT.LRCX,C.lrcx)
+new Chart(cSvcPct,{type:'line',data:{labels:SVC_YRS,datasets:[
+  ds('ASML',svcSlice(SVC_PCT.ASML),C.asml),ds('AMAT',svcSlice(SVC_PCT.AMAT),C.amat),
+  ds('KLAC',svcSlice(SVC_PCT.KLAC),C.klac),ds('LRCX',svcSlice(SVC_PCT.LRCX),C.lrcx)
 ]},options:{scales:{y:{title:{display:true,text:'% of total revenue'}}}}});
 
 // Services table
 const svcHead = document.getElementById('tSvch');
-svcHead.innerHTML='<th>Peer ($mn)</th>'+YRS.map(y=>`<th>${y}</th>`).join('');
+svcHead.innerHTML='<th>Peer ($mn)</th>'+SVC_YRS.map(y=>`<th>${y}</th>`).join('');
 const svcBody = document.getElementById('tSvcb');
-svcBody.innerHTML = Object.entries(SVC).map(([n,arr])=>`<tr><td>${n}</td>${arr.map(v=>'<td>'+Math.round(v).toLocaleString()+'</td>').join('')}</tr>`).join('');
+svcBody.innerHTML = Object.entries(SVC).map(([n,arr])=>`<tr><td>${n}</td>${svcSlice(arr).map(v=>'<td>'+Math.round(v).toLocaleString()+'</td>').join('')}</tr>`).join('');
 
 // === TAB 5: SEMICAP CAPEX FLOW — 3 separate Sankeys, base 100 (Logic / DRAM / NAND) ===
 // Each chart: customers as % of segment capex, WFE = 100, vendors as % of segment WFE.
@@ -976,6 +1049,38 @@ new Chart(cPoolVendor,{type:'bar',data:{
     data:[35.6,29.6,20.6,17.9,12.2,6.3,3.2,33.0],
     backgroundColor:[C.asml,C.amat,'#f6c453',C.lrcx,C.klac,'#8fd3f4','#b48ead','#64748b']}]
 },options:{plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'$bn'}}}}});
+
+// === TAB 9: CHINA % of Revenue ===
+const CHINA_YRS=[2017,2018,2019,2020,2021,2022,2023,2024,2025];
+const CHINA_PCT={
+  ASML:[null,18.7,12.0,18.3,14.3,14.9,29.4,41.5,33.4],
+  AMAT:[19.8,31.1,30.5,30.6,33.7,24.4,34.4,33.9,29.7],
+  KLAC:[12.9,23.7,25.3,26.9,26.9,28.2,32.5,40.9,31.4],
+  LRCX:[13.0,19.2,26.5,34.7,33.0,28.8,33.9,37.0,36.2],
+  TEL: [null,16.3,17.9,22.7,27.5,22.4,37.1,45.2,36.3],
+};
+const CHINA_BN={
+  ASML:[null,1.82,1.20,2.17,2.30,2.39,6.96,9.73,9.26],
+  AMAT:[3.06,5.05,4.58,5.57,8.14,6.41,9.10,9.36,8.38],
+  KLAC:[0.49,1.02,1.33,1.64,2.19,2.95,3.40,4.43,4.01],
+  LRCX:[1.24,2.08,2.53,4.14,5.46,5.48,4.86,6.00,7.43],
+  TEL: [null,1.78,1.71,2.61,4.44,3.61,4.69,6.93,5.86],
+};
+const C_TEL='#2dd4bf';
+new Chart(cChinaPct,{type:'line',data:{labels:CHINA_YRS,datasets:[
+  ds('ASML',CHINA_PCT.ASML,C.asml),ds('AMAT',CHINA_PCT.AMAT,C.amat),
+  ds('KLAC',CHINA_PCT.KLAC,C.klac),ds('LRCX',CHINA_PCT.LRCX,C.lrcx),
+  ds('TEL',CHINA_PCT.TEL,C_TEL)
+]},options:{spanGaps:true,scales:{y:{title:{display:true,text:'% of revenue (geographic ship-to)'}}}}});
+new Chart(cChinaBn,{type:'bar',data:{labels:CHINA_YRS,datasets:[
+  {label:'ASML',data:CHINA_BN.ASML,backgroundColor:C.asml},
+  {label:'AMAT',data:CHINA_BN.AMAT,backgroundColor:C.amat},
+  {label:'KLAC',data:CHINA_BN.KLAC,backgroundColor:C.klac},
+  {label:'LRCX',data:CHINA_BN.LRCX,backgroundColor:C.lrcx},
+  {label:'TEL',data:CHINA_BN.TEL,backgroundColor:C_TEL},
+]},options:{scales:{y:{title:{display:true,text:'China revenue ($bn)'}}}}});
+document.getElementById('tChinah').innerHTML='<th>Vendor (% of rev)</th>'+CHINA_YRS.map(y=>`<th>${y}</th>`).join('');
+document.getElementById('tChinab').innerHTML=Object.entries(CHINA_PCT).map(([n,arr])=>`<tr><td>${n}</td>${arr.map(v=>'<td>'+(v==null?'—':v.toFixed(1)+'%')+'</td>').join('')}</tr>`).join('');
 
 // TAB switching
 document.querySelectorAll('#nav button').forEach(b=>{
