@@ -118,6 +118,15 @@
     </div>
   </div>
 
+  <!-- CAPEX INTENSITY BY CUSTOMER (Capstone, from Industry Assumptions) -->
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--accent)">
+    <h2 class="sec">CapEx Intensity by Customer — Capstone (2021–2030E)</h2>
+    <p class="note">Top-down capex build from the model's <b>Industry Assumptions</b> tab — CapEx ($mn), Revenue ($mn) and CapEx Intensity (CapEx ÷ Revenue) per customer. The <b>Top-5 Customers — Capex Trajectory</b> chart above is driven by these CapEx figures.</p>
+    <div class="scroll">
+      <table id="tCINT"><thead><tr id="tCINTh"></tr></thead><tbody id="tCINTb"></tbody></table>
+    </div>
+  </div>
+
   <!-- CAPSTONE INDUSTRY ASSUMPTIONS (top-down) -->
   <div class="card" style="margin-top:18px;border-left:4px solid var(--accent)">
     <h2 class="sec">Capstone Industry Assumptions — Top-Down Framework</h2>
@@ -714,6 +723,19 @@ const BU_TE  = [28.43,43.12,59.72,61.78,54.16,46.29,46.49,50.43,55.07];
 const BU_MEM = [49.08,59.26,61.09,54.54,55.25,73.12,101.11,112.43,122.69];
 const BU_TOT = [109.85,151.11,181.96,172.14,162.39,177.39,218.80,244.92,265.98];
 
+// === Capstone CapEx-intensity build (Industry Assumptions tab) — 2021..2030E ===
+const CINT_YRS=[2021,2022,2023,2024,2025,'2026E','2027E','2028E','2029E','2030E'];
+const CINT={
+ 'TSMC':    {capex:[30000,36000,30000,30000,40380,56000,70000,112000,125000,115000], rev:[56939,75883,69297,90084,120880,165323,217564,261077,300239,330263]},
+ 'Samsung': {capex:[41000,38000,44000,38000,31837,46000,62000,81000,85000,72000],     rev:[84500,73100,39700,75000,94500,118000,132000,140000,150000,159000]},
+ 'SK Hynix':{capex:[11000,15000,15000,12000,18436,31000,47000,67000,70000,58000],     rev:[36100,35400,21300,44300,65083,257031,420058,509658,509658,509658]},
+ 'Micron':  {capex:[9720,11980,7010,8120,15857,25000,38000,52000,52000,52000],        rev:[29300,33100,15700,25100,37378,117357,240356,228840,228840,228840]},
+ 'CXMT':    {capex:[5000,9000,7000,4050,4280,15000,15000,15000,15000,15000],          rev:[200,500,800,1500,2500,4000,6000,8000,10000,12000]},
+ 'Intel':   {capex:[20000,25000,26000,24000,14646,15000,16000,18000,22000,24000],     rev:[79020,63050,54230,53100,52853,55000,58000,62000,66000,70000]},
+ 'SMIC':    {capex:[4000,6000,8000,8000,8400,8000,10000,9000,10000,9000],             rev:[5443,7273,6322,8028,9327,9500,10500,11500,12500,13500]},
+ 'Others':  {capex:[34000,49000,34000,42000,32000,32000,34000,34000,38000,34000],     rev:[109845,126545,93785,105691,94924,85025,88382,93000,98000,104000]},
+};
+
 // === TAB 3 share data ===
 const SHARE_TOT = {
   ASML: [16.3,15.6,14.1,15.8,18.4,17.2,19.5,18.3,23.9,23.5,24.2,22.5,22.5,22.5,22.5,22.5],
@@ -794,11 +816,13 @@ new Chart(cStack,{type:'bar',data:{labels:BU_YR,datasets:[
   {label:'Trailing Edge',data:BU_TE,backgroundColor:C.lrcx},
 ]},options:{scales:{x:{stacked:true},y:{stacked:true,title:{display:true,text:'$bn'}}}}});
 
-new Chart(cTop5,{type:'line',data:{labels:BU_YR,datasets:[
-  ds('TSMC',BU.TSMC,C.amat),ds('Samsung',BU.Samsung,C.asml),
-  ds('Intel',BU.Intel,'#94a3b8'),ds('SK Hynix',BU['SK Hynix'],C.klac),
-  ds('Micron',BU.Micron,C.lrcx)
-]},options:{scales:{y:{title:{display:true,text:'$bn'}}}}});
+new Chart(cTop5,{type:'line',data:{labels:CINT_YRS,datasets:[
+  ds('TSMC',CINT['TSMC'].capex.map(v=>v/1000),C.amat),
+  ds('Samsung',CINT['Samsung'].capex.map(v=>v/1000),C.asml),
+  ds('SK Hynix',CINT['SK Hynix'].capex.map(v=>v/1000),C.klac),
+  ds('Micron',CINT['Micron'].capex.map(v=>v/1000),C.lrcx),
+  ds('Intel',CINT['Intel'].capex.map(v=>v/1000),'#94a3b8')
+]},options:{scales:{y:{title:{display:true,text:'CapEx ($bn)'}}}}});
 
 // Customer table
 const buHead = document.getElementById('tBUh');
@@ -847,6 +871,15 @@ const iaRows=[
  ['ATE — TER ($bn, ex-WFE)', ATE_MKT],
 ];
 document.getElementById('tIAb').innerHTML=iaRows.map(([n,arr])=>`<tr><td>${n}</td>${arr.map(v=>'<td>'+v+'</td>').join('')}</tr>`).join('');
+
+// CapEx Intensity by Customer table
+document.getElementById('tCINTh').innerHTML='<th>Customer</th>'+CINT_YRS.map(y=>`<th>${y}</th>`).join('');
+document.getElementById('tCINTb').innerHTML=Object.entries(CINT).map(([n,d])=>{
+  const cap=`<tr><td><b>${n}</b> — CapEx ($mn)</td>${d.capex.map(v=>'<td>'+v.toLocaleString()+'</td>').join('')}</tr>`;
+  const rev=`<tr style="color:#8a9bb4"><td>${n} — Revenue ($mn)</td>${d.rev.map(v=>'<td>'+v.toLocaleString()+'</td>').join('')}</tr>`;
+  const int=`<tr style="color:#8a9bb4"><td>${n} — CapEx Intensity</td>${d.capex.map((v,i)=>'<td>'+(d.rev[i]?(v/d.rev[i]*100).toFixed(1)+'%':'—')+'</td>').join('')}</tr>`;
+  return cap+rev+int;
+}).join('');
 
 // TAB 3 share
 new Chart(cShareTot,{type:'line',data:{labels:YRS,datasets:[
