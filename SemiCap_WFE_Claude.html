@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SemiCap WFE — Claude Version</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="claude_wfe_data.js"></script>
+<style>
+  :root{--bg:#0b1220;--card:#11192c;--ink:#e7ecf3;--mute:#8a9bb4;--line:#1f2a44;--accent:#5aa7ff;
+        --asml:#ff7a59;--amat:#5aa7ff;--klac:#9b8cff;--lrcx:#46d3a6;--ter:#f6c453;--aeis:#e76d8e;}
+  html,body{background:var(--bg);color:var(--ink);font:14px/1.45 -apple-system,Segoe UI,Roboto,Arial;margin:0}
+  header{padding:18px 28px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+  header h1{margin:0;font-size:18px;letter-spacing:.3px}
+  header .meta{color:var(--mute);font-size:12px}
+  nav{display:flex;gap:0;padding:0 28px;border-bottom:1px solid var(--line);background:#0d1424;overflow-x:auto}
+  nav button{background:transparent;border:0;color:var(--mute);padding:14px 18px;font:600 13px/1 -apple-system,Segoe UI;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+  nav button.active{color:var(--ink);border-bottom-color:var(--accent)}
+  main{padding:22px 28px;max-width:1400px;margin:0 auto}
+  section{display:none}
+  section.active{display:block}
+  .grid{display:grid;gap:18px}
+  .grid.two{grid-template-columns:1fr 1fr}
+  .grid.three{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:1000px){.grid.two,.grid.three{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .card h3{margin:0 0 6px;font-size:13px;letter-spacing:.4px;color:var(--mute);text-transform:uppercase}
+  .card .kpi{font-size:22px;font-weight:700}
+  .card .sub{font-size:12px;color:var(--mute);margin-top:2px}
+  .chart-wrap{position:relative;height:340px}
+  .chart-tall{position:relative;height:420px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  thead th{color:var(--mute);font-weight:600;background:#0d1424;position:sticky;top:0}
+  tr:hover td{background:#142039}
+  .up{color:#46d3a6}.dn{color:#ff6b6b}
+  h2.sec{margin:4px 0 12px;font-size:15px;color:var(--ink)}
+  p.note{color:var(--mute);font-size:12px;margin:4px 0 14px}
+  .scroll{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:8px}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:14px}
+  .seg button{background:transparent;border:0;color:var(--mute);padding:10px 20px;font:700 13px/1 -apple-system,Segoe UI;cursor:pointer}
+  .seg button.active{background:var(--accent);color:#0b1220}
+  input.cw{width:74px;background:#0d1424;border:1px solid var(--line);border-radius:6px;color:var(--ink);font:600 12px/1 -apple-system,Segoe UI;padding:6px 8px;text-align:right}
+  input.cw:focus{outline:none;border-color:var(--accent)}
+  .btn{background:var(--accent);border:0;border-radius:6px;color:#0b1220;font:700 13px/1 -apple-system,Segoe UI;padding:9px 16px;cursor:pointer}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--mute)}
+  footer{padding:16px 28px;border-top:1px solid var(--line);color:var(--mute);font-size:11.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+  .slider-row{display:flex;align-items:center;gap:12px;margin:6px 0 12px}
+  .slider-row input[type=range]{flex:1;max-width:340px}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>SemiCap WFE — Claude Version</h1>
+    <div class="meta" id="hdrMeta"></div>
+  </div>
+  <div class="meta"><a href="SemiCap_Dashboard.html" style="color:var(--accent)">← classic dashboard</a></div>
+</header>
+<nav id="nav">
+  <button data-tab="scn" class="active">1 · WFE Scenarios</button>
+  <button data-tab="iwfe">2 · Implied WFE &amp; Revisions</button>
+  <button data-tab="qtr">3 · Quarterly Run-Rate</button>
+  <button data-tab="euv">4 · EUV Cost Model</button>
+  <button data-tab="val">5 · Scenario Valuation</button>
+</nav>
+<main>
+
+<!-- TAB 1: SCENARIOS -->
+<section id="scn" class="active">
+  <div class="seg" id="scnSeg"></div>
+  <div class="grid three" id="scnCards"></div>
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec">WFE Path — selected scenario vs alternatives ($bn)</h2>
+      <div class="chart-tall"><canvas id="cScn"></canvas></div>
+    </div>
+    <div class="card">
+      <h2 class="sec">Scenario Table</h2>
+      <table id="tScn"></table>
+      <p class="note" id="scnNote"></p>
+    </div>
+  </div>
+</section>
+
+<!-- TAB 2: IMPLIED WFE & REVISIONS -->
+<section id="iwfe">
+  <div class="grid three" id="iwCards"></div>
+  <div class="card" style="margin-top:18px;border-left:4px solid #f6c453">
+    <h2 class="sec">Implied WFE based on Street Estimates — computed live from BBG BEst</h2>
+    <div class="scroll"><table id="tIW"></table></div>
+    <p class="note">Top-5 systems revenue = BBG BEst mean total revenue (USD, 1CY–3CY) × systems share calibrated to UBS CY26 systems consensus (held flat). Implied WFE = Top-5 ÷ 72.2% (10-yr avg). 2024–25 = UBS-reported actuals. <b>Sensitivity:</b> each 1pt lower Top-5 share ≈ +$2.1/2.5/2.8bn implied WFE in '26/'27/'28.</p>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Consensus Revision Tracker — implied Street WFE over time ($bn)</h2>
+    <div class="chart-wrap"><canvas id="cRev"></canvas></div>
+    <p class="note" id="revNote"></p>
+  </div>
+</section>
+
+<!-- TAB 3: QUARTERLY RUN-RATE -->
+<section id="qtr">
+  <div class="grid three" id="qCards"></div>
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Quarterly WFE Run-Rate — Memory vs Foundry/Logic ($mn, UBS Fig 18 path)</h2>
+    <div class="chart-tall"><canvas id="cQtr"></canvas></div>
+    <p class="note">UBS: stocks correlate with the <b>realized quarterly</b> WFE run-rate, not annual totals. Memory peaks ~$29.5bn/Q in 2Q28 (vs $11.2bn 4Q24 peak); F/L makes a new peak ~$39.5bn/Q in 3Q28 — memory hands the baton to foundry/logic mid-'28.</p>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Quarterly Detail</h2>
+    <div class="scroll"><table id="tQtr"></table></div>
+  </div>
+</section>
+
+<!-- TAB 4: EUV COST MODEL -->
+<section id="euv">
+  <div class="grid three" id="euvCards"></div>
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec">Machine Assumptions <button class="btn ghost" id="euvReset" style="float:right;padding:5px 10px;font-size:11px">Reset</button></h2>
+      <table id="tEuvM"></table>
+      <p class="note">wph × 24 × uptime × dose headwind × customer efficiency × 30 = practical wafer starts/month per tool. Cost per exposure = ASP × (1+service) ÷ (dep yrs × 12 × wsm). Edit any input — everything recalculates &amp; persists in this browser.</p>
+    </div>
+    <div class="card">
+      <h2 class="sec">Per-Player Inputs — capacity (kwsm) · node mix % · EUV layers</h2>
+      <div class="scroll" style="max-height:420px"><table id="tEuvIn"></table></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--accent)">
+    <h2 class="sec">Outputs — tools, fleet capex, cost per wafer / GB</h2>
+    <table id="tEuvOut"></table>
+    <p class="note">Layer counts are teardown/press estimates, not company-disclosed — tools scale <b>linearly</b> with layers, so treat the matrix as the model's main sensitivity. CXMT has no EUV access (export controls): each avoided EUV layer ≈ 3–4 ArFi passes + extra dep/etch — poor parity at 1b/1c geometries. Capacity sources: TrendForce 19-Nov-25 (Samsung ~200k 1c), TechTimes 06-Jun-26 (Hynix ~600k 2H26), UBS Fig 2 (Micron ID1 4Q26).</p>
+  </div>
+</section>
+
+<!-- TAB 5: SCENARIO VALUATION -->
+<section id="val">
+  <div class="card" style="margin-bottom:18px">
+    <h2 class="sec">Scenario: <span id="valScn"></span> · operating leverage <span id="levVal"></span>x</h2>
+    <div class="slider-row"><span class="note" style="margin:0">EPS elasticity to WFE</span><input type="range" id="lev" min="0.5" max="2.5" step="0.1"><span class="note" style="margin:0">EPS_scen = EPS_capstone × (1 + (WFE_scen/WFE_capstone − 1) × leverage)</span></div>
+    <div class="seg" id="valSeg"></div>
+  </div>
+  <div class="grid three" id="valCards"></div>
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">P/E by Scenario — prices live from BBG (editable)</h2>
+    <form id="pxForm" class="slider-row" style="flex-wrap:wrap"></form>
+    <p class="note" id="pxStamp"></p>
+    <div class="scroll"><table id="tVal"></table></div>
+    <p class="note" id="valNote"></p>
+  </div>
+</section>
+
+</main>
+<footer id="foot"></footer>
+
+<script>
+const CW = window.CW;
+const fmt$ = v => '$' + Math.round(v).toLocaleString();
+const fmt1 = v => v.toFixed(1);
+const pct = v => (v >= 0 ? '+' : '') + (v * 100).toFixed(0) + '%';
+const C = {asml:'#ff7a59',amat:'#5aa7ff',klac:'#9b8cff',lrcx:'#46d3a6',ter:'#f6c453',grey:'#94a3b8'};
+const SCN_COLORS = {Capstone:'#46d3a6', UBS:'#f6c453', Street:'#94a3b8'};
+const LS = k => 'cw_' + k;
+function lsGet(k, d){ try{ const v = JSON.parse(localStorage.getItem(LS(k))); return v === null || v === undefined ? d : v; }catch(e){ return d; } }
+function lsSet(k, v){ try{ localStorage.setItem(LS(k), JSON.stringify(v)); }catch(e){} }
+
+// ===== header / footer =====
+document.getElementById('hdrMeta').textContent =
+  `Build ${CW.buildStamp} · ${CW.vintages.model} · ${CW.vintages.ubs} · BBG ${CW.vintages.bbg}${CW.bbgLive ? ' (live)' : ''}`;
+document.getElementById('foot').innerHTML =
+  `<span>Generated by build_claude_wfe.py — model is the single source of truth (no hand-typed numbers).</span>` +
+  `<span>Data vintages — model: ${CW.vintages.model} · UBS: ${CW.vintages.ubs} · BBG: ${CW.vintages.bbg} · prev commit: ${CW.prevCommit}</span>`;
+
+// ===== nav =====
+document.getElementById('nav').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('nav button').forEach(x => x.classList.toggle('active', x === b));
+  document.querySelectorAll('main > section').forEach(s => s.classList.toggle('active', s.id === b.dataset.tab));
+});
+
+// ===== TAB 1: scenarios =====
+const SCNS = ['Capstone','UBS','Street'];
+let scn = lsGet('scenario','Capstone'); if (!SCNS.includes(scn)) scn = 'Capstone';
+const histYrs = [2018,2019,2020,2021,2022,2023,2024,2025];
+const histWfe = CW.wfe.slice(3,11);
+let scnChart = null;
+
+function scnPath(name){ const s = CW.scenarios[name]; return [s['2026'], s['2027'], s['2028']]; }
+function renderScn(){
+  document.getElementById('scnSeg').innerHTML = SCNS.map(s =>
+    `<button class="${s===scn?'active':''}" data-s="${s}">${s}</button>`).join('');
+  const p = scnPath(scn), litho = CW.lithoPct[11];
+  const cards = [
+    ['WFE 2026E', `$${fmt1(p[0])} bn`, pct(p[0]/CW.wfe[10]-1) + ' YoY'],
+    ['WFE 2027E', `$${fmt1(p[1])} bn`, pct(p[1]/p[0]-1) + ' YoY'],
+    ['WFE 2028E', `$${fmt1(p[2])} bn`, pct(p[2]/p[1]-1) + ' YoY'],
+    ['Litho TAM 2026E', `$${fmt1(p[0]*litho)} bn`, (litho*100).toFixed(0) + '% of WFE (model share)'],
+    ['Litho TAM 2027E', `$${fmt1(p[1]*CW.lithoPct[12])} bn`, ''],
+    ['Litho TAM 2028E', `$${fmt1(p[2]*CW.lithoPct[13])} bn`, ''],
+  ];
+  document.getElementById('scnCards').innerHTML = cards.map(c =>
+    `<div class="card"><h3>${c[0]}</h3><div class="kpi">${c[1]}</div><div class="sub up">${c[2]}</div></div>`).join('');
+
+  const labels = [...histYrs, '2026E','2027E','2028E'];
+  const sel = [...histWfe, ...p];
+  const others = SCNS.filter(s => s !== scn).map(s => ({
+    type:'line', label:s+' ($bn)', data:[...histWfe.map(()=>null), ...scnPath(s)],
+    borderColor:SCN_COLORS[s], backgroundColor:SCN_COLORS[s]+'33', borderDash:[6,4], tension:.3, pointRadius:3
+  }));
+  if (scnChart) scnChart.destroy();
+  scnChart = new Chart(document.getElementById('cScn'), {type:'bar',
+    data:{labels, datasets:[{type:'bar',label:scn+' ($bn)',data:sel,backgroundColor:SCN_COLORS[scn]+'88',borderColor:SCN_COLORS[scn],borderWidth:1}, ...others]},
+    options:{scales:{y:{title:{display:true,text:'$bn'}}}}});
+
+  let rows = `<thead><tr><th>$bn</th><th>2026E</th><th>2027E</th><th>2028E</th></tr></thead><tbody>`;
+  SCNS.forEach(s => { const q = scnPath(s);
+    rows += `<tr${s===scn?' style="font-weight:700"':''}><td>${s}</td><td>${fmt1(q[0])}</td><td>${fmt1(q[1])}</td><td>${fmt1(q[2])}</td></tr>`; });
+  const cp = scnPath('Capstone'), st = scnPath('Street');
+  rows += `<tr><td>Δ Capstone − Street</td><td class="up">${fmt1(cp[0]-st[0])}</td><td class="up">${fmt1(cp[1]-st[1])}</td><td class="up">${fmt1(cp[2]-st[2])}</td></tr></tbody>`;
+  document.getElementById('tScn').innerHTML = rows;
+  document.getElementById('scnNote').innerHTML =
+    `<b>Capstone</b> = v16 Industry Assumptions (read directly from the model). <b>UBS</b> = WFE Update 09-Jun-26. <b>Street</b> = implied live from BBG Top-5 consensus (tab 2). The selected scenario also drives the <b>Scenario Valuation</b> tab.`;
+  renderVal();
+}
+document.getElementById('scnSeg').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  scn = b.dataset.s; lsSet('scenario', scn); renderScn();
+});
+
+// ===== TAB 2: implied WFE & revisions =====
+function renderIW(){
+  const imp = CW.implied, u = CW.ubs;
+  document.getElementById('iwCards').innerHTML = ['2026','2027','2028'].map(y =>
+    `<div class="card"><h3>Implied Street WFE ${y}E</h3><div class="kpi">$${fmt1(imp[y]/1000)} bn</div>` +
+    `<div class="sub ${imp[y]/1000 < CW.scenarios.UBS[y] ? 'dn' : 'up'}">vs UBSe $${CW.scenarios.UBS[y]}bn · Capstone $${fmt1(CW.scenarios.Capstone[y])}bn</div></div>`).join('');
+
+  const names = ['ASML','AMAT','LRCX','KLAC','TEL'];
+  let h = `<thead><tr><th>Peer</th><th>2024</th><th>2025</th><th>2026E</th><th>2027E</th><th>2028E</th></tr></thead><tbody>`;
+  names.forEach(n => {
+    const a = u.actuals[n], s = CW.sysRev;
+    h += `<tr><td>${n} <span class="sub">(sys. share ${(CW.sysShare[n]*100).toFixed(1)}%)</span></td><td>${fmt$(a[0])}</td><td>${fmt$(a[1])}</td>` +
+         `<td>${fmt$(s['2026'][n])}</td><td>${fmt$(s['2027'][n])}</td><td>${fmt$(s['2028'][n])}</td></tr>`;
+  });
+  const t24 = names.reduce((x,n)=>x+u.actuals[n][0],0), t25 = names.reduce((x,n)=>x+u.actuals[n][1],0);
+  h += `<tr style="font-weight:700"><td>Top 5 SPE Revenue</td><td>${fmt$(t24)}</td><td>${fmt$(t25)}</td><td>${fmt$(CW.top5['2026'])}</td><td>${fmt$(CW.top5['2027'])}</td><td>${fmt$(CW.top5['2028'])}</td></tr>`;
+  h += `<tr style="font-weight:700"><td>Implied Consensus WFE (BBG live)</td><td>${fmt$(t24/CW.top5Share)}</td><td>${fmt$(t25/CW.top5Share)}</td><td>${fmt$(imp['2026'])}</td><td>${fmt$(imp['2027'])}</td><td>${fmt$(imp['2028'])}</td></tr>`;
+  h += `<tr><td>Implied WFE (UBS print, VisibleAlpha)</td>${['2024','2025','2026','2027','2028'].map(y=>`<td>${fmt$(u.implied[y])}</td>`).join('')}</tr>`;
+  h += `<tr><td><b>UBSe WFE</b></td>${['2024','2025','2026','2027','2028'].map(y=>`<td>${fmt$(u.wfe[y]*1000)}</td>`).join('')}</tr>`;
+  h += `<tr><td><b>Capstone WFE (v16)</b></td><td>${fmt$(CW.wfe[9]*1000)}</td><td>${fmt$(CW.wfe[10]*1000)}</td>${['2026','2027','2028'].map(y=>`<td class="up">${fmt$(CW.scenarios.Capstone[y]*1000)}</td>`).join('')}</tr></tbody>`;
+  document.getElementById('tIW').innerHTML = h;
+
+  const hist = CW.history;
+  new Chart(document.getElementById('cRev'), {type:'line', data:{labels: hist.map(x=>x.date), datasets:
+    ['2026','2027','2028'].map((y,i) => ({label:`Implied WFE ${y}E`, data:hist.map(x=>x.implied[y]/1000),
+      borderColor:[C.lrcx,C.amat,C.asml][i], backgroundColor:[C.lrcx,C.amat,C.asml][i]+'33', tension:.2, pointRadius:4}))},
+    options:{scales:{y:{title:{display:true,text:'$bn'}}}}});
+  document.getElementById('revNote').innerHTML =
+    `${hist.length} snapshot(s) — one per build (build_claude_wfe.py appends to claude_wfe_history.json). ` +
+    `The thesis is a 12–22% upward revision cycle: if UBSe/Capstone are right, these lines grind toward $198–215bn ('27) and $247–260bn ('28). Flat lines = thesis stalling; that is the sell signal.`;
+}
+
+// ===== TAB 3: quarterly =====
+function renderQtr(){
+  const u = CW.ubs;
+  const memPk = Math.max(...u.q_mem), flPk = Math.max(...u.q_fl);
+  document.getElementById('qCards').innerHTML = [
+    ['Memory WFE peak', `$${fmt1(memPk/1000)} bn/Q`, u.q_labels[u.q_mem.indexOf(memPk)] + ' · vs $11.2bn 4Q24 prior peak'],
+    ['F/L WFE peak', `$${fmt1(flPk/1000)} bn/Q`, u.q_labels[u.q_fl.indexOf(flPk)] + ' · new all-time high'],
+    ['Exit run-rate 4Q28E', `$${fmt1(u.q_total[19]/1000*4)} bn ann.`, 'vs $147bn FY26 — the slope IS the trade'],
+  ].map(c => `<div class="card"><h3>${c[0]}</h3><div class="kpi">${c[1]}</div><div class="sub">${c[2]}</div></div>`).join('');
+
+  new Chart(document.getElementById('cQtr'), {type:'bar', data:{labels:u.q_labels, datasets:[
+    {label:'Memory', data:u.q_mem, backgroundColor:C.asml+'cc', stack:'s'},
+    {label:'Foundry/Logic', data:u.q_fl, backgroundColor:C.amat+'cc', stack:'s'},
+    {type:'line', label:'Total', data:u.q_total, borderColor:'#e7ecf3', tension:.25, pointRadius:2}
+  ]}, options:{scales:{x:{stacked:true},y:{stacked:true,title:{display:true,text:'$mn / quarter'}}}}});
+
+  let h = `<thead><tr><th>$mn</th>${u.q_labels.map(l=>`<th>${l}</th>`).join('')}</tr></thead><tbody>`;
+  [['Total',u.q_total],['Memory',u.q_mem],['F/L',u.q_fl]].forEach(([n,arr]) => {
+    h += `<tr><td>${n}</td>${arr.map(v=>`<td>${v.toLocaleString()}</td>`).join('')}</tr>`; });
+  h += '</tbody>';
+  document.getElementById('tQtr').innerHTML = h;
+}
+
+// ===== TAB 4: EUV model =====
+const EUV_D = CW.euv;
+function euvState(){ return lsGet('euv', JSON.parse(JSON.stringify(EUV_D))); }
+function euvCalc(st){
+  const m = st.machine;
+  const wsm = g => m[g].wph * 24 * m.uptime * m.dose * m.custeff * 30;
+  const cexp = g => m[g].asp * 1e6 * (1 + m.service) / (m.depyrs * 12 * wsm(g));
+  const dies = Math.PI * Math.pow(st.die.wafer_mm/2,2) * (1 - st.die.edge) / st.die.gb_mm2;
+  const out = {wsm:{legacy:wsm('legacy'),fgen:wsm('fgen')}, cexp:{legacy:cexp('legacy'),fgen:cexp('fgen')}, dies, players:{}};
+  EUV_D.players.forEach(p => {
+    const mix = st.mix[p], lay = st.layers[p], cap = st.capacity[p];
+    const exp = mix.reduce((s,x,i)=>s+x*lay[i],0);
+    const legE = mix[1]*lay[1] + mix[2]*lay[2];     // 1z + 1a
+    const fgE  = mix[3]*lay[3] + mix[4]*lay[4];     // 1b + 1c
+    const tLeg = cap*1000*legE/out.wsm.legacy, tFg = cap*1000*fgE/out.wsm.fgen;
+    out.players[p] = {exp, tools:tLeg+tFg, tLeg, tFg,
+      capex:(tLeg*m.legacy.asp + tFg*m.fgen.asp)/1000,
+      cpw: legE*out.cexp.legacy + fgE*out.cexp.fgen,
+      cpgb:(legE*out.cexp.legacy + fgE*out.cexp.fgen)/dies};
+  });
+  return out;
+}
+function inp(id,val,step){ return `<input class="cw" data-k="${id}" value="${val}" step="${step||'any'}" type="number">`; }
+function renderEuv(){
+  const st = euvState(), r = euvCalc(st), m = st.machine;
+  const tot = EUV_D.players.reduce((a,p)=>({tools:a.tools+r.players[p].tools, capex:a.capex+r.players[p].capex}),{tools:0,capex:0});
+  document.getElementById('euvCards').innerHTML = [
+    ['DRAM EUV fleet required', fmt1(tot.tools) + ' tools', `vs ASML cumulative EUV install base ~268 (end-25) → DRAM ~${Math.round(tot.tools/268*100)}%`],
+    ['Fleet replacement value', '$' + fmt1(tot.capex) + ' bn', 'tools × gen ASP'],
+    ['F-gen wafer starts / tool', Math.round(r.wsm.fgen).toLocaleString() + ' wsm', `${(100000*8/r.wsm.fgen).toFixed(1)} tools per 100kwsm node @ 8 exposures`],
+  ].map(c => `<div class="card"><h3>${c[0]}</h3><div class="kpi">${c[1]}</div><div class="sub">${c[2]}</div></div>`).join('');
+
+  let h = `<thead><tr><th>Machine</th><th>Legacy (3400/3600)</th><th>F Gen (3800E)</th></tr></thead><tbody>`;
+  h += `<tr><td>Productivity wph @30mJ</td><td>${inp('machine.legacy.wph',m.legacy.wph,5)}</td><td>${inp('machine.fgen.wph',m.fgen.wph,5)}</td></tr>`;
+  h += `<tr><td>ASP (USD mn)</td><td>${inp('machine.legacy.asp',m.legacy.asp,1)}</td><td>${inp('machine.fgen.asp',m.fgen.asp,1)}</td></tr>`;
+  h += `<tr><td>Uptime / dose headwind / cust. eff.</td><td colspan="2">${inp('machine.uptime',m.uptime,0.01)} ${inp('machine.dose',m.dose,0.01)} ${inp('machine.custeff',m.custeff,0.01)}</td></tr>`;
+  h += `<tr><td>Depreciation yrs / service uplift</td><td colspan="2">${inp('machine.depyrs',m.depyrs,1)} ${inp('machine.service',m.service,0.05)}</td></tr>`;
+  h += `<tr style="font-weight:700"><td>Wafer starts / month / tool</td><td>${Math.round(r.wsm.legacy).toLocaleString()}</td><td>${Math.round(r.wsm.fgen).toLocaleString()}</td></tr>`;
+  h += `<tr style="font-weight:700"><td>Cost per exposure</td><td>$${r.cexp.legacy.toFixed(1)}</td><td>$${r.cexp.fgen.toFixed(1)}</td></tr>`;
+  h += `<tr><td># 1GB dies per wafer (3mm²/GB, 11% edge)</td><td colspan="2">${Math.round(r.dies).toLocaleString()}</td></tr></tbody>`;
+  document.getElementById('tEuvM').innerHTML = h;
+
+  let g = `<thead><tr><th></th>${EUV_D.players.map(p=>`<th>${p}</th>`).join('')}</tr></thead><tbody>`;
+  g += `<tr><td>Capacity (kwsm)</td>${EUV_D.players.map(p=>`<td>${inp('capacity.'+p,st.capacity[p],10)}</td>`).join('')}</tr>`;
+  EUV_D.nodes.forEach((n,i) => {
+    g += `<tr><td>Mix ${n} %</td>${EUV_D.players.map(p=>`<td>${inp(`mix.${p}.${i}`,st.mix[p][i],0.05)}</td>`).join('')}</tr>`; });
+  EUV_D.nodes.forEach((n,i) => {
+    g += `<tr><td>EUV layers @ ${n}</td>${EUV_D.players.map(p=>`<td>${inp(`layers.${p}.${i}`,st.layers[p][i],1)}</td>`).join('')}</tr>`; });
+  g += '</tbody>';
+  document.getElementById('tEuvIn').innerHTML = g;
+
+  let o = `<thead><tr><th></th>${EUV_D.players.map(p=>`<th>${p}</th>`).join('')}<th>Total</th></tr></thead><tbody>`;
+  const rows = [
+    ['EUV exposures / wafer (weighted)', p => r.players[p].exp.toFixed(2), null],
+    ['EUV tools required', p => fmt1(r.players[p].tools), fmt1(tot.tools)],
+    ['Fleet capex ($bn)', p => '$' + r.players[p].capex.toFixed(2), '$' + tot.capex.toFixed(2)],
+    ['EUV litho cost / wafer (blended)', p => '$' + Math.round(r.players[p].cpw), null],
+    ['EUV cost / GB', p => '$' + r.players[p].cpgb.toFixed(4), null],
+  ];
+  rows.forEach(([n,f,t]) => { o += `<tr><td>${n}</td>${EUV_D.players.map(p=>`<td>${f(p)}</td>`).join('')}<td><b>${t||'—'}</b></td></tr>`; });
+  o += '</tbody>';
+  document.getElementById('tEuvOut').innerHTML = o;
+}
+document.getElementById('euv').addEventListener('change', e => {
+  const k = e.target.dataset && e.target.dataset.k; if (!k) return;
+  const st = euvState(), v = parseFloat(e.target.value); if (!isFinite(v)) return;
+  const path = k.split('.'); let o = st;
+  for (let i = 0; i < path.length - 1; i++) o = o[path[i]];
+  o[path[path.length-1]] = v;
+  lsSet('euv', st); renderEuv();
+});
+document.getElementById('euvReset').onclick = () => { localStorage.removeItem(LS('euv')); renderEuv(); };
+
+// ===== TAB 5: valuation =====
+const VAL_T = ['ASML','AMAT','KLAC','LRCX','TER','AEIS'];
+function valPrices(){
+  const px = {};
+  VAL_T.forEach(t => { px[t] = CW.prices[t] || CW.px0[t]; });
+  const o = lsGet('px', {});
+  VAL_T.forEach(t => { if (isFinite(o[t]) && o[t] > 0) px[t] = o[t]; });
+  return px;
+}
+function renderVal(){
+  const lev = lsGet('lev', 1.4);
+  document.getElementById('lev').value = lev;
+  document.getElementById('levVal').textContent = lev.toFixed(1);
+  document.getElementById('valScn').textContent = scn;
+  document.getElementById('valSeg').innerHTML = SCNS.map(s =>
+    `<button class="${s===scn?'active':''}" data-s="${s}">${s}</button>`).join('');
+
+  const ratio = y => CW.scenarios[scn][y] / CW.scenarios['Capstone'][y];
+  const epsS = (t,yi,y) => Math.max(0.01, CW.eps[t][yi] * (1 + (ratio(y) - 1) * lev));
+  const px = valPrices();
+
+  const cheap = VAL_T.map(t => ({t, pe: px[t] / epsS(t,13,'2028')})).sort((a,b)=>a.pe-b.pe);
+  document.getElementById('valCards').innerHTML = cheap.slice(0,3).map((c,i) =>
+    `<div class="card"><h3>#${i+1} cheapest on 2028E (${scn})</h3><div class="kpi">${c.t} ${c.pe.toFixed(1)}x</div><div class="sub">price $${px[c.t].toFixed(2)}</div></div>`).join('');
+
+  let h = `<thead><tr><th>Peer</th><th>Price</th><th>EPS 26E</th><th>EPS 27E</th><th>EPS 28E</th><th>P/E 26E</th><th>P/E 27E</th><th>P/E 28E</th><th>'26→'28 EPS CAGR</th></tr></thead><tbody>`;
+  VAL_T.forEach(t => {
+    const e26 = epsS(t,11,'2026'), e27 = epsS(t,12,'2027'), e28 = epsS(t,13,'2028');
+    const cagr = (Math.sqrt(e28/e26) - 1) * 100;
+    h += `<tr><td>${t}</td><td>${px[t].toFixed(2)}</td><td>${e26.toFixed(2)}</td><td>${e27.toFixed(2)}</td><td>${e28.toFixed(2)}</td>` +
+         `<td>${(px[t]/e26).toFixed(1)}x</td><td>${(px[t]/e27).toFixed(1)}x</td><td>${(px[t]/e28).toFixed(1)}x</td>` +
+         `<td class="${cagr>=0?'up':'dn'}">${cagr>=0?'+':''}${cagr.toFixed(1)}%</td></tr>`;
+  });
+  h += '</tbody>';
+  document.getElementById('tVal').innerHTML = h;
+
+  document.getElementById('pxForm').innerHTML = VAL_T.map(t =>
+    `<label class="note" style="margin:0">${t} <input class="cw" name="${t}" type="number" step="0.01" value="${px[t].toFixed(2)}"></label>`).join('') +
+    `<button type="submit" class="btn">Apply</button><button type="button" class="btn ghost" id="pxReset">Reset to BBG</button>`;
+  document.getElementById('pxStamp').innerHTML =
+    `Prices baked from BBG PX_LAST at build (${CW.vintages.bbg}); edits persist in this browser only. ` +
+    `EPS scaling is a simplification: Capstone EPS × WFE ratio × leverage — AEIS/TER are less WFE-coupled, read those rows loosely.`;
+  document.getElementById('valNote').innerHTML =
+    `Full ranking on 2028E (${scn}): ` + cheap.map(c => `${c.t} ${c.pe.toFixed(1)}x`).join(' · ') + '.';
+  document.getElementById('pxReset').onclick = () => { localStorage.removeItem(LS('px')); renderVal(); };
+}
+document.getElementById('valSeg').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  scn = b.dataset.s; lsSet('scenario', scn); renderScn();
+});
+document.getElementById('lev').addEventListener('input', e => { lsSet('lev', parseFloat(e.target.value)); renderVal(); });
+document.getElementById('pxForm').addEventListener('submit', e => {
+  e.preventDefault(); const out = {};
+  new FormData(e.target).forEach((v,k) => { const n = parseFloat(v); if (isFinite(n) && n > 0) out[k] = n; });
+  lsSet('px', out); renderVal();
+});
+
+// ===== init =====
+Chart.defaults.color = '#8a9bb4';
+Chart.defaults.borderColor = '#1f2a44';
+Chart.defaults.font.family = '-apple-system,Segoe UI,Roboto,Arial';
+renderScn(); renderIW(); renderQtr(); renderEuv();
+</script>
+</body>
+</html>
