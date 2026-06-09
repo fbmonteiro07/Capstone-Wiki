@@ -51,7 +51,7 @@
     <h1>SemiCap Dashboard — ASML & Peers</h1>
     <div class="meta">Source: ASML_Peers_SemiCap_v16.xlsx · Snapshot 09-Jun-2026 · UBS overlay: "WFE Update — Early Innings of Supercycle" (Arcuri, 09-Jun-26) · Capstone Buyside</div>
   </div>
-  <div class="meta">Tabs: WFE Capex · Bottom-Up · WFE Share · Services · P/E Comps · Process → WFE $ · China</div>
+  <div class="meta">Tabs: WFE Capex · Bottom-Up · WFE Share · Services · P/E Comps · Process → WFE $ · China · Implied WFE (Street)</div>
 </header>
 <nav id="nav">
   <button data-tab="capex" class="active">1 · WFE Capex Spend</button>
@@ -63,6 +63,7 @@
   <button data-tab="trx">7 · Transcripts Evolution</button>
   <button data-tab="process">8 · Process → WFE $</button>
   <button data-tab="china">9 · China % of Revenue</button>
+  <button data-tab="iwfe">10 · Implied WFE (Street)</button>
 </nav>
 <main>
 
@@ -697,6 +698,39 @@
       <table id="tChina"><thead><tr id="tChinah"></tr></thead><tbody id="tChinab"></tbody></table>
     </div>
     <p class="note">Geographic revenue mix (ship-to China) from the model's <b>WFE (SEG-GEO)</b> tab — equipment/system revenue by region, annualized. China surged into a 2024 peak (ASML 41.5%, KLAC 41%, TEL 45%) on a DUV/mature-node pull-forward ahead of export controls, then normalized through 2025. ASML management guides China to a structural <b>~25%</b> of '26 sales; LRCX is the stickiest (trailing-edge etch/dep). 2026E–2027E not modeled at the geographic level. TER (Semi-Test) excluded — minimal China exposure.</p>
+  </div>
+</section>
+
+<!-- TAB 10: IMPLIED WFE (STREET) -->
+<section id="iwfe">
+  <div class="grid three">
+    <div class="card"><h3>Implied Street WFE 2026E</h3><div class="kpi">$148.2 bn</div><div class="sub">+27% YoY · ≈ UBSe $147bn — '26 is priced in</div></div>
+    <div class="card"><h3>Implied Street WFE 2027E</h3><div class="kpi">$180.4 bn</div><div class="sub dn">vs UBSe $198bn · Capstone $214.9bn</div></div>
+    <div class="card"><h3>Implied Street WFE 2028E</h3><div class="kpi">$202.1 bn</div><div class="sub dn">vs UBSe $247.5bn · Capstone $260bn</div></div>
+  </div>
+
+  <div class="card" style="margin-top:18px;border-left:4px solid #f6c453">
+    <h2 class="sec">Implied WFE based on Street Estimates — UBS Fig 3, recreated live from BBG</h2>
+    <p class="note">Top-5 SPE <b>systems revenue</b> ($mn): 2024–25 = UBS-reported actuals; 2026E–2028E = <b>BBG BEst mean total revenue</b> (USD, calendarized 1CY–3CY, pulled 09-Jun-2026 via Capstone wrapper) × systems share calibrated to UBS CY26 systems consensus (ASML 74.9% · AMAT 78.5% · LRCX 68.1% · KLAC 78.7% · TEL 76.7%). Implied WFE = Top-5 ÷ 72.2% (10-yr avg Top-5 share). Same table lives in the model: <b>ASML_Peers_SemiCap_v16.xlsx → "Implied WFE (Street)"</b> — edit the blue BBG inputs there and it recalculates.</p>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>Peer</th><th>2024</th><th>2025</th><th>Y/Y</th><th>2026E</th><th>Y/Y</th><th>2027E</th><th>Y/Y</th><th>2028E</th><th>Y/Y</th></tr></thead>
+      <tbody>
+        <tr><td>ASML</td><td>$23,368</td><td>$28,227</td><td>21%</td><td>$33,878</td><td>20%</td><td>$41,256</td><td>22%</td><td>$46,023</td><td>12%</td></tr>
+        <tr><td>AMAT</td><td>$21,349</td><td>$20,887</td><td class="dn">-2%</td><td>$28,167</td><td>35%</td><td>$34,656</td><td>23%</td><td>$38,393</td><td>11%</td></tr>
+        <tr><td>LRCX</td><td>$9,584</td><td>$13,378</td><td>40%</td><td>$18,285</td><td>37%</td><td>$22,358</td><td>22%</td><td>$25,002</td><td>12%</td></tr>
+        <tr><td>KLAC</td><td>$7,544</td><td>$9,842</td><td>30%</td><td>$11,923</td><td>21%</td><td>$14,512</td><td>22%</td><td>$16,658</td><td>15%</td></tr>
+        <tr><td>TEL</td><td>$11,589</td><td>$11,639</td><td>0%</td><td>$14,748</td><td>27%</td><td>$17,485</td><td>19%</td><td>$19,817</td><td>13%</td></tr>
+        <tr style="font-weight:700"><td>Top 5 SPE Revenue</td><td>$73,434</td><td>$83,973</td><td>14%</td><td>$107,001</td><td>27%</td><td>$130,267</td><td>22%</td><td>$145,893</td><td>12%</td></tr>
+        <tr><td>Top 5 WFE Share (10YR avg)</td><td>72.2%</td><td>72.2%</td><td>—</td><td>72.2%</td><td>—</td><td>72.2%</td><td>—</td><td>72.2%</td><td>—</td></tr>
+        <tr style="font-weight:700"><td>Implied Consensus WFE (BBG live)</td><td>$101,709</td><td>$116,306</td><td>14%</td><td>$148,205</td><td>27%</td><td>$180,427</td><td>22%</td><td>$202,073</td><td>12%</td></tr>
+        <tr><td>Implied Consensus WFE (UBS print, VisibleAlpha)</td><td>$101,500</td><td>$116,323</td><td>15%</td><td>$148,223</td><td>27%</td><td>$187,806</td><td>27%</td><td>$215,759</td><td>15%</td></tr>
+        <tr><td><b>UBSe WFE (09-Jun-26)</b></td><td>$101,500</td><td>$116,000</td><td>14%</td><td>$147,000</td><td>27%</td><td>$198,000</td><td class="up">35%</td><td>$247,500</td><td class="up">25%</td></tr>
+        <tr><td><b>Capstone WFE (v16)</b></td><td>$100,340</td><td>$109,620</td><td>9%</td><td class="up">$158,400</td><td class="up">44%</td><td class="up">$214,900</td><td class="up">36%</td><td class="up">$260,000</td><td class="up">21%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note"><b>Read-through:</b> on live BBG numbers the Street is fully caught up on <b>2026</b> ($148.2bn implied ≈ UBSe $147bn) — the fight is in the out-years. BBG mean runs <i>below</i> UBS's VisibleAlpha vintage in '27/'28 ($180.4 / $202.1bn vs 187.8 / 215.8), so the Street gap is even wider than UBS printed: <b>−$17.6bn vs UBSe in '27 and −$45.4bn in '28</b> (−$34.5bn / −$57.9bn vs Capstone). If UBSe (or Capstone) is right, Top-5 SPE consensus revenue has another ~12–22% upward revision cycle ahead — UBS's "positive setup for stocks" argument, quantified.</p>
   </div>
 </section>
 
