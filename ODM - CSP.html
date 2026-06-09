@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ODM &harr; Client Flux 2026 — SemiAnalysis (Apr 26)</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --line:#30363d; --txt:#e6edf3; --muted:#8b949e;
+    --accent:#58a6ff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;}
+  header{padding:22px 32px 8px;border-bottom:1px solid var(--line)}
+  h1{margin:0;font-size:21px;font-weight:650;letter-spacing:.2px}
+  .sub{color:var(--muted);font-size:13px;margin-top:4px}
+  .wrap{padding:18px 32px 40px}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0 16px}
+  .controls .lbl{color:var(--muted);font-size:12px;margin-right:6px;text-transform:uppercase;letter-spacing:.6px}
+  button.period{background:var(--panel);color:var(--txt);border:1px solid var(--line);
+    padding:7px 14px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:600;transition:.15s}
+  button.period:hover{border-color:var(--accent)}
+  button.period.active{background:var(--accent);color:#0d1117;border-color:var(--accent)}
+  .meta{margin-left:auto;color:var(--muted);font-size:12px}
+  #chart{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+  .nodeLabel{font-size:12.5px;font-weight:600;fill:var(--txt);pointer-events:none}
+  .nodeSub{font-size:10.5px;fill:var(--muted);pointer-events:none}
+  .colTitle{font-size:12px;font-weight:700;fill:var(--muted);text-transform:uppercase;letter-spacing:1px}
+  .link{fill:none;opacity:.45;transition:opacity .15s}
+  .link.dim{opacity:.06}
+  .link.hot{opacity:.85}
+  rect.node{stroke:#0d1117;stroke-width:1;cursor:pointer}
+  .tip{position:fixed;pointer-events:none;background:#1c2330;border:1px solid var(--line);
+    border-radius:8px;padding:9px 11px;font-size:12px;color:var(--txt);opacity:0;transition:opacity .1s;
+    box-shadow:0 6px 24px rgba(0,0,0,.5);z-index:10;max-width:260px}
+  .tip b{color:var(--accent)}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--muted)}
+  .legend .sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  table{border-collapse:collapse;width:100%;margin-top:22px;font-size:12.5px}
+  th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:right}
+  th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
+  th{color:var(--muted);font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.5px}
+  tr:hover td{background:rgba(88,166,255,.06)}
+  td.odmcell{font-weight:600}
+  .foot{color:var(--muted);font-size:11px;margin-top:18px;line-height:1.6}
+</style>
+</head>
+<body>
+<header>
+  <h1>ODM &harr; Client Flux — 2026</h1>
+  <div class="sub">Nvidia GB-rack systems &middot; NVL72-equivalent rack units &middot; Source: SemiAnalysis "ODM Model Output", dated Apr 2026</div>
+</header>
+
+<div class="wrap">
+  <div class="controls">
+    <span class="lbl">Period</span>
+    <button class="period active" data-p="FY">FY 2026</button>
+    <button class="period" data-p="0">1Q26</button>
+    <button class="period" data-p="1">2Q26</button>
+    <button class="period" data-p="2">3Q26</button>
+    <button class="period" data-p="3">4Q26</button>
+    <span class="meta" id="totalMeta"></span>
+  </div>
+
+  <svg id="chart"></svg>
+
+  <div class="legend" id="legend"></div>
+
+  <table id="tbl">
+    <thead><tr><th>ODM</th><th>Client</th><th>1Q26</th><th>2Q26</th><th>3Q26</th><th>4Q26</th><th>FY26</th></tr></thead>
+    <tbody></tbody>
+  </table>
+
+  <div class="foot">
+    Rack units expressed in GB200 NVL72-equivalents (includes GB200, GB300 and Vera Rubin NVL72 SKUs).
+    Flows reflect L10 rack assembly assignment of each ODM to its end client / hyperscaler.
+    "Others" denotes unallocated rack units. Totals reconcile to the SemiAnalysis grand total of 64,110 units for 2026
+    (1Q26 14,860 &middot; 2Q26 13,880 &middot; 3Q26 15,430 &middot; 4Q26 19,940).
+  </div>
+</div>
+
+<div class="tip" id="tip"></div>
+
+<script>
+// ---- Data: ODM -> Client, quarterly NVL72-eq rack units for 2026 ----
+// [q1,q2,q3,q4]  (sum across GB200 + GB300 + Vera Rubin NVL72)
+const LINKS = [
+  {odm:"Quanta",   client:"META",        q:[1300,800,1350,2100]},
+  {odm:"Quanta",   client:"MSFT",        q:[600,700,1000,1500]},
+  {odm:"Quanta",   client:"AMAZON",      q:[1600,2200,2600,3600]},
+  {odm:"Quanta",   client:"Google",      q:[1200,1200,1200,900]},
+  {odm:"Quanta",   client:"Oracle",      q:[850,900,600,550]},
+  {odm:"Foxconn",  client:"META",        q:[600,600,850,1250]},
+  {odm:"Foxconn",  client:"MSFT",        q:[1100,900,1300,2100]},
+  {odm:"Foxconn",  client:"Oracle",      q:[1500,700,700,1100]},
+  {odm:"Wistron",  client:"xAI",         q:[1800,900,600,600]},
+  {odm:"Wistron",  client:"Coreweave",   q:[1600,1200,1200,1200]},
+  {odm:"Wistron",  client:"Nscale",      q:[150,150,150,650]},
+  {odm:"Wiwynn",   client:"Oracle",      q:[300,0,0,0]},
+  {odm:"SMCI",     client:"Oracle",      q:[400,500,700,900]},
+  {odm:"SMCI",     client:"Eviden",      q:[60,60,60,60]},
+  {odm:"SMCI",     client:"Nebius",      q:[240,290,300,270]},
+  {odm:"SMCI",     client:"Lambda",      q:[120,120,120,120]},
+  {odm:"SMCI",     client:"xAI",         q:[600,900,600,600]},
+  {odm:"Gigabyte", client:"Nebius",      q:[150,220,380,750]},
+  {odm:"Gigabyte", client:"Megaspeed",   q:[300,120,120,100]},
+  {odm:"ASUS",     client:"Nebius",      q:[90,120,100,90]},
+  {odm:"Pegatron", client:"Lambda",      q:[0,300,300,300]},
+  {odm:"Pegatron", client:"Together AI", q:[0,600,600,600]},
+  {odm:"Others",   client:"Others",      q:[300,400,600,600]},
+];
+const QNAMES=["1Q26","2Q26","3Q26","4Q26"];
+const ODM_COLORS={
+  "Quanta":"#58a6ff","Foxconn":"#f0883e","Wistron":"#3fb950","Wiwynn":"#bc8cff",
+  "SMCI":"#f778ba","Gigabyte":"#e3b341","ASUS":"#39c5cf","Pegatron":"#ff7b72","Others":"#6e7681"
+};
+
+// ---- value selector ----
+function val(l,period){ return period==="FY" ? l.q.reduce((a,b)=>a+b,0) : l.q[+period]; }
+
+// ---- layout constants ----
+const W=1080, PAD=26, COLW=180, NODEW=20;
+const TOPY=58, BOTPAD=24, NODEGAP=8;
+
+const svg=document.getElementById("chart");
+const tip=document.getElementById("tip");
+let currentPeriod="FY";
+
+function draw(period){
+  currentPeriod=period;
+  // aggregate node values
+  const active=LINKS.map(l=>({...l,v:val(l,period)})).filter(l=>l.v>0);
+  const odmTotals={}, cliTotals={};
+  active.forEach(l=>{odmTotals[l.odm]=(odmTotals[l.odm]||0)+l.v; cliTotals[l.client]=(cliTotals[l.client]||0)+l.v;});
+  const odms=Object.keys(odmTotals).sort((a,b)=>odmTotals[b]-odmTotals[a]);
+  const clients=Object.keys(cliTotals).sort((a,b)=>cliTotals[b]-cliTotals[a]);
+  const grand=active.reduce((a,l)=>a+l.v,0);
+
+  // height scaling
+  const maxColTotal=Math.max(odms.reduce((a,k)=>a+odmTotals[k],0),clients.reduce((a,k)=>a+cliTotals[k],0));
+  const colA=odms.length, colB=clients.length;
+  const avail=Math.max(360, 560);
+  const usableH=avail-(Math.max(colA,colB)-1)*NODEGAP;
+  const scale=usableH/maxColTotal;
+  const H=Math.max(
+    TOPY + odms.reduce((a,k)=>a+odmTotals[k]*scale,0)+(colA-1)*NODEGAP+BOTPAD,
+    TOPY + clients.reduce((a,k)=>a+cliTotals[k]*scale,0)+(colB-1)*NODEGAP+BOTPAD
+  );
+
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  svg.setAttribute("height",H);
+  svg.innerHTML="";
+  const NS="http://www.w3.org/2000/svg";
+  const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+
+  const xL=PAD+COLW, xR=W-PAD-COLW-NODEW;
+
+  // node positions
+  function placeCol(keys,totals,x,isOdm){
+    const pos={}; let y=TOPY;
+    keys.forEach(k=>{const h=totals[k]*scale; pos[k]={x,y,h,used:0}; y+=h+NODEGAP;});
+    return pos;
+  }
+  const posL=placeCol(odms,odmTotals,xL,true);
+  const posR=placeCol(clients,cliTotals,xR,false);
+
+  // column titles
+  svg.appendChild(Object.assign(mk("text",{x:xL+NODEW,y:34,"text-anchor":"end","class":"colTitle"}),{textContent:"ODM"}));
+  svg.appendChild(Object.assign(mk("text",{x:xR,y:34,"class":"colTitle"}),{textContent:"Client"}));
+
+  // links (draw biggest first so small ones sit on top)
+  const linkEls=[];
+  active.sort((a,b)=>b.v-a.v).forEach(l=>{
+    const L=posL[l.odm], R=posR[l.client];
+    const sw=l.v*scale;
+    const y0=L.y+L.used+sw/2; L.used+=sw;
+    const y1=R.y+R.used+sw/2; R.used+=sw;
+    const x0=L.x+NODEW, x1=R.x;
+    const mx=(x0+x1)/2;
+    const d=`M${x0},${y0} C${mx},${y0} ${mx},${y1} ${x1},${y1}`;
+    const p=mk("path",{d,"class":"link",stroke:ODM_COLORS[l.odm]||"#888","stroke-width":Math.max(1,sw)});
+    p.dataset.odm=l.odm; p.dataset.client=l.client;
+    p.addEventListener("mousemove",e=>showTip(e,`<b>${l.odm} → ${l.client}</b><br>${period==="FY"?"FY26":QNAMES[+period]}: ${fmt(l.v)} racks<br><span style="color:#8b949e">1Q ${fmt(l.q[0])} · 2Q ${fmt(l.q[1])} · 3Q ${fmt(l.q[2])} · 4Q ${fmt(l.q[3])}</span>`));
+    p.addEventListener("mouseenter",()=>highlight(l.odm,l.client));
+    p.addEventListener("mouseleave",clearHi);
+    svg.appendChild(p); linkEls.push(p);
+  });
+
+  // nodes
+  function drawNodes(keys,totals,pos,anchorRight){
+    keys.forEach(k=>{
+      const n=pos[k];
+      const r=mk("rect",{x:n.x,y:n.y,width:NODEW,height:Math.max(1,n.h),"class":"node",
+        fill:anchorRight?"#adbac7":(ODM_COLORS[k]||"#888"),rx:2});
+      r.addEventListener("mousemove",e=>showTip(e,`<b>${k}</b><br>${period==="FY"?"FY26":QNAMES[+period]}: ${fmt(totals[k])} racks<br><span style="color:#8b949e">${(100*totals[k]/grand).toFixed(1)}% of period</span>`));
+      r.addEventListener("mouseenter",()=>highlight(anchorRight?null:k,anchorRight?k:null));
+      r.addEventListener("mouseleave",clearHi);
+      svg.appendChild(r);
+      const lx=anchorRight?n.x+NODEW+8:n.x-8;
+      const t=mk("text",{x:lx,y:n.y+n.h/2-1,"class":"nodeLabel","text-anchor":anchorRight?"start":"end","dominant-baseline":"middle"});
+      t.textContent=k; svg.appendChild(t);
+      const t2=mk("text",{x:lx,y:n.y+n.h/2+12,"class":"nodeSub","text-anchor":anchorRight?"start":"end","dominant-baseline":"middle"});
+      t2.textContent=fmt(totals[k]); svg.appendChild(t2);
+    });
+  }
+  drawNodes(odms,odmTotals,posL,false);
+  drawNodes(clients,cliTotals,posR,true);
+
+  function highlight(odm,client){
+    linkEls.forEach(p=>{
+      const match=(odm&&p.dataset.odm===odm)||(client&&p.dataset.client===client);
+      p.classList.toggle("hot",match); p.classList.toggle("dim",!match);
+    });
+  }
+  function clearHi(){linkEls.forEach(p=>{p.classList.remove("hot");p.classList.remove("dim");}); tip.style.opacity=0;}
+
+  document.getElementById("totalMeta").textContent=
+    `${period==="FY"?"FY 2026":QNAMES[+period]} total: ${fmt(grand)} NVL72-eq racks · ${odms.length} ODMs · ${clients.length} clients`;
+
+  buildLegend(odms);
+}
+
+function showTip(e,html){tip.innerHTML=html;tip.style.opacity=1;
+  tip.style.left=Math.min(e.clientX+14,window.innerWidth-tip.offsetWidth-10)+"px";
+  tip.style.top=(e.clientY+14)+"px";}
+function fmt(n){return Math.round(n).toLocaleString("en-US");}
+
+function buildLegend(odms){
+  const el=document.getElementById("legend"); el.innerHTML="";
+  odms.forEach(o=>{const s=document.createElement("span");
+    s.innerHTML=`<span class="sw" style="background:${ODM_COLORS[o]||'#888'}"></span>${o}`;el.appendChild(s);});
+}
+
+// table
+(function buildTable(){
+  const tb=document.querySelector("#tbl tbody");
+  const sorted=[...LINKS].sort((a,b)=>{
+    const fa=a.q.reduce((x,y)=>x+y,0),fb=b.q.reduce((x,y)=>x+y,0);
+    if(a.odm!==b.odm) return a.odm<b.odm?-1:1; return fb-fa;});
+  let lastOdm=null;
+  sorted.forEach(l=>{
+    const fy=l.q.reduce((a,b)=>a+b,0);
+    const tr=document.createElement("tr");
+    const odmCell=l.odm!==lastOdm?l.odm:""; lastOdm=l.odm;
+    tr.innerHTML=`<td class="odmcell" style="color:${ODM_COLORS[l.odm]||'#888'}">${odmCell}</td>`+
+      `<td>${l.client}</td><td>${fmt(l.q[0])}</td><td>${fmt(l.q[1])}</td>`+
+      `<td>${fmt(l.q[2])}</td><td>${fmt(l.q[3])}</td><td style="font-weight:700">${fmt(fy)}</td>`;
+    tb.appendChild(tr);
+  });
+  // grand total row
+  const tot=[0,0,0,0]; LINKS.forEach(l=>l.q.forEach((v,i)=>tot[i]+=v));
+  const tr=document.createElement("tr");
+  tr.style.borderTop="2px solid var(--line)";
+  tr.innerHTML=`<td class="odmcell">TOTAL</td><td></td>`+tot.map(v=>`<td style="font-weight:700">${fmt(v)}</td>`).join("")+
+    `<td style="font-weight:800;color:var(--accent)">${fmt(tot.reduce((a,b)=>a+b,0))}</td>`;
+  tb.appendChild(tr);
+})();
+
+document.querySelectorAll("button.period").forEach(b=>{
+  b.addEventListener("click",()=>{
+    document.querySelectorAll("button.period").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active"); draw(b.dataset.p);
+  });
+});
+
+draw("FY");
+</script>
+</body>
+</html>
