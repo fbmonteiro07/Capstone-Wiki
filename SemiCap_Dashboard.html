@@ -49,7 +49,7 @@
 <header>
   <div>
     <h1>SemiCap Dashboard — ASML & Peers</h1>
-    <div class="meta">Source: ASML_Peers_SemiCap_v15.xlsx · Snapshot 27-Apr-2026 · Capstone Buyside</div>
+    <div class="meta">Source: ASML_Peers_SemiCap_v16.xlsx · Snapshot 09-Jun-2026 · UBS overlay: "WFE Update — Early Innings of Supercycle" (Arcuri, 09-Jun-26) · Capstone Buyside</div>
   </div>
   <div class="meta">Tabs: WFE Capex · Bottom-Up · WFE Share · Services · P/E Comps · Process → WFE $ · China</div>
 </header>
@@ -79,13 +79,32 @@
 
   <div class="grid two" style="margin-top:18px">
     <div class="card">
-      <h2 class="sec">WFE Market — Total ($bn) & YoY %</h2>
+      <h2 class="sec">WFE Market — Total ($bn) & YoY % · Capstone vs UBS vs Street</h2>
       <div class="chart-tall"><canvas id="cWFE"></canvas></div>
     </div>
     <div class="card">
       <h2 class="sec">WFE Sub-segment Mix (%)</h2>
       <div class="chart-tall"><canvas id="cMix"></canvas></div>
     </div>
+  </div>
+
+  <!-- UBS COMPARISON (WFE Update, Arcuri, 09-Jun-26) -->
+  <div class="card" style="margin-top:18px;border-left:4px solid #f6c453">
+    <h2 class="sec">Capstone vs UBS vs Street-Implied — Total WFE ($bn)</h2>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>WFE ($bn)</th><th>2024</th><th>2025</th><th>2026E</th><th>2027E</th><th>2028E</th></tr></thead>
+      <tbody>
+        <tr><td><b>Capstone (v16)</b></td><td>100.3</td><td>109.6</td><td class="up">158.4 <span class="sub">+44.5%</span></td><td class="up">214.9 <span class="sub">+35.7%</span></td><td class="up">260.0 <span class="sub">+21.0%</span></td></tr>
+        <tr><td><b>UBS (09-Jun-26)</b></td><td>101.5</td><td>116.0</td><td>147.0 <span class="sub">+26.7%</span></td><td>198.0 <span class="sub">+34.7%</span></td><td>247.5 <span class="sub">+25.0%</span></td></tr>
+        <tr><td>Street-implied (UBS calc, Top-5 SPE cons)</td><td>101.5</td><td>116.3</td><td>148.2 <span class="sub">+27%</span></td><td>187.8 <span class="sub">+27%</span></td><td>215.8 <span class="sub">+15%</span></td></tr>
+        <tr><td>Δ Capstone − UBS</td><td>−1.2</td><td>−6.4</td><td class="up">+11.4</td><td class="up">+16.9</td><td class="up">+12.5</td></tr>
+        <tr><td>UBS Memory / F&L split</td><td>37.5 / 64.1</td><td>46.5 / 69.5</td><td>69.5 / 77.5</td><td>98.5 / 99.5</td><td>107.5 / 140.0</td></tr>
+        <tr><td>UBS China WFE</td><td>39.0</td><td>44.5</td><td>47.5</td><td>56.0</td><td>64.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note"><b>Read-through:</b> UBS's 09-Jun-26 raise (147 / 198 / 247.5) moves the Street <i>toward</i> Capstone but still sits $11–17bn below across '26–'28 — and the paths differ. Capstone's 2025 base ($109.6bn, SEMI/VLSI definition) is below UBS ($116bn), so Capstone's '26 implies +44.5% vs UBS +26.7%; Capstone also leans on a 66–70% WFE/CapEx capture vs UBS's implied 55–68%. <b>Mix is the real divergence:</b> Capstone gets to ~$260bn via memory compounding into '28 (Hynix $67bn / Samsung $81bn / TSMC $112bn capex) while UBS decelerates memory in '28 (DRAM WFE +5% YoY) and leans on foundry/logic exploding (+41% YoY to $140bn — Intel WFE $21bn, TSMC capex $85bn). UBS: customers now giving SPE vendors <b>8 quarters of visibility</b> — first time in ~30 yrs of coverage; litho seen as no constraint (ASML &gt;100 EUV/yr capacity in '27/'28).</p>
   </div>
 
   <div class="card" style="margin-top:18px">
@@ -143,17 +162,21 @@
   </div>
 
   <div class="card" style="margin-top:18px">
-    <h2 class="sec">Capstone vs Street — Customer CapEx ($bn)</h2>
+    <h2 class="sec">Capstone vs UBS vs Street — Customer CapEx ($bn)</h2>
+    <div class="scroll">
     <table>
-      <thead><tr><th>Customer</th><th>Capstone 2026E</th><th>Cons 2026E</th><th>Street-Hi 2026E</th><th>Capstone 2027E</th><th>Cons 2027E</th><th>Street-Hi 2027E</th></tr></thead>
+      <thead><tr><th>Customer</th><th>Capstone 26E</th><th>UBS 26E</th><th>Cons 26E</th><th>Capstone 27E</th><th>UBS 27E</th><th>Cons 27E</th><th>Capstone 28E</th><th>UBS 28E</th></tr></thead>
       <tbody>
-        <tr><td><b>TSMC</b></td><td>56.0</td><td>55.1</td><td>58.3</td><td>70.0</td><td>63.5</td><td>75.5</td></tr>
-        <tr><td><b>Samsung</b></td><td class="up">62.0</td><td>48.1</td><td>66.9</td><td class="up">81.0</td><td>51.6</td><td>90.6</td></tr>
-        <tr><td><b>SK Hynix</b></td><td class="up">47.0</td><td>30.3</td><td>51.2</td><td class="up">67.0</td><td>35.6</td><td>65.1</td></tr>
-        <tr><td><b>Micron</b></td><td class="up">38.0</td><td>26.1</td><td>31.5</td><td>52.0</td><td>37.5</td><td>53.0</td></tr>
+        <tr><td><b>TSMC</b></td><td>56.0</td><td>56.0</td><td>55.1</td><td>70.0</td><td>75.0</td><td>63.5</td><td class="up">112.0</td><td>85.0</td></tr>
+        <tr><td><b>Samsung</b></td><td>46.0</td><td>47.8</td><td>48.1</td><td class="up">62.0</td><td>56.0</td><td>51.6</td><td class="up">81.0</td><td>60.2</td></tr>
+        <tr><td><b>SK Hynix</b></td><td>31.0</td><td>29.7</td><td>30.3</td><td class="up">47.0</td><td>34.0</td><td>35.6</td><td class="up">67.0</td><td>36.5</td></tr>
+        <tr><td><b>Micron</b></td><td class="dn">25.0</td><td>30.9</td><td>26.1</td><td class="dn">38.0</td><td>42.0</td><td>37.5</td><td class="up">52.0</td><td>41.5</td></tr>
+        <tr><td><b>Intel</b></td><td class="dn">15.0</td><td>18.2</td><td>15.7</td><td class="dn">16.0</td><td>21.5</td><td>17.0</td><td class="dn">18.0</td><td>35.0</td></tr>
+        <tr><td><b>CXMT</b></td><td class="up">15.0</td><td>10.0</td><td>—</td><td class="up">15.0</td><td>11.0</td><td>—</td><td class="up">15.0</td><td>12.0</td></tr>
       </tbody>
     </table>
-    <p class="note"><b>Read-through:</b> Capstone's top-down customer capex runs <b>above consensus</b> on memory — SK Hynix '26 (47 vs cons 30) and Micron '26 (38 vs cons 26) are the bull-case WFE drivers; Samsung sits between cons and Street-high. TSMC is broadly in line with the Street. Memory above-cons is the swing factor behind the >$140bn '26 WFE call.</p>
+    </div>
+    <p class="note"><b>Read-through:</b> 2026 is essentially aligned across all three (TSMC 56 = UBS 56; Samsung/Hynix within ~$2bn) — the divergence is all in the out-years. Capstone runs <b>far above UBS on '27–'28 memory</b>: SK Hynix '28 67 vs UBS 36.5 (+84%), Samsung '28 81 vs 60, Micron '28 52 vs 41.5, and TSMC '28 112 vs 85. UBS instead front-loads <b>Intel</b> ('28 35 vs Capstone 18 — Intel WFE alone $21bn, +78% YoY) and decelerates DRAM in '28 (+5% YoY). Net: same supercycle, different engine — Capstone = memory compounding; UBS = F/L (Intel + TSMC) taking over the baton in '28. UBS cons columns = VisibleAlpha per UBS Fig 1/10; Intel cons = Bottoms-Up tab.</p>
   </div>
 </section>
 
@@ -686,6 +709,9 @@ const Y_F = YRS.slice(0,16);
 // === TAB 1 data ===
 const WFE   = [33,38.1,56.6,63.9,54.9,71.2,87.36,93.59,95.76,100.34,109.62,158.4,214.9,260,300.3,300.3];
 const WFEYY = [null,15.5,48.6,12.9,-14.1,29.7,22.7,7.1,2.3,4.8,9.2,44.5,35.7,21.0,15.5,0.0];
+// UBS "WFE Update: Early Innings of Supercycle" (Arcuri, 09-Jun-26) — Fig 9; Street = UBS-implied from Top-5 SPE consensus (Fig 3)
+const WFE_UBS    = [null,null,null,53.9,51.5,61.5,90.5,100.6,90.4,101.5,116.0,147.0,198.0,247.5,null,null];
+const WFE_STREET = [null,null,null,null,null,null,null,null,null,101.5,116.3,148.2,187.8,215.8,null,null];
 const LITHO = [5.94,6.48,10.19,12.14,11.53,14.24,16.60,15.91,24.90,24.08,26.31,36.43,49.43,59.80,69.07,69.07];
 const ETCH  = [12.05,14.17,22.07,25.24,21.52,28.12,34.94,37.44,38.11,40.14,44.07,64.15,87.68,106.60,123.12,122.52];
 const PROC  = [3.80,4.46,6.85,7.67,6.70,8.90,11.18,12.17,12.45,13.04,14.47,20.91,28.37,34.58,39.94,39.94];
@@ -850,7 +876,9 @@ function ds(label,data,color,opts){return Object.assign({label,data,borderColor:
 
 // TAB 1 charts
 new Chart(cWFE,{type:'bar',data:{labels:YRS,datasets:[
-  {type:'bar',label:'WFE ($bn)',data:WFE,backgroundColor:'#5aa7ff66',borderColor:'#5aa7ff',borderWidth:1,yAxisID:'y'},
+  {type:'bar',label:'WFE Capstone ($bn)',data:WFE,backgroundColor:'#5aa7ff66',borderColor:'#5aa7ff',borderWidth:1,yAxisID:'y'},
+  {type:'line',label:'UBS 09-Jun-26 ($bn)',data:WFE_UBS,borderColor:'#f6c453',backgroundColor:'#f6c45333',yAxisID:'y',tension:.3,pointRadius:3,borderWidth:2},
+  {type:'line',label:'Street-implied ($bn)',data:WFE_STREET,borderColor:'#94a3b8',backgroundColor:'#94a3b833',yAxisID:'y',tension:.3,pointRadius:2,borderWidth:2,borderDash:[6,4]},
   {type:'line',label:'YoY %',data:WFEYY,borderColor:'#ff7a59',backgroundColor:'#ff7a5933',yAxisID:'y1',tension:.3,pointRadius:3}
 ]},options:{scales:{y:{title:{display:true,text:'$bn'}},y1:{position:'right',title:{display:true,text:'YoY %'},grid:{display:false}}}}});
 
