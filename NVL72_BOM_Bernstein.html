@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vera Rubin NVL72 B.O.M. — Bernstein</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --line:#30363d; --txt:#e6edf3; --muted:#8b949e;
+    --accent:#58a6ff; --ms:#f0883e; --be:#3fb950; --sa:#d29922;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;}
+  header{padding:22px 32px 14px;border-bottom:1px solid var(--line)}
+  h1{margin:0;font-size:21px;font-weight:650;letter-spacing:.2px}
+  h2.sec{font-size:15px;font-weight:650;margin:34px 0 4px;color:var(--txt)}
+  h2.sec .tag{font-size:11px;font-weight:700;letter-spacing:1px;padding:2px 8px;border-radius:5px;vertical-align:2px;margin-right:8px}
+  .tag.be{background:rgba(63,185,80,.15);color:var(--be);border:1px solid var(--be)}
+  .tag.ms{background:rgba(240,136,62,.15);color:var(--ms);border:1px solid var(--ms)}
+  .tag.sa{background:rgba(210,153,34,.15);color:var(--sa);border:1px solid var(--sa)}
+  .secsub{color:var(--muted);font-size:12px;margin:0 0 12px}
+  .sub{color:var(--muted);font-size:13px;margin-top:4px}
+  .sub a{color:var(--accent);text-decoration:none}
+  .sub a:hover{text-decoration:underline}
+  .wrap{padding:18px 32px 40px}
+  .tip{position:fixed;pointer-events:none;background:#1c2330;border:1px solid var(--line);
+    border-radius:8px;padding:9px 11px;font-size:12px;color:var(--txt);opacity:0;transition:opacity .1s;
+    box-shadow:0 6px 24px rgba(0,0,0,.5);z-index:10;max-width:280px}
+  .tip b{color:var(--accent)}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--muted)}
+  .legend .sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  table{border-collapse:collapse;width:100%;margin-top:6px;font-size:12.5px}
+  th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:right;white-space:nowrap}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--muted);font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.5px}
+  tr:hover td{background:rgba(88,166,255,.06)}
+  td.odmcell{font-weight:600}
+  td.zero,td.pct{color:#8b949e}
+  td.pct{font-size:11.5px}
+  td.sub2{padding-left:26px;color:#b6bfc9}
+  tr.subtotal td{font-weight:700;border-top:1px solid #3d444d;background:rgba(110,118,129,.07)}
+  .pos{color:#3fb950}.neg{color:#f85149}
+  .scrollx{overflow-x:auto}
+  .foot{color:var(--muted);font-size:11px;margin-top:18px;line-height:1.6}
+  .bomBars{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px 22px 8px;margin-top:10px}
+  .bomRow{display:flex;align-items:center;margin-bottom:16px}
+  .bomName{width:104px;font-size:13px;font-weight:700}
+  .bomName small{display:block;font-weight:400;color:var(--muted);font-size:11px}
+  .bomTrack{flex:1;display:flex;height:34px;border-radius:6px;overflow:hidden;background:#0d1117}
+  .bomSeg{height:100%;transition:filter .1s;cursor:default;min-width:0}
+  .bomSeg:hover{filter:brightness(1.35)}
+  .bomTot{width:86px;text-align:right;font-size:13px;font-weight:700;padding-left:12px}
+  .minigrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px 26px;margin-top:6px}
+  .kpis{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 4px}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 18px;min-width:170px}
+  .kpi .v{font-size:20px;font-weight:700}
+  .kpi .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-top:2px}
+  .kpi .d{font-size:11.5px;margin-top:3px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 2px}
+  .chip{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:6px 14px;font-size:12px;cursor:pointer;color:var(--txt)}
+  .chip small{color:var(--muted)}
+  .chip.on{border-color:var(--be);background:rgba(63,185,80,.12)}
+  .note{background:rgba(210,153,34,.08);border:1px solid rgba(210,153,34,.4);border-radius:10px;padding:12px 16px;font-size:12.5px;line-height:1.55;margin-top:12px}
+  .note b{color:var(--sa)}
+</style>
+</head>
+<body>
+<header>
+  <h1>Vera Rubin NVL72 B.O.M. — Bernstein</h1>
+  <div class="sub">Rack capex by architecture &middot; Source: Bernstein "AI Value Chain: How much does a GW of Vera Rubin data center capacity actually cost?" (Rasgon/Zhu et al., 8 Jun 26)
+  &middot; related: <a href="NVL72_BOM.html">MS B.O.M &rarr;</a> &middot; <a href="ODM - CSP.html">ODM &harr; Client flux &rarr;</a></div>
+</header>
+
+<div class="wrap">
+
+  <div class="kpis">
+    <div class="kpi"><div class="v">$2.03M</div><div class="l">H100 DGX x8 / rack</div><div class="d">&nbsp;</div></div>
+    <div class="kpi"><div class="v">$4.30M</div><div class="l">GB200 NVL72 / rack</div><div class="d pos">+112% vs H100 rack</div></div>
+    <div class="kpi"><div class="v">$9.09M</div><div class="l">VR NVL72 / rack</div><div class="d pos">+112% vs GB200</div></div>
+    <div class="kpi"><div class="v">$3.18M</div><div class="l">VR memory + storage</div><div class="d">35% of rack (HBM+DRAM+NAND)</div></div>
+    <div class="kpi"><div class="v">$47.3B</div><div class="l">All-in DC capex / GW</div><div class="d">3,557 VR racks per GW</div></div>
+  </div>
+
+  <h2 class="sec"><span class="tag be">BERNSTEIN</span>Bill of materials per rack — component mix (US$K)</h2>
+  <p class="secsub">Exhibit 1 &middot; Hover segments for detail &middot; bars scaled to VR NVL72 total</p>
+  <div class="bomBars" id="bomBars"></div>
+  <div class="legend" id="bomLegend"></div>
+
+  <h2 class="sec"><span class="tag be">BERNSTEIN</span>B.O.M. detail (US$K per rack)</h2>
+  <div class="scrollx"><table id="bomTbl"></table></div>
+
+  <h2 class="sec"><span class="tag be">BERNSTEIN</span>Memory &amp; storage deep-dive — the $3.2M question</h2>
+  <p class="secsub">Content per Nvidia spec (Exhibit 2) &times; Bernstein price assumptions. HBM is the swing factor: $344K at today's $16.6/GB vs $1.09M at Bernstein's 2027E $53/GB pass-through.</p>
+  <div class="scrollx"><table id="memTbl"></table></div>
+
+  <p class="secsub" style="margin-top:18px">HBM4 price scenario — click to reprice the VR rack (20.7 TB HBM, all else held at Bernstein's numbers)</p>
+  <div class="chips" id="hbmChips"></div>
+  <div class="kpis">
+    <div class="kpi"><div class="v" id="sHbm">—</div><div class="l">HBM per rack</div><div class="d" id="sHbmD">&nbsp;</div></div>
+    <div class="kpi"><div class="v" id="sMem">—</div><div class="l">Memory + storage</div><div class="d" id="sMemD">&nbsp;</div></div>
+    <div class="kpi"><div class="v" id="sRack">—</div><div class="l">VR rack total</div><div class="d" id="sRackD">&nbsp;</div></div>
+    <div class="kpi"><div class="v" id="sGw">—</div><div class="l">All-in capex / GW</div><div class="d">racks $ + $15B infra</div></div>
+  </div>
+
+  <h2 class="sec"><span class="tag sa">CHECK</span>HBM cost cross-check vs SemiAnalysis (Apr 26 model)</h2>
+  <p class="secsub">Rubin = 8&times; HBM4 24Gb 12-Hi stacks (288 GB/GPU, 20.7 TB/rack) in both models — the disagreement is price, not content</p>
+  <div class="scrollx"><table id="saTbl"></table></div>
+  <div class="note">
+    <b>Where they diverge:</b> Bernstein's 2027E HBM4 at $48/GB cost (+10% Nvidia mark-up &rarr; $53/GB in the customer BOM) is
+    <b>~1.8&ndash;2.0x</b> the SemiAnalysis Apr-26 curve, which already embeds a +40% HBM4 step-up in 1Q27 ($671 &rarr; $939/stack, i.e. $26.1/GB)
+    and a blended HBM ASP of $22.3/GB for 2027 (+47% YoY). At the SemiAnalysis 2027 reference price the VR rack is <b>~$8.5M, not $9.1M</b>.
+    On today's price the two are close but not identical: SemiAnalysis' 2026 reference ($18.6/GB) already runs ~12% above Bernstein's $16.63 current contract.
+    Supporting Bernstein's hawkishness: UBS (Arcuri, 21-mai-26) flags HBM4E pricing at <b>"roughly double"</b> HBM3E and "$9,000 worth of DRAM"
+    inside a Vera system; memory shortage commentary has broadened (ZS capex, autos, PCs). The truth likely sits between the two curves —
+    and both notes agree investors must re-mark this line monthly.
+  </div>
+
+  <h2 class="sec"><span class="tag be">BERNSTEIN</span><span class="tag ms">MS</span>VR NVL72 reconciliation — Bernstein $9.09M vs Morgan Stanley $7.80M</h2>
+  <p class="secsub">Same rack, 8 Jun 26 notes from both shops. ~85% of the $1.29M gap is HBM treatment + networking scope.</p>
+  <div class="scrollx"><table id="recTbl"></table></div>
+
+  <h2 class="sec"><span class="tag be">BERNSTEIN</span>Datacenter capex per GW &amp; price-performance</h2>
+  <p class="secsub">Exhibits 5 &amp; 6 &middot; VR rack rated 220 kW; rack = 78% of total DC power (1.15 PUE, rack = 90% of IT load)</p>
+  <div class="minigrid">
+    <div><table id="gwTbl"></table></div>
+    <div><table id="perfTbl"></table></div>
+  </div>
+
+  <div class="foot">
+    Source: Bernstein "AI Value Chain: How much does a GW of Vera Rubin data center capacity actually cost?" (Stacy Rasgon, Daniel Zhu et al., 8 Jun 2026), Exhibits 1, 2, 5, 6;
+    Morgan Stanley "NV AI Server Model" (Kao/Shih, 8 Jun 26) via <a href="NVL72_BOM.html" style="color:var(--accent)">NVL72_BOM.html</a>;
+    SemiAnalysis Accelerator Model Apr-26 ("HBM Pricing" reference ASPs, "HBM Supplier summary" blended $/GB).<br><br>
+    Key Bernstein assumptions: Rubin GPU $55K &times; 72 (ex-HBM); Vera CPU $5K &times; 36; HBM4 $16.63/GB today ($2.08/Gb &times; 8) rising to $48/GB cost in 2027 when VR ships in volume, +~10% Nvidia mark-up &rarr; $53/GB in customer BOM ($344K &rarr; $1.09M per rack);
+    LPDDR5X SOCAMM at $14.85/GB (2Q26 mobile LP5X contract $11.43 +30% SOCAMM premium) &times; 54 TB = $802K;
+    TLC NAND $0.37/GB (+30% vs client) &times; 3.5 PB (2,248 TB E1.S carried over from GB200 + 1,217 TB ICMS at 16.9 TB/GPU) = $1.28M.
+    Networking ~13% of rack (8% scale-up / 5% scale-out). Nvidia assumed to pass HBM increases through via dynamic pricing rather than absorb in margin.<br><br>
+    Transcription notes vs the printed report: (1) GB200 scale-up components as printed (NVLink $184K + cabling $123K + backplanes $102K = $409K) do not foot to Bernstein's $287K scale-up subtotal — VR column foots exactly; subtotals used as printed.
+    (2) Report text says ICMS adds "16.9 GB/GPU" — Exhibit 2 (1,217 TB/rack) implies 16.9 <i>TB</i>/GPU. (3) Exhibit 6's "Performance per GW (FP16 Sparse EFLOPS)" row is computed as FP8 PFLOPS/rack &times; racks/GW (labels FP8/FP16 inconsistent in source; figures shown as printed).
+    (4) Text cites GB200 rack at 130 kW, Exhibit 5 uses 132 kW. (5) H100 column components sum to $2,027K vs $2,026K printed (rounding).
+  </div>
+</div>
+
+<div class="tip" id="tip"></div>
+
+<script>
+// B.O.M. — Bernstein Exhibit 1 (8 Jun 26), US$K per rack. null = not disclosed / n.a.
+const SKUS=["H100 DGX x8","GB200 NVL72","VR NVL72"];
+const BOM=[
+  {k:"GPU ex. HBM",            c:"#58a6ff", v:[1454,2112,3960]},
+  {k:"HBM",                    c:"#f778ba", v:[65,185,1093]},
+  {k:"CPU ex. DRAM",           c:"#bc8cff", v:[34,92,180]},
+  {k:"CPU DRAM (SOCAMM)",      c:"#d2a8ff", v:[238,252,802]},
+  {k:"Scale-up networking",    c:"#39c5cf", v:[112,287,871]},
+  {k:"Scale-out networking",   c:"#56d364", v:[22,341,396]},
+  {k:"Direct-attached storage",c:"#e3b341", v:[102,832,1282]},
+  {k:"Cooling",                c:"#ffa657", v:[0,51,158]},
+  {k:"Chassis",                c:"#8b949e", v:[0,100,100]},
+  {k:"Power delivery",         c:"#ff7b72", v:[0,44,150]},
+  {k:"Others",                 c:"#6e7681", v:[0,0,100]},
+];
+const BOM_TOT=[2026,4296,9093]; // as printed (components sum to 2,027 / 4,296 / 9,092 — rounding)
+
+// full Exhibit 1 rows for the detail table: [label, h100, gb200, vr, indent, subtotal]
+const DETAIL=[
+  ["CPU ex. DRAM",34,92,180,1,false],
+  ["CPU DRAM",238,252,802,1,false],
+  ["CPU (incl. DRAM)",271,345,982,0,true],
+  ["GPU ex. HBM",1454,2112,3960,1,false],
+  ["HBM",65,185,1093,1,false],
+  ["GPU (incl. HBM)",1519,2297,5053,0,true],
+  ["Computing sub-total",1790,2642,6035,0,true],
+  ["NVLink Switch",null,184,253,1,false],
+  ["Cabling",null,123,238,1,false],
+  ["Backplanes & Other",null,102,380,1,false],
+  ["Scale-up",112,287,871,0,true],
+  ["SpectrumX Switch",null,188,198,1,false],
+  ["Ethernet Fabric",null,154,198,1,false],
+  ["Scale-out",22,341,396,0,true],
+  ["Networking sub-total",134,628,1267,0,true],
+  ["Direct-attached Storage",102,832,1282,0,false],
+  ["Cooling",null,51,158,0,false],
+  ["Chassis",null,100,100,0,false],
+  ["Power Delivery",null,44,150,0,false],
+  ["Others",null,null,100,0,false],
+  ["RACK TOTAL",2026,4296,9093,0,true],
+];
+
+// memory & storage deep-dive (VR NVL72)
+const MEM=[
+  ["HBM4 (Rubin, 8× 24Gb 12-Hi)","20.7 TB per Nvidia spec (8× 36 GB stacks/GPU)","$16.63 today → $48 cost / $53 w/ mark-up (2027E)","344 → 1,093","12.0%"],
+  ["LPDDR5X SOCAMM (Vera CPUs)","54 TB (1.5 TB/CPU)","$14.85 ($11.43 LP5X contract +30% SOCAMM premium)","802","8.8%"],
+  ["TLC NAND — E1.S server drives","2,248 TB (144× 15.36TB + boot)","$0.37 (+30% vs client)","832","9.2%"],
+  ["TLC NAND — ICMS (new for VR)","1,217 TB (16.9 TB/GPU)","$0.37 (+30% vs client)","450","4.9%"],
+  ["Memory + storage total","≈3.5 PB NAND + 75 TB DRAM/HBM","","3,177","34.9%"],
+];
+
+// SemiAnalysis cross-check (HBM4 24Gb 12-Hi, 36 GB/stack, 8 stacks/GPU, 72 GPUs)
+const SA=[
+  ["SemiAnalysis Apr-26 — reference ASP 2026","$671 / stack","$18.6","387","8.39"],
+  ["SemiAnalysis Apr-26 — reference ASP 2027 (+40% step-up)","$939 / stack","$26.1","541","8.54"],
+  ["SemiAnalysis Apr-26 — blended HBM $/GB 2027E (all types)","—","$22.3","462","8.46"],
+  ["Bernstein — current contract ($2.08/Gb × 8)","$599 / stack","$16.63","344","8.34"],
+  ["Bernstein — 2027E cost when VR ships","$1,728 / stack","$48.0","994","8.99"],
+  ["Bernstein — 2027E in customer BOM (+10% NVDA mark-up)","$1,901 / stack","$52.8","1,093","9.09"],
+  ["Morgan Stanley — inside $55K R200 ASP (not broken out)","—","—","—","7.80"],
+];
+
+// Bernstein vs MS reconciliation (VR rack, US$K)
+const REC=[
+  ["GPU silicon (72× R200 @ $55K)",3960,3960,"Same $55K/GPU headline in both"],
+  ["HBM (20.7 TB)","in GPU ASP",1093,"THE bridge item: MS keeps HBM inside the $55K ASP; Bernstein adds $53/GB 2027E pass-through on top"],
+  ["Vera CPUs (36)",198,180,"MS $5.5K vs Bernstein $5.0K per CPU"],
+  ["Memory ex-HBM (DRAM + NAND)",2002,2084,"Totals nearly match, mix opposite: MS = SOCAMM-heavy ($1.57M ≈ $28/GB) + 1.2 PB NAND ($0.4M); Bernstein = SOCAMM $0.8M ($14.85/GB) + 3.5 PB NAND ($1.28M)"],
+  ["Networking (scale-up + scale-out)",720,1267,"MS counts chips (NVSwitch $144K + other $576K); Bernstein adds cabling, backplanes, full fabric"],
+  ["Cooling",72,158,"MS excludes side-car CDU (~$50K); Bernstein per industry contacts"],
+  ["Power delivery",76,150,"Bernstein incl. early 800VDC content (Delta TAM work)"],
+  ["PCB / ABF / MLCC",141,"in chassis/others","Explicit in MS; inside chassis+others ($300K) for Bernstein"],
+  ["Others / assembly / chassis",634,300,"MS: others $605K + rack assembly $29K"],
+  ["RACK TOTAL",7803,9093,"Δ $1.29M ≈ HBM pass-through ($1.09M) + networking scope ($0.55M) − DRAM price (−$0.77M) + NAND content (+$0.88M) − others"],
+];
+
+// Exhibit 5 — capex per GW
+const GW=[
+  ["$K / rack","2,026","4,296","9,093"],
+  ["Rack power (kW)","41","132","220"],
+  ["Rack as % of total power","50%","78%","78%"],
+  ["Total power per rack (kW)","82","169","281"],
+  ["Racks per GW","12,175","5,929","3,557"],
+  ["Rack cost per GW ($B)","24.7","25.5","32.3"],
+  ["Mechanical & electrical ($B)","9.8","11.2","11.2"],
+  ["Land & building ($B)","3.5","3.8","3.8"],
+  ["Total DC capex / GW ($B)","37.0","40.5","47.3"],
+];
+// Exhibit 6 — price performance
+const PERF=[
+  ["FP8 sparse PFLOPS / rack","256","720","2,520"],
+  ["Racks per GW","12,175","5,929","3,557"],
+  ["EFLOPS per GW (as printed*)","3,117","4,269","8,964"],
+  ["Capex ($B / GW)","37.0","40.5","47.3"],
+  ["EFLOPs per $B capex","84.2","105.5","189.3"],
+];
+
+const tip=document.getElementById("tip");
+function fmt(n){return Math.round(n).toLocaleString("en-US");}
+function pctOf(v,t){return (100*v/t).toFixed(1)+"%";}
+function showTip(e,html){tip.innerHTML=html;tip.style.opacity=1;
+  tip.style.left=Math.min(e.clientX+14,window.innerWidth-tip.offsetWidth-10)+"px";
+  tip.style.top=(e.clientY+14)+"px";}
+
+// stacked bars
+(function(){
+  const el=document.getElementById("bomBars");
+  const maxT=Math.max(...BOM_TOT);
+  SKUS.forEach((sku,i)=>{
+    const row=document.createElement("div"); row.className="bomRow";
+    const name=document.createElement("div"); name.className="bomName";
+    name.innerHTML=`${sku.split(" ")[0]}<small>${sku.split(" ").slice(1).join(" ")}</small>`;
+    const track=document.createElement("div"); track.className="bomTrack";
+    track.style.flex="0 0 "+(84*BOM_TOT[i]/maxT)+"%";
+    BOM.forEach(c=>{
+      if(!c.v[i]) return;
+      const seg=document.createElement("div"); seg.className="bomSeg";
+      seg.style.width=(100*c.v[i]/BOM_TOT[i])+"%";
+      seg.style.background=c.c;
+      seg.addEventListener("mousemove",e=>showTip(e,
+        `<b>${c.k}</b><br>${sku}: $${fmt(c.v[i])}K · ${pctOf(c.v[i],BOM_TOT[i])} of rack<br>`+
+        `<span style="color:#8b949e">H100 $${fmt(c.v[0])}K · GB200 $${fmt(c.v[1])}K · VR $${fmt(c.v[2])}K</span>`));
+      seg.addEventListener("mouseleave",()=>tip.style.opacity=0);
+      track.appendChild(seg);
+    });
+    const tot=document.createElement("div"); tot.className="bomTot";
+    tot.textContent="$"+(BOM_TOT[i]/1000).toFixed(2)+"M";
+    row.appendChild(name); row.appendChild(track); row.appendChild(tot);
+    el.appendChild(row);
+  });
+  const lg=document.getElementById("bomLegend");
+  BOM.forEach(c=>{const s=document.createElement("span");
+    s.innerHTML=`<span class="sw" style="background:${c.c}"></span>${c.k}`;lg.appendChild(s);});
+})();
+
+// detail table
+(function(){
+  const t=document.getElementById("bomTbl");
+  let html=`<thead><tr><th>Component ($K)</th><th>H100 DGX x8</th><th>GB200 NVL72</th><th>VR NVL72</th><th>% of VR rack</th><th>VR vs GB200</th></tr></thead><tbody>`;
+  DETAIL.forEach(([k,a,b,c,ind,st])=>{
+    const d=(b&&c)?(c/b-1):null;
+    html+=`<tr class="${st?"subtotal":""}"><td class="${ind?"sub2":"odmcell"}">${k}</td>`+
+      `<td>${a==null?"—":fmt(a)}</td><td>${b==null?"—":fmt(b)}</td><td>${c==null?"—":fmt(c)}</td>`+
+      `<td class="pct">${c==null?"—":pctOf(c,9093)}</td>`+
+      `<td class="${d>0?"pos":d<0?"neg":""}">${d===null?(c?"new":"—"):(d>0?"+":"")+(100*d).toFixed(0)+"%"}</td></tr>`;
+  });
+  t.innerHTML=html+"</tbody>";
+})();
+
+// memory table
+(function(){
+  const t=document.getElementById("memTbl");
+  let html=`<thead><tr><th>Memory / storage line</th><th>Content per VR rack</th><th>$/GB assumption</th><th>$K per rack</th><th>% of rack</th></tr></thead><tbody>`;
+  MEM.forEach((r,i)=>{
+    html+=`<tr class="${i===MEM.length-1?"subtotal":""}"><td class="odmcell">${r[0]}</td><td>${r[1]}</td><td style="white-space:normal">${r[2]}</td><td>${r[3]}</td><td class="pct">${r[4]}</td></tr>`;
+  });
+  t.innerHTML=html+"</tbody>";
+})();
+
+// HBM scenario chips
+(function(){
+  const presets=[
+    {l:"$16.63 — today's contract (BE & ≈SA 2026)",p:16.63},
+    {l:"$22.3 — SA blended 2027E",p:22.3},
+    {l:"$26.1 — SA HBM4 ref ASP 2027E",p:26.09},
+    {l:"$48 — BE 2027E cost",p:48},
+    {l:"$53 — BE 2027E w/ mark-up (base case)",p:52.8,on:true},
+  ];
+  const el=document.getElementById("hbmChips");
+  const GB=20700, RACK_EX_HBM=9093-1093, MEMX=802+1282, RACKS_GW=3557;
+  function apply(p,btn){
+    el.querySelectorAll(".chip").forEach(c=>c.classList.remove("on"));
+    btn.classList.add("on");
+    const hbm=GB*p/1000;                     // $K
+    const rack=RACK_EX_HBM+hbm;
+    document.getElementById("sHbm").textContent="$"+fmt(hbm)+"K";
+    document.getElementById("sHbmD").textContent=(100*hbm/rack).toFixed(1)+"% of rack @ $"+p+"/GB";
+    document.getElementById("sMem").textContent="$"+((hbm+MEMX)/1000).toFixed(2)+"M";
+    document.getElementById("sMemD").textContent=(100*(hbm+MEMX)/rack).toFixed(0)+"% of rack";
+    document.getElementById("sRack").textContent="$"+(rack/1000).toFixed(2)+"M";
+    document.getElementById("sRackD").textContent=(rack>=9093?"+":"")+fmt(rack-9093)+"K vs BE base";
+    document.getElementById("sGw").textContent="$"+(rack*RACKS_GW/1e6+15.0).toFixed(1)+"B";
+  }
+  presets.forEach(pr=>{
+    const b=document.createElement("button"); b.className="chip"+(pr.on?" on":"");
+    b.innerHTML=pr.l.replace("—","<small>—</small>");
+    b.addEventListener("click",e=>apply(pr.p,b));
+    el.appendChild(b);
+    if(pr.on) setTimeout(()=>apply(pr.p,b),0);
+  });
+})();
+
+// SemiAnalysis cross-check table
+(function(){
+  const t=document.getElementById("saTbl");
+  let html=`<thead><tr><th>HBM4 price source</th><th>$ / 36GB stack</th><th>$ / GB</th><th>HBM $K / VR rack</th><th>Implied rack total ($M)</th></tr></thead><tbody>`;
+  SA.forEach((r,i)=>{
+    const hl=i===5?` style="background:rgba(63,185,80,.08)"`:(i<=2?` style="background:rgba(210,153,34,.05)"`:"");
+    html+=`<tr${hl}><td class="odmcell" style="white-space:normal">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td></tr>`;
+  });
+  t.innerHTML=html+"</tbody>";
+})();
+
+// reconciliation table
+(function(){
+  const t=document.getElementById("recTbl");
+  let html=`<thead><tr><th>Component (VR rack, $K)</th><th>MS (Kao/Shih)</th><th>Bernstein (Rasgon)</th><th style="text-align:left">Why they differ</th></tr></thead><tbody>`;
+  REC.forEach((r,i)=>{
+    html+=`<tr class="${i===REC.length-1?"subtotal":""}"><td class="odmcell">${r[0]}</td>`+
+      `<td>${typeof r[1]==="number"?fmt(r[1]):r[1]}</td><td>${typeof r[2]==="number"?fmt(r[2]):r[2]}</td>`+
+      `<td style="text-align:left;white-space:normal;max-width:420px;color:#b6bfc9">${r[3]}</td></tr>`;
+  });
+  t.innerHTML=html+"</tbody>";
+})();
+
+// GW + perf tables
+function plainTbl(id,title,rows){
+  const t=document.getElementById(id);
+  let html=`<thead><tr><th>${title}</th><th>H100 DGX x8</th><th>GB200 NVL72</th><th>VR NVL72</th></tr></thead><tbody>`;
+  rows.forEach((r,i)=>{
+    html+=`<tr class="${i===rows.length-1?"subtotal":""}"><td class="odmcell">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`;
+  });
+  t.innerHTML=html+"</tbody>";
+}
+plainTbl("gwTbl","Capex per GW (Exh. 5)",GW);
+plainTbl("perfTbl","Price-performance (Exh. 6)",PERF);
+</script>
+</body>
+</html>
