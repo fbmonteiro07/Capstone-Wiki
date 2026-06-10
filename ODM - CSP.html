@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NV AI Racks — B.O.M. &amp; ODM &harr; Client Flux 2026</title>
+<title>ODM &harr; Client Flux 2026 — SemiAnalysis vs MS</title>
 <style>
   :root{
     --bg:#0d1117; --panel:#161b22; --line:#30363d; --txt:#e6edf3; --muted:#8b949e;
@@ -12,22 +12,16 @@
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--txt);
     font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;}
-  header{padding:22px 32px 0;border-bottom:1px solid var(--line)}
+  header{padding:22px 32px 14px;border-bottom:1px solid var(--line)}
   h1{margin:0;font-size:21px;font-weight:650;letter-spacing:.2px}
   h2.sec{font-size:15px;font-weight:650;margin:34px 0 4px;color:var(--txt)}
-  h2.sec:first-child{margin-top:8px}
   h2.sec .tag{font-size:11px;font-weight:700;letter-spacing:1px;padding:2px 8px;border-radius:5px;vertical-align:2px;margin-right:8px}
   .tag.sa{background:rgba(88,166,255,.15);color:var(--accent);border:1px solid var(--accent)}
   .tag.ms{background:rgba(240,136,62,.15);color:var(--ms);border:1px solid var(--ms)}
   .secsub{color:var(--muted);font-size:12px;margin:0 0 12px}
   .sub{color:var(--muted);font-size:13px;margin-top:4px}
-  .tabbar{display:flex;gap:4px;margin-top:16px}
-  .tabbar button{background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);
-    padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;transition:.15s}
-  .tabbar button:hover{color:var(--txt)}
-  .tabbar button.active{color:var(--txt);border-bottom-color:var(--accent)}
-  .tabpane{display:none}
-  .tabpane.active{display:block}
+  .sub a{color:var(--accent);text-decoration:none}
+  .sub a:hover{text-decoration:underline}
   .wrap{padding:18px 32px 40px}
   .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0 16px}
   .controls .lbl{color:var(--muted);font-size:12px;margin:0 6px 0 14px;text-transform:uppercase;letter-spacing:.6px}
@@ -50,9 +44,9 @@
   rect.node{stroke:#0d1117;stroke-width:1;cursor:pointer}
   .tip{position:fixed;pointer-events:none;background:#1c2330;border:1px solid var(--line);
     border-radius:8px;padding:9px 11px;font-size:12px;color:var(--txt);opacity:0;transition:opacity .1s;
-    box-shadow:0 6px 24px rgba(0,0,0,.5);z-index:10;max-width:280px}
+    box-shadow:0 6px 24px rgba(0,0,0,.5);z-index:10;max-width:260px}
   .tip b{color:var(--accent)}
-  .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--muted)}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--muted)}
   .legend .sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
   table{border-collapse:collapse;width:100%;margin-top:6px;font-size:12.5px}
   th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:right;white-space:nowrap}
@@ -61,83 +55,22 @@
   th{color:var(--muted);font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.5px}
   tr:hover td{background:rgba(88,166,255,.06)}
   td.odmcell{font-weight:600}
-  td.zero,td.pct{color:#8b949e}
-  td.pct{font-size:11.5px}
+  td.zero{color:#484f58}
   .pos{color:#3fb950}.neg{color:#f85149}
   .scrollx{overflow-x:auto}
   .foot{color:var(--muted);font-size:11px;margin-top:18px;line-height:1.6}
   .callout{margin-top:14px;border:1px solid var(--ms);background:rgba(240,136,62,.07);
     border-radius:9px;padding:11px 14px;font-size:12.5px;line-height:1.55;color:var(--txt)}
   .callout b{color:var(--ms)}
-  /* BOM stacked bars */
-  .bomBars{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px 22px 8px;margin-top:10px}
-  .bomRow{display:flex;align-items:center;margin-bottom:16px}
-  .bomName{width:90px;font-size:13px;font-weight:700}
-  .bomName small{display:block;font-weight:400;color:var(--muted);font-size:11px}
-  .bomTrack{flex:1;display:flex;height:34px;border-radius:6px;overflow:hidden;background:#0d1117}
-  .bomSeg{height:100%;transition:filter .1s;cursor:default;min-width:0}
-  .bomSeg:hover{filter:brightness(1.35)}
-  .bomTot{width:86px;text-align:right;font-size:13px;font-weight:700;padding-left:12px}
-  .minigrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px 26px;margin-top:6px}
-  .kpis{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 4px}
-  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 18px;min-width:170px}
-  .kpi .v{font-size:20px;font-weight:700}
-  .kpi .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-top:2px}
-  .kpi .d{font-size:11.5px;margin-top:3px}
 </style>
 </head>
 <body>
 <header>
-  <h1>NV AI Racks — B.O.M. &amp; ODM &harr; Client Flux 2026</h1>
-  <div class="sub">Sources: Morgan Stanley "NV AI Server Model" (Kao/Shih, 8 Jun 26) &middot; SemiAnalysis "ODM Model Output" (Apr 26)</div>
-  <div class="tabbar">
-    <button class="tabbtn active" data-t="bom">GB200 / GB300 / VR200 — B.O.M.</button>
-    <button class="tabbtn" data-t="flux">ODM &harr; Client Flux</button>
-  </div>
+  <h1>ODM &harr; Client Flux — 2026</h1>
+  <div class="sub">Nvidia GB-rack systems &middot; rack units &middot; Sources: SemiAnalysis "ODM Model Output" (Apr 26) &amp; Morgan Stanley — Kao/Shih, "GB200 and GB300 NVL72 Racks in May 2026" (8 Jun 26) &middot; related: <a href="NVL72_BOM.html">NVL72 B.O.M. &rarr;</a></div>
 </header>
 
-<!-- ============================ TAB 1: B.O.M. ============================ -->
-<div class="wrap tabpane active" id="tab-bom">
-
-  <div class="kpis">
-    <div class="kpi"><div class="v">$3.33M</div><div class="l">GB200 NVL72 / rack</div><div class="d">&nbsp;</div></div>
-    <div class="kpi"><div class="v">$3.99M</div><div class="l">GB300 NVL72 / rack</div><div class="d pos">+20.0% vs GB200</div></div>
-    <div class="kpi"><div class="v">$7.80M</div><div class="l">VR200 NVL72 / rack</div><div class="d pos">+95.3% vs GB300</div></div>
-    <div class="kpi"><div class="v">$7.02M</div><div class="l">VR200 (less-memory) / rack</div><div class="d">96GB SOCAMM variant</div></div>
-  </div>
-
-  <h2 class="sec"><span class="tag ms">MS</span>Bill of materials per rack — component mix (US$)</h2>
-  <p class="secsub">Hover segments for detail &middot; bars scaled to VR200 total</p>
-  <div class="bomBars" id="bomBars"></div>
-  <div class="legend" id="bomLegend"></div>
-
-  <h2 class="sec"><span class="tag ms">MS</span>B.O.M. detail (US$ per rack)</h2>
-  <div class="scrollx"><table id="bomTbl"></table></div>
-
-  <h2 class="sec"><span class="tag ms">MS</span>ODM value-add per rack (US$)</h2>
-  <p class="secsub">Assembly &amp; test scope captured by the ODM — the revenue pool behind the flux tab</p>
-  <div class="scrollx"><table id="vaTbl"></table></div>
-
-  <h2 class="sec"><span class="tag ms">MS</span>Content per rack — PCB / ABF / MLCC / Cooling (US$)</h2>
-  <div class="minigrid">
-    <div><table id="pcbTbl"></table></div>
-    <div><table id="abfTbl"></table></div>
-    <div><table id="mlccTbl"></table></div>
-    <div><table id="coolTbl"></table></div>
-  </div>
-
-  <div class="foot">
-    Source: Morgan Stanley "Request_NV AI Server Model" (8 Jun 26), NVL72 BoM Comparison + GB200/GB300/VR200 BoM sheets.
-    GPU line = 72 GPUs per rack at MS-assumed ASPs: B200 $30.0K, B300 $35.0K, R200 $55.0K (NVLink switch ASIC $3.6K/$3.6K/$4.0K).<br>
-    VR200 memory jump (+435%) driven by 288&times; 192GB SOCAMM ($1.567M) + 16TB E1.S NVMe ($0.40M); the less-memory variant
-    (96GB SOCAMM) cuts memory to $1.218M and the rack to $7.02M. Side-car CDU (~$50K/rack) is excluded from the in-rack BoM.
-    VR200 PCB content rises +233% on midplane ($27.0K), ConnectX ($19.4K) and doubled compute-PCB ASP ($1,400/board).
-    ODM value-add falls from 3.2% of BoM (GB200) to 1.9% (VR200) as silicon/memory content inflates the denominator.
-  </div>
-</div>
-
-<!-- ============================ TAB 2: FLUX ============================ -->
-<div class="wrap tabpane" id="tab-flux">
+<div class="wrap">
   <div class="controls">
     <span class="lbl">Source</span>
     <button class="src active" data-s="SA">SemiAnalysis</button>
@@ -193,152 +126,7 @@
 <div class="tip" id="tip"></div>
 
 <script>
-// =========================================================================
-// B.O.M. — Morgan Stanley NV AI Server Model (8 Jun 26), US$ per NVL72 rack
-// =========================================================================
-const BOM = [
-  {k:"GPU",                     c:"#58a6ff", v:[2160000,2520000,3960000]},
-  {k:"CPU",                     c:"#bc8cff", v:[180000,180000,198000]},
-  {k:"NVLink Switch chip",      c:"#39c5cf", v:[64800,64800,144000]},
-  {k:"Other networking chips",  c:"#56d364", v:[162000,261000,576000]},
-  {k:"Memory (ex-HBM)",         c:"#f778ba", v:[232992,373939,2001600]},
-  {k:"Cooling",                 c:"#ffa657", v:[55790,64610,72080]},
-  {k:"Power supply",            c:"#e3b341", v:[36000,57600,76000]},
-  {k:"PCB",                     c:"#ff7b72", v:[34200,35100,116730]},
-  {k:"ABF Substrate",           c:"#d2a8ff", v:[11160,11160,20340]},
-  {k:"MLCC",                    c:"#7ee787", v:[1710,1530,4320]},
-  {k:"Others",                  c:"#6e7681", v:[365271,402412,605278]},
-  {k:"Rack assembly value-add", c:"#adbac7", v:[25600,22400,28800]},
-];
-const BOM_SKUS=["GB200","GB300","VR200"];
-const BOM_TOT=[3329523,3994551,7803148];
-
-const ODM_VA = [
-  {k:"Compute Board Assembly/Test",     v:[12096,12096,16200]},
-  {k:"Compute Tray Assembly/Test",      v:[28800,28800,32400]},
-  {k:"Switch Board Assembly/Test",      v:[2475,2475,3150]},
-  {k:"Switch Tray Assembly/Test",       v:[2700,2700,3150]},
-  {k:"Rack Assembly/Test",              v:[25600,22400,28800]},
-  {k:"BF DPU Assembly/Test",            v:[1170,1170,1170]},
-  {k:"CX/Orchid Module Assembly/Test",  v:[0,0,3600]},
-  {k:"Other peripheral boards",         v:[3150,3150,1260]},
-  {k:"Cooling components",              v:[11158,12922,14416]},
-  {k:"Others",                          v:[18500,22500,45500]},
-];
-const PCB_CONTENT=[
-  {k:"Compute PCB",v:[23400,23400,50400]},{k:"Switch PCB",v:[6300,7200,13050]},
-  {k:"Midplane PCB",v:[0,0,27000]},{k:"BlueField PCB",v:[0,0,4590]},
-  {k:"ConnectX PCB",v:[0,0,19440]},{k:"Other peripheral PCB",v:[4500,4500,2250]},
-];
-const ABF_CONTENT=[
-  {k:"GPU",v:[7200,7200,14400]},{k:"CPU",v:[1800,1800,2160]},
-  {k:"NVSwitch ASIC",v:[540,540,1080]},{k:"BlueField DPU",v:[540,540,540]},
-  {k:"ConnectX chip",v:[1080,1080,2160]},
-];
-const MLCC_CONTENT=[
-  {k:"Compute PCB",v:[1080,900,3240]},{k:"Switch PCB",v:[180,180,405]},
-  {k:"BlueField DPU Module",v:[0,0,90]},{k:"ConnectX Orchid Module",v:[0,0,360]},
-  {k:"Other peripheral PCB",v:[900,450,225]},
-];
-const COOL_CONTENT=[
-  {k:"Cooling (in-tray)",v:[41490,50310,57780]},{k:"Rack manifold (CDM)",v:[13500,13500,13500]},
-  {k:"Rack-level other",v:[800,800,800]},
-];
-
-function fmt(n){return Math.round(n).toLocaleString("en-US");}
-function fmtK(n){return (n/1000).toFixed(2);}
-function pctOf(v,t){return (100*v/t).toFixed(1)+"%";}
-
-// stacked bars
-(function buildBomBars(){
-  const el=document.getElementById("bomBars");
-  const maxT=Math.max(...BOM_TOT);
-  BOM_SKUS.forEach((sku,i)=>{
-    const row=document.createElement("div"); row.className="bomRow";
-    const name=document.createElement("div"); name.className="bomName";
-    name.innerHTML=`${sku}<small>NVL72</small>`;
-    const track=document.createElement("div"); track.className="bomTrack";
-    track.style.maxWidth=(100*BOM_TOT[i]/maxT)+"%";
-    track.style.flex="0 0 "+(86*BOM_TOT[i]/maxT)+"%";
-    BOM.forEach(c=>{
-      if(!c.v[i]) return;
-      const seg=document.createElement("div"); seg.className="bomSeg";
-      seg.style.width=(100*c.v[i]/BOM_TOT[i])+"%";
-      seg.style.background=c.c;
-      seg.addEventListener("mousemove",e=>showTip(e,
-        `<b>${c.k}</b><br>${sku}: $${fmt(c.v[i])} · ${pctOf(c.v[i],BOM_TOT[i])} of rack<br>`+
-        `<span style="color:#8b949e">GB200 $${fmt(c.v[0])} · GB300 $${fmt(c.v[1])} · VR200 $${fmt(c.v[2])}</span>`));
-      seg.addEventListener("mouseleave",()=>tip.style.opacity=0);
-      track.appendChild(seg);
-    });
-    const tot=document.createElement("div"); tot.className="bomTot";
-    tot.textContent="$"+(BOM_TOT[i]/1e6).toFixed(2)+"M";
-    row.appendChild(name); row.appendChild(track); row.appendChild(tot);
-    el.appendChild(row);
-  });
-  const lg=document.getElementById("bomLegend");
-  BOM.forEach(c=>{const s=document.createElement("span");
-    s.innerHTML=`<span class="sw" style="background:${c.c}"></span>${c.k}`;lg.appendChild(s);});
-})();
-
-// main BoM table
-(function buildBomTbl(){
-  const t=document.getElementById("bomTbl");
-  let html=`<thead><tr><th>Component</th><th>GB200</th><th>%</th><th>GB300</th><th>%</th><th>VR200</th><th>%</th><th>VR200 vs GB300</th></tr></thead><tbody>`;
-  BOM.forEach(c=>{
-    const d=c.v[1]?(c.v[2]/c.v[1]-1):null;
-    html+=`<tr><td class="odmcell"><span class="sw" style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${c.c};margin-right:8px;vertical-align:-1px"></span>${c.k}</td>`+
-      `<td>${fmt(c.v[0])}</td><td class="pct">${pctOf(c.v[0],BOM_TOT[0])}</td>`+
-      `<td>${fmt(c.v[1])}</td><td class="pct">${pctOf(c.v[1],BOM_TOT[1])}</td>`+
-      `<td>${fmt(c.v[2])}</td><td class="pct">${pctOf(c.v[2],BOM_TOT[2])}</td>`+
-      `<td class="${d>0?"pos":d<0?"neg":""}">${d===null?"n/m":(d>0?"+":"")+(100*d).toFixed(0)+"%"}</td></tr>`;
-  });
-  html+=`<tr style="border-top:2px solid var(--line)"><td class="odmcell">TOTAL</td>`+
-    `<td style="font-weight:800">${fmt(BOM_TOT[0])}</td><td class="pct">100%</td>`+
-    `<td style="font-weight:800">${fmt(BOM_TOT[1])}</td><td class="pct">100%</td>`+
-    `<td style="font-weight:800">${fmt(BOM_TOT[2])}</td><td class="pct">100%</td>`+
-    `<td class="pos" style="font-weight:700">+${(100*(BOM_TOT[2]/BOM_TOT[1]-1)).toFixed(1)}%</td></tr>`;
-  t.innerHTML=html+"</tbody>";
-})();
-
-// ODM value-add table
-(function buildVaTbl(){
-  const t=document.getElementById("vaTbl");
-  const tot=[0,0,0]; ODM_VA.forEach(c=>c.v.forEach((v,i)=>tot[i]+=v));
-  let html=`<thead><tr><th>Activity</th><th>GB200</th><th>GB300</th><th>VR200</th><th>VR200 vs GB300</th></tr></thead><tbody>`;
-  ODM_VA.forEach(c=>{
-    const d=c.v[1]?(c.v[2]/c.v[1]-1):null;
-    html+=`<tr><td class="odmcell">${c.k}</td>`+c.v.map(v=>`<td>${v?fmt(v):"—"}</td>`).join("")+
-      `<td class="${d>0?"pos":d<0?"neg":""}">${d===null?(c.v[2]?"new":"—"):(d>0?"+":"")+(100*d).toFixed(0)+"%"}</td></tr>`;
-  });
-  html+=`<tr style="border-top:2px solid var(--line)"><td class="odmcell">Total ODM value-add</td>`+
-    tot.map(v=>`<td style="font-weight:800">${fmt(v)}</td>`).join("")+
-    `<td class="pos" style="font-weight:700">+${(100*(tot[2]/tot[1]-1)).toFixed(0)}%</td></tr>`;
-  html+=`<tr><td class="odmcell">% of rack BoM</td>`+
-    tot.map((v,i)=>`<td class="pct">${(100*v/BOM_TOT[i]).toFixed(2)}%</td>`).join("")+`<td></td></tr>`;
-  t.innerHTML=html+"</tbody>";
-})();
-
-// mini content tables
-function miniTbl(elId,title,rows){
-  const t=document.getElementById(elId);
-  const tot=[0,0,0]; rows.forEach(c=>c.v.forEach((v,i)=>tot[i]+=v));
-  let html=`<thead><tr><th>${title}</th><th>GB200</th><th>GB300</th><th>VR200</th></tr></thead><tbody>`;
-  rows.forEach(c=>{
-    html+=`<tr><td>${c.k}</td>`+c.v.map(v=>v?`<td>${fmt(v)}</td>`:`<td class="zero">—</td>`).join("")+`</tr>`;
-  });
-  html+=`<tr style="border-top:2px solid var(--line)"><td class="odmcell">Total</td>`+
-    tot.map(v=>`<td style="font-weight:700">${fmt(v)}</td>`).join("")+`</tr>`;
-  t.innerHTML=html+"</tbody>";
-}
-miniTbl("pcbTbl","PCB content",PCB_CONTENT);
-miniTbl("abfTbl","ABF substrate",ABF_CONTENT);
-miniTbl("mlccTbl","MLCC content",MLCC_CONTENT);
-miniTbl("coolTbl","Cooling (ex side-car CDU)",COOL_CONTENT);
-
-// =========================================================================
-// FLUX — SemiAnalysis (Apr 26) & Morgan Stanley (Jun 26)
-// =========================================================================
+// ---- SemiAnalysis: ODM -> Client, quarterly NVL72-eq rack units for 2026 ----
 const SA_LINKS = [
   {odm:"Quanta",   client:"META",        q:[1300,800,1350,2100]},
   {odm:"Quanta",   client:"MSFT",        q:[600,700,1000,1500]},
@@ -364,6 +152,10 @@ const SA_LINKS = [
   {odm:"Pegatron", client:"Together AI", q:[0,600,600,600]},
   {odm:"Others",   client:"Others",      q:[300,400,600,600]},
 ];
+
+// ---- Morgan Stanley (Kao/Shih, 8 Jun 26): ODM/OEM share CY26, rack units ----
+// Source table is in thousands; converted to units. Client names mapped to SA convention:
+// GOOG->Google, AWS->AMAZON, Meta->META, CW->Coreweave, Tesla/X->xAI, TogetherAI->Together AI.
 const MS_LINKS = [
   {odm:"Quanta",   client:"Google",      fy:3200},
   {odm:"Quanta",   client:"AMAZON",      fy:9200},
@@ -391,7 +183,7 @@ const MS_LINKS = [
   {odm:"Pegatron", client:"Together AI", fy:1500},
   {odm:"Pegatron", client:"Others",      fy:200},
 ];
-const MS_STATED_TOTAL = 77375;
+const MS_STATED_TOTAL = 77375; // MS table grand total (77.375k); component sum = 77,380 (rounding)
 
 const QNAMES=["1Q26","2Q26","3Q26","4Q26"];
 const ODM_COLORS={
@@ -408,6 +200,7 @@ let currentSource="SA", currentPeriod="FY";
 function fyOf(l){ return l.q ? l.q.reduce((a,b)=>a+b,0) : l.fy; }
 function val(l,period){ return (period==="FY"||!l.q) ? fyOf(l) : l.q[+period]; }
 
+// ---- layout constants ----
 const W=1080, PAD=26, COLW=180, NODEW=20;
 const TOPY=58, BOTPAD=24, NODEGAP=8;
 
@@ -507,6 +300,8 @@ function draw(){
 function showTip(e,html){tip.innerHTML=html;tip.style.opacity=1;
   tip.style.left=Math.min(e.clientX+14,window.innerWidth-tip.offsetWidth-10)+"px";
   tip.style.top=(e.clientY+14)+"px";}
+function fmt(n){return Math.round(n).toLocaleString("en-US");}
+function fmtK(n){return (n/1000).toFixed(2);}
 
 function buildLegend(odms){
   const el=document.getElementById("legend"); el.innerHTML="";
@@ -514,7 +309,7 @@ function buildLegend(odms){
     s.innerHTML=`<span class="sw" style="background:${ODM_COLORS[o]||'#888'}"></span>${o}`;el.appendChild(s);});
 }
 
-// MS matrix table
+// ---- MS matrix table (mirrors the MS note layout, k racks) ----
 (function buildMsMatrix(){
   const cliOrder=["MSFT","Google","AMAZON","META","Coreweave","xAI","Oracle","Nebius","Megaspeed","Lambda","Together AI","Others"];
   const cliLabel={Google:"GOOG",AMAZON:"AWS",META:"Meta",Coreweave:"CW",xAI:"Tesla/X","Together AI":"TogetherAI",Megaspeed:"MegaSpeed"};
@@ -540,7 +335,7 @@ function buildLegend(odms){
   tbl.innerHTML=html+"</tbody>";
 })();
 
-// comparison tables
+// ---- comparison tables ----
 function sumBy(links,key){const t={};links.forEach(l=>{t[l[key]]=(t[l[key]]||0)+fyOf(l);});return t;}
 function buildCmp(elId,key){
   const sa=sumBy(SA_LINKS,key), ms=sumBy(MS_LINKS,key);
@@ -567,7 +362,7 @@ function buildCmp(elId,key){
 buildCmp("cmpOdm","odm");
 buildCmp("cmpCli","client");
 
-// SA quarterly pair table
+// ---- SA quarterly pair table ----
 (function buildTable(){
   const tb=document.querySelector("#tbl tbody");
   const sorted=[...SA_LINKS].sort((a,b)=>{
@@ -591,7 +386,7 @@ buildCmp("cmpCli","client");
   tb.appendChild(tr);
 })();
 
-// controls
+// ---- controls ----
 function syncControls(){
   const hasQ=SOURCES[currentSource].hasQuarters;
   document.querySelectorAll("button.period").forEach(b=>{
@@ -608,14 +403,6 @@ document.querySelectorAll("button.src").forEach(b=>{
   b.addEventListener("click",()=>{ currentSource=b.dataset.s;
     if(currentSource==="MS") currentPeriod="FY";
     syncControls(); draw(); });
-});
-
-// tabs
-document.querySelectorAll(".tabbtn").forEach(b=>{
-  b.addEventListener("click",()=>{
-    document.querySelectorAll(".tabbtn").forEach(x=>x.classList.toggle("active",x===b));
-    document.querySelectorAll(".tabpane").forEach(p=>p.classList.toggle("active",p.id==="tab-"+b.dataset.t));
-  });
 });
 
 syncControls();
