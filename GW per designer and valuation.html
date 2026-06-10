@@ -153,6 +153,13 @@
     <tbody></tbody>
   </table></div>
 
+  <h2 class="sec"><span class="tag sa">SA</span>Nvidia units by chip — Yearly Breakdown</h2>
+  <p class="secsub">Packaged units shipped per calendar year &middot; full variant detail &middot; Rubin Ultra counted as 2&times; Vera Rubin-equivalent units (4 dies = 2&times; dual-die VR; HBM and GW totals unaffected) &middot; mirrors the "Yearly Breakdown" tab of the workbook</p>
+  <div class="scrollx"><table id="ybTbl">
+    <thead><tr><th>Chip</th><th>Memory</th><th>2023</th><th>2024</th><th>2025</th><th>2026</th><th>2027</th><th>Cum. 23-27</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+
   <h2 class="sec">Notes</h2>
   <ol class="notes">
     <li>Model usage: Capstone NVDA model supplies NVDA figures only (GW, revenue, units); all custom-silicon client figures (Google / Anthropic / OpenAI / META GW and AI revenue) come from the Capstone AVGO model.</li>
@@ -324,6 +331,48 @@ rows($('#avgoRev tbody'), [
   {src:1, cls:'tot', c:['Delta SA vs CAP ASIC','calc',
     {t:fpct(-0.2301),cls:'neg'},{t:fpct(0.0704),cls:'pos'},{t:fpct(0.8154),cls:'pos'}]},
 ]);
+
+// ---- Nvidia units by chip (Yearly Breakdown) ----
+{
+  const YB = [
+    ['A100','HBM2E 8-Hi',508048,150000,0,0,0],
+    ['A800','HBM2E 8-Hi',180000,0,0,0,0],
+    ['H100 PCIe','HBM2E 8-Hi',180424,299072,0,0,0],
+    ['H100 SXM','HBM3 8-Hi',827128,1675560,89696,0,0],
+    ['H800','HBM3 8-Hi',165000,0,0,0,0],
+    ['H200','HBM3E 8-Hi',0,1327687,498543,800000,0],
+    ['H20','HBM3 8-Hi',0,836056,531024,0,0],
+    ['H20E','HBM3E 8-Hi',0,0,332504,0,0],
+    ['B100','HBM3E 8-Hi',0,78000,0,0,0],
+    ['B200 1000W (HGX)','HBM3E 8-Hi',0,190400,461816,30000,0],
+    ['GB200 NVL36','HBM3E 8-Hi',0,27000,258624,59400,0],
+    ['GB200 NVL72','HBM3E 8-Hi',0,59832,1122120,126936,0],
+    ['GB200 Ariel NVL36','HBM3E 8-Hi',0,0,114984,0,0],
+    ['B300 1200W (HGX)','HBM3E 12-Hi',0,0,341184,400008,470016],
+    ['GB300 NVL72','HBM3E 12-Hi',0,0,1427040,4902408,349992],
+    ['RTX Pro 6000 Blackwell Server','GDDR7 (no HBM)',0,0,800000,500000,0],
+    ['B30A (China)','HBM3E 12-Hi',0,0,160000,4248,0],
+    ['Rubin HGX','HBM4 12-Hi',0,0,0,205576,410096],
+    ['Vera Rubin NVL72','HBM4 12-Hi',0,0,0,1099008,4537656],
+    ['VR NVL72 CPX rack (HBM3E + GDDR7)','HBM4 12-Hi',0,0,0,0,80352],
+    ['Rubin Ultra 12-Hi (= 2x VR-eq units)','HBM4E 12-Hi',0,0,0,0,1541556],
+    ['Rubin Ultra 8-Hi (= 2x VR-eq units)','HBM4E 8-Hi',0,0,0,0,385388],
+    ['Rubin CPX standalone (HBM3E)','HBM3E 12-Hi',0,0,0,0,80352],
+    ['Rubin CPX standalone (GDDR7)','GDDR7 (no HBM)',0,0,0,0,140199],
+  ];
+  const nvT = [0,0,0,0,0];
+  YB.forEach(r=>{ for(let y=0;y<5;y++) nvT[y]+=r[2+y]; });
+  const allT = [3390784,7891335,10142535,12697584,21240607];
+  const othT = allT.map((v,i)=>v-nvT[i]);
+  const fz = v => v===0 ? '<span class="zero">—</span>' : v.toLocaleString('en-US');
+  $('#ybTbl tbody').innerHTML =
+    YB.map(r=>`<tr><td>${r[0]}</td><td class="src">${r[1]}</td>`+
+      [0,1,2,3,4].map(y=>`<td>${fz(r[2+y])}</td>`).join('')+
+      `<td>${fz(r[2]+r[3]+r[4]+r[5]+r[6])}</td></tr>`).join('') +
+    `<tr class="grp"><td>Total Nvidia</td><td class="src"></td>`+nvT.map(v=>`<td>${fz(v)}</td>`).join('')+`<td>${fz(nvT.reduce((a,b)=>a+b,0))}</td></tr>` +
+    `<tr><td>Other designers (TPU / MTIA / Trainium, HBM scope)</td><td class="src"></td>`+othT.map(v=>`<td>${fz(v)}</td>`).join('')+`<td>${fz(othT.reduce((a,b)=>a+b,0))}</td></tr>` +
+    `<tr class="tot"><td>TOTAL (Yearly Breakdown)</td><td class="src"></td>`+allT.map(v=>`<td>${fz(v)}</td>`).join('')+`<td>${fz(allT.reduce((a,b)=>a+b,0))}</td></tr>`;
+}
 
 // ---- units ----
 rows($('#unitsTbl tbody'), [
