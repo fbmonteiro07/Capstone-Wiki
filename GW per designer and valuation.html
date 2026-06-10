@@ -158,7 +158,7 @@
     <li>Model usage: Capstone NVDA model supplies NVDA figures only (GW, revenue, units); all custom-silicon client figures (Google / Anthropic / OpenAI / META GW and AI revenue) come from the Capstone AVGO model.</li>
     <li>Basis differences: SemiAnalysis chip-implied GW = shipments &times; all-in chip power (IT load incl. server/networking overhead, no facility PUE), booked in shipment year. Capstone NVDA GW = deployed capacity grossed up ~1.5&times; (PUE 1.1 + 35% other) — closer to grid power. Capstone AVGO = client datacenter GW served by AVGO silicon.</li>
     <li>Nvidia power scope (revised): all DC accelerators in the SemiAnalysis supply model — Hopper (incl. H20/H20E), Blackwell (incl. RTX Pro 6000, B30A), Rubin, Rubin Ultra, Rubin CPX standalone (all-in power estimated at TDP &times; 1.431, the VR ratio — no all-in figure in the source). Excludes Groq, OpenAI Titan, Vera CPUs (rack power already allocated to GPU all-in).</li>
-    <li>Vera Rubin counting: one supply-model unit = one dual-die package at 2,300 W TDP / 3,291 W all-in PER PACKAGE. Counted as 2 chips under Nvidia's NVL convention (Ultra = 4). Capstone "chips deployed" (7.57M in 2027) tracks the SA package count (7.03M), not the die count (14.95M) — so both models count packages, and GW-per-chip bases match.</li>
+    <li>Vera Rubin counting: one supply-model unit = one dual-die package at 2,300 W TDP / 3,291 W all-in PER PACKAGE. Counted as 2 chips under Nvidia's NVL convention (Ultra = 4). The Capstone NVDA model was corrected on 10-Jun-26 to count Rubin dies (chips &times;2, W/chip halved to 1,150 W per die — GW deployed unchanged): 13.97M chips in 2027 vs SemiAnalysis die-basis 14.95M, within ~7%.</li>
     <li>AVGO 2027: SA-implied XPU revenue ($163bn) is +82% vs Capstone ASIC ($90bn), driven by Anthropic premium system-level ASPs ($33.8–37k/chip) and the OpenAI Titan ramp ($44bn). Capstone AVGO carries OpenAI at only $13bn compute in 2027. 2026 is nearly identical ($55.4bn vs $51.7bn).</li>
     <li>Capstone NVDA model years treated as calendar (FY ~ CY+1 offset ignored); AVGO model 2025E–2027E columns used as-is.</li>
   </ol>
@@ -266,7 +266,7 @@ rows($('#nvdaVal tbody'), [
   {cls:'grp', c:['EPS (GAAP, dil.) $',f2(4.90),f2(9.26),f2(15.44)]},
   {c:['EPS (Non-GAAP, dil.) $',f2(4.55),f2(9.30),f2(15.49)]},
   {c:['&nbsp;&nbsp;EPS YoY','—',fpct(0.8902),fpct(0.6673)]},
-  {cls:'grp', c:['Chips deployed (k)',fm(4731),fm(7670),fm(7570)]},
+  {cls:'grp', c:['Chips deployed (k, Rubin &times;2 dies)',fm(4731),fm(8770),fm(13970)]},
   {c:['GW deployed',f2(9.23),f2(16.02),f2(24.81)]},
   {c:['Rev / GW ($mm)',fm(20988),fm(23685),fm(25362)]},
 ]);
@@ -328,7 +328,7 @@ rows($('#avgoRev tbody'), [
 rows($('#unitsTbl tbody'), [
   {src:1, cls:'grp', c:['Nvidia packages (incl. Rubin Ultra &amp; CPX)','SemiAnalysis (1 unit = 1 package)',f2(4.84),f2(7.62),f2(7.03)]},
   {src:1, c:['Nvidia chips — NVL counting (Rubin &times;2, Ultra &times;4)','SemiAnalysis (dies for Rubin family)',f2(4.84),f2(8.93),f2(14.95)]},
-  {src:1, c:['Nvidia chips deployed','Capstone NVDA',f2(4.73),f2(7.67),f2(7.57)]},
+  {src:1, c:['Nvidia chips deployed (Rubin &times;2 dies)','Capstone NVDA (corrected 10-Jun-26)',f2(4.73),f2(8.77),f2(13.97)]},
   {src:1, cls:'grp', c:['Google TPUs (incl. Anthropic, Zebrafish)','SemiAnalysis',f2(2.17),f2(3.21),f2(9.15)]},
   {src:1, c:['Total TPU units','Capstone AVGO ("CoWoS e GW Clients")',f2(1.8),f2(4.5),f2(8.1)]},
   {src:1, cls:'grp', c:['AWS Trainium / Inferentia','SemiAnalysis',f2(1.53),f2(1.10),f2(3.98)]},
