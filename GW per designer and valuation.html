@@ -165,7 +165,7 @@
     <li>Model usage: Capstone NVDA model supplies NVDA figures only (GW, revenue, units); all custom-silicon client figures (Google / Anthropic / OpenAI / META GW and AI revenue) come from the Capstone AVGO model.</li>
     <li>Basis differences: SemiAnalysis chip-implied GW = shipments &times; all-in chip power (IT load incl. server/networking overhead, no facility PUE), booked in shipment year. Capstone NVDA GW = deployed capacity grossed up ~1.5&times; (PUE 1.1 + 35% other) — closer to grid power. Capstone AVGO = client datacenter GW served by AVGO silicon.</li>
     <li>Power scope (expanded 10-Jun-26 after unit audit): every supply-model accelerator row with all-in power data — full Nvidia DC stack (Ampere through Rubin Ultra; Rubin CPX all-in estimated at TDP &times; 1.431, the VR ratio), TPU v4–v8X, MTIA 200–500, Trainium 1–4 (incl. 2e), Intel Gaudi 2/3, OpenAI Titan 1. Still excluded: Groq LP30/35 (1.55M units — no all-in power in source), Vera CPUs (power allocated within GPU all-in), Izanagi (no power data), Samsung MTIA &amp; Bytedance (immaterial volume), switches. The Yearly Breakdown / HBM / Power-by-Chip tabs carry Nvidia at FULL variant detail (A100 through Rubin CPX, 24 lines incl. no-HBM parts), with Rubin Ultra counted as 2&times; Vera Rubin-equivalent units (4 dies = 2&times; dual-die VR; 963k packages &rarr; 1.93M units, HBM and GW totals unchanged). Deliberate designer scope: NVDA + AVGO ecosystem + Intel Gaudi only — AMD Instinct (~1.7M powered units), Huawei Ascend (~3.1M), Tesla AI5 (~1.5M), China longtail (~1.3M), Microsoft Maia (~187k) exist in the source but are out of scope, so global market GW is higher than these totals.</li>
-    <li>Vera Rubin counting: one supply-model unit = one dual-die package at 2,300 W TDP / 3,291 W all-in PER PACKAGE. Counted as 2 chips under Nvidia's NVL convention (Ultra = 4). The Capstone NVDA model was corrected on 10-Jun-26 to count Rubin dies (chips &times;2, W/chip halved to 1,150 W per die — GW deployed unchanged): 13.97M chips in 2027 vs SemiAnalysis die-basis 14.95M, within ~7%.</li>
+    <li>Rubin counting convention: regular Vera Rubin / Rubin HGX = 1 chip per package (2,300 W TDP / 3,291 W all-in per package); ONLY Rubin Ultra (4 dies) is counted as 2&times; Vera Rubin-equivalent units. On this basis SA 2027 Nvidia units = 8.00M vs Capstone chips deployed 7.57M — within ~6%. The Capstone model counts regular Rubin once (no die doubling); power is per package, so GW is unaffected either way.</li>
     <li>AVGO 2027: SA-implied XPU revenue ($163bn) is +82% vs Capstone ASIC ($90bn), driven by Anthropic premium system-level ASPs ($33.8–37k/chip) and the OpenAI Titan ramp ($44bn). Capstone AVGO carries OpenAI at only $13bn compute in 2027. 2026 is nearly identical ($55.4bn vs $51.7bn).</li>
     <li>Capstone NVDA model years treated as calendar (FY ~ CY+1 offset ignored); AVGO model 2025E–2027E columns used as-is.</li>
   </ol>
@@ -274,7 +274,7 @@ rows($('#nvdaVal tbody'), [
   {cls:'grp', c:['EPS (GAAP, dil.) $',f2(4.90),f2(9.26),f2(15.44)]},
   {c:['EPS (Non-GAAP, dil.) $',f2(4.55),f2(9.30),f2(15.49)]},
   {c:['&nbsp;&nbsp;EPS YoY','—',fpct(0.8902),fpct(0.6673)]},
-  {cls:'grp', c:['Chips deployed (k, Rubin &times;2 dies)',fm(4731),fm(8770),fm(13970)]},
+  {cls:'grp', c:['Chips deployed (k)',fm(4731),fm(7670),fm(7570)]},
   {c:['GW deployed',f2(9.23),f2(16.02),f2(24.81)]},
   {c:['Rev / GW ($mm)',fm(20988),fm(23685),fm(25362)]},
 ]);
@@ -377,8 +377,8 @@ rows($('#avgoRev tbody'), [
 // ---- units ----
 rows($('#unitsTbl tbody'), [
   {src:1, cls:'grp', c:['Nvidia packages (incl. H20E, Rubin Ultra &amp; CPX)','SemiAnalysis (1 unit = 1 package)',f2(5.18),f2(7.62),f2(7.03)]},
-  {src:1, c:['Nvidia chips — NVL counting (Rubin &times;2, Ultra &times;4)','SemiAnalysis (dies for Rubin family)',f2(5.18),f2(8.93),f2(14.95)]},
-  {src:1, c:['Nvidia chips deployed (Rubin &times;2 dies)','Capstone NVDA (corrected 10-Jun-26)',f2(4.73),f2(8.77),f2(13.97)]},
+  {src:1, c:['Nvidia units — YB convention (Rubin Ultra = 2&times; VR-eq)','SemiAnalysis (only Rubin Ultra counted 2&times;)',f2(5.18),f2(7.62),f2(8.00)]},
+  {src:1, c:['Nvidia chips deployed','Capstone NVDA ("Summary"), as-is',f2(4.73),f2(7.67),f2(7.57)]},
   {src:1, cls:'grp', c:['Google TPUs (incl. Anthropic, Zebrafish)','SemiAnalysis',f2(2.17),f2(3.21),f2(9.15)]},
   {src:1, c:['Total TPU units','Capstone AVGO ("CoWoS e GW Clients")',f2(1.8),f2(4.5),f2(8.1)]},
   {src:1, cls:'grp', c:['AWS Trainium / Inferentia','SemiAnalysis',f2(1.53),f2(1.10),f2(3.98)]},
