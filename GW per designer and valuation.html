@@ -7,7 +7,7 @@
 <style>
   :root{
     --bg:#0d1117; --panel:#161b22; --line:#30363d; --txt:#e6edf3; --muted:#8b949e;
-    --accent:#58a6ff; --cap:#3fb950;
+    --accent:#58a6ff; --cap:#3fb950; --warn:#f0883e;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--txt);
@@ -53,65 +53,21 @@
   .callout{margin-top:14px;border:1px solid var(--cap);background:rgba(63,185,80,.07);
     border-radius:9px;padding:11px 14px;font-size:12.5px;line-height:1.55;color:var(--txt)}
   .callout b{color:var(--cap)}
+  .callout.warn{border-color:var(--warn);background:rgba(240,136,62,.07)}
+  .callout.warn b{color:var(--warn)}
   ol.notes{color:var(--muted);font-size:12px;line-height:1.65;padding-left:18px;margin:8px 0 0}
 </style>
 </head>
 <body>
 <header>
   <h1>GW per Designer &amp; Valuation — Capstone vs SemiAnalysis</h1>
-  <div class="sub">AI accelerator power additions, revenue cross-check &amp; model valuation &middot; Sources: SemiAnalysis Accelerator Model (Apr 26) &middot; Capstone "Modelo Felipe NVDA - pré1Q26" (09-Jun-26) &middot; Capstone "Modelo Avgo pós 2Q26" (08-Jun-26) &middot; related: <a href="ODM - CSP.html">ODM &harr; CSP &rarr;</a> &middot; <a href="Rack B.O.M/NVL72_BOM.html">MS B.O.M &rarr;</a></div>
+  <div class="sub">Capstone NVDA &amp; AVGO model estimates &middot; AI accelerator power additions &amp; revenue cross-check &middot; Sources: Capstone "Modelo Felipe NVDA - pré1Q26" (09-Jun-26) &middot; Capstone "Modelo Avgo pós 2Q26" (08-Jun-26) &middot; SemiAnalysis Accelerator Model (Apr 26) &middot; related: <a href="ODM - CSP.html">ODM &harr; CSP &rarr;</a> &middot; <a href="Rack B.O.M/NVL72_BOM.html">MS B.O.M &rarr;</a></div>
 </header>
 
 <div class="wrap">
 
-  <h2 class="sec" style="margin-top:10px"><span class="tag sa">SA</span><span class="tag cap">CAP</span>GW added per year by designer</h2>
-  <p class="secsub">Gigawatts of accelerator capacity added per calendar year &middot; SemiAnalysis = chip-implied IT load (shipments &times; all-in chip power, no facility PUE) &middot; Capstone = model GW (NVDA: deployed incl. PUE + overhead; AVGO: client datacenter GW on AVGO silicon)</p>
-  <div class="controls">
-    <span class="lbl">Year</span>
-    <button class="period" data-y="2025">2025</button>
-    <button class="period active" data-y="2026">2026</button>
-    <button class="period" data-y="2027">2027</button>
-    <span class="meta" id="gwMeta"></span>
-  </div>
-  <svg id="gwchart"></svg>
-  <div class="legend">
-    <span><span class="sw" style="background:#58a6ff"></span>SemiAnalysis chip-implied</span>
-    <span><span class="sw" style="background:#3fb950"></span>Capstone models (NVDA / AVGO)</span>
-  </div>
-
-  <div class="scrollx"><table id="gwTable">
-    <thead><tr><th>Designer / deployer</th><th>Source &amp; basis</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
-    <tbody></tbody>
-  </table></div>
-
-  <div class="callout">
-    <b>Key divergence — Google 2027:</b> SemiAnalysis TPU shipments imply <b>~11.1 GW</b> IT added vs Capstone AVGO model
-    <b>4.0 GW</b> Google client capacity (+3.2 Anthropic). SA 2027 TPU volumes (~8.6M chips ex-Zebrafish) run ~2.3&times; the
-    AVGO-model GW build — either volumes or power-on timing must give. 2026 cross-checks almost perfectly:
-    SA Google+Anthropic+Meta ex-Zebrafish ~4.2 GW vs Capstone AVGO 4.1 GW.
-  </div>
-
-  <h2 class="sec"><span class="tag sa">SA</span><span class="tag cap">CAP</span>Revenue cross-check</h2>
-  <p class="secsub">$ in millions, calendar years &middot; SemiAnalysis-implied = shipments &times; ASP from the bottom-up workbook</p>
-  <div class="grid2">
-    <div class="scrollx"><table id="nvdaRev">
-      <thead><tr><th>NVDA Data Center ($mm)</th><th>Source</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-    <div class="scrollx"><table id="avgoRev">
-      <thead><tr><th>AVGO AI ($mm)</th><th>Source</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
-      <tbody></tbody>
-    </table></div>
-  </div>
-
-  <h2 class="sec"><span class="tag sa">SA</span><span class="tag cap">CAP</span>Unit shipments (M chips)</h2>
-  <div class="scrollx"><table id="unitsTbl">
-    <thead><tr><th>Line</th><th>Source</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
-    <tbody></tbody>
-  </table></div>
-
-  <h2 class="sec"><span class="tag cap">CAP</span>Valuation — Capstone model summaries</h2>
-  <p class="secsub">P&amp;L summaries from the Capstone models &middot; NVDA: fiscal years treated as calendar &middot; AVGO: calendar years, E = estimate</p>
+  <h2 class="sec" style="margin-top:10px"><span class="tag cap">CAP</span>Capstone model estimates — NVDA &amp; AVGO</h2>
+  <p class="secsub">P&amp;L summaries from the Capstone models &middot; NVDA: fiscal years treated as calendar &middot; AVGO: calendar years, E = estimate &middot; $ in millions unless noted</p>
   <div class="grid2">
     <div class="panel">
       <h3>Nvidia — Modelo Felipe NVDA (pré-1Q26)</h3>
@@ -144,11 +100,65 @@
     </table></div>
   </div>
 
+  <h2 class="sec"><span class="tag sa">SA</span><span class="tag cap">CAP</span>GW added per year by designer</h2>
+  <p class="secsub">Gigawatts of accelerator capacity added per calendar year &middot; SemiAnalysis = chip-implied IT load (shipments &times; all-in chip power per package, no facility PUE), full Nvidia scope incl. Rubin Ultra, Rubin CPX, RTX Pro 6000, B30A, H20E &middot; Capstone = model GW (NVDA: deployed incl. PUE + overhead; AVGO: client datacenter GW on AVGO silicon)</p>
+  <div class="controls">
+    <span class="lbl">Year</span>
+    <button class="period" data-y="2025">2025</button>
+    <button class="period active" data-y="2026">2026</button>
+    <button class="period" data-y="2027">2027</button>
+    <span class="meta" id="gwMeta"></span>
+  </div>
+  <svg id="gwchart"></svg>
+  <div class="legend">
+    <span><span class="sw" style="background:#58a6ff"></span>SemiAnalysis chip-implied</span>
+    <span><span class="sw" style="background:#3fb950"></span>Capstone models (NVDA / AVGO)</span>
+  </div>
+
+  <div class="scrollx"><table id="gwTable">
+    <thead><tr><th>Designer / deployer</th><th>Source &amp; basis</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <div class="callout">
+    <b>NVDA GW convergence (revised 10-Jun-26):</b> with the FULL Nvidia power scope — adding Rubin Ultra (<b>+5.8 GW</b> in 2027,
+    963k packages at 6.0 kW all-in), Rubin CPX standalone, RTX Pro 6000, B30A and H20E — SemiAnalysis chip-implied 2027 is
+    <b>24.3 GW vs Capstone 24.8 GW</b> (within 2%). The earlier version of this page showed 18.2 GW because those chips were
+    excluded from the power table. 2026: SA ~18.0 vs CAP 16.0.
+  </div>
+  <div class="callout warn">
+    <b>Key divergence — Google 2027:</b> SemiAnalysis TPU shipments imply <b>~11.1 GW</b> IT added vs Capstone AVGO model
+    <b>4.0 GW</b> Google client capacity (+3.2 Anthropic). SA 2027 TPU volumes (~8.6M chips ex-Zebrafish) run ~2.3&times; the
+    AVGO-model GW build — either volumes or power-on timing must give. 2026 cross-checks almost perfectly:
+    SA Google+Anthropic+Meta ex-Zebrafish ~4.2 GW vs Capstone AVGO 4.1 GW.
+  </div>
+
+  <h2 class="sec"><span class="tag sa">SA</span><span class="tag cap">CAP</span>Revenue cross-check</h2>
+  <p class="secsub">$ in millions, calendar years &middot; SemiAnalysis-implied = shipments &times; ASP from the bottom-up workbook</p>
+  <div class="grid2">
+    <div class="scrollx"><table id="nvdaRev">
+      <thead><tr><th>NVDA Data Center ($mm)</th><th>Source</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div class="scrollx"><table id="avgoRev">
+      <thead><tr><th>AVGO AI ($mm)</th><th>Source</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+
+  <h2 class="sec"><span class="tag sa">SA</span><span class="tag cap">CAP</span>Unit shipments (M chips)</h2>
+  <p class="secsub">Vera Rubin / Rubin HGX supply-model unit = dual-die package (Nvidia counts each die: "NVL144"); Rubin Ultra = 4 dies ("NVL576"). Power is per package, so GW is unaffected by the counting convention.</p>
+  <div class="scrollx"><table id="unitsTbl">
+    <thead><tr><th>Line</th><th>Source</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+
   <h2 class="sec">Notes</h2>
   <ol class="notes">
     <li>Model usage: Capstone NVDA model supplies NVDA figures only (GW, revenue, units); all custom-silicon client figures (Google / Anthropic / OpenAI / META GW and AI revenue) come from the Capstone AVGO model.</li>
     <li>Basis differences: SemiAnalysis chip-implied GW = shipments &times; all-in chip power (IT load incl. server/networking overhead, no facility PUE), booked in shipment year. Capstone NVDA GW = deployed capacity grossed up ~1.5&times; (PUE 1.1 + 35% other) — closer to grid power. Capstone AVGO = client datacenter GW served by AVGO silicon.</li>
-    <li>NVDA 2027: Capstone GW (24.8) &gt; SemiAnalysis (18.2) but Capstone compute revenue ($518bn) &lt; SA-implied ($572bn) — Capstone assumes more chips (7.6M vs ~6.0M ex-China) at lower blended ASP and higher W/chip.</li>
+    <li>Nvidia power scope (revised): all DC accelerators in the SemiAnalysis supply model — Hopper (incl. H20/H20E), Blackwell (incl. RTX Pro 6000, B30A), Rubin, Rubin Ultra, Rubin CPX standalone (all-in power estimated at TDP &times; 1.431, the VR ratio — no all-in figure in the source). Excludes Groq, OpenAI Titan, Vera CPUs (rack power already allocated to GPU all-in).</li>
+    <li>Vera Rubin counting: one supply-model unit = one dual-die package at 2,300 W TDP / 3,291 W all-in PER PACKAGE. Counted as 2 chips under Nvidia's NVL convention (Ultra = 4). Capstone "chips deployed" (7.57M in 2027) tracks the SA package count (7.03M), not the die count (14.95M) — so both models count packages, and GW-per-chip bases match.</li>
     <li>AVGO 2027: SA-implied XPU revenue ($163bn) is +82% vs Capstone ASIC ($90bn), driven by Anthropic premium system-level ASPs ($33.8–37k/chip) and the OpenAI Titan ramp ($44bn). Capstone AVGO carries OpenAI at only $13bn compute in 2027. 2026 is nearly identical ($55.4bn vs $51.7bn).</li>
     <li>Capstone NVDA model years treated as calendar (FY ~ CY+1 offset ignored); AVGO model 2025E–2027E columns used as-is.</li>
   </ol>
@@ -156,20 +166,20 @@
   <div class="foot">
     Workbook master: "GW per designer and valuation.xlsx" (git: fbmonteiro07/US-Equities) &middot; built from SemiAnalysis Apr 26
     Accelerator Model bottom-up (units &times; ASP &times; W/chip) cross-checked against Capstone single-name models.
-    Updated 10-Jun-2026.
+    Revised 10-Jun-2026: Capstone estimates moved to top; Nvidia GW scope expanded (Rubin Ultra / CPX / RTX Pro / B30A / H20E); Vera Rubin dual-die counting added.
   </div>
 </div>
 
 <script>
 const GW = [
-  {dep:'Nvidia GPUs',      sa:[8.78,17.44,18.22], cap:[9.23,16.02,24.81], capSrc:'Capstone NVDA — GW deployed (incl. PUE + overhead)', saSrc:'SemiAnalysis chip-implied (IT all-in)'},
+  {dep:'Nvidia GPUs',      sa:[10.05,17.98,24.28], cap:[9.23,16.02,24.81], capSrc:'Capstone NVDA — GW deployed (incl. PUE + overhead)', saSrc:'SemiAnalysis chip-implied, full scope (incl. Rubin Ultra, CPX, RTX Pro, B30A, H20E)'},
   {dep:'Google TPUs',      sa:[1.61,3.58,11.08],  cap:[null,2.5,4.0],     capSrc:'Capstone AVGO — Google client GW', saSrc:'SemiAnalysis chip-implied (incl. Zebrafish)'},
   {dep:'Anthropic TPUs',   sa:[0,0.77,3.53],      cap:[null,1.4,3.2],     capSrc:'Capstone AVGO — Anthropic client GW', saSrc:'SemiAnalysis chip-implied'},
   {dep:'Meta MTIA',        sa:[0.05,0.21,0.20],   cap:[null,0,1.0],       capSrc:'Capstone AVGO — META client GW', saSrc:'SemiAnalysis chip-implied'},
   {dep:'AWS Trainium',     sa:[1.18,1.16,4.34],   cap:null,               capSrc:null, saSrc:'SemiAnalysis chip-implied'},
-  {dep:'OpenAI custom (Titan)', sa:null,          cap:[null,0,1.3],       capSrc:'Capstone AVGO — OpenAI client GW', saSrc:'SemiAnalysis — excluded from power scope (sub-1M units)'},
+  {dep:'OpenAI custom (Titan)', sa:null,          cap:[null,0,1.3],       capSrc:'Capstone AVGO — OpenAI client GW', saSrc:'SemiAnalysis — excluded from power scope'},
 ];
-const GW_TOT = {sa:[11.62,23.15,37.36], capAvgo:[null,4.1,9.9], fac:[11.2,16.4,25.3]};
+const GW_TOT = {sa:[12.89,23.70,43.42], capAvgo:[null,4.1,9.9], fac:[11.2,16.4,25.3]};
 const YEARS = [2025,2026,2027];
 
 const fmt1 = v => v==null ? '—' : v.toFixed(2);
@@ -185,7 +195,7 @@ const $ = s => document.querySelector(s);
     if (g.cap) html += `<tr><td></td><td class="src">${g.capSrc}</td>` +
       YEARS.map((y,i)=>`<td style="color:var(--cap)">${fmt1(g.cap[i])}</td>`).join('') + '</tr>';
   }
-  html += `<tr class="tot"><td>TOTAL</td><td class="src">SemiAnalysis chip-implied (all chips, IT)</td>` +
+  html += `<tr class="tot"><td>TOTAL</td><td class="src">SemiAnalysis chip-implied (all chips in workbook, IT)</td>` +
     YEARS.map((y,i)=>`<td>${fmt1(GW_TOT.sa[i])}</td>`).join('') + '</tr>';
   html += `<tr><td></td><td class="src">Capstone AVGO — total client GW (AVGO silicon only)</td>` +
     YEARS.map((y,i)=>`<td style="color:var(--cap)">${fmt1(GW_TOT.capAvgo[i])}</td>`).join('') + '</tr>';
@@ -243,33 +253,6 @@ function rows(tb, data) {
   }).join('');
 }
 
-// ---- revenue cross-check ----
-rows($('#nvdaRev tbody'), [
-  {src:1, c:['DC Compute','Capstone NVDA ("Summary")',fm(162361),fm(312600),fm(518275)]},
-  {src:1, c:['DC Total (incl. networking)','Capstone NVDA',fm(193737),fm(379463),fm(629131)]},
-  {src:1, c:['Accelerator rev (incl. NVLink)','SemiAnalysis-implied',fm(176384),fm(347494),fm(572115)]},
-  {src:1, cls:'tot', c:['Delta SA vs CAP Compute','calc',
-    {t:fpct(0.0864),cls:'pos'},{t:fpct(0.1116),cls:'pos'},{t:fpct(0.1039),cls:'pos'}]},
-]);
-rows($('#avgoRev tbody'), [
-  {src:1, c:['ASIC / custom compute','Capstone AVGO ("AVGO Summary")',fm(18008),fm(51718),fm(90000)]},
-  {src:1, c:['AI networking','Capstone AVGO',fm(8107),fm(17239),fm(40000)]},
-  {src:1, c:['Total AI semiconductors','Capstone AVGO',fm(24342),fm(63007),fm(132314)]},
-  {src:1, c:['XPU / custom compute rev','SemiAnalysis-implied',fm(13865),fm(55360),fm(163383)]},
-  {src:1, cls:'tot', c:['Delta SA vs CAP ASIC','calc',
-    {t:fpct(-0.2301),cls:'neg'},{t:fpct(0.0704),cls:'pos'},{t:fpct(0.8154),cls:'pos'}]},
-]);
-
-// ---- units ----
-rows($('#unitsTbl tbody'), [
-  {src:1, cls:'grp', c:['Nvidia chips (workbook scope)','SemiAnalysis',f2(4.85),f2(7.62),f2(5.85)]},
-  {src:1, c:['Nvidia chips deployed','Capstone NVDA',f2(4.73),f2(7.67),f2(7.57)]},
-  {src:1, cls:'grp', c:['Google TPUs (incl. Anthropic, Zebrafish)','SemiAnalysis',f2(2.17),f2(3.21),f2(9.15)]},
-  {src:1, c:['Total TPU units','Capstone AVGO ("CoWoS e GW Clients")',f2(1.8),f2(4.5),f2(8.1)]},
-  {src:1, cls:'grp', c:['AWS Trainium / Inferentia','SemiAnalysis',f2(1.53),f2(1.10),f2(3.98)]},
-  {src:1, c:['Total Inferentia / Trainium units','Capstone AVGO',f2(1.6),f2(1.9),f2(3.3)]},
-]);
-
 // ---- NVDA valuation ----
 rows($('#nvdaVal tbody'), [
   {cls:'grp', c:['Revenue',fm(215938),fm(407278),fm(660764)]},
@@ -322,6 +305,34 @@ rows($('#avgoRevCli tbody'), [
   {c:['Compute AI rev',fm(41),fm(99),fm(196)]},
   {c:['Networking (28.6% attach)',f2(16.4),f2(39.6),f2(78.4)]},
   {cls:'tot', c:['Total AI revenue',f2(57.4),f2(138.6),f2(274.4)]},
+]);
+
+// ---- revenue cross-check ----
+rows($('#nvdaRev tbody'), [
+  {src:1, c:['DC Compute','Capstone NVDA ("Summary")',fm(162361),fm(312600),fm(518275)]},
+  {src:1, c:['DC Total (incl. networking)','Capstone NVDA',fm(193737),fm(379463),fm(629131)]},
+  {src:1, c:['Accelerator rev (incl. NVLink)','SemiAnalysis-implied',fm(176384),fm(347494),fm(572115)]},
+  {src:1, cls:'tot', c:['Delta SA vs CAP Compute','calc',
+    {t:fpct(0.0864),cls:'pos'},{t:fpct(0.1116),cls:'pos'},{t:fpct(0.1039),cls:'pos'}]},
+]);
+rows($('#avgoRev tbody'), [
+  {src:1, c:['ASIC / custom compute','Capstone AVGO ("AVGO Summary")',fm(18008),fm(51718),fm(90000)]},
+  {src:1, c:['AI networking','Capstone AVGO',fm(8107),fm(17239),fm(40000)]},
+  {src:1, c:['Total AI semiconductors','Capstone AVGO',fm(24342),fm(63007),fm(132314)]},
+  {src:1, c:['XPU / custom compute rev','SemiAnalysis-implied',fm(13865),fm(55360),fm(163383)]},
+  {src:1, cls:'tot', c:['Delta SA vs CAP ASIC','calc',
+    {t:fpct(-0.2301),cls:'neg'},{t:fpct(0.0704),cls:'pos'},{t:fpct(0.8154),cls:'pos'}]},
+]);
+
+// ---- units ----
+rows($('#unitsTbl tbody'), [
+  {src:1, cls:'grp', c:['Nvidia packages (incl. Rubin Ultra &amp; CPX)','SemiAnalysis (1 unit = 1 package)',f2(4.84),f2(7.62),f2(7.03)]},
+  {src:1, c:['Nvidia chips — NVL counting (Rubin &times;2, Ultra &times;4)','SemiAnalysis (dies for Rubin family)',f2(4.84),f2(8.93),f2(14.95)]},
+  {src:1, c:['Nvidia chips deployed','Capstone NVDA',f2(4.73),f2(7.67),f2(7.57)]},
+  {src:1, cls:'grp', c:['Google TPUs (incl. Anthropic, Zebrafish)','SemiAnalysis',f2(2.17),f2(3.21),f2(9.15)]},
+  {src:1, c:['Total TPU units','Capstone AVGO ("CoWoS e GW Clients")',f2(1.8),f2(4.5),f2(8.1)]},
+  {src:1, cls:'grp', c:['AWS Trainium / Inferentia','SemiAnalysis',f2(1.53),f2(1.10),f2(3.98)]},
+  {src:1, c:['Total Inferentia / Trainium units','Capstone AVGO',f2(1.6),f2(1.9),f2(3.3)]},
 ]);
 </script>
 </body>
