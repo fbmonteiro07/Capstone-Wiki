@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GW per Designer &amp; Valuation — Capstone vs SemiAnalysis</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --line:#30363d; --txt:#e6edf3; --muted:#8b949e;
+    --accent:#58a6ff; --cap:#3fb950;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;}
+  header{padding:22px 32px 14px;border-bottom:1px solid var(--line)}
+  h1{margin:0;font-size:21px;font-weight:650;letter-spacing:.2px}
+  h2.sec{font-size:15px;font-weight:650;margin:34px 0 4px;color:var(--txt)}
+  h2.sec .tag{font-size:11px;font-weight:700;letter-spacing:1px;padding:2px 8px;border-radius:5px;vertical-align:2px;margin-right:8px}
+  .tag.sa{background:rgba(88,166,255,.15);color:var(--accent);border:1px solid var(--accent)}
+  .tag.cap{background:rgba(63,185,80,.15);color:var(--cap);border:1px solid var(--cap)}
+  .secsub{color:var(--muted);font-size:12px;margin:0 0 12px}
+  .sub{color:var(--muted);font-size:13px;margin-top:4px}
+  .sub a{color:var(--accent);text-decoration:none}
+  .sub a:hover{text-decoration:underline}
+  .wrap{padding:18px 32px 40px;max-width:1280px;margin:0 auto}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0 16px}
+  .controls .lbl{color:var(--muted);font-size:12px;margin:0 6px 0 0;text-transform:uppercase;letter-spacing:.6px}
+  button.period{background:var(--panel);color:var(--txt);border:1px solid var(--line);
+    padding:7px 14px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:600;transition:.15s}
+  button.period:hover{border-color:var(--accent)}
+  button.period.active{background:var(--accent);color:#0d1117;border-color:var(--accent)}
+  .meta{margin-left:auto;color:var(--muted);font-size:12px}
+  #gwchart{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--muted)}
+  .legend .sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  table{border-collapse:collapse;width:100%;margin-top:6px;font-size:12.5px}
+  th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:right;white-space:nowrap}
+  th:first-child,td:first-child{text-align:left}
+  td.src{text-align:left;color:var(--muted)}
+  th{color:var(--muted);font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.5px}
+  tr:hover td{background:rgba(88,166,255,.06)}
+  tr.grp td{font-weight:700;border-top:1px solid var(--line)}
+  tr.tot td{font-weight:700;background:rgba(88,166,255,.05);border-top:2px solid var(--line)}
+  td.zero{color:#484f58}
+  .pos{color:#3fb950}.neg{color:#f85149}
+  .scrollx{overflow-x:auto}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:980px){.grid2{grid-template-columns:1fr}}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px 18px}
+  .panel h3{margin:0 0 2px;font-size:14px;font-weight:650}
+  .panel .ps{color:var(--muted);font-size:11.5px;margin:0 0 8px}
+  .foot{color:var(--muted);font-size:11px;margin-top:18px;line-height:1.6}
+  .callout{margin-top:14px;border:1px solid var(--cap);background:rgba(63,185,80,.07);
+    border-radius:9px;padding:11px 14px;font-size:12.5px;line-height:1.55;color:var(--txt)}
+  .callout b{color:var(--cap)}
+  ol.notes{color:var(--muted);font-size:12px;line-height:1.65;padding-left:18px;margin:8px 0 0}
+</style>
+</head>
+<body>
+<header>
+  <h1>GW per Designer &amp; Valuation — Capstone vs SemiAnalysis</h1>
+  <div class="sub">AI accelerator power additions, revenue cross-check &amp; model valuation &middot; Sources: SemiAnalysis Accelerator Model (Apr 26) &middot; Capstone "Modelo Felipe NVDA - pré1Q26" (09-Jun-26) &middot; Capstone "Modelo Avgo pós 2Q26" (08-Jun-26) &middot; related: <a href="ODM - CSP.html">ODM &harr; CSP &rarr;</a> &middot; <a href="Rack B.O.M/NVL72_BOM.html">MS B.O.M &rarr;</a></div>
+</header>
+
+<div class="wrap">
+
+  <h2 class="sec" style="margin-top:10px"><span class="tag sa">SA</span><span class="tag cap">CAP</span>GW added per year by designer</h2>
+  <p class="secsub">Gigawatts of accelerator capacity added per calendar year &middot; SemiAnalysis = chip-implied IT load (shipments &times; all-in chip power, no facility PUE) &middot; Capstone = model GW (NVDA: deployed incl. PUE + overhead; AVGO: client datacenter GW on AVGO silicon)</p>
+  <div class="controls">
+    <span class="lbl">Year</span>
+    <button class="period" data-y="2025">2025</button>
+    <button class="period active" data-y="2026">2026</button>
+    <button class="period" data-y="2027">2027</button>
+    <span class="meta" id="gwMeta"></span>
+  </div>
+  <svg id="gwchart"></svg>
+  <div class="legend">
+    <span><span class="sw" style="background:#58a6ff"></span>SemiAnalysis chip-implied</span>
+    <span><span class="sw" style="background:#3fb950"></span>Capstone models (NVDA / AVGO)</span>
+  </div>
+
+  <div class="scrollx"><table id="gwTable">
+    <thead><tr><th>Designer / deployer</th><th>Source &amp; basis</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <div class="callout">
+    <b>Key divergence — Google 2027:</b> SemiAnalysis TPU shipments imply <b>~11.1 GW</b> IT added vs Capstone AVGO model
+    <b>4.0 GW</b> Google client capacity (+3.2 Anthropic). SA 2027 TPU volumes (~8.6M chips ex-Zebrafish) run ~2.3&times; the
+    AVGO-model GW build — either volumes or power-on timing must give. 2026 cross-checks almost perfectly:
+    SA Google+Anthropic+Meta ex-Zebrafish ~4.2 GW vs Capstone AVGO 4.1 GW.
+  </div>
+
+  <h2 class="sec"><span class="tag sa">SA</span><span class="tag cap">CAP</span>Revenue cross-check</h2>
+  <p class="secsub">$ in millions, calendar years &middot; SemiAnalysis-implied = shipments &times; ASP from the bottom-up workbook</p>
+  <div class="grid2">
+    <div class="scrollx"><table id="nvdaRev">
+      <thead><tr><th>NVDA Data Center ($mm)</th><th>Source</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div class="scrollx"><table id="avgoRev">
+      <thead><tr><th>AVGO AI ($mm)</th><th>Source</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+
+  <h2 class="sec"><span class="tag sa">SA</span><span class="tag cap">CAP</span>Unit shipments (M chips)</h2>
+  <div class="scrollx"><table id="unitsTbl">
+    <thead><tr><th>Line</th><th>Source</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <h2 class="sec"><span class="tag cap">CAP</span>Valuation — Capstone model summaries</h2>
+  <p class="secsub">P&amp;L summaries from the Capstone models &middot; NVDA: fiscal years treated as calendar &middot; AVGO: calendar years, E = estimate</p>
+  <div class="grid2">
+    <div class="panel">
+      <h3>Nvidia — Modelo Felipe NVDA (pré-1Q26)</h3>
+      <p class="ps">$ in millions unless noted</p>
+      <div class="scrollx"><table id="nvdaVal">
+        <thead><tr><th></th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+    </div>
+    <div class="panel">
+      <h3>Broadcom — Modelo AVGO (pós-2Q26)</h3>
+      <p class="ps">$ in millions unless noted</p>
+      <div class="scrollx"><table id="avgoVal">
+        <thead><tr><th></th><th>2024</th><th>2025E</th><th>2026E</th><th>2027E</th><th>2028E</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <h2 class="sec"><span class="tag cap">CAP</span>AVGO — AI revenue &amp; GW by client (Capstone)</h2>
+  <p class="secsub">GW deployed by client &middot; AI revenue in $bn &middot; client detail begins CY2026</p>
+  <div class="grid2">
+    <div class="scrollx"><table id="avgoGwCli">
+      <thead><tr><th>GW by client</th><th>2026</th><th>2027</th><th>2028</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div class="scrollx"><table id="avgoRevCli">
+      <thead><tr><th>AI revenue ($bn)</th><th>2026</th><th>2027</th><th>2028</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+
+  <h2 class="sec">Notes</h2>
+  <ol class="notes">
+    <li>Model usage: Capstone NVDA model supplies NVDA figures only (GW, revenue, units); all custom-silicon client figures (Google / Anthropic / OpenAI / META GW and AI revenue) come from the Capstone AVGO model.</li>
+    <li>Basis differences: SemiAnalysis chip-implied GW = shipments &times; all-in chip power (IT load incl. server/networking overhead, no facility PUE), booked in shipment year. Capstone NVDA GW = deployed capacity grossed up ~1.5&times; (PUE 1.1 + 35% other) — closer to grid power. Capstone AVGO = client datacenter GW served by AVGO silicon.</li>
+    <li>NVDA 2027: Capstone GW (24.8) &gt; SemiAnalysis (18.2) but Capstone compute revenue ($518bn) &lt; SA-implied ($572bn) — Capstone assumes more chips (7.6M vs ~6.0M ex-China) at lower blended ASP and higher W/chip.</li>
+    <li>AVGO 2027: SA-implied XPU revenue ($163bn) is +82% vs Capstone ASIC ($90bn), driven by Anthropic premium system-level ASPs ($33.8–37k/chip) and the OpenAI Titan ramp ($44bn). Capstone AVGO carries OpenAI at only $13bn compute in 2027. 2026 is nearly identical ($55.4bn vs $51.7bn).</li>
+    <li>Capstone NVDA model years treated as calendar (FY ~ CY+1 offset ignored); AVGO model 2025E–2027E columns used as-is.</li>
+  </ol>
+
+  <div class="foot">
+    Workbook master: "GW per designer and valuation.xlsx" (git: fbmonteiro07/US-Equities) &middot; built from SemiAnalysis Apr 26
+    Accelerator Model bottom-up (units &times; ASP &times; W/chip) cross-checked against Capstone single-name models.
+    Updated 10-Jun-2026.
+  </div>
+</div>
+
+<script>
+const GW = [
+  {dep:'Nvidia GPUs',      sa:[8.78,17.44,18.22], cap:[9.23,16.02,24.81], capSrc:'Capstone NVDA — GW deployed (incl. PUE + overhead)', saSrc:'SemiAnalysis chip-implied (IT all-in)'},
+  {dep:'Google TPUs',      sa:[1.61,3.58,11.08],  cap:[null,2.5,4.0],     capSrc:'Capstone AVGO — Google client GW', saSrc:'SemiAnalysis chip-implied (incl. Zebrafish)'},
+  {dep:'Anthropic TPUs',   sa:[0,0.77,3.53],      cap:[null,1.4,3.2],     capSrc:'Capstone AVGO — Anthropic client GW', saSrc:'SemiAnalysis chip-implied'},
+  {dep:'Meta MTIA',        sa:[0.05,0.21,0.20],   cap:[null,0,1.0],       capSrc:'Capstone AVGO — META client GW', saSrc:'SemiAnalysis chip-implied'},
+  {dep:'AWS Trainium',     sa:[1.18,1.16,4.34],   cap:null,               capSrc:null, saSrc:'SemiAnalysis chip-implied'},
+  {dep:'OpenAI custom (Titan)', sa:null,          cap:[null,0,1.3],       capSrc:'Capstone AVGO — OpenAI client GW', saSrc:'SemiAnalysis — excluded from power scope (sub-1M units)'},
+];
+const GW_TOT = {sa:[11.62,23.15,37.36], capAvgo:[null,4.1,9.9], fac:[11.2,16.4,25.3]};
+const YEARS = [2025,2026,2027];
+
+const fmt1 = v => v==null ? '—' : v.toFixed(2);
+const $ = s => document.querySelector(s);
+
+// ---- GW table ----
+{
+  const tb = $('#gwTable tbody');
+  let html = '';
+  for (const g of GW) {
+    html += `<tr class="grp"><td>${g.dep}</td><td class="src">${g.saSrc}</td>` +
+      YEARS.map((y,i)=>`<td>${g.sa?fmt1(g.sa[i]):'—'}</td>`).join('') + '</tr>';
+    if (g.cap) html += `<tr><td></td><td class="src">${g.capSrc}</td>` +
+      YEARS.map((y,i)=>`<td style="color:var(--cap)">${fmt1(g.cap[i])}</td>`).join('') + '</tr>';
+  }
+  html += `<tr class="tot"><td>TOTAL</td><td class="src">SemiAnalysis chip-implied (all chips, IT)</td>` +
+    YEARS.map((y,i)=>`<td>${fmt1(GW_TOT.sa[i])}</td>`).join('') + '</tr>';
+  html += `<tr><td></td><td class="src">Capstone AVGO — total client GW (AVGO silicon only)</td>` +
+    YEARS.map((y,i)=>`<td style="color:var(--cap)">${fmt1(GW_TOT.capAvgo[i])}</td>`).join('') + '</tr>';
+  html += `<tr><td></td><td class="src">4 hyperscalers facility additions (infographic)</td>` +
+    YEARS.map((y,i)=>`<td>${fmt1(GW_TOT.fac[i])}</td>`).join('') + '</tr>';
+  tb.innerHTML = html;
+}
+
+// ---- GW chart ----
+function drawGw(yi) {
+  const svg = $('#gwchart');
+  const rows = GW.filter(g=>(g.sa&&g.sa[yi]!=null)||(g.cap&&g.cap[yi]!=null));
+  const W = Math.min(document.querySelector('.wrap').clientWidth-2, 1216);
+  const rowH = 46, top = 18, labW = 165, pad = 70, H = top + rows.length*rowH + 14;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('height', H);
+  const maxV = Math.max(...rows.flatMap(g=>[g.sa?g.sa[yi]||0:0, g.cap?g.cap[yi]||0:0]));
+  const xs = v => (W - labW - pad) * v / (maxV*1.04);
+  let s = '';
+  rows.forEach((g,i)=>{
+    const y0 = top + i*rowH;
+    s += `<text x="${labW-10}" y="${y0+rowH/2+4}" text-anchor="end" font-size="12.5" font-weight="600" fill="#e6edf3">${g.dep}</text>`;
+    const bars = [['#58a6ff', g.sa?g.sa[yi]:null], ['#3fb950', g.cap?g.cap[yi]:null]];
+    bars.forEach(([col,v],k)=>{
+      const by = y0 + 5 + k*18;
+      if (v==null) { s += `<text x="${labW+4}" y="${by+12}" font-size="10.5" fill="#484f58">n/a</text>`; return; }
+      s += `<rect x="${labW}" y="${by}" width="${Math.max(xs(v),1.5)}" height="14" rx="3" fill="${col}" opacity="0.85"></rect>`;
+      s += `<text x="${labW+Math.max(xs(v),1.5)+6}" y="${by+11.5}" font-size="11.5" font-weight="600" fill="#e6edf3">${fmt1(v)}</text>`;
+    });
+  });
+  svg.innerHTML = s;
+  $('#gwMeta').textContent = `${YEARS[yi]} — SA total ${fmt1(GW_TOT.sa[yi])} GW` +
+    (GW_TOT.capAvgo[yi]!=null ? ` · Capstone AVGO-silicon ${fmt1(GW_TOT.capAvgo[yi])} GW` : '') +
+    ` · facility adds ${fmt1(GW_TOT.fac[yi])} GW`;
+}
+document.querySelectorAll('button.period').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('button.period').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  drawGw(YEARS.indexOf(+b.dataset.y));
+}));
+drawGw(1);
+window.addEventListener('resize', ()=>drawGw(YEARS.indexOf(+document.querySelector('button.period.active').dataset.y)));
+
+// ---- helpers ----
+const fm = v => v==null ? '—' : v.toLocaleString('en-US',{maximumFractionDigits:0});
+const fpct = v => v==null ? '—' : (v>0?'+':'')+(v*100).toFixed(1)+'%';
+const fpp = v => v==null ? '—' : (v*100).toFixed(1)+'%';
+const f2 = v => v==null ? '—' : v.toFixed(2);
+function rows(tb, data) {
+  tb.innerHTML = data.map(r=>{
+    const cls = r.cls||'';
+    return `<tr class="${cls}">` + r.c.map((v,i)=>{
+      if (typeof v === 'object' && v) return `<td class="${v.cls||''}">${v.t}</td>`;
+      return `<td class="${i===1&&r.src?'src':''}">${v==null?'—':v}</td>`;
+    }).join('') + '</tr>';
+  }).join('');
+}
+
+// ---- revenue cross-check ----
+rows($('#nvdaRev tbody'), [
+  {src:1, c:['DC Compute','Capstone NVDA ("Summary")',fm(162361),fm(312600),fm(518275)]},
+  {src:1, c:['DC Total (incl. networking)','Capstone NVDA',fm(193737),fm(379463),fm(629131)]},
+  {src:1, c:['Accelerator rev (incl. NVLink)','SemiAnalysis-implied',fm(176384),fm(347494),fm(572115)]},
+  {src:1, cls:'tot', c:['Delta SA vs CAP Compute','calc',
+    {t:fpct(0.0864),cls:'pos'},{t:fpct(0.1116),cls:'pos'},{t:fpct(0.1039),cls:'pos'}]},
+]);
+rows($('#avgoRev tbody'), [
+  {src:1, c:['ASIC / custom compute','Capstone AVGO ("AVGO Summary")',fm(18008),fm(51718),fm(90000)]},
+  {src:1, c:['AI networking','Capstone AVGO',fm(8107),fm(17239),fm(40000)]},
+  {src:1, c:['Total AI semiconductors','Capstone AVGO',fm(24342),fm(63007),fm(132314)]},
+  {src:1, c:['XPU / custom compute rev','SemiAnalysis-implied',fm(13865),fm(55360),fm(163383)]},
+  {src:1, cls:'tot', c:['Delta SA vs CAP ASIC','calc',
+    {t:fpct(-0.2301),cls:'neg'},{t:fpct(0.0704),cls:'pos'},{t:fpct(0.8154),cls:'pos'}]},
+]);
+
+// ---- units ----
+rows($('#unitsTbl tbody'), [
+  {src:1, cls:'grp', c:['Nvidia chips (workbook scope)','SemiAnalysis',f2(4.85),f2(7.62),f2(5.85)]},
+  {src:1, c:['Nvidia chips deployed','Capstone NVDA',f2(4.73),f2(7.67),f2(7.57)]},
+  {src:1, cls:'grp', c:['Google TPUs (incl. Anthropic, Zebrafish)','SemiAnalysis',f2(2.17),f2(3.21),f2(9.15)]},
+  {src:1, c:['Total TPU units','Capstone AVGO ("CoWoS e GW Clients")',f2(1.8),f2(4.5),f2(8.1)]},
+  {src:1, cls:'grp', c:['AWS Trainium / Inferentia','SemiAnalysis',f2(1.53),f2(1.10),f2(3.98)]},
+  {src:1, c:['Total Inferentia / Trainium units','Capstone AVGO',f2(1.6),f2(1.9),f2(3.3)]},
+]);
+
+// ---- NVDA valuation ----
+rows($('#nvdaVal tbody'), [
+  {cls:'grp', c:['Revenue',fm(215938),fm(407278),fm(660764)]},
+  {c:['&nbsp;&nbsp;YoY','—',fpct(0.8861),fpct(0.6224)]},
+  {c:['&nbsp;&nbsp;Data Center',fm(193737),fm(379463),fm(629131)]},
+  {c:['&nbsp;&nbsp;DC % of total',fpp(0.8972),fpp(0.9317),fpp(0.9521)]},
+  {c:['Gross margin',fpp(0.7107),fpp(0.7493),fpp(0.7390)]},
+  {c:['EBITDA',fm(133755),fm(277587),fm(455511)]},
+  {c:['Net income',fm(120067),fm(224738),fm(369399)]},
+  {c:['&nbsp;&nbsp;Net margin',fpp(0.5560),fpp(0.5518),fpp(0.5590)]},
+  {cls:'grp', c:['EPS (GAAP, dil.) $',f2(4.90),f2(9.26),f2(15.44)]},
+  {c:['EPS (Non-GAAP, dil.) $',f2(4.55),f2(9.30),f2(15.49)]},
+  {c:['&nbsp;&nbsp;EPS YoY','—',fpct(0.8902),fpct(0.6673)]},
+  {cls:'grp', c:['Chips deployed (k)',fm(4731),fm(7670),fm(7570)]},
+  {c:['GW deployed',f2(9.23),f2(16.02),f2(24.81)]},
+  {c:['Rev / GW ($mm)',fm(20988),fm(23685),fm(25362)]},
+]);
+
+// ---- AVGO valuation ----
+rows($('#avgoVal tbody'), [
+  {cls:'grp', c:['Revenue',fm(54529),fm(68077),fm(115271),fm(190488),fm(315388)]},
+  {c:['&nbsp;&nbsp;YoY','—',fpct(0.2485),fpct(0.6932),fpct(0.6525),fpct(0.6557)]},
+  {c:['&nbsp;&nbsp;AI semis',fm(13912),fm(24342),fm(63007),fm(132314),fm(251397)]},
+  {c:['&nbsp;&nbsp;AI % of total',fpp(0.2551),fpp(0.3576),fpp(0.5466),fpp(0.6946),fpp(0.7971)]},
+  {c:['Gross margin',fpp(0.7747),fpp(0.7749),fpp(0.7347),fpp(0.70),fpp(0.70)]},
+  {c:['EBIT',fm(33733),fm(44038),fm(75485),fm(122065),fm(206937)]},
+  {c:['&nbsp;&nbsp;Op. margin',fpp(0.6186),fpp(0.6469),fpp(0.6548),fpp(0.6408),fpp(0.6561)]},
+  {c:['Net income (PF)',fm(26302),fm(35634),fm(63586),fm(103933),fm(177392)]},
+  {cls:'grp', c:['EPS (PF, ex-ESO) $',f2(5.36),f2(7.18),f2(12.89),f2(21.07),f2(35.96)]},
+  {c:['EPS (GAAP) $',f2(2.07),f2(4.90),f2(10.66),f2(18.84),f2(34.05)]},
+  {c:['&nbsp;&nbsp;EPS YoY (PF)','—',fpct(0.3406),fpct(0.7942),fpct(0.6345),fpct(0.7068)]},
+  {c:['Adj. EBITDA',fm(34827),fm(45044),fm(75885),fm(122505),fm(207421)]},
+]);
+
+// ---- AVGO clients ----
+rows($('#avgoGwCli tbody'), [
+  {c:['Google',f2(2.5),f2(4.0),f2(4.8)]},
+  {c:['Anthropic',f2(1.4),f2(3.2),f2(7.0)]},
+  {c:['OpenAI',f2(0),f2(1.3),f2(4.3)]},
+  {c:['META',f2(0),f2(1.0),f2(2.9)]},
+  {c:['Other',f2(0.2),f2(0.4),f2(0.6)]},
+  {cls:'tot', c:['Total GW',f2(4.1),f2(9.9),f2(19.6)]},
+]);
+rows($('#avgoRevCli tbody'), [
+  {c:['Google',fm(25),fm(40),fm(48)]},
+  {c:['Anthropic',fm(14),fm(32),fm(70)]},
+  {c:['OpenAI',fm(0),fm(13),fm(43)]},
+  {c:['META',fm(0),fm(10),fm(29)]},
+  {c:['Other',fm(2),fm(4),fm(6)]},
+  {c:['Compute AI rev',fm(41),fm(99),fm(196)]},
+  {c:['Networking (28.6% attach)',f2(16.4),f2(39.6),f2(78.4)]},
+  {cls:'tot', c:['Total AI revenue',f2(57.4),f2(138.6),f2(274.4)]},
+]);
+</script>
+</body>
+</html>
