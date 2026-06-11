@@ -6,54 +6,94 @@
 <title>Capex Cloud — Hyperscaler Capex Consensus (BBG)</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="capex_cloud_data.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#0b1220;--card:#11192c;--ink:#e7ecf3;--mute:#8a9bb4;--line:#1f2a44;--accent:#5aa7ff;
-        --msft:#5aa7ff;--amzn:#f6c453;--googl:#46d3a6;--meta:#9b8cff;--orcl:#ff6b6b;--tot:#e7ecf3;}
-  html,body{background:var(--bg);color:var(--ink);font:14px/1.45 -apple-system,Segoe UI,Roboto,Arial;margin:0}
-  header{padding:18px 28px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-  header h1{margin:0;font-size:18px;letter-spacing:.3px}
-  header .meta{color:var(--mute);font-size:12px}
-  nav{display:flex;gap:0;padding:0 28px;border-bottom:1px solid var(--line);background:#0d1424;overflow-x:auto}
-  nav button{background:transparent;border:0;color:var(--mute);padding:14px 18px;font:600 13px/1 -apple-system,Segoe UI;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
-  nav button.active{color:var(--ink);border-bottom-color:var(--accent)}
-  main{padding:22px 28px;max-width:1400px;margin:0 auto}
+  :root{--bg:#0a101e;--card:#101a30;--card2:#0c1526;--ink:#eaf0f8;--mute:#8fa1bb;--line:#1d2a47;--line2:#27375c;
+        --accent:#5aa7ff;--gold:#f6c453;
+        --msft:#5aa7ff;--amzn:#f6c453;--googl:#46d3a6;--meta:#9b8cff;--orcl:#ff6b6b;--tot:#eaf0f8;}
+  *{box-sizing:border-box}
+  html,body{background:var(--bg);color:var(--ink);margin:0;
+    font:14px/1.5 Inter,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    font-feature-settings:'tnum' 1,'cv05' 1}
+  body{background:
+    radial-gradient(1100px 380px at 75% -120px, rgba(90,167,255,.10), transparent 60%),
+    radial-gradient(900px 320px at 15% -140px, rgba(155,140,255,.07), transparent 60%), var(--bg)}
+  header{padding:26px 32px 18px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;
+    border-bottom:1px solid var(--line)}
+  header h1{margin:0;font-size:21px;font-weight:800;letter-spacing:-.2px}
+  header h1 em{font-style:normal;background:linear-gradient(90deg,#5aa7ff,#9b8cff);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  header .meta{color:var(--mute);font-size:12px;margin-top:4px}
+  .co-chips{display:flex;gap:6px;flex-wrap:wrap}
+  .co-chips b{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--mute);
+    background:var(--card2);border:1px solid var(--line);border-radius:20px;padding:5px 11px}
+  .co-chips b i{width:8px;height:8px;border-radius:50%;display:inline-block}
+  nav{display:flex;gap:6px;padding:12px 32px;border-bottom:1px solid var(--line);
+    background:rgba(10,16,30,.85);backdrop-filter:blur(8px);position:sticky;top:0;z-index:20;overflow-x:auto}
+  nav button{background:transparent;border:1px solid transparent;color:var(--mute);padding:9px 15px;
+    font:600 12.5px/1 Inter,Segoe UI,sans-serif;cursor:pointer;border-radius:9px;white-space:nowrap;
+    transition:color .15s,background .15s}
+  nav button:hover{color:var(--ink)}
+  nav button.active{color:#fff;background:linear-gradient(135deg,rgba(90,167,255,.22),rgba(155,140,255,.18));
+    border-color:var(--line2)}
+  main{padding:24px 32px 40px;max-width:1420px;margin:0 auto}
   section{display:none}
-  section.active{display:block}
-  .grid{display:grid;gap:18px}
+  section.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .grid{display:grid;gap:16px}
   .grid.two{grid-template-columns:1fr 1fr}
   .grid.three{grid-template-columns:repeat(3,1fr)}
   @media(max-width:1000px){.grid.two,.grid.three{grid-template-columns:1fr}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-  .card h3{margin:0 0 6px;font-size:13px;letter-spacing:.4px;color:var(--mute);text-transform:uppercase}
-  .card .kpi{font-size:24px;font-weight:700}
-  .card .sub{font-size:12px;color:var(--mute);margin-top:2px}
-  .chart-wrap{position:relative;height:360px}
-  .chart-tall{position:relative;height:440px}
+  .card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);
+    border-radius:14px;padding:18px 20px;box-shadow:0 10px 28px rgba(0,0,0,.28);
+    transition:border-color .2s}
+  .card:hover{border-color:var(--line2)}
+  .card h3{margin:0 0 8px;font-size:11px;letter-spacing:.9px;color:var(--mute);text-transform:uppercase;font-weight:700}
+  .card .kpi{font-size:27px;font-weight:800;letter-spacing:-.4px}
+  .card .sub{font-size:12px;color:var(--mute);margin-top:5px}
+  .chart-wrap{position:relative;height:370px}
+  .chart-tall{position:relative;height:450px}
   table{width:100%;border-collapse:collapse;font-size:12.5px}
-  th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
   th:first-child,td:first-child{text-align:left}
-  thead th{color:var(--mute);font-weight:600;background:#0d1424;position:sticky;top:0}
-  tr:hover td{background:#142039}
+  thead th{color:var(--mute);font-weight:600;font-size:11px;letter-spacing:.5px;text-transform:uppercase;
+    background:var(--card2);position:sticky;top:0}
+  tbody tr:nth-child(even) td{background:rgba(255,255,255,.015)}
+  tr:hover td{background:rgba(90,167,255,.06)}
   .up{color:#46d3a6}.dn{color:#ff6b6b}
-  h2.sec{margin:4px 0 12px;font-size:15px;color:var(--ink)}
-  p.note{color:var(--mute);font-size:12px;margin:4px 0 14px}
-  .seg{display:inline-flex;gap:4px;flex-wrap:wrap;margin:0 12px 12px 0}
-  .seg button{background:#0d1424;border:1px solid var(--line);border-radius:6px;color:var(--mute);font:600 12px/1 -apple-system,Segoe UI;padding:8px 12px;cursor:pointer}
-  .seg button.on{background:var(--accent);border-color:var(--accent);color:#0b1220}
-  .chip{display:inline-flex;align-items:center;gap:6px;background:#0d1424;border:1px solid var(--line);border-radius:14px;color:var(--ink);font:600 12px/1 -apple-system,Segoe UI;padding:7px 12px;cursor:pointer;margin:0 4px 8px 0;opacity:.35}
+  h2.sec{margin:2px 0 12px;font-size:15.5px;font-weight:700;letter-spacing:-.1px}
+  p.note{color:var(--mute);font-size:12px;margin:2px 0 14px;max-width:1050px}
+  .seg{display:inline-flex;gap:0;flex-wrap:wrap;margin:0 12px 14px 0;background:var(--card2);
+    border:1px solid var(--line);border-radius:10px;padding:3px}
+  .seg button{background:transparent;border:0;border-radius:8px;color:var(--mute);
+    font:600 12px/1 Inter,Segoe UI,sans-serif;padding:8px 13px;cursor:pointer;transition:all .15s}
+  .seg button:hover{color:var(--ink)}
+  .seg button.on{background:var(--accent);color:#081226;box-shadow:0 2px 8px rgba(90,167,255,.35)}
+  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--card2);border:1px solid var(--line);
+    border-radius:16px;color:var(--ink);font:600 12px/1 Inter,Segoe UI,sans-serif;padding:8px 13px;cursor:pointer;
+    margin:0 5px 10px 0;opacity:.32;transition:all .15s}
+  .chip:hover{border-color:var(--line2)}
   .chip.on{opacity:1}
   .chip i{width:10px;height:10px;border-radius:50%;display:inline-block}
   .hl{color:var(--accent);font-weight:700}
-  .stHi{color:#f6c453}
+  .stHi{color:var(--gold)}
+  footer{color:var(--mute);font-size:11.5px;padding:8px 32px 28px;max-width:1420px;margin:0 auto}
 </style>
 </head>
 <body>
 <header>
   <div>
-    <h1>Capex Cloud — Hyperscaler Capex Consensus &amp; Street High</h1>
-    <div class="meta" id="hdrMeta">MSFT · AMZN · GOOGL · META · ORCL — Bloomberg BEst consensus via Capstone wrapper</div>
+    <h1><em>Capex Cloud</em> — Hyperscaler Capex Consensus &amp; Street High</h1>
+    <div class="meta" id="hdrMeta">Bloomberg BEst consensus via Capstone wrapper</div>
   </div>
-  <div class="meta">Mean = BEst consensus · Street High = most aggressive analyst (|BEST_CAPEX_LO|)</div>
+  <div class="co-chips">
+    <b><i style="background:var(--msft)"></i>Microsoft</b>
+    <b><i style="background:var(--amzn)"></i>Amazon</b>
+    <b><i style="background:var(--googl)"></i>Alphabet</b>
+    <b><i style="background:var(--meta)"></i>Meta</b>
+    <b><i style="background:var(--orcl)"></i>Oracle</b>
+  </div>
 </header>
 <nav id="nav">
   <button data-tab="win" class="active">1 · Next 12 / 24 Months</button>
@@ -119,26 +159,21 @@
   </div>
 </section>
 
-<!-- TAB 3: HISTORY -->
+<!-- TAB 4: HISTORY (YEARLY) -->
 <section id="hist">
   <div class="card">
-    <h2 class="sec">Annual capex — reported actuals + consensus FY+1..FY+3</h2>
-    <p class="note">Stacked by company, aligned by recency: "Last FY" = each company's most recent reported fiscal year (MSFT FY25 Jun-25 · ORCL FY26 May-26 · others FY25 Dec-25). Lighter bars = consensus forward — hover any bar for the company-specific fiscal year. Forward bars follow the toggle below.</p>
+    <h2 class="sec">Annual capex — calendar years 2015-25 actual + 2026-27E consensus</h2>
+    <p class="note">Stacked by company, calendar-year basis throughout. MSFT and ORCL are calendarized (calendar quarters: reported actuals + BEst quarterly consensus). Lighter bordered bars = consensus forward; the toggle switches forward bars between mean and street high.</p>
     <div class="seg" id="histSeg">
       <button data-m="mean" class="on">Consensus mean</button>
       <button data-m="streetHi">Street high</button>
     </div>
     <div class="chart-tall"><canvas id="cAnn"></canvas></div>
   </div>
-  <div class="grid two" style="margin-top:18px">
-    <div class="card">
-      <h2 class="sec">Quarterly capex since 2015 ($bn, calendarized)</h2>
-      <div class="chart-wrap"><canvas id="cQtr"></canvas></div>
-    </div>
-    <div class="card">
-      <h2 class="sec">Capex intensity — TTM capex / TTM revenue</h2>
-      <div class="chart-wrap"><canvas id="cInt"></canvas></div>
-    </div>
+  <div class="card" style="margin-top:16px">
+    <h2 class="sec">Capex intensity — capex / revenue, yearly with consensus forward</h2>
+    <p class="note">Solid lines = actual calendar-year capex / revenue (from reported quarters). Dashed segments = consensus forward, BEst capex ÷ BEst revenue at FY1-FY3 (fiscal years mapped to their end-year: MSFT FY ends Jun, ORCL May — indicative for those two).</p>
+    <div class="chart-wrap"><canvas id="cInt"></canvas></div>
   </div>
 </section>
 
@@ -165,6 +200,7 @@
 </section>
 
 </main>
+<footer id="ftr">Source: Bloomberg BEst estimates via Capstone wrapper · Mean = BEST_CAPEX · Street high = |BEST_CAPEX_LO| (most aggressive analyst) · Capstone = house estimates · Broker attribution not exposed by the wrapper (Terminal EE/ANR). Capstone Buyside.</footer>
 <script>
 const D = window.CCX;
 const ORDER = D.order;
@@ -173,12 +209,19 @@ const bn = v => v==null ? null : v/1000;
 const fbn = (v,d=1) => v==null ? '–' : '$'+(v/1000).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d})+'bn';
 const pct = v => v==null ? '–' : (v>=0?'+':'')+(100*v).toFixed(1)+'%';
 document.getElementById('hdrMeta').textContent =
-  `MSFT · AMZN · GOOGL · META · ORCL — Bloomberg BEst via Capstone wrapper · pulled ${D.buildStamp}`;
+  `Bloomberg BEst consensus & street high · Capstone wrapper · pulled ${D.buildStamp}`;
 
-Chart.defaults.color = '#8a9bb4';
-Chart.defaults.borderColor = '#1f2a44';
-Chart.defaults.font.family = '-apple-system,Segoe UI,Roboto,Arial';
+Chart.defaults.color = '#8fa1bb';
+Chart.defaults.borderColor = '#1d2a47';
+Chart.defaults.font.family = 'Inter,-apple-system,Segoe UI,Roboto,Arial,sans-serif';
+Chart.defaults.font.size = 12;
 Chart.defaults.animation = false;
+Object.assign(Chart.defaults.plugins.tooltip, {
+  backgroundColor:'rgba(12,21,38,.96)', borderColor:'#27375c', borderWidth:1,
+  titleColor:'#eaf0f8', bodyColor:'#c9d6e8', footerColor:'#f6c453',
+  padding:12, cornerRadius:10, boxPadding:4, titleFont:{weight:'700'},
+});
+Object.assign(Chart.defaults.plugins.legend.labels, {usePointStyle:true, pointStyle:'circle', boxWidth:7, boxHeight:7, padding:16});
 
 // ---- helpers ------------------------------------------------------------
 function lastActualYear(s){ return Math.max(...Object.keys(D.annual[s]).map(Number)); }
@@ -367,100 +410,82 @@ segWire('fySeg','m', v=>{fyMetric=v; drawFY();});
 REDRAW.cFY = drawFY;
 drawFY();
 
-// ---- TAB 3: history -------------------------------------------------------
+// ---- TAB 4: history (yearly, calendar basis) -------------------------------
+const CYY = Array.from({length:11},(_,i)=>String(2015+i));   // 2015..2025 actual CYs
+function cySums(s, fld){   // calendar-year sums from quarterly data; complete years only
+  const byY = {};
+  for(const [d,v] of Object.entries(D.qtr[s][fld])) (byY[d.slice(0,4)] ??= []).push(v);
+  const out = {};
+  for(const [y,arr] of Object.entries(byY)) if(arr.length===4) out[y]=arr.reduce((a,b)=>a+b,0);
+  return out;
+}
 let annChart, annMetric='mean';
-const NACT = 6; // actual columns before "Last FY"
 function drawAnn(){
-  // aligned by RECENCY: each company's most recent reported FY sits in the "Last FY" column
-  const labels = [...Array.from({length:NACT},(_,i)=>`FY-${NACT-i}`), 'Last FY', 'FY+1E','FY+2E','FY+3E'];
+  const labels = [...CYY, '2026E', '2027E'];
   const ds = ORDER.map(s=>{
-    const la = lastActualYear(s);
-    const hist = Array.from({length:NACT+1},(_,i)=>{
-      const y = la-NACT+i, a = D.annual[s][y];
-      return a ? bn(a.capex) : null;
+    const hist = cySums(s,'capex');
+    const fwd = ['2026','2027'].map(y=>{
+      const c = D.cy[s][y] || {};
+      return bn(annMetric==='streetHi' ? (c.streetHi ?? c.mean) : c.mean);
     });
-    const fwd  = [1,2,3].map(k=>bn(D.snap[s][k+'FY'][annMetric]));
-    return {label:D.names[s], data:[...hist, ...fwd],
-      backgroundColor:[...hist.map(()=>COL[s]+'CC'), ...[1,2,3].map(()=>COL[s]+'55')],
-      borderColor:COL[s], borderWidth:[...hist.map(()=>0), 1,1,1].map(v=>v), borderRadius:3};
+    return {label:D.names[s], data:[...CYY.map(y=>bn(hist[y]??null)), ...fwd],
+      backgroundColor:[...CYY.map(()=>COL[s]+'CC'), COL[s]+'55', COL[s]+'55'],
+      borderColor:COL[s], borderWidth:[...CYY.map(()=>0), 1, 1], borderRadius:3};
   });
   if(annChart) annChart.destroy();
   annChart = new Chart(document.getElementById('cAnn'), {
     type:'bar',
     data:{labels, datasets:ds},
     options:{maintainAspectRatio:false,
-      scales:{x:{stacked:true,grid:{display:false}}, y:{stacked:true,title:{display:true,text:'US$ bn'},grid:{color:'#1f2a44'}}},
-      plugins:{legend:{labels:{color:'#e7ecf3'}}, tooltip:{callbacks:{
-        title:items=>{
-          const i=items[0].dataIndex;
-          return items.map(it=>{
-            const s=ORDER[it.datasetIndex], la=lastActualYear(s);
-            const y = i<=NACT ? la-NACT+i : la+(i-NACT);
-            return `${D.names[s]} FY${String(y).slice(2)} (${FYM[D.fyEndMonth[s]]}-${String(y).slice(2)})${i>NACT?' E':''}`;
-          })[0];
-        },
+      scales:{x:{stacked:true,grid:{display:false}},
+              y:{stacked:true,title:{display:true,text:'US$ bn'},grid:{color:'rgba(29,42,71,.6)'}}},
+      plugins:{legend:{labels:{color:'#eaf0f8'}}, tooltip:{callbacks:{
         label:c=>` ${c.dataset.label}: ${c.raw==null?'–':fbn(c.raw*1000)}`,
-        footer:items=>{const t=items.reduce((a,i)=>a+(i.raw||0),0); return 'Total '+fbn(t*1000,0);}}}}}
+        footer:items=>{const t=items.reduce((a,i)=>a+(i.raw||0),0); return 'Big-5 total '+fbn(t*1000,0);}}}}}
   });
 }
 segWire('histSeg','m', v=>{annMetric=v; drawAnn();});
 REDRAW.cAnn = drawAnn;
 drawAnn();
 
-// quarterly stacked, calendarized
-const cq = d => d.slice(0,4)+'Q'+Math.ceil(+d.slice(5,7)/3);
-let qtrChart;
-function drawQtr(){
-  const buckets = {};   // 'YYYYQn' -> {sym:val}
-  for(const s of ORDER){
-    for(const [d,v] of Object.entries(D.qtr[s].capex)){
-      (buckets[cq(d)] ??= {})[s]=v;
-    }
-  }
-  // drop partial buckets (not all 5 reported yet)
-  const keys = Object.keys(buckets).sort().filter(k=>Object.keys(buckets[k]).length===ORDER.length);
-  if(qtrChart) qtrChart.destroy();
-  qtrChart = new Chart(document.getElementById('cQtr'), {
-    type:'bar',
-    data:{labels:keys, datasets:ORDER.map(s=>({label:D.names[s],
-      data:keys.map(k=>bn(buckets[k][s]??null)), backgroundColor:COL[s]+'CC'}))},
-    options:{maintainAspectRatio:false,
-      scales:{x:{stacked:true,grid:{display:false},ticks:{maxTicksLimit:16}},
-              y:{stacked:true,title:{display:true,text:'US$ bn / quarter'},grid:{color:'#1f2a44'}}},
-      plugins:{legend:{labels:{color:'#e7ecf3'}}, tooltip:{callbacks:{
-        footer:items=>{const t=items.reduce((a,i)=>a+(i.raw||0),0); return 'Total '+fbn(t*1000,0);}}}}}
-  });
-}
-REDRAW.cQtr = drawQtr;
-drawQtr();
-
-// TTM intensity — calendarized buckets shared across companies
+// yearly capex intensity + consensus forward (BEst capex / BEst sales, FY1-FY3)
 let intChart;
 function drawInt(){
-  const perSym = {};   // sym -> {bucket: pct}
-  const allKeys = new Set();
+  const FWDY = ['2026E','2027E','2028E'];
+  const labels = [...CYY, ...FWDY];
+  const ds = [];
   for(const s of ORDER){
-    const cd = Object.entries(D.qtr[s].capex).sort(), rd = D.qtr[s].rev;
-    const m = {};
-    for(let i=3;i<cd.length;i++){
-      let c=0,r=0,ok=true;
-      for(let j=i-3;j<=i;j++){ c+=cd[j][1]; const rv=rd[cd[j][0]]; if(rv==null){ok=false;break;} r+=rv; }
-      if(ok&&r>0){ const k=cq(cd[i][0]); m[k]=+(100*c/r).toFixed(1); allKeys.add(k); }
+    const cap = cySums(s,'capex'), rev = cySums(s,'rev');
+    const hist = CYY.map(y=> cap[y]&&rev[y] ? +(100*cap[y]/rev[y]).toFixed(1) : null);
+    // forward: FY k mapped to its end-year column; bridge from last actual point
+    const fwd = labels.map(()=>null);
+    let lastIdx = hist.length-1; while(lastIdx>=0 && hist[lastIdx]==null) lastIdx--;
+    if(lastIdx>=0) fwd[lastIdx] = hist[lastIdx];
+    const la = lastActualYear(s);
+    for(let k=1;k<=3;k++){
+      const d = D.snap[s][k+'FY'];
+      const idx = labels.indexOf(`${la+k}E`);
+      if(idx>=0 && d.mean && d.sales) fwd[idx] = +(100*d.mean/d.sales).toFixed(1);
     }
-    perSym[s]=m;
+    ds.push({label:D.names[s], data:hist, borderColor:COL[s], backgroundColor:COL[s],
+      pointRadius:3, pointHoverRadius:5, borderWidth:2.2, tension:.3, spanGaps:true});
+    ds.push({label:D.names[s], data:fwd, borderColor:COL[s], backgroundColor:'#0a101e',
+      pointRadius:4, pointHoverRadius:6, pointStyle:'rectRot', borderWidth:2,
+      borderDash:[5,4], tension:.2, spanGaps:true, fwd:true});
   }
-  const keys = [...allKeys].sort();
   if(intChart) intChart.destroy();
   intChart = new Chart(document.getElementById('cInt'), {
     type:'line',
-    data:{labels:keys, datasets: ORDER.map(s=>({label:D.names[s],
-      data:keys.map(k=>perSym[s][k]??null), borderColor:COL[s], backgroundColor:COL[s],
-      pointRadius:0, borderWidth:2, tension:.3, spanGaps:true}))},
+    data:{labels, datasets:ds},
     options:{maintainAspectRatio:false,
-      scales:{x:{ticks:{maxTicksLimit:12},grid:{display:false}},
-              y:{title:{display:true,text:'TTM capex / TTM revenue (%)'},grid:{color:'#1f2a44'}}},
-      plugins:{legend:{labels:{color:'#e7ecf3'}},
-        tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y}%`}}}}
+      scales:{x:{grid:{display:false}},
+              y:{title:{display:true,text:'capex / revenue (%)'},grid:{color:'rgba(29,42,71,.6)'}}},
+      plugins:{legend:{labels:{color:'#eaf0f8', filter:(item,data)=>!data.datasets[item.datasetIndex].fwd},
+          onClick:(e,item,legend)=>{const ch=legend.chart;
+            ch.data.datasets.forEach((d,i)=>{ if(d.label===item.text){ const m=ch.getDatasetMeta(i); m.hidden = m.hidden===null ? true : !m.hidden; }});
+            ch.update();}},
+        tooltip:{filter:item=>item.parsed.y!=null,
+          callbacks:{label:c=>` ${c.dataset.label}${c.dataset.fwd?' (BEst fwd)':''}: ${c.parsed.y}%`}}}}
   });
 }
 REDRAW.cInt = drawInt;
