@@ -750,6 +750,7 @@
       <label>Metric
         <div class="hpe-seg" id="hpeMetric">
           <button data-m="fwd" class="on">NTM · BEst fwd</button>
+          <button data-m="fwd2">2Y fwd · BEst</button>
           <button data-m="ltm">Trailing · LTM</button>
         </div>
       </label>
@@ -775,7 +776,7 @@
   <div class="card" style="margin-top:18px">
     <h2 class="sec" id="hpeTitle">NTM P/E — weekly</h2>
     <div class="chart-tall"><canvas id="cHpe"></canvas></div>
-    <p class="note">With a <b>single peer</b> visible, dashed lines show its window mean ±1σ. NTM = Bloomberg BEst blended-12m-forward P/E (1BF) · Trailing = reported-EPS P/E. Listings: ASML NA · 8035 JP (TEL) · rest US — P/E is currency-independent. Negative / &gt;500x loss-period trailing P/Es dropped.</p>
+    <p class="note">With a <b>single peer</b> visible, dashed lines show its window mean ±1σ. NTM = Bloomberg BEst blended-12m-forward P/E (1BF) · 2Y fwd = BEst blended-2yr-forward (2BF) · Trailing = reported-EPS P/E. Listings: ASML NA · 8035 JP (TEL) · rest US — P/E is currency-independent. Negative / &gt;500x loss-period trailing P/Es dropped.</p>
   </div>
 
   <div class="grid two" style="margin-top:18px">
@@ -1349,8 +1350,9 @@ document.getElementById('tChinab').innerHTML=Object.entries(CHINA_PCT).map(([n,a
     return lab;
   }
 
+  const MLBL={fwd:'NTM',fwd2:'2Y-fwd',ltm:'LTM'};
   function render(){
-    const W=windowed(), mLabel=st.m==='fwd'?'NTM':'LTM';
+    const W=windowed(), mLabel=MLBL[st.m];
     const vis=PEH.order.filter(t=>st.on[t]&&(PEH[st.m].series[t]||[]).some(v=>v!=null));
     curTicks=yearTicks(W.dates);
 
