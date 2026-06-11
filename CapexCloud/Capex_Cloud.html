@@ -57,9 +57,10 @@
 </header>
 <nav id="nav">
   <button data-tab="win" class="active">1 · Next 12 / 24 Months</button>
-  <button data-tab="fy">2 · Fiscal Years FY1-FY3</button>
-  <button data-tab="hist">3 · History &amp; Forecast</button>
-  <button data-tab="rev">4 · Revision Tracker</button>
+  <button data-tab="cy">2 · CY 2025-27 vs Capstone</button>
+  <button data-tab="fy">3 · Fiscal Years FY1-FY3</button>
+  <button data-tab="hist">4 · History &amp; Forecast</button>
+  <button data-tab="rev">5 · Revision Tracker</button>
 </nav>
 <main>
 
@@ -82,7 +83,25 @@
   </div>
 </section>
 
-<!-- TAB 2: FISCAL YEARS -->
+<!-- TAB 2: CALENDAR YEARS vs CAPSTONE -->
+<section id="cy">
+  <div class="card">
+    <h2 class="sec">Calendar-year capex — Street consensus vs Capstone — <span id="cyTitle">CY2026E</span></h2>
+    <div class="seg" id="cySeg">
+      <button data-y="2025">CY2025</button>
+      <button data-y="2026" class="on">CY2026E</button>
+      <button data-y="2027">CY2027E</button>
+    </div>
+    <p class="note">All five names calendarized: MSFT (FY Jun) and ORCL (FY May) are rebuilt from calendar quarters — reported quarters as actuals plus BEst quarterly consensus (kFQ) for the unreported remainder; their street high sums the most-aggressive quarterly estimates (composite, indicative). Dec-FY names map 1:1 to fiscal fields. Capstone = house estimates (Jun-26); CY2025 gap vs reported cash capex (e.g. MSFT) reflects definition differences such as finance leases.</p>
+    <div class="chart-wrap"><canvas id="cCY"></canvas></div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">CY detail — consensus vs street high vs Capstone</h2>
+    <div id="tblCY"></div>
+  </div>
+</section>
+
+<!-- TAB 3: FISCAL YEARS -->
 <section id="fy">
   <div class="card">
     <h2 class="sec">Fiscal-year capex — consensus vs street</h2>
@@ -159,6 +178,7 @@ document.getElementById('hdrMeta').textContent =
 Chart.defaults.color = '#8a9bb4';
 Chart.defaults.borderColor = '#1f2a44';
 Chart.defaults.font.family = '-apple-system,Segoe UI,Roboto,Arial';
+Chart.defaults.animation = false;
 
 // ---- helpers ------------------------------------------------------------
 function lastActualYear(s){ return Math.max(...Object.keys(D.annual[s]).map(Number)); }
@@ -172,10 +192,14 @@ function getWin(s, w, f){ return w==='CUM' ? cum(s,f) : D.snap[s][w][f]; }
 function totWin(w,f){ return ORDER.reduce((t,s)=>t+(getWin(s,w,f)||0),0); }
 
 // ---- nav ---------------------------------------------------------------
+const REDRAW = {};   // canvasId -> redraw fn; re-run when a tab opens with a 0-size chart
 document.getElementById('nav').addEventListener('click', e=>{
   if(!e.target.dataset.tab) return;
   document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active', b===e.target));
   document.querySelectorAll('main>section').forEach(s=>s.classList.toggle('active', s.id===e.target.dataset.tab));
+  document.querySelectorAll('#'+e.target.dataset.tab+' canvas').forEach(c=>{
+    if(c.width===0 && REDRAW[c.id]) REDRAW[c.id]();
+  });
 });
 function segWire(id, attr, cb){
   document.getElementById(id).addEventListener('click', e=>{
@@ -243,9 +267,67 @@ function drawWin(){
   document.getElementById('tblWin').innerHTML = h;
 }
 segWire('winSeg','w', v=>{curWin=v; drawWin();});
+REDRAW.cWin = drawWin;
 drawWin();
 
-// ---- TAB 2: fiscal years -------------------------------------------------
+// ---- TAB 2: calendar years vs Capstone ------------------------------------
+let cyChart, cyYear='2026';
+function drawCY(){
+  const labels = ORDER.map(s=>D.names[s]);
+  const cons = ORDER.map(s=>bn(D.cy[s][cyYear]?.mean));
+  const cap  = ORDER.map(s=>bn(D.capstone[s]?.[cyYear]));
+  const hi   = ORDER.map(s=>bn(D.cy[s][cyYear]?.streetHi));
+  const ds = [
+    {label:'Street consensus', data:cons, backgroundColor:ORDER.map(s=>COL[s]+'E6'),
+     borderRadius:4, barPercentage:.38, categoryPercentage:.8},
+    {label:'Capstone est.', data:cap, backgroundColor:ORDER.map(s=>COL[s]+'55'),
+     borderColor:ORDER.map(s=>COL[s]), borderWidth:2, borderRadius:4, barPercentage:.38, categoryPercentage:.8},
+  ];
+  if(hi.some(v=>v!=null)) ds.push({type:'line', label:'Street high', data:hi, showLine:false,
+    pointStyle:'crossRot', pointRadius:8, pointBorderWidth:2.5, borderColor:'#f6c453', backgroundColor:'#f6c453'});
+  if(cyChart) cyChart.destroy();
+  cyChart = new Chart(document.getElementById('cCY'), {
+    type:'bar',
+    data:{labels, datasets:ds},
+    options:{maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'US$ bn'},grid:{color:'#1f2a44'}},x:{grid:{display:false}}},
+      plugins:{legend:{labels:{color:'#e7ecf3'}}, tooltip:{callbacks:{label:c=>{
+        const tag=['consensus','Capstone','street high'][c.datasetIndex];
+        const src=c.datasetIndex===0?` (${D.cy[ORDER[c.dataIndex]][cyYear]?.src})`:'';
+        return ` ${tag} ${fbn(c.parsed.y*1000)}${src}`;}}}}}
+  });
+  document.getElementById('cyTitle').textContent = 'CY'+cyYear+(cyYear==='2025'?'':'E');
+  // table — photo layout: all three years side by side
+  const YRS=['2025','2026','2027'];
+  let h = `<table><thead><tr><th>Company</th>`;
+  for(const y of YRS) h+=`<th>CY${y.slice(2)}${y==='2025'?'':'E'} cons.</th><th>St. high</th><th>Capstone</th><th>Δ vs cons</th>`;
+  h+='</tr></thead><tbody>';
+  for(const s of ORDER){
+    h+=`<tr><td><span style="color:${COL[s]}">●</span> ${D.names[s]} <span style="color:var(--mute)">${s}</span></td>`;
+    for(const y of YRS){
+      const c=D.cy[s][y]||{}, k=D.capstone[s]?.[y];
+      const dlt = c.mean&&k ? k/c.mean-1 : null;
+      h+=`<td class="hl">${fbn(c.mean)}</td><td class="stHi">${fbn(c.streetHi)}</td><td>${fbn(k)}</td>
+        <td class="${dlt==null?'':dlt>=0?'up':'dn'}">${pct(dlt)}</td>`;
+    }
+    h+='</tr>';
+  }
+  h+='<tr style="font-weight:700"><td>Big-5 total</td>';
+  for(const y of YRS){
+    const tc=ORDER.reduce((t,s)=>t+(D.cy[s][y]?.mean||0),0);
+    const th=ORDER.reduce((t,s)=>t+(D.cy[s][y]?.streetHi||0),0);
+    const tk=ORDER.reduce((t,s)=>t+(D.capstone[s]?.[y]||0),0);
+    h+=`<td class="hl">${fbn(tc,0)}</td><td class="stHi">${y==='2025'?'–':fbn(th,0)}</td><td>${fbn(tk,0)}</td>
+      <td class="${tk>=tc?'up':'dn'}">${pct(tk/tc-1)}</td>`;
+  }
+  h+='</tr></tbody></table>';
+  document.getElementById('tblCY').innerHTML = h;
+}
+segWire('cySeg','y', v=>{cyYear=v; drawCY();});
+REDRAW.cCY = drawCY;
+drawCY();
+
+// ---- TAB 3: fiscal years -------------------------------------------------
 let fyChart, fyMetric='mean';
 function drawFY(){
   const cats = ['FY1','FY2','FY3'];
@@ -282,6 +364,7 @@ function drawFY(){
   document.getElementById('tblFY').innerHTML = h;
 }
 segWire('fySeg','m', v=>{fyMetric=v; drawFY();});
+REDRAW.cFY = drawFY;
 drawFY();
 
 // ---- TAB 3: history -------------------------------------------------------
@@ -321,11 +404,13 @@ function drawAnn(){
   });
 }
 segWire('histSeg','m', v=>{annMetric=v; drawAnn();});
+REDRAW.cAnn = drawAnn;
 drawAnn();
 
 // quarterly stacked, calendarized
 const cq = d => d.slice(0,4)+'Q'+Math.ceil(+d.slice(5,7)/3);
-(function drawQtr(){
+let qtrChart;
+function drawQtr(){
   const buckets = {};   // 'YYYYQn' -> {sym:val}
   for(const s of ORDER){
     for(const [d,v] of Object.entries(D.qtr[s].capex)){
@@ -334,7 +419,8 @@ const cq = d => d.slice(0,4)+'Q'+Math.ceil(+d.slice(5,7)/3);
   }
   // drop partial buckets (not all 5 reported yet)
   const keys = Object.keys(buckets).sort().filter(k=>Object.keys(buckets[k]).length===ORDER.length);
-  new Chart(document.getElementById('cQtr'), {
+  if(qtrChart) qtrChart.destroy();
+  qtrChart = new Chart(document.getElementById('cQtr'), {
     type:'bar',
     data:{labels:keys, datasets:ORDER.map(s=>({label:D.names[s],
       data:keys.map(k=>bn(buckets[k][s]??null)), backgroundColor:COL[s]+'CC'}))},
@@ -344,10 +430,13 @@ const cq = d => d.slice(0,4)+'Q'+Math.ceil(+d.slice(5,7)/3);
       plugins:{legend:{labels:{color:'#e7ecf3'}}, tooltip:{callbacks:{
         footer:items=>{const t=items.reduce((a,i)=>a+(i.raw||0),0); return 'Total '+fbn(t*1000,0);}}}}}
   });
-})();
+}
+REDRAW.cQtr = drawQtr;
+drawQtr();
 
 // TTM intensity — calendarized buckets shared across companies
-(function drawInt(){
+let intChart;
+function drawInt(){
   const perSym = {};   // sym -> {bucket: pct}
   const allKeys = new Set();
   for(const s of ORDER){
@@ -361,7 +450,8 @@ const cq = d => d.slice(0,4)+'Q'+Math.ceil(+d.slice(5,7)/3);
     perSym[s]=m;
   }
   const keys = [...allKeys].sort();
-  new Chart(document.getElementById('cInt'), {
+  if(intChart) intChart.destroy();
+  intChart = new Chart(document.getElementById('cInt'), {
     type:'line',
     data:{labels:keys, datasets: ORDER.map(s=>({label:D.names[s],
       data:keys.map(k=>perSym[s][k]??null), borderColor:COL[s], backgroundColor:COL[s],
@@ -372,9 +462,11 @@ const cq = d => d.slice(0,4)+'Q'+Math.ceil(+d.slice(5,7)/3);
       plugins:{legend:{labels:{color:'#e7ecf3'}},
         tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y}%`}}}}
   });
-})();
+}
+REDRAW.cInt = drawInt;
+drawInt();
 
-// ---- TAB 4: revisions ------------------------------------------------------
+// ---- TAB 5: revisions ------------------------------------------------------
 let revChart, revWin='1BF', revMode='abs';
 const revOn = Object.fromEntries([...ORDER,'TOTAL'].map(s=>[s,true]));
 (function chips(){
@@ -429,6 +521,7 @@ function drawRev(){
 }
 segWire('revSeg','w', v=>{revWin=v; drawRev();});
 segWire('revMode','m', v=>{revMode=v; drawRev();});
+REDRAW.cRev = drawRev;
 drawRev();
 </script>
 </body>
