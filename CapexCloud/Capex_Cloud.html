@@ -6,6 +6,7 @@
 <title>Capex Cloud — Hyperscaler Capex Consensus (BBG)</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="capex_cloud_data.js"></script>
+<script src="ppe_data.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -106,6 +107,7 @@
   <button data-tab="fy">3 · Fiscal Years FY1-FY3</button>
   <button data-tab="hist">4 · History &amp; Forecast</button>
   <button data-tab="rev">5 · Revision Tracker</button>
+  <button data-tab="ppe">6 · PP&amp;E Breakdown</button>
 </nav>
 <main>
 
@@ -201,6 +203,29 @@
   <div class="card" style="margin-top:18px">
     <h2 class="sec">Revision summary — change in rolling-NTM consensus</h2>
     <div id="tblRev"></div>
+  </div>
+</section>
+
+<!-- TAB 6: PP&E BREAKDOWN -->
+<section id="ppe">
+  <div class="card">
+    <h2 class="sec">Equipment vs long-term assets — gross PP&amp;E, latest fiscal year</h2>
+    <div class="seg" id="ppeMixSeg">
+      <button data-m="abs" class="on">US$ bn</button>
+      <button data-m="pct">% of gross</button>
+    </div>
+    <p class="note">From official filings (SEC XBRL tagged values for MSFT/ORCL; 10-K PP&amp;E notes for AMZN/GOOGL/META). Buckets follow each company's own disclosure: GOOGL "technical infrastructure" includes data-center real estate (equipment overstated vs peers); MSFT has no separate CIP line (sits inside Buildings); AMZN equipment includes fulfillment/transport gear; GOOGL gross is in-service basis.</p>
+    <div class="chart-wrap"><canvas id="cPpeMix"></canvas></div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h2 class="sec">Gross PP&amp;E by reported category — <span id="ppeCoTitle"></span></h2>
+    <div class="seg" id="ppeCoSeg"></div>
+    <p class="note" id="ppeCoNote"></p>
+    <div class="chart-wrap"><canvas id="cPpeCo"></canvas></div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h2 class="sec">Summary — latest fiscal year (gross, US$ mn)</h2>
+    <div id="tblPpe"></div>
   </div>
 </section>
 
@@ -553,6 +578,87 @@ segWire('revSeg','w', v=>{revWin=v; drawRev();});
 segWire('revMode','m', v=>{revMode=v; drawRev();});
 REDRAW.cRev = drawRev;
 drawRev();
+
+// ---- TAB 6: PP&E breakdown ---------------------------------------------------
+const PP = window.PPE;
+const BUCKCOL = {'Equipment':'#5aa7ff','LT real estate':'#9b8cff','CIP':'#f6c453','Other':'#5d6f8f'};
+const CATPAL = ['#5aa7ff','#46d3a6','#f6c453','#9b8cff','#ff6b6b','#7fd1e0','#e8a2ff'];
+let ppeMixChart, ppeMixMode='abs';
+function drawPpeMix(){
+  const labels = PP.order.map(s=>`${PP.companies[s].name} (${PP.companies[s].years.at(-1)})`);
+  const last = s => i => { const v = PP.companies[s].buckets[i].at(-1); return v==null?0:v; };
+  const ds = Object.keys(BUCKCOL).map(b=>({
+    label:b,
+    data:PP.order.map(s=>{
+      const v = PP.companies[s].buckets[b].at(-1) ?? 0;
+      if(ppeMixMode==='abs') return v/1000;
+      const g = Object.keys(BUCKCOL).reduce((t,k)=>t+(PP.companies[s].buckets[k].at(-1)||0),0);
+      return g? +(100*v/g).toFixed(1) : 0;
+    }),
+    backgroundColor:BUCKCOL[b]+'D9', borderRadius:3,
+  }));
+  if(ppeMixChart) ppeMixChart.destroy();
+  ppeMixChart = new Chart(document.getElementById('cPpeMix'), {
+    type:'bar',
+    data:{labels, datasets:ds},
+    options:{maintainAspectRatio:false, indexAxis:'y',
+      scales:{x:{stacked:true, max:ppeMixMode==='pct'?100:undefined,
+                 title:{display:true,text:ppeMixMode==='abs'?'US$ bn':'% of gross (bucket sum)'},grid:{color:'rgba(29,42,71,.6)'}},
+              y:{stacked:true,grid:{display:false}}},
+      plugins:{legend:{labels:{color:'#eaf0f8'}}, tooltip:{callbacks:{
+        label:c=>` ${c.dataset.label}: ${ppeMixMode==='abs'?fbn(c.parsed.x*1000):c.parsed.x+'%'}`}}}}
+  });
+}
+segWire('ppeMixSeg','m', v=>{ppeMixMode=v; drawPpeMix();});
+REDRAW.cPpeMix = drawPpeMix;
+drawPpeMix();
+
+let ppeCoChart, ppeCo='AMZN';
+(function(){
+  const el = document.getElementById('ppeCoSeg');
+  el.innerHTML = PP.order.map(s=>`<button data-c="${s}" class="${s===ppeCo?'on':''}">${PP.companies[s].name}</button>`).join('');
+})();
+function drawPpeCo(){
+  const C = PP.companies[ppeCo];
+  const cats = Object.keys(C.cats).filter(k=>C.cats[k].some(v=>v!=null));
+  if(ppeCoChart) ppeCoChart.destroy();
+  ppeCoChart = new Chart(document.getElementById('cPpeCo'), {
+    type:'bar',
+    data:{labels:C.years, datasets:cats.map((k,i)=>({label:k,
+      data:C.cats[k].map(v=>v==null?null:v/1000), backgroundColor:CATPAL[i%CATPAL.length]+'D0', borderRadius:2}))},
+    options:{maintainAspectRatio:false,
+      scales:{x:{stacked:true,grid:{display:false}},
+              y:{stacked:true,title:{display:true,text:'US$ bn (gross)'},grid:{color:'rgba(29,42,71,.6)'}}},
+      plugins:{legend:{labels:{color:'#eaf0f8'}}, tooltip:{callbacks:{
+        label:c=>` ${c.dataset.label}: ${c.raw==null?'–':fbn(c.raw*1000)}`,
+        footer:items=>{const t=items.reduce((a,i)=>a+(i.raw||0),0); return 'Stack total '+fbn(t*1000,0);}}}}}
+  });
+  document.getElementById('ppeCoTitle').textContent = `${C.name} (${C.fy})`;
+  document.getElementById('ppeCoNote').textContent = C.src;
+}
+segWire('ppeCoSeg','c', v=>{ppeCo=v; drawPpeCo();});
+REDRAW.cPpeCo = drawPpeCo;
+drawPpeCo();
+
+(function tblPpe(){
+  let h = `<table><thead><tr><th>Company (latest FY)</th><th>Equipment</th><th>LT real estate</th><th>CIP / not in service</th><th>Other</th><th>Total gross</th><th>Equipment %</th><th>LT %</th></tr></thead><tbody>`;
+  const tot = {Equipment:0,'LT real estate':0,CIP:0,Other:0,gross:0};
+  for(const s of PP.order){
+    const C = PP.companies[s];
+    const b = k => C.buckets[k].at(-1);
+    const g = C.gross.at(-1);
+    Object.keys(BUCKCOL).forEach(k=>tot[k]+=(b(k)||0)); tot.gross+=g;
+    h+=`<tr><td><span style="color:${COL[s]}">●</span> ${C.name} <span style="color:var(--mute)">${C.years.at(-1)} · ${C.fy}</span></td>
+      <td class="hl">${fbn(b('Equipment'))}</td><td>${fbn(b('LT real estate'))}</td><td>${fbn(b('CIP'))}</td>
+      <td>${fbn(b('Other'))}</td><td>${fbn(g)}</td>
+      <td>${pct(b('Equipment')/g).replace('+','')}</td><td>${pct(b('LT real estate')/g).replace('+','')}</td></tr>`;
+  }
+  h+=`<tr style="font-weight:700"><td>Big-5 total</td><td class="hl">${fbn(tot.Equipment,0)}</td><td>${fbn(tot['LT real estate'],0)}</td>
+    <td>${fbn(tot.CIP,0)}</td><td>${fbn(tot.Other,0)}</td><td>${fbn(tot.gross,0)}</td>
+    <td>${pct(tot.Equipment/tot.gross).replace('+','')}</td><td>${pct(tot['LT real estate']/tot.gross).replace('+','')}</td></tr>`;
+  h+='</tbody></table>';
+  document.getElementById('tblPpe').innerHTML = h;
+})();
 </script>
 </body>
 </html>
