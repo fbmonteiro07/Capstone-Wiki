@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <title>SemiCap Dashboard — ASML & Peers (v15)</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="pe_history_data.js"></script>
 <style>
   :root{--bg:#0b1220;--card:#11192c;--ink:#e7ecf3;--mute:#8a9bb4;--line:#1f2a44;--accent:#5aa7ff;
         --asml:#ff7a59;--amat:#5aa7ff;--klac:#9b8cff;--lrcx:#46d3a6;--ter:#f6c453;--aeis:#e76d8e;}
@@ -43,6 +44,12 @@
   .pe-form input:focus{outline:none;border-color:var(--accent)}
   .pe-form button{background:var(--accent);border:0;border-radius:6px;color:#0b1220;font:700 13px/1 -apple-system,Segoe UI;padding:10px 16px;cursor:pointer}
   .pe-form button.ghost{background:transparent;border:1px solid var(--line);color:var(--mute)}
+  .hpe-seg{display:flex;gap:4px;flex-wrap:wrap}
+  .hpe-seg button{background:#0d1424;border:1px solid var(--line);border-radius:6px;color:var(--mute);font:600 12px/1 -apple-system,Segoe UI;padding:8px 12px;cursor:pointer}
+  .hpe-seg button.on{background:var(--accent);border-color:var(--accent);color:#0b1220}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:#0d1424;border:1px solid var(--line);border-radius:14px;color:var(--ink);font:600 12px/1 -apple-system,Segoe UI;padding:7px 12px;cursor:pointer;margin:0 4px 4px 0;opacity:.35}
+  .chip.on{opacity:1}
+  .chip i{width:10px;height:10px;border-radius:50%;display:inline-block}
 </style>
 </head>
 <body>
@@ -51,7 +58,7 @@
     <h1>SemiCap Dashboard — ASML & Peers</h1>
     <div class="meta">Source: ASML_Peers_SemiCap_v16.xlsx · Snapshot 09-Jun-2026 · UBS overlay: "WFE Update — Early Innings of Supercycle" (Arcuri, 09-Jun-26) · Capstone Buyside</div>
   </div>
-  <div class="meta">Tabs: WFE Capex · Bottom-Up · WFE Share · Services · P/E Comps · Process → WFE $ · China · Implied WFE (Street)</div>
+  <div class="meta">Tabs: WFE Capex · Bottom-Up · WFE Share · Services · P/E Comps · Process → WFE $ · China · Implied WFE (Street) · Historical P/E (BBG)</div>
 </header>
 <nav id="nav">
   <button data-tab="capex" class="active">1 · WFE Capex Spend</button>
@@ -64,6 +71,7 @@
   <button data-tab="process">8 · Process → WFE $</button>
   <button data-tab="china">9 · China % of Revenue</button>
   <button data-tab="iwfe">10 · Implied WFE (Street)</button>
+  <button data-tab="hpe">11 · Historical P/E</button>
 </nav>
 <main>
 
@@ -734,6 +742,61 @@
   </div>
 </section>
 
+<!-- TAB 11: HISTORICAL P/E (BBG) -->
+<section id="hpe">
+  <div class="card" style="margin-bottom:18px">
+    <h2 class="sec">Historical P/E — ASML &amp; Peers · BBG weekly since 2000</h2>
+    <div class="pe-form" style="margin-bottom:0">
+      <label>Metric
+        <div class="hpe-seg" id="hpeMetric">
+          <button data-m="fwd" class="on">NTM · BEst fwd</button>
+          <button data-m="ltm">Trailing · LTM</button>
+        </div>
+      </label>
+      <label>Window
+        <div class="hpe-seg" id="hpeRange">
+          <button data-r="5">5Y</button><button data-r="10" class="on">10Y</button><button data-r="15">15Y</button><button data-r="0">Max</button>
+        </div>
+      </label>
+      <label>Peers — click to show/hide
+        <div id="hpeChips"></div>
+      </label>
+      <label>Y-axis
+        <div class="hpe-seg" id="hpeCap">
+          <button data-c="auto" class="on">Auto cap</button><button data-c="full">Full</button>
+        </div>
+      </label>
+    </div>
+    <p class="note" id="hpeStamp" style="margin:8px 0 0"></p>
+  </div>
+
+  <div class="grid three" id="hpeCards"></div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec" id="hpeTitle">NTM P/E — weekly</h2>
+    <div class="chart-tall"><canvas id="cHpe"></canvas></div>
+    <p class="note">With a <b>single peer</b> visible, dashed lines show its window mean ±1σ. NTM = Bloomberg BEst blended-12m-forward P/E (1BF) · Trailing = reported-EPS P/E. Listings: ASML NA · 8035 JP (TEL) · rest US — P/E is currency-independent. Negative / &gt;500x loss-period trailing P/Es dropped.</p>
+  </div>
+
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec" id="hpeRelTitle">ASML premium vs peer median</h2>
+      <div class="chart-wrap"><canvas id="cHpeRel"></canvas></div>
+      <p class="note" id="hpeRelNote"></p>
+    </div>
+    <div class="card">
+      <h2 class="sec">Stats — selected metric &amp; window</h2>
+      <div class="scroll" style="max-height:340px">
+      <table>
+        <thead><tr><th>Peer</th><th>Now</th><th>FY1</th><th>FY2</th><th>Mean</th><th>Med</th><th>σ</th><th>Min</th><th>Max</th><th>%ile</th><th>vs Mean</th></tr></thead>
+        <tbody id="hpeStats"></tbody>
+      </table>
+      </div>
+      <p class="note">FY1/FY2 = <i>current</i> BEst P/E on next / following fiscal year (fiscal year-ends: TEL Mar · KLAC/LRCX Jun · AMAT Oct · rest Dec). %ile = where today sits in the window's range. <span class="dn">Red</span> = rich vs window mean, <span class="up">green</span> = cheap.</p>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <script>
@@ -1232,6 +1295,154 @@ new Chart(cChinaBn,{type:'bar',data:{labels:CHINA_YRS,datasets:[
 ]},options:{scales:{y:{title:{display:true,text:'China revenue ($bn)'}}}}});
 document.getElementById('tChinah').innerHTML='<th>Vendor (% of rev)</th>'+CHINA_YRS.map(y=>`<th>${y}</th>`).join('');
 document.getElementById('tChinab').innerHTML=Object.entries(CHINA_PCT).map(([n,arr])=>`<tr><td>${n}</td>${arr.map(v=>'<td>'+(v==null?'—':v.toFixed(1)+'%')+'</td>').join('')}</tr>`).join('');
+
+// === TAB 11: HISTORICAL P/E (BBG weekly, pe_history_data.js via build_pe_history.py) ===
+(function(){
+  if(typeof PEH==='undefined'){
+    document.getElementById('hpe').insertAdjacentHTML('afterbegin',
+      '<div class="card" style="margin-bottom:18px;border-left:4px solid #ff6b6b"><p class="note" style="margin:0"><b>pe_history_data.js missing.</b> Run <code>py -X utf8 build_pe_history.py</code> in the dashboard folder (BBG terminal session required), then reload.</p></div>');
+    return;
+  }
+  const HC={ASML:C.asml,AMAT:C.amat,KLAC:C.klac,LRCX:C.lrcx,TER:C.ter,AEIS:C.aeis,TEL:'#2dd4bf'};
+  const st={m:'fwd',yrs:10,cap:'auto',on:Object.fromEntries(PEH.order.map(t=>[t,true]))};
+  const fmtX=v=>v==null?'—':v.toFixed(1)+'x';
+
+  function windowed(){
+    const D=PEH[st.m].dates, S=PEH[st.m].series;
+    let i0=0;
+    if(st.yrs>0){
+      const last=new Date(D[D.length-1]); last.setFullYear(last.getFullYear()-st.yrs);
+      const cut=last.toISOString().slice(0,10);
+      i0=D.findIndex(d=>d>=cut); if(i0<0)i0=0;
+    }
+    return {dates:D.slice(i0), series:Object.fromEntries(PEH.order.map(t=>[t,(S[t]||[]).slice(i0)]))};
+  }
+  function stats(arr){
+    const v=arr.filter(x=>x!=null); if(!v.length)return null;
+    const n=v.length, mean=v.reduce((a,b)=>a+b,0)/n;
+    const sd=Math.sqrt(v.reduce((a,b)=>a+(b-mean)**2,0)/n);
+    const s=[...v].sort((a,b)=>a-b);
+    let last=null; for(let i=arr.length-1;i>=0;i--){if(arr[i]!=null){last=arr[i];break}}
+    return {mean,sd,med:s[Math.floor(n/2)],min:s[0],max:s[n-1],last,
+            pct:last==null?null:Math.round(s.filter(x=>x<=last).length/n*100),n};
+  }
+
+  let curTicks=[];
+  const tickCb=(v,i)=>curTicks[i]||null;
+  const mainCh=new Chart(document.getElementById('cHpe'),{type:'line',data:{labels:[],datasets:[]},
+    options:{animation:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{itemSort:(a,b)=>(b.parsed.y||0)-(a.parsed.y||0),
+        callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y==null?'—':c.parsed.y.toFixed(1)+'x'}`}}},
+      scales:{x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:false,callback:tickCb}},
+              y:{title:{display:true,text:'P/E (x)'},ticks:{callback:v=>v+'x'}}}}});
+  const relCh=new Chart(document.getElementById('cHpeRel'),{type:'line',data:{labels:[],datasets:[]},
+    options:{animation:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y==null?'—':c.parsed.y.toFixed(2)+'×'}`}}},
+      scales:{x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:false,callback:tickCb}},
+              y:{title:{display:true,text:'ASML ÷ peer median'},ticks:{callback:v=>v.toFixed(1)+'×'}}}}});
+
+  function yearTicks(dates){
+    const lab=dates.map(()=>''); let prev='';
+    dates.forEach((d,i)=>{const y=d.slice(0,4); if(y!==prev){lab[i]=y; prev=y;}});
+    const k=lab.filter(Boolean).length>14?2:1;
+    if(k>1){let c=0; lab.forEach((l,i)=>{if(l){if(c%k)lab[i]=''; c++;}});}
+    return lab;
+  }
+
+  function render(){
+    const W=windowed(), mLabel=st.m==='fwd'?'NTM':'LTM';
+    const vis=PEH.order.filter(t=>st.on[t]&&(PEH[st.m].series[t]||[]).some(v=>v!=null));
+    curTicks=yearTicks(W.dates);
+
+    // main chart — peer lines (+ mean/±1σ bands when exactly one visible)
+    const dsets=vis.map(t=>({label:t,data:W.series[t],borderColor:HC[t],backgroundColor:HC[t]+'33',
+      borderWidth:1.6,pointRadius:0,tension:0,spanGaps:true}));
+    let bandNote='';
+    if(vis.length===1){
+      const s=stats(W.series[vis[0]]);
+      if(s){
+        const mk=(v,lb,dash)=>({label:lb,data:W.dates.map(()=>+v.toFixed(2)),borderColor:'#94a3b8',
+          borderWidth:1.1,borderDash:dash,pointRadius:0,tension:0});
+        dsets.push(mk(s.mean,'mean',[6,4]),mk(s.mean+s.sd,'+1σ',[2,3]),mk(s.mean-s.sd,'−1σ',[2,3]));
+        bandNote=` · ${vis[0]} mean ${s.mean.toFixed(1)}x · ±1σ ${s.sd.toFixed(1)}`;
+      }
+    }
+    let yMax;
+    if(st.cap==='auto'){
+      const all=vis.flatMap(t=>W.series[t].filter(v=>v!=null)).sort((a,b)=>a-b);
+      if(all.length) yMax=Math.ceil(all[Math.floor(all.length*0.98)]*1.12/5)*5;
+    }
+    mainCh.data.labels=W.dates; mainCh.data.datasets=dsets;
+    mainCh.options.scales.y.max=yMax;
+    mainCh.update();
+    document.getElementById('hpeTitle').textContent=`${mLabel} P/E — weekly${bandNote}`;
+
+    // relative chart — ASML vs median of the other 6 (fixed set, needs ≥3 peers with data)
+    const relPeers=PEH.order.filter(t=>t!=='ASML');
+    const ratio=W.dates.map((d,i)=>{
+      const a=W.series.ASML[i]; if(a==null)return null;
+      const ps=relPeers.map(t=>W.series[t][i]).filter(v=>v!=null).sort((x,y)=>x-y);
+      if(ps.length<3)return null;
+      const med=ps.length%2?ps[(ps.length-1)/2]:(ps[ps.length/2-1]+ps[ps.length/2])/2;
+      return +(a/med).toFixed(3);
+    });
+    const rs=stats(ratio);
+    relCh.data.labels=W.dates;
+    relCh.data.datasets=[
+      {label:'ASML ÷ peer median',data:ratio,borderColor:C.asml,backgroundColor:C.asml+'33',borderWidth:1.6,pointRadius:0,tension:0,spanGaps:true},
+      ...(rs?[{label:'window mean',data:W.dates.map(()=>+rs.mean.toFixed(3)),borderColor:'#94a3b8',borderWidth:1.1,borderDash:[6,4],pointRadius:0,tension:0}]:[]),
+      {label:'parity 1.0×',data:W.dates.map(()=>1),borderColor:'#94a3b855',borderWidth:1,borderDash:[2,3],pointRadius:0,tension:0},
+    ];
+    relCh.update();
+    document.getElementById('hpeRelTitle').textContent=`ASML ${mLabel} P/E vs peer median (AMAT·KLAC·LRCX·TER·AEIS·TEL)`;
+    document.getElementById('hpeRelNote').innerHTML=rs?
+      `Now <b>${rs.last.toFixed(2)}×</b> the peer-median ${mLabel} P/E · window mean <b>${rs.mean.toFixed(2)}×</b> · ${rs.pct}th %ile of the window. &gt;1.0× = ASML at a premium to the median SemiCap peer.`:
+      'Not enough overlapping data in this window.';
+
+    // KPI cards + stats table (all peers, independent of show/hide)
+    const winLabel=st.yrs?st.yrs+'Y':'Max';
+    document.getElementById('hpeCards').innerHTML=PEH.order.map(t=>{
+      const s=stats(W.series[t]); if(!s)return '';
+      const prem=(s.last/s.mean-1)*100;
+      return `<div class="card"><h3>${t} · ${mLabel} P/E</h3><div class="kpi" style="color:${HC[t]}">${fmtX(s.last)}</div>`+
+        `<div class="sub">${winLabel} mean ${fmtX(s.mean)} · <span class="${prem>=0?'dn':'up'}">${prem>=0?'+':''}${prem.toFixed(0)}% vs mean</span> · ${s.pct}th %ile</div></div>`;
+    }).join('');
+    document.getElementById('hpeStats').innerHTML=PEH.order.map(t=>{
+      const s=stats(W.series[t]), cur=PEH.cur[t]||{};
+      if(!s)return `<tr><td>${t}</td><td colspan="10" style="text-align:left;color:#8a9bb4">no data in window</td></tr>`;
+      const prem=(s.last/s.mean-1)*100;
+      return `<tr><td><span style="color:${HC[t]}">●</span> <b>${t}</b></td><td><b>${fmtX(s.last)}</b></td>`+
+        `<td>${cur.fy1?cur.fy1.toFixed(1)+'x':'—'}</td><td>${cur.fy2?cur.fy2.toFixed(1)+'x':'—'}</td>`+
+        `<td>${fmtX(s.mean)}</td><td>${fmtX(s.med)}</td><td>${s.sd.toFixed(1)}</td>`+
+        `<td>${fmtX(s.min)}</td><td>${fmtX(s.max)}</td><td>${s.pct}%</td>`+
+        `<td class="${prem>=0?'dn':'up'}">${prem>=0?'+':''}${prem.toFixed(0)}%</td></tr>`;
+    }).join('');
+  }
+
+  function chips(){
+    document.getElementById('hpeChips').innerHTML=PEH.order.map(t=>
+      `<span class="chip${st.on[t]?' on':''}" data-t="${t}"><i style="background:${HC[t]}"></i>${t}</span>`).join('');
+    document.querySelectorAll('#hpeChips .chip').forEach(ch=>ch.onclick=()=>{
+      st.on[ch.dataset.t]=!st.on[ch.dataset.t]; chips(); render();});
+  }
+  [['hpeMetric','m'],['hpeRange','yrs'],['hpeCap','cap']].forEach(([id,key])=>{
+    document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{
+      document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');
+      const v=b.dataset.m||b.dataset.r||b.dataset.c;
+      st[key]=key==='yrs'?+v:v;
+      render();
+    });
+  });
+  const late=PEH.order.filter(t=>{const i=(PEH.fwd.series[t]||[]).findIndex(v=>v!=null);
+    return i>=0&&PEH.fwd.dates[i]>'2000-12-31';})
+    .map(t=>{const i=PEH.fwd.series[t].findIndex(v=>v!=null);return `${t} ’${PEH.fwd.dates[i].slice(2,4)}`;});
+  document.getElementById('hpeStamp').innerHTML=
+    `BBG pull <b>${PEH.buildStamp}</b> · ${PEH.fwd.dates.length} weekly points (W-FRI) since 2000`+
+    (late.length?` · BEst coverage starts later for ${late.join(' · ')}`:'')+
+    ` · refresh: <code>py -X utf8 build_pe_history.py --publish</code>`;
+  chips(); render();
+})();
 
 // TAB switching
 document.querySelectorAll('#nav button').forEach(b=>{
