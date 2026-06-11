@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Capex Cloud — Hyperscaler Capex Consensus (BBG)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="capex_cloud_data.js"></script>
+<style>
+  :root{--bg:#0b1220;--card:#11192c;--ink:#e7ecf3;--mute:#8a9bb4;--line:#1f2a44;--accent:#5aa7ff;
+        --msft:#5aa7ff;--amzn:#f6c453;--googl:#46d3a6;--meta:#9b8cff;--orcl:#ff6b6b;--tot:#e7ecf3;}
+  html,body{background:var(--bg);color:var(--ink);font:14px/1.45 -apple-system,Segoe UI,Roboto,Arial;margin:0}
+  header{padding:18px 28px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+  header h1{margin:0;font-size:18px;letter-spacing:.3px}
+  header .meta{color:var(--mute);font-size:12px}
+  nav{display:flex;gap:0;padding:0 28px;border-bottom:1px solid var(--line);background:#0d1424;overflow-x:auto}
+  nav button{background:transparent;border:0;color:var(--mute);padding:14px 18px;font:600 13px/1 -apple-system,Segoe UI;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+  nav button.active{color:var(--ink);border-bottom-color:var(--accent)}
+  main{padding:22px 28px;max-width:1400px;margin:0 auto}
+  section{display:none}
+  section.active{display:block}
+  .grid{display:grid;gap:18px}
+  .grid.two{grid-template-columns:1fr 1fr}
+  .grid.three{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:1000px){.grid.two,.grid.three{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .card h3{margin:0 0 6px;font-size:13px;letter-spacing:.4px;color:var(--mute);text-transform:uppercase}
+  .card .kpi{font-size:24px;font-weight:700}
+  .card .sub{font-size:12px;color:var(--mute);margin-top:2px}
+  .chart-wrap{position:relative;height:360px}
+  .chart-tall{position:relative;height:440px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  thead th{color:var(--mute);font-weight:600;background:#0d1424;position:sticky;top:0}
+  tr:hover td{background:#142039}
+  .up{color:#46d3a6}.dn{color:#ff6b6b}
+  h2.sec{margin:4px 0 12px;font-size:15px;color:var(--ink)}
+  p.note{color:var(--mute);font-size:12px;margin:4px 0 14px}
+  .seg{display:inline-flex;gap:4px;flex-wrap:wrap;margin:0 12px 12px 0}
+  .seg button{background:#0d1424;border:1px solid var(--line);border-radius:6px;color:var(--mute);font:600 12px/1 -apple-system,Segoe UI;padding:8px 12px;cursor:pointer}
+  .seg button.on{background:var(--accent);border-color:var(--accent);color:#0b1220}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:#0d1424;border:1px solid var(--line);border-radius:14px;color:var(--ink);font:600 12px/1 -apple-system,Segoe UI;padding:7px 12px;cursor:pointer;margin:0 4px 8px 0;opacity:.35}
+  .chip.on{opacity:1}
+  .chip i{width:10px;height:10px;border-radius:50%;display:inline-block}
+  .hl{color:var(--accent);font-weight:700}
+  .stHi{color:#f6c453}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Capex Cloud — Hyperscaler Capex Consensus &amp; Street High</h1>
+    <div class="meta" id="hdrMeta">MSFT · AMZN · GOOGL · META · ORCL — Bloomberg BEst consensus via Capstone wrapper</div>
+  </div>
+  <div class="meta">Mean = BEst consensus · Street High = most aggressive analyst (|BEST_CAPEX_LO|)</div>
+</header>
+<nav id="nav">
+  <button data-tab="win" class="active">1 · Next 12 / 24 Months</button>
+  <button data-tab="fy">2 · Fiscal Years FY1-FY3</button>
+  <button data-tab="hist">3 · History &amp; Forecast</button>
+  <button data-tab="rev">4 · Revision Tracker</button>
+</nav>
+<main>
+
+<!-- TAB 1: FORWARD WINDOWS -->
+<section id="win" class="active">
+  <div class="grid three" id="kpiRow"></div>
+  <div style="margin-top:18px" class="card">
+    <h2 class="sec">Consensus vs street range — <span id="winTitle">next 12 months</span></h2>
+    <div class="seg" id="winSeg">
+      <button data-w="1BF" class="on">NTM (months 0-12)</button>
+      <button data-w="2BF">Months 12-24</button>
+      <button data-w="CUM">Cumulative 24M</button>
+    </div>
+    <p class="note">Bar = consensus mean · floating bar = full analyst range (street-low → street-high). Blended-forward windows roll from today (11-Jun-2026). Cumulative 24M = 1BF + 2BF (indicative; analyst sets differ per window).</p>
+    <div class="chart-wrap"><canvas id="cWin"></canvas></div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Detail table</h2>
+    <div id="tblWin"></div>
+  </div>
+</section>
+
+<!-- TAB 2: FISCAL YEARS -->
+<section id="fy">
+  <div class="card">
+    <h2 class="sec">Fiscal-year capex — consensus vs street</h2>
+    <div class="seg" id="fySeg">
+      <button data-m="mean" class="on">Consensus mean</button>
+      <button data-m="streetHi">Street high</button>
+      <button data-m="streetLo">Street low</button>
+    </div>
+    <p class="note">FY labels are company-specific: MSFT FY ends June, ORCL May, others December. ORCL FY26 ($56bn) just reported → its FY1 = FY27. Tooltip shows the full range.</p>
+    <div class="chart-tall"><canvas id="cFY"></canvas></div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">FY detail — mean / street high / street low / # estimates / growth</h2>
+    <div id="tblFY"></div>
+  </div>
+</section>
+
+<!-- TAB 3: HISTORY -->
+<section id="hist">
+  <div class="card">
+    <h2 class="sec">Annual capex — reported actuals + consensus FY+1..FY+3</h2>
+    <p class="note">Stacked by company, aligned by recency: "Last FY" = each company's most recent reported fiscal year (MSFT FY25 Jun-25 · ORCL FY26 May-26 · others FY25 Dec-25). Lighter bars = consensus forward — hover any bar for the company-specific fiscal year. Forward bars follow the toggle below.</p>
+    <div class="seg" id="histSeg">
+      <button data-m="mean" class="on">Consensus mean</button>
+      <button data-m="streetHi">Street high</button>
+    </div>
+    <div class="chart-tall"><canvas id="cAnn"></canvas></div>
+  </div>
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec">Quarterly capex since 2015 ($bn, calendarized)</h2>
+      <div class="chart-wrap"><canvas id="cQtr"></canvas></div>
+    </div>
+    <div class="card">
+      <h2 class="sec">Capex intensity — TTM capex / TTM revenue</h2>
+      <div class="chart-wrap"><canvas id="cInt"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- TAB 4: REVISIONS -->
+<section id="rev">
+  <div class="card">
+    <h2 class="sec">Consensus revision tracker — weekly BEst capex, rolling forward windows</h2>
+    <div class="seg" id="revSeg">
+      <button data-w="1BF" class="on">NTM (1BF)</button>
+      <button data-w="2BF">Months 12-24 (2BF)</button>
+    </div>
+    <div class="seg" id="revMode">
+      <button data-m="abs" class="on">$bn</button>
+      <button data-m="idx">Indexed = 100 (Jan-2025)</button>
+    </div>
+    <div id="revChips"></div>
+    <p class="note">Window rolls with the calendar, so part of each climb is window-shift; the steps around earnings dates are the true estimate revisions.</p>
+    <div class="chart-tall"><canvas id="cRev"></canvas></div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Revision summary — change in rolling-NTM consensus</h2>
+    <div id="tblRev"></div>
+  </div>
+</section>
+
+</main>
+<script>
+const D = window.CCX;
+const ORDER = D.order;
+const COL = {MSFT:'#5aa7ff', AMZN:'#f6c453', GOOGL:'#46d3a6', META:'#9b8cff', ORCL:'#ff6b6b', TOTAL:'#e7ecf3'};
+const bn = v => v==null ? null : v/1000;
+const fbn = (v,d=1) => v==null ? '–' : '$'+(v/1000).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d})+'bn';
+const pct = v => v==null ? '–' : (v>=0?'+':'')+(100*v).toFixed(1)+'%';
+document.getElementById('hdrMeta').textContent =
+  `MSFT · AMZN · GOOGL · META · ORCL — Bloomberg BEst via Capstone wrapper · pulled ${D.buildStamp}`;
+
+Chart.defaults.color = '#8a9bb4';
+Chart.defaults.borderColor = '#1f2a44';
+Chart.defaults.font.family = '-apple-system,Segoe UI,Roboto,Arial';
+
+// ---- helpers ------------------------------------------------------------
+function lastActualYear(s){ return Math.max(...Object.keys(D.annual[s]).map(Number)); }
+const FYM = {1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'May',6:'Jun',7:'Jul',8:'Aug',9:'Sep',10:'Oct',11:'Nov',12:'Dec'};
+function fyLabel(s, k){ // k = 1,2,3 -> e.g. "FY27 (May-27)"
+  const y = lastActualYear(s)+k, m = D.fyEndMonth[s];
+  return `FY${String(y).slice(2)} (${FYM[m]}-${String(y).slice(2)})`;
+}
+function cum(s,f){ const a=D.snap[s]['1BF'][f], b=D.snap[s]['2BF'][f]; return a==null||b==null?null:a+b; }
+function getWin(s, w, f){ return w==='CUM' ? cum(s,f) : D.snap[s][w][f]; }
+function totWin(w,f){ return ORDER.reduce((t,s)=>t+(getWin(s,w,f)||0),0); }
+
+// ---- nav ---------------------------------------------------------------
+document.getElementById('nav').addEventListener('click', e=>{
+  if(!e.target.dataset.tab) return;
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active', b===e.target));
+  document.querySelectorAll('main>section').forEach(s=>s.classList.toggle('active', s.id===e.target.dataset.tab));
+});
+function segWire(id, attr, cb){
+  document.getElementById(id).addEventListener('click', e=>{
+    const v = e.target.dataset[attr]; if(!v) return;
+    document.querySelectorAll('#'+id+' button').forEach(b=>b.classList.toggle('on', b===e.target));
+    cb(v);
+  });
+}
+
+// ---- TAB 1: KPIs --------------------------------------------------------
+(function kpis(){
+  const t1m=totWin('1BF','mean'), t1h=totWin('1BF','streetHi');
+  const t2m=totWin('2BF','mean'), t2h=totWin('2BF','streetHi');
+  const tcm=t1m+t2m, tch=t1h+t2h;
+  const ttm = ORDER.reduce((t,s)=>{
+    const q = Object.entries(D.qtr[s].capex).sort().slice(-4);
+    return t + q.reduce((a,[,v])=>a+v,0);
+  },0);
+  const rows = [
+    ['Big-5 capex — next 12 months', fbn(t1m,0), `street high <span class="stHi">${fbn(t1h,0)}</span> (+${((t1h/t1m-1)*100).toFixed(0)}% vs mean)`],
+    ['Months 12-24', fbn(t2m,0), `street high <span class="stHi">${fbn(t2h,0)}</span> · +${((t2m/t1m-1)*100).toFixed(0)}% vs NTM`],
+    ['Cumulative next 24 months', fbn(tcm,0), `street high <span class="stHi">${fbn(tch,0)}</span> — a $${(tch/1e6).toFixed(1)}tn bull case`],
+    ['Trailing 12 months (actual)', fbn(ttm,0), 'sum of each company’s last 4 reported quarters'],
+    ['NTM vs TTM', pct(t1m/ttm-1), 'consensus next-12m vs actual last-12m spend'],
+    ['Estimates (NTM)', ORDER.map(s=>`${s} ${D.snap[s]['1BF'].n??'–'}`).join(' · '), 'analysts contributing per name'],
+  ];
+  document.getElementById('kpiRow').innerHTML = rows.map(r=>
+    `<div class="card"><h3>${r[0]}</h3><div class="kpi">${r[1]}</div><div class="sub">${r[2]}</div></div>`).join('');
+})();
+
+// ---- TAB 1: chart + table ----------------------------------------------
+let winChart, curWin='1BF';
+const WINTXT = {'1BF':'next 12 months','2BF':'months 12-24','CUM':'cumulative 24 months'};
+function drawWin(){
+  const labels = ORDER.map(s=>D.names[s]);
+  const mean = ORDER.map(s=>bn(getWin(s,curWin,'mean')));
+  const range = ORDER.map(s=>[bn(getWin(s,curWin,'streetLo')), bn(getWin(s,curWin,'streetHi'))]);
+  if(winChart) winChart.destroy();
+  winChart = new Chart(document.getElementById('cWin'), {
+    type:'bar',
+    data:{labels, datasets:[
+      {label:'Consensus mean', data:mean, backgroundColor:ORDER.map(s=>COL[s]+'E6'), borderRadius:4, barPercentage:.38, categoryPercentage:.8},
+      {label:'Street range (low → high)', data:range, backgroundColor:ORDER.map(s=>COL[s]+'40'),
+       borderColor:ORDER.map(s=>COL[s]), borderWidth:1.5, borderRadius:4, barPercentage:.38, categoryPercentage:.8},
+    ]},
+    options:{maintainAspectRatio:false, scales:{y:{title:{display:true,text:'US$ bn'},grid:{color:'#1f2a44'}},x:{grid:{display:false}}},
+      plugins:{legend:{labels:{color:'#e7ecf3'}}, tooltip:{callbacks:{label:c=>{
+        if(c.datasetIndex===0) return ` mean ${fbn(c.parsed.y*1000)}`;
+        const [lo,hi]=c.raw; return ` street ${fbn(lo*1000)} → ${fbn(hi*1000)}`;}}}}}
+  });
+  document.getElementById('winTitle').textContent = WINTXT[curWin];
+  // table
+  let h = `<table><thead><tr><th>Company</th><th>Consensus</th><th>Street high</th><th>vs mean</th><th>Street low</th><th># est</th><th>Capex / revenue</th></tr></thead><tbody>`;
+  for(const s of ORDER){
+    const m=getWin(s,curWin,'mean'), hi=getWin(s,curWin,'streetHi'), lo=getWin(s,curWin,'streetLo');
+    const sales=getWin(s,curWin,'sales');
+    const n = curWin==='CUM' ? `${D.snap[s]['1BF'].n}/${D.snap[s]['2BF'].n}` : D.snap[s][curWin].n;
+    h+=`<tr><td><span style="color:${COL[s]}">●</span> ${D.names[s]} <span style="color:var(--mute)">${s}</span></td>
+      <td class="hl">${fbn(m)}</td><td class="stHi">${fbn(hi)}</td><td>${pct(hi&&m?hi/m-1:null)}</td>
+      <td>${fbn(lo)}</td><td>${n??'–'}</td><td>${sales&&m?pct(m/sales).replace('+',''):'–'}</td></tr>`;
+  }
+  const tm=totWin(curWin,'mean'), th=totWin(curWin,'streetHi'), tl=totWin(curWin,'streetLo');
+  h+=`<tr style="font-weight:700"><td>Big-5 total</td><td class="hl">${fbn(tm,0)}</td><td class="stHi">${fbn(th,0)}</td>
+    <td>${pct(th/tm-1)}</td><td>${fbn(tl,0)}</td><td></td><td></td></tr></tbody></table>`;
+  document.getElementById('tblWin').innerHTML = h;
+}
+segWire('winSeg','w', v=>{curWin=v; drawWin();});
+drawWin();
+
+// ---- TAB 2: fiscal years -------------------------------------------------
+let fyChart, fyMetric='mean';
+function drawFY(){
+  const cats = ['FY1','FY2','FY3'];
+  if(fyChart) fyChart.destroy();
+  fyChart = new Chart(document.getElementById('cFY'), {
+    type:'bar',
+    data:{labels:cats, datasets: ORDER.map(s=>({
+      label:D.names[s],
+      data:[1,2,3].map(k=>bn(D.snap[s][k+'FY'][fyMetric])),
+      backgroundColor:COL[s]+'CC', borderRadius:4,
+    }))},
+    options:{maintainAspectRatio:false,
+      scales:{y:{title:{display:true,text:'US$ bn'},grid:{color:'#1f2a44'}},x:{grid:{display:false}}},
+      plugins:{legend:{labels:{color:'#e7ecf3'}}, tooltip:{callbacks:{
+        title:items=>{const k=items[0].dataIndex+1; const s=ORDER[items[0].datasetIndex]; return `${D.names[s]} ${fyLabel(s,k)}`;},
+        label:c=>{const s=ORDER[c.datasetIndex], k=(c.dataIndex+1)+'FY', d=D.snap[s][k];
+          return [` mean ${fbn(d.mean)}`, ` street high ${fbn(d.streetHi)}`, ` street low ${fbn(d.streetLo)}`, ` ${d.n} estimates`];}}}}}
+  });
+  // table
+  let h = `<table><thead><tr><th>Company</th><th>Period</th><th>Consensus</th><th>Street high</th><th>Street low</th><th># est</th><th>YoY (mean)</th><th>Capex / rev</th></tr></thead><tbody>`;
+  for(const s of ORDER){
+    let prev = D.annual[s][lastActualYear(s)].capex;
+    for(let k=1;k<=3;k++){
+      const d = D.snap[s][k+'FY'];
+      h+=`<tr><td>${k===1?`<span style="color:${COL[s]}">●</span> ${D.names[s]}`:''}</td>
+        <td>${fyLabel(s,k)}</td><td class="hl">${fbn(d.mean)}</td><td class="stHi">${fbn(d.streetHi)}</td>
+        <td>${fbn(d.streetLo)}</td><td>${d.n??'–'}</td>
+        <td class="${d.mean>=prev?'up':'dn'}">${pct(d.mean/prev-1)}</td>
+        <td>${d.sales?pct(d.mean/d.sales).replace('+',''):'–'}</td></tr>`;
+      prev = d.mean;
+    }
+  }
+  h+='</tbody></table>';
+  document.getElementById('tblFY').innerHTML = h;
+}
+segWire('fySeg','m', v=>{fyMetric=v; drawFY();});
+drawFY();
+
+// ---- TAB 3: history -------------------------------------------------------
+let annChart, annMetric='mean';
+const NACT = 6; // actual columns before "Last FY"
+function drawAnn(){
+  // aligned by RECENCY: each company's most recent reported FY sits in the "Last FY" column
+  const labels = [...Array.from({length:NACT},(_,i)=>`FY-${NACT-i}`), 'Last FY', 'FY+1E','FY+2E','FY+3E'];
+  const ds = ORDER.map(s=>{
+    const la = lastActualYear(s);
+    const hist = Array.from({length:NACT+1},(_,i)=>{
+      const y = la-NACT+i, a = D.annual[s][y];
+      return a ? bn(a.capex) : null;
+    });
+    const fwd  = [1,2,3].map(k=>bn(D.snap[s][k+'FY'][annMetric]));
+    return {label:D.names[s], data:[...hist, ...fwd],
+      backgroundColor:[...hist.map(()=>COL[s]+'CC'), ...[1,2,3].map(()=>COL[s]+'55')],
+      borderColor:COL[s], borderWidth:[...hist.map(()=>0), 1,1,1].map(v=>v), borderRadius:3};
+  });
+  if(annChart) annChart.destroy();
+  annChart = new Chart(document.getElementById('cAnn'), {
+    type:'bar',
+    data:{labels, datasets:ds},
+    options:{maintainAspectRatio:false,
+      scales:{x:{stacked:true,grid:{display:false}}, y:{stacked:true,title:{display:true,text:'US$ bn'},grid:{color:'#1f2a44'}}},
+      plugins:{legend:{labels:{color:'#e7ecf3'}}, tooltip:{callbacks:{
+        title:items=>{
+          const i=items[0].dataIndex;
+          return items.map(it=>{
+            const s=ORDER[it.datasetIndex], la=lastActualYear(s);
+            const y = i<=NACT ? la-NACT+i : la+(i-NACT);
+            return `${D.names[s]} FY${String(y).slice(2)} (${FYM[D.fyEndMonth[s]]}-${String(y).slice(2)})${i>NACT?' E':''}`;
+          })[0];
+        },
+        label:c=>` ${c.dataset.label}: ${c.raw==null?'–':fbn(c.raw*1000)}`,
+        footer:items=>{const t=items.reduce((a,i)=>a+(i.raw||0),0); return 'Total '+fbn(t*1000,0);}}}}}
+  });
+}
+segWire('histSeg','m', v=>{annMetric=v; drawAnn();});
+drawAnn();
+
+// quarterly stacked, calendarized
+const cq = d => d.slice(0,4)+'Q'+Math.ceil(+d.slice(5,7)/3);
+(function drawQtr(){
+  const buckets = {};   // 'YYYYQn' -> {sym:val}
+  for(const s of ORDER){
+    for(const [d,v] of Object.entries(D.qtr[s].capex)){
+      (buckets[cq(d)] ??= {})[s]=v;
+    }
+  }
+  // drop partial buckets (not all 5 reported yet)
+  const keys = Object.keys(buckets).sort().filter(k=>Object.keys(buckets[k]).length===ORDER.length);
+  new Chart(document.getElementById('cQtr'), {
+    type:'bar',
+    data:{labels:keys, datasets:ORDER.map(s=>({label:D.names[s],
+      data:keys.map(k=>bn(buckets[k][s]??null)), backgroundColor:COL[s]+'CC'}))},
+    options:{maintainAspectRatio:false,
+      scales:{x:{stacked:true,grid:{display:false},ticks:{maxTicksLimit:16}},
+              y:{stacked:true,title:{display:true,text:'US$ bn / quarter'},grid:{color:'#1f2a44'}}},
+      plugins:{legend:{labels:{color:'#e7ecf3'}}, tooltip:{callbacks:{
+        footer:items=>{const t=items.reduce((a,i)=>a+(i.raw||0),0); return 'Total '+fbn(t*1000,0);}}}}}
+  });
+})();
+
+// TTM intensity — calendarized buckets shared across companies
+(function drawInt(){
+  const perSym = {};   // sym -> {bucket: pct}
+  const allKeys = new Set();
+  for(const s of ORDER){
+    const cd = Object.entries(D.qtr[s].capex).sort(), rd = D.qtr[s].rev;
+    const m = {};
+    for(let i=3;i<cd.length;i++){
+      let c=0,r=0,ok=true;
+      for(let j=i-3;j<=i;j++){ c+=cd[j][1]; const rv=rd[cd[j][0]]; if(rv==null){ok=false;break;} r+=rv; }
+      if(ok&&r>0){ const k=cq(cd[i][0]); m[k]=+(100*c/r).toFixed(1); allKeys.add(k); }
+    }
+    perSym[s]=m;
+  }
+  const keys = [...allKeys].sort();
+  new Chart(document.getElementById('cInt'), {
+    type:'line',
+    data:{labels:keys, datasets: ORDER.map(s=>({label:D.names[s],
+      data:keys.map(k=>perSym[s][k]??null), borderColor:COL[s], backgroundColor:COL[s],
+      pointRadius:0, borderWidth:2, tension:.3, spanGaps:true}))},
+    options:{maintainAspectRatio:false,
+      scales:{x:{ticks:{maxTicksLimit:12},grid:{display:false}},
+              y:{title:{display:true,text:'TTM capex / TTM revenue (%)'},grid:{color:'#1f2a44'}}},
+      plugins:{legend:{labels:{color:'#e7ecf3'}},
+        tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y}%`}}}}
+  });
+})();
+
+// ---- TAB 4: revisions ------------------------------------------------------
+let revChart, revWin='1BF', revMode='abs';
+const revOn = Object.fromEntries([...ORDER,'TOTAL'].map(s=>[s,true]));
+(function chips(){
+  const el = document.getElementById('revChips');
+  el.innerHTML = [...ORDER,'TOTAL'].map(s=>
+    `<span class="chip on" data-s="${s}"><i style="background:${COL[s]}"></i>${s==='TOTAL'?'Big-5 total':D.names[s]}</span>`).join('');
+  el.addEventListener('click', e=>{
+    const c = e.target.closest('.chip'); if(!c) return;
+    revOn[c.dataset.s]=!revOn[c.dataset.s]; c.classList.toggle('on'); drawRev();
+  });
+})();
+function drawRev(){
+  const H = D.revHist[revWin], dates = H.dates;
+  const idx0 = dates.findIndex(d=>d>='2025-01-01');
+  const mk = (sym, arr)=>{
+    let vals = arr.map(bn);
+    if(revMode==='idx'){
+      const base = vals[idx0>=0?idx0:0];
+      vals = vals.map(v=> v==null||base==null ? null : +(100*v/base).toFixed(1));
+    }
+    return {label: sym==='TOTAL'?'Big-5 total':D.names[sym], data:vals, borderColor:COL[sym],
+      backgroundColor:COL[sym], pointRadius:0, borderWidth:sym==='TOTAL'?2.5:1.8,
+      borderDash:sym==='TOTAL'?[6,3]:[], tension:.25, spanGaps:true};
+  };
+  const ds=[];
+  for(const s of ORDER) if(revOn[s]) ds.push(mk(s, H.series[s]));
+  if(revOn.TOTAL) ds.push(mk('TOTAL', dates.map((_,i)=>ORDER.reduce((t,s)=>t+(H.series[s][i]||0),0))));
+  if(revChart) revChart.destroy();
+  revChart = new Chart(document.getElementById('cRev'), {
+    type:'line',
+    data:{labels:dates, datasets:ds},
+    options:{maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+      scales:{x:{ticks:{maxTicksLimit:14},grid:{display:false}},
+              y:{title:{display:true,text:revMode==='abs'?'US$ bn (rolling window)':'indexed = 100 @ Jan-2025'},grid:{color:'#1f2a44'}}},
+      plugins:{legend:{labels:{color:'#e7ecf3'}},
+        tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${revMode==='abs'?fbn(c.parsed.y*1000):c.parsed.y}`}}}}
+  });
+  // summary table: change over 3m/6m/12m/since Jan-25
+  const per = {'3m':13,'6m':26,'12m':52};
+  let h = `<table><thead><tr><th>Company</th><th>Now (${revWin==='1BF'?'NTM':'12-24M'})</th><th>Δ 3m</th><th>Δ 6m</th><th>Δ 12m</th><th>Δ since Jan-25</th></tr></thead><tbody>`;
+  const series = {...H.series, TOTAL: dates.map((_,i)=>ORDER.reduce((t,s)=>t+(H.series[s][i]||0),0))};
+  for(const s of [...ORDER,'TOTAL']){
+    const arr = series[s], nowV = arr[arr.length-1];
+    const cell = k=>{const old=arr[arr.length-1-k]; return old?`<td class="${nowV>=old?'up':'dn'}">${pct(nowV/old-1)}</td>`:'<td>–</td>';};
+    const oldJ = arr[idx0>=0?idx0:0];
+    h+=`<tr style="${s==='TOTAL'?'font-weight:700':''}"><td><span style="color:${COL[s]}">●</span> ${s==='TOTAL'?'Big-5 total':D.names[s]}</td>
+      <td class="hl">${fbn(nowV,0)}</td>${cell(per['3m'])}${cell(per['6m'])}${cell(per['12m'])}
+      <td class="${nowV>=oldJ?'up':'dn'}">${pct(nowV/oldJ-1)}</td></tr>`;
+  }
+  h+='</tbody></table>';
+  document.getElementById('tblRev').innerHTML = h;
+}
+segWire('revSeg','w', v=>{revWin=v; drawRev();});
+segWire('revMode','m', v=>{revMode=v; drawRev();});
+drawRev();
+</script>
+</body>
+</html>
