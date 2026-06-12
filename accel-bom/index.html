@@ -1675,6 +1675,50 @@ const SA_POWER = {
 CHIPS.forEach(c => { c.sa = SA_POWER[c.chip] || null; });
 window.setPower = m => { powerMode = m; renderAll(); };
 
+/* ---------- ASP de referência SemiAnalysis (Accelerator Supply Output · "ASP $/unit", 1º tri com preço ≈ launch) ---------- */
+const SA_ASP = {
+  'A100':               {asp:13500,  src:'Nvidia - A100'},
+  'A800':               {asp:13500,  src:'Nvidia - A800'},
+  'H100':               {asp:24000,  src:'Nvidia - H100 SXM'},
+  'H200':               {asp:24000,  src:'Nvidia - H200'},
+  'H800':               {asp:24000,  src:'Nvidia - H800'},
+  'H20':                {asp:12500,  src:'Nvidia - H20'},
+  'B20':                {asp:15000,  src:'Nvidia - B30A (single die)'},
+  'B200':               {asp:32000,  src:'B200 1000W'},
+  'B300':               {asp:40736,  src:'Nvidia - B300 (blend c/ GB300)'},
+  'R200':               {asp:65000,  src:'Vera Rubin NVL72'},
+  'R300':               {asp:198000, src:'Rubin Ultra 16-Hi (1024GB)'},
+  'Rubin CPX':          {asp:20330,  src:'Rubin CPX p/ VR NVL72 (GDDR7)'},
+  'MI300X':             {asp:17000,  src:'AMD - MI300X'},
+  'MI325X':             {asp:17000,  src:'AMD - MI325X'},
+  'MI350X':             {asp:21000,  src:'AMD - MI350'},
+  'MI455X':             {asp:34500,  src:'AMD - MI400'},
+  'MI500X':             {asp:65000,  src:'AMD - MI500'},
+  'TPU v4i':            {asp:600,    src:'Broadcom - TPU v4i (Pufferlite)'},
+  'TPU v4':             {asp:3800,   src:'Broadcom - TPU v4 (Pufferfish)'},
+  'TPU v5e':            {asp:1620,   src:'Broadcom - TPU v5e (Viperlite)'},
+  'TPU v5p':            {asp:5500,   src:'Broadcom - TPU v5p (Viperfish)'},
+  'TPU v6e (Trillium)': {asp:2800,   src:'Broadcom - TPU v6 (Ghostlite)'},
+  'TPU7x (Ironwood)':   {asp:13275,  src:'Google - TPU v7 (Ironwood)'},
+  'TPU8x (Zebrafish)':  {asp:9000,   src:'Google - TPU v8X (MTK books $4k)'},
+  'TPU8ax (Sunfish)':   {asp:15000,  src:'Google - TPU v8AX (Sunfish)'},
+  'TPU9x (Humufish)':   {asp:10000,  src:'MediaTek - TPU v9X (Humufish)'},
+  'TPU9ax (Pumafish)':  {asp:67000,  src:'Broadcom - TPU v9AX (Pumafish)'},
+  'MTIA 200':           {asp:1000,   src:'Broadcom - MTIA 200 (Artemis)'},
+  'MTIA 300':           {asp:9000,   src:'Broadcom - MTIA 300 (Athena)'},
+  'MTIA 400':           {asp:17000,  src:'Broadcom - MTIA 400 (Santa Barbara)'},
+  'MTIA 450':           {asp:26000,  src:'Broadcom - MTIA 450 (Arke)'},
+  'MTIA 500':           {asp:38000,  src:'Broadcom - MTIA 500 (Astrid)'},
+  'Titan v1':           {asp:15000,  src:'Broadcom - OAI Titan 1 (Small)'},
+  'Inferentia 2':       {asp:1080,   src:'Alchip - Inferentia2/Trainium1'},
+  'Trainium 2':         {asp:2700,   src:'Marvell gross ASP (ex-HBM, mesma base Jefferies)'},
+  'Maia 100':           {asp:1854,   src:'GUC - Maia 100 (net ao designer)'},
+  'Maia 200':           {asp:5150,   src:'GUC - Maia 200 (net ao designer)'},
+  'Maia 300':           {asp:9000,   src:'Marvell - Maia 300 (Griffin)'},
+  'Baltra':             {asp:8447,   src:'Apple - Baltra Sotra'}
+};
+CHIPS.forEach(c => { const m = SA_ASP[c.chip]; c.saAsp = m ? m.asp : null; c.saAspSrc = m ? m.src : null; });
+
 /* ---------- flags de qualidade de dado (auditoria jun-26 vs fonte + SemiAnalysis) ---------- */
 const WARN = {
   'MTIA 300':          'Jefferies marca HBM2E a $11/GB, mas 12-Hi 36GB/stack é spec de HBM3E ($14/GB) — HBM possivelmente subestimada em ~$648/chip (B.O.M ~$4.554, ASP ~$11k+)',
@@ -1716,7 +1760,8 @@ function calc(c){
            powerW: pw, powerEst: (powerMode==='allin' && c.sa && c.sa.est) || false,
            chipsGW, bomGW: chipsGW&&total ? total*chipsGW/1e9 : null,
            aspGW: chipsGW&&asp ? asp*chipsGW/1e9 : null,
-           streetGW: chipsGW&&c.streetAsp ? c.streetAsp*chipsGW/1e9 : null };
+           streetGW: chipsGW&&c.streetAsp ? c.streetAsp*chipsGW/1e9 : null,
+           saGW: chipsGW&&c.saAsp ? c.saAsp*chipsGW/1e9 : null };
 }
 
 /* ---------- formatting ---------- */
@@ -1804,7 +1849,7 @@ function detailHTML(c){
         <tr><td>${gmLabel}</td>
           <td><input class="bom-input${o.gm!=null?' changed':''}" style="width:60px" type="number" step="0.01" min="0" max="0.95" value="${(gmVal??0).toFixed(2)}" onchange="setOvr(${c.idx},'gm',this.value)">${c.logicGm!=null?' <span class="dim">(HBM repassada a custo)</span>':''}</td>
           <td></td><td></td></tr>
-        <tr class="tot"><td>ASP implícito</td><td class="dim">Jefferies: ${fmt$(c.asp)}${c.streetAsp?' · street '+fmt$(c.streetAsp):''}</td>
+        <tr class="tot"><td>ASP implícito <span class="dim" style="font-weight:400">(B.O.M ÷ (1−GM))</span></td><td class="dim">Jefferies: ${fmt$(c.asp)}${c.streetAsp?' · street '+fmt$(c.streetAsp):''}${c.saAsp?` · <span title="${esc(c.saAspSrc)}">SA ${fmt$(c.saAsp)}</span>`:''}</td>
           <td class="org">${fmt$(r.asp)}</td>
           <td>${c.asp?`<span class="delta ${r.asp>c.asp?'neg':'pos'}">${(100*(r.asp/c.asp-1)).toFixed(1)}%</span>`:''}</td></tr>
       </table></div>
@@ -1820,7 +1865,7 @@ function detailHTML(c){
             ? (c.sa?`SemiAnalysis: ${esc(c.sa.sa)}${c.sa.est?' · estimado':''} · chip ${c.tdp||c.sa.tdp} W`:'sem match na SemiAnalysis')
             : (c.tdpEst?'estimativa (não consta na Jefferies)':'por package')+(c.sa?` · all-in SA ${Math.round(c.sa.allin).toLocaleString('en-US')} W`:'')}</div></div>
         <div class="kpi"><div class="l">Chips por GW</div><div class="v">${fmtK(r.chipsGW)}</div><div class="s">${powerMode==='allin'?'1 GW all-in (SemiAnalysis)':'1 GW de TDP de chip'}</div></div>
-        <div class="kpi"><div class="l">Custo por GW</div><div class="v blu">${fmt$B(r.aspGW)}</div><div class="s">a ASP · street ${fmt$B(r.streetGW)} · B.O.M ${fmt$B(r.bomGW)}</div></div>
+        <div class="kpi"><div class="l">Custo por GW</div><div class="v blu">${fmt$B(r.aspGW)}</div><div class="s">a ASP · street ${fmt$B(r.streetGW)} · SA ${fmt$B(r.saGW)} · B.O.M ${fmt$B(r.bomGW)}</div></div>
       </div>
       <div class="memo">Custo por GW = ASP × (1e9 / W). Base "Chip TDP" = TDP de package (Jefferies); base "All-in" = All-in Chip Power da SemiAnalysis (Specs Sheet, abr-26): chip + parcela do servidor (CPU, NIC, fans, perdas) por acelerador. Só silício do acelerador no custo — não inclui resto do servidor, rede, prédio e energia.${c.consigned?' Para AWS, ASP exclui HBM (consignada): custo real por GW p/ Amazon soma a HBM de mercado.':''}</div>
     </div>
@@ -1836,9 +1881,9 @@ window.setOvr = (idx, k, v) => {
 
 function companyTableHTML(tab){
   const list = CHIPS.filter(c=>c.tab===tab && c.complete);
-  let h = `<tr><th>Chip</th><th>Launch</th><th>Node</th><th>HBM</th><th>GB</th><th>$/GB</th><th>HBM $</th><th>HBM %</th><th>B.O.M</th><th>ASP</th><th>Street</th><th>GM</th><th>${powerMode==='allin'?'All-in W':'TDP W'}</th><th>chips/GW</th><th>$B/GW (ASP)</th><th>$B/GW (street)</th></tr>`;
+  let h = `<tr><th>Chip</th><th>Launch</th><th>Node</th><th>HBM</th><th>GB</th><th>$/GB</th><th>HBM $</th><th>HBM %</th><th>B.O.M</th><th>ASP</th><th>Street</th><th>SA ASP</th><th>GM</th><th>${powerMode==='allin'?'All-in W':'TDP W'}</th><th>chips/GW</th><th>$B/GW (ASP)</th><th>$B/GW (street)</th><th>$B/GW (SA)</th></tr>`;
   list.forEach(c => { const r = calc(c);
-    h += `<tr><td>${esc(c.chip)}${c.warn?` <span class="org" title="${esc(c.warn)}">⚠</span>`:''}</td><td class="dim">${esc(c.launch)}</td><td class="dim">${esc(c.node)}</td><td>${esc(c.hbmType)}</td><td>${c.totalGB||'—'}</td><td>${r.pGB!=null&&c.gen?'$'+r.pGB:'—'}</td><td class="org">${c.consigned?'<span class="dim">consig.</span>':fmt$(r.hbm)}</td><td>${fmtP(r.hbmShare)}</td><td>${fmt$(r.total)}</td><td>${fmt$(r.asp)}</td><td class="dim">${fmt$(c.streetAsp)}</td><td>${fmtP(r.asp?1-r.total/r.asp:null)}</td><td>${r.powerW?Math.round(r.powerW)+(r.powerEst?'<span class="org">*</span>':''):'—'}</td><td>${fmtK(r.chipsGW)}</td><td class="blu">${fmt$B(r.aspGW)}</td><td>${fmt$B(r.streetGW)}</td></tr>`;
+    h += `<tr><td>${esc(c.chip)}${c.warn?` <span class="org" title="${esc(c.warn)}">⚠</span>`:''}</td><td class="dim">${esc(c.launch)}</td><td class="dim">${esc(c.node)}</td><td>${esc(c.hbmType)}</td><td>${c.totalGB||'—'}</td><td>${r.pGB!=null&&c.gen?'$'+r.pGB:'—'}</td><td class="org">${c.consigned?'<span class="dim">consig.</span>':fmt$(r.hbm)}</td><td>${fmtP(r.hbmShare)}</td><td>${fmt$(r.total)}</td><td>${fmt$(r.asp)}</td><td class="dim">${fmt$(c.streetAsp)}</td><td class="dim">${c.saAsp?`<span title="${esc(c.saAspSrc)}">${fmt$(c.saAsp)}</span>`:'—'}</td><td>${fmtP(r.asp?1-r.total/r.asp:null)}</td><td>${r.powerW?Math.round(r.powerW)+(r.powerEst?'<span class="org">*</span>':''):'—'}</td><td>${fmtK(r.chipsGW)}</td><td class="blu">${fmt$B(r.aspGW)}</td><td>${fmt$B(r.streetGW)}</td><td class="org">${fmt$B(r.saGW)}</td></tr>`;
   });
   return h;
 }
@@ -1847,7 +1892,7 @@ function companyTableHTML(tab){
 function overviewHTML(){
   return hbmBarHTML() + `
   <div class="card"><div class="card-head"><div class="card-title">Custo por GW ${powerMode==='allin'?'all-in (SemiAnalysis)':'de TDP de chip'} — ASP implícito vs street ($B)</div>
-    <div class="card-sub">quanto custa 1 GW de aceleradores ao preço de venda — nos dois cenários de ASP (implícito Jefferies e street)</div></div>
+    <div class="card-sub">quanto custa 1 GW de aceleradores ao preço de venda — três cenários de ASP: implícito Jefferies (B.O.M ÷ (1−GM)), street (coluna CHECK Jefferies) e SemiAnalysis (ASP $/unit do Accelerator Supply, 1º tri ≈ launch)</div></div>
     <div class="chart-box"><canvas id="ch-gw"></canvas></div></div>
   <div class="grid-2">
   <div class="card"><div class="card-head"><div class="card-title">HBM como % do B.O.M</div></div>
@@ -1861,14 +1906,14 @@ function overviewHTML(){
   <div class="card"><div class="card-head"><div class="card-title">Todos os chips</div>
     <div class="card-sub">B.O.M completo Jefferies · recalcula com HBM global acima</div></div>
     <div class="tbl-wrap"><table id="otable"></table></div>
-  <div class="note">Fonte: Jefferies "Semiconductor AI Chips - Accelerator Characteristics" (AI Model, abr-26). Custos por chip: HBM (GB × $/GB), interposer (CoWoS/SoIC), compute die (wafer ÷ dies ÷ yield), pkg/test e board/IO. ASP = custo ÷ (1−GM); para TPU/MTIA/Maia a Jefferies usa GM só na lógica com HBM repassada a custo; Trainium tem HBM consignada pela Amazon. TDP da aba Chip Performance; Rubin CPX é estimativa pública. Base "All-in" usa o All-in Chip Power da SemiAnalysis ("Semianalysis Apr 26.xlsx", Specs Sheet Output): potência por acelerador incluindo a parcela do servidor (CPU, NIC, fans, perdas de PSU) — * = sem linha na SemiAnalysis, estimado pelo ratio all-in/TDP da família. Custo por GW considera apenas o acelerador (sem PUE/rede/prédio). <span class="org">⚠ Caveat (auditoria jun-26):</span> o "TDP" da Jefferies não é uma base única — para NVIDIA/AMD flagship é TDP de package genuíno, mas para Trainium 2/3/4 e alguns TPUs aproxima o all-in da SemiAnalysis (ex.: Trainium 3 904W ≈ all-in 923W vs chip 570W), o que deprime artificialmente o $/GW desses chips na base TDP; a comparação cross-vendor é mais honesta na base All-in. Linhas com ⚠ têm divergência de dado vs fonte/SemiAnalysis (hover para detalhe).</div></div>`;
+  <div class="note">Fonte: Jefferies "Semiconductor AI Chips - Accelerator Characteristics" (AI Model, abr-26). Custos por chip: HBM (GB × $/GB), interposer (CoWoS/SoIC), compute die (wafer ÷ dies ÷ yield), pkg/test e board/IO. ASP = custo ÷ (1−GM); para TPU/MTIA/Maia a Jefferies usa GM só na lógica com HBM repassada a custo; Trainium tem HBM consignada pela Amazon. TDP da aba Chip Performance; Rubin CPX é estimativa pública. Base "All-in" usa o All-in Chip Power da SemiAnalysis ("Semianalysis Apr 26.xlsx", Specs Sheet Output): potência por acelerador incluindo a parcela do servidor (CPU, NIC, fans, perdas de PSU) — * = sem linha na SemiAnalysis, estimado pelo ratio all-in/TDP da família. Custo por GW considera apenas o acelerador (sem PUE/rede/prédio). <span class="org">⚠ Caveat (auditoria jun-26):</span> o "TDP" da Jefferies não é uma base única — para NVIDIA/AMD flagship é TDP de package genuíno, mas para Trainium 2/3/4 e alguns TPUs aproxima o all-in da SemiAnalysis (ex.: Trainium 3 904W ≈ all-in 923W vs chip 570W), o que deprime artificialmente o $/GW desses chips na base TDP; a comparação cross-vendor é mais honesta na base All-in. Linhas com ⚠ têm divergência de dado vs fonte/SemiAnalysis (hover para detalhe). <b>ASP de referência SA</b>: seção "ASP ($/unit)" do Accelerator Supply Output (1º trimestre com preço ≈ ASP at launch, mesma base do ASP Jefferies); hover na coluna SA ASP mostra a linha usada. Atenção à base nos ASICs: linhas Broadcom/Google = chip completo c/ HBM, linhas GUC/Marvell/Alchip = receita do designer (pode excluir HBM); Trainium 2 usa o gross ASP da Marvell (ex-HBM, mesma base da Jefferies); Trainium 3/4 sem ASP de chip completo comparável na SA.</div></div>`;
 }
 
 function overviewTableHTML(){
   const order = [...CHIPS].filter(c=>c.complete).sort((a,b)=> (calc(b).aspGW||0) - (calc(a).aspGW||0));
-  let h = `<tr><th>Company</th><th>Chip</th><th>Launch</th><th>HBM</th><th>GB</th><th>HBM $</th><th>HBM %</th><th>B.O.M</th><th>ASP</th><th>Street</th><th>GM</th><th>${powerMode==='allin'?'All-in':'TDP'}</th><th>$B/GW (ASP)</th><th>$B/GW (street)</th></tr>`;
+  let h = `<tr><th>Company</th><th>Chip</th><th>Launch</th><th>HBM</th><th>GB</th><th>HBM $</th><th>HBM %</th><th>B.O.M</th><th>ASP</th><th>Street</th><th>SA ASP</th><th>GM</th><th>${powerMode==='allin'?'All-in':'TDP'}</th><th>$B/GW (ASP)</th><th>$B/GW (street)</th><th>$B/GW (SA)</th></tr>`;
   order.forEach(c => { const r = calc(c);
-    h += `<tr><td><span style="color:${COMPANY_COLOR[c.tab]}">●</span> ${esc(c.tab)} <span class="dim">${esc(c.designer)}</span></td><td>${esc(c.chip)}${c.warn?` <span class="org" title="${esc(c.warn)}">⚠</span>`:''}</td><td class="dim">${esc(c.launch)}</td><td>${esc(c.hbmType)}</td><td>${c.totalGB||'—'}</td><td class="org">${c.consigned?'<span class="dim">consig.</span>':fmt$(r.hbm)}</td><td>${fmtP(r.hbmShare)}</td><td>${fmt$(r.total)}</td><td>${fmt$(r.asp)}</td><td class="dim">${fmt$(c.streetAsp)}</td><td>${fmtP(r.asp?1-r.total/r.asp:null)}</td><td>${r.powerW?Math.round(r.powerW)+'W'+(r.powerEst?'<span class="org">*</span>':''):'—'}</td><td class="blu">${fmt$B(r.aspGW)}</td><td>${fmt$B(r.streetGW)}</td></tr>`;
+    h += `<tr><td><span style="color:${COMPANY_COLOR[c.tab]}">●</span> ${esc(c.tab)} <span class="dim">${esc(c.designer)}</span></td><td>${esc(c.chip)}${c.warn?` <span class="org" title="${esc(c.warn)}">⚠</span>`:''}</td><td class="dim">${esc(c.launch)}</td><td>${esc(c.hbmType)}</td><td>${c.totalGB||'—'}</td><td class="org">${c.consigned?'<span class="dim">consig.</span>':fmt$(r.hbm)}</td><td>${fmtP(r.hbmShare)}</td><td>${fmt$(r.total)}</td><td>${fmt$(r.asp)}</td><td class="dim">${fmt$(c.streetAsp)}</td><td class="dim">${c.saAsp?`<span title="${esc(c.saAspSrc)}">${fmt$(c.saAsp)}</span>`:'—'}</td><td>${fmtP(r.asp?1-r.total/r.asp:null)}</td><td>${r.powerW?Math.round(r.powerW)+'W'+(r.powerEst?'<span class="org">*</span>':''):'—'}</td><td class="blu">${fmt$B(r.aspGW)}</td><td>${fmt$B(r.streetGW)}</td><td class="org">${fmt$B(r.saGW)}</td></tr>`;
   });
   return h;
 }
@@ -1883,7 +1928,8 @@ function drawCharts(){
   mk('ch-gw', { type:'bar',
     data:{ labels: byGW.map(c=>c.chip), datasets:[
       { label:'ASP implícito', data: byGW.map(c=>calc(c).aspGW), backgroundColor: byGW.map(c=>COMPANY_COLOR[c.tab]) },
-      { label:'Street ASP', data: byGW.map(c=>calc(c).streetGW), backgroundColor:'#6e7681' }]},
+      { label:'Street ASP', data: byGW.map(c=>calc(c).streetGW), backgroundColor:'#6e7681' },
+      { label:'SemiAnalysis ASP', data: byGW.map(c=>calc(c).saGW), backgroundColor:'#2dd4bf' }]},
     options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{labels:{color:tickC}}},
       scales:{ x:{ticks:{color:tickC,maxRotation:60,minRotation:45},grid:{color:gridC}}, y:{ticks:{color:tickC,callback:v=>'$'+v+'B'},grid:{color:gridC}} } }});
   const byHBM = [...cur].sort((a,b)=>calc(b).hbmShare-calc(a).hbmShare);
