@@ -80,6 +80,7 @@ td.tk{cursor:pointer; text-decoration:underline dotted rgba(90,162,255,.5); text
 <header>
   <h1>CAPSTONE <span style="color:var(--mut);font-weight:300">|</span> Comp Sheet Dashboard</h1>
   <span class="asof">as of 2026-06-12</span>
+  <a id="gpLink" href="gp-panel.html" style="display:none; color:var(--gold); font-size:12px; text-decoration:none">GP Panel (preço &amp; P/E 10a) ↗</a>
   <span class="src">Source: Bloomberg BEst consensus · NTM/1Y = blended fwd 12m (1BF) · 2Y = 2nd blended fwd yr (2BF) · CAGR = CY2025→CY2027 (fiscal-aligned)</span>
 </header>
 
@@ -466,8 +467,11 @@ function renderExtras(){
 document.getElementById("addBtn").onclick = addTicker;
 document.getElementById("addInput").addEventListener("keydown", e=>{if(e.key==="Enter") addTicker();});
 // add/remove precisam do Bloomberg local — esconde quando publicado (GitHub Pages etc.)
-if(location.protocol!=="file:" && !/^(localhost|127\.)/.test(location.hostname))
+// (publicado, o link pro GP Panel na mesma pasta aparece no lugar)
+if(location.protocol!=="file:" && !/^(localhost|127\.)/.test(location.hostname)){
   document.getElementById("addPanel").style.display = "none";
+  document.getElementById("gpLink").style.display = "inline";
+}
 
 // ---------- fundamentals card ----------
 const fmtB = v => v==null||isNaN(v) ? "–" : (v/1000).toLocaleString("en-US",{maximumFractionDigits:1})+"bn";
