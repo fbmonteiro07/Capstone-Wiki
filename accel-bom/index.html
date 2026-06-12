@@ -1855,6 +1855,9 @@ function overviewHTML(){
   <div class="card"><div class="card-head"><div class="card-title">B.O.M vs ASP ($/chip)</div></div>
     <div class="chart-box" style="height:300px"><canvas id="ch-asp"></canvas></div></div>
   </div>
+  <div class="card"><div class="card-head"><div class="card-title">HBM como % do B.O.M — evolução no tempo</div>
+    <div class="card-sub">por data de launch (Jefferies) · só chips com HBM e B.O.M completo · exclui Trainium (HBM consignada, fora do B.O.M) · recalcula com o HBM $/GB acima · linhas por designer</div></div>
+    <div class="chart-box"><canvas id="ch-hbmtime"></canvas></div></div>
   <div class="card"><div class="card-head"><div class="card-title">Todos os chips</div>
     <div class="card-sub">B.O.M completo Jefferies · recalcula com HBM global acima</div></div>
     <div class="tbl-wrap"><table id="otable"></table></div>
@@ -1887,6 +1890,28 @@ function drawCharts(){
   mk('ch-hbm', { type:'bar', data:{ labels:byHBM.map(c=>c.chip), datasets:[{ data: byHBM.map(c=>100*calc(c).hbmShare), backgroundColor:'#e3b341' }]},
     options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}},
       scales:{ x:{ticks:{color:tickC,callback:v=>v+'%'},grid:{color:gridC}}, y:{ticks:{color:tickC,font:{size:10}},grid:{display:false}} } }});
+  const parseLaunch = s => {
+    if (!s) return null;
+    let m = s.match(/^([1-4])Q(\d{2})E?$/i); if (m) return 2000 + +m[2] + (+m[1]-0.5)/4;
+    m = s.match(/^([12])H(\d{2})E?$/i); if (m) return 2000 + +m[2] + (+m[1]===1 ? 0.25 : 0.75);
+    m = s.match(/^(\d{4})E?$/); if (m) return +m[1] + 0.5;
+    return null;
+  };
+  const hbmT = CHIPS.filter(c => c.complete && c.gen && !c.consigned && parseLaunch(c.launch) != null);
+  mk('ch-hbmtime', { type:'scatter',
+    data:{ datasets: TABS.filter(t => hbmT.some(c=>c.tab===t)).map(t => ({
+      label: t,
+      data: hbmT.filter(c=>c.tab===t)
+        .map(c => ({x: parseLaunch(c.launch), y: 100*calc(c).hbmShare, chip: c.chip, launch: c.launch}))
+        .sort((a,b)=>a.x-b.x),
+      backgroundColor: COMPANY_COLOR[t], borderColor: COMPANY_COLOR[t],
+      showLine: true, borderWidth: 1.5, pointRadius: 4, pointHoverRadius: 6, tension: 0
+    }))},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{labels:{color:tickC}},
+        tooltip:{callbacks:{label: ctx => `${ctx.raw.chip} · ${ctx.raw.launch}: ${ctx.raw.y.toFixed(0)}% do B.O.M`}} },
+      scales:{ x:{type:'linear', ticks:{color:tickC, stepSize:1, callback:v=>Number.isInteger(v)?v:''}, grid:{color:gridC}},
+               y:{min:0, ticks:{color:tickC, callback:v=>v+'%'}, grid:{color:gridC}} } }});
   mk('ch-asp', { type:'bar',
     data:{ labels: byGW.map(c=>c.chip), datasets:[
       { label:'B.O.M', data: byGW.map(c=>calc(c).total), backgroundColor:'#58a6ff' },
