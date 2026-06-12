@@ -421,9 +421,9 @@ function renderFnotes(){
 }
 
 // ---------- search / add ----------
-// pagina aberta direto do disco (file://) fala com o servidor local na 8790
-const API = location.protocol === "file:" ? "http://localhost:8790" : "";
-const NOSRV = "✗ local server not running — double-click serve_dashboard.bat (Comp Dashboard folder), then click Add again (no reload needed)";
+// fora do localhost (file:// ou GitHub Pages), fala com o serve_dashboard da SUA maquina
+const API = /^(localhost|127\.)/.test(location.hostname) ? "" : "http://localhost:8790";
+const NOSRV = "✗ local server not running on this machine — double-click serve_dashboard.bat (Comp Dashboard folder), then click Add again (no reload needed)";
 function addMsg(t){ document.getElementById("addMsg").textContent = t; }
 async function addTicker(){
   const inp = document.getElementById("addInput"), btn = document.getElementById("addBtn");
@@ -466,11 +466,11 @@ function renderExtras(){
 }
 document.getElementById("addBtn").onclick = addTicker;
 document.getElementById("addInput").addEventListener("keydown", e=>{if(e.key==="Enter") addTicker();});
-// add/remove precisam do Bloomberg local — esconde quando publicado (GitHub Pages etc.)
-// (publicado, o link pro GP Panel na mesma pasta aparece no lugar)
+// publicado (GitHub Pages): mostra o link pro GP Panel na mesma pasta; a barra de add
+// continua visivel — ela chama o serve_dashboard local, que tambem republica no GitHub
 if(location.protocol!=="file:" && !/^(localhost|127\.)/.test(location.hostname)){
-  document.getElementById("addPanel").style.display = "none";
   document.getElementById("gpLink").style.display = "inline";
+  addMsg("adds run via serve_dashboard.bat on your machine and auto-publish back to GitHub (~1 min)");
 }
 
 // ---------- fundamentals card ----------

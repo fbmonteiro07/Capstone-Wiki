@@ -181,10 +181,18 @@
       </div>
       <script>
       (function(){
-        if(location.protocol!=="file:" && !/^(localhost|127\.)/.test(location.hostname)) return;
+        var local = location.protocol === "file:" || /^(localhost|127\.)/.test(location.hostname);
         document.getElementById("addhint").innerHTML = "<b>Remover ticker:</b> edite <b>tickers.csv</b> e rode <b>atualizar_GP.bat</b>";
         document.getElementById("addbox").style.display = "block";
         var st = document.getElementById("addst"), inp = document.getElementById("addtk"), btn = document.getElementById("addgo");
+        function waitPages(label, tries){
+          // publicado: espera o GitHub Pages servir o html novo e recarrega
+          if(tries <= 0){ st.textContent = "✓ adicionado — recarregue a página em ~1 min"; return; }
+          fetch(location.href, {cache: "no-store"}).then(function(r){ return r.text(); }).then(function(t){
+            if(t.indexOf('"label":"' + label + '"') >= 0){ location.reload(); }
+            else setTimeout(function(){ waitPages(label, tries - 1); }, 15000);
+          }).catch(function(){ setTimeout(function(){ waitPages(label, tries - 1); }, 15000); });
+        }
         function go(){
           var q = inp.value.trim(); if(!q) return;
           btn.disabled = true; btn.style.opacity = .5;
@@ -192,11 +200,12 @@
           fetch("http://localhost:8790/api/gp-add?ticker=" + encodeURIComponent(q))
             .then(function(r){ return r.json(); })
             .then(function(j){
-              if(j.ok){ st.textContent = "✓ " + j.label + " (" + j.group + ") — recarregando…"; setTimeout(function(){ location.reload(); }, 900); }
-              else { st.textContent = "✗ " + j.error; btn.disabled = false; btn.style.opacity = 1; }
+              if(!j.ok){ st.textContent = "✗ " + j.error; btn.disabled = false; btn.style.opacity = 1; return; }
+              if(local){ st.textContent = "✓ " + j.label + " (" + j.group + ") — recarregando…"; setTimeout(function(){ location.reload(); }, 900); }
+              else { st.textContent = "✓ " + j.label + " (" + j.group + ") — publicando no GitHub, recarrego sozinho (~1-2 min)…"; waitPages(j.label, 20); }
             })
             .catch(function(){
-              st.textContent = "✗ servidor local não está rodando — abra serve_dashboard.bat (pasta Comp Dashboard) e clique de novo";
+              st.textContent = "✗ servidor local não está rodando NESTA máquina — abra serve_dashboard.bat (pasta Comp Dashboard) e clique de novo";
               btn.disabled = false; btn.style.opacity = 1;
             });
         }
