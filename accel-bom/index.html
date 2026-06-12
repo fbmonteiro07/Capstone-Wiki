@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accelerator B.O.M — Jefferies</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg:#0d1117; --surface:#161b22; --surface2:#1c2128; --border:#30363d; --border2:#21262d;
+  --text:#e6edf3; --text2:#8b949e; --text3:#6e7681;
+  --blue:#58a6ff; --green:#3fb950; --red:#f85149; --orange:#e3b341; --purple:#bc8cff; --teal:#2dd4bf;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:13px}
+.header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.header-left{display:flex;align-items:center;gap:12px}
+.logo{font-size:20px}
+.h-title{font-size:1.05rem;font-weight:700}
+.h-sub{font-size:.75rem;color:var(--text2);margin-top:1px}
+.badge{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:.75rem;color:var(--text2)}
+.tab-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 28px;display:flex;overflow-x:auto}
+.tab{padding:12px 16px;cursor:pointer;font-size:.82rem;font-weight:500;color:var(--text2);border-bottom:2px solid transparent;white-space:nowrap;transition:all .15s}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--blue);border-bottom-color:var(--blue)}
+.panel{display:none;padding:20px 28px}
+.panel.active{display:block}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-head{padding:11px 16px;border-bottom:1px solid var(--border2);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card-title{font-size:.9rem;font-weight:700}
+.card-sub{font-size:.72rem;color:var(--text3)}
+.hbm-bar{display:flex;gap:14px;flex-wrap:wrap;padding:12px 16px;align-items:flex-end}
+.hbm-item label{display:block;font-size:.68rem;color:var(--text3);text-transform:uppercase;margin-bottom:4px}
+.hbm-item input{width:74px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--orange);font-weight:700;padding:5px 8px;font-size:.85rem}
+.hbm-item input.changed{border-color:var(--orange)}
+.btn{background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--blue);font-size:.78rem;font-weight:600;padding:7px 14px;cursor:pointer}
+.btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.pills{display:flex;gap:8px;flex-wrap:wrap;padding:12px 16px}
+.pill{padding:6px 14px;border:1px solid var(--border);border-radius:20px;cursor:pointer;font-size:.78rem;color:var(--text2);background:var(--surface2)}
+.pill:hover{color:var(--text);border-color:var(--text3)}
+.pill.active{background:var(--blue);color:#fff;border-color:var(--blue);font-weight:600}
+.grid-2{display:grid;grid-template-columns:7fr 5fr;gap:16px}
+@media(max-width:1000px){.grid-2{grid-template-columns:1fr}}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:12px 16px}
+.kpi{background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:10px 12px}
+.kpi .l{font-size:.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:.04em}
+.kpi .v{font-size:1.05rem;font-weight:700;margin-top:3px}
+.kpi .s{font-size:.68rem;color:var(--text2);margin-top:2px}
+table{border-collapse:collapse;width:100%;font-size:12px}
+th,td{padding:6px 10px;text-align:right;border-bottom:1px solid var(--border2);white-space:nowrap}
+th{color:var(--text2);font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.03em}
+td:first-child,th:first-child{text-align:left}
+tr.tot td{font-weight:700;border-top:1px solid var(--border)}
+.dim{color:var(--text3)}
+.pos{color:var(--green)}.neg{color:var(--red)}.org{color:var(--orange)}.blu{color:var(--blue)}
+.bom-input{width:78px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:4px 7px;font-size:.8rem;text-align:right}
+.bom-input.changed{border-color:var(--orange);color:var(--orange);font-weight:700}
+.tbl-wrap{overflow-x:auto}
+.chart-box{padding:12px;height:340px}
+.note{font-size:.73rem;color:var(--text2);padding:10px 16px;border-top:1px solid var(--border2);line-height:1.5}
+.delta{font-size:.68rem;margin-left:6px}
+.memo{font-size:.7rem;color:var(--text3);padding:0 16px 12px}
+.stackbar{display:flex;height:26px;border-radius:6px;overflow:hidden;margin:10px 16px}
+.stackbar div{height:100%}
+.legend{display:flex;gap:14px;flex-wrap:wrap;padding:0 16px 12px;font-size:.7rem;color:var(--text2)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="logo">🔩</div>
+    <div>
+      <div class="h-title">Accelerator B.O.M — HBM, Wafer &amp; Chip Cost</div>
+      <div class="h-sub">Jefferies "AI Model" (Abr-26) · Accelerator Characteristics · USD por chip · TDP → custo por GW</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;align-items:center">
+    <button class="btn" id="reset-all">↺ Reset Jefferies</button>
+    <div class="badge">Extraído 12-jun-2026</div>
+  </div>
+</div>
+
+<div class="tab-bar" id="tabbar"></div>
+<div id="panels"></div>
+
+<script>
+const CHIPS = [
+    {
+        "tab":  "NVIDIA",
+        "designer":  "NVDA",
+        "chip":  "A100",
+        "launch":  "2Q21",
+        "node":  "N7",
+        "hbmType":  "HBM2E",
+        "stacks":  5,
+        "layers":  8,
+        "gbPerStack":  16,
+        "totalGB":  80,
+        "hbmPrice":  11,
+        "hbmCost":  880,
+        "intType":  "CoWoS-S",
+        "intCost":  275.735294,
+        "waferCost":  8025,
+        "yield":  0.8,
+        "diesPerWafer":  64,
+        "costPerDie":  156.738281,
+        "nDie":  1,
+        "pkgTest":  39.18457,
+        "dieTotal":  195.922852,
+        "boardIO":  250,
+        "totalCost":  1601.658146,
+        "gm":  0.85,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  10677.720971,
+        "streetAsp":  12000,
+        "tdp":  400,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "NVIDIA",
+        "designer":  "NVDA",
+        "chip":  "A800",
+        "launch":  "3Q22",
+        "node":  "N7",
+        "hbmType":  "HBM2E",
+        "stacks":  5,
+        "layers":  8,
+        "gbPerStack":  16,
+        "totalGB":  80,
+        "hbmPrice":  11,
+        "hbmCost":  880,
+        "intType":  "CoWoS-S",
+        "intCost":  275.735294,
+        "waferCost":  8025,
+        "yield":  0.8,
+        "diesPerWafer":  64,
+        "costPerDie":  156.738281,
+        "nDie":  1,
+        "pkgTest":  39.18457,
+        "dieTotal":  195.922852,
+        "boardIO":  250,
+        "totalCost":  1601.658146,
+        "gm":  0.85,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  10677.720971,
+        "streetAsp":  12000,
+        "tdp":  400,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "NVIDIA",
+        "designer":  "NVDA",
+        "chip":  "H100",
+        "launch":  "1Q23",
+        "node":  "N4N",
+        "hbmType":  "HBM3",
+        "stacks":  6,
+        "layers":  8,
+        "gbPerStack":  16,
+        "totalGB":  96,
+        "hbmPrice":  11,
+        "hbmCost":  1056,
+        "intType":  "CoWoS-S",
+        "intCost":  275.735294,
+        "waferCost":  18000,
+        "yield":  0.65,
+        "diesPerWafer":  64,
+        "costPerDie":  432.692308,
+        "nDie":  1,
+        "pkgTest":  151.442308,
+        "dieTotal":  584.134615,
+        "boardIO":  250,
+        "totalCost":  2165.86991,
+        "gm":  0.89,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  19689.72645,
+        "streetAsp":  25000,
+        "tdp":  700,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "NVIDIA",
+        "designer":  "NVDA",
+        "chip":  "H200",
+        "launch":  "1Q24",
+        "node":  "N4N",
+        "hbmType":  "HBM3E",
+        "stacks":  6,
+        "layers":  7.833333,
+        "gbPerStack":  23.5,
+        "totalGB":  141,
+        "hbmPrice":  14,
+        "hbmCost":  1974,
+        "intType":  "CoWoS-S",
+        "intCost":  275.735294,
+        "waferCost":  18000,
+        "yield":  0.65,
+        "diesPerWafer":  65,
+        "costPerDie":  426.035503,
+        "nDie":  1,
+        "pkgTest":  149.112426,
+        "dieTotal":  575.147929,
+        "boardIO":  250,
+        "totalCost":  3074.883223,
+        "gm":  0.885,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  26738.114984,
+        "streetAsp":  28000,
+        "tdp":  700,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "NVIDIA",
+        "designer":  "NVDA",
+        "chip":  "H800",
+        "launch":  "1Q23",
+        "node":  "N4N",
+        "hbmType":  "HBM3",
+        "stacks":  6,
+        "layers":  8,
+        "gbPerStack":  16,
+        "totalGB":  96,
+        "hbmPrice":  11,
+        "hbmCost":  1056,
+        "intType":  "CoWoS-S",
+        "intCost":  275.735294,
+        "waferCost":  18000,
+        "yield":  0.65,
+        "diesPerWafer":  64,
+        "costPerDie":  432.692308,
+        "nDie":  1,
+        "pkgTest":  151.442308,
+        "dieTotal":  584.134615,
+        "boardIO":  250,
+        "totalCost":  2165.86991,
+        "gm":  0.82,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  12032.610608,
+        "streetAsp":  25000,
+        "tdp":  700,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "NVIDIA",
+        "designer":  "NVDA",
+        "chip":  "H20",
+        "launch":  "3Q24",
+        "node":  "N4N",
+        "hbmType":  "HBM3",
+        "stacks":  6,
+        "layers":  8,
+        "gbPerStack":  16,
+        "totalGB":  96,
+        "hbmPrice":  11,
+        "hbmCost":  1056,
+        "intType":  "CoWoS-S",
+        "intCost":  275.735294,
+        "waferCost":  18000,
+        "yield":  0.65,
+        "diesPerWafer":  64,
+        "costPerDie":  432.692308,
+        "nDie":  1,
+        "pkgTest":  151.442308,
+        "dieTotal":  584.134615,
+        "boardIO":  250,
+        "totalCost":  2165.86991,
+        "gm":  0.8,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  10829.349548,
+        "streetAsp":  12000,
+        "tdp":  400,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "NVIDIA",
+        "designer":  "NVDA",
+        "chip":  "B20",
+        "launch":  "2Q25",
+        "node":  "N4NP",
+        "hbmType":  "HBM3E",
+        "stacks":  4,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  144,
+        "hbmPrice":  14,
+        "hbmCost":  2016,
+        "intType":  "CoWoS-S",
+        "intCost":  275.735294,
+        "waferCost":  18000,
+        "yield":  0.65,
+        "diesPerWafer":  64,
+        "costPerDie":  432.692308,
+        "nDie":  1,
+        "pkgTest":  151.442308,
+        "dieTotal":  584.134615,
+        "boardIO":  250,
+        "totalCost":  3125.86991,
+        "gm":  0.8,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  15629.349548,
+        "streetAsp":  12000,
+        "tdp":  400,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "NVIDIA",
+        "designer":  "NVDA",
+        "chip":  "B200",
+        "launch":  "3Q24",
+        "node":  "N4NP",
+        "hbmType":  "HBM3E",
+        "stacks":  8,
+        "layers":  8,
+        "gbPerStack":  24,
+        "totalGB":  192,
+        "hbmPrice":  14,
+        "hbmCost":  2688,
+        "intType":  "CoWoS-L",
+        "intCost":  904.977376,
+        "waferCost":  18000,
+        "yield":  0.65,
+        "diesPerWafer":  64,
+        "costPerDie":  432.692308,
+        "nDie":  2,
+        "pkgTest":  302.884615,
+        "dieTotal":  1168.269231,
+        "boardIO":  500,
+        "totalCost":  5261.246606,
+        "gm":  0.85,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  35074.977376,
+        "streetAsp":  34000,
+        "tdp":  1000,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "NVIDIA",
+        "designer":  "NVDA",
+        "chip":  "B300",
+        "launch":  "2H25",
+        "node":  "N4NP",
+        "hbmType":  "HBM3E",
+        "stacks":  8,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  288,
+        "hbmPrice":  14,
+        "hbmCost":  4032,
+        "intType":  "CoWoS-L",
+        "intCost":  904.977376,
+        "waferCost":  18000,
+        "yield":  0.65,
+        "diesPerWafer":  64,
+        "costPerDie":  432.692308,
+        "nDie":  2,
+        "pkgTest":  302.884615,
+        "dieTotal":  1168.269231,
+        "boardIO":  500,
+        "totalCost":  6605.246606,
+        "gm":  0.83,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  38854.391802,
+        "streetAsp":  38000,
+        "tdp":  1400,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "NVIDIA",
+        "designer":  "NVDA",
+        "chip":  "R200",
+        "launch":  "2026E",
+        "node":  "N3",
+        "hbmType":  "HBM4",
+        "stacks":  8,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  288,
+        "hbmPrice":  16,
+        "hbmCost":  4608,
+        "intType":  "CoWoS-L",
+        "intCost":  980.392157,
+        "waferCost":  25000,
+        "yield":  0.6,
+        "diesPerWafer":  61,
+        "costPerDie":  683.060109,
+        "nDie":  2,
+        "pkgTest":  478.142077,
+        "dieTotal":  1844.262295,
+        "boardIO":  650,
+        "totalCost":  8082.654452,
+        "gm":  0.8,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  40413.27226,
+        "streetAsp":  40000,
+        "tdp":  2300,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "NVIDIA",
+        "designer":  "NVDA",
+        "chip":  "R300",
+        "launch":  "2027E",
+        "node":  "N3",
+        "hbmType":  "HBM4E",
+        "stacks":  16,
+        "layers":  16,
+        "gbPerStack":  64,
+        "totalGB":  1024,
+        "hbmPrice":  18,
+        "hbmCost":  18432,
+        "intType":  "CoWoS-L",
+        "intCost":  1960.784314,
+        "waferCost":  25000,
+        "yield":  0.6,
+        "diesPerWafer":  61,
+        "costPerDie":  683.060109,
+        "nDie":  4,
+        "pkgTest":  956.284153,
+        "dieTotal":  3688.52459,
+        "boardIO":  650,
+        "totalCost":  24731.308904,
+        "gm":  0.73,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  91597.440385,
+        "streetAsp":  90000,
+        "tdp":  4600,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "NVIDIA",
+        "designer":  "NVDA",
+        "chip":  "Rubin CPX",
+        "launch":  "",
+        "node":  "N3",
+        "hbmType":  "GDDR7",
+        "stacks":  null,
+        "layers":  null,
+        "gbPerStack":  null,
+        "totalGB":  128,
+        "hbmPrice":  2.5,
+        "hbmCost":  320,
+        "intType":  "Monolithic",
+        "intCost":  null,
+        "waferCost":  25000,
+        "yield":  0.6,
+        "diesPerWafer":  63,
+        "costPerDie":  661.375661,
+        "nDie":  1,
+        "pkgTest":  231.481481,
+        "dieTotal":  892.857143,
+        "boardIO":  50,
+        "totalCost":  1262.857143,
+        "gm":  0.75,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  5051.428571,
+        "streetAsp":  null,
+        "tdp":  800,
+        "tdpEst":  true
+    },
+    {
+        "tab":  "AMD",
+        "designer":  "AMD",
+        "chip":  "MI300X",
+        "launch":  "3Q23",
+        "node":  "N5",
+        "hbmType":  "HBM3",
+        "stacks":  8,
+        "layers":  12,
+        "gbPerStack":  24,
+        "totalGB":  192,
+        "hbmPrice":  11,
+        "hbmCost":  2112,
+        "intType":  "CoWoS-S",
+        "intCost":  735.294118,
+        "waferCost":  18000,
+        "yield":  0.75,
+        "diesPerWafer":  380,
+        "costPerDie":  63.157895,
+        "nDie":  8,
+        "pkgTest":  176.842105,
+        "dieTotal":  682.105263,
+        "boardIO":  473.193359,
+        "totalCost":  4002.59274,
+        "gm":  0.55,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  8894.650534,
+        "streetAsp":  10000,
+        "tdp":  750,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "AMD",
+        "designer":  "AMD",
+        "chip":  "MI325X",
+        "launch":  "4Q24",
+        "node":  "N5",
+        "hbmType":  "HBM3E",
+        "stacks":  8,
+        "layers":  10.666667,
+        "gbPerStack":  32,
+        "totalGB":  256,
+        "hbmPrice":  14,
+        "hbmCost":  3584,
+        "intType":  "SoIC",
+        "intCost":  2450.980392,
+        "waferCost":  18000,
+        "yield":  0.75,
+        "diesPerWafer":  436,
+        "costPerDie":  55.045872,
+        "nDie":  8,
+        "pkgTest":  154.12844,
+        "dieTotal":  594.495413,
+        "boardIO":  473.299632,
+        "totalCost":  7102.775437,
+        "gm":  0.55,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  15783.945416,
+        "streetAsp":  12000,
+        "tdp":  1000,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "AMD",
+        "designer":  "AMD",
+        "chip":  "MI350X",
+        "launch":  "2H25E",
+        "node":  "N3",
+        "hbmType":  "HBM3E",
+        "stacks":  8,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  288,
+        "hbmPrice":  14,
+        "hbmCost":  4032,
+        "intType":  "SoIC",
+        "intCost":  2450.980392,
+        "waferCost":  25000,
+        "yield":  0.65,
+        "diesPerWafer":  481,
+        "costPerDie":  79.961618,
+        "nDie":  8,
+        "pkgTest":  223.892532,
+        "dieTotal":  863.585479,
+        "boardIO":  486.919643,
+        "totalCost":  7833.485514,
+        "gm":  0.55,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  17407.745587,
+        "streetAsp":  18000,
+        "tdp":  1000,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "AMD",
+        "designer":  "AMD",
+        "chip":  "MI455X",
+        "launch":  "2H26E",
+        "node":  "N2",
+        "hbmType":  "HBM4",
+        "stacks":  12,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  432,
+        "hbmPrice":  16,
+        "hbmCost":  6912,
+        "intType":  "SoIC",
+        "intCost":  3676.470588,
+        "waferCost":  30000,
+        "yield":  0.55,
+        "diesPerWafer":  372,
+        "costPerDie":  146.627566,
+        "nDie":  8,
+        "pkgTest":  410.557185,
+        "dieTotal":  1583.577713,
+        "boardIO":  2353.846154,
+        "totalCost":  14525.894455,
+        "gm":  0.55,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  32279.765455,
+        "streetAsp":  25000,
+        "tdp":  1800,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "AMD",
+        "designer":  "AMD",
+        "chip":  "MI500X",
+        "launch":  "1H27E",
+        "node":  "N2",
+        "hbmType":  "HBM4E",
+        "stacks":  16,
+        "layers":  16,
+        "gbPerStack":  64,
+        "totalGB":  1024,
+        "hbmPrice":  18,
+        "hbmCost":  18432,
+        "intType":  "SoIC",
+        "intCost":  null,
+        "waferCost":  null,
+        "yield":  null,
+        "diesPerWafer":  null,
+        "costPerDie":  null,
+        "nDie":  null,
+        "pkgTest":  null,
+        "dieTotal":  null,
+        "boardIO":  null,
+        "totalCost":  null,
+        "gm":  null,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  40349.706819,
+        "streetAsp":  30000,
+        "tdp":  5000,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Google",
+        "designer":  "AVGO",
+        "chip":  "TPU v4i",
+        "launch":  "1H21",
+        "node":  "N7",
+        "hbmType":  "HBM2",
+        "stacks":  2,
+        "layers":  4,
+        "gbPerStack":  8,
+        "totalGB":  16,
+        "hbmPrice":  11,
+        "hbmCost":  176,
+        "intType":  "CoWoS-S",
+        "intCost":  117.647059,
+        "waferCost":  8025,
+        "yield":  0.8,
+        "diesPerWafer":  142,
+        "costPerDie":  70.642606,
+        "nDie":  1,
+        "pkgTest":  24.724912,
+        "dieTotal":  95.367518,
+        "boardIO":  50,
+        "totalCost":  439.014576,
+        "gm":  0.65,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  1254.327361,
+        "streetAsp":  1300,
+        "tdp":  175,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Google",
+        "designer":  "AVGO",
+        "chip":  "TPU v4",
+        "launch":  "4Q22",
+        "node":  "N7",
+        "hbmType":  "HBM2",
+        "stacks":  4,
+        "layers":  4,
+        "gbPerStack":  8,
+        "totalGB":  32,
+        "hbmPrice":  11,
+        "hbmCost":  352,
+        "intType":  "CoWoS-S",
+        "intCost":  245.098039,
+        "waferCost":  8025,
+        "yield":  0.8,
+        "diesPerWafer":  92,
+        "costPerDie":  109.035326,
+        "nDie":  1,
+        "pkgTest":  38.162364,
+        "dieTotal":  147.19769,
+        "boardIO":  50,
+        "totalCost":  794.295729,
+        "gm":  0.65,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  2269.41637,
+        "streetAsp":  2500,
+        "tdp":  192,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Google",
+        "designer":  "AVGO",
+        "chip":  "TPU v5e",
+        "launch":  "3Q23",
+        "node":  "N5",
+        "hbmType":  "HBM2",
+        "stacks":  2,
+        "layers":  4,
+        "gbPerStack":  8,
+        "totalGB":  16,
+        "hbmPrice":  11,
+        "hbmCost":  176,
+        "intType":  "CoWoS-S",
+        "intCost":  120.870266,
+        "waferCost":  18000,
+        "yield":  0.75,
+        "diesPerWafer":  173,
+        "costPerDie":  138.728324,
+        "nDie":  1,
+        "pkgTest":  48.554913,
+        "dieTotal":  187.283237,
+        "boardIO":  100,
+        "totalCost":  584.153503,
+        "gm":  0.65,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  1669.010008,
+        "streetAsp":  2750,
+        "tdp":  138,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Google",
+        "designer":  "AVGO",
+        "chip":  "TPU v5p",
+        "launch":  "4Q23",
+        "node":  "N5",
+        "hbmType":  "HBM2E",
+        "stacks":  6,
+        "layers":  8,
+        "gbPerStack":  16,
+        "totalGB":  96,
+        "hbmPrice":  11,
+        "hbmCost":  1056,
+        "intType":  "CoWoS-S",
+        "intCost":  401.069519,
+        "waferCost":  18000,
+        "yield":  0.75,
+        "diesPerWafer":  71,
+        "costPerDie":  338.028169,
+        "nDie":  1,
+        "pkgTest":  118.309859,
+        "dieTotal":  456.338028,
+        "boardIO":  100,
+        "totalCost":  2013.407547,
+        "gm":  0.65,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  5752.592991,
+        "streetAsp":  9000,
+        "tdp":  550,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Google",
+        "designer":  "AVGO",
+        "chip":  "TPU v6e (Trillium)",
+        "launch":  "4Q24",
+        "node":  "N4N",
+        "hbmType":  "HBM3",
+        "stacks":  2,
+        "layers":  8,
+        "gbPerStack":  16,
+        "totalGB":  32,
+        "hbmPrice":  11,
+        "hbmCost":  352,
+        "intType":  "CoWoS-S",
+        "intCost":  191.815857,
+        "waferCost":  18000,
+        "yield":  0.65,
+        "diesPerWafer":  108,
+        "costPerDie":  256.410256,
+        "nDie":  1,
+        "pkgTest":  89.74359,
+        "dieTotal":  346.153846,
+        "boardIO":  100,
+        "totalCost":  989.969703,
+        "gm":  0.659087,
+        "logicGm":  0.75,
+        "hbmGm":  0,
+        "asp":  2903.878812,
+        "streetAsp":  6500,
+        "tdp":  385,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Google",
+        "designer":  "AVGO",
+        "chip":  "TPU7x (Ironwood)",
+        "launch":  "2H25",
+        "node":  "N3",
+        "hbmType":  "HBM3E",
+        "stacks":  8,
+        "layers":  8,
+        "gbPerStack":  24,
+        "totalGB":  192,
+        "hbmPrice":  14,
+        "hbmCost":  2688,
+        "intType":  "CoWoS-S",
+        "intCost":  678.733032,
+        "waferCost":  25000,
+        "yield":  0.6,
+        "diesPerWafer":  86,
+        "costPerDie":  484.496124,
+        "nDie":  2,
+        "pkgTest":  339.147287,
+        "dieTotal":  1308.139535,
+        "boardIO":  100,
+        "totalCost":  4774.872567,
+        "gm":  0.567317,
+        "logicGm":  0.75,
+        "hbmGm":  0,
+        "asp":  11035.490266,
+        "streetAsp":  10000,
+        "tdp":  960,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Google",
+        "designer":  "MTK",
+        "chip":  "TPU8x (Zebrafish)",
+        "launch":  "2H26E",
+        "node":  "N3",
+        "hbmType":  "HBM3E",
+        "stacks":  4,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  144,
+        "hbmPrice":  14,
+        "hbmCost":  2016,
+        "intType":  "CoWoS-S",
+        "intCost":  401.069519,
+        "waferCost":  25000,
+        "yield":  0.6,
+        "diesPerWafer":  72,
+        "costPerDie":  578.703704,
+        "nDie":  1,
+        "pkgTest":  202.546296,
+        "dieTotal":  781.25,
+        "boardIO":  100,
+        "totalCost":  3298.319519,
+        "gm":  0.322114,
+        "logicGm":  0.55,
+        "hbmGm":  0,
+        "asp":  4865.59893,
+        "streetAsp":  4500,
+        "tdp":  750,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Google",
+        "designer":  "AVGO",
+        "chip":  "TPU8ax (Sunfish)",
+        "launch":  "4Q25",
+        "node":  "N3",
+        "hbmType":  "HBM3E",
+        "stacks":  8,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  288,
+        "hbmPrice":  14,
+        "hbmCost":  4032,
+        "intType":  "CoWoS-S",
+        "intCost":  678.733032,
+        "waferCost":  25000,
+        "yield":  0.6,
+        "diesPerWafer":  72,
+        "costPerDie":  578.703704,
+        "nDie":  2,
+        "pkgTest":  405.092593,
+        "dieTotal":  1562.5,
+        "boardIO":  200,
+        "totalCost":  6473.233032,
+        "gm":  0.530821,
+        "logicGm":  0.75,
+        "hbmGm":  0,
+        "asp":  13796.932127,
+        "streetAsp":  13500,
+        "tdp":  1400,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Google",
+        "designer":  "MTK",
+        "chip":  "TPU9x (Humufish)",
+        "launch":  "2H28E",
+        "node":  "N2",
+        "hbmType":  "HBM4",
+        "stacks":  4,
+        "layers":  16,
+        "gbPerStack":  48,
+        "totalGB":  192,
+        "hbmPrice":  16,
+        "hbmCost":  3072,
+        "intType":  "EMIB-T",
+        "intCost":  1623.376623,
+        "waferCost":  30000,
+        "yield":  0.55,
+        "diesPerWafer":  72,
+        "costPerDie":  757.575758,
+        "nDie":  1,
+        "pkgTest":  265.151515,
+        "dieTotal":  1022.727273,
+        "boardIO":  1110.185185,
+        "totalCost":  6828.289081,
+        "gm":  0.354883,
+        "logicGm":  0.5,
+        "hbmGm":  0,
+        "asp":  10584.578163,
+        "streetAsp":  null,
+        "tdp":  700,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Google",
+        "designer":  "AVGO",
+        "chip":  "TPU9ax (Pumafish)",
+        "launch":  "4Q26",
+        "node":  "N2",
+        "hbmType":  "HBM4",
+        "stacks":  8,
+        "layers":  16,
+        "gbPerStack":  48,
+        "totalGB":  384,
+        "hbmPrice":  16,
+        "hbmCost":  6144,
+        "intType":  "SoIC",
+        "intCost":  2262.443439,
+        "waferCost":  30000,
+        "yield":  0.55,
+        "diesPerWafer":  144,
+        "costPerDie":  378.787879,
+        "nDie":  4,
+        "pkgTest":  606.060606,
+        "dieTotal":  2121.212121,
+        "boardIO":  1945.726496,
+        "totalCost":  12473.382056,
+        "gm":  0.542126,
+        "logicGm":  0.7,
+        "hbmGm":  0,
+        "asp":  27241.940186,
+        "streetAsp":  27000,
+        "tdp":  2500,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Meta",
+        "designer":  "AVGO",
+        "chip":  "MTIA 100",
+        "launch":  "1H24",
+        "node":  "N7",
+        "hbmType":  "LPDDR5",
+        "stacks":  null,
+        "layers":  null,
+        "gbPerStack":  null,
+        "totalGB":  48,
+        "hbmPrice":  0,
+        "hbmCost":  0,
+        "intType":  "Monolithic",
+        "intCost":  null,
+        "waferCost":  8025,
+        "yield":  0.8,
+        "diesPerWafer":  152,
+        "costPerDie":  65.995066,
+        "nDie":  1,
+        "pkgTest":  23.098273,
+        "dieTotal":  89.093339,
+        "boardIO":  null,
+        "totalCost":  89.093339,
+        "gm":  0.6,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  222.733347,
+        "streetAsp":  200,
+        "tdp":  35,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Meta",
+        "designer":  "AVGO",
+        "chip":  "MTIA 200",
+        "launch":  "1H25",
+        "node":  "N5",
+        "hbmType":  "LPDDR5",
+        "stacks":  null,
+        "layers":  null,
+        "gbPerStack":  null,
+        "totalGB":  96,
+        "hbmPrice":  0,
+        "hbmCost":  0,
+        "intType":  "Monolithic",
+        "intCost":  null,
+        "waferCost":  18000,
+        "yield":  0.75,
+        "diesPerWafer":  132,
+        "costPerDie":  181.818182,
+        "nDie":  1,
+        "pkgTest":  63.636364,
+        "dieTotal":  245.454545,
+        "boardIO":  null,
+        "totalCost":  245.454545,
+        "gm":  0.6,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  613.636364,
+        "streetAsp":  600,
+        "tdp":  85,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Meta",
+        "designer":  "AVGO",
+        "chip":  "MTIA 300",
+        "launch":  "4Q25",
+        "node":  "N3",
+        "hbmType":  "HBM2E",
+        "stacks":  6,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  216,
+        "hbmPrice":  11,
+        "hbmCost":  2376,
+        "intType":  "CoWoS-S",
+        "intCost":  551.470588,
+        "waferCost":  25000,
+        "yield":  0.6,
+        "diesPerWafer":  64,
+        "costPerDie":  651.041667,
+        "nDie":  1,
+        "pkgTest":  227.864583,
+        "dieTotal":  878.90625,
+        "boardIO":  100,
+        "totalCost":  3906.376838,
+        "gm":  0.610449,
+        "logicGm":  0.8,
+        "hbmGm":  0,
+        "asp":  10027.884191,
+        "streetAsp":  10000,
+        "tdp":  800,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Meta",
+        "designer":  "AVGO",
+        "chip":  "MTIA 400",
+        "launch":  "3Q26",
+        "node":  "N3",
+        "hbmType":  "HBM3E",
+        "stacks":  8,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  288,
+        "hbmPrice":  14,
+        "hbmCost":  4032,
+        "intType":  "CoWoS-S",
+        "intCost":  1102.941176,
+        "waferCost":  25000,
+        "yield":  0.6,
+        "diesPerWafer":  58,
+        "costPerDie":  718.390805,
+        "nDie":  2,
+        "pkgTest":  502.873563,
+        "dieTotal":  1939.655172,
+        "boardIO":  200,
+        "totalCost":  7274.596349,
+        "gm":  0.572143,
+        "logicGm":  0.75,
+        "hbmGm":  0,
+        "asp":  17002.385396,
+        "streetAsp":  15000,
+        "tdp":  1200,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Meta",
+        "designer":  "AVGO",
+        "chip":  "MTIA 450",
+        "launch":  "1Q27",
+        "node":  "N2",
+        "hbmType":  "HBM4",
+        "stacks":  8,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  288,
+        "hbmPrice":  16,
+        "hbmCost":  4608,
+        "intType":  "CoWoS-L",
+        "intCost":  1470.588235,
+        "waferCost":  30000,
+        "yield":  0.55,
+        "diesPerWafer":  58,
+        "costPerDie":  940.438871,
+        "nDie":  2,
+        "pkgTest":  658.30721,
+        "dieTotal":  2539.184953,
+        "boardIO":  200,
+        "totalCost":  8817.773188,
+        "gm":  0.588859,
+        "logicGm":  0.75,
+        "hbmGm":  0,
+        "asp":  21447.092753,
+        "streetAsp":  20000,
+        "tdp":  1400,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Meta",
+        "designer":  "AVGO",
+        "chip":  "MTIA 500",
+        "launch":  "2027E",
+        "node":  "N2",
+        "hbmType":  "HBM4/HBM4e",
+        "stacks":  8,
+        "layers":  16,
+        "gbPerStack":  48,
+        "totalGB":  384,
+        "hbmPrice":  16,
+        "hbmCost":  6144,
+        "intType":  "CoWoS-L",
+        "intCost":  1960.784314,
+        "waferCost":  30000,
+        "yield":  0.55,
+        "diesPerWafer":  58,
+        "costPerDie":  940.438871,
+        "nDie":  4,
+        "pkgTest":  1316.61442,
+        "dieTotal":  5078.369906,
+        "boardIO":  250,
+        "totalCost":  13433.15422,
+        "gm":  0.619464,
+        "logicGm":  0.75,
+        "hbmGm":  0,
+        "asp":  35300.616879,
+        "streetAsp":  35000,
+        "tdp":  1700,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "OpenAI",
+        "designer":  "AVGO",
+        "chip":  "Titan v1",
+        "launch":  "2H26",
+        "node":  "N3",
+        "hbmType":  "HBM3E",
+        "stacks":  6,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  216,
+        "hbmPrice":  14,
+        "hbmCost":  3024,
+        "intType":  "CoWoS-S",
+        "intCost":  401.069519,
+        "waferCost":  25000,
+        "yield":  0.6,
+        "diesPerWafer":  64,
+        "costPerDie":  651.041667,
+        "nDie":  2,
+        "pkgTest":  455.729167,
+        "dieTotal":  1757.8125,
+        "boardIO":  null,
+        "totalCost":  5182.882019,
+        "gm":  0.624929,
+        "logicGm":  0.8,
+        "hbmGm":  0,
+        "asp":  13818.410094,
+        "streetAsp":  15000,
+        "tdp":  500,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "OpenAI",
+        "designer":  "AVGO",
+        "chip":  "Titan v2",
+        "launch":  "TBD",
+        "node":  "A16",
+        "hbmType":  "HBM4",
+        "stacks":  null,
+        "layers":  null,
+        "gbPerStack":  null,
+        "totalGB":  null,
+        "hbmPrice":  null,
+        "hbmCost":  null,
+        "intType":  "",
+        "intCost":  null,
+        "waferCost":  null,  /* célula corrompida na fonte Jefferies (overflow int32: -2146826246) — não usar */
+        "yield":  0.55,
+        "diesPerWafer":  64,
+        "costPerDie":  null,
+        "nDie":  null,
+        "pkgTest":  null,
+        "dieTotal":  null,
+        "boardIO":  null,
+        "totalCost":  null,
+        "gm":  null,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  null,
+        "streetAsp":  null,
+        "tdp":  1000,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "AWS",
+        "designer":  "Alchip",
+        "chip":  "Inferentia 2",
+        "launch":  "2H22",
+        "node":  "N7",
+        "hbmType":  "HBM2E",
+        "stacks":  2,
+        "layers":  8,
+        "gbPerStack":  16,
+        "totalGB":  32,
+        "hbmPrice":  11,
+        "hbmCost":  352,
+        "intType":  "CoWoS-R",
+        "intCost":  156.862745,
+        "waferCost":  8025,
+        "yield":  0.75,
+        "diesPerWafer":  95,
+        "costPerDie":  112.631579,
+        "nDie":  1,
+        "pkgTest":  39.421053,
+        "dieTotal":  152.052632,
+        "boardIO":  50,
+        "totalCost":  710.915377,
+        "gm":  0.15,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  836.371031,
+        "streetAsp":  950,
+        "tdp":  152,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "AWS",
+        "designer":  "MRVL",
+        "chip":  "Trainium 2",
+        "launch":  "1H24",
+        "node":  "N5",
+        "hbmType":  "HBM3",
+        "stacks":  4,
+        "layers":  12,
+        "gbPerStack":  24,
+        "totalGB":  96,
+        "hbmPrice":  11,
+        "hbmCost":  0,
+        "intType":  "CoWoS-R",
+        "intCost":  504.201681,
+        "waferCost":  18000,
+        "yield":  0.75,
+        "diesPerWafer":  68,
+        "costPerDie":  352.941176,
+        "nDie":  2,
+        "pkgTest":  247.058824,
+        "dieTotal":  952.941176,
+        "boardIO":  50,
+        "totalCost":  1507.142857,
+        "gm":  0.45,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  2740.25974,
+        "streetAsp":  2600,
+        "tdp":  653,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "AWS",
+        "designer":  "MRVL",
+        "chip":  "Trainium 3",
+        "launch":  "2H26E",
+        "node":  "N3",
+        "hbmType":  "HBM3E",
+        "stacks":  4,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  144,
+        "hbmPrice":  14,
+        "hbmCost":  0,
+        "intType":  "CoWoS-R",
+        "intCost":  470.588235,
+        "waferCost":  25000,
+        "yield":  0.6,
+        "diesPerWafer":  66,
+        "costPerDie":  631.313131,
+        "nDie":  2,
+        "pkgTest":  441.919192,
+        "dieTotal":  1704.545455,
+        "boardIO":  50,
+        "totalCost":  2225.13369,
+        "gm":  0.45,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  4045.697618,
+        "streetAsp":  4000,
+        "tdp":  904,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "AWS",
+        "designer":  "MRVL",
+        "chip":  "Trainium 4",
+        "launch":  "2028E",
+        "node":  "N2",
+        "hbmType":  "HBM4",
+        "stacks":  8,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  288,
+        "hbmPrice":  16,
+        "hbmCost":  0,
+        "intType":  "CoWoS-R",
+        "intCost":  415.224913,
+        "waferCost":  30000,
+        "yield":  0.55,
+        "diesPerWafer":  64,
+        "costPerDie":  852.272727,
+        "nDie":  2,
+        "pkgTest":  596.590909,
+        "dieTotal":  2301.136364,
+        "boardIO":  100,
+        "totalCost":  2816.361277,
+        "gm":  0.45,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  5120.656868,
+        "streetAsp":  null,  /* coluna CHECK da Jefferies = 1000 (placeholder evidente vs ASP 5.121) — suprimido */
+        "tdp":  1936,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Microsoft",
+        "designer":  "MSFT/GUC",
+        "chip":  "Maia 100",
+        "launch":  "1H24",
+        "node":  "N5",
+        "hbmType":  "HBM2E",
+        "stacks":  4,
+        "layers":  8,
+        "gbPerStack":  16,
+        "totalGB":  64,
+        "hbmPrice":  11,
+        "hbmCost":  704,
+        "intType":  "CoWoS-S",
+        "intCost":  304.259635,
+        "waferCost":  18000,
+        "yield":  0.65,
+        "diesPerWafer":  64,
+        "costPerDie":  432.692308,
+        "nDie":  1,
+        "pkgTest":  151.442308,
+        "dieTotal":  584.134615,
+        "boardIO":  50,
+        "totalCost":  1642.39425,
+        "gm":  0.45,
+        "logicGm":  0.45,
+        "hbmGm":  0,
+        "asp":  2410.171364,
+        "streetAsp":  null,
+        "tdp":  500,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Microsoft",
+        "designer":  "MSFT/GUC",
+        "chip":  "Maia 200",
+        "launch":  "2H25",
+        "node":  "N3",
+        "hbmType":  "HBM3e",
+        "stacks":  6,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  216,
+        "hbmPrice":  14,
+        "hbmCost":  3024,
+        "intType":  "CoWoS-S",
+        "intCost":  315.12605,
+        "waferCost":  25000,
+        "yield":  0.6,
+        "diesPerWafer":  64,
+        "costPerDie":  651.041667,
+        "nDie":  1,
+        "pkgTest":  227.864583,
+        "dieTotal":  878.90625,
+        "boardIO":  50,
+        "totalCost":  4268.0323,
+        "gm":  0.45,
+        "logicGm":  0.45,
+        "hbmGm":  0,
+        "asp":  5285.87691,
+        "streetAsp":  null,
+        "tdp":  750,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Microsoft",
+        "designer":  "MRVL",
+        "chip":  "Maia 300",
+        "launch":  "1H27E",
+        "node":  "N2",
+        "hbmType":  "HBM4",
+        "stacks":  8,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  288,
+        "hbmPrice":  16,
+        "hbmCost":  4608,
+        "intType":  "CoWoS-L",
+        "intCost":  692.041522,
+        "waferCost":  30000,
+        "yield":  0.55,
+        "diesPerWafer":  64,
+        "costPerDie":  852.272727,
+        "nDie":  1,
+        "pkgTest":  298.295455,
+        "dieTotal":  1150.568182,
+        "boardIO":  null,
+        "totalCost":  6450.609704,
+        "gm":  0.45,
+        "logicGm":  0.45,
+        "hbmGm":  0,
+        "asp":  7958.199462,
+        "streetAsp":  4000,
+        "tdp":  1500,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Others",
+        "designer":  "NVDA",
+        "chip":  "Groq LPU 3",
+        "launch":  "3Q26E",
+        "node":  "N4N",
+        "hbmType":  "SRAM",
+        "stacks":  null,
+        "layers":  null,
+        "gbPerStack":  null,
+        "totalGB":  128,
+        "hbmPrice":  0,
+        "hbmCost":  0,
+        "intType":  "Monolithic",
+        "intCost":  null,
+        "waferCost":  18000,
+        "yield":  0.6,
+        "diesPerWafer":  107,
+        "costPerDie":  280.373832,
+        "nDie":  1,
+        "pkgTest":  98.130841,
+        "dieTotal":  378.504673,
+        "boardIO":  50,
+        "totalCost":  428.504673,
+        "gm":  0.75,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  1714.018692,
+        "streetAsp":  null,
+        "tdp":  null,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Others",
+        "designer":  "AVGO",
+        "chip":  "Baltra",
+        "launch":  "1H27",
+        "node":  "N3",
+        "hbmType":  "HBM3E",
+        "stacks":  8,
+        "layers":  12,
+        "gbPerStack":  36,
+        "totalGB":  288,
+        "hbmPrice":  14,
+        "hbmCost":  4032,
+        "intType":  "CoWoS-S",
+        "intCost":  367.647059,
+        "waferCost":  25000,
+        "yield":  0.6,
+        "diesPerWafer":  141,
+        "costPerDie":  295.508274,
+        "nDie":  2,
+        "pkgTest":  206.855792,
+        "dieTotal":  797.87234,
+        "boardIO":  null,
+        "totalCost":  5197.519399,
+        "gm":  0.6,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  12993.798498,
+        "streetAsp":  null,
+        "tdp":  null,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Others",
+        "designer":  "AVGO",
+        "chip":  "Gen 3",
+        "launch":  "2H26",
+        "node":  "N3",
+        "hbmType":  "HBM3",
+        "stacks":  2,
+        "layers":  8,
+        "gbPerStack":  16,
+        "totalGB":  32,
+        "hbmPrice":  11,
+        "hbmCost":  352,
+        "intType":  "CoWoS-S",
+        "intCost":  125,
+        "waferCost":  25000,
+        "yield":  0.6,
+        "diesPerWafer":  174,
+        "costPerDie":  239.463602,
+        "nDie":  1,
+        "pkgTest":  83.812261,
+        "dieTotal":  323.275862,
+        "boardIO":  null,
+        "totalCost":  800.275862,
+        "gm":  0.6,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  2000.689655,
+        "streetAsp":  null,
+        "tdp":  null,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Others",
+        "designer":  "INTC",
+        "chip":  "Crescent Island",
+        "launch":  "2H26E",
+        "node":  "18A",
+        "hbmType":  "LPDDR5X",
+        "stacks":  null,
+        "layers":  null,
+        "gbPerStack":  null,
+        "totalGB":  160,
+        "hbmPrice":  1.5,
+        "hbmCost":  240,
+        "intType":  "Monolithic",
+        "intCost":  null,
+        "waferCost":  27500,
+        "yield":  0.5,
+        "diesPerWafer":  83,
+        "costPerDie":  662.650602,
+        "nDie":  1,
+        "pkgTest":  231.927711,
+        "dieTotal":  894.578313,
+        "boardIO":  50,
+        "totalCost":  1184.578313,
+        "gm":  0.5,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  2369.156627,
+        "streetAsp":  null,
+        "tdp":  null,
+        "tdpEst":  false
+    },
+    {
+        "tab":  "Others",
+        "designer":  "Fujitsu",
+        "chip":  "A64FX",
+        "launch":  "1H20",
+        "node":  "N7",
+        "hbmType":  "HBM2",
+        "stacks":  4,
+        "layers":  4,
+        "gbPerStack":  8,
+        "totalGB":  32,
+        "hbmPrice":  11,
+        "hbmCost":  352,
+        "intType":  "CoWoS-S",
+        "intCost":  null,
+        "waferCost":  8025,
+        "yield":  0.6,
+        "diesPerWafer":  141,
+        "costPerDie":  94.858156,
+        "nDie":  1,
+        "pkgTest":  33.200355,
+        "dieTotal":  128.058511,
+        "boardIO":  50,
+        "totalCost":  530.058511,
+        "gm":  0.5,
+        "logicGm":  null,
+        "hbmGm":  null,
+        "asp":  1060.117021,
+        "streetAsp":  null,
+        "tdp":  null,
+        "tdpEst":  false
+    }
+];
+
+/* ---------- model ---------- */
+const HBM_GENS = ['HBM2','HBM2E','HBM3','HBM3E','HBM4','HBM4E'];
+const HBM_DEFAULT = {HBM2:11, HBM2E:11, HBM3:11, HBM3E:14, HBM4:16, HBM4E:18};
+const COMPANY_COLOR = {NVIDIA:'#76b900', AMD:'#ed1c24', Google:'#58a6ff', Meta:'#bc8cff', OpenAI:'#e6edf3', AWS:'#e3b341', Microsoft:'#2dd4bf', Others:'#8b949e'};
+const TABS = ['Overview','NVIDIA','AMD','Google','Meta','OpenAI','AWS','Microsoft','Others'];
+
+function normGen(t){
+  t = (t||'').toUpperCase();
+  if (t.includes('HBM4/')) return 'HBM4';
+  if (t.includes('HBM4E')) return 'HBM4E';
+  if (t.includes('HBM4')) return 'HBM4';
+  if (t.includes('HBM3E')) return 'HBM3E';
+  if (t.includes('HBM3')) return 'HBM3';
+  if (t.includes('HBM2E')) return 'HBM2E';
+  if (t.includes('HBM2')) return 'HBM2';
+  return null; // GDDR7 / LPDDR / SRAM / DDR5...
+}
+
+let hbmPrice = {...HBM_DEFAULT};          // global $/GB per generation
+let ovr = {};                              // per-chip overrides {idx:{wafer,yield,gm,hbm}}
+
+CHIPS.forEach((c,i) => {
+  c.idx = i;
+  c.gen = normGen(c.hbmType);
+  c.consigned = (c.tab === 'AWS' && c.hbmCost === 0 && c.totalGB > 0);
+  c.complete = (c.totalCost != null && c.asp != null);
+  // freeze pkg/test ratio vs die cost from Jefferies baseline
+  c.dieOnly = (c.dieTotal != null) ? c.dieTotal - (c.pkgTest||0) : null;
+  c.pkgRatio = (c.dieOnly > 0 && c.pkgTest != null) ? c.pkgTest / c.dieOnly : null;
+  c.hasDie = (c.waferCost != null && c.yield != null && c.diesPerWafer != null && c.nDie != null);
+});
+
+/* ---------- SemiAnalysis power basis (Semianalysis Apr 26.xlsx · Specs Sheet Output) ---------- */
+let powerMode = 'tdp';  // 'tdp' = chip TDP (Jefferies) | 'allin' = All-in Chip Power (SemiAnalysis)
+const SA_POWER = {
+  'A100':               {sa:'A100',                    tdp:400,  allin:902.2},
+  'A800':               {sa:'A800',                    tdp:400,  allin:900},
+  'H100':               {sa:'H100 SXM',                tdp:700,  allin:1359.4},
+  'H200':               {sa:'H200',                    tdp:700,  allin:1359.4},
+  'H800':               {sa:'H800',                    tdp:700,  allin:1339},
+  'H20':                {sa:'H20',                     tdp:400,  allin:920},
+  'B20':                {sa:'B30A (single-die)',       tdp:350,  allin:630},
+  'B200':               {sa:'B200 1000W',              tdp:1000, allin:1700.6},
+  'B300':               {sa:'GB300 NVL36/72',          tdp:1400, allin:2220.2},
+  'R200':               {sa:'Vera Rubin NVL72',        tdp:2300, allin:3291.2},
+  'R300':               {sa:'Rubin Ultra 16-Hi',       tdp:4600, allin:6032.3},
+  'Rubin CPX':          {sa:'CPX (GDDR7)',             tdp:800,  allin:1145, est:true},
+  'MI300X':             {sa:'MI300X',                  tdp:750,  allin:1397.8},
+  'MI325X':             {sa:'MI325X',                  tdp:1000, allin:1697.8},
+  'MI350X':             {sa:'MI350',                   tdp:1000, allin:1674},
+  'MI455X':             {sa:'MI430',                   tdp:2000, allin:3445.1},
+  'MI500X':             {sa:'MI500',                   tdp:2600, allin:3769},
+  'TPU v4i':            {sa:'TPU v4i (Pufferlite)',    tdp:175,  allin:275},
+  'TPU v4':             {sa:'TPU v4 (Pufferfish)',     tdp:200,  allin:300},
+  'TPU v5e':            {sa:'TPU v5e (Viperlite)',     tdp:300,  allin:471.4},
+  'TPU v5p':            {sa:'TPU v5p (Viperfish)',     tdp:550,  allin:729.5},
+  'TPU v6e (Trillium)': {sa:'TPU v6 (Ghostlite)',      tdp:390,  allin:521.3},
+  'TPU7x (Ironwood)':   {sa:'TPU v7 (Ironwood)',       tdp:980,  allin:1232.8},
+  'TPU8x (Zebrafish)':  {sa:'TPU v8X (Zebrafish)',     tdp:600,  allin:1200},
+  'TPU8ax (Sunfish)':   {sa:'TPU v8AX (Sunfish)',      tdp:1200, allin:1763},
+  'TPU9x (Humufish)':   {sa:'s/ linha na SA',          tdp:700,  allin:1028, est:true},
+  'TPU9ax (Pumafish)':  {sa:'TPU v9AX (Pumafish)',     tdp:1500, allin:2200},
+  'MTIA 100':           {sa:'s/ linha na SA',          tdp:35,   allin:63, est:true},
+  'MTIA 200':           {sa:'MTIA 200 (Artemis)',      tdp:90,   allin:162},
+  'MTIA 300':           {sa:'MTIA 300 (Athena)',       tdp:800,  allin:1280},
+  'MTIA 400':           {sa:'MTIA 400 (Santa Barbara)',tdp:1200, allin:1740},
+  'MTIA 450':           {sa:'MTIA 450 (Arke)',         tdp:1400, allin:1800},
+  'MTIA 500':           {sa:'MTIA 500 (Astrid)',       tdp:1700, allin:2380},
+  'Titan v1':           {sa:'OAI Titan 1 (Small)',     tdp:850,  allin:1275},
+  'Titan v2':           {sa:'OAI Titan 2',             tdp:2200, allin:3000},
+  'Inferentia 2':       {sa:'Inferentia2/Trainium1',   tdp:200,  allin:360},
+  'Trainium 2':         {sa:'Trainium2 Teton PD',      tdp:500,  allin:763.8},
+  'Trainium 3':         {sa:'Trainium3 Teton PD',      tdp:570,  allin:922.6},
+  'Trainium 4':         {sa:'Trainium4 (UALink)',      tdp:1200, allin:2160},
+  'Maia 100':           {sa:'Maia 100 (Athena)',       tdp:700,  allin:1260},
+  'Maia 200':           {sa:'Maia 200',                tdp:750,  allin:1350},
+  'Maia 300':           {sa:'Maia 300 (Clea)',         tdp:1500, allin:2700},
+  'Baltra':             {sa:'Apple Baltra Sotra',      tdp:600,  allin:1080}
+};
+CHIPS.forEach(c => { c.sa = SA_POWER[c.chip] || null; });
+window.setPower = m => { powerMode = m; renderAll(); };
+
+/* ---------- flags de qualidade de dado (auditoria jun-26 vs fonte + SemiAnalysis) ---------- */
+const WARN = {
+  'MTIA 300':          'Jefferies marca HBM2E a $11/GB, mas 12-Hi 36GB/stack é spec de HBM3E ($14/GB) — HBM possivelmente subestimada em ~$648/chip (B.O.M ~$4.554, ASP ~$11k+)',
+  'Trainium 2':        'TDP Jefferies 653W fica entre o chip TDP (500W) e o all-in (764W) da SemiAnalysis — denominador do $/GW pode já ser parcialmente all-in',
+  'Trainium 3':        'TDP Jefferies 904W ≈ all-in da SemiAnalysis (923W), e não o chip TDP (570W) — em base TDP o $/GW da Trainium já é quase all-in (favorece a comparação)',
+  'Trainium 4':        'TDP Jefferies 1936W vs chip TDP 1200W na SemiAnalysis; street ASP da fonte era $1.000 (placeholder na coluna CHECK) — suprimido',
+  'TPU v5e':           'TDP Jefferies 138W vs 300W na SemiAnalysis (v5e costuma ser citado ~170-200W) — suspeito',
+  'TPU8x (Zebrafish)': 'TDP Jefferies 750W vs 600W chip / 1200W all-in na SemiAnalysis',
+  'TPU9ax (Pumafish)': 'TDP Jefferies 2500W acima até do all-in da SemiAnalysis (2200W) — suspeito',
+  'MI500X':            'TDP Jefferies 5000W vs 2600W chip TDP na SemiAnalysis — suspeito (quase 2×)',
+  'Titan v1':          'TDP Jefferies 500W vs 850W chip TDP na SemiAnalysis',
+  'Titan v2':          'wafer cost corrompido na fonte Jefferies (overflow int32) — linha incompleta, fora das tabelas'
+};
+CHIPS.forEach(c => { c.warn = WARN[c.chip] || null; });
+
+function calc(c){
+  const o = ovr[c.idx] || {};
+  const gen = c.gen;
+  const pGB = (o.hbm != null) ? o.hbm : (gen ? hbmPrice[gen] : c.hbmPrice);
+  const hbmMkt = (c.totalGB||0) * (pGB||0);              // market value of memory
+  const hbm = c.consigned ? 0 : hbmMkt;                  // in BOM (AWS consigned = 0)
+  const wafer = (o.wafer != null) ? o.wafer : c.waferCost;
+  const yld = (o.yld != null) ? o.yld : c.yield;
+  let dieTotal = c.dieOnly || 0, costPerDie = c.costPerDie;
+  if (c.hasDie) { costPerDie = wafer/(c.diesPerWafer*yld); dieTotal = costPerDie*c.nDie; }
+  const pkg = (c.pkgRatio != null) ? c.pkgRatio*dieTotal : (c.pkgTest||0);
+  const intc = c.intCost||0, board = c.boardIO||0;
+  const total = hbm + intc + dieTotal + pkg + board;
+  const gm = (o.gm != null) ? o.gm : c.gm;
+  let asp = null;
+  if (c.complete || total > 0) {
+    if (c.logicGm != null) asp = (total - hbm)/(1-((o.gm!=null?o.gm:c.logicGm))) + hbm/(1-(c.hbmGm||0));
+    else if (gm != null) asp = total/(1-gm);
+  }
+  const pw = (powerMode==='allin') ? (c.sa ? c.sa.allin : null) : c.tdp;
+  const chipsGW = pw ? 1e9/pw : null;
+  return { pGB, hbm, hbmMkt, intc, dieTotal, costPerDie, pkg, board, total, asp, gm,
+           hbmShare: total>0 ? hbm/total : 0,
+           powerW: pw, powerEst: (powerMode==='allin' && c.sa && c.sa.est) || false,
+           chipsGW, bomGW: chipsGW&&total ? total*chipsGW/1e9 : null,
+           aspGW: chipsGW&&asp ? asp*chipsGW/1e9 : null,
+           streetGW: chipsGW&&c.streetAsp ? c.streetAsp*chipsGW/1e9 : null };
+}
+
+/* ---------- formatting ---------- */
+const fmt$ = x => x==null ? '—' : '$'+Math.round(x).toLocaleString('en-US');
+const fmt$B = x => x==null ? '—' : '$'+x.toFixed(1)+'B';
+const fmtK = x => x==null ? '—' : Math.round(x/1000).toLocaleString('en-US')+'k';
+const fmtP = x => x==null ? '—' : (100*x).toFixed(0)+'%';
+const esc = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+
+/* ---------- build UI ---------- */
+const tabbar = document.getElementById('tabbar');
+const panels = document.getElementById('panels');
+TABS.forEach((t,i) => {
+  const el = document.createElement('div');
+  el.className = 'tab'+(i===0?' active':''); el.textContent = t; el.dataset.t = t;
+  el.onclick = () => { document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    el.classList.add('active'); document.getElementById('p-'+t).classList.add('active');
+    if (t==='Overview') drawCharts(); };
+  tabbar.appendChild(el);
+  const p = document.createElement('div');
+  p.className = 'panel'+(i===0?' active':''); p.id = 'p-'+t;
+  panels.appendChild(p);
+});
+
+function hbmBarHTML(){
+  return `<div class="card"><div class="card-head"><div class="card-title">HBM $/GB — global</div>
+    <div class="card-sub">muda o preço da geração e recalcula B.O.M, ASP e $/GW de todos os chips (Jefferies: HBM2/2E $11 · HBM3 $11 · HBM3E $14 · HBM4 $16 · HBM4E $18)</div></div>
+    <div class="hbm-bar">${HBM_GENS.map(g =>
+      `<div class="hbm-item"><label>${g}</label><input type="number" step="0.5" min="0" data-gen="${g}" value="${hbmPrice[g]}"></div>`).join('')}
+    <button class="btn" onclick="resetHBM()">↺ HBM Jefferies</button>
+    <div class="hbm-item" style="margin-left:auto"><label>Base de potência ($/GW)</label>
+      <div style="display:flex;gap:6px">
+        <div class="pill${powerMode==='tdp'?' active':''}" onclick="setPower('tdp')">Chip TDP (Jefferies)</div>
+        <div class="pill${powerMode==='allin'?' active':''}" onclick="setPower('allin')">All-in (SemiAnalysis)</div>
+      </div></div></div></div>`;
+}
+
+const selected = {};  // tab -> chip idx
+function companyPanelHTML(tab){
+  const list = CHIPS.filter(c=>c.tab===tab);
+  const comp = list.filter(c=>c.complete);
+  const sel = selected[tab] != null ? selected[tab] : (comp.length? comp.reduce((a,b)=>(b.asp||0)>(a.asp||0)?b:a).idx : list[0].idx);
+  selected[tab] = sel;
+  return hbmBarHTML() + `
+  <div class="card"><div class="pills">${list.map(c =>
+    `<div class="pill${c.idx===sel?' active':''}${c.complete?'':' dim'}" onclick="selChip('${tab}',${c.idx})">${esc(c.chip)}</div>`).join('')}</div></div>
+  <div id="detail-${tab}"></div>
+  <div class="card"><div class="card-head"><div class="card-title">${tab} — todos os chips</div>
+    <div class="card-sub">recalculado ao vivo com os inputs acima</div></div>
+    <div class="tbl-wrap"><table id="ctable-${tab}"></table></div></div>`;
+}
+
+window.selChip = (tab, idx) => { selected[tab]=idx; renderTab(tab); };
+window.resetHBM = () => { hbmPrice={...HBM_DEFAULT}; renderAll(); };
+
+function detailHTML(c){
+  const r = calc(c);
+  const o = ovr[c.idx]||{};
+  const dHBM = c.gen && hbmPrice[c.gen]!==HBM_DEFAULT[c.gen];
+  if (!c.complete) return `<div class="card"><div class="card-head"><div class="card-title">${esc(c.chip)}</div>
+    <div class="card-sub">${esc(c.designer)} · ${esc(c.launch)} · ${esc(c.node)} · dados incompletos no modelo Jefferies (pipeline)</div></div>
+    <div class="memo" style="padding:14px 16px">B.O.M ainda não publicado pela Jefferies para este chip${c.streetAsp?` — ASP de referência ${fmt$(c.streetAsp)}`:''}.</div></div>`;
+  const segs = [['HBM',r.hbm,'#e3b341'],['Interposer',r.intc,'#bc8cff'],['Compute die',r.dieTotal,'#58a6ff'],['Pkg/Test',r.pkg,'#2dd4bf'],['Board/IO & outros dies',r.board,'#6e7681']];
+  const gmLabel = c.logicGm!=null ? 'Logic GM %' : 'GM %';
+  const gmVal = o.gm!=null ? o.gm : (c.logicGm!=null ? c.logicGm : c.gm);
+  return `<div class="card">
+  <div class="card-head"><div class="card-title">${esc(c.chip)}</div>
+    <div class="card-sub">${esc(c.designer)} · ${esc(c.launch)} · node ${esc(c.node)} · ${esc(c.hbmType)} ${c.totalGB?c.totalGB+'GB'+(c.stacks?' ('+c.stacks+'×'+c.gbPerStack+'GB)':''):''} · ${esc(c.intType)}${c.consigned?' · <span class="org">HBM consignada pela Amazon (fora do B.O.M do chip)</span>':''}</div>
+    ${c.warn?`<div class="card-sub" style="width:100%;color:var(--orange)">⚠ ${esc(c.warn)}</div>`:''}</div>
+  <div class="grid-2">
+    <div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Componente</th><th>Premissa</th><th>Custo</th><th>% B.O.M</th></tr>
+        <tr><td>HBM ${c.consigned?'<span class="dim">(consignada)</span>':''}</td>
+          <td>${c.gen?`<input class="bom-input${(o.hbm!=null||dHBM)?' changed':''}" type="number" step="0.5" value="${(r.pGB??0).toFixed(1)}" onchange="setOvr(${c.idx},'hbm',this.value)"> $/GB × ${c.totalGB}GB`:'<span class="dim">'+esc(c.hbmType)+(c.hbmPrice?` $${c.hbmPrice}/GB`:'')+'</span>'}</td>
+          <td class="org">${c.consigned?'<span class="dim">$0 ('+fmt$(r.hbmMkt)+' mkt)</span>':fmt$(r.hbm)}</td><td>${fmtP(r.hbmShare)}</td></tr>
+        <tr><td>Interposer <span class="dim">${esc(c.intType)}</span></td><td class="dim">fixo Jefferies</td><td>${fmt$(r.intc)}</td><td>${fmtP(r.total?r.intc/r.total:null)}</td></tr>
+        <tr><td>Compute die ${c.nDie?`<span class="dim">${c.nDie}×</span>`:''}</td>
+          <td>${c.hasDie?`wafer <input class="bom-input${o.wafer!=null?' changed':''}" type="number" step="500" value="${Math.round(o.wafer!=null?o.wafer:c.waferCost)}" onchange="setOvr(${c.idx},'wafer',this.value)"> · yield <input class="bom-input${o.yld!=null?' changed':''}" style="width:54px" type="number" step="0.05" min="0.1" max="1" value="${(o.yld!=null?o.yld:c.yield).toFixed(2)}" onchange="setOvr(${c.idx},'yld',this.value)"> · ${c.diesPerWafer} dies/wafer`:'<span class="dim">monolítico / fixo</span>'}</td>
+          <td class="blu">${fmt$(r.dieTotal)}</td><td>${fmtP(r.total?r.dieTotal/r.total:null)}</td></tr>
+        <tr><td>Pkg / Test</td><td class="dim">${c.pkgRatio!=null?(100*c.pkgRatio).toFixed(0)+'% do die':'fixo'}</td><td>${fmt$(r.pkg)}</td><td>${fmtP(r.total?r.pkg/r.total:null)}</td></tr>
+        <tr><td>Board, NVL, I/O & outros dies</td><td class="dim">fixo Jefferies</td><td>${fmt$(r.board)}</td><td>${fmtP(r.total?r.board/r.total:null)}</td></tr>
+        <tr class="tot"><td>Total B.O.M</td><td></td><td>${fmt$(r.total)}</td><td>100%</td></tr>
+        <tr><td>${gmLabel}</td>
+          <td><input class="bom-input${o.gm!=null?' changed':''}" style="width:60px" type="number" step="0.01" min="0" max="0.95" value="${(gmVal??0).toFixed(2)}" onchange="setOvr(${c.idx},'gm',this.value)">${c.logicGm!=null?' <span class="dim">(HBM repassada a custo)</span>':''}</td>
+          <td></td><td></td></tr>
+        <tr class="tot"><td>ASP implícito</td><td class="dim">Jefferies: ${fmt$(c.asp)}${c.streetAsp?' · street '+fmt$(c.streetAsp):''}</td>
+          <td class="org">${fmt$(r.asp)}</td>
+          <td>${c.asp?`<span class="delta ${r.asp>c.asp?'neg':'pos'}">${(100*(r.asp/c.asp-1)).toFixed(1)}%</span>`:''}</td></tr>
+      </table></div>
+      <div class="stackbar">${segs.map(s=>`<div style="width:${r.total?100*s[1]/r.total:0}%;background:${s[2]}"></div>`).join('')}</div>
+      <div class="legend">${segs.map(s=>`<span><i style="background:${s[2]}"></i>${s[0]}</span>`).join('')}</div>
+    </div>
+    <div>
+      <div class="kpis">
+        <div class="kpi"><div class="l">HBM % do B.O.M</div><div class="v org">${fmtP(r.hbmShare)}</div><div class="s">${c.consigned?'consignada':fmt$(r.hbm)}</div></div>
+        <div class="kpi"><div class="l">Total B.O.M</div><div class="v">${fmt$(r.total)}</div><div class="s">Jefferies ${fmt$(c.totalCost)}</div></div>
+        <div class="kpi"><div class="l">ASP</div><div class="v">${fmt$(r.asp)}</div><div class="s">GM ${fmtP(r.asp?1-r.total/r.asp:null)}</div></div>
+        <div class="kpi"><div class="l">${powerMode==='allin'?'All-in / chip':'TDP'}</div><div class="v">${r.powerW?Math.round(r.powerW).toLocaleString('en-US')+' W':'—'}</div><div class="s">${powerMode==='allin'
+            ? (c.sa?`SemiAnalysis: ${esc(c.sa.sa)}${c.sa.est?' · estimado':''} · chip ${c.tdp||c.sa.tdp} W`:'sem match na SemiAnalysis')
+            : (c.tdpEst?'estimativa (não consta na Jefferies)':'por package')+(c.sa?` · all-in SA ${Math.round(c.sa.allin).toLocaleString('en-US')} W`:'')}</div></div>
+        <div class="kpi"><div class="l">Chips por GW</div><div class="v">${fmtK(r.chipsGW)}</div><div class="s">${powerMode==='allin'?'1 GW all-in (SemiAnalysis)':'1 GW de TDP de chip'}</div></div>
+        <div class="kpi"><div class="l">Custo por GW</div><div class="v blu">${fmt$B(r.aspGW)}</div><div class="s">a ASP · street ${fmt$B(r.streetGW)} · B.O.M ${fmt$B(r.bomGW)}</div></div>
+      </div>
+      <div class="memo">Custo por GW = ASP × (1e9 / W). Base "Chip TDP" = TDP de package (Jefferies); base "All-in" = All-in Chip Power da SemiAnalysis (Specs Sheet, abr-26): chip + parcela do servidor (CPU, NIC, fans, perdas) por acelerador. Só silício do acelerador no custo — não inclui resto do servidor, rede, prédio e energia.${c.consigned?' Para AWS, ASP exclui HBM (consignada): custo real por GW p/ Amazon soma a HBM de mercado.':''}</div>
+    </div>
+  </div></div>`;
+}
+
+window.setOvr = (idx, k, v) => {
+  v = parseFloat(v);
+  if (!ovr[idx]) ovr[idx] = {};
+  if (isNaN(v)) delete ovr[idx][k]; else ovr[idx][k] = v;
+  renderTab(CHIPS[idx].tab);
+};
+
+function companyTableHTML(tab){
+  const list = CHIPS.filter(c=>c.tab===tab && c.complete);
+  let h = `<tr><th>Chip</th><th>Launch</th><th>Node</th><th>HBM</th><th>GB</th><th>$/GB</th><th>HBM $</th><th>HBM %</th><th>B.O.M</th><th>ASP</th><th>Street</th><th>GM</th><th>${powerMode==='allin'?'All-in W':'TDP W'}</th><th>chips/GW</th><th>$B/GW (ASP)</th><th>$B/GW (street)</th></tr>`;
+  list.forEach(c => { const r = calc(c);
+    h += `<tr><td>${esc(c.chip)}${c.warn?` <span class="org" title="${esc(c.warn)}">⚠</span>`:''}</td><td class="dim">${esc(c.launch)}</td><td class="dim">${esc(c.node)}</td><td>${esc(c.hbmType)}</td><td>${c.totalGB||'—'}</td><td>${r.pGB!=null&&c.gen?'$'+r.pGB:'—'}</td><td class="org">${c.consigned?'<span class="dim">consig.</span>':fmt$(r.hbm)}</td><td>${fmtP(r.hbmShare)}</td><td>${fmt$(r.total)}</td><td>${fmt$(r.asp)}</td><td class="dim">${fmt$(c.streetAsp)}</td><td>${fmtP(r.asp?1-r.total/r.asp:null)}</td><td>${r.powerW?Math.round(r.powerW)+(r.powerEst?'<span class="org">*</span>':''):'—'}</td><td>${fmtK(r.chipsGW)}</td><td class="blu">${fmt$B(r.aspGW)}</td><td>${fmt$B(r.streetGW)}</td></tr>`;
+  });
+  return h;
+}
+
+/* ---------- overview ---------- */
+function overviewHTML(){
+  return hbmBarHTML() + `
+  <div class="card"><div class="card-head"><div class="card-title">Custo por GW ${powerMode==='allin'?'all-in (SemiAnalysis)':'de TDP de chip'} — ASP implícito vs street ($B)</div>
+    <div class="card-sub">quanto custa 1 GW de aceleradores ao preço de venda — nos dois cenários de ASP (implícito Jefferies e street)</div></div>
+    <div class="chart-box"><canvas id="ch-gw"></canvas></div></div>
+  <div class="grid-2">
+  <div class="card"><div class="card-head"><div class="card-title">HBM como % do B.O.M</div></div>
+    <div class="chart-box" style="height:300px"><canvas id="ch-hbm"></canvas></div></div>
+  <div class="card"><div class="card-head"><div class="card-title">B.O.M vs ASP ($/chip)</div></div>
+    <div class="chart-box" style="height:300px"><canvas id="ch-asp"></canvas></div></div>
+  </div>
+  <div class="card"><div class="card-head"><div class="card-title">Todos os chips</div>
+    <div class="card-sub">B.O.M completo Jefferies · recalcula com HBM global acima</div></div>
+    <div class="tbl-wrap"><table id="otable"></table></div>
+  <div class="note">Fonte: Jefferies "Semiconductor AI Chips - Accelerator Characteristics" (AI Model, abr-26). Custos por chip: HBM (GB × $/GB), interposer (CoWoS/SoIC), compute die (wafer ÷ dies ÷ yield), pkg/test e board/IO. ASP = custo ÷ (1−GM); para TPU/MTIA/Maia a Jefferies usa GM só na lógica com HBM repassada a custo; Trainium tem HBM consignada pela Amazon. TDP da aba Chip Performance; Rubin CPX é estimativa pública. Base "All-in" usa o All-in Chip Power da SemiAnalysis ("Semianalysis Apr 26.xlsx", Specs Sheet Output): potência por acelerador incluindo a parcela do servidor (CPU, NIC, fans, perdas de PSU) — * = sem linha na SemiAnalysis, estimado pelo ratio all-in/TDP da família. Custo por GW considera apenas o acelerador (sem PUE/rede/prédio). <span class="org">⚠ Caveat (auditoria jun-26):</span> o "TDP" da Jefferies não é uma base única — para NVIDIA/AMD flagship é TDP de package genuíno, mas para Trainium 2/3/4 e alguns TPUs aproxima o all-in da SemiAnalysis (ex.: Trainium 3 904W ≈ all-in 923W vs chip 570W), o que deprime artificialmente o $/GW desses chips na base TDP; a comparação cross-vendor é mais honesta na base All-in. Linhas com ⚠ têm divergência de dado vs fonte/SemiAnalysis (hover para detalhe).</div></div>`;
+}
+
+function overviewTableHTML(){
+  const order = [...CHIPS].filter(c=>c.complete).sort((a,b)=> (calc(b).aspGW||0) - (calc(a).aspGW||0));
+  let h = `<tr><th>Company</th><th>Chip</th><th>Launch</th><th>HBM</th><th>GB</th><th>HBM $</th><th>HBM %</th><th>B.O.M</th><th>ASP</th><th>Street</th><th>GM</th><th>${powerMode==='allin'?'All-in':'TDP'}</th><th>$B/GW (ASP)</th><th>$B/GW (street)</th></tr>`;
+  order.forEach(c => { const r = calc(c);
+    h += `<tr><td><span style="color:${COMPANY_COLOR[c.tab]}">●</span> ${esc(c.tab)} <span class="dim">${esc(c.designer)}</span></td><td>${esc(c.chip)}${c.warn?` <span class="org" title="${esc(c.warn)}">⚠</span>`:''}</td><td class="dim">${esc(c.launch)}</td><td>${esc(c.hbmType)}</td><td>${c.totalGB||'—'}</td><td class="org">${c.consigned?'<span class="dim">consig.</span>':fmt$(r.hbm)}</td><td>${fmtP(r.hbmShare)}</td><td>${fmt$(r.total)}</td><td>${fmt$(r.asp)}</td><td class="dim">${fmt$(c.streetAsp)}</td><td>${fmtP(r.asp?1-r.total/r.asp:null)}</td><td>${r.powerW?Math.round(r.powerW)+'W'+(r.powerEst?'<span class="org">*</span>':''):'—'}</td><td class="blu">${fmt$B(r.aspGW)}</td><td>${fmt$B(r.streetGW)}</td></tr>`;
+  });
+  return h;
+}
+
+let charts = {};
+function drawCharts(){
+  const yr = c => { const m = (c.launch||'').match(/(\d{2})\s*E?\s*$/); return m ? parseInt(m[1]) : null; };
+  const cur = CHIPS.filter(c => c.complete && c.tdp && (yr(c) == null || yr(c) >= 24));
+  const byGW = [...cur].sort((a,b)=>(calc(b).aspGW||0)-(calc(a).aspGW||0));
+  const mk = (id, cfg) => { if (charts[id]) charts[id].destroy(); charts[id] = new Chart(document.getElementById(id), cfg); };
+  const gridC = '#21262d', tickC = '#8b949e';
+  mk('ch-gw', { type:'bar',
+    data:{ labels: byGW.map(c=>c.chip), datasets:[
+      { label:'ASP implícito', data: byGW.map(c=>calc(c).aspGW), backgroundColor: byGW.map(c=>COMPANY_COLOR[c.tab]) },
+      { label:'Street ASP', data: byGW.map(c=>calc(c).streetGW), backgroundColor:'#6e7681' }]},
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{labels:{color:tickC}}},
+      scales:{ x:{ticks:{color:tickC,maxRotation:60,minRotation:45},grid:{color:gridC}}, y:{ticks:{color:tickC,callback:v=>'$'+v+'B'},grid:{color:gridC}} } }});
+  const byHBM = [...cur].sort((a,b)=>calc(b).hbmShare-calc(a).hbmShare);
+  mk('ch-hbm', { type:'bar', data:{ labels:byHBM.map(c=>c.chip), datasets:[{ data: byHBM.map(c=>100*calc(c).hbmShare), backgroundColor:'#e3b341' }]},
+    options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}},
+      scales:{ x:{ticks:{color:tickC,callback:v=>v+'%'},grid:{color:gridC}}, y:{ticks:{color:tickC,font:{size:10}},grid:{display:false}} } }});
+  mk('ch-asp', { type:'bar',
+    data:{ labels: byGW.map(c=>c.chip), datasets:[
+      { label:'B.O.M', data: byGW.map(c=>calc(c).total), backgroundColor:'#58a6ff' },
+      { label:'ASP', data: byGW.map(c=>calc(c).asp), backgroundColor:'#3fb950' }]},
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{labels:{color:tickC}}},
+      scales:{ x:{ticks:{color:tickC,maxRotation:60,minRotation:45,font:{size:9}},grid:{color:gridC}}, y:{ticks:{color:tickC,callback:v=>'$'+(v/1000)+'k'},grid:{color:gridC}} } }});
+}
+
+/* ---------- render ---------- */
+function bindHBMInputs(panel){
+  panel.querySelectorAll('input[data-gen]').forEach(inp => {
+    if (hbmPrice[inp.dataset.gen] !== HBM_DEFAULT[inp.dataset.gen]) inp.classList.add('changed');
+    inp.onchange = () => { const v = parseFloat(inp.value);
+      if (!isNaN(v)) { hbmPrice[inp.dataset.gen] = v; renderAll(); } };
+  });
+}
+function renderTab(tab){
+  const p = document.getElementById('p-'+tab);
+  if (tab === 'Overview') {
+    p.innerHTML = overviewHTML();
+    document.getElementById('otable').innerHTML = overviewTableHTML();
+    bindHBMInputs(p);
+    if (p.classList.contains('active')) drawCharts();
+  } else {
+    p.innerHTML = companyPanelHTML(tab);
+    document.getElementById('detail-'+tab).innerHTML = detailHTML(CHIPS[selected[tab]]);
+    document.getElementById('ctable-'+tab).innerHTML = companyTableHTML(tab);
+    bindHBMInputs(p);
+  }
+}
+function renderAll(){ TABS.forEach(renderTab); }
+document.getElementById('reset-all').onclick = () => { hbmPrice={...HBM_DEFAULT}; ovr={}; renderAll(); };
+renderAll();
+</script>
+</body>
+</html>
