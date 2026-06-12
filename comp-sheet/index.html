@@ -504,6 +504,15 @@ function openFund(k){
       <tr><td>EPS</td><td>${fmt(e25,2)}</td><td>${fmt(e26,2)}</td><td>${fmt(e27,2)}</td><td>${fmt(n.eps,2)}</td><td>${fmt(y2.eps,2)}</td></tr>
       <tr><td>EPS growth</td><td class="mut">–</td>${pcell(grw(e25,e26))}${pcell(grw(e26,e27))}<td class="mut">–</td>${pcell(grw(n.eps,y2.eps))}</tr>
       <tr><td>P/E</td><td>${fmt(fpe(e25))}</td><td>${fmt(fpe(e26))}</td><td>${fmt(fpe(e27))}</td><td>${fmt(n.pe)}</td><td>${fmt(y2.pe)}</td></tr>
+      ${cap ? `
+      <tr style="border-top:1px solid var(--line)"><td style="color:var(--gold)">EPS Capstone</td><td class="mut">–</td>
+        <td><b>${fmt(cap.cap26,2)}</b> <span class="${cls(cap.diff26)}" style="font-size:11px">${pct(cap.diff26,0)}</span></td>
+        <td><b>${fmt(cap.cap27,2)}</b> <span class="${cls(cap.diff27)}" style="font-size:11px">${pct(cap.diff27,0)}</span></td>
+        <td class="mut">–</td><td class="mut">–</td></tr>
+      <tr><td style="color:var(--gold)">P/E Capstone</td><td class="mut">–</td>
+        <td>${fmt(c.px&&cap.cap26>0? c.px/cap.cap26:null)}</td>
+        <td>${fmt(c.px&&cap.cap27>0? c.px/cap.cap27:null)}</td>
+        <td class="mut">–</td><td class="mut">–</td></tr>` : ""}
       </tbody></table></div>
     <h4>Street detail &amp; revisions</h4>
     <div class="tablewrap"><table>
