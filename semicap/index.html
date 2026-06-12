@@ -768,7 +768,15 @@
           <button data-c="auto" class="on">Auto cap</button><button data-c="full">Full</button>
         </div>
       </label>
+      <label>Add company (BBG ticker)
+        <div style="display:flex;gap:6px">
+          <input id="hpeAddInput" class="pe-form-in" placeholder="MU · 7203 JT" spellcheck="false"
+            style="width:130px;background:#0d1424;border:1px solid var(--line);border-radius:6px;color:var(--ink);font:600 13px/1 -apple-system,Segoe UI;padding:8px 10px;outline:none">
+          <button id="hpeAddBtn" style="background:var(--accent);border:0;border-radius:6px;color:#0b1220;font:700 12px/1 -apple-system,Segoe UI;padding:8px 12px;cursor:pointer">+ Add</button>
+        </div>
+      </label>
     </div>
+    <p class="note" id="hpeAddMsg" style="margin:6px 0 0"></p>
     <p class="note" id="hpeStamp" style="margin:8px 0 0"></p>
   </div>
 
@@ -1340,6 +1348,8 @@ document.getElementById('tChinab').innerHTML=Object.entries(CHINA_PCT).map(([n,a
     return;
   }
   const HC={ASML:C.asml,AMAT:C.amat,KLAC:C.klac,LRCX:C.lrcx,TER:C.ter,AEIS:C.aeis,TEL:'#2dd4bf'};
+  const HPAL=['#f472b6','#fb923c','#a3e635','#38bdf8','#c084fc','#fbbf24','#34d399'];
+  PEH.order.forEach((t,i)=>{ if(!HC[t]) HC[t]=HPAL[i%HPAL.length]; });
   const st={m:'fwd',yrs:10,cap:'auto',on:Object.fromEntries(PEH.order.map(t=>[t,true]))};
   const fmtX=v=>v==null?'—':v.toFixed(1)+'x';
 
@@ -1456,12 +1466,45 @@ document.getElementById('tChinab').innerHTML=Object.entries(CHINA_PCT).map(([n,a
     }).join('');
   }
 
+  const EXTR=new Set(PEH.extras||[]);
   function chips(){
     document.getElementById('hpeChips').innerHTML=PEH.order.map(t=>
-      `<span class="chip${st.on[t]?' on':''}" data-t="${t}"><i style="background:${HC[t]}"></i>${t}</span>`).join('');
+      `<span class="chip${st.on[t]?' on':''}" data-t="${t}"><i style="background:${HC[t]}"></i>${t}${EXTR.has(t)?' <b class="hxr" data-t="'+t+'" style="color:#ff6b6b;cursor:pointer">✕</b>':''}</span>`).join('');
     document.querySelectorAll('#hpeChips .chip').forEach(ch=>ch.onclick=()=>{
       st.on[ch.dataset.t]=!st.on[ch.dataset.t]; chips(); render();});
+    document.querySelectorAll('#hpeChips .hxr').forEach(x=>x.onclick=e=>{
+      e.stopPropagation(); hpeApi('semicap-remove','key='+encodeURIComponent(x.dataset.t),'removendo '+x.dataset.t+'…');});
   }
+
+  // add/remove de empresa via serve_dashboard local (porta 8790); pagina pode estar em
+  // file://, localhost:8780 ou GitHub Pages — sempre chama o localhost da maquina
+  const hpeLocal = location.protocol==='file:' || /^(localhost|127\.)/.test(location.hostname);
+  function hpeMsg(t){ document.getElementById('hpeAddMsg').textContent=t; }
+  function hpeWaitPages(key,tries){
+    if(tries<=0){ hpeMsg('✓ '+key+' — publicado; recarregue em ~1 min'); return; }
+    fetch('pe_history_data.js',{cache:'no-store'}).then(r=>r.text()).then(t=>{
+      if(t.indexOf('"'+key+'"')>=0 !== (window.__hpeRemoving===key)) location.reload();
+      else setTimeout(()=>hpeWaitPages(key,tries-1),15000);
+    }).catch(()=>setTimeout(()=>hpeWaitPages(key,tries-1),15000));
+  }
+  async function hpeApi(ep,qs,busy){
+    hpeMsg(busy);
+    const btn=document.getElementById('hpeAddBtn'); btn.disabled=true;
+    try{
+      const r=await fetch('http://localhost:8790/api/'+ep+'?'+qs);
+      const j=await r.json();
+      if(!j.ok){ hpeMsg('✗ '+j.error); }
+      else if(hpeLocal){ hpeMsg('✓ '+j.key+' — recarregando…'); setTimeout(()=>location.reload(),900); }
+      else{ window.__hpeRemoving = ep==='semicap-remove'? j.key : null;
+            hpeMsg('✓ '+j.key+' — publicando no GitHub, recarrego sozinho (~1-2 min)…'); hpeWaitPages(j.key,20); }
+    }catch(e){ hpeMsg('✗ servidor local não está rodando NESTA máquina — abra serve_dashboard.bat (pasta Comp Dashboard) e tente de novo'); }
+    btn.disabled=false;
+  }
+  document.getElementById('hpeAddBtn').onclick=()=>{
+    const q=document.getElementById('hpeAddInput').value.trim();
+    if(q) hpeApi('semicap-add','ticker='+encodeURIComponent(q),'buscando P/E semanal desde 2000 no Bloomberg… (~1 min)');
+  };
+  document.getElementById('hpeAddInput').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('hpeAddBtn').onclick();});
   [['hpeMetric','m'],['hpeRange','yrs'],['hpeCap','cap']].forEach(([id,key])=>{
     document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{
       document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.remove('on'));
