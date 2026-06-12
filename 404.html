@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page moved — Capstone Wiki</title>
+<style>
+  body { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; background: #0f1419; color: #e6edf3;
+         display: flex; min-height: 100vh; align-items: center; justify-content: center; margin: 0; }
+  .box { max-width: 560px; padding: 32px; text-align: center; }
+  a { color: #58a6ff; }
+  .muted { color: #8b949e; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>Redirecting…</h1>
+  <p class="muted" id="msg">If you are not redirected, the page may have moved. <a href="/Capstone-Wiki/">Go to the index</a>.</p>
+</div>
+<script>
+// The repo was reorganized to kebab-case folders (Jun-2026). Map old URLs to new homes.
+(function () {
+  var base = '/Capstone-Wiki/';
+  var path = decodeURIComponent(location.pathname);
+  if (path.indexOf(base) === 0) path = path.slice(base.length);
+  path = path.replace(/\/+$/, '');
+  var map = {
+    'AI Labs': 'ai-labs/',
+    'AI Labs/index.html': 'ai-labs/',
+    'AI Labs/data.json': 'ai-labs/data.json',
+    'AI Labs/README.md': 'ai-labs/README.md',
+    'CapexCloud/Capex_Cloud.html': 'capex-cloud/',
+    'CapexCloud/Capex_Cloud.xlsx': 'capex-cloud/capex-cloud.xlsx',
+    'CapexCloud/capex_cloud_data.js': 'capex-cloud/capex_cloud_data.js',
+    'CapexCloud/ppe_data.js': 'capex-cloud/ppe_data.js',
+    'SemiCap/SemiCap_Dashboard': 'semicap/',
+    'SemiCap/SemiCap_Dashboard.html': 'semicap/',
+    'SemiCap/SemiCap_CapexFlow': 'semicap/capex-flow.html',
+    'SemiCap/SemiCap_CapexFlow.html': 'semicap/capex-flow.html',
+    'SemiCap/pe_history_data.js': 'semicap/pe_history_data.js',
+    'SemiCap_Dashboard_print.html': 'semicap/print.html',
+    'SemiCap_WFE_Claude.html': 'wfe/',
+    'claude_wfe_data.js': 'wfe/claude_wfe_data.js',
+    'claude_wfe_history.json': 'wfe/claude_wfe_history.json',
+    'Rack B.O.M/NVL72_BOM.html': 'rack-bom/nvl72.html',
+    'Rack B.O.M/NVL72_BOM_Bernstein.html': 'rack-bom/nvl72-bernstein.html',
+    'ODM - CSP.html': 'odm-csp/',
+    'GW per designer and valuation.html': 'gw-designer-valuation/'
+  };
+  if (map[path]) {
+    location.replace(base + map[path]);
+  } else {
+    document.getElementById('msg').innerHTML =
+      'Page not found. <a href="' + base + '">Go to the Capstone Wiki index</a>.';
+  }
+})();
+</script>
+</body>
+</html>
