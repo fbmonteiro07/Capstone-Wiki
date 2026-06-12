@@ -1687,7 +1687,7 @@ const SA_ASP = {
   'B200':               {asp:32000,  src:'B200 1000W'},
   'B300':               {asp:40736,  src:'Nvidia - B300 (blend c/ GB300)'},
   'R200':               {asp:65000,  src:'Vera Rubin NVL72'},
-  'R300':               {asp:198000, src:'Rubin Ultra 16-Hi (1024GB)'},
+  'R300':               {asp:99000,  src:'Rubin Ultra 16-Hi (1024GB) $198k ÷ 2 — pacote SA = 2 chips na base Jefferies'},
   'Rubin CPX':          {asp:20330,  src:'Rubin CPX p/ VR NVL72 (GDDR7)'},
   'MI300X':             {asp:17000,  src:'AMD - MI300X'},
   'MI325X':             {asp:17000,  src:'AMD - MI325X'},
@@ -1849,7 +1849,7 @@ function detailHTML(c){
         <tr><td>${gmLabel}</td>
           <td><input class="bom-input${o.gm!=null?' changed':''}" style="width:60px" type="number" step="0.01" min="0" max="0.95" value="${(gmVal??0).toFixed(2)}" onchange="setOvr(${c.idx},'gm',this.value)">${c.logicGm!=null?' <span class="dim">(HBM repassada a custo)</span>':''}</td>
           <td></td><td></td></tr>
-        <tr class="tot"><td>ASP implícito <span class="dim" style="font-weight:400">(B.O.M ÷ (1−GM))</span></td><td class="dim">Jefferies: ${fmt$(c.asp)}${c.streetAsp?' · street '+fmt$(c.streetAsp):''}${c.saAsp?` · <span title="${esc(c.saAspSrc)}">SA ${fmt$(c.saAsp)}</span>`:''}</td>
+        <tr class="tot"><td>ASP implícito <span class="dim" style="font-weight:400">(B.O.M ÷ (1−GM))</span></td><td class="dim">${c.saAsp?`<span class="org" title="${esc(c.saAspSrc)}">ref SA: ${fmt$(c.saAsp)}</span> · `:''}Jefferies: ${fmt$(c.asp)}${c.streetAsp?' · street '+fmt$(c.streetAsp):''}${c.saAsp&&r.asp?` <span class="delta ${r.asp>c.saAsp?'neg':'pos'}">implícito vs SA ${(100*(r.asp/c.saAsp-1)).toFixed(0)}%</span>`:''}</td>
           <td class="org">${fmt$(r.asp)}</td>
           <td>${c.asp?`<span class="delta ${r.asp>c.asp?'neg':'pos'}">${(100*(r.asp/c.asp-1)).toFixed(1)}%</span>`:''}</td></tr>
       </table></div>
@@ -1865,7 +1865,7 @@ function detailHTML(c){
             ? (c.sa?`SemiAnalysis: ${esc(c.sa.sa)}${c.sa.est?' · estimado':''} · chip ${c.tdp||c.sa.tdp} W`:'sem match na SemiAnalysis')
             : (c.tdpEst?'estimativa (não consta na Jefferies)':'por package')+(c.sa?` · all-in SA ${Math.round(c.sa.allin).toLocaleString('en-US')} W`:'')}</div></div>
         <div class="kpi"><div class="l">Chips por GW</div><div class="v">${fmtK(r.chipsGW)}</div><div class="s">${powerMode==='allin'?'1 GW all-in (SemiAnalysis)':'1 GW de TDP de chip'}</div></div>
-        <div class="kpi"><div class="l">Custo por GW</div><div class="v blu">${fmt$B(r.aspGW)}</div><div class="s">a ASP · street ${fmt$B(r.streetGW)} · SA ${fmt$B(r.saGW)} · B.O.M ${fmt$B(r.bomGW)}</div></div>
+        <div class="kpi"><div class="l">Custo por GW${c.saAsp?' · ref SA':''}</div><div class="v blu">${fmt$B(c.saAsp?r.saGW:r.aspGW)}</div><div class="s">${c.saAsp?`a ASP SA (ref) · implícito ${fmt$B(r.aspGW)}`:'a ASP implícito'} · street ${fmt$B(r.streetGW)} · B.O.M ${fmt$B(r.bomGW)}</div></div>
       </div>
       <div class="memo">Custo por GW = ASP × (1e9 / W). Base "Chip TDP" = TDP de package (Jefferies); base "All-in" = All-in Chip Power da SemiAnalysis (Specs Sheet, abr-26): chip + parcela do servidor (CPU, NIC, fans, perdas) por acelerador. Só silício do acelerador no custo — não inclui resto do servidor, rede, prédio e energia.${c.consigned?' Para AWS, ASP exclui HBM (consignada): custo real por GW p/ Amazon soma a HBM de mercado.':''}</div>
     </div>
@@ -1892,7 +1892,7 @@ function companyTableHTML(tab){
 function overviewHTML(){
   return hbmBarHTML() + `
   <div class="card"><div class="card-head"><div class="card-title">Custo por GW ${powerMode==='allin'?'all-in (SemiAnalysis)':'de TDP de chip'} — ASP implícito vs street ($B)</div>
-    <div class="card-sub">quanto custa 1 GW de aceleradores ao preço de venda — três cenários de ASP: implícito Jefferies (B.O.M ÷ (1−GM)), street (coluna CHECK Jefferies) e SemiAnalysis (ASP $/unit do Accelerator Supply, 1º tri ≈ launch)</div></div>
+    <div class="card-sub">quanto custa 1 GW de aceleradores ao preço de venda — referência = ASP SemiAnalysis (barras coloridas, ordena o gráfico); cinza = implícito Jefferies (B.O.M ÷ (1−GM)) e street (coluna CHECK); Rubin Ultra SA ÷2 (pacote = 2 chips na base Jefferies)</div></div>
     <div class="chart-box"><canvas id="ch-gw"></canvas></div></div>
   <div class="grid-2">
   <div class="card"><div class="card-head"><div class="card-title">HBM como % do B.O.M</div></div>
@@ -1922,14 +1922,15 @@ let charts = {};
 function drawCharts(){
   const yr = c => { const m = (c.launch||'').match(/(\d{2})\s*E?\s*$/); return m ? parseInt(m[1]) : null; };
   const cur = CHIPS.filter(c => c.complete && c.tdp && (yr(c) == null || yr(c) >= 24));
-  const byGW = [...cur].sort((a,b)=>(calc(b).aspGW||0)-(calc(a).aspGW||0));
+  const gwKey = c => { const r = calc(c); return (r.saGW != null ? r.saGW : r.aspGW) || 0; };
+  const byGW = [...cur].sort((a,b)=>gwKey(b)-gwKey(a));
   const mk = (id, cfg) => { if (charts[id]) charts[id].destroy(); charts[id] = new Chart(document.getElementById(id), cfg); };
   const gridC = '#21262d', tickC = '#8b949e';
   mk('ch-gw', { type:'bar',
     data:{ labels: byGW.map(c=>c.chip), datasets:[
-      { label:'ASP implícito', data: byGW.map(c=>calc(c).aspGW), backgroundColor: byGW.map(c=>COMPANY_COLOR[c.tab]) },
-      { label:'Street ASP', data: byGW.map(c=>calc(c).streetGW), backgroundColor:'#6e7681' },
-      { label:'SemiAnalysis ASP', data: byGW.map(c=>calc(c).saGW), backgroundColor:'#2dd4bf' }]},
+      { label:'SemiAnalysis ASP (referência)', data: byGW.map(c=>calc(c).saGW), backgroundColor: byGW.map(c=>COMPANY_COLOR[c.tab]) },
+      { label:'ASP implícito Jefferies', data: byGW.map(c=>calc(c).aspGW), backgroundColor:'#8b949e' },
+      { label:'Street ASP', data: byGW.map(c=>calc(c).streetGW), backgroundColor:'#444c56' }]},
     options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{labels:{color:tickC}}},
       scales:{ x:{ticks:{color:tickC,maxRotation:60,minRotation:45},grid:{color:gridC}}, y:{ticks:{color:tickC,callback:v=>'$'+v+'B'},grid:{color:gridC}} } }});
   const byHBM = [...cur].sort((a,b)=>calc(b).hbmShare-calc(a).hbmShare);
