@@ -1480,10 +1480,12 @@ document.getElementById('tChinab').innerHTML=Object.entries(CHINA_PCT).map(([n,a
   // file://, localhost:8780 ou GitHub Pages — sempre chama o localhost da maquina
   const hpeLocal = location.protocol==='file:' || /^(localhost|127\.)/.test(location.hostname);
   function hpeMsg(t){ document.getElementById('hpeAddMsg').textContent=t; }
+  // recarrega renovando o cache HTTP do pe_history_data.js (senão o reload usa o js velho)
+  function hpeReload(){ fetch('pe_history_data.js',{cache:'reload'}).finally(()=>location.reload()); }
   function hpeWaitPages(key,tries){
     if(tries<=0){ hpeMsg('✓ '+key+' — publicado; recarregue em ~1 min'); return; }
     fetch('pe_history_data.js',{cache:'no-store'}).then(r=>r.text()).then(t=>{
-      if(t.indexOf('"'+key+'"')>=0 !== (window.__hpeRemoving===key)) location.reload();
+      if(t.indexOf('"'+key+'"')>=0 !== (window.__hpeRemoving===key)) hpeReload();
       else setTimeout(()=>hpeWaitPages(key,tries-1),15000);
     }).catch(()=>setTimeout(()=>hpeWaitPages(key,tries-1),15000));
   }
@@ -1494,7 +1496,7 @@ document.getElementById('tChinab').innerHTML=Object.entries(CHINA_PCT).map(([n,a
       const r=await fetch('http://localhost:8790/api/'+ep+'?'+qs);
       const j=await r.json();
       if(!j.ok){ hpeMsg('✗ '+j.error); }
-      else if(hpeLocal){ hpeMsg('✓ '+j.key+' — recarregando…'); setTimeout(()=>location.reload(),900); }
+      else if(hpeLocal){ hpeMsg('✓ '+j.key+' — recarregando…'); setTimeout(hpeReload,900); }
       else{ window.__hpeRemoving = ep==='semicap-remove'? j.key : null;
             hpeMsg('✓ '+j.key+' — publicando no GitHub, recarrego sozinho (~1-2 min)…'); hpeWaitPages(j.key,20); }
     }catch(e){ hpeMsg('✗ servidor local não está rodando NESTA máquina — abra serve_dashboard.bat (pasta Comp Dashboard) e tente de novo'); }
