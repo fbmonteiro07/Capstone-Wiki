@@ -58,7 +58,7 @@
     <h1>SemiCap Dashboard — ASML & Peers</h1>
     <div class="meta">Source: ASML_Peers_SemiCap_v16.xlsx · Snapshot 09-Jun-2026 · UBS overlay: "WFE Update — Early Innings of Supercycle" (Arcuri, 09-Jun-26) · Capstone Buyside</div>
   </div>
-  <div class="meta">Tabs: WFE Capex · Bottom-Up · WFE Share · Services · P/E Comps · Process → WFE $ · China · Implied WFE (Street) · Historical P/E (BBG)</div>
+  <div class="meta">Tabs: WFE Capex · Bottom-Up · WFE Share · Services · P/E Comps · Process → WFE $ · China · Implied WFE (Street) · Historical P/E (BBG) · WFE by Tool (BofA 10y)</div>
 </header>
 <nav id="nav">
   <button data-tab="capex" class="active">1 · WFE Capex Spend</button>
@@ -72,6 +72,7 @@
   <button data-tab="china">9 · China % of Revenue</button>
   <button data-tab="iwfe">10 · Implied WFE (Street)</button>
   <button data-tab="hpe">11 · Historical P/E</button>
+  <button data-tab="tool">12 · WFE by Tool (10y)</button>
 </nav>
 <main>
 
@@ -798,6 +799,40 @@
   </div>
 </section>
 
+<!-- TAB 12: WFE BY TOOL — BofA 10-YEAR CAGR ANALYSIS -->
+<section id="tool">
+  <div class="grid three" id="toolKpis"></div>
+
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec">WFE by Tool — $bn stacked (2012–2025)</h2>
+      <div class="chart-tall"><canvas id="cToolStack"></canvas></div>
+    </div>
+    <div class="card">
+      <h2 class="sec">Share of Total WFE (%)</h2>
+      <div class="chart-tall"><canvas id="cToolShare"></canvas></div>
+    </div>
+  </div>
+
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec">10-yr CAGR by Tool (2015→2025)</h2>
+      <div class="chart-wrap"><canvas id="cToolCagr"></canvas></div>
+      <p class="note">Lithography grew the fastest at ~17% CAGR in the last ten years vs overall WFE +14%.</p>
+    </div>
+    <div class="card">
+      <h2 class="sec">Levels — $mn by Process</h2>
+      <div class="scroll"><table id="toolLvl"></table></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">YoY % by Process</h2>
+    <div class="scroll"><table id="toolYoy"></table></div>
+    <p class="note"><b>Source:</b> BofA Global Research estimates, Gartner — Exhibit 5 "10-year CAGR analysis by tool" (Jun-26). 10-yr CAGR = 2015→2025. Negative years shaded red.</p>
+  </div>
+</section>
+
 </main>
 
 <script>
@@ -1446,6 +1481,72 @@ document.getElementById('tChinab').innerHTML=Object.entries(CHINA_PCT).map(([n,a
   chips(); render();
 })();
 
+// TAB 12: WFE BY TOOL — BofA Exhibit 5 (Jun-26), $mn
+(function(){
+  const TY = Array.from({length:14},(_,i)=>2012+i);
+  const T = {
+    'Deposition':      [6001,5686,7112,6977,7941,12255,13123,11982,13914,20795,23090,22613,25775,27320],
+    'Etch':            [4065,4064,5897,6496,7508,11124,12670,11370,14241,20678,21831,15962,18580,22616],
+    'Lithography':     [6571,6390,6994,6105,6351,8292,10995,11450,13227,16667,16860,25337,25009,28734],
+    'Process Control': [4416,4019,4163,4060,4530,5311,6177,6035,6988,10033,12973,12191,13036,15117],
+    'Other':           [8208,6650,7017,7171,8278,10649,12437,11524,12908,19643,20933,21779,22909,23109],
+  };
+  const TC = {'Deposition':'#5aa7ff','Etch':'#46d3a6','Lithography':'#ff7a59',
+              'Process Control':'#9b8cff','Other':'#8a9bb4'};
+  const keys = Object.keys(T);
+  const total = TY.map((_,i)=>keys.reduce((s,k)=>s+T[k][i],0));
+  const i15 = TY.indexOf(2015), iL = TY.length-1;
+  const cagr10 = a => (a[iL]/a[i15])**(1/10)-1;
+  const pc = (v,d=0)=>(v>0?'+':'')+(v*100).toFixed(d)+'%';
+  const bn = v=>(v/1000).toFixed(1);
+
+  const lithShare = T['Lithography'][iL]/total[iL], lithShare15 = T['Lithography'][i15]/total[i15];
+  document.getElementById('toolKpis').innerHTML = [
+    ['Litho 10-yr CAGR', pc(cagr10(T['Lithography']),1), 'fastest tool — vs WFE '+pc(cagr10(total),1)],
+    ['Total WFE 2025', '$'+bn(total[iL])+' bn', pc(total[iL]/total[iL-1]-1,0)+' YoY'],
+    ['Litho share of WFE', (lithShare*100).toFixed(1)+'%', 'vs '+(lithShare15*100).toFixed(1)+'% in 2015'],
+    ['Deposition 2025', '$'+bn(T['Deposition'][iL])+' bn', '10-yr CAGR '+pc(cagr10(T['Deposition']),1)],
+    ['Etch 2025', '$'+bn(T['Etch'][iL])+' bn', '10-yr CAGR '+pc(cagr10(T['Etch']),1)],
+    ['Process Control 2025', '$'+bn(T['Process Control'][iL])+' bn', '10-yr CAGR '+pc(cagr10(T['Process Control']),1)],
+  ].map(([h,k,s])=>`<div class="card"><h3>${h}</h3><div class="kpi">${k}</div><div class="sub">${s}</div></div>`).join('');
+
+  new Chart(document.getElementById('cToolStack'),{type:'bar',
+    data:{labels:TY,datasets:keys.map(k=>({label:k,data:T[k].map(v=>v/1000),
+      backgroundColor:TC[k]+'cc',stack:'s'}))},
+    options:{maintainAspectRatio:false,plugins:{legend:{labels:{boxWidth:12}}},
+      scales:{x:{stacked:true,grid:{display:false}},
+              y:{stacked:true,title:{display:true,text:'$bn'}}}}});
+
+  new Chart(document.getElementById('cToolShare'),{type:'line',
+    data:{labels:TY,datasets:keys.map(k=>({label:k,data:T[k].map((v,i)=>v/total[i]*100),
+      borderColor:TC[k],borderWidth:2,pointRadius:0,tension:.25}))},
+    options:{maintainAspectRatio:false,plugins:{legend:{labels:{boxWidth:12}}},
+      scales:{x:{grid:{display:false}},y:{title:{display:true,text:'% of WFE'}}}}});
+
+  const cag = keys.map(k=>({k,v:cagr10(T[k])*100})).concat([{k:'Total WFE',v:cagr10(total)*100}])
+    .sort((a,b)=>b.v-a.v);
+  new Chart(document.getElementById('cToolCagr'),{type:'bar',
+    data:{labels:cag.map(x=>x.k),datasets:[{data:cag.map(x=>x.v),
+      backgroundColor:cag.map(x=>x.k==='Total WFE'?'#f6c453cc':(TC[x.k]||'#888')+'cc'),borderRadius:4}]},
+    options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:c=>c.parsed.x.toFixed(1)+'%'}}},
+      scales:{x:{title:{display:true,text:'10-yr CAGR (%)'}},y:{grid:{display:false}}}}});
+
+  const fmt = v=>v.toLocaleString('en-US');
+  document.getElementById('toolLvl').innerHTML =
+    `<thead><tr><th>By Process ($mn)</th>${TY.map(y=>`<th>${y}</th>`).join('')}<th>10-yr CAGR</th></tr></thead><tbody>`+
+    keys.map(k=>`<tr><td><b>${k}</b></td>${T[k].map(v=>`<td>${fmt(v)}</td>`).join('')}<td><b>${pc(cagr10(T[k]),1)}</b></td></tr>`).join('')+
+    `<tr><td><b>Total</b></td>${total.map(v=>`<td><b>${fmt(v)}</b></td>`).join('')}<td><b>${pc(cagr10(total),1)}</b></td></tr></tbody>`;
+
+  const yoyCell = (a,i)=>{ if(i===0) return '<td>—</td>';
+    const v=a[i]/a[i-1]-1;
+    return `<td class="${v<0?'dn':'up'}" style="${v<0?'background:rgba(255,107,107,.14)':''}">${pc(v)}</td>`; };
+  document.getElementById('toolYoy').innerHTML =
+    `<thead><tr><th>YoY (%)</th>${TY.map(y=>`<th>${y}</th>`).join('')}</tr></thead><tbody>`+
+    keys.concat(['Total']).map(k=>{const a=k==='Total'?total:T[k];
+      return `<tr><td><b>${k}</b></td>${TY.map((_,i)=>yoyCell(a,i)).join('')}</tr>`;}).join('')+`</tbody>`;
+})();
+
 // TAB switching
 document.querySelectorAll('#nav button').forEach(b=>{
   b.onclick=()=>{
@@ -1453,6 +1554,16 @@ document.querySelectorAll('#nav button').forEach(b=>{
     document.querySelectorAll('section').forEach(x=>x.classList.remove('active'));
     b.classList.add('active');
     document.getElementById(b.dataset.tab).classList.add('active');
+    // charts criados com a section escondida ficam 0x0 — força resize ao abrir a aba
+    // (resize() público fica travado em _resizeBeforeDraw; usa _resize com o tamanho do container)
+    document.querySelectorAll('#'+b.dataset.tab+' canvas').forEach(cv=>{
+      const ch = Chart.getChart(cv); if(!ch) return;
+      const p = cv.parentElement;
+      if(ch.width===0 && p && p.clientWidth>0){
+        (ch._resize ? ch._resize.bind(ch) : ch.resize.bind(ch))(p.clientWidth, p.clientHeight);
+        ch.update('none');
+      }
+    });
   };
 });
 </script>
