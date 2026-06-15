@@ -1,0 +1,1460 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>SemiCap Dashboard — ASML & Peers (v15)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="pe_history_data.js"></script>
+<style>
+  :root{--bg:#0b1220;--card:#11192c;--ink:#e7ecf3;--mute:#8a9bb4;--line:#1f2a44;--accent:#5aa7ff;
+        --asml:#ff7a59;--amat:#5aa7ff;--klac:#9b8cff;--lrcx:#46d3a6;--ter:#f6c453;--aeis:#e76d8e;}
+  html,body{background:var(--bg);color:var(--ink);font:14px/1.45 -apple-system,Segoe UI,Roboto,Arial;margin:0}
+  header{padding:18px 28px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  header h1{margin:0;font-size:18px;letter-spacing:.3px}
+  header .meta{color:var(--mute);font-size:12px}
+  nav{display:flex;gap:0;padding:0 28px;border-bottom:1px solid var(--line);background:#0d1424;overflow-x:auto}
+  nav button{background:transparent;border:0;color:var(--mute);padding:14px 18px;font:600 13px/1 -apple-system,Segoe UI;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+  nav button.active{color:var(--ink);border-bottom-color:var(--accent)}
+  main{padding:22px 28px;max-width:1400px;margin:0 auto}
+  section{display:none}
+  section.active{display:block}
+  .grid{display:grid;gap:18px}
+  .grid.two{grid-template-columns:1fr 1fr}
+  .grid.three{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:1000px){.grid.two,.grid.three{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .card h3{margin:0 0 6px;font-size:13px;letter-spacing:.4px;color:var(--mute);text-transform:uppercase}
+  .card .kpi{font-size:22px;font-weight:700}
+  .card .sub{font-size:12px;color:var(--mute);margin-top:2px}
+  .chart-wrap{position:relative;height:340px}
+  .chart-tall{position:relative;height:420px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  thead th{color:var(--mute);font-weight:600;background:#0d1424;position:sticky;top:0}
+  tr:hover td{background:#142039}
+  .pill{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:600}
+  .up{color:#46d3a6}.dn{color:#ff6b6b}
+  h2.sec{margin:4px 0 12px;font-size:15px;color:var(--ink)}
+  p.note{color:var(--mute);font-size:12px;margin:4px 0 14px}
+  .scroll{max-height:520px;overflow:auto;border:1px solid var(--line);border-radius:8px}
+  .pe-form{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;margin-bottom:10px}
+  .pe-form label{display:flex;flex-direction:column;gap:4px;font-size:11px;font-weight:600;letter-spacing:.4px;color:var(--mute);text-transform:uppercase}
+  .pe-form input{width:110px;background:#0d1424;border:1px solid var(--line);border-radius:6px;color:var(--ink);font:600 13px/1 -apple-system,Segoe UI,Roboto,Arial;padding:8px 10px;text-align:right}
+  .pe-form input:focus{outline:none;border-color:var(--accent)}
+  .pe-form button{background:var(--accent);border:0;border-radius:6px;color:#0b1220;font:700 13px/1 -apple-system,Segoe UI;padding:10px 16px;cursor:pointer}
+  .pe-form button.ghost{background:transparent;border:1px solid var(--line);color:var(--mute)}
+  .hpe-seg{display:flex;gap:4px;flex-wrap:wrap}
+  .hpe-seg button{background:#0d1424;border:1px solid var(--line);border-radius:6px;color:var(--mute);font:600 12px/1 -apple-system,Segoe UI;padding:8px 12px;cursor:pointer}
+  .hpe-seg button.on{background:var(--accent);border-color:var(--accent);color:#0b1220}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:#0d1424;border:1px solid var(--line);border-radius:14px;color:var(--ink);font:600 12px/1 -apple-system,Segoe UI;padding:7px 12px;cursor:pointer;margin:0 4px 4px 0;opacity:.35}
+  .chip.on{opacity:1}
+  .chip i{width:10px;height:10px;border-radius:50%;display:inline-block}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>SemiCap Dashboard — ASML & Peers</h1>
+    <div class="meta">Source: ASML_Peers_SemiCap_v16.xlsx · Snapshot 09-Jun-2026 · UBS overlay: "WFE Update — Early Innings of Supercycle" (Arcuri, 09-Jun-26) · Capstone Buyside</div>
+  </div>
+  <div class="meta">Tabs: WFE Capex · Bottom-Up · WFE Share · Services · P/E Comps · Process → WFE $ · China · Implied WFE (Street) · Historical P/E (BBG)</div>
+</header>
+<nav id="nav">
+  <button data-tab="capex" class="active">1 · WFE Capex Spend</button>
+  <button data-tab="bu">2 · WFE Bottom-Up</button>
+  <button data-tab="share">3 · WFE Share</button>
+  <button data-tab="svc">4 · Services Revenue</button>
+  <button data-tab="flow">5 · SemiCap Capex Flow</button>
+  <button data-tab="pe">6 · P/E Comps</button>
+  <button data-tab="trx">7 · Transcripts Evolution</button>
+  <button data-tab="process">8 · Process → WFE $</button>
+  <button data-tab="china">9 · China % of Revenue</button>
+  <button data-tab="iwfe">10 · Implied WFE (Street)</button>
+  <button data-tab="hpe">11 · Historical P/E</button>
+</nav>
+<main>
+
+<!-- TAB 1: WFE CAPEX -->
+<section id="capex" class="active">
+  <div class="grid three">
+    <div class="card"><h3>WFE 2025</h3><div class="kpi">$109.6 bn</div><div class="sub up">+9.2% YoY</div></div>
+    <div class="card"><h3>WFE 2026E</h3><div class="kpi">$158.4 bn</div><div class="sub up">+44.5% YoY</div></div>
+    <div class="card"><h3>WFE 2027E</h3><div class="kpi">$214.9 bn</div><div class="sub up">+35.7% YoY</div></div>
+    <div class="card"><h3>Total Semi Capex 2026E</h3><div class="kpi">$240 bn</div><div class="sub up">+27.0% YoY</div></div>
+    <div class="card"><h3>WFE / Capex 2026E</h3><div class="kpi">66%</div><div class="sub">vs 58% in 2025</div></div>
+    <div class="card"><h3>Litho 2026E (ASML TAM)</h3><div class="kpi">$36.4 bn</div><div class="sub">23% of WFE</div></div>
+  </div>
+
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec">WFE Market — Total ($bn) & YoY % · Capstone vs UBS vs Street</h2>
+      <div class="chart-tall"><canvas id="cWFE"></canvas></div>
+    </div>
+    <div class="card">
+      <h2 class="sec">WFE Sub-segment Mix (%)</h2>
+      <div class="chart-tall"><canvas id="cMix"></canvas></div>
+    </div>
+  </div>
+
+  <!-- UBS COMPARISON (WFE Update, Arcuri, 09-Jun-26) -->
+  <div class="card" style="margin-top:18px;border-left:4px solid #f6c453">
+    <h2 class="sec">Capstone vs UBS vs Street-Implied — Total WFE ($bn)</h2>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>WFE ($bn)</th><th>2024</th><th>2025</th><th>2026E</th><th>2027E</th><th>2028E</th></tr></thead>
+      <tbody>
+        <tr><td><b>Capstone (v16)</b></td><td>100.3</td><td>109.6</td><td class="up">158.4 <span class="sub">+44.5%</span></td><td class="up">214.9 <span class="sub">+35.7%</span></td><td class="up">260.0 <span class="sub">+21.0%</span></td></tr>
+        <tr><td><b>UBS (09-Jun-26)</b></td><td>101.5</td><td>116.0</td><td>147.0 <span class="sub">+26.7%</span></td><td>198.0 <span class="sub">+34.7%</span></td><td>247.5 <span class="sub">+25.0%</span></td></tr>
+        <tr><td>Street-implied (UBS calc, Top-5 SPE cons)</td><td>101.5</td><td>116.3</td><td>148.2 <span class="sub">+27%</span></td><td>187.8 <span class="sub">+27%</span></td><td>215.8 <span class="sub">+15%</span></td></tr>
+        <tr><td>Δ Capstone − UBS</td><td>−1.2</td><td>−6.4</td><td class="up">+11.4</td><td class="up">+16.9</td><td class="up">+12.5</td></tr>
+        <tr><td>UBS Memory / F&L split</td><td>37.5 / 64.1</td><td>46.5 / 69.5</td><td>69.5 / 77.5</td><td>98.5 / 99.5</td><td>107.5 / 140.0</td></tr>
+        <tr><td>UBS China WFE</td><td>39.0</td><td>44.5</td><td>47.5</td><td>56.0</td><td>64.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note"><b>Read-through:</b> UBS's 09-Jun-26 raise (147 / 198 / 247.5) moves the Street <i>toward</i> Capstone but still sits $11–17bn below across '26–'28 — and the paths differ. Capstone's 2025 base ($109.6bn, SEMI/VLSI definition) is below UBS ($116bn), so Capstone's '26 implies +44.5% vs UBS +26.7%; Capstone also leans on a 66–70% WFE/CapEx capture vs UBS's implied 55–68%. <b>Mix is the real divergence:</b> Capstone gets to ~$260bn via memory compounding into '28 (Hynix $67bn / Samsung $81bn / TSMC $112bn capex) while UBS decelerates memory in '28 (DRAM WFE +5% YoY) and leans on foundry/logic exploding (+41% YoY to $140bn — Intel WFE $21bn, TSMC capex $85bn). UBS: customers now giving SPE vendors <b>8 quarters of visibility</b> — first time in ~30 yrs of coverage; litho seen as no constraint (ASML &gt;100 EUV/yr capacity in '27/'28).</p>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">WFE Sub-segment $bn Breakdown</h2>
+    <div class="chart-tall"><canvas id="cSubBn"></canvas></div>
+    <p class="note">Litho = ASML TAM · Etch+Deposition = LRCX/AMAT/TEL · Process Control = KLAC.</p>
+  </div>
+</section>
+
+<!-- TAB 2: BOTTOM-UP -->
+<section id="bu">
+  <div class="grid three">
+    <div class="card"><h3>Top-22 Capex 2026E</h3><div class="kpi">$197.4 bn</div><div class="sub up">+25.0% YoY</div></div>
+    <div class="card"><h3>Leading Edge 2026E</h3><div class="kpi">$71.2 bn</div><div class="sub up">+22.8% YoY · 33%</div></div>
+    <div class="card"><h3>Memory 2026E</h3><div class="kpi">$101.1 bn</div><div class="sub up">+38.3% YoY · 46%</div></div>
+    <div class="card"><h3>Trailing Edge 2026E</h3><div class="kpi">$46.5 bn</div><div class="sub up">+0.4% YoY · 21%</div></div>
+    <div class="card"><h3>Top-5 Share of Capex</h3><div class="kpi">78%</div><div class="sub">TSMC + Samsung + Intel + Hynix + Micron</div></div>
+    <div class="card"><h3>TSMC 2026E</h3><div class="kpi">$55.5 bn</div><div class="sub up">+37.7% YoY</div></div>
+  </div>
+
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec">Capex Stack by Bucket — $bn</h2>
+      <div class="chart-tall"><canvas id="cStack"></canvas></div>
+    </div>
+    <div class="card">
+      <h2 class="sec">Top-5 Customers — Capex Trajectory ($bn)</h2>
+      <div class="chart-tall"><canvas id="cTop5"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Customer-Level Capex Detail ($mn)</h2>
+    <div class="scroll">
+      <table id="tBU"><thead><tr id="tBUh"></tr></thead><tbody id="tBUb"></tbody></table>
+    </div>
+  </div>
+
+  <!-- CAPEX INTENSITY BY CUSTOMER (Capstone, from Industry Assumptions) -->
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--accent)">
+    <h2 class="sec">CapEx Intensity by Customer — Capstone (2021–2030E)</h2>
+    <p class="note">Top-down capex build from the model's <b>Industry Assumptions</b> tab — CapEx ($mn), Revenue ($mn) and CapEx Intensity (CapEx ÷ Revenue) per customer. The <b>Top-5 Customers — Capex Trajectory</b> chart above is driven by these CapEx figures.</p>
+    <div class="scroll">
+      <table id="tCINT"><thead><tr id="tCINTh"></tr></thead><tbody id="tCINTb"></tbody></table>
+    </div>
+  </div>
+
+  <!-- CAPSTONE INDUSTRY ASSUMPTIONS (top-down) -->
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--accent)">
+    <h2 class="sec">Capstone Industry Assumptions — Top-Down Framework</h2>
+    <p class="note">Capstone top-down estimates from the model's <b>Industry Assumptions</b> tab: Industry CapEx → WFE → sub-segment $bn → ATE. Source: SEMI World Fab Forecast · Bernstein · BofA WFE model · VLSI Research · 10-Ks.</p>
+    <div class="scroll">
+      <table id="tIA"><thead><tr id="tIAh"></tr></thead><tbody id="tIAb"></tbody></table>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Capstone vs UBS vs Street — Customer CapEx ($bn)</h2>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>Customer</th><th>Capstone 26E</th><th>UBS 26E</th><th>Cons 26E</th><th>Capstone 27E</th><th>UBS 27E</th><th>Cons 27E</th><th>Capstone 28E</th><th>UBS 28E</th></tr></thead>
+      <tbody>
+        <tr><td><b>TSMC</b></td><td>56.0</td><td>56.0</td><td>55.1</td><td>70.0</td><td>75.0</td><td>63.5</td><td class="up">112.0</td><td>85.0</td></tr>
+        <tr><td><b>Samsung</b></td><td>46.0</td><td>47.8</td><td>48.1</td><td class="up">62.0</td><td>56.0</td><td>51.6</td><td class="up">81.0</td><td>60.2</td></tr>
+        <tr><td><b>SK Hynix</b></td><td>31.0</td><td>29.7</td><td>30.3</td><td class="up">47.0</td><td>34.0</td><td>35.6</td><td class="up">67.0</td><td>36.5</td></tr>
+        <tr><td><b>Micron</b></td><td class="dn">25.0</td><td>30.9</td><td>26.1</td><td class="dn">38.0</td><td>42.0</td><td>37.5</td><td class="up">52.0</td><td>41.5</td></tr>
+        <tr><td><b>Intel</b></td><td class="dn">15.0</td><td>18.2</td><td>15.7</td><td class="dn">16.0</td><td>21.5</td><td>17.0</td><td class="dn">18.0</td><td>35.0</td></tr>
+        <tr><td><b>CXMT</b></td><td class="up">15.0</td><td>10.0</td><td>—</td><td class="up">15.0</td><td>11.0</td><td>—</td><td class="up">15.0</td><td>12.0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note"><b>Read-through:</b> 2026 is essentially aligned across all three (TSMC 56 = UBS 56; Samsung/Hynix within ~$2bn) — the divergence is all in the out-years. Capstone runs <b>far above UBS on '27–'28 memory</b>: SK Hynix '28 67 vs UBS 36.5 (+84%), Samsung '28 81 vs 60, Micron '28 52 vs 41.5, and TSMC '28 112 vs 85. UBS instead front-loads <b>Intel</b> ('28 35 vs Capstone 18 — Intel WFE alone $21bn, +78% YoY) and decelerates DRAM in '28 (+5% YoY). Net: same supercycle, different engine — Capstone = memory compounding; UBS = F/L (Intel + TSMC) taking over the baton in '28. UBS cons columns = VisibleAlpha per UBS Fig 1/10; Intel cons = Bottoms-Up tab.</p>
+  </div>
+</section>
+
+<!-- TAB 3: WFE SHARE -->
+<section id="share">
+  <div class="grid three">
+    <div class="card"><h3>ASML Litho Share 2025</h3><div class="kpi">~98%</div><div class="sub">monopoly EUV; deep UV ~80%+</div></div>
+    <div class="card"><h3>AMAT WFE Share 2025</h3><div class="kpi">18.7%</div><div class="sub">stable, broadest portfolio</div></div>
+    <div class="card"><h3>KLAC Process Control 2025</h3><div class="kpi">65%</div><div class="sub">share gain off 2018-19 trough</div></div>
+    <div class="card"><h3>LRCX Etch+Dep 2025</h3><div class="kpi">26.9%</div><div class="sub">recovering off NAND trough</div></div>
+    <div class="card"><h3>TER ATE Share 2025</h3><div class="kpi">34.6%</div><div class="sub">SoC compute / HBM test ramp</div></div>
+    <div class="card"><h3>WFE-effective Share — ASML 2025</h3><div class="kpi">24.2%</div><div class="sub">core rev ÷ total WFE</div></div>
+  </div>
+
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec">Effective Share of Total WFE (%)</h2>
+      <div class="chart-tall"><canvas id="cShareTot"></canvas></div>
+    </div>
+    <div class="card">
+      <h2 class="sec">Sub-segment Share (%) — within own segment</h2>
+      <div class="chart-tall"><canvas id="cShareSub"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Share Stats (11-Year History)</h2>
+    <table>
+      <thead><tr><th>Peer</th><th>Segment</th><th>Avg</th><th>Median</th><th>Min</th><th>Max</th><th>Stdev</th><th>2025</th><th>2026E</th></tr></thead>
+      <tbody>
+        <tr><td>ASML</td><td>Litho (effective WFE)</td><td>18.8%</td><td>18.3%</td><td>14.1%</td><td>24.2%</td><td>3.6%</td><td>24.2%</td><td>22.5%</td></tr>
+        <tr><td>AMAT</td><td>Total WFE</td><td>18.4%</td><td>18.6%</td><td>16.0%</td><td>20.1%</td><td>1.3%</td><td>18.7%</td><td>18.7%</td></tr>
+        <tr><td>KLAC</td><td>Process Control (effective WFE)</td><td>6.5%</td><td>6.2%</td><td>4.6%</td><td>8.6%</td><td>1.3%</td><td>8.6%</td><td>7.7%</td></tr>
+        <tr><td>LRCX</td><td>Etch + Dep (effective WFE)</td><td>11.0%</td><td>10.8%</td><td>9.1%</td><td>12.8%</td><td>1.3%</td><td>10.8%</td><td>11.3%</td></tr>
+        <tr><td>TER</td><td>ATE (Semi Test)</td><td>37.9%</td><td>38.1%</td><td>34.6%</td><td>41.4%</td><td>2.1%</td><td>34.6%</td><td>38.0%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- TAB 4: SERVICES -->
+<section id="svc">
+  <div class="grid three">
+    <div class="card"><h3>ASML IBM 2025</h3><div class="kpi">$8.9 bn</div><div class="sub">25.1% of revenue</div></div>
+    <div class="card"><h3>AMAT AGS 2025</h3><div class="kpi">$6.3 bn</div><div class="sub">22.4% of revenue</div></div>
+    <div class="card"><h3>KLAC Service 2025</h3><div class="kpi">$2.7 bn</div><div class="sub">22.1% of revenue</div></div>
+    <div class="card"><h3>LRCX CSBG 2025</h3><div class="kpi">$6.6 bn</div><div class="sub">35.8% of revenue</div></div>
+    <div class="card"><h3>TER non-Semi Test 2025</h3><div class="kpi">$0.84 bn</div><div class="sub">26.2% (Sys+Wireless+UR)</div></div>
+    <div class="card"><h3>Services 2026E — Big-4 total</h3><div class="kpi">~$30.7 bn</div><div class="sub">~25% of combined revenue</div></div>
+  </div>
+
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec">Services Revenue ($bn) — by Peer</h2>
+      <div class="chart-tall"><canvas id="cSvc"></canvas></div>
+    </div>
+    <div class="card">
+      <h2 class="sec">Services as % of Total Revenue</h2>
+      <div class="chart-tall"><canvas id="cSvcPct"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Detail by Year ($mn)</h2>
+    <div class="scroll">
+      <table id="tSvc"><thead><tr id="tSvch"></tr></thead><tbody id="tSvcb"></tbody></table>
+    </div>
+    <p class="note">ASML = Installed Base Management; AMAT = Applied Global Services; KLAC = Service Revenue; LRCX = CSBG; TER = non-Semi-Test recurring (Sys Test + Wireless + Robotics).</p>
+  </div>
+</section>
+
+<!-- TAB 5: SEMICAP CAPEX FLOW -->
+<section id="flow">
+  <div class="grid three">
+    <div class="card"><h3>Logic Capex 2026E</h3><div class="kpi">$71 bn</div><div class="sub">TSMC + Intel + Samsung Foundry</div></div>
+    <div class="card"><h3>DRAM Capex 2026E</h3><div class="kpi">$60 bn</div><div class="sub">HBM-driven · Samsung/Hynix/Micron</div></div>
+    <div class="card"><h3>NAND Capex 2026E</h3><div class="kpi">$41 bn</div><div class="sub">upgrade cycle returning</div></div>
+    <div class="card"><h3>Leading-Edge Cohort WFE 2026E</h3><div class="kpi">$128.8 bn</div><div class="sub">~81% of total WFE ($158.4bn)</div></div>
+    <div class="card"><h3>Big-4 Capture (Leading-Edge)</h3><div class="kpi">$79 bn</div><div class="sub">ASML 29 + AMAT 24 + LRCX 17 + KLAC 9</div></div>
+    <div class="card"><h3>Conversion Rate (Capex→WFE)</h3><div class="kpi">75%</div><div class="sub">leading-edge cohort vs 66% blended</div></div>
+  </div>
+
+  <p class="note" style="margin:10px 0 0;text-align:center"><b>All three flows indexed to 100</b> — customer column = % of segment capex · vendor column = % of segment WFE. Makes vendor-mix comparison across Logic/DRAM/NAND immediate (e.g. ASML 30% of Logic vs only 4% of NAND).</p>
+
+  <div class="card" style="margin-top:14px;border-left:4px solid var(--amat)">
+    <h2 class="sec">🧠 Logic / Leading Edge — Capex Flow (2026E, base 100)</h2>
+    <div style="position:relative;height:440px"><svg id="cSankeyLogic" width="100%" height="100%" viewBox="0 0 1400 440" preserveAspectRatio="xMidYMid meet"></svg></div>
+    <p class="note">Segment pool: $71.2bn capex → $57.0bn WFE. Customers: TSMC 78% + Intel 22%. Vendor capture of WFE: <b>ASML 30% (litho-heavy via EUV/High-NA)</b> · AMAT 19% · LRCX 10% · KLAC 8% (PC intensity peaking for GAA+backside) · Other 33% (TEL/SCREEN/ASMI).</p>
+  </div>
+
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--asml)">
+    <h2 class="sec">💾 DRAM (HBM-driven) — Capex Flow (2026E, base 100)</h2>
+    <div style="position:relative;height:440px"><svg id="cSankeyDRAM" width="100%" height="100%" viewBox="0 0 1400 440" preserveAspectRatio="xMidYMid meet"></svg></div>
+    <p class="note">Segment pool: $60.0bn capex → $45.0bn WFE. Customers: Samsung 33% + SK Hynix 33% + Micron 33%. Vendor capture: <b>ASML 24% (HBM-DRAM lifts litho intensity)</b> · AMAT 18% · LRCX 13% (TSV etch + cryo) · KLAC 7% (HBM inspection line ramped) · Other 38%.</p>
+  </div>
+
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--lrcx)">
+    <h2 class="sec">🗂️ NAND — Capex Flow (2026E, base 100)</h2>
+    <div style="position:relative;height:440px"><svg id="cSankeyNAND" width="100%" height="100%" viewBox="0 0 1400 440" preserveAspectRatio="xMidYMid meet"></svg></div>
+    <p class="note">Segment pool: $41.1bn capex → $26.8bn WFE. Customers: Samsung 34% + Hynix 27% + Micron 32% + Kioxia 7%. Vendor capture: <b>LRCX 20% (cryo etch winner)</b> · AMAT 18% · KLAC 6% · <b>ASML only 4% (low litho intensity — explains NAND-light ASML narrative)</b> · Other 52%.</p>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Side-by-Side — Vendor WFE Share by Segment (% of segment WFE)</h2>
+    <table>
+      <thead><tr><th>Vendor</th><th>Logic (% of $57bn)</th><th>DRAM (% of $45bn)</th><th>NAND (% of $27bn)</th><th>Read-through</th></tr></thead>
+      <tbody>
+        <tr><td><b>ASML</b></td><td class="up">30%</td><td>24%</td><td class="dn">4%</td><td>Logic > DRAM >> NAND · HBM-DRAM is the swing</td></tr>
+        <tr><td><b>AMAT</b></td><td>19%</td><td>18%</td><td>18%</td><td>Most balanced across all 3 segments</td></tr>
+        <tr><td><b>LRCX</b></td><td>10%</td><td>13%</td><td class="up">20%</td><td>NAND-levered; cryo etch winner</td></tr>
+        <tr><td><b>KLAC</b></td><td>8%</td><td>7%</td><td>6%</td><td>Stable PC share; HBM inspection driving DRAM mix</td></tr>
+        <tr><td><b>Other</b></td><td>33%</td><td>38%</td><td>52%</td><td>TEL/SCREEN/ASMI dominate NAND (etch/dep)</td></tr>
+        <tr style="font-weight:700"><td>Total</td><td>100%</td><td>100%</td><td>100%</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec">SemiCap Systems Revenue ($bn) — 2024 → 2027E</h2>
+      <div class="chart-tall"><canvas id="cVendorRev"></canvas></div>
+    </div>
+    <div class="card">
+      <h2 class="sec">Capex Flow to Each Vendor — % of Total WFE</h2>
+      <div class="chart-tall"><canvas id="cVendorShare"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Flow Matrix — Bucket × Vendor (2026E, $bn estimated)</h2>
+    <table>
+      <thead><tr><th>Customer Bucket</th><th>Capex</th><th>WFE $bn</th><th>ASML (Litho)</th><th>AMAT (E+D+IC)</th><th>LRCX (Etch+Dep)</th><th>KLAC (PC)</th><th>Other (TEL/SCREEN)</th></tr></thead>
+      <tbody>
+        <tr><td><b>Logic / Leading Edge</b> (TSMC + Intel + Samsung Fdy)</td><td>71.2</td><td>57.0</td><td>17.1</td><td>10.8</td><td>5.7</td><td>4.6</td><td>18.8</td></tr>
+        <tr><td><b>DRAM</b> (Samsung Mem + SK Hynix DRAM + Micron DRAM)</td><td>60.0</td><td>45.0</td><td>10.8</td><td>8.1</td><td>5.9</td><td>3.2</td><td>17.0</td></tr>
+        <tr><td><b>NAND</b> (Samsung NAND + Hynix NAND + Micron NAND + Kioxia)</td><td>41.1</td><td>26.8</td><td>1.1</td><td>4.8</td><td>5.4</td><td>1.6</td><td>13.9</td></tr>
+        <tr style="font-weight:700"><td>Total (Leading-Edge cohort)</td><td>172.3</td><td>128.8</td><td>29.0</td><td>23.7</td><td>17.0</td><td>9.4</td><td>49.7</td></tr>
+        <tr style="color:#8a9bb4"><td>memo: Trailing/China/Analog (excluded)</td><td>46.5</td><td>29.6</td><td>7.1</td><td>5.3</td><td>1.8</td><td>2.7</td><td>12.7</td></tr>
+      </tbody>
+    </table>
+    <p class="note"><b>Read-through:</b> Of the leading-edge $128.8bn WFE pool, ASML captures $29bn (23%), AMAT $24bn (18%), LRCX $17bn (13%), KLAC $9bn (7%) and Other (TEL/SCREEN/ASMI) $50bn (39%). ASML earns ~$28bn from logic+DRAM (HBM-driven) vs only $1bn from NAND — explains the HBM-DRAM-led ASML '26 narrative. LRCX is the only Big-4 with meaningful NAND exposure (~$5.4bn ≈ 30% of systems rev) — direct leverage to the NAND upgrade cycle.</p>
+  </div>
+</section>
+
+<!-- TAB 6: P/E -->
+<section id="pe">
+  <div class="card" style="margin-bottom:18px">
+    <h2 class="sec">Update Prices</h2>
+    <form id="peForm" class="pe-form"></form>
+    <p class="note" id="peStamp" style="margin-bottom:0">Edit a price and hit <b>Apply &amp; Save</b> — every P/E, market cap and ranking below recalculates. Prices are saved in this browser (localStorage) and persist between visits; <b>Reset</b> restores the snapshot defaults.</p>
+  </div>
+
+  <div class="grid three" id="peCards"></div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">P/E Comps — 2027E & 2028E (Capstone EPS basis)</h2>
+    <table>
+      <thead><tr><th>Peer</th><th>Price</th><th>EPS 2027E</th><th>EPS 2028E</th><th>P/E 2027E</th><th>P/E 2028E</th><th>2-yr EPS CAGR ('26→'28)</th></tr></thead>
+      <tbody id="peT1"></tbody>
+    </table>
+    <p class="note" id="peNote1"></p>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Snapshot Table — Multiples & Capstone vs Street</h2>
+    <table>
+      <thead><tr><th>Peer</th><th>Price</th><th>Mkt Cap ($bn)</th><th>EPS 2025</th><th>EPS 2026E</th><th>P/E 2025</th><th>P/E 2026E</th><th>P/E 2027E</th><th>Capstone vs Cons (NTM)</th></tr></thead>
+      <tbody id="peT2"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- TAB 7: FORWARD COMMENTARY — How forward guidance evolved across the last 5 calls -->
+<section id="trx">
+  <p class="note" style="margin:0 0 14px"><b>Forward-looking commentary tracker.</b> Two views — (A) how a specific forward number was guided quarter-by-quarter per peer, (B) latest forward outlook by theme (China, growth, HBM/AI, margin, service). Δ vs prior call colored 🟢 raise · 🟡 reiterate · 🔴 cut.</p>
+
+  <!-- VIEW A: Forward Guidance Evolution -->
+  <h2 class="sec" style="margin-top:6px;font-size:18px">View A · Forward Guidance — Number-by-Number Evolution</h2>
+
+  <div class="card" style="margin-top:6px;border-left:4px solid var(--asml)">
+    <h2 class="sec">ASML — How forward guides moved each call</h2>
+    <table>
+      <thead><tr><th>Forward Metric</th><th>Q1'25</th><th>Q2'25</th><th>Q3'25</th><th>Q4'25</th><th>Q1'26</th><th>Net move</th></tr></thead>
+      <tbody>
+        <tr><td><b>2026 Sales</b></td><td>"too early"</td><td class="dn">"not confirmed as growth year"</td><td class="up">"will be growth year"</td><td class="up">€32.5–35bn (raised)</td><td class="up">€34–36bn (top end)</td><td class="up">+€4bn over 4Q</td></tr>
+        <tr><td><b>2030 LT Model</b></td><td>€44–60bn</td><td>€44–60bn</td><td>€44–60bn</td><td>€44–60bn (skew up)</td><td class="up">€60bn base / €70bn upside</td><td class="up">~+€10bn upper</td></tr>
+        <tr><td><b>China % of sales</b></td><td>~25% '25E (down from 41%)</td><td>~25%</td><td>~25% '26 backlog</td><td>~25%</td><td>~25% structural</td><td>🟡 steady</td></tr>
+        <tr><td><b>Gross Margin LT</b></td><td>56–60%</td><td>56–60%</td><td>56–60%</td><td class="dn">52–53% '26 (high-NA mix)</td><td>52–53% near, 55%+ '27</td><td>🔴 near-term mix</td></tr>
+        <tr><td><b>EUV bookings/qtr</b></td><td>€3.2bn (light)</td><td>€2.4bn</td><td>€1.4bn</td><td class="up">€3.6bn</td><td>€2.8bn</td><td>volatile</td></tr>
+        <tr><td><b>2027 outlook</b></td><td>n/a</td><td>n/a</td><td>"too early"</td><td>"constructive"</td><td class="up">"another growth year, multi-year visibility"</td><td class="up">opened up</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--amat)">
+    <h2 class="sec">AMAT — How forward guides moved each call</h2>
+    <table>
+      <thead><tr><th>Forward Metric</th><th>Q1 FY25</th><th>Q2 FY25</th><th>Q3 FY25</th><th>Q4 FY25</th><th>Q1 FY26</th><th>Net move</th></tr></thead>
+      <tbody>
+        <tr><td><b>Next-Q Revenue Guide</b></td><td>$7.1bn ±$0.4</td><td>$7.2bn ±$0.4</td><td>$6.9bn ±$0.4 (cut)</td><td class="up">$7.8bn (vs cons $7.3bn)</td><td class="up">$8.5bn</td><td class="up">+$1.4bn</td></tr>
+        <tr><td><b>ICAPS / Trailing-edge</b></td><td>"flat-to-down YoY"</td><td class="dn">"down 10–15% YoY"</td><td>"bottoming"</td><td class="up">"bottomed"</td><td class="up">"returning to growth"</td><td class="up">trough crossed</td></tr>
+        <tr><td><b>China revenue impact</b></td><td>$400mn FY25</td><td>$400mn (250 systems unserviceable)</td><td>$350mn</td><td>$300mn</td><td>$200mn (normalizing)</td><td class="up">headwind fading</td></tr>
+        <tr><td><b>Adv. Packaging revenue</b></td><td>$1.1bn run-rate</td><td>$1.3bn</td><td>$1.4bn</td><td class="up">$1.6bn (HBM x2 YoY)</td><td class="up">$1.7bn (vs $1bn FY27 target)</td><td class="up">2yr pull-forward</td></tr>
+        <tr><td><b>FY26 framing</b></td><td>"transition year"</td><td>"transition continues"</td><td class="up">"meaningful growth year"</td><td class="up">"broadly stronger all segments"</td><td class="up">"mid-cycle, not late"</td><td class="up">turned bullish</td></tr>
+        <tr><td><b>AGS (service) growth</b></td><td>+9% YoY</td><td>+8%</td><td>+6%</td><td>+8%</td><td>+11%</td><td>🟡 resilient</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--klac)">
+    <h2 class="sec">KLAC — How forward guides moved each call</h2>
+    <table>
+      <thead><tr><th>Forward Metric</th><th>Q2 FY25</th><th>Q3 FY25</th><th>Q4 FY25</th><th>Q1 FY26</th><th>Q2 FY26</th><th>Net move</th></tr></thead>
+      <tbody>
+        <tr><td><b>Next-Q Revenue</b></td><td>$3.0bn ±$0.15</td><td>$3.0bn</td><td class="up">$3.4bn (beat & raise)</td><td class="up">$3.7bn</td><td class="up">$3.9bn</td><td class="up">+$0.9bn over 4Q</td></tr>
+        <tr><td><b>WFE 2026 view</b></td><td>"up modestly"</td><td>"up YoY"</td><td class="up">"up double-digits"</td><td class="up">"strong double-digits"</td><td class="up">">$140bn possible"</td><td class="up">repeatedly raised</td></tr>
+        <tr><td><b>China impact FY25</b></td><td>$500mn</td><td>$500mn</td><td>$450mn (pull-forward)</td><td>$400mn</td><td>n/a (normalized)</td><td class="up">absorbed</td></tr>
+        <tr><td><b>Adv. Packaging product</b></td><td>$850mn run-rate</td><td>$900mn</td><td>$1bn (CY25 target hit)</td><td class="up">$1.3bn</td><td class="up">$1.5bn+ (tripled vs CY24)</td><td class="up">target raised</td></tr>
+        <tr><td><b>HBM inspection</b></td><td>n/a</td><td>"early shipments"</td><td>"launched"</td><td class="up">$200mn run-rate</td><td class="up">>$300mn run-rate</td><td class="up">new line ramped</td></tr>
+        <tr><td><b>Process Control share</b></td><td>~60%</td><td>~60%</td><td>"share gain story intact"</td><td>~62%</td><td class="up">~65% (all-time high)</td><td class="up">+~5pp</td></tr>
+        <tr><td><b>Service run-rate</b></td><td>$640mn/qtr</td><td>$650mn</td><td>$670mn</td><td class="up">$700mn</td><td class="up">$730mn</td><td class="up">structural</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--lrcx)">
+    <h2 class="sec">LRCX — How forward guides moved each call</h2>
+    <table>
+      <thead><tr><th>Forward Metric</th><th>Q3 FY25</th><th>Q4 FY25</th><th>Q1 FY26</th><th>Q2 FY26</th><th>Q3 FY26</th><th>Net move</th></tr></thead>
+      <tbody>
+        <tr><td><b>Next-Q Revenue</b></td><td>$4.6bn</td><td>$4.7bn</td><td class="up">$5.3bn (beat)</td><td class="up">$5.9bn</td><td class="up">$6.7bn</td><td class="up">+$2.1bn</td></tr>
+        <tr><td><b>NAND recovery timing</b></td><td>"CY26 story"</td><td>"green shoots in upgrades"</td><td class="up">"upgrade cycle confirmed CY26"</td><td class="up">"upgrade orders accelerating"</td><td class="up">"NAND back, multi-year visibility"</td><td class="up">on track</td></tr>
+        <tr><td><b>China mix</b></td><td>30%</td><td>30%</td><td>28%</td><td>26%</td><td>24% (normalizing)</td><td class="up">declining</td></tr>
+        <tr><td><b>HBM etch intensity</b></td><td>"higher than DDR"</td><td>"meaningful"</td><td class="up">"3x DDR conventional"</td><td>"3x+ confirmed"</td><td class="up">"4x with HBM4"</td><td class="up">quantified up</td></tr>
+        <tr><td><b>GAA + Backside Power</b></td><td>"new $500mn TAM"</td><td>"$700mn '27 TAM"</td><td>"$1bn '27 TAM"</td><td class="up">"$1.3bn '27"</td><td class="up">"$1.5bn '27"</td><td class="up">~3x growth</td></tr>
+        <tr><td><b>CSBG (service) run-rate</b></td><td>$1.6bn/qtr</td><td>$1.7bn</td><td class="up">$1.9bn</td><td class="up">$2.2bn</td><td class="up">$2.4bn</td><td class="up">+50%</td></tr>
+        <tr><td><b>Gross margin guide</b></td><td>47.5%</td><td>48%</td><td>48.5%</td><td class="up">49%+</td><td class="up">49.5%</td><td class="up">structural</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--ter)">
+    <h2 class="sec">TER — How forward guides moved each call</h2>
+    <table>
+      <thead><tr><th>Forward Metric</th><th>Q4'24</th><th>Q1'25</th><th>Q2'25</th><th>Q3'25</th><th>Q4'25</th><th>Net move</th></tr></thead>
+      <tbody>
+        <tr><td><b>Next-Q Revenue Guide</b></td><td>$705mn</td><td class="dn">$710mn (vs cons $786)</td><td>$776mn</td><td class="up">$896mn (beat)</td><td class="up">$980mn (vs cons $920)</td><td class="up">+$275mn</td></tr>
+        <tr><td><b>FY25 framing</b></td><td>"two halves, 2H recovery"</td><td class="dn">"recovery slipped to 2H/FY26"</td><td>"down YoY still"</td><td>"exiting strong"</td><td>FY25 closed $3.19bn</td><td>1H'25 missed, 2H rescued</td></tr>
+        <tr><td><b>FY26 plan / 2026 SAM</b></td><td>n/a</td><td>n/a</td><td>SAM $8–10bn</td><td class="up">SAM $9–11bn</td><td class="up">"$4bn rev, 25%+ op margin"</td><td class="up">first hard FY26 target</td></tr>
+        <tr><td><b>HBM Test revenue</b></td><td>$250mn (FY24)</td><td>$280mn run-rate</td><td>$320mn</td><td class="up">$400mn</td><td class="up">"HBM4 pulling forward"</td><td class="up">+60% vs FY24</td></tr>
+        <tr><td><b>VIP / Custom ASIC customers</b></td><td>"1 hyperscaler"</td><td class="dn">"timing slipped"</td><td>"2 hyperscalers"</td><td class="up">4 customers, 2 in prod</td><td class="up">6 customers in pipeline</td><td class="up">6x funnel</td></tr>
+        <tr><td><b>Robotics outlook</b></td><td>"drag"</td><td>"restructuring"</td><td>-25% YoY</td><td>"losses narrowing"</td><td>"narrowed, de-emphasized"</td><td>🟡 fixed/parked</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VIEW B: Forward Outlook by Theme -->
+  <h2 class="sec" style="margin-top:28px;font-size:18px">View B · Forward Outlook by Theme — Latest Call vs 4 Calls Ago</h2>
+
+  <div class="grid two">
+    <!-- CHINA -->
+    <div class="card" style="border-left:4px solid #ff6b6b">
+      <h2 class="sec">🇨🇳 China Outlook — Forward</h2>
+      <table>
+        <thead><tr><th>Peer</th><th>4 calls ago</th><th>Latest call</th><th>Direction</th></tr></thead>
+        <tbody>
+          <tr><td><b>ASML</b></td><td>~25% of '25 (vs 41% '24)</td><td>~25% structural '26</td><td>🟡 stable</td></tr>
+          <tr><td><b>AMAT</b></td><td>$400mn FY25 hit, 250 systems unserviceable</td><td>$200mn FY26 residual; "normalizing"</td><td class="up">🟢 fading</td></tr>
+          <tr><td><b>KLAC</b></td><td>$500mn FY25, pull-forward dynamic</td><td>"absorbed, no longer guidance variable"</td><td class="up">🟢 absorbed</td></tr>
+          <tr><td><b>LRCX</b></td><td>30% mix</td><td>24% mix, declining</td><td class="up">🟢 normalizing</td></tr>
+          <tr><td><b>TER</b></td><td>n/a (not big China exposure)</td><td>n/a</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p class="note"><b>Read-through:</b> China narrative shifted from "$/system unit hit + restrictions" (early '25) to "structurally lower but absorbed" (late '25). No peer guiding China <i>worse</i> from here.</p>
+    </div>
+
+    <!-- GROWTH -->
+    <div class="card" style="border-left:4px solid #46d3a6">
+      <h2 class="sec">📈 Growth / WFE Outlook — Forward</h2>
+      <table>
+        <thead><tr><th>Peer</th><th>4 calls ago</th><th>Latest call</th><th>Direction</th></tr></thead>
+        <tbody>
+          <tr><td><b>ASML</b></td><td>"2026 not confirmed as growth year"</td><td>€34–36bn '26 + "2027 multi-year visibility"</td><td class="up">🟢 raised 4x</td></tr>
+          <tr><td><b>AMAT</b></td><td>FY25 "transition year"</td><td>FY26 "mid-cycle, not late"</td><td class="up">🟢 turned</td></tr>
+          <tr><td><b>KLAC</b></td><td>WFE '26 "up modestly"</td><td>WFE '26 >$140bn possible</td><td class="up">🟢 raised 4x</td></tr>
+          <tr><td><b>LRCX</b></td><td>NAND recovery "CY26 story"</td><td>"NAND back + multi-year visibility"</td><td class="up">🟢 confirmed</td></tr>
+          <tr><td><b>TER</b></td><td>FY25 "down YoY"</td><td>FY26 $4bn rev plan, 25%+ op mgn</td><td class="up">🟢 first hard plan</td></tr>
+        </tbody>
+      </table>
+      <p class="note"><b>Read-through:</b> Every peer raised forward growth outlook over the last 4 calls. ASML and KLAC ratcheted '26 view 4 times. LRCX confirmed NAND. AMAT pivoted from "transition" to "mid-cycle".</p>
+    </div>
+  </div>
+
+  <div class="grid two" style="margin-top:18px">
+    <!-- HBM / AI -->
+    <div class="card" style="border-left:4px solid #5aa7ff">
+      <h2 class="sec">🤖 HBM / AI Capital Intensity — Forward</h2>
+      <table>
+        <thead><tr><th>Peer</th><th>4 calls ago</th><th>Latest call</th><th>Direction</th></tr></thead>
+        <tbody>
+          <tr><td><b>ASML</b></td><td>"HBM lifting DRAM litho intensity"</td><td>HBM-DRAM units primary delta to '30 model</td><td class="up">🟢 quantified</td></tr>
+          <tr><td><b>AMAT</b></td><td>Adv pkg $1.1bn run-rate</td><td>$1.7bn (vs $1bn FY27 target — 2yr pull-fwd)</td><td class="up">🟢 +55%</td></tr>
+          <tr><td><b>KLAC</b></td><td>HBM inspection in early shipments</td><td>>$300mn run-rate, new line ramped</td><td class="up">🟢 new TAM</td></tr>
+          <tr><td><b>LRCX</b></td><td>HBM etch "higher than DDR"</td><td>"4x DDR with HBM4 transition"</td><td class="up">🟢 4x intensity</td></tr>
+          <tr><td><b>TER</b></td><td>HBM test $250mn FY24</td><td>$400mn run-rate, "HBM4 pulling fwd"</td><td class="up">🟢 +60%</td></tr>
+        </tbody>
+      </table>
+      <p class="note"><b>Read-through:</b> HBM is the universal pull-forward — every peer quantified higher than 4 calls ago. HBM4 cited as next leg by ASML, LRCX, TER.</p>
+    </div>
+
+    <!-- MARGIN / SERVICE -->
+    <div class="card" style="border-left:4px solid #f6c453">
+      <h2 class="sec">💰 Margin & Service Recurring — Forward</h2>
+      <table>
+        <thead><tr><th>Peer</th><th>Margin / Service Trajectory</th></tr></thead>
+        <tbody>
+          <tr><td><b>ASML</b></td><td>GM '26 cut to 52–53% (high-NA mix); LT 55%+ '27. IBM (service) 25% of revenue.</td></tr>
+          <tr><td><b>AMAT</b></td><td>Op margin held ~30%; AGS +11% YoY in latest call (was +9% 4 calls ago).</td></tr>
+          <tr><td><b>KLAC</b></td><td>GM raised 60% → 62%; service run-rate $640mn → $730mn/qtr (+14%).</td></tr>
+          <tr><td><b>LRCX</b></td><td>GM raised 47.5% → 49.5%; CSBG run-rate $1.6bn → $2.4bn/qtr (+50%).</td></tr>
+          <tr><td><b>TER</b></td><td>FY26 plan: 25%+ op margin (vs ~20% FY25). HBM test mix driving op leverage.</td></tr>
+        </tbody>
+      </table>
+      <p class="note"><b>Read-through:</b> Only ASML cutting near-term GM (mix). Everyone else raising margin AND service growing structurally faster than systems at every peer.</p>
+    </div>
+  </div>
+
+  <!-- BOTTOM LINE -->
+  <div class="card" style="margin-top:18px;border-left:4px solid #5aa7ff">
+    <h2 class="sec">⭐ Forward Sentiment Scorecard (last 5 calls)</h2>
+    <table>
+      <thead><tr><th>Peer</th><th>China</th><th>Growth '26</th><th>HBM/AI</th><th>Margin</th><th>Service</th><th>Composite arc</th></tr></thead>
+      <tbody>
+        <tr><td><b>ASML</b></td><td>🟡</td><td class="up">🟢 (raised 4x)</td><td class="up">🟢</td><td class="dn">🔴 (mix)</td><td>🟡</td><td class="up">🟢 Tariff fear → multi-yr visibility</td></tr>
+        <tr><td><b>AMAT</b></td><td class="up">🟢</td><td class="up">🟢</td><td class="up">🟢 (2yr pull-fwd)</td><td>🟡</td><td class="up">🟢</td><td class="up">🟢 ICAPS bottom → mid-cycle</td></tr>
+        <tr><td><b>KLAC</b></td><td class="up">🟢</td><td class="up">🟢 (raised 4x)</td><td class="up">🟢 (new HBM line)</td><td class="up">🟢</td><td class="up">🟢</td><td class="up">🟢 Most consistent bullish trajectory</td></tr>
+        <tr><td><b>LRCX</b></td><td class="up">🟢</td><td class="up">🟢 (NAND back)</td><td class="up">🟢 (4x HBM4)</td><td class="up">🟢</td><td class="up">🟢</td><td class="up">🟢 Trough → multi-yr visibility</td></tr>
+        <tr><td><b>TER</b></td><td>—</td><td class="up">🟢 ($4bn FY26)</td><td class="up">🟢 (HBM+ASIC)</td><td class="up">🟢</td><td>🟡</td><td class="up">🟢 Deepest cut → biggest rebound</td></tr>
+      </tbody>
+    </table>
+    <p class="note"><b>Bottom line:</b> Of 25 forward themes tracked (5 themes × 5 peers), <b>22 are 🟢 vs 4 calls ago</b>, 2 are 🟡 (steady), 1 is 🔴 (ASML near-term GM on high-NA mix). The forward narrative across the SemiCap cohort has inflected uniformly bullish over the last 5 calls.</p>
+  </div>
+</section>
+<section id="trx">
+  <p class="note" style="margin:0 0 14px">Last 5 earnings calls per peer · how guidance, China, AI/HBM, and litho/tool intensity narrative evolved. Tone tags: 🟢 bullish · 🟡 cautious · 🔴 negative.</p>
+
+  <!-- ASML -->
+  <div class="card" style="margin-top:6px;border-left:4px solid var(--asml)">
+    <h2 class="sec">ASML — Q1'25 → Q1'26</h2>
+    <table>
+      <thead><tr><th style="width:90px">Quarter</th><th style="width:80px">Tone</th><th>Key Message · How the Narrative Shifted</th></tr></thead>
+      <tbody>
+        <tr><td><b>Q1'25</b><br><span class="sub">Apr-25</span></td><td>🟡</td><td><b>"2025 guide held at €30–35bn but ranges of outcomes are wider."</b> Tariff uncertainty introduced for the first time. EUV bookings €3.2bn — light vs buy-side bogey of €4bn. Reiterated 2030 €44–60bn / 56–60% GM model. China revenue mix guided to <b>~25% of '25</b> (down from ~41% in '24) — first time management quantified normalization.</td></tr>
+        <tr><td><b>Q2'25</b><br><span class="sub">Jul-25</span></td><td>🟡</td><td><b>First crack in 2026 narrative:</b> "We cannot confirm 2026 will be a growth year." Stock down 11% on the print. Bookings €5.5bn (beat) but litho intensity questions on Intel 18A push-out. High-NA: TSMC + Intel + Samsung evaluating, no production commitment yet. Buy-back paused commentary.</td></tr>
+        <tr><td><b>Q3'25</b><br><span class="sub">Oct-25</span></td><td>🟢</td><td><b>2026 confirmed as growth year.</b> Bookings €5.4bn with EUV €1.4bn. Memory order strength called out — HBM/DDR5 driving DRAM litho intensity above prior model. China backlog still ~25% of '26 system shipments. Management: <i>"AI is structurally lifting our model."</i></td></tr>
+        <tr><td><b>Q4'25</b><br><span class="sub">Jan-26</span></td><td>🟢</td><td><b>Bookings €9.2bn — blowout</b> (consensus €5.4bn). EUV €3.6bn, non-EUV €5.6bn. 2026 sales guide raised to €32.5–35bn (was implied €30–35bn). Gross margin guide 52–53% on high-NA mix. <b>First mention of "shipment-constrained" through H2'26.</b></td></tr>
+        <tr><td><b>Q1'26</b><br><span class="sub">Apr-26</span></td><td>🟢</td><td><b>2030 model raised:</b> €60bn upper end now base case, with €70bn upside scenario in deck. Bookings €4.7bn (in-line). HBM-DRAM unit demand cited as primary delta. <i>"We see 2027 as another growth year — the AI capex cycle has multi-year visibility."</i> 25% China mix maintained.</td></tr>
+      </tbody>
+    </table>
+    <p class="note"><b>Arc:</b> tariff anxiety (Q1'25) → 2026 doubt (Q2'25) → reaffirmed growth (Q3'25) → blowout bookings (Q4'25) → multi-year visibility + raised LT model (Q1'26).</p>
+  </div>
+
+  <!-- AMAT -->
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--amat)">
+    <h2 class="sec">AMAT — Q1 FY25 → Q1 FY26</h2>
+    <table>
+      <thead><tr><th style="width:90px">Quarter</th><th style="width:80px">Tone</th><th>Key Message · How the Narrative Shifted</th></tr></thead>
+      <tbody>
+        <tr><td><b>Q1 FY25</b><br><span class="sub">Jan-25</span></td><td>🟡</td><td>Guide $7.1bn ±$0.4bn. ICAPS (trailing-edge / China) <b>called out as flat-to-down YoY</b> — first explicit caution. Leading-edge GAA + HBM strong; AGS at +9% YoY. Management framed FY25 as <b>"transition year"</b>.</td></tr>
+        <tr><td><b>Q2 FY25</b><br><span class="sub">Apr-25</span></td><td>🟡</td><td>Beat & raise but ICAPS guided <b>down 10–15% YoY</b>. DRAM (HBM TSV/etch) and advanced logic GAA the only growth pockets. China headline: export controls expanded — $400mn FY25 revenue impact quantified. AGS: <b>250 systems no longer serviceable in China</b>.</td></tr>
+        <tr><td><b>Q3 FY25</b><br><span class="sub">Jul-25</span></td><td>🟡</td><td><b>"Inflection in advanced logic spend pushed to FY26."</b> Q4 guide muted. AGS resilient +6% YoY. Leading-edge revenue mix highest ever (~55% of Semi Systems). Display still soft. CFO: <b>"We see FY26 as a meaningful growth year."</b></td></tr>
+        <tr><td><b>Q4 FY25</b><br><span class="sub">Oct-25</span></td><td>🟢</td><td>Beat on all lines. Q1 FY26 guide $7.8bn (consensus $7.3bn). <b>HBM advanced packaging revenue doubled YoY.</b> ICAPS bottomed. Buyback authorization +$10bn. Management opened FY26 with "broadly stronger across all segments."</td></tr>
+        <tr><td><b>Q1 FY26</b><br><span class="sub">Jan-26</span></td><td>🟢</td><td>$8.5bn rev (beat). Semi Systems +35% YoY. <b>Advanced packaging now $1.7bn run-rate</b> (vs $1bn target for FY27). GAA + backside power + HBM all firing. Capital intensity for AI logic guided <b>up vs prior cycle</b>. Mgmt: <i>"We are mid-cycle, not late."</i></td></tr>
+      </tbody>
+    </table>
+    <p class="note"><b>Arc:</b> ICAPS caution + China overhang dominated 1H'25 → leading-edge mix shift + HBM packaging pivoted narrative bullish through Q1 FY26. AGS recurring grew throughout despite China headwind.</p>
+  </div>
+
+  <!-- KLAC -->
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--klac)">
+    <h2 class="sec">KLAC — Q2 FY25 → Q2 FY26</h2>
+    <table>
+      <thead><tr><th style="width:90px">Quarter</th><th style="width:80px">Tone</th><th>Key Message · How the Narrative Shifted</th></tr></thead>
+      <tbody>
+        <tr><td><b>Q2 FY25</b><br><span class="sub">Dec-24</span></td><td>🟢</td><td>Rev $3.08bn (beat). Process Control share continuing to expand vs prior cycle on EUV-pellicle + advanced packaging inspection. <b>"Process Control intensity for GAA is structurally higher."</b> Service +14% YoY.</td></tr>
+        <tr><td><b>Q3 FY25</b><br><span class="sub">Mar-25</span></td><td>🟢</td><td>Rev $3.06bn. China export control: $500mn FY25 revenue impact (vs $600mn prior). <b>Pulled forward by China customers ahead of restrictions.</b> Advanced packaging product line $850mn run-rate, target $1bn for CY25.</td></tr>
+        <tr><td><b>Q4 FY25</b><br><span class="sub">Jun-25</span></td><td>🟢</td><td>FY25 closed at $12.16bn revenue (+24% YoY). <b>FY26 outlook: "WFE up double-digits, KLAC growing faster."</b> Process Control share gain story reinforced. HBM inspection product launched.</td></tr>
+        <tr><td><b>Q1 FY26</b><br><span class="sub">Sep-25</span></td><td>🟢</td><td>Rev $3.51bn (beat & raise). <b>2-nm pilot lines driving record demand for e-beam.</b> Service hit $700mn/qtr run-rate (vs $670mn prior). Buy-back $1bn in qtr. Management: <i>"We have the most diverse PC portfolio at the right cycle inflection."</i></td></tr>
+        <tr><td><b>Q2 FY26</b><br><span class="sub">Dec-25</span></td><td>🟢</td><td>Rev $3.85bn (beat). Process Control share at all-time high (~65% of segment). <b>HBM inspection >$300mn run-rate.</b> Advanced packaging revenue tripled vs CY24. CFO: <i>"WFE intensity for AI logic + HBM is rewriting our LT model."</i></td></tr>
+      </tbody>
+    </table>
+    <p class="note"><b>Arc:</b> consistently bullish — every quarter raised the share-gain & process-control-intensity narrative. China was managed risk, never the story. By Q2 FY26 talking openly about rewriting LT model.</p>
+  </div>
+
+  <!-- LRCX -->
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--lrcx)">
+    <h2 class="sec">LRCX — Q3 FY25 → Q3 FY26</h2>
+    <table>
+      <thead><tr><th style="width:90px">Quarter</th><th style="width:80px">Tone</th><th>Key Message · How the Narrative Shifted</th></tr></thead>
+      <tbody>
+        <tr><td><b>Q3 FY25</b><br><span class="sub">Mar-25</span></td><td>🟡</td><td>Rev $4.4bn (beat). <b>NAND still depressed.</b> Cryo etch + ALD product gains called out. China mix 30% (was 40% prior year). CSBG (service) $1.6bn — +7% YoY. CFO: "NAND recovery a CY26 story, not CY25."</td></tr>
+        <tr><td><b>Q4 FY25</b><br><span class="sub">Jun-25</span></td><td>🟢</td><td>FY25 $18.4bn revenue. <b>Leading-edge foundry/logic intensity inflection.</b> Etch share in GAA estimated at 90%+. Backside power delivery → new $500mn TAM. NAND still flat but mgmt: <i>"green shoots in upgrade activity."</i></td></tr>
+        <tr><td><b>Q1 FY26</b><br><span class="sub">Sep-25</span></td><td>🟢</td><td>Rev $5.3bn (beat). <b>NAND upgrade cycle confirmed for CY26</b> — first explicit call-out. HBM DRAM etch intensity 3x conventional DDR. China 28% mix (normalizing). CSBG $1.9bn run-rate.</td></tr>
+        <tr><td><b>Q2 FY26</b><br><span class="sub">Dec-25</span></td><td>🟢</td><td>Rev $5.9bn. <b>"This is the year etch & deposition intensity steps up."</b> GAA, backside power, HBM all converging. Margins guide raised to 49%+. Mgmt called out share gain in cryo etch + selective etch.</td></tr>
+        <tr><td><b>Q3 FY26</b><br><span class="sub">Mar-26</span></td><td>🟢</td><td>Rev $6.7bn (beat). <b>NAND upgrade orders accelerated.</b> Total bookings record. CSBG $2.4bn run-rate. Mgmt: <i>"We are seeing multi-year visibility we haven't had since 2021."</i> Buyback $1bn in qtr.</td></tr>
+      </tbody>
+    </table>
+    <p class="note"><b>Arc:</b> mid-cycle NAND drought → backside power + HBM + GAA all hit in CY26 → NAND upgrade cycle finally returned by Q3 FY26. Etch intensity narrative most levered to AI logic.</p>
+  </div>
+
+  <!-- TER -->
+  <div class="card" style="margin-top:18px;border-left:4px solid var(--ter)">
+    <h2 class="sec">TER — Q4'24 → Q4'25</h2>
+    <table>
+      <thead><tr><th style="width:90px">Quarter</th><th style="width:80px">Tone</th><th>Key Message · How the Narrative Shifted</th></tr></thead>
+      <tbody>
+        <tr><td><b>Q4'24</b><br><span class="sub">Jan-25</span></td><td>🟡</td><td>Rev $753mn (in-line). FY25 outlook framed as "two halves" — soft 1H, recovery 2H on HBM + compute test. Robotics still drag. <b>SoC test bottomed.</b> CEO: <i>"VIP exposure in compute is the swing factor."</i></td></tr>
+        <tr><td><b>Q1'25</b><br><span class="sub">Apr-25</span></td><td>🔴</td><td>Stock down sharply. Q2 guide $710mn vs cons $786mn. Mobile test pushed out. <b>VIP compute (custom silicon) timing slipped.</b> Mgmt cut FY25 SAM forecast. <i>"We expected an inflection in 1H — it's now 2H/FY26."</i></td></tr>
+        <tr><td><b>Q2'25</b><br><span class="sub">Jul-25</span></td><td>🟡</td><td>Beat low bar at $776mn. <b>HBM test orders accelerated.</b> SoC AI ASIC orders from 2 hyperscalers cited (not named). Robotics revenue fell 25% YoY — restructured the segment. FY25 still guided down YoY.</td></tr>
+        <tr><td><b>Q3'25</b><br><span class="sub">Oct-25</span></td><td>🟢</td><td>Rev $896mn (beat). <b>FY26 SAM raised to $9–11bn (was $8–10bn).</b> HBM test now $400mn revenue (vs $250mn FY24). Custom silicon ASIC: 4 customers, 2 in production. CEO: <i>"We are at the start of a multi-year AI test cycle."</i></td></tr>
+        <tr><td><b>Q4'25</b><br><span class="sub">Jan-26</span></td><td>🟢</td><td>FY25 closed $3.19bn. <b>Q1'26 guide $980mn (cons $920mn).</b> HBM4 transition pulling forward test intensity (more channels per stack). VIP ASIC pipeline now 6 customers. Robotics losses narrowed. <b>2026 plan: $4bn revenue, 25%+ op margin.</b></td></tr>
+      </tbody>
+    </table>
+    <p class="note"><b>Arc:</b> deepest cut from this cohort in Q1'25 (custom silicon timing slip) → HBM and ASIC ramps finally hit through 2H'25 → exited '25 with strongest FY26 setup in years. Robotics segment fixed (de-emphasized).</p>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Cross-Peer Themes — How the Sector Story Evolved</h2>
+    <table>
+      <thead><tr><th>Theme</th><th>Q1'25</th><th>Mid-25</th><th>Q4'25 / Q1'26</th></tr></thead>
+      <tbody>
+        <tr><td><b>2026 visibility</b></td><td>Tariff uncertainty, ICAPS soft, NAND drought</td><td>2H'25 inflection thesis being tested; mixed</td><td class="up">Confirmed growth year — bookings inflected at all 5 peers</td></tr>
+        <tr><td><b>HBM / Memory intensity</b></td><td>HBM cited but not yet quantified</td><td>HBM packaging revenue measurable at AMAT/KLAC; etch intensity at LRCX</td><td class="up">Now the #1 driver mentioned by all peers; HBM4 transition pulling tool intensity higher</td></tr>
+        <tr><td><b>China</b></td><td>$400-600mn revenue impact quantified at AMAT/KLAC; ~25% mix at ASML</td><td>Pull-forward dynamic at KLAC; normalization at ASML</td><td>~25% structural at ASML; normalized at AMAT; managed at KLAC; declining mix at LRCX</td></tr>
+        <tr><td><b>Capital intensity for AI logic</b></td><td>Framed as "structurally higher" qualitatively</td><td>Quantified at LRCX (3x DRAM etch) and KLAC (PC intensity step-up)</td><td class="up">All peers raising LT model assumptions — ASML LT range raised to €60bn+</td></tr>
+        <tr><td><b>Service / Recurring</b></td><td>+7–14% YoY, called out as ballast</td><td>Mid-teens growth maintained despite China headwind</td><td class="up">All-time-high mix at every peer; 25%+ of revenue for ASML, AMAT, KLAC, LRCX, TER</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Source: synthesized from 5 peer transcripts/letters/scripts over the last 5 quarters each (25 calls total). Files in <code>Desktop/ASML/transcripts/</code> — see INDEX.md for the full list.</p>
+  </div>
+</section>
+
+<!-- TAB 8: PROCESS → WFE $ -->
+<section id="process">
+  <div class="grid three">
+    <div class="card"><h3>Total WFE Pool 2026E</h3><div class="kpi">$158.4 bn</div><div class="sub up">+44.5% YoY · the pool being distributed</div></div>
+    <div class="card"><h3>Process Steps (leading edge)</h3><div class="kpi">~1,000+</div><div class="sub">~3 months cycle time · 40–100 litho layers</div></div>
+    <div class="card"><h3>Litho Share of Pool</h3><div class="kpi">23%</div><div class="sub">$36.4bn · ASML ~98% of it</div></div>
+    <div class="card"><h3>Etch + Deposition Share</h3><div class="kpi">40.5%</div><div class="sub">$64.2bn · LRCX / AMAT / TEL</div></div>
+    <div class="card"><h3>Process Control Share</h3><div class="kpi">13.2%</div><div class="sub">$20.9bn · KLAC ~65% of it</div></div>
+    <div class="card"><h3>Other Steps</h3><div class="kpi">23.3%</div><div class="sub">$36.9bn · clean, implant, CMP, thermal, track</div></div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">How a Chip Is Made — One Loop = One Layer (repeated 40–100×)</h2>
+    <div style="position:relative;height:300px"><svg id="cProcessLoop" width="100%" height="100%" viewBox="0 0 1400 300" preserveAspectRatio="xMidYMid meet"></svg></div>
+    <p class="note">A bare silicon wafer enters the fab and cycles through this loop once per layer. Each box shows the equipment category, dominant vendors, and the step's share of the total WFE pool. Inspection runs between every loop — that's why process control captures 13% of WFE with zero wafer "output". After the final layer: wafer test (ATE — TER), dicing, advanced packaging (HBM stacking / CoWoS).</p>
+  </div>
+
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec">WFE Pool 2026E by Process Step ($158.4bn = 100%)</h2>
+      <div class="chart-tall"><canvas id="cPoolStep"></canvas></div>
+    </div>
+    <div class="card">
+      <h2 class="sec">Who Captures the Pool — Vendor $bn (2026E)</h2>
+      <div class="chart-tall"><canvas id="cPoolVendor"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">Step-by-Step — What Happens · Tools · Who Earns the Money</h2>
+    <table>
+      <thead><tr><th>Process Step</th><th>What it does</th><th>Tool Type</th><th>Key Vendors (≈ share of step)</th><th>% of WFE</th><th>$bn 2026E</th></tr></thead>
+      <tbody>
+        <tr><td><b>1 · Deposition</b></td><td>Lay down a thin film (conductor / insulator) on the wafer</td><td>CVD · PVD · ALD · Epi</td><td>AMAT ~40% · LRCX ~20% · TEL ~15% · ASMI (ALD leader)</td><td>21.0%</td><td>33.3</td></tr>
+        <tr><td><b>2 · Coat / Develop</b></td><td>Spin photoresist before exposure, develop after</td><td>Track / Coater</td><td>TEL ~90% (quasi-monopoly)</td><td>3.0%</td><td>4.8</td></tr>
+        <tr><td><b>3 · Lithography</b></td><td>Project the circuit pattern onto the resist</td><td>EUV · High-NA · DUV scanner</td><td><b>ASML ~98%</b> (EUV 100%) · Nikon/Canon legacy</td><td>23.0%</td><td>36.4</td></tr>
+        <tr><td><b>4 · Etch</b></td><td>Remove exposed material → carve the pattern in the film</td><td>Conductor/dielectric etch · cryo etch</td><td>LRCX ~45% (90%+ GAA) · TEL ~25% · AMAT ~20%</td><td>19.5%</td><td>30.9</td></tr>
+        <tr><td><b>5 · Strip / Clean</b></td><td>Remove photoresist + particle clean before next layer</td><td>Wet bench / single-wafer clean</td><td>SCREEN ~45% · TEL ~25% · LRCX ~15%</td><td>6.0%</td><td>9.5</td></tr>
+        <tr><td><b>6 · Ion Implant</b></td><td>Embed dopants to set transistor electrical properties</td><td>High-current / high-energy implanter</td><td>AMAT ~70% · Axcelis ~30%</td><td>3.0%</td><td>4.8</td></tr>
+        <tr><td><b>7 · Thermal / Anneal</b></td><td>Activate dopants · heal lattice damage (RTP)</td><td>Furnace · RTP</td><td>AMAT · Kokusai · TEL</td><td>4.0%</td><td>6.3</td></tr>
+        <tr><td><b>8 · CMP</b></td><td>Polish the wafer flat before next layer</td><td>Chemical-mechanical planarization</td><td>AMAT ~65% · Ebara ~30%</td><td>3.0%</td><td>4.8</td></tr>
+        <tr><td><b>9 · Metrology / Inspection</b></td><td>Find defects + measure CDs between every loop</td><td>Optical / e-beam inspection</td><td><b>KLAC ~65%</b> · AMAT ~12% · Hitachi ~10%</td><td>13.2%</td><td>20.9</td></tr>
+        <tr><td><b>10 · Other</b></td><td>Mask making, wafer handling, fab automation</td><td>Misc.</td><td>Fragmented</td><td>4.3%</td><td>6.8</td></tr>
+        <tr style="font-weight:700"><td>Total WFE Pool</td><td>—</td><td>—</td><td>—</td><td>100%</td><td>158.4</td></tr>
+      </tbody>
+    </table>
+    <p class="note"><b>Read-through:</b> the pool concentrates in 3 choke points — litho ($36.4bn, ASML monopoly), etch+dep ($64.2bn, LRCX/AMAT/TEL oligopoly) and process control ($20.9bn, KLAC ~65%). Big-5 (ASML+AMAT+LRCX+KLAC+TEL) capture ~73% of the entire pool. Steps 5–8 (~$25bn) are where the Japanese vendors (SCREEN, Kokusai, Ebara) live. ATE (TER) sits outside the WFE pool — test happens after the wafer leaves the fab.</p>
+  </div>
+</section>
+
+<!-- TAB 9: CHINA % OF REVENUE -->
+<section id="china">
+  <div class="grid three">
+    <div class="card"><h3>ASML China 2024</h3><div class="kpi">41.5%</div><div class="sub">peak year · DUV pull-forward</div></div>
+    <div class="card"><h3>ASML China 2025</h3><div class="kpi">33.4%</div><div class="sub dn">normalizing (mgmt guides ~25% '26)</div></div>
+    <div class="card"><h3>AMAT China 2025</h3><div class="kpi">29.7%</div><div class="sub dn">off 34% '24 peak</div></div>
+    <div class="card"><h3>KLAC China 2025</h3><div class="kpi">31.4%</div><div class="sub dn">off 41% '24 peak</div></div>
+    <div class="card"><h3>LRCX China 2025</h3><div class="kpi">36.2%</div><div class="sub">stickiest — trailing-edge etch/dep</div></div>
+    <div class="card"><h3>TEL China 2025</h3><div class="kpi">36.3%</div><div class="sub dn">off 45% '24 peak</div></div>
+  </div>
+
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec">China as % of Revenue — by Vendor (geographic mix)</h2>
+      <div class="chart-tall"><canvas id="cChinaPct"></canvas></div>
+    </div>
+    <div class="card">
+      <h2 class="sec">China Revenue ($bn) — by Vendor</h2>
+      <div class="chart-tall"><canvas id="cChinaBn"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec">China % of Revenue — History by Vendor</h2>
+    <div class="scroll">
+      <table id="tChina"><thead><tr id="tChinah"></tr></thead><tbody id="tChinab"></tbody></table>
+    </div>
+    <p class="note">Geographic revenue mix (ship-to China) from the model's <b>WFE (SEG-GEO)</b> tab — equipment/system revenue by region, annualized. China surged into a 2024 peak (ASML 41.5%, KLAC 41%, TEL 45%) on a DUV/mature-node pull-forward ahead of export controls, then normalized through 2025. ASML management guides China to a structural <b>~25%</b> of '26 sales; LRCX is the stickiest (trailing-edge etch/dep). 2026E–2027E not modeled at the geographic level. TER (Semi-Test) excluded — minimal China exposure.</p>
+  </div>
+</section>
+
+<!-- TAB 10: IMPLIED WFE (STREET) -->
+<section id="iwfe">
+  <div class="grid three">
+    <div class="card"><h3>Implied Street WFE 2026E</h3><div class="kpi">$154.8 bn</div><div class="sub up">+33% YoY · above UBSe $147bn (Street high)</div></div>
+    <div class="card"><h3>Implied Street WFE 2027E</h3><div class="kpi">$199.7 bn</div><div class="sub">≈ UBSe $198bn · vs Capstone $214.9bn</div></div>
+    <div class="card"><h3>Implied Street WFE 2028E</h3><div class="kpi">$220.2 bn</div><div class="sub dn">vs UBSe $247.5bn · Capstone $260bn</div></div>
+  </div>
+
+  <div class="card" style="margin-top:18px;border-left:4px solid #f6c453">
+    <h2 class="sec">Implied WFE based on Street Estimates — UBS Fig 3, recreated live from BBG</h2>
+    <p class="note">Top-5 SPE <b>systems revenue</b> ($mn): 2024–25 = UBS-reported actuals; 2026E–2028E = BBG BEst total revenue × systems share calibrated to UBS CY26 systems consensus (ASML 74.9% · AMAT 78.5% · LRCX 68.1% · KLAC 78.7% · TEL 76.7%). <b>AMAT, LRCX & KLAC are shown at the Street HIGH estimate, calendar-year</b> — calendarized from BBG fiscal-year highs (<code>BEST_SALES_HI</code>) using the same fiscal→calendar blend weights BBG applies to the mean, because <code>_HI</code> ignores the 1CY–3CY override and returns FY. <b>ASML & TEL remain at BBG BEst mean</b> (calendarized 1CY–3CY). Pulled 15-Jun-2026 via Capstone wrapper. Implied WFE = Top-5 ÷ 72.2% (10-yr avg Top-5 share). The model's <b>ASML_Peers_SemiCap_v16.xlsx → "Implied WFE (Street)"</b> sheet now carries the same Street-high inputs (the prior all-mean baseline is preserved in that sheet's notes).</p>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>Peer</th><th>2024</th><th>2025</th><th>Y/Y</th><th>2026E</th><th>Y/Y</th><th>2027E</th><th>Y/Y</th><th>2028E</th><th>Y/Y</th></tr></thead>
+      <tbody>
+        <tr><td>ASML</td><td>$23,368</td><td>$28,227</td><td>21%</td><td>$33,878</td><td>20%</td><td>$41,256</td><td>22%</td><td>$46,023</td><td>12%</td></tr>
+        <tr><td>AMAT <span class="sub">(Street hi)</span></td><td>$21,349</td><td>$20,887</td><td class="dn">-2%</td><td>$30,373</td><td class="up">45%</td><td>$39,403</td><td>30%</td><td>$46,657</td><td>18%</td></tr>
+        <tr><td>LRCX <span class="sub">(Street hi)</span></td><td>$9,584</td><td>$13,378</td><td>40%</td><td>$19,512</td><td class="up">46%</td><td>$28,020</td><td class="up">44%</td><td>$28,951</td><td>3%</td></tr>
+        <tr><td>KLAC <span class="sub">(Street hi)</span></td><td>$7,544</td><td>$9,842</td><td>30%</td><td>$13,220</td><td>34%</td><td>$18,037</td><td>36%</td><td>$17,528</td><td class="dn">-3%</td></tr>
+        <tr><td>TEL</td><td>$11,589</td><td>$11,639</td><td>0%</td><td>$14,748</td><td>27%</td><td>$17,485</td><td>19%</td><td>$19,817</td><td>13%</td></tr>
+        <tr style="font-weight:700"><td>Top 5 SPE Revenue</td><td>$73,434</td><td>$83,973</td><td>14%</td><td>$111,731</td><td>33%</td><td>$144,201</td><td>29%</td><td>$158,976</td><td>10%</td></tr>
+        <tr><td>Top 5 WFE Share (10YR avg)</td><td>72.2%</td><td>72.2%</td><td>—</td><td>72.2%</td><td>—</td><td>72.2%</td><td>—</td><td>72.2%</td><td>—</td></tr>
+        <tr style="font-weight:700"><td>Implied Street WFE — hi case (BBG live)</td><td>$101,709</td><td>$116,306</td><td>14%</td><td>$154,752</td><td>33%</td><td>$199,724</td><td>29%</td><td>$220,188</td><td>10%</td></tr>
+        <tr><td>Implied Consensus WFE (UBS print, VisibleAlpha)</td><td>$101,500</td><td>$116,323</td><td>15%</td><td>$148,223</td><td>27%</td><td>$187,806</td><td>27%</td><td>$215,759</td><td>15%</td></tr>
+        <tr><td><b>UBSe WFE (09-Jun-26)</b></td><td>$101,500</td><td>$116,000</td><td>14%</td><td>$147,000</td><td>27%</td><td>$198,000</td><td class="up">35%</td><td>$247,500</td><td class="up">25%</td></tr>
+        <tr><td><b>Capstone WFE (v16)</b></td><td>$100,340</td><td>$109,620</td><td>9%</td><td class="up">$158,400</td><td class="up">44%</td><td class="up">$214,900</td><td class="up">36%</td><td class="up">$260,000</td><td class="up">21%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note"><b>Read-through (Street HIGH case for AMAT/LRCX/KLAC):</b> pushing the three US SPE names to their <b>calendar-year high</b> estimates lifts implied Street WFE to <b>$154.8 / 199.7 / 220.2bn</b> for '26/'27/'28 — <b>'26 now runs above UBSe ($147bn)</b> and <b>'27 essentially matches UBSe ($198bn)</b>. Even on the most bullish Street numbers, <b>'28 ($220bn) still sits below UBSe $247.5bn and Capstone $260bn</b> (−$27 / −$40bn) — so the out-year remains a genuine above-Street-high call, not just mean-reversion. (ASML &amp; TEL held at mean.) <b>Caveats:</b> the high is calendarized from BBG fiscal-year highs because <code>BEST_SALES_HI</code> ignores the 1CY–3CY override (returns FY); AMAT (Oct), LRCX/KLAC (Jun) all have non-Dec FYEs, so the FY high ≠ CY high. <b>KLAC's '28 high prints flat-to-down vs '27</b> on thin far-year estimate coverage (~17 contributors); AMAT/LRCX '28 highs rely on mild extrapolation of the 1CY–3CY blend. Systems-share and 72.2% Top-5-share calibrations unchanged — each 1pt lower Top-5 share ≈ +$2.1 / 2.5 / 2.8bn of implied WFE in '26/'27/'28.</p>
+  </div>
+</section>
+
+<!-- TAB 11: HISTORICAL P/E (BBG) -->
+<section id="hpe">
+  <div class="card" style="margin-bottom:18px">
+    <h2 class="sec">Historical P/E — ASML &amp; Peers · BBG weekly since 2000</h2>
+    <div class="pe-form" style="margin-bottom:0">
+      <label>Metric
+        <div class="hpe-seg" id="hpeMetric">
+          <button data-m="fwd" class="on">NTM · BEst fwd</button>
+          <button data-m="fwd2">2Y fwd · BEst</button>
+          <button data-m="ltm">Trailing · LTM</button>
+        </div>
+      </label>
+      <label>Window
+        <div class="hpe-seg" id="hpeRange">
+          <button data-r="5">5Y</button><button data-r="10" class="on">10Y</button><button data-r="15">15Y</button><button data-r="0">Max</button>
+        </div>
+      </label>
+      <label>Peers — click to show/hide
+        <div id="hpeChips"></div>
+      </label>
+      <label>Y-axis
+        <div class="hpe-seg" id="hpeCap">
+          <button data-c="auto" class="on">Auto cap</button><button data-c="full">Full</button>
+        </div>
+      </label>
+    </div>
+    <p class="note" id="hpeStamp" style="margin:8px 0 0"></p>
+  </div>
+
+  <div class="grid three" id="hpeCards"></div>
+
+  <div class="card" style="margin-top:18px">
+    <h2 class="sec" id="hpeTitle">NTM P/E — weekly</h2>
+    <div class="chart-tall"><canvas id="cHpe"></canvas></div>
+    <p class="note">With a <b>single peer</b> visible, dashed lines show its window mean ±1σ. NTM = Bloomberg BEst blended-12m-forward P/E (1BF) · 2Y fwd = BEst blended-2yr-forward (2BF) · Trailing = reported-EPS P/E. Listings: ASML NA · 8035 JP (TEL) · rest US — P/E is currency-independent. Negative / &gt;500x loss-period trailing P/Es dropped.</p>
+  </div>
+
+  <div class="grid two" style="margin-top:18px">
+    <div class="card">
+      <h2 class="sec" id="hpeRelTitle">ASML premium vs peer median</h2>
+      <div class="chart-wrap"><canvas id="cHpeRel"></canvas></div>
+      <p class="note" id="hpeRelNote"></p>
+    </div>
+    <div class="card">
+      <h2 class="sec">Stats — selected metric &amp; window</h2>
+      <div class="scroll" style="max-height:340px">
+      <table>
+        <thead><tr><th>Peer</th><th>Now</th><th>FY1</th><th>FY2</th><th>Mean</th><th>Med</th><th>σ</th><th>Min</th><th>Max</th><th>%ile</th><th>vs Mean</th></tr></thead>
+        <tbody id="hpeStats"></tbody>
+      </table>
+      </div>
+      <p class="note">FY1/FY2 = <i>current</i> BEst P/E on next / following fiscal year (fiscal year-ends: TEL Mar · KLAC/LRCX Jun · AMAT Oct · rest Dec). %ile = where today sits in the window's range. <span class="dn">Red</span> = rich vs window mean, <span class="up">green</span> = cheap.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+const YRS = [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,'2026E','2027E','2028E','2029E','2030E'];
+const Y_F = YRS.slice(0,16);
+
+// === TAB 1 data ===
+const WFE   = [33,38.1,56.6,63.9,54.9,71.2,87.36,93.59,95.76,100.34,109.62,158.4,214.9,260,300.3,300.3];
+const WFEYY = [null,15.5,48.6,12.9,-14.1,29.7,22.7,7.1,2.3,4.8,9.2,44.5,35.7,21.0,15.5,0.0];
+// UBS "WFE Update: Early Innings of Supercycle" (Arcuri, 09-Jun-26) — Fig 9; Street = UBS-implied from Top-5 SPE consensus (Fig 3)
+const WFE_UBS    = [null,null,null,53.9,51.5,61.5,90.5,100.6,90.4,101.5,116.0,147.0,198.0,247.5,null,null];
+const WFE_STREET = [null,null,null,null,null,null,null,null,null,101.5,116.3,148.2,187.8,215.8,null,null];
+const LITHO = [5.94,6.48,10.19,12.14,11.53,14.24,16.60,15.91,24.90,24.08,26.31,36.43,49.43,59.80,69.07,69.07];
+const ETCH  = [12.05,14.17,22.07,25.24,21.52,28.12,34.94,37.44,38.11,40.14,44.07,64.15,87.68,106.60,123.12,122.52];
+const PROC  = [3.80,4.46,6.85,7.67,6.70,8.90,11.18,12.17,12.45,13.04,14.47,20.91,28.37,34.58,39.94,39.94];
+const LITHO_PCT = [18,17,18,19,21,20,19,17,26,24,24,23,23,23,23,23];
+const ETCH_PCT  = [36.5,37.2,39,39.5,39.2,39.5,40,40,39.8,40,40.2,40.5,40.8,41,41,40.8];
+const PROC_PCT  = [11.5,11.7,12.1,12,12.2,12.5,12.8,13,13,13,13.2,13.2,13.2,13.3,13.3,13.3];
+const OTHER_PCT = [34,34.1,30.9,29.5,27.6,28,28.2,30,21.2,23,22.6,23.3,23,22.7,22.7,22.9];
+
+// === TAB 2 data ===
+const BU_YR = [2020,2021,2022,2023,2024,2025,'2026E','2027E','2028E'];
+const BU = {
+ 'TSMC':[18.1,30.0,36.3,30.1,29.0,40.3,55.5,65.0,69.1],
+ 'Samsung':[30.3,36.6,33.5,37.6,32.5,33.0,39.5,37.7,34.1],
+ 'Intel':[14.3,18.7,24.8,25.8,23.9,17.7,15.7,17.0,19.1],
+ 'SK Hynix':[9.0,10.3,15.5,5.8,11.3,19.1,29.4,34.6,53.0],
+ 'Micron':[8.7,10.5,10.6,7.9,10.1,19.0,29.8,37.1,32.8],
+ 'Kioxia':[1.1,1.8,1.5,3.2,1.2,2.0,2.4,3.0,2.8],
+ 'SMIC':[5.3,4.1,6.4,7.6,7.3,8.1,7.9,7.6,7.3],
+ 'GlobalFoundries':[0.5,1.8,3.1,1.8,0.6,0.7,1.2,1.3,1.3],
+ 'TI':[0.6,2.5,2.8,5.1,4.8,4.5,2.4,2.6,2.5],
+ 'STM':[1.3,1.8,3.5,4.1,2.5,1.8,2.0,2.2,2.6],
+ 'Infineon':[1.2,1.6,2.4,3.1,2.6,2.4,3.0,3.1,3.6]
+};
+const BU_LE  = [32.34,48.73,61.14,55.82,52.98,57.98,71.20,82.05,88.22];
+const BU_TE  = [28.43,43.12,59.72,61.78,54.16,46.29,46.49,50.43,55.07];
+const BU_MEM = [49.08,59.26,61.09,54.54,55.25,73.12,101.11,112.43,122.69];
+const BU_TOT = [109.85,151.11,181.96,172.14,162.39,177.39,218.80,244.92,265.98];
+
+// === Capstone CapEx-intensity build (Industry Assumptions tab) — 2021..2030E ===
+const CINT_YRS=[2021,2022,2023,2024,2025,'2026E','2027E','2028E','2029E','2030E'];
+const CINT={
+ 'TSMC':    {capex:[30000,36000,30000,30000,40380,56000,70000,112000,125000,115000], rev:[56939,75883,69297,90084,120880,165323,217564,261077,300239,330263]},
+ 'Samsung': {capex:[41000,38000,44000,38000,31837,46000,62000,81000,85000,72000],     rev:[84500,73100,39700,75000,94500,118000,132000,140000,150000,159000]},
+ 'SK Hynix':{capex:[11000,15000,15000,12000,18436,31000,47000,67000,70000,58000],     rev:[36100,35400,21300,44300,65083,257031,420058,509658,509658,509658]},
+ 'Micron':  {capex:[9720,11980,7010,8120,15857,25000,38000,52000,52000,52000],        rev:[29300,33100,15700,25100,37378,117357,240356,228840,228840,228840]},
+ 'CXMT':    {capex:[5000,9000,7000,4050,4280,15000,15000,15000,15000,15000],          rev:[200,500,800,1500,2500,4000,6000,8000,10000,12000]},
+ 'Intel':   {capex:[20000,25000,26000,24000,14646,15000,16000,18000,22000,24000],     rev:[79020,63050,54230,53100,52853,55000,58000,62000,66000,70000]},
+ 'SMIC':    {capex:[4000,6000,8000,8000,8400,8000,10000,9000,10000,9000],             rev:[5443,7273,6322,8028,9327,9500,10500,11500,12500,13500]},
+ 'Others':  {capex:[34000,49000,34000,42000,32000,32000,34000,34000,38000,34000],     rev:[109845,126545,93785,105691,94924,85025,88382,93000,98000,104000]},
+};
+
+// === TAB 3 share data ===
+const SHARE_TOT = {
+  ASML: [16.3,15.6,14.1,15.8,18.4,17.2,19.5,18.3,23.9,23.5,24.2,22.5,22.5,22.5,22.5,22.5],
+  AMAT: [17.6,18.6,17.9,18.8,16.4,16.0,18.6,20.1,19.9,19.7,18.7,18.7,18.7,18.7,18.7,18.7],
+  KLAC: [6.4,5.7,4.6,4.8,6.2,6.1,5.95,7.5,8.3,7.2,8.6,7.7,7.7,7.6,7.6,7.6],
+  LRCX: [10.1,10.2,10.4,12.8,11.9,9.4,12.2,12.4,11.4,9.1,10.8,11.3,11.4,11.5,11.5,11.4],
+};
+const SHARE_SUB = {
+  'ASML (Litho)':         [90.7,91.7,78.1,83.1,87.6,86.0,102.6,107.9,92.1,97.8,100.9,98,98,98,98,98],
+  'KLAC (Process Ctrl)':  [55.3,48.7,38.3,40.0,50.9,48.5,46.5,57.9,63.7,55.6,65.5,58,58,57,57,57],
+  'LRCX (Etch+Dep)':      [27.6,27.4,26.5,32.4,30.3,23.8,30.6,31.0,28.7,22.8,26.9,28,28,28,28,28],
+  'TER (ATE)':            [41.4,39.3,37.8,36.8,35.2,40.0,38.8,38.8,38.1,36.0,34.6,38,39,39,39,39],
+};
+
+// === TAB 4 services data ===
+const SVC = {
+  'ASML IBM':       [1588,1605,2275,2825,3133,3693,4988,5123,6885,7016,8890,11106,15068,18230,21056,21056],
+  'AMAT AGS':       [2731,2882,3276,3811,4313,4631,5111,5495,5836,5902,6300,9006,12219,14783,17075,17075],
+  'KLAC Service':   [710,814,875,965,1159,1486,1719,2172,2566,2562,2683,4122,5592,6699,7738,7738],
+  'LRCX CSBG':      [1929,2006,2154,2897,3134,3365,3936,5607,6479,5745,6600,9444,12908,15694,18126,18038],
+};
+const SVC_PCT = {
+  ASML: [22.8,21.3,22.2,21.9,23.7,23.2,22.7,23.0,23.1,22.9,25.1,23.7,23.7,23.7,23.7,23.7],
+  AMAT: [28.3,26.6,22.5,22.8,29.5,26.9,22.2,21.3,22.0,21.7,22.4,25.9,29.3,32.8,39.2,37.0],
+  KLAC: [25.3,27.3,25.0,23.9,25.4,25.6,24.8,23.6,24.4,26.1,22.1,27.1,30.3,31.7,39.1,37.7],
+  LRCX: [36.7,34.1,26.9,26.2,32.5,33.5,26.9,32.5,37.2,38.5,35.8,35.2,39.5,43.1,53.5,42.8],
+};
+
+// === TAB 6 P/E data ===
+// EPS columns: 2024, 2025, 2026E, 2027E, 2028E, 2029E, 2030E (Capstone basis)
+const PE_YRS=[2024,2025,'2026E','2027E','2028E','2029E','2030E'];
+const EPS = {
+  ASML:[20.82,26.83,37.33,54.90,66.73,77.46,77.91],
+  AMAT:[8.65,9.35,12.11,15.23,16.06,15.51,15.26],
+  KLAC:[20.43,30.37,45.78,59.86,69.49,66.35,70.38],
+  LRCX:[2.87,4.15,6.72,8.62,10.43,10.34,12.19],
+  TER:[3.38,3.47,5.46,6.90,7.59,8.16,8.43],
+  AEIS:[1.49,3.87,6.52,9.77,13.14,16.26,18.37],
+};
+const PE_TICKERS=['ASML','AMAT','KLAC','LRCX','TER','AEIS'];
+const PE_DEFAULT_PX={ASML:1690.00,AMAT:458.17,KLAC:1961.55,LRCX:317.12,TER:400.00,AEIS:200.00};
+// Mkt cap ($bn) at the default snapshot price — implied share count stays fixed when price changes
+const PE_MCAP0={ASML:640.3,AMAT:367.5,KLAC:234.0,LRCX:400.0,TER:63.9,AEIS:7.7};
+const PE_SUB={
+  ASML:'Cons 2026 EPS bogey: $34.87 (we $37.33)',
+  AMAT:'Cons: $13.84 (we $12.11)',
+  KLAC:'Cons: $48.70 (we $45.78)',
+  LRCX:'Cons: $7.59 (we $6.72)',
+  TER:'Cons: $8.25 (we $5.46) — we’re below',
+  AEIS:'Cheapest on our numbers',
+};
+const PE_VSCONS={ASML:'+33.9%',AMAT:'-2.1%',KLAC:'+18.9%',LRCX:'+9.7%',TER:'-31.2%',AEIS:'-16.9%'};
+const PE_LS_KEY='semicap_pe_prices';
+
+function peLoadPrices(){
+  const px=Object.assign({},PE_DEFAULT_PX);
+  try{
+    const saved=JSON.parse(localStorage.getItem(PE_LS_KEY)||'{}');
+    PE_TICKERS.forEach(t=>{const v=parseFloat(saved[t]); if(isFinite(v)&&v>0) px[t]=v;});
+  }catch(e){}
+  return px;
+}
+function peX(v){return v.toFixed(1)+'x'}
+function peRender(){
+  const px=peLoadPrices();
+  // KPI cards (2026E P/E)
+  document.getElementById('peCards').innerHTML=PE_TICKERS.map(t=>
+    `<div class="card"><h3>${t} 2026E P/E</h3><div class="kpi">${peX(px[t]/EPS[t][2])}</div><div class="sub">${PE_SUB[t]}</div></div>`).join('');
+  // Table 1: 2027E & 2028E
+  document.getElementById('peT1').innerHTML=PE_TICKERS.map(t=>{
+    const cagr=(Math.sqrt(EPS[t][4]/EPS[t][2])-1)*100;
+    return `<tr><td>${t}</td><td>${px[t].toFixed(2)}</td><td>${EPS[t][3].toFixed(2)}</td><td>${EPS[t][4].toFixed(2)}</td>`+
+      `<td>${peX(px[t]/EPS[t][3])}</td><td>${peX(px[t]/EPS[t][4])}</td>`+
+      `<td class="${cagr>=0?'up':'dn'}">${cagr>=0?'+':''}${cagr.toFixed(1)}%</td></tr>`;
+  }).join('');
+  // Cheapest-on-2028E note, sorted ascending
+  const rank=PE_TICKERS.map(t=>({t,pe:px[t]/EPS[t][4]})).sort((a,b)=>a.pe-b.pe);
+  document.getElementById('peNote1').innerHTML='Cheapest on 2028E: '+rank.map(r=>`${r.t} ${peX(r.pe)}`).join(' · ')+'.';
+  // Table 2: snapshot — mkt cap scales with price (fixed share count)
+  document.getElementById('peT2').innerHTML=PE_TICKERS.map(t=>{
+    const mcap=PE_MCAP0[t]*px[t]/PE_DEFAULT_PX[t];
+    const vs=PE_VSCONS[t];
+    return `<tr><td>${t}</td><td>${px[t].toFixed(2)}</td><td>${mcap.toFixed(1)}</td><td>${EPS[t][1].toFixed(2)}</td><td>${EPS[t][2].toFixed(2)}</td>`+
+      `<td>${peX(px[t]/EPS[t][1])}</td><td>${peX(px[t]/EPS[t][2])}</td><td>${peX(px[t]/EPS[t][3])}</td>`+
+      `<td class="${vs.startsWith('-')?'dn':'up'}">${vs}</td></tr>`;
+  }).join('');
+  // Form inputs + stamp
+  document.getElementById('peForm').innerHTML=PE_TICKERS.map(t=>
+    `<label>${t}<input type="number" step="0.01" min="0.01" name="${t}" value="${px[t].toFixed(2)}"></label>`).join('')+
+    `<button type="submit">Apply &amp; Save</button><button type="button" class="ghost" id="peReset">Reset</button>`;
+  let stamp='';
+  try{stamp=localStorage.getItem(PE_LS_KEY+'_ts')||''}catch(e){}
+  document.getElementById('peStamp').innerHTML=
+    (stamp?`<b>Custom prices saved ${stamp}.</b> `:'')+
+    'Edit a price and hit <b>Apply &amp; Save</b> — every P/E, market cap and ranking below recalculates. Prices are saved in this browser (localStorage) and persist between visits; <b>Reset</b> restores the snapshot defaults.';
+  document.getElementById('peReset').onclick=()=>{
+    try{localStorage.removeItem(PE_LS_KEY);localStorage.removeItem(PE_LS_KEY+'_ts')}catch(e){}
+    peRender();
+  };
+}
+document.getElementById('peForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const out={};
+  new FormData(e.target).forEach((v,k)=>{const n=parseFloat(v); if(isFinite(n)&&n>0) out[k]=n;});
+  try{
+    localStorage.setItem(PE_LS_KEY,JSON.stringify(out));
+    localStorage.setItem(PE_LS_KEY+'_ts',new Date().toLocaleString());
+  }catch(e2){}
+  peRender();
+});
+peRender();
+
+// === CHART defaults ===
+Chart.defaults.color='#8a9bb4';
+Chart.defaults.borderColor='#1f2a44';
+Chart.defaults.font.family='-apple-system,Segoe UI,Roboto,Arial';
+const C={asml:'#ff7a59',amat:'#5aa7ff',klac:'#9b8cff',lrcx:'#46d3a6',ter:'#f6c453',aeis:'#e76d8e'};
+
+// helper
+function ds(label,data,color,opts){return Object.assign({label,data,borderColor:color,backgroundColor:color+'33',borderWidth:2,pointRadius:2,tension:.3},opts||{})}
+
+// TAB 1 charts
+new Chart(cWFE,{type:'bar',data:{labels:YRS,datasets:[
+  {type:'bar',label:'WFE Capstone ($bn)',data:WFE,backgroundColor:'#5aa7ff66',borderColor:'#5aa7ff',borderWidth:1,yAxisID:'y'},
+  {type:'line',label:'UBS 09-Jun-26 ($bn)',data:WFE_UBS,borderColor:'#f6c453',backgroundColor:'#f6c45333',yAxisID:'y',tension:.3,pointRadius:3,borderWidth:2},
+  {type:'line',label:'Street-implied ($bn)',data:WFE_STREET,borderColor:'#94a3b8',backgroundColor:'#94a3b833',yAxisID:'y',tension:.3,pointRadius:2,borderWidth:2,borderDash:[6,4]},
+  {type:'line',label:'YoY %',data:WFEYY,borderColor:'#ff7a59',backgroundColor:'#ff7a5933',yAxisID:'y1',tension:.3,pointRadius:3}
+]},options:{scales:{y:{title:{display:true,text:'$bn'}},y1:{position:'right',title:{display:true,text:'YoY %'},grid:{display:false}}}}});
+
+new Chart(cMix,{type:'line',data:{labels:YRS,datasets:[
+  ds('Litho %',LITHO_PCT,C.asml),ds('Etch+Dep %',ETCH_PCT,C.lrcx),
+  ds('Process Ctrl %',PROC_PCT,C.klac),ds('Other %',OTHER_PCT,'#94a3b8')
+]},options:{scales:{y:{title:{display:true,text:'% of WFE'}}}}});
+
+new Chart(cSubBn,{type:'bar',data:{labels:YRS,datasets:[
+  {label:'Litho (ASML)',data:LITHO,backgroundColor:C.asml},
+  {label:'Etch+Dep (LRCX/AMAT/TEL)',data:ETCH,backgroundColor:C.lrcx},
+  {label:'Process Control (KLAC)',data:PROC,backgroundColor:C.klac},
+]},options:{scales:{x:{stacked:true},y:{stacked:true,title:{display:true,text:'$bn'}}}}});
+
+// TAB 2 charts
+new Chart(cStack,{type:'bar',data:{labels:BU_YR,datasets:[
+  {label:'Leading Edge',data:BU_LE,backgroundColor:C.amat},
+  {label:'Memory',data:BU_MEM,backgroundColor:C.asml},
+  {label:'Trailing Edge',data:BU_TE,backgroundColor:C.lrcx},
+]},options:{scales:{x:{stacked:true},y:{stacked:true,title:{display:true,text:'$bn'}}}}});
+
+new Chart(cTop5,{type:'line',data:{labels:CINT_YRS,datasets:[
+  ds('TSMC',CINT['TSMC'].capex.map(v=>v/1000),C.amat),
+  ds('Samsung',CINT['Samsung'].capex.map(v=>v/1000),C.asml),
+  ds('SK Hynix',CINT['SK Hynix'].capex.map(v=>v/1000),C.klac),
+  ds('Micron',CINT['Micron'].capex.map(v=>v/1000),C.lrcx),
+  ds('Intel',CINT['Intel'].capex.map(v=>v/1000),'#94a3b8')
+]},options:{scales:{y:{title:{display:true,text:'CapEx ($bn)'}}}}});
+
+// Customer table
+const buHead = document.getElementById('tBUh');
+buHead.innerHTML = '<th>Customer ($mn)</th>'+BU_YR.map(y=>`<th>${y}</th>`).join('');
+const buBody = document.getElementById('tBUb');
+const buRows = [
+ ['TSMC',[18086,30000,36300,30067,29034,40308,55513,65049,69140]],
+ ['Samsung',[30278,36649,33516,37581,32537,32974,39455,37745,34109]],
+ ['Intel',[14259,18733,24844,25750,23944,17672,15685,17006,19078]],
+ ['SK Hynix',[8974,10307,15476,5822,11336,19145,29440,34589,53005]],
+ ['Micron',[8731,10504,10599,7906,10133,19021,29844,37094,32811]],
+ ['Kioxia',[1100,1800,1500,3229,1246,1982,2375,3007,2765]],
+ ['Nexchip',[711,1547,1120,1023,1814,1350,909,1090,1308]],
+ ['PSMC',[1645,2338,2487,1394,1393,1497,2155,2527,2653]],
+ ['SMIC',[5275,4120,6350,7630,7326,8100,7856,7582,7337]],
+ ['Hua Hong',[1087,939,996,907,2733,1774,1611,2042,2441]],
+ ['UMC',[1010,1704,2782,3018,2844,1618,1557,1630,1995]],
+ ['GlobalFoundries',[513,1767,3059,1804,625,722,1240,1261,1306]],
+ ['Texas Instruments',[649,2462,2797,5071,4820,4528,2435,2595,2530]],
+ ['ST Micro',[1280,1830,3520,4110,2530,1791,2015,2237,2640]],
+ ['Infineon',[1178,1629,2412,3082,2575,2439,2969,3075,3562]],
+ ['On Semi',[384,445,1005,1576,706,341,292,332,383]],
+ ['Wolfspeed',[408,609,802,1527,1923,605,145,225,225]],
+ ['Microchip',[49,311,488,358,152,105,111,145,142]],
+ ['NXPI',[392,767,1063,827,727,397,468,601,835]],
+ ['ADI',[259,406,806,1172,730,535,637,757,898]],
+ ['Renesas',[279,1617,1454,732,594,386,276,428,568]],
+ ['Rohm',[354,491,698,1058,1033,626,391,344,328]],
+ ['Top-22 Total',[96900,130975,154074,145642,140756,157915,197378,221360,240061]],
+ ['Total (incl. others)',[109855,151110,181958,172138,162394,177389,218799,244923,265980]],
+];
+buBody.innerHTML = buRows.map(([n,arr])=>`<tr><td>${n}</td>${arr.map(v=>'<td>'+v.toLocaleString()+'</td>').join('')}</tr>`).join('');
+
+// Capstone Industry Assumptions — top-down framework table
+const CAPEX_IND=[62,65,80,101,96,115,156,191,171,173,189,240,307,400,462,462];
+const ATE_MKT=[2.8,3.1,4.1,4.2,4.4,6,7.5,6.2,4.9,5.6,6.8,8,9.3,10.2,10.8,11.2];
+const WFE_CAPEX_PCT=[53,59,71,63,57,62,56,49,56,58,58,66,70,65,65,65];
+document.getElementById('tIAh').innerHTML='<th>Metric</th>'+YRS.map(y=>`<th>${y}</th>`).join('');
+const iaRows=[
+ ['Industry CapEx ($bn)', CAPEX_IND.map(v=>v.toLocaleString())],
+ ['WFE ($bn)', WFE],
+ ['WFE / CapEx (%)', WFE_CAPEX_PCT.map(v=>v+'%')],
+ ['Litho — ASML ($bn)', LITHO],
+ ['Etch + Dep — LRCX/AMAT/TEL ($bn)', ETCH],
+ ['Process Control — KLAC ($bn)', PROC],
+ ['ATE — TER ($bn, ex-WFE)', ATE_MKT],
+];
+document.getElementById('tIAb').innerHTML=iaRows.map(([n,arr])=>`<tr><td>${n}</td>${arr.map(v=>'<td>'+v+'</td>').join('')}</tr>`).join('');
+
+// CapEx Intensity by Customer table
+document.getElementById('tCINTh').innerHTML='<th>Customer</th>'+CINT_YRS.map(y=>`<th>${y}</th>`).join('');
+document.getElementById('tCINTb').innerHTML=Object.entries(CINT).map(([n,d])=>{
+  const cap=`<tr><td><b>${n}</b> — CapEx ($mn)</td>${d.capex.map(v=>'<td>'+v.toLocaleString()+'</td>').join('')}</tr>`;
+  const rev=`<tr style="color:#8a9bb4"><td>${n} — Revenue ($mn)</td>${d.rev.map(v=>'<td>'+v.toLocaleString()+'</td>').join('')}</tr>`;
+  const int=`<tr style="color:#8a9bb4"><td>${n} — CapEx Intensity</td>${d.capex.map((v,i)=>'<td>'+(d.rev[i]?(v/d.rev[i]*100).toFixed(1)+'%':'—')+'</td>').join('')}</tr>`;
+  return cap+rev+int;
+}).join('');
+
+// TAB 3 share
+new Chart(cShareTot,{type:'line',data:{labels:YRS,datasets:[
+  ds('ASML',SHARE_TOT.ASML,C.asml),ds('AMAT',SHARE_TOT.AMAT,C.amat),
+  ds('KLAC',SHARE_TOT.KLAC,C.klac),ds('LRCX',SHARE_TOT.LRCX,C.lrcx)
+]},options:{scales:{y:{title:{display:true,text:'% of total WFE'}}}}});
+new Chart(cShareSub,{type:'line',data:{labels:YRS,datasets:[
+  ds('ASML in Litho',SHARE_SUB['ASML (Litho)'],C.asml),
+  ds('KLAC in Process Ctrl',SHARE_SUB['KLAC (Process Ctrl)'],C.klac),
+  ds('LRCX in Etch+Dep',SHARE_SUB['LRCX (Etch+Dep)'],C.lrcx),
+  ds('TER in ATE',SHARE_SUB['TER (ATE)'],C.ter),
+]},options:{scales:{y:{title:{display:true,text:'% share of sub-segment'}}}}});
+
+// TAB 4 services — estimates truncated to end at 2028E (drop 2029E/2030E)
+const SVC_YRS=YRS.slice(0,14);          // 2015 … 2028E
+const svcSlice=a=>a.slice(0,14);
+new Chart(cSvc,{type:'bar',data:{labels:SVC_YRS,datasets:[
+  {label:'ASML IBM',data:svcSlice(SVC['ASML IBM']).map(v=>v/1000),backgroundColor:C.asml},
+  {label:'AMAT AGS',data:svcSlice(SVC['AMAT AGS']).map(v=>v/1000),backgroundColor:C.amat},
+  {label:'KLAC Service',data:svcSlice(SVC['KLAC Service']).map(v=>v/1000),backgroundColor:C.klac},
+  {label:'LRCX CSBG',data:svcSlice(SVC['LRCX CSBG']).map(v=>v/1000),backgroundColor:C.lrcx},
+]},options:{scales:{x:{stacked:true},y:{stacked:true,title:{display:true,text:'$bn'}}}}});
+new Chart(cSvcPct,{type:'line',data:{labels:SVC_YRS,datasets:[
+  ds('ASML',svcSlice(SVC_PCT.ASML),C.asml),ds('AMAT',svcSlice(SVC_PCT.AMAT),C.amat),
+  ds('KLAC',svcSlice(SVC_PCT.KLAC),C.klac),ds('LRCX',svcSlice(SVC_PCT.LRCX),C.lrcx)
+]},options:{scales:{y:{title:{display:true,text:'% of total revenue'}}}}});
+
+// Services table
+const svcHead = document.getElementById('tSvch');
+svcHead.innerHTML='<th>Peer ($mn)</th>'+SVC_YRS.map(y=>`<th>${y}</th>`).join('');
+const svcBody = document.getElementById('tSvcb');
+svcBody.innerHTML = Object.entries(SVC).map(([n,arr])=>`<tr><td>${n}</td>${svcSlice(arr).map(v=>'<td>'+Math.round(v).toLocaleString()+'</td>').join('')}</tr>`).join('');
+
+// === TAB 5: SEMICAP CAPEX FLOW — 3 separate Sankeys, base 100 (Logic / DRAM / NAND) ===
+// Each chart: customers as % of segment capex, WFE = 100, vendors as % of segment WFE.
+function buildSegmentSankey(svgId, customers, vendors, capexBn, wfeBn){
+  const svg = document.getElementById(svgId);
+  const COL_W=200, GAP=140;
+  const X = [40, 40+COL_W+GAP, 40+(COL_W+GAP)*2];
+  const HMAX = 360; const Y0 = 50;
+  // values are already in % (sum = 100 per column)
+
+  // Column 1: Customers
+  let y = Y0;
+  const col1 = customers.map(c=>{const h=(c.pct/100)*HMAX; const n={...c,x:X[0],y,h}; y+=h+6; return n;});
+  // Column 2: single WFE bucket = 100
+  const col2 = [{name:'WFE',x:X[1],y:Y0,h:HMAX,color:'#5aa7ff'}];
+  // Column 3: Vendors
+  y = Y0;
+  const col3 = vendors.map(v=>{const h=(v.pct/100)*HMAX; const n={...v,x:X[2],y,h}; y+=h+6; return n;});
+
+  let html='';
+  // Customer nodes
+  col1.forEach(n=>{
+    html += `<rect x="${n.x}" y="${n.y}" width="${COL_W}" height="${n.h}" fill="${n.color}" opacity="0.85" rx="2"/>`;
+    html += `<text x="${n.x+COL_W/2}" y="${n.y+n.h/2-2}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">${n.name}</text>`;
+    html += `<text x="${n.x+COL_W/2}" y="${n.y+n.h/2+16}" text-anchor="middle" font-size="12" fill="#fff" opacity="0.95">${n.pct}%</text>`;
+  });
+  // WFE node
+  const w = col2[0];
+  html += `<rect x="${w.x}" y="${w.y}" width="${COL_W}" height="${w.h}" fill="${w.color}" opacity="0.85" rx="2"/>`;
+  html += `<text x="${w.x+COL_W/2}" y="${w.y+w.h/2-8}" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">WFE pool</text>`;
+  html += `<text x="${w.x+COL_W/2}" y="${w.y+w.h/2+12}" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">100</text>`;
+  html += `<text x="${w.x+COL_W/2}" y="${w.y+w.h/2+30}" text-anchor="middle" font-size="11" fill="#fff" opacity="0.9">= $${wfeBn.toFixed(1)}bn</text>`;
+  // Vendor nodes
+  col3.forEach(n=>{
+    html += `<rect x="${n.x}" y="${n.y}" width="${COL_W}" height="${n.h}" fill="${n.color}" opacity="0.85" rx="2"/>`;
+    html += `<text x="${n.x+COL_W/2}" y="${n.y+n.h/2-2}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">${n.name}</text>`;
+    html += `<text x="${n.x+COL_W/2}" y="${n.y+n.h/2+16}" text-anchor="middle" font-size="12" fill="#fff" opacity="0.95">${n.pct}%</text>`;
+  });
+
+  // Flows: customers → WFE
+  let yW = w.y;
+  col1.forEach(c=>{
+    const x1=c.x+COL_W, x2=w.x;
+    const cp=(x1+x2)/2;
+    const hC=c.h, hW=c.h;
+    const path = `M ${x1} ${c.y} C ${cp} ${c.y}, ${cp} ${yW}, ${x2} ${yW} L ${x2} ${yW+hW} C ${cp} ${yW+hW}, ${cp} ${c.y+hC}, ${x1} ${c.y+hC} Z`;
+    html += `<path d="${path}" fill="${c.color}" opacity="0.30"/>`;
+    yW += hW;
+  });
+  // Flows: WFE → vendors
+  let yW2 = w.y;
+  col3.forEach(v=>{
+    const x1=w.x+COL_W, x2=v.x;
+    const cp=(x1+x2)/2;
+    const hW=v.h, hV=v.h;
+    const path = `M ${x1} ${yW2} C ${cp} ${yW2}, ${cp} ${v.y}, ${x2} ${v.y} L ${x2} ${v.y+hV} C ${cp} ${v.y+hV}, ${cp} ${yW2+hW}, ${x1} ${yW2+hW} Z`;
+    html += `<path d="${path}" fill="${v.color}" opacity="0.32"/>`;
+    yW2 += hW;
+  });
+
+  // Headers
+  html += `<text x="${X[0]+COL_W/2}" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#8a9bb4">CUSTOMER CAPEX = 100 ($${capexBn.toFixed(1)}bn)</text>`;
+  html += `<text x="${X[1]+COL_W/2}" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#8a9bb4">WFE = 100 ($${wfeBn.toFixed(1)}bn)</text>`;
+  html += `<text x="${X[2]+COL_W/2}" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#8a9bb4">SEMICAP VENDORS = 100</text>`;
+
+  svg.innerHTML = html;
+}
+
+// LOGIC — customers % of $71.2bn capex · vendors % of $57.0bn WFE
+buildSegmentSankey('cSankeyLogic',
+  [{name:'TSMC',pct:78,color:C.amat},
+   {name:'Intel',pct:22,color:'#94a3b8'}],
+  [{name:'ASML (Litho)',    pct:30,color:C.asml},
+   {name:'AMAT (E+D+IC)',   pct:19,color:C.amat},
+   {name:'LRCX (Etch+Dep)', pct:10,color:C.lrcx},
+   {name:'KLAC (PC)',       pct:8, color:C.klac},
+   {name:'Other (TEL/SCREEN)', pct:33,color:'#94a3b8'}],
+  71.2, 57.0);
+
+// DRAM — customers % of $60.0bn · vendors % of $45.0bn WFE
+buildSegmentSankey('cSankeyDRAM',
+  [{name:'Samsung DRAM',  pct:33,color:C.asml},
+   {name:'SK Hynix DRAM', pct:33,color:C.klac},
+   {name:'Micron DRAM',   pct:34,color:C.lrcx}],
+  [{name:'ASML (Litho)',    pct:24,color:C.asml},
+   {name:'AMAT (E+D+IC)',   pct:18,color:C.amat},
+   {name:'LRCX (Etch+Dep)', pct:13,color:C.lrcx},
+   {name:'KLAC (PC)',       pct:7, color:C.klac},
+   {name:'Other (TEL/SCREEN)', pct:38,color:'#94a3b8'}],
+  60.0, 45.0);
+
+// NAND — customers % of $41.1bn · vendors % of $26.8bn WFE
+buildSegmentSankey('cSankeyNAND',
+  [{name:'Samsung NAND',  pct:34,color:C.lrcx},
+   {name:'SK Hynix NAND', pct:27,color:C.klac},
+   {name:'Micron NAND',   pct:32,color:C.amat},
+   {name:'Kioxia',        pct:7, color:C.ter}],
+  [{name:'LRCX (Etch+Dep)', pct:20,color:C.lrcx},
+   {name:'AMAT (E+D+IC)',   pct:18,color:C.amat},
+   {name:'KLAC (PC)',       pct:6, color:C.klac},
+   {name:'ASML (Litho)',    pct:4, color:C.asml},
+   {name:'Other (TEL/SCREEN)', pct:52,color:'#94a3b8'}],
+  41.1, 26.8);
+
+new Chart(cVendorRev,{type:'bar',data:{labels:['2024','2025','2026E','2027E'],datasets:[
+  {label:'ASML Systems',data:[23.56,26.55,35.70,48.44],backgroundColor:C.asml},
+  {label:'AMAT Semi Sys',data:[19.73,20.50,29.62,40.19],backgroundColor:C.amat},
+  {label:'LRCX Systems',data:[9.16,11.84,17.96,24.55],backgroundColor:C.lrcx},
+  {label:'KLAC Systems',data:[7.25,9.47,12.13,16.45],backgroundColor:C.klac},
+]},options:{scales:{x:{stacked:true},y:{stacked:true,title:{display:true,text:'$bn'}}}}});
+
+new Chart(cVendorShare,{type:'line',data:{labels:YRS,datasets:[
+  ds('ASML',SHARE_TOT.ASML,C.asml),ds('AMAT',SHARE_TOT.AMAT,C.amat),
+  ds('KLAC',SHARE_TOT.KLAC,C.klac),ds('LRCX',SHARE_TOT.LRCX,C.lrcx)
+]},options:{scales:{y:{title:{display:true,text:'% of total WFE captured'}}}}});
+
+// TAB 7 is qualitative (commentary) — no charts to render.
+
+// === TAB 8: PROCESS → WFE $ ===
+const POOL = 158.4; // total WFE 2026E ($bn)
+const STEPS = [
+  {name:'Deposition',   short:'Deposit film',     pct:21.0, color:'#5aa7ff', vend:'AMAT·LRCX·TEL·ASMI'},
+  {name:'Coat/Develop', short:'Spin resist',      pct:3.0,  color:'#94a3b8', vend:'TEL ~90%'},
+  {name:'Lithography',  short:'Print pattern',    pct:23.0, color:'#ff7a59', vend:'ASML ~98%'},
+  {name:'Etch',         short:'Carve pattern',    pct:19.5, color:'#46d3a6', vend:'LRCX·TEL·AMAT'},
+  {name:'Strip/Clean',  short:'Clean wafer',      pct:6.0,  color:'#8fd3f4', vend:'SCREEN·TEL'},
+  {name:'Implant',      short:'Dope silicon',     pct:3.0,  color:'#e76d8e', vend:'AMAT ~70%'},
+  {name:'Thermal',      short:'Anneal',           pct:4.0,  color:'#f6c453', vend:'AMAT·Kokusai'},
+  {name:'CMP',          short:'Polish flat',      pct:3.0,  color:'#b48ead', vend:'AMAT·Ebara'},
+  {name:'Inspect',      short:'Find defects',     pct:13.2, color:'#9b8cff', vend:'KLAC ~65%'},
+  {name:'Other',        short:'Masks/automation', pct:4.3,  color:'#64748b', vend:'Fragmented'},
+];
+
+// Process loop SVG — 9 fab-loop boxes + repeat arrow + exit to Test/Packaging
+(function(){
+  const svg = document.getElementById('cProcessLoop');
+  const loop = STEPS.slice(0,9);
+  const BW=128, BH=120, GAP=12, X0=34, Y0=60;
+  let html = `<text x="${X0}" y="30" font-size="13" font-weight="700" fill="#8a9bb4">WAFER IN → one pass = one layer · box height ∝ share of WFE pool</text>`;
+  loop.forEach((s,i)=>{
+    const x = X0 + i*(BW+GAP);
+    const h = 56 + (s.pct/23)*110;            // height ∝ % of WFE
+    const y = Y0 + (170-h)/2;
+    const bn = (POOL*s.pct/100).toFixed(1);
+    html += `<rect x="${x}" y="${y}" width="${BW}" height="${h}" rx="6" fill="${s.color}" opacity="0.85"/>`;
+    html += `<text x="${x+BW/2}" y="${y+h/2-12}" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">${s.name}</text>`;
+    html += `<text x="${x+BW/2}" y="${y+h/2+4}" text-anchor="middle" font-size="11" fill="#fff" opacity="0.95">${s.pct}% · $${bn}bn</text>`;
+    html += `<text x="${x+BW/2}" y="${y+h/2+19}" text-anchor="middle" font-size="9.5" fill="#fff" opacity="0.85">${s.vend}</text>`;
+    if(i<loop.length-1) html += `<text x="${x+BW+GAP/2}" y="${Y0+90}" text-anchor="middle" font-size="13" fill="#8a9bb4">▶</text>`;
+  });
+  const xEnd = X0 + 9*(BW+GAP);
+  // repeat arrow back
+  html += `<path d="M ${xEnd-14} 252 L ${X0+BW/2} 252 L ${X0+BW/2} 240" stroke="#8a9bb4" stroke-width="1.6" fill="none" stroke-dasharray="5,4" marker-end="none"/>`;
+  html += `<text x="${(X0+xEnd)/2}" y="270" text-anchor="middle" font-size="12" font-weight="700" fill="#8a9bb4">↺ repeat 40–100× (one loop per layer) · then → wafer test (ATE/TER) → dicing → advanced packaging (HBM/CoWoS)</text>`;
+  svg.innerHTML = html;
+})();
+
+// Doughnut — WFE pool by step
+new Chart(cPoolStep,{type:'doughnut',data:{
+  labels:STEPS.map(s=>`${s.name} ${s.pct}%`),
+  datasets:[{data:STEPS.map(s=>+(POOL*s.pct/100).toFixed(1)),backgroundColor:STEPS.map(s=>s.color),borderColor:'#0b1220',borderWidth:2}]
+},options:{plugins:{legend:{position:'right'},tooltip:{callbacks:{label:c=>` $${c.parsed}bn`}}}}});
+
+// Vendor capture of the pool
+new Chart(cPoolVendor,{type:'bar',data:{
+  labels:['ASML','AMAT','TEL','LRCX','KLAC','SCREEN','ASMI','Other'],
+  datasets:[{label:'$bn of 2026E WFE pool',
+    data:[35.6,29.6,20.6,17.9,12.2,6.3,3.2,33.0],
+    backgroundColor:[C.asml,C.amat,'#f6c453',C.lrcx,C.klac,'#8fd3f4','#b48ead','#64748b']}]
+},options:{plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'$bn'}}}}});
+
+// === TAB 9: CHINA % of Revenue ===
+const CHINA_YRS=[2017,2018,2019,2020,2021,2022,2023,2024,2025];
+const CHINA_PCT={
+  ASML:[null,18.7,12.0,18.3,14.3,14.9,29.4,41.5,33.4],
+  AMAT:[19.8,31.1,30.5,30.6,33.7,24.4,34.4,33.9,29.7],
+  KLAC:[12.9,23.7,25.3,26.9,26.9,28.2,32.5,40.9,31.4],
+  LRCX:[13.0,19.2,26.5,34.7,33.0,28.8,33.9,37.0,36.2],
+  TEL: [null,16.3,17.9,22.7,27.5,22.4,37.1,45.2,36.3],
+};
+const CHINA_BN={
+  ASML:[null,1.82,1.20,2.17,2.30,2.39,6.96,9.73,9.26],
+  AMAT:[3.06,5.05,4.58,5.57,8.14,6.41,9.10,9.36,8.38],
+  KLAC:[0.49,1.02,1.33,1.64,2.19,2.95,3.40,4.43,4.01],
+  LRCX:[1.24,2.08,2.53,4.14,5.46,5.48,4.86,6.00,7.43],
+  TEL: [null,1.78,1.71,2.61,4.44,3.61,4.69,6.93,5.86],
+};
+const C_TEL='#2dd4bf';
+new Chart(cChinaPct,{type:'line',data:{labels:CHINA_YRS,datasets:[
+  ds('ASML',CHINA_PCT.ASML,C.asml),ds('AMAT',CHINA_PCT.AMAT,C.amat),
+  ds('KLAC',CHINA_PCT.KLAC,C.klac),ds('LRCX',CHINA_PCT.LRCX,C.lrcx),
+  ds('TEL',CHINA_PCT.TEL,C_TEL)
+]},options:{spanGaps:true,scales:{y:{title:{display:true,text:'% of revenue (geographic ship-to)'}}}}});
+new Chart(cChinaBn,{type:'bar',data:{labels:CHINA_YRS,datasets:[
+  {label:'ASML',data:CHINA_BN.ASML,backgroundColor:C.asml},
+  {label:'AMAT',data:CHINA_BN.AMAT,backgroundColor:C.amat},
+  {label:'KLAC',data:CHINA_BN.KLAC,backgroundColor:C.klac},
+  {label:'LRCX',data:CHINA_BN.LRCX,backgroundColor:C.lrcx},
+  {label:'TEL',data:CHINA_BN.TEL,backgroundColor:C_TEL},
+]},options:{scales:{y:{title:{display:true,text:'China revenue ($bn)'}}}}});
+document.getElementById('tChinah').innerHTML='<th>Vendor (% of rev)</th>'+CHINA_YRS.map(y=>`<th>${y}</th>`).join('');
+document.getElementById('tChinab').innerHTML=Object.entries(CHINA_PCT).map(([n,arr])=>`<tr><td>${n}</td>${arr.map(v=>'<td>'+(v==null?'—':v.toFixed(1)+'%')+'</td>').join('')}</tr>`).join('');
+
+// === TAB 11: HISTORICAL P/E (BBG weekly, pe_history_data.js via build_pe_history.py) ===
+(function(){
+  if(typeof PEH==='undefined'){
+    document.getElementById('hpe').insertAdjacentHTML('afterbegin',
+      '<div class="card" style="margin-bottom:18px;border-left:4px solid #ff6b6b"><p class="note" style="margin:0"><b>pe_history_data.js missing.</b> Run <code>py -X utf8 build_pe_history.py</code> in the dashboard folder (BBG terminal session required), then reload.</p></div>');
+    return;
+  }
+  const HC={ASML:C.asml,AMAT:C.amat,KLAC:C.klac,LRCX:C.lrcx,TER:C.ter,AEIS:C.aeis,TEL:'#2dd4bf'};
+  const st={m:'fwd',yrs:10,cap:'auto',on:Object.fromEntries(PEH.order.map(t=>[t,true]))};
+  const fmtX=v=>v==null?'—':v.toFixed(1)+'x';
+
+  function windowed(){
+    const D=PEH[st.m].dates, S=PEH[st.m].series;
+    let i0=0;
+    if(st.yrs>0){
+      const last=new Date(D[D.length-1]); last.setFullYear(last.getFullYear()-st.yrs);
+      const cut=last.toISOString().slice(0,10);
+      i0=D.findIndex(d=>d>=cut); if(i0<0)i0=0;
+    }
+    return {dates:D.slice(i0), series:Object.fromEntries(PEH.order.map(t=>[t,(S[t]||[]).slice(i0)]))};
+  }
+  function stats(arr){
+    const v=arr.filter(x=>x!=null); if(!v.length)return null;
+    const n=v.length, mean=v.reduce((a,b)=>a+b,0)/n;
+    const sd=Math.sqrt(v.reduce((a,b)=>a+(b-mean)**2,0)/n);
+    const s=[...v].sort((a,b)=>a-b);
+    let last=null; for(let i=arr.length-1;i>=0;i--){if(arr[i]!=null){last=arr[i];break}}
+    return {mean,sd,med:s[Math.floor(n/2)],min:s[0],max:s[n-1],last,
+            pct:last==null?null:Math.round(s.filter(x=>x<=last).length/n*100),n};
+  }
+
+  let curTicks=[];
+  const tickCb=(v,i)=>curTicks[i]||null;
+  const mainCh=new Chart(document.getElementById('cHpe'),{type:'line',data:{labels:[],datasets:[]},
+    options:{animation:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{itemSort:(a,b)=>(b.parsed.y||0)-(a.parsed.y||0),
+        callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y==null?'—':c.parsed.y.toFixed(1)+'x'}`}}},
+      scales:{x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:false,callback:tickCb}},
+              y:{title:{display:true,text:'P/E (x)'},ticks:{callback:v=>v+'x'}}}}});
+  const relCh=new Chart(document.getElementById('cHpeRel'),{type:'line',data:{labels:[],datasets:[]},
+    options:{animation:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y==null?'—':c.parsed.y.toFixed(2)+'×'}`}}},
+      scales:{x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:false,callback:tickCb}},
+              y:{title:{display:true,text:'ASML ÷ peer median'},ticks:{callback:v=>v.toFixed(1)+'×'}}}}});
+
+  function yearTicks(dates){
+    const lab=dates.map(()=>''); let prev='';
+    dates.forEach((d,i)=>{const y=d.slice(0,4); if(y!==prev){lab[i]=y; prev=y;}});
+    const k=lab.filter(Boolean).length>14?2:1;
+    if(k>1){let c=0; lab.forEach((l,i)=>{if(l){if(c%k)lab[i]=''; c++;}});}
+    return lab;
+  }
+
+  const MLBL={fwd:'NTM',fwd2:'2Y-fwd',ltm:'LTM'};
+  function render(){
+    const W=windowed(), mLabel=MLBL[st.m];
+    const vis=PEH.order.filter(t=>st.on[t]&&(PEH[st.m].series[t]||[]).some(v=>v!=null));
+    curTicks=yearTicks(W.dates);
+
+    // main chart — peer lines (+ mean/±1σ bands when exactly one visible)
+    const dsets=vis.map(t=>({label:t,data:W.series[t],borderColor:HC[t],backgroundColor:HC[t]+'33',
+      borderWidth:1.6,pointRadius:0,tension:0,spanGaps:true}));
+    let bandNote='';
+    if(vis.length===1){
+      const s=stats(W.series[vis[0]]);
+      if(s){
+        const mk=(v,lb,dash)=>({label:lb,data:W.dates.map(()=>+v.toFixed(2)),borderColor:'#94a3b8',
+          borderWidth:1.1,borderDash:dash,pointRadius:0,tension:0});
+        dsets.push(mk(s.mean,'mean',[6,4]),mk(s.mean+s.sd,'+1σ',[2,3]),mk(s.mean-s.sd,'−1σ',[2,3]));
+        bandNote=` · ${vis[0]} mean ${s.mean.toFixed(1)}x · ±1σ ${s.sd.toFixed(1)}`;
+      }
+    }
+    let yMax;
+    if(st.cap==='auto'){
+      const all=vis.flatMap(t=>W.series[t].filter(v=>v!=null)).sort((a,b)=>a-b);
+      if(all.length) yMax=Math.ceil(all[Math.floor(all.length*0.98)]*1.12/5)*5;
+    }
+    mainCh.data.labels=W.dates; mainCh.data.datasets=dsets;
+    mainCh.options.scales.y.max=yMax;
+    mainCh.update();
+    document.getElementById('hpeTitle').textContent=`${mLabel} P/E — weekly${bandNote}`;
+
+    // relative chart — ASML vs median of the other 6 (fixed set, needs ≥3 peers with data)
+    const relPeers=PEH.order.filter(t=>t!=='ASML');
+    const ratio=W.dates.map((d,i)=>{
+      const a=W.series.ASML[i]; if(a==null)return null;
+      const ps=relPeers.map(t=>W.series[t][i]).filter(v=>v!=null).sort((x,y)=>x-y);
+      if(ps.length<3)return null;
+      const med=ps.length%2?ps[(ps.length-1)/2]:(ps[ps.length/2-1]+ps[ps.length/2])/2;
+      return +(a/med).toFixed(3);
+    });
+    const rs=stats(ratio);
+    relCh.data.labels=W.dates;
+    relCh.data.datasets=[
+      {label:'ASML ÷ peer median',data:ratio,borderColor:C.asml,backgroundColor:C.asml+'33',borderWidth:1.6,pointRadius:0,tension:0,spanGaps:true},
+      ...(rs?[{label:'window mean',data:W.dates.map(()=>+rs.mean.toFixed(3)),borderColor:'#94a3b8',borderWidth:1.1,borderDash:[6,4],pointRadius:0,tension:0}]:[]),
+      {label:'parity 1.0×',data:W.dates.map(()=>1),borderColor:'#94a3b855',borderWidth:1,borderDash:[2,3],pointRadius:0,tension:0},
+    ];
+    relCh.update();
+    document.getElementById('hpeRelTitle').textContent=`ASML ${mLabel} P/E vs peer median (AMAT·KLAC·LRCX·TER·AEIS·TEL)`;
+    document.getElementById('hpeRelNote').innerHTML=rs?
+      `Now <b>${rs.last.toFixed(2)}×</b> the peer-median ${mLabel} P/E · window mean <b>${rs.mean.toFixed(2)}×</b> · ${rs.pct}th %ile of the window. &gt;1.0× = ASML at a premium to the median SemiCap peer.`:
+      'Not enough overlapping data in this window.';
+
+    // KPI cards + stats table (all peers, independent of show/hide)
+    const winLabel=st.yrs?st.yrs+'Y':'Max';
+    document.getElementById('hpeCards').innerHTML=PEH.order.map(t=>{
+      const s=stats(W.series[t]); if(!s)return '';
+      const prem=(s.last/s.mean-1)*100;
+      return `<div class="card"><h3>${t} · ${mLabel} P/E</h3><div class="kpi" style="color:${HC[t]}">${fmtX(s.last)}</div>`+
+        `<div class="sub">${winLabel} mean ${fmtX(s.mean)} · <span class="${prem>=0?'dn':'up'}">${prem>=0?'+':''}${prem.toFixed(0)}% vs mean</span> · ${s.pct}th %ile</div></div>`;
+    }).join('');
+    document.getElementById('hpeStats').innerHTML=PEH.order.map(t=>{
+      const s=stats(W.series[t]), cur=PEH.cur[t]||{};
+      if(!s)return `<tr><td>${t}</td><td colspan="10" style="text-align:left;color:#8a9bb4">no data in window</td></tr>`;
+      const prem=(s.last/s.mean-1)*100;
+      return `<tr><td><span style="color:${HC[t]}">●</span> <b>${t}</b></td><td><b>${fmtX(s.last)}</b></td>`+
+        `<td>${cur.fy1?cur.fy1.toFixed(1)+'x':'—'}</td><td>${cur.fy2?cur.fy2.toFixed(1)+'x':'—'}</td>`+
+        `<td>${fmtX(s.mean)}</td><td>${fmtX(s.med)}</td><td>${s.sd.toFixed(1)}</td>`+
+        `<td>${fmtX(s.min)}</td><td>${fmtX(s.max)}</td><td>${s.pct}%</td>`+
+        `<td class="${prem>=0?'dn':'up'}">${prem>=0?'+':''}${prem.toFixed(0)}%</td></tr>`;
+    }).join('');
+  }
+
+  function chips(){
+    document.getElementById('hpeChips').innerHTML=PEH.order.map(t=>
+      `<span class="chip${st.on[t]?' on':''}" data-t="${t}"><i style="background:${HC[t]}"></i>${t}</span>`).join('');
+    document.querySelectorAll('#hpeChips .chip').forEach(ch=>ch.onclick=()=>{
+      st.on[ch.dataset.t]=!st.on[ch.dataset.t]; chips(); render();});
+  }
+  [['hpeMetric','m'],['hpeRange','yrs'],['hpeCap','cap']].forEach(([id,key])=>{
+    document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{
+      document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');
+      const v=b.dataset.m||b.dataset.r||b.dataset.c;
+      st[key]=key==='yrs'?+v:v;
+      render();
+    });
+  });
+  const late=PEH.order.filter(t=>{const i=(PEH.fwd.series[t]||[]).findIndex(v=>v!=null);
+    return i>=0&&PEH.fwd.dates[i]>'2000-12-31';})
+    .map(t=>{const i=PEH.fwd.series[t].findIndex(v=>v!=null);return `${t} ’${PEH.fwd.dates[i].slice(2,4)}`;});
+  document.getElementById('hpeStamp').innerHTML=
+    `BBG pull <b>${PEH.buildStamp}</b> · ${PEH.fwd.dates.length} weekly points (W-FRI) since 2000`+
+    (late.length?` · BEst coverage starts later for ${late.join(' · ')}`:'')+
+    ` · refresh: <code>py -X utf8 build_pe_history.py --publish</code>`;
+  chips(); render();
+})();
+
+// TAB switching
+document.querySelectorAll('#nav button').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('#nav button').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('section').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById(b.dataset.tab).classList.add('active');
+  };
+});
+</script>
+</body>
+</html>
