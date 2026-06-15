@@ -5,6 +5,7 @@
 <title>SemiCap Dashboard — ASML & Peers (v15)</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="pe_history_data.js"></script>
+<script src="live_prices.js"></script><!-- daily Yahoo close, written by .github/workflows/update-prices.yml -->
 <style>
   :root{--bg:#0b1220;--card:#11192c;--ink:#e7ecf3;--mute:#8a9bb4;--line:#1f2a44;--accent:#5aa7ff;
         --asml:#ff7a59;--amat:#5aa7ff;--klac:#9b8cff;--lrcx:#46d3a6;--ter:#f6c453;--aeis:#e76d8e;}
@@ -925,6 +926,11 @@ const PE_LS_KEY='semicap_pe_prices';
 
 function peLoadPrices(){
   const px=Object.assign({},PE_DEFAULT_PX);
+  // Daily live close (Yahoo, written by the update-prices GitHub Action) overrides the snapshot.
+  // Note: implied share count stays = PE_MCAP0/PE_DEFAULT_PX, so mkt cap tracks the live price correctly.
+  if(window.SEMICAP_LIVE_PX){
+    PE_TICKERS.forEach(t=>{const v=parseFloat(window.SEMICAP_LIVE_PX[t]); if(isFinite(v)&&v>0) px[t]=v;});
+  }
   try{
     const saved=JSON.parse(localStorage.getItem(PE_LS_KEY)||'{}');
     PE_TICKERS.forEach(t=>{const v=parseFloat(saved[t]); if(isFinite(v)&&v>0) px[t]=v;});
@@ -961,9 +967,10 @@ function peRender(){
     `<button type="submit">Apply &amp; Save</button><button type="button" class="ghost" id="peReset">Reset</button>`;
   let stamp='';
   try{stamp=localStorage.getItem(PE_LS_KEY+'_ts')||''}catch(e){}
-  document.getElementById('peStamp').innerHTML=
+  const live=(window.SEMICAP_LIVE_PX&&window.SEMICAP_LIVE_PX._asof)?`<b>Live prices: Yahoo daily close · ${window.SEMICAP_LIVE_PX._asof}.</b> `:'';
+  document.getElementById('peStamp').innerHTML= live+
     (stamp?`<b>Custom prices saved ${stamp}.</b> `:'')+
-    'Edit a price and hit <b>Apply &amp; Save</b> — every P/E, market cap and ranking below recalculates. Prices are saved in this browser (localStorage) and persist between visits; <b>Reset</b> restores the snapshot defaults.';
+    'Edit a price and hit <b>Apply &amp; Save</b> — every P/E, market cap and ranking below recalculates. Prices are saved in this browser (localStorage) and persist between visits; <b>Reset</b> restores the daily-Yahoo defaults.';
   document.getElementById('peReset').onclick=()=>{
     try{localStorage.removeItem(PE_LS_KEY);localStorage.removeItem(PE_LS_KEY+'_ts')}catch(e){}
     peRender();
