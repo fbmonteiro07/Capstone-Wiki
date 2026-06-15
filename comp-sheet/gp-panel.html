@@ -181,12 +181,12 @@
       </div>
       <script>
       (function(){
-        // API base: serve_dashboard escuta na :8790 do mesmo host que serve a página.
-        // file:// ou GitHub Pages → localhost:8790; já na :8790 → same-origin; senão host:8790.
+        // API base: servido pelo serve_dashboard (local :8790 ou servidor compartilhado) → same-origin;
+        // file:// / GitHub Pages / portas de preview local (8780/8795) → :8790 da máquina.
         var APIBASE = (window.API_BASE !== undefined) ? window.API_BASE
           : (location.protocol === "file:" || /github\.io$/i.test(location.hostname)) ? "http://localhost:8790"
-          : (location.port === "8790") ? ""
-          : (location.protocol + "//" + location.hostname + ":8790");
+          : (location.port === "8780" || location.port === "8795") ? (location.protocol + "//" + location.hostname + ":8790")
+          : "";
         // recarrega na hora exceto no GitHub Pages estático (lá espera o deploy)
         var reloadNow = !/github\.io$/i.test(location.hostname);
         document.getElementById("addhint").innerHTML = "<b>Remover ticker:</b> edite <b>tickers.csv</b> e rode <b>atualizar_GP.bat</b>";

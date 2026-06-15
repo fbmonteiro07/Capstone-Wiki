@@ -463,15 +463,14 @@ function renderFnotes(){
 
 // ---------- search / add ----------
 // fora do localhost (file:// ou GitHub Pages), fala com o serve_dashboard da SUA maquina
-// API base: o serve_dashboard sempre escuta na porta 8790 do MESMO host que serve a página.
-// - file:// ou GitHub Pages (estático) → máquina local (localhost:8790), comportamento atual
-// - página já servida na :8790 → same-origin ("")  → funciona local e em servidor compartilhado
-// - servida noutra porta do mesmo host (8780/8795 etc.) → http://<host>:8790
+// API base: quando a página é servida pelo próprio serve_dashboard (local na :8790 OU um
+// servidor compartilhado em qualquer porta), a API é same-origin (""). Os contextos estáticos
+// (file://, GitHub Pages, e as portas de preview local 8780/8795) apontam pra :8790 da máquina.
 // window.API_BASE sobrepõe tudo (escape hatch para deploy customizado).
 const API = (window.API_BASE !== undefined) ? window.API_BASE
   : (location.protocol === "file:" || /github\.io$/i.test(location.hostname)) ? "http://localhost:8790"
-  : (location.port === "8790") ? ""
-  : (location.protocol + "//" + location.hostname + ":8790");
+  : (location.port === "8780" || location.port === "8795") ? (location.protocol + "//" + location.hostname + ":8790")
+  : "";
 const NOSRV = "✗ local server not running on this machine — double-click serve_dashboard.bat (Comp Dashboard folder), then click Add again (no reload needed)";
 function addMsg(t){ document.getElementById("addMsg").textContent = t; }
 async function addTicker(){

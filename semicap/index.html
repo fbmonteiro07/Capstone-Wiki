@@ -1476,9 +1476,13 @@ document.getElementById('tChinab').innerHTML=Object.entries(CHINA_PCT).map(([n,a
       e.stopPropagation(); hpeApi('semicap-remove','key='+encodeURIComponent(x.dataset.t),'removendo '+x.dataset.t+'…');});
   }
 
-  // add/remove de empresa via serve_dashboard local (porta 8790); pagina pode estar em
-  // file://, localhost:8780 ou GitHub Pages — sempre chama o localhost da maquina
-  const hpeLocal = location.protocol==='file:' || /^(localhost|127\.)/.test(location.hostname);
+  // add/remove via serve_dashboard: servido por ele (local :8790 ou servidor compartilhado) -> same-origin;
+  // file:// / GitHub Pages / portas de preview local (8780/8795) -> :8790 da maquina.
+  const HPAPI = (window.API_BASE !== undefined) ? window.API_BASE
+    : (location.protocol==='file:' || /github\.io$/i.test(location.hostname)) ? 'http://localhost:8790'
+    : (location.port==='8780' || location.port==='8795') ? (location.protocol+'//'+location.hostname+':8790')
+    : '';
+  const hpeReloadNow = !/github\.io$/i.test(location.hostname);  // so o Pages estatico espera o deploy
   function hpeMsg(t){ document.getElementById('hpeAddMsg').textContent=t; }
   // recarrega renovando o cache HTTP do pe_history_data.js (senão o reload usa o js velho)
   function hpeReload(){ fetch('pe_history_data.js',{cache:'reload'}).finally(()=>location.reload()); }
@@ -1493,10 +1497,10 @@ document.getElementById('tChinab').innerHTML=Object.entries(CHINA_PCT).map(([n,a
     hpeMsg(busy);
     const btn=document.getElementById('hpeAddBtn'); btn.disabled=true;
     try{
-      const r=await fetch('http://localhost:8790/api/'+ep+'?'+qs);
+      const r=await fetch(HPAPI+'/api/'+ep+'?'+qs);
       const j=await r.json();
       if(!j.ok){ hpeMsg('✗ '+j.error); }
-      else if(hpeLocal){ hpeMsg('✓ '+j.key+' — recarregando…'); setTimeout(hpeReload,900); }
+      else if(hpeReloadNow){ hpeMsg('✓ '+j.key+' — recarregando…'); setTimeout(hpeReload,900); }
       else{ window.__hpeRemoving = ep==='semicap-remove'? j.key : null;
             hpeMsg('✓ '+j.key+' — publicando no GitHub, recarrego sozinho (~1-2 min)…'); hpeWaitPages(j.key,20); }
     }catch(e){ hpeMsg('✗ servidor local não está rodando NESTA máquina — abra serve_dashboard.bat (pasta Comp Dashboard) e tente de novo'); }
