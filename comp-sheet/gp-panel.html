@@ -181,7 +181,14 @@
       </div>
       <script>
       (function(){
-        var local = location.protocol === "file:" || /^(localhost|127\.)/.test(location.hostname);
+        // API base: serve_dashboard escuta na :8790 do mesmo host que serve a página.
+        // file:// ou GitHub Pages → localhost:8790; já na :8790 → same-origin; senão host:8790.
+        var APIBASE = (window.API_BASE !== undefined) ? window.API_BASE
+          : (location.protocol === "file:" || /github\.io$/i.test(location.hostname)) ? "http://localhost:8790"
+          : (location.port === "8790") ? ""
+          : (location.protocol + "//" + location.hostname + ":8790");
+        // recarrega na hora exceto no GitHub Pages estático (lá espera o deploy)
+        var reloadNow = !/github\.io$/i.test(location.hostname);
         document.getElementById("addhint").innerHTML = "<b>Remover ticker:</b> edite <b>tickers.csv</b> e rode <b>atualizar_GP.bat</b>";
         document.getElementById("addbox").style.display = "block";
         var st = document.getElementById("addst"), inp = document.getElementById("addtk"), btn = document.getElementById("addgo");
@@ -197,11 +204,11 @@
           var q = inp.value.trim(); if(!q) return;
           btn.disabled = true; btn.style.opacity = .5;
           st.textContent = "buscando 10 anos de histórico no Bloomberg… (~1-2 min)";
-          fetch("http://localhost:8790/api/gp-add?ticker=" + encodeURIComponent(q))
+          fetch(APIBASE + "/api/gp-add?ticker=" + encodeURIComponent(q))
             .then(function(r){ return r.json(); })
             .then(function(j){
               if(!j.ok){ st.textContent = "✗ " + j.error; btn.disabled = false; btn.style.opacity = 1; return; }
-              if(local){ st.textContent = "✓ " + j.label + " (" + j.group + ") — recarregando…"; setTimeout(function(){ location.reload(); }, 900); }
+              if(reloadNow){ st.textContent = "✓ " + j.label + " (" + j.group + ") — recarregando…"; setTimeout(function(){ location.reload(); }, 900); }
               else { st.textContent = "✓ " + j.label + " (" + j.group + ") — publicando no GitHub, recarrego sozinho (~1-2 min)…"; waitPages(j.label, 20); }
             })
             .catch(function(){
