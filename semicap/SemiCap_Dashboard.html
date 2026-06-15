@@ -796,6 +796,20 @@
       <p class="note">FY1/FY2 = <i>current</i> BEst P/E on next / following fiscal year (fiscal year-ends: TEL Mar · KLAC/LRCX Jun · AMAT Oct · rest Dec). %ile = where today sits in the window's range. <span class="dn">Red</span> = rich vs window mean, <span class="up">green</span> = cheap.</p>
     </div>
   </div>
+
+  <div class="card" style="margin-top:18px;border-left:4px solid #f6c453">
+    <h2 class="sec">Capstone vs Consensus — EPS estimates (calendar-year)</h2>
+    <div class="scroll">
+    <table>
+      <thead>
+        <tr><th rowspan="2">Peer</th><th colspan="3">2026E</th><th colspan="3">2027E</th><th colspan="3">2028E</th></tr>
+        <tr><th>Capstone</th><th>Cons</th><th>Δ</th><th>Capstone</th><th>Cons</th><th>Δ</th><th>Capstone</th><th>Cons</th><th>Δ</th></tr>
+      </thead>
+      <tbody id="cvcBody"></tbody>
+    </table>
+    </div>
+    <p class="note"><b>Capstone</b> = WFE-driven model (ASML_Peers_SemiCap_v16, 15-Jun-2026). <b>Consenso</b> = BBG BEst mean, calendar-year (1CY/2CY/3CY), USD, pulled 15-Jun-2026 via Capstone wrapper. <span class="up">Green</span> = Capstone above consensus, <span class="dn">red</span> = below. ASML/AMAT/KLAC run ~+8% above the Street on 2026; LRCX in line; TER &amp; AEIS below (our numbers haircut the non-WFE / test exposure). KLAC shown post-split (10:1).</p>
+  </div>
 </section>
 
 </main>
@@ -882,27 +896,31 @@ const SVC_PCT = {
 // === TAB 6 P/E data ===
 // EPS columns: 2024, 2025, 2026E, 2027E, 2028E, 2029E, 2030E (Capstone basis)
 const PE_YRS=[2024,2025,'2026E','2027E','2028E','2029E','2030E'];
+// EPS = Capstone WFE-driven model (v16, 15-Jun-2026). KLAC split-adjusted 10:1 (2024/25 historicals ÷10.24).
 const EPS = {
-  ASML:[20.82,26.83,37.33,54.90,66.73,77.46,77.91],
-  AMAT:[8.65,9.35,12.11,15.23,16.06,15.51,15.26],
-  KLAC:[20.43,30.37,45.78,59.86,69.49,66.35,70.38],
-  LRCX:[2.87,4.15,6.72,8.62,10.43,10.34,12.19],
+  ASML:[20.82,26.83,39.63,56.85,68.74,79.37,79.39],
+  AMAT:[8.65,9.35,13.42,18.94,23.08,26.80,27.50],
+  KLAC:[1.99,2.97,4.02,5.89,7.63,9.00,9.64],
+  LRCX:[2.87,4.15,5.78,8.43,11.57,14.52,14.70],
   TER:[3.38,3.47,5.46,6.90,7.59,8.16,8.43],
   AEIS:[1.49,3.87,6.52,9.77,13.14,16.26,18.37],
 };
 const PE_TICKERS=['ASML','AMAT','KLAC','LRCX','TER','AEIS'];
-const PE_DEFAULT_PX={ASML:1690.00,AMAT:458.17,KLAC:1961.55,LRCX:317.12,TER:400.00,AEIS:200.00};
+// Prices = BBG PX_LAST 15-Jun-2026 (KLAC post-split). Editable on the P/E tab.
+const PE_DEFAULT_PX={ASML:1892.66,AMAT:585.78,KLAC:256.42,LRCX:388.92,TER:432.41,AEIS:370.66};
 // Mkt cap ($bn) at the default snapshot price — implied share count stays fixed when price changes
-const PE_MCAP0={ASML:640.3,AMAT:367.5,KLAC:234.0,LRCX:400.0,TER:63.9,AEIS:7.7};
+const PE_MCAP0={ASML:734.4,AMAT:475.6,KLAC:334.9,LRCX:497.4,TER:69.1,AEIS:14.3};
 const PE_SUB={
-  ASML:'Cons 2026 EPS bogey: $34.87 (we $37.33)',
-  AMAT:'Cons: $13.84 (we $12.11)',
-  KLAC:'Cons: $48.70 (we $45.78)',
-  LRCX:'Cons: $7.59 (we $6.72)',
-  TER:'Cons: $8.25 (we $5.46) — we’re below',
-  AEIS:'Cheapest on our numbers',
+  ASML:'Cons 2026: $36.58 (we $39.63)',
+  AMAT:'Cons 2026: $12.38 (we $13.42)',
+  KLAC:'Cons 2026: $3.71 (we $4.02) · post-split 10:1',
+  LRCX:'Cons 2026: $5.67 (we $5.78)',
+  TER:'Cons 2026: $7.22 (we $5.46) — we’re below',
+  AEIS:'Cons 2026: $9.33 (we $6.52) — we’re below',
 };
-const PE_VSCONS={ASML:'+33.9%',AMAT:'-2.1%',KLAC:'+18.9%',LRCX:'+9.7%',TER:'-31.2%',AEIS:'-16.9%'};
+const PE_VSCONS={ASML:'+8.3%',AMAT:'+8.4%',KLAC:'+8.4%',LRCX:'+1.9%',TER:'-24.4%',AEIS:'-30.1%'};
+// BBG BEst consensus EPS, calendar-year 1CY/2CY/3CY (=2026/27/28E), USD — pulled 15-Jun-2026 via Capstone wrapper
+const CONS_EPS={ASML:[36.58,48.37,56.18],AMAT:[12.38,16.56,19.98],KLAC:[3.71,5.09,5.99],LRCX:[5.67,7.94,9.64],TER:[7.22,9.78,12.79],AEIS:[9.33,11.72,13.10]};
 const PE_LS_KEY='semicap_pe_prices';
 
 function peLoadPrices(){
@@ -962,6 +980,23 @@ document.getElementById('peForm').addEventListener('submit',e=>{
   peRender();
 });
 peRender();
+
+// === Capstone vs Consensus table (Historical P/E tab) ===
+function cvcRender(){
+  const tb=document.getElementById('cvcBody'); if(!tb) return;
+  let html='';
+  PE_TICKERS.forEach(t=>{
+    const we=EPS[t].slice(2,5), cs=CONS_EPS[t];
+    html+=`<tr><td><b>${t}</b></td>`;
+    for(let i=0;i<3;i++){
+      const d=(we[i]/cs[i]-1)*100, cls=d>=0?'up':'dn';
+      html+=`<td>$${we[i].toFixed(2)}</td><td>$${cs[i].toFixed(2)}</td><td class="${cls}">${d>=0?'+':''}${d.toFixed(1)}%</td>`;
+    }
+    html+='</tr>';
+  });
+  tb.innerHTML=html;
+}
+cvcRender();
 
 // === CHART defaults ===
 Chart.defaults.color='#8a9bb4';
