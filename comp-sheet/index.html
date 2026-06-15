@@ -51,6 +51,13 @@ tbody tr.sel{background:rgba(90,162,255,.14); outline:1px solid rgba(90,162,255,
 .mbtn{border:1px solid var(--line); background:transparent; color:var(--mut); border-radius:6px;
   padding:3px 10px; cursor:pointer; font-size:11px}
 .mbtn.on{background:var(--gold); border-color:var(--gold); color:#06101f; font-weight:600}
+.axisctl{display:inline-flex; gap:10px; margin-left:14px; flex-wrap:wrap; font-weight:400;
+  text-transform:none; letter-spacing:0}
+.axisctl label{color:var(--mut); font-size:11px; display:inline-flex; align-items:center; gap:4px}
+.axisctl select{background:var(--panel2); border:1px solid var(--line); color:var(--txt);
+  border-radius:6px; padding:3px 7px; font-size:11px; outline:none; cursor:pointer}
+.axisctl select:hover{border-color:var(--acc)}
+.axisctl select:focus{border-color:var(--acc)}
 .note{color:var(--mut); font-size:11px; margin-top:8px; line-height:1.5}
 .tk{color:var(--acc)}
 td.tk{cursor:pointer; text-decoration:underline dotted rgba(90,162,255,.5); text-underline-offset:3px}
@@ -152,7 +159,13 @@ details summary:hover{color:var(--txt)}
 
 <div class="grid2">
   <div class="panel">
-    <h2>Growth vs Valuation <span class="sub">x: EPS CAGR 25-27 · y: fwd P/E · bubble: mkt cap (USD)</span></h2>
+    <h2 style="display:flex;align-items:center;flex-wrap:wrap">Growth vs Valuation
+      <span class="axisctl">
+        <label>X <select id="scX"></select></label>
+        <label>Y <select id="scY"></select></label>
+        <label>bubble <select id="scR"></select></label>
+      </span>
+    </h2>
     <div class="chartbox"><canvas id="scatter"></canvas></div>
   </div>
   <div class="panel">
@@ -402,12 +415,49 @@ const lblPlugin = {id:"lbl", afterDatasetsDraw(ch){
   ctx.restore();
 }};
 
+// ----- Growth vs Valuation: eixos editáveis -----
+// Pra adicionar/remover/renomear opções de eixo, edite SÓ este objeto.
+// key  = campo do flat() (a row da tabela)
+// scale= fator pra exibir: 1 = já está na unidade · 100 = fração→% · 0.001 = milhões→bn
+// unit = sufixo mostrado no eixo e no tooltip
+const AXIS_METRICS = {
+  eps_cagr: {label:"EPS CAGR 25-27",    scale:100,   unit:"%"},
+  rev_cagr: {label:"Rev CAGR 25-27",    scale:100,   unit:"%"},
+  pe:       {label:"Fwd P/E",           scale:1,     unit:"x"},
+  pe2:      {label:"2Y P/E",            scale:1,     unit:"x"},
+  vs5y:     {label:"P/E vs 5y avg",     scale:100,   unit:"%"},
+  gr12:     {label:"Y2 EPS growth",     scale:100,   unit:"%"},
+  hivs:     {label:"Street Hi vs cons", scale:100,   unit:"%"},
+  ytd:      {label:"YTD",               scale:1,     unit:"%"},
+  px3mo:    {label:"Px Δ3m",            scale:1,     unit:"%"},
+  px6mo:    {label:"Px Δ6m",            scale:1,     unit:"%"},
+  chg3mo:   {label:"EPS rev Δ3m",       scale:1,     unit:"%"},
+  chg6mo:   {label:"EPS rev Δ6m",       scale:1,     unit:"%"},
+  gap3m:    {label:"Px−Rev 3m 2Y",      scale:1,     unit:"%"},
+  eps:      {label:"NTM EPS",           scale:1,     unit:""},
+  numest:   {label:"# Estimates",       scale:1,     unit:""},
+  mcap_usd: {label:"Mkt cap (USD)",     scale:0.001, unit:"bn"},
+};
+let scAxes = {x:"eps_cagr", y:"pe", r:"mcap_usd"};   // eixos/bolha padrão
+
+const axVal = (x,key) => {
+  const m = AXIS_METRICS[key]; if(!m) return null;
+  const v = x[key]; return (v==null||isNaN(v)) ? null : v*m.scale;
+};
+const axFmt = (v,key) => { const m=AXIS_METRICS[key];
+  return v==null||isNaN(v) ? "–" : v.toLocaleString("en-US",{maximumFractionDigits:1})+(m&&m.unit?m.unit:""); };
+const axTitle = key => { const m=AXIS_METRICS[key]; return m.label+(m.unit?` (${m.unit})`:""); };
+
 function drawScatter(){
-  const r = rows().filter(x=>x.eps_cagr!=null && x.pe!=null);
+  const {x:xk, y:yk, r:rk} = scAxes;
+  const r = rows().filter(x=>axVal(x,xk)!=null && axVal(x,yk)!=null);
+  const sizes = r.map(x=>axVal(x,rk)).filter(v=>v!=null).map(Math.abs);
+  const smax = sizes.length ? Math.max(...sizes) : 0;
+  const radius = x => { const v=axVal(x,rk);
+    return (v==null||smax<=0) ? 6 : 5 + 24*Math.sqrt(Math.abs(v)/smax); };
   const data = SECTORS.map(s=>({
     label:s,
-    data:r.filter(x=>x.sector===s).map(x=>({x:x.eps_cagr*100, y:x.pe,
-      r:Math.max(4, Math.sqrt(x.mcap_usd||20000)/80), k:x.k})),
+    data:r.filter(x=>x.sector===s).map(x=>({x:axVal(x,xk), y:axVal(x,yk), r:radius(x), k:x.k})),
     backgroundColor:scolor(s)+"59", borderColor:scolor(s), borderWidth:1.2,
   }));
   if(scChart) scChart.destroy();
@@ -416,11 +466,20 @@ function drawScatter(){
     plugins:[lblPlugin],
     options:{maintainAspectRatio:false,
       plugins:{legend:{labels:{boxWidth:10}}, tooltip:{callbacks:{
-        label:ctx=>`${ctx.raw.k}: CAGR ${ctx.raw.x.toFixed(1)}% · P/E ${ctx.raw.y.toFixed(1)}`}}},
-      scales:{x:{title:{display:true,text:"EPS CAGR 2025→2027 (%)"}},
-              y:{title:{display:true,text:"Fwd P/E (x)"}}},
+        label:ctx=>`${ctx.raw.k}: ${AXIS_METRICS[xk].label} ${axFmt(ctx.raw.x,xk)} · ${AXIS_METRICS[yk].label} ${axFmt(ctx.raw.y,yk)}`}}},
+      scales:{x:{title:{display:true,text:axTitle(xk)}},
+              y:{title:{display:true,text:axTitle(yk)}}},
       onClick(e,els){ if(els.length){const el=els[0];
         select(scChart.data.datasets[el.datasetIndex].data[el.index].k);} }}
+  });
+}
+function initScatterCtl(){
+  const opts = sel => Object.entries(AXIS_METRICS).map(([k,m])=>
+    `<option value="${k}" ${k===sel?"selected":""}>${m.label}</option>`).join("");
+  [["scX","x"],["scY","y"],["scR","r"]].forEach(([id,axis])=>{
+    const el=document.getElementById(id);
+    el.innerHTML=opts(scAxes[axis]);
+    el.onchange=()=>{ scAxes[axis]=el.value; drawScatter(); };
   });
 }
 
@@ -648,7 +707,7 @@ function refresh(){
   SECTORS = sectorsNow();
   renderChips(); renderKpis(); renderTable(); renderCap(); renderExtras(); drawScatter(); drawBars();
 }
-refresh(); renderMbtns(); renderFnotes(); renderHL(); drawDetail();
+refresh(); renderMbtns(); initScatterCtl(); renderFnotes(); renderHL(); drawDetail();
 </script>
 </body>
 </html>
