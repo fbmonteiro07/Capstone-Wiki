@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Apps Monitor · Sensor Tower</title>
+<style>
+:root{
+  --bg:#0f1729; --bg2:#0b1220; --panel:#ffffff; --panel2:#f7f9fc;
+  --ink:#0f1729; --ink2:#475569; --ink3:#94a3b8; --line:#e6eaf1;
+  --accent:#4f46e5; --accent2:#0ea5e9; --good:#16a34a; --bad:#e11d48;
+  --shadow:0 1px 2px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.06);
+  --radius:14px; --maxw:1320px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Segoe UI",Inter,system-ui,-apple-system,Roboto,Arial,sans-serif;
+  color:var(--ink); background:#eef1f6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent);text-decoration:none}
+
+/* ---------- header ---------- */
+header{
+  background:linear-gradient(135deg,#0f1729 0%,#1e2a4a 55%,#283a63 100%);
+  color:#fff; padding:22px 0 0;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.htop{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand h1{font-size:21px;margin:0;font-weight:700;letter-spacing:-.2px}
+.brand p{margin:4px 0 0;color:#aab6d4;font-size:13px}
+.meta{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:#c3cee6;text-align:right}
+.meta b{color:#fff;font-weight:600;display:block;font-size:13px}
+.controls{display:flex;align-items:center;gap:10px;margin-left:auto}
+.seg{display:inline-flex;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:3px}
+.seg button{background:none;border:0;color:#c7d2ec;font:inherit;font-size:12.5px;font-weight:600;
+  padding:6px 13px;border-radius:7px;cursor:pointer;transition:.15s}
+.seg button.on{background:#fff;color:#1e2a4a}
+.seg button:hover:not(.on){color:#fff}
+.seglbl{font-size:11px;color:#8fa0c4;text-transform:uppercase;letter-spacing:.08em;margin-right:2px}
+
+/* ---------- tabs ---------- */
+nav.tabs{max-width:var(--maxw);margin:18px auto 0;padding:0 12px;display:flex;gap:2px;flex-wrap:wrap}
+nav.tabs button{
+  background:none;border:0;color:#aeb9d6;font:inherit;font-size:13.5px;font-weight:600;
+  padding:12px 16px;cursor:pointer;border-bottom:3px solid transparent;transition:.15s
+}
+nav.tabs button:hover{color:#fff}
+nav.tabs button.on{color:#fff;border-bottom-color:var(--accent2)}
+
+/* ---------- layout ---------- */
+main{max-width:var(--maxw);margin:24px auto 60px;padding:0 22px}
+section.tab{display:none}
+section.tab.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+.card h3{margin:0 0 2px;font-size:15px;font-weight:700}
+.card .sub{color:var(--ink2);font-size:12.5px;margin:0 0 14px}
+.card.full{grid-column:1/-1}
+.chartbox{position:relative;width:100%;height:340px}
+.chartbox.tall{height:420px}
+.chartbox.sm{height:240px}
+
+/* stat tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:1000px){.tiles{grid-template-columns:1fr 1fr}}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 16px;box-shadow:var(--shadow)}
+.tile .k{font-size:11.5px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.tile .v{font-size:25px;font-weight:750;margin-top:5px;letter-spacing:-.5px}
+.tile .d{font-size:12px;margin-top:3px;color:var(--ink2)}
+
+/* leaderboard table */
+table.lb{width:100%;border-collapse:collapse;font-size:13px}
+table.lb th,table.lb td{padding:10px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+table.lb th{color:var(--ink3);font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;cursor:pointer;user-select:none}
+table.lb th:first-child,table.lb td:first-child{text-align:left}
+table.lb td.app{font-weight:600}
+table.lb tbody tr:hover{background:var(--panel2)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;vertical-align:middle}
+.spark{width:104px;height:30px;display:block}
+.up{color:var(--good)} .down{color:var(--bad)}
+.delta{font-weight:600}
+.range{display:inline-flex;gap:3px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:3px;margin-left:auto}
+.range button{background:none;border:0;font:inherit;font-size:12px;font-weight:600;color:var(--ink2);padding:5px 11px;border-radius:6px;cursor:pointer}
+.range button.on{background:var(--accent);color:#fff}
+.cardhead{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.cardhead h3{margin:0}.cardhead .sub{margin:0}
+.chiprow{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.chip{font-size:11.5px;background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:5px 11px;color:var(--ink2)}
+.chip b{color:var(--ink)}
+.note{font-size:12px;color:var(--ink3);margin-top:10px}
+footer{max-width:var(--maxw);margin:0 auto;padding:24px 22px 50px;color:var(--ink3);font-size:12px;border-top:1px solid var(--line)}
+.legendwrap{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
+.lg{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink2);cursor:pointer;user-select:none}
+.lg.off{opacity:.35;text-decoration:line-through}
+.pill{font-size:11px;padding:2px 9px;border-radius:999px;font-weight:700}
+.pill.g{background:#e9f9ef;color:#0f7a37}.pill.r{background:#fdeaef;color:#b30b3b}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="htop">
+      <div class="brand">
+        <h1>AI Apps Monitor — Sensor Tower</h1>
+        <p>Consumer AI assistants &amp; agents · usage, acquisition, attention &amp; market share</p>
+      </div>
+      <div class="meta">
+        <div><span>Updated</span><b id="m-updated">—</b></div>
+        <div><span>Source file</span><b id="m-src">—</b></div>
+        <div><span>Coverage</span><b id="m-range">—</b></div>
+      </div>
+    </div>
+    <div class="htop" style="margin-top:14px;align-items:center">
+      <div class="controls">
+        <span class="seglbl">Region</span>
+        <div class="seg" id="regionseg">
+          <button data-region="Global" class="on">Global</button>
+          <button data-region="US">U.S.</button>
+        </div>
+      </div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button data-tab="overview" class="on">Overview</button>
+      <button data-tab="engagement">Engagement</button>
+      <button data-tab="acquisition">Acquisition</button>
+      <button data-tab="attention">Attention</button>
+      <button data-tab="share">Market Share</button>
+      <button data-tab="trends">Daily / Weekly</button>
+      <button data-tab="sora">Sora</button>
+      <button data-tab="web">Web</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- OVERVIEW -->
+  <section class="tab on" id="tab-overview">
+    <div class="tiles" id="ov-tiles" style="margin-bottom:18px"></div>
+    <div class="grid g2">
+      <div class="card full">
+        <div class="cardhead">
+          <div><h3>Monthly Active Users <span id="ov-region" style="color:var(--ink3);font-weight:600"></span></h3>
+          <p class="sub">MAU in millions · the headline reach metric</p></div>
+          <div class="range" data-range-for="ovmau"></div>
+        </div>
+        <div class="chartbox tall"><canvas id="c-ovmau"></canvas></div>
+        <div class="legendwrap" id="lg-ovmau"></div>
+      </div>
+      <div class="card full">
+        <h3>Leaderboard — latest month</h3>
+        <p class="sub" id="lb-asof">—</p>
+        <div style="overflow-x:auto"><table class="lb" id="lb"></table></div>
+        <div class="note">M/M and Y/Y computed on the latest non-null month per app. Click a column header to sort.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGAGEMENT -->
+  <section class="tab" id="tab-engagement">
+    <div class="grid g2">
+      <div class="card"><div class="cardhead"><div><h3>Monthly Active Users (M)</h3><p class="sub">Reach</p></div><div class="range" data-range-for="mau"></div></div>
+        <div class="chartbox"><canvas id="c-mau"></canvas></div></div>
+      <div class="card"><div class="cardhead"><div><h3>Daily Active Users (M)</h3><p class="sub">Core daily reach</p></div><div class="range" data-range-for="dau"></div></div>
+        <div class="chartbox"><canvas id="c-dau"></canvas></div></div>
+      <div class="card"><div class="cardhead"><div><h3>Stickiness — DAU / MAU</h3><p class="sub">Share of monthly users active on an average day</p></div><div class="range" data-range-for="stick"></div></div>
+        <div class="chartbox"><canvas id="c-stick"></canvas></div></div>
+      <div class="card"><div class="cardhead"><div><h3>Time per MAU (hrs / month)</h3><p class="sub">Depth of engagement</p></div><div class="range" data-range-for="tpm"></div></div>
+        <div class="chartbox"><canvas id="c-tpm"></canvas></div></div>
+      <div class="card full">
+        <h3>Google Gemini — model releases vs. MAU</h3>
+        <p class="sub">Gemini MAU (M) with model-launch milestones</p>
+        <div class="chartbox"><canvas id="c-gem"></canvas></div>
+        <div class="chiprow" id="gem-chips"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACQUISITION -->
+  <section class="tab" id="tab-acquisition">
+    <div class="grid g2">
+      <div class="card"><div class="cardhead"><div><h3>Monthly Downloads (M)</h3><p class="sub">New installs per month</p></div><div class="range" data-range-for="dl"></div></div>
+        <div class="chartbox"><canvas id="c-dl"></canvas></div></div>
+      <div class="card"><div class="cardhead"><div><h3>Share of Downloads (%)</h3><p class="sub">Composition of monthly installs</p></div><div class="range" data-range-for="dlshare"></div></div>
+        <div class="chartbox"><canvas id="c-dlshare"></canvas></div></div>
+      <div class="card full"><div class="cardhead"><div><h3>Daily Downloads — worldwide</h3><p class="sub">Raw daily installs (Sensor Tower)</p></div><div class="range" data-range-for="ddl" data-daily="1"></div></div>
+        <div class="chartbox tall"><canvas id="c-ddl"></canvas></div></div>
+    </div>
+  </section>
+
+  <!-- ATTENTION -->
+  <section class="tab" id="tab-attention">
+    <div class="grid g2">
+      <div class="card"><div class="cardhead"><div><h3>Total Time Spent (M hours / month)</h3><p class="sub">Aggregate attention captured</p></div><div class="range" data-range-for="ts"></div></div>
+        <div class="chartbox"><canvas id="c-ts"></canvas></div></div>
+      <div class="card"><div class="cardhead"><div><h3>Time per DAU (min / day)</h3><p class="sub">Daily intensity per active user</p></div><div class="range" data-range-for="tpd"></div></div>
+        <div class="chartbox"><canvas id="c-tpd"></canvas></div></div>
+      <div class="card full"><div class="cardhead"><div><h3>Share of Total Time Spent (%)</h3><p class="sub">Who owns the minutes</p></div><div class="range" data-range-for="tsshare"></div></div>
+        <div class="chartbox"><canvas id="c-tsshare"></canvas></div></div>
+    </div>
+  </section>
+
+  <!-- MARKET SHARE -->
+  <section class="tab" id="tab-share">
+    <div class="tiles" id="sh-tiles" style="margin-bottom:18px"></div>
+    <div class="grid g2">
+      <div class="card"><h3>Chatbot market share — Worldwide (%)</h3><p class="sub">Referral share · Source: Statcounter</p>
+        <div class="chartbox tall"><canvas id="c-shww"></canvas></div></div>
+      <div class="card"><h3>Chatbot market share — U.S. (%)</h3><p class="sub">Referral share · Source: Statcounter</p>
+        <div class="chartbox tall"><canvas id="c-shus"></canvas></div></div>
+    </div>
+  </section>
+
+  <!-- TRENDS -->
+  <section class="tab" id="tab-trends">
+    <div class="grid g2">
+      <div class="card full"><div class="cardhead"><div><h3>Daily Active Users — worldwide</h3><p class="sub">Absolute DAU, daily granularity</p></div><div class="range" data-range-for="tdau" data-daily="1"></div></div>
+        <div class="chartbox tall"><canvas id="c-tdau"></canvas></div></div>
+      <div class="card full"><div class="cardhead"><div><h3>Weekly Active Users — worldwide</h3><p class="sub">Absolute WAU, weekly granularity</p></div><div class="range" data-range-for="twau" data-daily="1"></div></div>
+        <div class="chartbox tall"><canvas id="c-twau"></canvas></div></div>
+    </div>
+  </section>
+
+  <!-- SORA -->
+  <section class="tab" id="tab-sora">
+    <div class="tiles" id="sora-tiles" style="margin-bottom:18px"></div>
+    <div class="grid g2">
+      <div class="card"><h3>Sora — daily downloads</h3><p class="sub">U.S. vs International vs Worldwide</p>
+        <div class="chartbox"><canvas id="c-soradl"></canvas></div></div>
+      <div class="card"><h3>Sora — daily active users</h3><p class="sub">U.S. vs Worldwide</p>
+        <div class="chartbox"><canvas id="c-soradau"></canvas></div></div>
+      <div class="card"><h3>Sora vs Threads — downloads from launch</h3><p class="sub">Worldwide installs by day since launch · log scale (Threads peaked ~39M day&nbsp;1)</p>
+        <div class="chartbox"><canvas id="c-vsthreads"></canvas></div></div>
+      <div class="card"><h3>Sora — retention curve (90 days)</h3><p class="sub">Share of installers still active after N days</p>
+        <div class="chartbox"><canvas id="c-soraret"></canvas></div></div>
+    </div>
+  </section>
+
+  <!-- WEB -->
+  <section class="tab" id="tab-web">
+    <div class="grid g2">
+      <div class="card full"><h3>AI web traffic — monthly visits (millions)</h3><p class="sub">Desktop + mobile web visits by destination</p>
+        <div class="chartbox tall"><canvas id="c-web"></canvas></div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div><b>Data:</b> Sensor Tower (usage, downloads, time spent, Sora) · Statcounter (chatbot referral share) · web-visits panel.
+  Generated from <span id="f-src">Sensor Tower base.xlsx</span> on <span id="f-gen">—</span>.</div>
+  <div style="margin-top:6px">Built for Capstone · US Equities. Re-run <code>refresh.bat</code> after updating the workbook to refresh all charts.</div>
+</footer>
+
+<script src="chart.umd.min.js"></script>
+<script src="data.js"></script>
+<script>
+const ST = window.ST;
+const $ = s => document.querySelector(s);
+const C = ST.colors;
+const APPS = ST.apps;
+
+/* ---------- formatting ---------- */
+const fmtMill = v => v==null? "–" :
+  Math.abs(v)>=1000 ? (v/1000).toLocaleString('en-US',{maximumFractionDigits:2})+"B"
+  : Math.abs(v)>=10 ? v.toLocaleString('en-US',{maximumFractionDigits:0})+"M"
+  : v.toLocaleString('en-US',{maximumFractionDigits:2})+"M";
+const fmtAbbr = v => v==null? "–" :
+  Math.abs(v)>=1e9 ? (v/1e9).toFixed(2)+"B"
+  : Math.abs(v)>=1e6 ? (v/1e6).toFixed(1)+"M"
+  : Math.abs(v)>=1e3 ? (v/1e3).toFixed(0)+"K" : (+v).toFixed(0);
+const fmtPct = (v,d=1) => v==null? "–" : (v*100).toFixed(d)+"%";
+const fmtNum = (v,d=1) => v==null? "–" : v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+function monLbl(iso){ const [y,m]=iso.split('-'); return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+m-1]+" '"+y.slice(2); }
+function dayLbl(iso){ const [y,m,d]=iso.split('-'); return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+m-1]+" "+(+d)+", '"+y.slice(2); }
+function lastNonNull(a){ if(!a) return null; for(let i=a.length-1;i>=0;i--) if(a[i]!=null) return {v:a[i],i}; return null; }
+function deltaHTML(cur,prev){
+  if(cur==null||prev==null||prev===0) return '<span style="color:var(--ink3)">–</span>';
+  const r=cur/prev-1, s=(r>=0?'+':'')+(r*100).toFixed(0)+'%';
+  return `<span class="delta ${r>=0?'up':'down'}">${s}</span>`;
+}
+
+/* ---------- state ---------- */
+let REGION = "Global";
+const charts = {};           // id -> Chart
+const built = {};            // tab -> bool
+const ranges = {};           // chartKey -> months/days window (0 = all)
+
+function destroy(id){ if(charts[id]){ charts[id].destroy(); delete charts[id]; } }
+
+/* slice helper for monthly series */
+function sliceMonths(win){
+  const n = ST.months.length;
+  const start = (!win||win>=n)? 0 : n-win;
+  return {labels: ST.months.slice(start).map(monLbl), start};
+}
+function sliceDays(dates, win){
+  const n = dates.length;
+  const start = (!win||win>=n)? 0 : n-win;
+  return {start, labels: dates.slice(start)};
+}
+
+/* ---------- chart factory ---------- */
+Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+Chart.defaults.font.size = 12;
+Chart.defaults.color = "#475569";
+const GRID = "#eef1f6";
+
+function lineChart(id, labels, series, opt={}){
+  destroy(id);
+  const ctx = document.getElementById(id);
+  charts[id] = new Chart(ctx,{
+    type:"line",
+    data:{labels, datasets: series},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      interaction:{mode:"index",intersect:false},
+      animation:{duration:350},
+      elements:{point:{radius:0,hoverRadius:4},line:{borderWidth:2,tension:.25}},
+      plugins:{
+        legend:{display:opt.legend??false,position:"bottom",labels:{usePointStyle:true,boxWidth:8,padding:14}},
+        tooltip:{
+          backgroundColor:"#0f1729",padding:11,titleColor:"#fff",bodyColor:"#e2e8f0",
+          borderColor:"rgba(255,255,255,.1)",borderWidth:1,usePointStyle:true,
+          callbacks:{ label:c=>` ${c.dataset.label}: ${opt.fmt?opt.fmt(c.parsed.y):c.parsed.y}` },
+          itemSort:(a,b)=>b.parsed.y-a.parsed.y
+        }
+      },
+      scales:{
+        x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:opt.xticks??12},stacked:!!opt.stack},
+        y:{grid:{color:GRID},stacked:!!opt.stack,beginAtZero:opt.zero??true,
+           ticks:{callback:v=>opt.yfmt?opt.yfmt(v):v}, max:opt.ymax, title:opt.ytitle?{display:true,text:opt.ytitle}:undefined}
+      }
+    }
+  });
+  return charts[id];
+}
+
+/* dataset builders */
+function appDatasets(metricObj, start, apps=APPS, area=false){
+  return apps.map(a=>{
+    const arr=(metricObj[a]||[]).slice(start);
+    return {label:a, data:arr, borderColor:C[a], backgroundColor:area?hexA(C[a],.5):hexA(C[a],.12),
+            fill:area, spanGaps:true};
+  }).filter(d=>d.data.some(v=>v!=null));
+}
+function hexA(hex,a){ const n=parseInt(hex.slice(1),16); return `rgba(${n>>16&255},${n>>8&255},${n&255},${a})`; }
+
+/* custom HTML legend with toggle */
+function htmlLegend(boxId, chart){
+  const box=document.getElementById(boxId); if(!box) return; box.innerHTML="";
+  chart.data.datasets.forEach((ds,i)=>{
+    const el=document.createElement("span"); el.className="lg";
+    el.innerHTML=`<span class="dot" style="background:${ds.borderColor}"></span>${ds.label}`;
+    el.onclick=()=>{ const m=chart.getDatasetMeta(i); m.hidden=!m.hidden; el.classList.toggle("off"); chart.update(); };
+    box.appendChild(el);
+  });
+}
+
+/* ---------- range selectors ---------- */
+const RANGE_OPTS = [{l:"12M",v:12},{l:"24M",v:24},{l:"3Y",v:36},{l:"All",v:0}];
+const RANGE_DAYS = [{l:"90D",v:90},{l:"6M",v:182},{l:"1Y",v:365},{l:"All",v:0}];
+function initRanges(){
+  document.querySelectorAll(".range[data-range-for]").forEach(box=>{
+    const key=box.dataset.rangeFor, daily=box.dataset.daily;
+    const opts= daily? RANGE_DAYS : RANGE_OPTS;
+    const def = daily? 182 : 24;
+    ranges[key]=def;
+    box.innerHTML="";
+    opts.forEach(o=>{
+      const b=document.createElement("button"); b.textContent=o.l; if(o.v===def) b.classList.add("on");
+      b.onclick=()=>{ box.querySelectorAll("button").forEach(x=>x.classList.remove("on")); b.classList.add("on");
+        ranges[key]=o.v; rerender(key); };
+      box.appendChild(b);
+    });
+  });
+}
+
+/* ===========================================================
+   OVERVIEW
+   =========================================================== */
+function buildOverview(){
+  const M = ST.regions[REGION];
+  $("#ov-region").textContent = "· "+(REGION==="US"?"U.S.":"Global");
+  // tiles
+  const leaderMau = APPS.map(a=>({a,v:lastNonNull(M.mau[a])?.v??0})).sort((x,y)=>y.v-x.v)[0];
+  const totMau = APPS.reduce((s,a)=>s+(lastNonNull(M.mau[a])?.v??0),0);
+  const asof = monLbl(ST.months[ lastNonNull(M.mau.ChatGPT).i ]);
+  const tiles=[
+    {k:"Apps tracked",v:APPS.length,d:"consumer AI assistants & agents"},
+    {k:"Latest month",v:asof,d:"most recent data point"},
+    {k:"Leader by MAU",v:leaderMau.a,d:fmtMill(leaderMau.v)+" monthly users"},
+    {k:"Combined MAU",v:fmtMill(totMau),d:"sum across tracked apps"},
+  ];
+  $("#ov-tiles").innerHTML = tiles.map(t=>`<div class="tile"><div class="k">${t.k}</div><div class="v">${t.v}</div><div class="d">${t.d}</div></div>`).join("");
+  $("#lb-asof").textContent = "As of "+asof+" · "+(REGION==="US"?"U.S.":"Global")+" · M/M and Y/Y vs prior month and prior year";
+  renderLeaderboard(M, asof);
+  renderOvMau();
+}
+let lbSort={key:"mau",dir:-1};
+function renderLeaderboard(M,asof){
+  const rows = APPS.map(a=>{
+    const mau=lastNonNull(M.mau[a]), dau=lastNonNull(M.dau[a]), dl=lastNonNull(M.downloads[a]);
+    const i = mau?mau.i:null;
+    const mauArr=M.mau[a]||[];
+    const mm = (i!=null&&i>0)? mauArr[i-1] : null;
+    const yy = (i!=null&&i>=12)? mauArr[i-12] : null;
+    const stick = M.dauMau[a]? lastNonNull(M.dauMau[a])?.v : null;
+    return {a, mau:mau?.v??null, mm, yy, dau:dau?.v??null, stick, dl:dl?.v??null, spark:(mauArr)};
+  });
+  rows.sort((x,y)=>{ const k=lbSort.key; const xv=x[k]??-1, yv=y[k]??-1; return (xv-yv)*lbSort.dir; });
+  const cols=[["a","App"],["mau","MAU"],["mm","M/M"],["yy","Y/Y"],["dau","DAU"],["stick","DAU/MAU"],["dl","Downloads"],["spark","MAU trend"]];
+  const head="<thead><tr>"+cols.map(([k,l])=>`<th data-k="${k}">${l}</th>`).join("")+"</tr></thead>";
+  const body="<tbody>"+rows.map(r=>`<tr>
+    <td class="app"><span class="dot" style="background:${C[r.a]}"></span>${r.a}</td>
+    <td>${fmtMill(r.mau)}</td>
+    <td>${deltaHTML(r.mau,r.mm)}</td>
+    <td>${deltaHTML(r.mau,r.yy)}</td>
+    <td>${fmtMill(r.dau)}</td>
+    <td>${r.stick!=null?fmtPct(r.stick,0):'–'}</td>
+    <td>${fmtMill(r.dl)}</td>
+    <td><canvas class="spark" data-app="${r.a}"></canvas></td></tr>`).join("")+"</tbody>";
+  const t=$("#lb"); t.innerHTML=head+body;
+  t.querySelectorAll("th").forEach(th=>th.onclick=()=>{
+    const k=th.dataset.k; if(k==="spark")return;
+    lbSort = {key:k, dir: lbSort.key===k? -lbSort.dir : -1};
+    renderLeaderboard(M,asof);
+  });
+  // sparklines
+  t.querySelectorAll("canvas.spark").forEach(cv=>{
+    const a=cv.dataset.app; const arr=(M.mau[a]||[]).slice(-24);
+    new Chart(cv,{type:"line",data:{labels:arr.map((_,i)=>i),
+      datasets:[{data:arr,borderColor:C[a],borderWidth:1.5,fill:true,backgroundColor:hexA(C[a],.12),
+        pointRadius:0,tension:.3,spanGaps:true}]},
+      options:{responsive:false,plugins:{legend:{display:false},tooltip:{enabled:false}},
+        scales:{x:{display:false},y:{display:false}},elements:{point:{radius:0}}}});
+  });
+}
+function renderOvMau(){
+  const M=ST.regions[REGION]; const {labels,start}=sliceMonths(ranges.ovmau);
+  const ch=lineChart("c-ovmau",labels,appDatasets(M.mau,start),{fmt:fmtMill,yfmt:fmtMill,xticks:14});
+  htmlLegend("lg-ovmau",ch);
+}
+
+/* ===========================================================
+   ENGAGEMENT
+   =========================================================== */
+function buildEngagement(){ renderEng(); }
+function renderEng(){
+  const M=ST.regions[REGION];
+  let s=sliceMonths(ranges.mau);   lineChart("c-mau",s.labels,appDatasets(M.mau,s.start),{legend:true,fmt:fmtMill,yfmt:fmtMill});
+  s=sliceMonths(ranges.dau);       lineChart("c-dau",s.labels,appDatasets(M.dau,s.start),{legend:true,fmt:fmtMill,yfmt:fmtMill});
+  s=sliceMonths(ranges.stick);     lineChart("c-stick",s.labels,appDatasets(M.dauMau,s.start),{legend:true,fmt:v=>fmtPct(v,0),yfmt:v=>fmtPct(v,0),zero:true});
+  s=sliceMonths(ranges.tpm);       lineChart("c-tpm",s.labels,appDatasets(M.timePerMau,s.start),{legend:true,fmt:v=>fmtNum(v,1)+" h",yfmt:v=>fmtNum(v,0)});
+  renderGemini();
+}
+function renderGemini(){
+  const M=ST.regions[REGION]; const start=0;
+  const labels=ST.months.map(monLbl);
+  // markers at release months
+  const marks = ST.gemini.map(r=>({x:ST.months.indexOf(r.month),label:r.label})).filter(m=>m.x>=0);
+  const plugin={id:"gemmarks",afterDraw(ch){
+    const {ctx,chartArea:{top,bottom},scales:{x}}=ch; ctx.save();
+    marks.forEach(m=>{ const px=x.getPixelForValue(m.x); ctx.beginPath();
+      ctx.setLineDash([4,3]); ctx.strokeStyle="rgba(66,133,244,.45)"; ctx.lineWidth=1;
+      ctx.moveTo(px,top); ctx.lineTo(px,bottom); ctx.stroke(); });
+    ctx.restore();
+  }};
+  destroy("c-gem");
+  charts["c-gem"]=new Chart($("#c-gem"),{
+    type:"line",
+    data:{labels,datasets:[{label:"Gemini MAU (M)",data:M.mau["Google Gemini"],borderColor:C["Google Gemini"],
+      backgroundColor:hexA(C["Google Gemini"],.14),fill:true,borderWidth:2.5,tension:.25,pointRadius:0,spanGaps:true}]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+      plugins:{legend:{display:false},tooltip:{backgroundColor:"#0f1729",callbacks:{label:c=>" "+fmtMill(c.parsed.y)}}},
+      scales:{x:{grid:{display:false},ticks:{maxTicksLimit:14,maxRotation:0}},y:{grid:{color:GRID},ticks:{callback:fmtMill}}}},
+    plugins:[plugin]
+  });
+  $("#gem-chips").innerHTML = ST.gemini.map(r=>`<span class="chip"><b>${monLbl(r.month)}</b> · ${r.label}</span>`).join("");
+}
+
+/* ===========================================================
+   ACQUISITION
+   =========================================================== */
+function buildAcquisition(){ renderAcq(); }
+function renderAcq(){
+  const M=ST.regions[REGION];
+  let s=sliceMonths(ranges.dl); lineChart("c-dl",s.labels,appDatasets(M.downloads,s.start),{legend:true,fmt:fmtMill,yfmt:fmtMill});
+  // share of downloads (stacked %)
+  s=sliceMonths(ranges.dlshare);
+  lineChart("c-dlshare",s.labels,shareDatasets(M.downloads,s.start),{legend:true,stack:true,zero:true,ymax:100,fmt:v=>v.toFixed(0)+"%",yfmt:v=>v+"%"});
+  renderDailyDL();
+}
+function shareDatasets(metricObj,start){
+  const arrs=APPS.map(a=>(metricObj[a]||[]).slice(start));
+  const n=arrs[0]?.length||0;
+  const tot=Array.from({length:n},(_,i)=>APPS.reduce((s,_,j)=>s+(arrs[j][i]||0),0));
+  return APPS.map((a,j)=>({label:a,
+    data:arrs[j].map((v,i)=>tot[i]? (v||0)/tot[i]*100 : null),
+    borderColor:C[a],backgroundColor:hexA(C[a],.6),fill:true,borderWidth:1,pointRadius:0,tension:.2,spanGaps:true}))
+    .filter(d=>d.data.some(v=>v));
+}
+function renderDailyDL(){
+  const D=ST.daily; const {start,labels}=sliceDays(D.dates,ranges.ddl);
+  dailyLine("c-ddl",labels,D.downloads,start);
+}
+function dailyLine(id,labels,obj,start){
+  destroy(id);
+  const ds=APPS.map(a=>({label:a,data:(obj[a]||[]).slice(start),borderColor:C[a],
+    backgroundColor:hexA(C[a],.1),borderWidth:1.6,pointRadius:0,tension:.2,spanGaps:true,fill:false}))
+    .filter(d=>d.data.some(v=>v!=null));
+  charts[id]=new Chart(document.getElementById(id),{type:"line",data:{labels,datasets:ds},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+      plugins:{legend:{display:true,position:"bottom",labels:{usePointStyle:true,boxWidth:8,padding:12}},
+        tooltip:{backgroundColor:"#0f1729",usePointStyle:true,itemSort:(a,b)=>b.parsed.y-a.parsed.y,
+          callbacks:{title:c=>dayLbl(c[0].label),label:c=>" "+c.dataset.label+": "+fmtAbbr(c.parsed.y)}}},
+      scales:{x:{grid:{display:false},ticks:{maxTicksLimit:10,maxRotation:0,callback:function(v){return dayLbl(this.getLabelForValue(v))}}},
+              y:{grid:{color:GRID},ticks:{callback:fmtAbbr}}}}});
+}
+
+/* ===========================================================
+   ATTENTION
+   =========================================================== */
+function buildAttention(){ renderAtt(); }
+function renderAtt(){
+  const M=ST.regions[REGION];
+  let s=sliceMonths(ranges.ts);  lineChart("c-ts",s.labels,appDatasets(M.timeSpent,s.start),{legend:true,fmt:v=>fmtMill(v).replace('M',' Mh'),yfmt:fmtMill});
+  s=sliceMonths(ranges.tpd);     lineChart("c-tpd",s.labels,appDatasets(M.timePerDau,s.start),{legend:true,fmt:v=>fmtNum(v,1)+" min",yfmt:v=>fmtNum(v,0)});
+  s=sliceMonths(ranges.tsshare); lineChart("c-tsshare",s.labels,shareDatasets(M.timeSpent,s.start),{legend:true,stack:true,zero:true,ymax:100,fmt:v=>v.toFixed(0)+"%",yfmt:v=>v+"%"});
+}
+
+/* ===========================================================
+   MARKET SHARE
+   =========================================================== */
+const SHARE_COL={ChatGPT:"#10a37f",Perplexity:"#20b8cd",Gemini:"#4285f4",Copilot:"#0ea5e9",
+  Claude:"#d97757",Deepseek:"#4d6bfe",Other:"#cbd5e1"};
+function buildShare(){
+  const S=ST.share; const labels=S.dates.map(monLbl);
+  shareArea("c-shww",labels,S.WW);
+  shareArea("c-shus",labels,S.US);
+  // tiles: latest WW snapshot of top movers
+  const ww=S.WW, last=S.dates.length-1, prev=Math.max(0,last-1);
+  const order=Object.keys(ww).filter(k=>k!=="Other").map(k=>({k,v:ww[k][last]??0,d:(ww[k][last]??0)-(ww[k][prev]??0)})).sort((a,b)=>b.v-a.v);
+  $("#sh-tiles").innerHTML = order.slice(0,4).map(o=>`<div class="tile"><div class="k">${o.k} · WW</div>
+     <div class="v">${o.v.toFixed(1)}%</div>
+     <div class="d">${o.d>=0?'▲':'▼'} ${Math.abs(o.d).toFixed(1)} pp m/m</div></div>`).join("");
+}
+function shareArea(id,labels,obj){
+  destroy(id);
+  const keys=Object.keys(obj);
+  const ds=keys.map(k=>({label:k,data:obj[k],borderColor:SHARE_COL[k]||"#999",
+    backgroundColor:hexA(SHARE_COL[k]||"#999",.65),fill:true,borderWidth:1,pointRadius:0,tension:.2,stack:"s"}));
+  charts[id]=new Chart(document.getElementById(id),{type:"line",data:{labels,datasets:ds},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+      plugins:{legend:{display:true,position:"bottom",labels:{usePointStyle:true,boxWidth:8,padding:12}},
+        tooltip:{backgroundColor:"#0f1729",usePointStyle:true,callbacks:{label:c=>" "+c.dataset.label+": "+c.parsed.y.toFixed(1)+"%"}}},
+      scales:{x:{grid:{display:false},stacked:true,ticks:{maxRotation:0,maxTicksLimit:10}},
+              y:{stacked:true,max:100,grid:{color:GRID},ticks:{callback:v=>v+"%"}}}}});
+}
+
+/* ===========================================================
+   TRENDS (daily DAU / weekly WAU)
+   =========================================================== */
+function buildTrends(){ renderTrends(); }
+function renderTrends(){
+  const D=ST.daily; let s=sliceDays(D.dates,ranges.tdau); dailyLine("c-tdau",s.labels,D.dau,s.start);
+  const W=ST.weekly; s=sliceDays(W.dates,ranges.twau);    dailyLine("c-twau",s.labels,W.wau,s.start);
+}
+
+/* ===========================================================
+   SORA
+   =========================================================== */
+function buildSora(){
+  const So=ST.sora, sm=So.summary;
+  $("#sora-tiles").innerHTML=[
+    {k:"Downloads (cum.)",v:fmtMill(sm["Downloads (M)"]),d:"since launch (Sep '25)"},
+    {k:"DAUs (avg.)",v:fmtAbbr((sm["DAUs (K)"]||0)*1000),d:"recent average"},
+    {k:"Time spent",v:String(sm["Time Spent"]||"–").trim(),d:"per active user"},
+    {k:"7-day retention",v:fmtPct(sm["7-Day Retention"],1),d:"of installers still active"},
+  ].map(t=>`<div class="tile"><div class="k">${t.k}</div><div class="v">${t.v}</div><div class="d">${t.d}</div></div>`).join("");
+
+  // daily downloads
+  multiLine("c-soradl",So.downloads.dates.map(dayLbl),[
+    {label:"U.S.",data:So.downloads.us,color:"#4f46e5"},
+    {label:"Int'l",data:So.downloads.intl,color:"#0ea5e9"},
+    {label:"Worldwide",data:So.downloads.ww,color:"#ec4899"}],fmtAbbr);
+  // daily DAU
+  multiLine("c-soradau",So.dau.dates.map(dayLbl),[
+    {label:"U.S.",data:So.dau.us,color:"#4f46e5"},
+    {label:"Worldwide",data:So.dau.ww,color:"#ec4899"}],fmtAbbr);
+  // vs threads (days from launch) — log scale so both magnitudes are visible
+  const n=Math.max(So.downloads.ww.length, So.threads.ww.length);
+  const days=Array.from({length:n},(_,i)=>"Day "+i);
+  const nz=a=>a.map(v=>(v==null||v<=0)?null:v);
+  multiLine("c-vsthreads",days,[
+    {label:"Sora (WW)",data:nz(So.downloads.ww),color:"#ec4899"},
+    {label:"Threads (WW)",data:nz(So.threads.ww),color:"#0f1729"}],fmtAbbr,true,true);
+  // retention
+  destroy("c-soraret");
+  charts["c-soraret"]=new Chart($("#c-soraret"),{type:"line",
+    data:{labels:So.retention.day.map(d=>d.replace("Day ","D")),datasets:[
+      {label:"U.S.",data:So.retention.us.map(v=>v*100),borderColor:"#4f46e5",backgroundColor:hexA("#4f46e5",.1),fill:true,borderWidth:2,pointRadius:0,tension:.3},
+      {label:"Worldwide",data:So.retention.ww.map(v=>v*100),borderColor:"#ec4899",backgroundColor:hexA("#ec4899",.08),fill:true,borderWidth:2,pointRadius:0,tension:.3}]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+      plugins:{legend:{display:true,position:"bottom",labels:{usePointStyle:true,boxWidth:8}},
+        tooltip:{backgroundColor:"#0f1729",callbacks:{label:c=>" "+c.dataset.label+": "+c.parsed.y.toFixed(2)+"%"}}},
+      scales:{x:{grid:{display:false},ticks:{maxTicksLimit:12,maxRotation:0}},
+              y:{grid:{color:GRID},ticks:{callback:v=>v+"%"},title:{display:true,text:"% of installers active"}}}}});
+}
+function multiLine(id,labels,series,fmt,fromLaunch,log){
+  destroy(id);
+  const ds=series.map(s=>({label:s.label,data:s.data,borderColor:s.color,backgroundColor:hexA(s.color,.12),
+    fill:false,borderWidth:2.2,pointRadius:0,tension:.25,spanGaps:true}));
+  const yscale = log
+    ? {type:"logarithmic",grid:{color:GRID},ticks:{callback:v=>{const e=Math.log10(v);return e===Math.floor(e)?fmt(v):''}}}
+    : {grid:{color:GRID},ticks:{callback:fmt}};
+  charts[id]=new Chart(document.getElementById(id),{type:"line",data:{labels,datasets:ds},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+      plugins:{legend:{display:true,position:"bottom",labels:{usePointStyle:true,boxWidth:8,padding:12}},
+        tooltip:{backgroundColor:"#0f1729",usePointStyle:true,callbacks:{label:c=>" "+c.dataset.label+": "+fmt(c.parsed.y)}}},
+      scales:{x:{grid:{display:false},ticks:{maxTicksLimit:fromLaunch?12:9,maxRotation:0}}, y:yscale}}});
+}
+
+/* ===========================================================
+   WEB
+   =========================================================== */
+function buildWeb(){
+  const W=ST.web;
+  destroy("c-web");
+  charts["c-web"]=new Chart($("#c-web"),{type:"bar",
+    data:{labels:W.map(w=>w.company),datasets:[{data:W.map(w=>w.visitsM),
+      backgroundColor:W.map(w=>C[w.company]||C["Google Gemini"]||"#4285f4"),borderRadius:6,
+      backgroundColor:W.map(w=>({"Google":"#4285f4","ChatGPT":"#10a37f","Bing":"#0ea5e9","Gemini":"#4285f4",
+        "Deepseek":"#4d6bfe","Grok":"#111827","Perplexity":"#20b8cd","Claude":"#d97757","Copilot":"#0ea5e9"}[w.company]||"#64748b"))}]},
+    options:{indexAxis:"y",responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{backgroundColor:"#0f1729",callbacks:{label:c=>" "+fmtMill(c.parsed.x)+" visits"}}},
+      scales:{x:{grid:{color:GRID},ticks:{callback:fmtMill},title:{display:true,text:"monthly visits"}},
+              y:{grid:{display:false}}}}});
+}
+
+/* ===========================================================
+   TAB / REGION wiring
+   =========================================================== */
+const BUILDERS={overview:buildOverview,engagement:buildEngagement,acquisition:buildAcquisition,
+  attention:buildAttention,share:buildShare,trends:buildTrends,sora:buildSora,web:buildWeb};
+const REGION_DEP=new Set(["overview","engagement","acquisition","attention"]);
+
+function showTab(tab){
+  document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.toggle("on",b.dataset.tab===tab));
+  document.querySelectorAll("section.tab").forEach(s=>s.classList.toggle("on",s.id==="tab-"+tab));
+  if(!built[tab]){ BUILDERS[tab](); built[tab]=true; }
+}
+function rerender(key){
+  // re-render only charts affected by a range change
+  const map={ovmau:renderOvMau, mau:renderEng,dau:renderEng,stick:renderEng,tpm:renderEng,
+    dl:renderAcq,dlshare:renderAcq,ddl:renderDailyDL, ts:renderAtt,tpd:renderAtt,tsshare:renderAtt,
+    tdau:renderTrends,twau:renderTrends};
+  (map[key]||(()=>{}))();
+}
+
+document.getElementById("tabs").addEventListener("click",e=>{
+  const b=e.target.closest("button[data-tab]"); if(b) showTab(b.dataset.tab);
+});
+document.getElementById("regionseg").addEventListener("click",e=>{
+  const b=e.target.closest("button[data-region]"); if(!b) return;
+  REGION=b.dataset.region;
+  document.querySelectorAll("#regionseg button").forEach(x=>x.classList.toggle("on",x===b));
+  // rebuild region-dependent tabs (current + invalidate others)
+  REGION_DEP.forEach(t=>{ built[t]=false; });
+  const cur=document.querySelector("nav.tabs button.on").dataset.tab;
+  if(REGION_DEP.has(cur)){ BUILDERS[cur](); built[cur]=true; }
+});
+
+/* ---------- boot ---------- */
+$("#m-updated").textContent=ST.generated;
+$("#m-src").textContent=ST.sourceFile;
+$("#m-range").textContent=monLbl(ST.months[0])+" – "+monLbl(ST.months[ST.months.length-1]);
+$("#f-src").textContent=ST.sourceFile+" (saved "+ST.sourceMtime+")";
+$("#f-gen").textContent=ST.generated;
+initRanges();
+showTab("overview"); built.overview=true;
+</script>
+</body>
+</html>
