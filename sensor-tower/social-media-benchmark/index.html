@@ -6,97 +6,110 @@
 <title>Social Media Engagement Benchmark</title>
 <style>
   :root{
-    --bg:#f4f6fa; --bgtint:#eef1f7; --panel:#ffffff; --panel2:#fbfcfe;
-    --ink:#0b1220; --ink2:#283447; --muted:#6b7686; --faint:#9aa4b2;
-    --line:#e7eaf0; --line2:#eef1f6; --grid:#eef1f7; --grid0:#d6dbe6;
-    --chip:#eef1f7; --chip-ink:#5b6675;
-    --accent:#4f46e5; --accent2:#7c6cf0; --accent-ink:#ffffff;
-    --good:#15a34a; --good-bg:#dcfce7; --bad:#e11d48; --bad-bg:#ffe4e6; --flat-bg:#eef1f7;
-    --tip-bg:#0b1220; --tip-ink:#ffffff; --tip-sub:#94a3b8; --tip-line:#1e293b;
-    --shadow:0 1px 2px rgba(16,24,40,.04), 0 10px 30px rgba(16,24,40,.07);
-    --card-shadow:0 1px 2px rgba(16,24,40,.05), 0 2px 6px rgba(16,24,40,.04);
+    --bg:#f3f4f6; --panel:#ffffff; --panel-soft:#fafbfc;
+    --ink:#0f1216; --ink2:#363b44; --muted:#6a6f78; --faint:#9a9ea8;
+    --line:#e7e8ed; --line2:#f0f1f4; --grid:#eef0f3; --grid0:#d4d7de;
+    --chip:#eef0f3; --chip-ink:#5a6069;
+    --on-bg:#15181d; --on-ink:#ffffff;
+    --accent:#4f46e5; --accent2:#7c6cf0;
+    --good:#0f9f5a; --good-bg:#e6f6ec; --bad:#e5474d; --bad-bg:#fdeaea; --flat-bg:#eef0f3;
+    --tip-bg:#15181d; --tip-ink:#ffffff; --tip-sub:#9aa1ad; --tip-line:#2a2f37;
+    --shadow:0 1px 2px rgba(15,18,22,.05), 0 8px 24px rgba(15,18,22,.07);
+    --card-shadow:0 1px 1px rgba(15,18,22,.04), 0 1px 3px rgba(15,18,22,.05);
+    --radius:14px;
   }
   html[data-theme="dark"]{
-    --bg:#0a0f1c; --bgtint:#0d1424; --panel:#111a2e; --panel2:#0f1729;
-    --ink:#eef2f8; --ink2:#c4cedd; --muted:#8c97a8; --faint:#5e6878;
-    --line:#1e2840; --line2:#18213500; --grid:#19223a; --grid0:#2c3a57;
-    --chip:#1a2440; --chip-ink:#aab4c4;
-    --accent:#7c6cf0; --accent2:#9b8cff; --accent-ink:#ffffff;
-    --good:#34d399; --good-bg:#0c3a26; --bad:#fb7185; --bad-bg:#3d1422; --flat-bg:#1a2440;
-    --tip-bg:#1c2740; --tip-ink:#ffffff; --tip-sub:#9fb0c7; --tip-line:#2a3650;
-    --shadow:0 1px 2px rgba(0,0,0,.35), 0 14px 40px rgba(0,0,0,.45);
-    --card-shadow:0 1px 2px rgba(0,0,0,.3), 0 2px 10px rgba(0,0,0,.35);
+    --bg:#0b0d12; --panel:#14171e; --panel-soft:#121620;
+    --ink:#eef1f6; --ink2:#c2c8d2; --muted:#8b919c; --faint:#5f6571;
+    --line:#222732; --line2:#1a1f29; --grid:#1b212c; --grid0:#2f3744;
+    --chip:#1a1f29; --chip-ink:#a7adb8;
+    --on-bg:#eceef2; --on-ink:#15181d;
+    --accent:#8b7cff; --accent2:#a594ff;
+    --good:#34d399; --good-bg:#0e3a26; --bad:#fb7185; --bad-bg:#3a1620; --flat-bg:#1a1f29;
+    --tip-bg:#1b212c; --tip-ink:#ffffff; --tip-sub:#9aa3b1; --tip-line:#2c333f;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 40px rgba(0,0,0,.5);
+    --card-shadow:0 1px 2px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.4);
+    --radius:14px;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
     font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
-    background:var(--bg);
-    color:var(--ink); -webkit-font-smoothing:antialiased; font-size:14px; line-height:1.45;
+    background:var(--bg); color:var(--ink); -webkit-font-smoothing:antialiased;
+    font-size:14px; line-height:1.45; letter-spacing:-.005em;
   }
-  .wrap{max-width:1340px; margin:0 auto; padding:24px 22px 64px;}
   .tnum{font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1;}
+  .wrap{max-width:1320px; margin:0 auto; padding:0 24px 64px;}
 
-  header.top{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:18px;}
+  /* header */
+  header.top{max-width:1320px; margin:0 auto; padding:26px 24px 18px; display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;}
   .brand{display:flex; align-items:center; gap:13px;}
-  .mark{width:42px;height:42px;border-radius:12px;flex:0 0 auto;background:linear-gradient(135deg,var(--accent),var(--accent2));
-        box-shadow:0 6px 16px rgba(79,70,229,.35); position:relative;}
-  .mark::before,.mark::after{content:"";position:absolute;border-radius:2px;background:#fff;}
-  .mark::before{left:9px;bottom:9px;width:4px;height:13px;opacity:.95;box-shadow:7px 0 0 #fff, 14px -5px 0 #fff;}
-  header.top h1{font-size:23px; margin:0 0 3px; letter-spacing:-.5px; font-weight:750;}
+  .mark{width:38px;height:38px;border-radius:11px;flex:0 0 auto;background:linear-gradient(140deg,var(--accent),var(--accent2)); box-shadow:0 5px 14px rgba(79,70,229,.30); position:relative;}
+  .mark::before{content:"";position:absolute;left:8px;bottom:8px;width:3.5px;height:12px;border-radius:2px;background:#fff;box-shadow:6px 0 0 #fff, 12px -5px 0 #fff;}
+  header.top h1{font-size:23px; margin:0 0 3px; letter-spacing:-.6px; font-weight:700;}
   header.top .sub{color:var(--muted); font-size:12.5px;}
-  header.top .sub b{color:var(--ink2);}
+  header.top .sub b{color:var(--ink2); font-weight:650;}
   .topright{display:flex; flex-direction:column; align-items:flex-end; gap:9px;}
-  .src{text-align:right; color:var(--faint); font-size:11.5px; line-height:1.55;}
+  .src{text-align:right; color:var(--faint); font-size:11px; line-height:1.55;}
   .src b{color:var(--muted); font-weight:600;}
   .excl{display:inline-block; background:var(--bad-bg); color:var(--bad); border-radius:999px; padding:1px 9px; font-size:11px; font-weight:650;}
-  .theme-btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--panel);color:var(--muted);
-    border-radius:999px;padding:6px 12px;font:inherit;font-size:12px;font-weight:600;cursor:pointer;box-shadow:var(--card-shadow);transition:.15s;}
+  .theme-btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--panel);color:var(--muted); border-radius:999px;padding:6px 12px;font:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:.15s;}
   .theme-btn:hover{color:var(--ink); border-color:var(--grid0);}
 
-  .panel{background:var(--panel); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow);}
-  .controls{padding:15px 17px; margin-bottom:16px; display:flex; flex-direction:column; gap:11px;}
-  .ctrl-row{display:flex; align-items:center; gap:11px; flex-wrap:wrap;}
-  .ctrl-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.7px; color:var(--faint); font-weight:750; min-width:72px;}
-  .seg{display:inline-flex; background:var(--chip); border-radius:11px; padding:3px; gap:2px;}
-  .seg button{border:0; background:transparent; color:var(--chip-ink); font:inherit; font-weight:600; font-size:13px; padding:6px 13px; border-radius:8px; cursor:pointer; transition:.13s; white-space:nowrap;}
+  /* control strip */
+  .toolbar{background:var(--panel-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-bottom:4px;}
+  .toolbar-inner{max-width:1320px; margin:0 auto; padding:13px 24px; display:flex; flex-direction:column; gap:9px;}
+  .trow{display:flex; align-items:center; gap:9px; flex-wrap:wrap;}
+  .clab{font-size:10px; text-transform:uppercase; letter-spacing:.09em; color:var(--faint); font-weight:700;}
+  .vsep{width:1px; height:18px; background:var(--line); margin:0 5px;}
+  .seg{display:inline-flex; background:var(--chip); border-radius:9px; padding:3px; gap:2px;}
+  .seg button{border:0; background:transparent; color:var(--chip-ink); font:inherit; font-weight:600; font-size:12.5px; padding:5px 11px; border-radius:6px; cursor:pointer; transition:.13s; white-space:nowrap;}
   .seg button:hover{color:var(--ink);}
-  .seg button.on{background:var(--panel); color:var(--accent); box-shadow:0 1px 3px rgba(16,24,40,.14);}
-  html[data-theme="dark"] .seg button.on{background:#243156; color:var(--accent2);}
-  .seg.dark button.on{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:var(--accent-ink); box-shadow:0 3px 10px rgba(79,70,229,.35);}
-  .switch{display:inline-flex; align-items:center; gap:7px; font-size:12px; color:var(--muted); font-weight:600; cursor:pointer; user-select:none;}
-  .switch input{accent-color:var(--accent); width:15px; height:15px;}
-  .sep{width:1px; height:22px; background:var(--line);}
+  .seg button.on{background:var(--on-bg); color:var(--on-ink); box-shadow:0 1px 2px rgba(0,0,0,.16);}
+  .seg.accent button.on{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; box-shadow:0 2px 8px rgba(79,70,229,.30);}
+  .switch{display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--muted); font-weight:600; cursor:pointer; user-select:none;}
+  .switch input{accent-color:var(--accent); width:14px; height:14px;}
 
-  .legend{display:flex; flex-wrap:wrap; gap:8px;}
-  .lg{display:inline-flex; align-items:center; gap:7px; padding:5px 12px 5px 9px; border:1px solid var(--line); border-radius:999px; cursor:pointer; font-weight:600; font-size:12.5px; background:var(--panel); transition:.13s; color:var(--ink2);}
-  .lg .dot{width:10px; height:10px; border-radius:50%; flex:0 0 auto;}
-  .lg.off{opacity:.4; background:var(--chip);}
+  .legend{display:flex; flex-wrap:wrap; gap:7px;}
+  .lg{display:inline-flex; align-items:center; gap:7px; padding:4px 11px 4px 9px; border:1px solid var(--line); border-radius:999px; cursor:pointer; font-weight:600; font-size:12px; background:var(--panel); transition:.13s; color:var(--ink2);}
+  .lg .dot{width:9px; height:9px; border-radius:50%; flex:0 0 auto;}
+  .lg.off{opacity:.42; background:var(--chip);}
   .lg:hover{border-color:var(--grid0);}
 
-  .kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(176px,1fr)); gap:13px; margin:16px 0;}
-  .kpi{padding:13px 14px 8px; position:relative; overflow:hidden; transition:opacity .15s, transform .15s, box-shadow .15s; cursor:default;}
+  /* section label */
+  .sec{display:flex; align-items:center; gap:11px; margin:26px 2px 13px;}
+  .sec::before{content:""; width:13px; height:2px; border-radius:2px; flex:0 0 auto; background:linear-gradient(90deg,var(--accent),var(--accent2));}
+  .sec b{font-size:11px; text-transform:uppercase; letter-spacing:.1em; font-weight:750; color:var(--ink2); white-space:nowrap;}
+  .sec small{font-size:11.5px; color:var(--faint); white-space:nowrap;}
+  .sec .line{flex:1; height:1px; background:var(--line2);}
+
+  .panel{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--card-shadow);}
+
+  .kpis{display:grid; grid-template-columns:repeat(7,1fr); gap:12px;}
+  @media(max-width:1180px){ .kpis{grid-template-columns:repeat(4,1fr);} }
+  @media(max-width:720px){ .kpis{grid-template-columns:repeat(2,1fr);} }
+  .kpi{padding:12px 14px 9px; position:relative; overflow:hidden; transition:opacity .15s, transform .15s, box-shadow .15s; cursor:default;}
   .kpi:hover{transform:translateY(-2px); box-shadow:var(--shadow);}
-  .kpi .ktop{display:flex; align-items:center; justify-content:space-between; gap:8px;}
-  .kpi .name{display:flex; align-items:center; gap:7px; font-weight:650; font-size:12.5px; color:var(--ink2);}
-  .kpi .name .dot{width:9px; height:9px; border-radius:50%;}
-  .kpi .rank{font-size:10.5px; font-weight:700; color:var(--faint); background:var(--chip); border-radius:6px; padding:1px 6px;}
-  .kpi .val{font-size:24px; font-weight:760; letter-spacing:-.6px; margin-top:7px; line-height:1;}
-  .kpi .sub{display:flex; gap:7px; align-items:center; margin-top:5px; font-size:12px;}
-  .chip{font-weight:700; border-radius:6px; padding:1px 6px; font-size:11.5px;}
+  .kpi .ktop{display:flex; align-items:center; justify-content:space-between; gap:6px;}
+  .kpi .name{display:flex; align-items:center; gap:6px; font-weight:600; font-size:12px; color:var(--ink2); min-width:0;}
+  .kpi .name .dot{width:8px; height:8px; border-radius:50%; flex:0 0 auto;}
+  .kpi .rank{font-size:10px; font-weight:700; color:var(--faint); background:var(--chip); border-radius:5px; padding:1px 5px; flex:0 0 auto;}
+  .kpi .val{font-size:22px; font-weight:740; letter-spacing:-.5px; margin-top:8px; line-height:1;}
+  .kpi .sub{display:flex; gap:6px; align-items:center; margin-top:5px; font-size:11.5px;}
+  .chip{font-weight:700; border-radius:5px; padding:1px 6px; font-size:11px;}
   .chip.up{color:var(--good); background:var(--good-bg);}
   .chip.down{color:var(--bad); background:var(--bad-bg);}
   .chip.flat{color:var(--muted); background:var(--flat-bg);}
   .kpi .sub .lbl{color:var(--faint);}
-  .kpi .spark{margin-top:8px; height:34px;}
+  .kpi .spark{margin-top:9px; height:32px;}
 
-  .chart-card{padding:17px 18px 10px; margin-bottom:16px;}
-  .chart-head{display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:2px;}
-  .chart-head h2{font-size:15.5px; margin:0; font-weight:720; letter-spacing:-.2px;}
-  .chart-head .unit{font-size:12px; color:var(--faint);}
+  .chart-card{padding:16px 18px 10px;}
+  .chart-head{display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:4px;}
+  .chart-head h2{font-size:15px; margin:0; font-weight:700; letter-spacing:-.2px;}
+  .chart-head .unit{font-size:11.5px; color:var(--faint);}
   .chart-wrap{position:relative; width:100%;}
   svg{display:block; width:100%; overflow:visible;}
-  .tooltip{position:absolute; pointer-events:none; background:var(--tip-bg); color:var(--tip-ink); border-radius:10px; padding:9px 11px; font-size:12px; box-shadow:0 10px 30px rgba(0,0,0,.28); opacity:0; transition:opacity .08s; min-width:158px; z-index:5; border:1px solid var(--tip-line);}
+  .tooltip{position:absolute; pointer-events:none; background:var(--tip-bg); color:var(--tip-ink); border-radius:10px; padding:9px 11px; font-size:12px; box-shadow:0 12px 32px rgba(0,0,0,.30); opacity:0; transition:opacity .08s; min-width:158px; z-index:5; border:1px solid var(--tip-line);}
   .tooltip .tt-date{font-weight:700; margin-bottom:6px; font-size:11.5px; color:var(--tip-sub); border-bottom:1px solid var(--tip-line); padding-bottom:5px; letter-spacing:.2px;}
   .tooltip .tt-row{display:flex; align-items:center; gap:8px; margin:3.5px 0; white-space:nowrap;}
   .tooltip .tt-row .d{width:8px;height:8px;border-radius:50%;flex:0 0 auto;}
@@ -105,7 +118,7 @@
   .tooltip .tt-row .vv{font-weight:700;}
 
   .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
-  @media(max-width:900px){ .grid2{grid-template-columns:1fr;} }
+  @media(max-width:820px){ .grid2{grid-template-columns:1fr;} }
 
   text{font-family:inherit;}
   .ax{fill:var(--muted); font-size:11px;}
@@ -113,14 +126,13 @@
   .gl{stroke:var(--grid); stroke-width:1;}
   .gl0{stroke:var(--grid0); stroke-width:1;}
   .track{fill:var(--chip);}
-  footer{color:var(--faint); font-size:11.5px; margin-top:22px; line-height:1.65;}
+  footer{color:var(--faint); font-size:11.5px; margin-top:26px; line-height:1.65;}
   footer b{color:var(--muted);}
   .note-est{display:inline-block; width:9px;height:9px;border-radius:2px;background:transparent;border:1px dashed var(--faint);vertical-align:middle;margin:0 2px;}
   a.k{color:var(--accent); text-decoration:none;}
 </style>
 </head>
 <body>
-<div class="wrap">
   <header class="top">
     <div class="brand">
       <div class="mark"></div>
@@ -135,64 +147,68 @@
     </div>
   </header>
 
-  <div class="panel controls">
-    <div class="ctrl-row">
-      <span class="ctrl-label">View</span>
-      <div class="seg dark" id="sectionSeg">
-        <button data-v="engagement" class="on">Engagement</button>
-        <button data-v="monetization">Monetization</button>
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      <div class="trow">
+        <span class="clab">View</span>
+        <div class="seg accent" id="sectionSeg">
+          <button data-v="engagement" class="on">Engagement</button>
+          <button data-v="monetization">Monetization</button>
+        </div>
+        <span class="vsep"></span>
+        <span class="clab">Metric</span>
+        <div class="seg" id="metricSeg"></div>
+      </div>
+      <div class="trow" id="row3">
+        <span class="clab" id="regionLabel">Region</span>
+        <div class="seg" id="regionSeg">
+          <button data-v="US" class="on">United States</button>
+          <button data-v="Intl">International</button>
+        </div>
+        <span class="vsep" id="sep1"></span>
+        <span class="clab">Scale</span>
+        <div class="seg" id="scaleSeg"></div>
+        <label class="switch" id="logWrap"><input type="checkbox" id="logChk"/> Log</label>
+        <span class="vsep"></span>
+        <span class="clab">Range</span>
+        <div class="seg" id="rangeSeg"></div>
+      </div>
+      <div class="trow">
+        <span class="clab">Platforms</span>
+        <div class="legend" id="legend"></div>
       </div>
     </div>
-    <div class="ctrl-row">
-      <span class="ctrl-label">Metric</span>
-      <div class="seg" id="metricSeg"></div>
-    </div>
-    <div class="ctrl-row" id="row3">
-      <span class="ctrl-label" id="regionLabel">Region</span>
-      <div class="seg" id="regionSeg">
-        <button data-v="US" class="on">United States</button>
-        <button data-v="Intl">International</button>
+  </div>
+
+  <main class="wrap">
+    <div class="sec"><b>Snapshot</b><small>latest reading · y/y vs. a year ago</small><i class="line"></i></div>
+    <div class="kpis" id="kpis"></div>
+
+    <div class="sec"><b>Trend over time</b><i class="line"></i></div>
+    <div class="panel chart-card">
+      <div class="chart-head">
+        <h2 id="lineTitle"></h2>
+        <span class="unit" id="lineUnit"></span>
       </div>
-      <span class="sep" id="sep1"></span>
-      <span class="ctrl-label" style="min-width:auto">Scale</span>
-      <div class="seg" id="scaleSeg"></div>
-      <label class="switch" id="logWrap"><input type="checkbox" id="logChk"/> Log</label>
+      <div class="chart-wrap" id="lineWrap">
+        <div class="tooltip" id="tooltip"></div>
+      </div>
     </div>
-    <div class="ctrl-row">
-      <span class="ctrl-label">Range</span>
-      <div class="seg" id="rangeSeg"></div>
-    </div>
-    <div class="ctrl-row">
-      <span class="ctrl-label">Platforms</span>
-      <div class="legend" id="legend"></div>
-    </div>
-  </div>
 
-  <div class="kpis" id="kpis"></div>
+    <div class="sec"><b>Rankings</b><i class="line"></i></div>
+    <div class="grid2">
+      <div class="panel chart-card">
+        <div class="chart-head"><h2 id="snapTitle"></h2><span class="unit" id="snapUnit"></span></div>
+        <div class="chart-wrap" id="snapWrap"></div>
+      </div>
+      <div class="panel chart-card">
+        <div class="chart-head"><h2>Growth — latest year-over-year</h2><span class="unit">% vs. same period last year</span></div>
+        <div class="chart-wrap" id="growWrap"></div>
+      </div>
+    </div>
 
-  <div class="panel chart-card">
-    <div class="chart-head">
-      <h2 id="lineTitle"></h2>
-      <span class="unit" id="lineUnit"></span>
-    </div>
-    <div class="chart-wrap" id="lineWrap">
-      <div class="tooltip" id="tooltip"></div>
-    </div>
-  </div>
-
-  <div class="grid2">
-    <div class="panel chart-card">
-      <div class="chart-head"><h2 id="snapTitle"></h2><span class="unit" id="snapUnit"></span></div>
-      <div class="chart-wrap" id="snapWrap"></div>
-    </div>
-    <div class="panel chart-card">
-      <div class="chart-head"><h2>Growth — latest year-over-year</h2><span class="unit">% vs. same period last year</span></div>
-      <div class="chart-wrap" id="growWrap"></div>
-    </div>
-  </div>
-
-  <footer id="footer"></footer>
-</div>
+    <footer id="footer"></footer>
+  </main>
 
 <script id="dataset" type="application/json">{"engagement":{"totaltime":{"label":"Total Time Spent","unit":"M hours/mo","regions":{"US":{"dates":["2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05"],"series":{"Facebook":[3465.609488,3039.201423,3289.167087,3140.001559,3253.41497,3110.93478,3217.012713,3268.253965,3163.782898,3157.743128,3089.535223,3237.012659,3346.744076,2903.638856,3132.824695,3072.772036,3283.756085,3195.65498,3260.652699,3219.285087,3059.77743,3087.766123,2991.165664,3098.654095,3044.201159,2671.93763,2862.561334,2756.127153,2798.640661,2701.796162,2768.995295,2761.143708,2649.964335,2786.085466,2669.376394,2703.69456,2696.331086,2474.111586,2688.995452,2567.453841,2620.739122,2559.841178,2686.256013,2609.927198,2495.224572,2552.240127,2506.585994,2653.536766,2690.956915,2469.334555,2678.387299,2621.411924,2725.317146,2696.066124,2760.206658,2733.682556,2705.706414,2772.462374,2689.894213,2777.93112,2862.504395,2508.772948,2712.068486,2559.957148,2681.9616],"Instagram":[1367.961505,1197.883503,1450.480183,1432.549805,1479.068697,1412.5801,1446.745159,1452.858327,1417.40482,1454.311306,1395.502426,1430.058441,2545.514142,2196.278385,2358.190087,2357.404422,2487.972932,2371.003746,2396.7787,2382.633301,2336.067268,2503.014126,2577.397744,2856.863827,2848.819496,2486.287023,2743.237969,2760.532106,2892.850562,2844.308072,3063.52736,3147.059731,3033.819223,3283.809281,3275.039762,3389.637723,3376.542479,3132.160879,3305.24082,3167.149945,3284.800293,3171.003188,3263.703295,3213.529659,3127.607643,3240.816523,3200.452648,3366.041981,3490.022505,3249.153109,3531.119568,3504.882277,3759.512615,3728.336895,3778.712768,3756.774062,3636.651602,3843.719973,3880.780303,4084.842713,4076.496519,3681.038063,4042.220619,4011.908374,4075.6776],"Pinterest":[148.508822,135.698733,140.712306,124.465835,118.781993,108.553599,111.400305,109.3805,101.111077,107.403228,103.779853,116.862578,127.842097,108.841207,119.30036,114.781739,121.602302,122.652696,133.179698,140.478487,130.08363,137.238337,137.630151,152.607747,154.245655,141.673803,148.669571,144.871369,154.018399,163.394312,174.771866,173.364828,158.63055,162.782177,161.880395,164.94458,164.022544,142.064743,154.218665,139.892523,141.587159,138.855786,136.140166,139.41999,130.626524,135.851344,137.748041,150.599225,150.225208,133.751111,150.439081,136.321137,142.833264,139.786613,149.130258,147.412662,149.093194,154.499279,163.999182,178.796397,187.98863,182.577361,202.58376,191.58996,207.20028],"YouTube":[4051.812359,3809.490889,4592.413816,4463.626147,4441.054238,4305.531181,4444.833549,4285.602892,4277.747776,4522.946214,4486.723999,4720.286778,4717.328113,4163.28578,4768.394708,4794.348594,5054.558978,4714.720691,4649.534108,4834.136539,4701.334491,5003.195473,5009.507039,5304.019046,5250.695159,4712.321342,5294.579267,5111.730126,5299.187717,5420.217228,5640.203495,5525.482232,5269.186362,5552.300727,5441.951117,5673.5249,5631.069552,5129.042973,5457.482689,5248.37105,5501.967971,5447.795758,5815.104293,5656.210852,5380.521693,5535.912671,5392.613733,5608.323368,5788.715849,5233.697973,5741.935632,5545.750909,5794.504546,5846.06079,6063.374046,5920.931022,5648.003398,5890.121998,5866.833671,6101.068641,6112.585559,5578.583264,6339.311248,6056.033475,6156.25644],"TikTok":[2356.138254,2289.395093,2875.507597,2957.018538,3141.730371,3123.230507,3288.688017,3228.438221,2996.045408,3176.217151,3254.23518,3470.914973,3475.015215,2866.178835,3225.094186,3175.702635,3390.857103,3426.799669,3619.748667,3600.43792,3433.815522,3692.304992,3746.719459,3885.98638,3634.772772,3247.435622,3583.725978,3545.385684,3736.35567,3840.536147,4204.340813,4132.354247,3795.7253,3804.482147,3646.139643,3529.186717,3444.744189,3088.895067,3376.753884,3251.653988,3385.734932,3457.319507,3604.477942,3397.770214,3000.151013,3067.68155,3078.29043,3173.103037,3040.421666,2589.879382,2963.336229,2895.981209,3176.187028,3217.250646,3365.873964,3222.348725,3068.060268,3256.226536,3233.071355,3404.377915,3379.604143,2875.103181,3179.708224,3153.396408,3242.37384],"Reddit":[203.846941,189.97363,223.063695,219.896188,228.047485,220.450396,238.596464,250.519425,247.126888,255.096256,258.239187,278.930177,302.568197,273.657225,304.99477,302.317617,311.720473,304.882111,329.463673,334.211548,311.39326,327.547546,327.742796,348.670834,359.737103,310.498175,349.285275,350.844687,370.214412,358.719862,422.618034,447.778332,444.622491,472.906338,464.207201,517.324457,528.431202,490.742343,528.303404,503.01251,526.719407,514.938835,565.94054,548.021541,527.962256,554.384654,546.930392,556.400166,584.732519,532.86998,572.712272,538.391339,558.20395,541.645361,550.740871,526.776239,508.061347,521.451334,502.022873,508.517743,525.823332,452.671427,473.42977,451.23043,485.7858],"X":[436.223041,352.9142,422.634406,414.68671,414.037772,390.383274,411.650118,426.956288,414.864813,429.862068,427.532213,438.80228,470.814824,443.901971,507.520983,482.934738,532.869934,514.827427,505.214708,520.773395,546.427562,585.789632,584.982507,544.903937,537.688778,451.149763,535.802192,530.540815,541.119156,554.358637,539.753154,502.759325,479.495263,528.322369,519.222575,557.810978,583.452777,523.394177,569.135244,543.743434,564.113795,544.444138,603.525315,583.86073,546.387627,555.738889,559.379914,501.197003,519.462891,476.824218,494.974597,458.782699,441.821966,487.996768,468.582779,436.808178,468.873958,475.432535,472.441578,489.629882,525.451647,459.144146,518.642291,478.849222,482.39568]}},"Intl":{"dates":["2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05"],"series":{"Facebook":[29872.323436,26888.916909,31265.510324,30771.191164,32594.212768,30382.048036,31013.393292,30789.864709,29568.768822,29649.066072,28195.101584,29062.90454,30289.756075,27544.746413,30709.921835,29774.718036,31795.837685,31492.861823,33272.439813,33125.271766,31754.520624,32326.762675,30749.624441,31732.502926,32024.003706,29121.319943,31875.567481,31473.778583,32204.83493,31711.325522,33153.339989,33076.892352,32271.816674,32868.257561,30551.687443,30997.310798,31125.181905,29426.393543,32269.138874,31680.86921,32354.462001,31603.259311,32546.026159,32346.379988,30752.426752,31032.937855,29885.069398,30956.682307,30828.987008,27944.725424,31454.640995,30733.724773,32124.504984,31513.385695,32344.102622,32119.465068,31200.749098,32221.313299,30670.092972,30436.638105,30669.839087,27853.773,31915.009111,29652.962464,30267.0264],"Instagram":[2742.80593,2508.284145,2981.045642,2994.909666,3307.245325,3410.071444,3588.980976,3523.349656,3437.204759,3584.0297,3430.40599,3565.525649,33062.463411,28926.042848,31534.235098,30982.868985,32557.101888,32051.820929,33306.533326,33193.776475,31985.492191,34772.271837,35326.470289,38770.285319,39323.545114,35742.148499,40400.751367,40551.064285,42073.689136,42114.52862,44764.508432,44954.909299,42749.421342,45019.537938,45178.303251,48095.084363,48239.894429,45383.748626,49442.462949,47210.641612,49683.248343,49312.333356,49733.565778,48294.429676,46502.956749,47739.238416,46198.33284,50258.981784,50727.978038,46453.877356,53004.333642,51343.027709,54435.499842,54306.379506,55093.8184,55448.789246,53213.779121,56553.083836,54316.061348,58324.438767,58304.580401,52621.371951,61383.807252,59129.119874,58697.58012],"Pinterest":[487.742906,447.89983,510.910115,496.435346,493.659195,450.00715,474.509275,497.193873,463.448938,486.701739,453.059814,480.877324,532.093249,468.040633,496.596248,502.198508,517.99638,528.802404,585.431076,620.553905,593.024109,652.690287,641.989373,699.267665,717.244319,647.905631,693.638393,680.058786,714.966062,751.287089,814.913114,845.185575,779.069436,838.8101,821.477396,896.578195,913.638747,794.928593,843.609965,805.27043,811.815499,791.405743,832.215281,877.524695,836.346736,883.640892,849.570007,936.212386,965.739935,857.273482,946.475258,897.699444,937.033573,924.903249,975.630035,996.577178,919.800383,984.770102,958.456457,1029.735845,1054.872223,959.073477,1036.333141,1003.132763,1114.8414],"YouTube":[59556.350508,53068.776191,60002.867981,58797.212482,61262.372998,56979.011216,59076.12684,60137.130775,58448.105371,60299.227141,58166.601764,60780.211823,63499.003409,56735.804067,62969.966269,61771.254994,64660.265465,61638.348847,62968.279255,65370.837919,62874.30092,65666.510891,63489.895,67310.429929,68975.646331,62093.68189,69131.52528,66372.944306,68913.408583,68473.035859,71708.460343,71840.392374,68747.844896,71412.922299,68898.864159,74209.457617,75560.328529,70605.922565,75531.996783,71864.396617,75501.328485,74267.672187,77958.444274,78263.828601,76725.559997,79957.993473,76378.368978,81111.335252,82067.306826,73191.832467,80712.034095,76177.154976,80221.79604,77709.181731,79732.689667,79905.107923,75635.431053,76539.95914,74925.509324,78396.313253,79583.353095,71944.450858,79656.96434,75432.305287,80367.01692],"TikTok":[17963.522246,17176.015939,21437.600202,22211.630197,24795.912238,24773.486681,27139.343795,28610.556969,27179.82357,29741.1226,29347.214164,31503.588048,33355.370839,29435.520267,32844.97412,33074.303426,34279.372318,33795.421462,35510.164182,36012.795935,34331.289557,36486.538679,35525.032781,38511.056603,37593.886339,33164.853947,38331.506412,40379.462705,41743.827115,44190.453793,48644.939724,47359.939668,42794.45774,43869.383694,41620.829639,43481.064013,43337.775524,39573.064565,43088.419983,41759.08533,43517.330885,44086.230526,46210.405673,45260.803678,41649.414231,42749.171496,41788.401116,45256.026534,45355.957688,39929.627612,45829.282869,44844.783573,47779.540541,46962.123659,49192.812855,48965.616615,45188.370605,47098.174698,46376.366754,49322.685598,49618.446909,44447.16944,50150.478982,48812.412709,51698.62044],"Reddit":[142.04994,128.906193,153.846422,156.205841,163.165001,161.676204,175.121052,185.693309,179.031447,186.509725,188.660802,208.317162,229.383499,209.541696,238.834402,240.308813,242.529768,236.28704,266.902664,270.558762,256.903485,270.384748,259.28157,275.15875,285.296261,252.353546,278.23152,276.850729,300.566394,289.622061,337.786415,346.707851,336.489301,352.752267,347.647179,381.965135,404.065484,370.470741,398.22093,388.79343,403.334305,399.963391,431.170054,443.271515,418.127066,432.836025,427.386283,444.480603,466.006642,422.800376,471.433611,458.019485,487.751423,465.951927,477.248339,471.557857,441.265466,458.001937,448.662969,479.134271,492.269853,426.943421,471.245453,458.487017,495.6846],"X":[2830.969933,2530.279404,2976.375661,2977.353319,3199.915825,2912.278672,3025.422382,3093.639914,2790.176507,2897.174135,2801.208059,2912.080985,3117.571621,2973.865832,3300.378328,3171.114279,3285.36266,3078.966148,3253.232864,3324.30739,3183.102527,3434.969209,3362.452149,3326.451042,3296.203921,3034.808298,3457.909786,3342.864335,3572.313107,3383.952238,3432.765781,3309.988943,3072.881229,3402.444073,3268.437189,3437.386832,3604.044385,3341.071947,3475.847358,3352.877031,3391.969883,3334.847325,3461.494412,3537.902992,2948.304676,3132.66309,3082.64578,3098.468048,3067.346868,2691.422081,2971.309208,2842.162906,2879.088045,2889.997656,2810.592783,2697.724767,2560.011666,2742.406896,2692.539782,2756.202294,2962.628227,2708.608548,3232.127302,2895.631343,2976.28884]}}}},"dailytime":{"label":"Time per User","unit":"min/day","regions":{"US":{"dates":["2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05"],"series":{"Facebook":[43.074508,41.522244,40.411467,40.164755,40.125999,39.538128,39.703019,40.206575,39.997005,38.64815,39.453833,40.022054,41.195737,39.999708,39.196069,39.396848,40.606526,40.706712,40.726182,40.347483,39.907428,39.484374,39.947582,40.363927,39.496461,38.841994,38.005634,37.65333,37.04833,37.277543,37.458604,37.605959,37.812186,38.60716,38.4364,37.954473,37.634027,36.435441,36.788042,36.055235,35.461902,35.435292,35.93396,35.335687,35.011387,34.668544,35.308963,35.835784,36.206892,37.039754,36.398806,36.452643,36.408262,37.106309,36.866271,36.431798,37.374318,36.973718,35.98736,36.557103,37.448945,36.704885,36.342709,35.662259,36.679865],"Instagram":[21.950004,20.7862,20.676823,20.688725,20.740924,20.786296,20.798713,20.831306,20.737845,20.546228,20.681585,20.817832,37.328488,36.198881,35.822895,36.416027,36.663673,36.453659,35.983997,35.599651,35.788824,37.117528,39.317608,42.15652,41.719429,40.455039,40.91377,41.97953,42.106561,42.310503,43.685755,44.312077,44.044917,45.833948,47.050811,47.721414,47.02431,46.044601,46.098281,45.472971,45.61564,45.810415,45.712344,44.76107,44.689051,44.890743,45.899597,46.965546,48.39319,50.008348,49.151346,50.13008,51.356467,52.587546,51.742028,51.230874,51.402276,52.260173,52.622321,55.333058,55.341287,55.891761,56.646921,57.550567,55.908631],"Pinterest":[14.869413,14.815364,13.478917,12.705771,12.341762,12.277598,12.20702,12.098864,11.562425,11.310436,11.404927,12.238468,12.944751,12.490681,12.46704,12.446527,12.772811,13.343169,13.692023,14.164382,13.732953,13.838123,13.973409,14.485189,14.275783,14.759647,14.337774,14.447421,14.748505,15.274233,15.470223,15.195441,14.357208,13.887321,14.103165,14.258896,13.83567,13.20027,13.606525,12.916096,12.625257,12.698354,12.393906,12.979311,12.467527,12.446078,12.733824,13.194941,13.089836,13.026413,13.045264,12.598392,12.817661,12.999446,13.596058,13.47944,13.944345,13.368506,13.931963,15.001963,15.669172,16.696021,16.687761,16.70335,16.737252],"YouTube":[58.338868,59.865774,64.136099,64.524059,62.657679,63.012337,63.293436,60.627408,62.325971,63.554572,65.079903,66.285892,66.713132,65.674528,67.67625,70.467697,71.242779,68.932287,65.978773,68.531875,68.193241,69.733537,72.186151,73.29798,72.190143,71.917084,73.501891,72.947407,73.251682,76.046647,75.712902,73.89955,72.502643,73.67467,74.506271,75.196972,74.698651,73.583551,73.909062,73.605092,74.750479,76.794764,78.845129,77.196317,75.667178,75.643542,76.196513,77.305265,78.29322,78.032204,77.654111,77.186508,77.690689,80.35856,80.901837,79.087393,77.71243,77.921001,77.225823,81.509286,81.84804,81.852706,84.841426,83.617676,81.849352],"TikTok":[84.502794,85.592375,85.930292,88.28047,88.661775,90.26335,89.003473,86.418241,81.100384,81.271285,84.292241,85.66291,84.651398,78.545646,79.745679,79.613319,80.856796,84.577508,86.828201,86.135573,85.65413,87.891982,91.401793,91.508976,86.570595,86.480591,86.850164,87.991714,88.219516,90.416443,92.016274,89.713873,85.392767,83.807866,83.194518,79.759485,78.519726,77.097806,79.711571,79.382864,80.983021,83.732182,83.113933,79.475452,73.764658,74.269365,75.926714,75.451373,74.389555,75.902427,74.519239,74.873675,77.853763,79.719613,80.11697,77.861419,76.12596,78.207373,77.559557,80.352576,79.236091,78.495907,79.356766,79.68004,78.141635],"Reddit":[29.610037,27.840074,26.713553,26.096105,26.040815,25.460016,26.385876,27.087932,26.924249,26.360598,27.27211,28.077938,29.134147,28.636622,28.412722,27.786451,27.181474,26.468024,26.80544,27.004061,25.856832,26.163895,26.734841,26.722273,26.949423,25.827274,25.89671,26.278272,26.443302,26.10936,27.953679,28.558685,28.858409,29.148493,28.503325,29.39674,29.101172,28.52826,28.534164,27.669063,27.44168,27.259994,28.358717,27.90692,27.409513,28.02824,28.075901,27.734399,28.585711,28.748914,27.740398,27.258507,27.127836,27.059254,27.087468,26.463086,26.589146,26.388089,25.090983,26.05545,26.792446,26.139799,25.340853,25.123163,26.142775],"X":[26.234363,23.553963,23.120086,23.156886,22.759123,22.358757,22.748973,23.138814,22.582642,22.459612,23.137705,23.135214,24.039124,25.034131,25.735266,24.475138,25.441526,25.387351,24.228099,24.487116,25.47015,26.4106,26.700253,25.067898,25.301663,24.1233,26.054582,26.382721,26.429754,27.551231,25.704978,25.084686,25.365133,27.203739,27.72814,29.402289,29.750943,28.13298,28.997545,29.198471,29.54104,29.919244,31.038988,30.297066,29.554896,29.609917,30.555486,28.787995,29.578707,29.9062,28.866874,28.846139,27.920286,29.799447,28.972058,27.659808,29.45655,29.236694,29.114855,30.404214,32.612045,32.172906,33.102394,32.791426,32.18193]}},"Intl":{"dates":["2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05"],"series":{"Facebook":[50.099897,49.606302,49.03229,49.651241,50.62412,48.915153,48.492507,48.044615,47.235297,45.462549,44.915904,45.13938,46.905821,47.130531,47.287327,47.350504,48.506743,49.083741,50.042874,49.640531,49.125592,48.322934,47.791184,47.952093,48.137347,48.367702,47.72662,48.548525,48.134697,49.228601,50.172229,50.288632,50.742388,50.115974,48.422124,48.057957,48.148662,47.538911,48.421927,48.824323,47.80614,47.807728,47.700145,47.312955,46.238923,45.26714,45.191009,45.450073,45.220258,45.335244,46.253914,46.648649,47.025622,47.676392,47.529178,47.357182,47.625104,47.64097,45.522218,45.563903,45.733104,45.975982,47.229748,45.928956,46.17573],"Instagram":[5.349535,5.353787,5.352861,5.41437,5.705706,6.037027,6.127874,5.974735,5.944515,5.916294,5.82652,5.815082,53.455934,51.411039,50.361326,51.085733,50.957786,51.112443,50.903397,50.491109,49.929132,52.036504,54.007681,56.699212,57.152227,57.16986,58.029765,59.930145,59.513371,60.288594,60.963905,60.829059,59.520595,60.575706,62.423229,64.373539,64.083451,63.584066,65.10854,64.268885,65.052514,66.117726,64.409033,62.433581,61.960988,61.660928,61.763411,64.882817,65.528629,65.963882,67.783877,67.653771,68.940187,70.821807,69.711612,69.963483,69.356466,70.639427,68.158392,72.803705,72.633904,72.50172,75.759892,75.393025,71.188962],"Pinterest":[11.500659,11.311696,11.051465,10.83373,10.410349,9.987129,10.215686,10.485442,10.174107,10.035879,9.831441,10.174178,10.795052,10.508125,10.173665,10.507542,10.366759,10.691564,11.225433,11.553808,11.279176,11.557287,11.481612,11.716207,11.842772,11.713436,11.383595,11.382547,11.38774,11.706082,11.826122,12.007878,11.355591,11.39778,11.430904,11.846585,11.710954,11.318933,11.379658,11.224353,10.984322,10.984858,11.122982,11.487443,11.134204,11.209276,11.171237,11.730385,11.785545,11.436533,11.425853,11.232955,11.255932,11.365198,11.519377,11.52958,10.997717,11.218662,10.998568,11.673008,11.780552,11.688201,11.397759,11.352191,11.680792],"YouTube":[74.969891,73.380096,72.969053,72.995952,73.156638,70.813792,71.378513,72.19351,72.126836,71.674361,71.481704,72.511129,74.96439,73.916085,73.842789,74.647741,75.125516,74.12575,73.141022,75.41489,74.732279,75.118439,75.112348,77.031805,78.494391,77.983432,78.150961,77.213089,76.640184,77.88614,78.462702,78.114059,77.026922,77.099349,76.95525,79.958805,80.767893,81.092617,81.251813,79.799728,80.730424,81.646985,82.906883,83.089472,83.867783,84.344651,83.627269,85.795807,86.579686,85.517713,85.13441,83.239444,84.335994,84.52193,84.236564,84.404049,82.555038,81.123647,79.510256,83.536898,84.421502,84.293203,84.20469,82.405963,84.364788],"TikTok":[78.244029,78.762325,80.403912,82.707532,83.540629,84.497545,86.953959,88.555573,85.889247,88.196906,89.772264,92.255213,93.603955,90.378966,89.636496,91.865435,89.728354,90.240971,90.275389,90.254132,88.485858,89.148529,88.518689,92.486991,89.504489,87.674605,90.690621,96.174987,94.925653,98.837811,101.212707,97.930492,91.615346,90.858377,88.970425,89.994194,88.64534,87.692264,89.531081,89.225252,89.655127,92.452729,92.947904,90.442954,86.125485,85.356359,85.998036,89.516772,88.433954,86.490908,89.258428,89.705238,91.520624,92.460677,92.972092,92.028055,87.825305,89.18675,87.428466,92.699984,92.748125,91.765849,93.383411,93.077838,92.544339],"Reddit":[23.671891,21.985493,21.710661,21.832317,21.456848,21.119033,21.825322,22.507062,22.139808,21.69603,22.114192,22.889816,23.843587,23.513824,23.576852,22.987548,21.893981,21.310505,22.168798,22.130464,21.691393,21.726624,21.470843,21.772497,22.087244,21.795808,21.284647,21.362195,22.263969,21.71119,22.91321,23.341967,23.126487,23.253501,23.078862,23.399017,23.695382,22.947213,22.962423,22.700312,22.218782,22.222421,22.725404,22.646491,21.689941,21.654115,21.675425,21.681127,22.338982,22.281076,22.14653,22.085381,22.276865,22.001639,21.743488,21.399142,20.999186,21.050348,20.271761,21.455102,21.633461,21.108504,21.041688,20.851065,21.136187],"X":[33.778843,32.68659,32.250861,32.051302,32.209311,30.391396,30.823269,31.369974,29.27849,28.926014,28.683227,28.744447,29.994517,31.318928,30.639969,30.224475,29.857976,28.924178,29.263034,29.659748,29.176606,29.991564,29.746206,29.182103,28.754351,29.416722,30.239615,30.181917,30.813383,30.326346,29.380715,28.772401,28.756347,30.486303,30.839912,32.017649,33.070705,32.274135,32.154547,32.39172,31.987866,32.195662,32.315242,32.779182,29.957388,30.615062,31.444788,31.570349,31.667021,30.880811,31.106759,31.060081,30.893129,31.59447,30.670621,30.103983,29.920399,31.042003,30.863315,32.411047,34.04698,34.575115,35.85436,34.107742,34.534354]}}}},"users":{"label":"Active Users","unit":"M MAU","regions":{"US":{"dates":["2020-10","2020-11","2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05"],"series":{"Facebook":[155.129704,155.481691,155.979832,155.7216,156.845435,157.532757,156.356068,156.928982,157.363787,156.826267,157.328817,158.200989,158.138512,156.615215,156.543335,157.238821,155.553216,154.697442,155.990756,156.518115,157.008751,154.960283,154.430313,153.343757,151.359155,149.75453,148.58304,149.177979,147.406972,145.779473,146.39487,146.206963,144.955698,143.073823,142.109103,140.164568,139.674183,138.898356,137.874585,138.669863,140.491001,141.472802,142.417813,143.037963,144.479757,144.687789,142.956665,142.537886,142.487078,141.980152,143.317017,143.848408,142.858161,142.421578,143.825615,144.879407,145.31578,144.911197,145.230234,144.789606,145.131635,144.668765,147.075137,147.943583,146.463939,144.435156,143.56674,141.518878],"Instagram":[144.354145,136.909155,122.145231,120.622638,123.490261,135.774289,138.486038,138.022471,135.914559,134.631017,134.988362,136.697407,136.998193,134.951206,132.955968,131.98503,130.012606,127.411223,129.470709,131.340672,130.083169,128.916377,129.539143,130.547306,130.519022,131.106539,131.163906,132.164899,131.69578,129.772759,131.51801,132.97371,134.449269,135.728633,137.458764,137.760242,138.669264,139.212893,137.47684,138.975852,140.740341,138.773946,139.298133,139.374959,138.440274,138.186856,138.954113,139.971988,139.72921,139.4545,138.717005,139.583322,139.226175,139.048582,139.831507,141.685682,141.795433,141.348104,141.929562,141.497687,142.354256,142.737675,142.882888,142.569746,141.128827,138.112587,139.422028,141.094641],"Pinterest":[19.588894,19.78571,18.783573,19.330718,19.627125,20.205362,19.592017,18.627862,17.683199,17.663074,17.497857,17.489597,18.37924,18.199125,18.481531,19.114799,18.672414,18.52115,18.443978,18.426586,18.384342,18.826083,19.195603,18.944742,19.194987,19.698866,20.391162,20.912337,20.568698,20.069194,20.054979,20.212226,21.394764,21.865756,22.081941,22.097687,22.687044,22.956605,22.389362,22.945256,22.266746,21.937102,21.661735,21.705671,21.869888,21.260213,20.790405,20.954681,21.126181,21.634985,22.090463,22.212536,22.002182,22.320162,21.641038,21.568013,21.506549,21.229625,21.166667,21.384036,22.368308,22.783421,23.067485,23.220689,23.432961,23.496118,22.940303,23.960492],"YouTube":[137.50011,139.204918,136.113605,134.425259,136.358292,138.588768,138.355405,137.183326,136.656769,135.920945,136.814611,137.270153,137.741301,137.883549,137.827804,136.859299,135.841503,136.372081,136.072237,137.319423,136.792812,136.393842,136.526153,137.882712,138.865811,138.79413,140.056291,140.775948,140.409355,139.419172,140.148371,140.017158,142.549802,144.183127,144.716467,145.351566,145.862729,146.080352,146.030029,145.904165,144.214473,142.917112,142.608912,142.460227,141.879355,142.748712,141.813824,142.215471,141.646854,141.544895,140.415009,143.102637,143.723572,143.114429,143.697416,144.356682,145.499392,145.059286,144.901305,145.3565,146.305053,147.038407,144.873309,144.546049,146.044126,144.618439,144.850558,145.576413],"TikTok":[57.464973,57.2465,52.808739,53.965879,57.316398,64.767597,66.991454,68.583879,69.202628,71.51634,72.306379,73.884864,75.641932,77.213161,78.422505,79.453335,78.194172,78.27531,79.778174,81.167565,81.033357,80.687669,80.902574,80.178633,81.308859,81.983501,82.191544,81.263667,80.466502,79.864487,80.584535,81.973428,84.952161,88.434725,89.151261,88.900393,87.861846,87.653363,85.641024,84.911744,82.892337,81.991267,81.923323,80.918633,82.580423,83.937899,82.746675,81.343861,79.944781,81.085833,81.39666,79.106362,73.116787,76.96656,77.35646,78.961614,80.714156,81.313544,80.10134,80.604836,80.585419,80.680676,82.00258,82.552903,78.487346,77.551976,79.151476,80.310097],"Reddit":[13.306723,13.196329,12.427682,13.324619,14.622316,16.161691,16.852798,16.949632,17.317381,17.501773,17.900086,18.357198,18.730026,18.937969,19.227369,20.10067,20.477567,20.776343,21.760074,22.196366,23.037769,23.788889,23.954214,24.085956,24.230451,24.518029,25.254093,25.836002,25.761651,26.105092,26.702265,27.097373,27.478258,29.261636,30.346906,30.814068,31.401369,32.572144,34.060686,35.145322,35.590287,35.835033,36.359201,37.149945,37.77982,38.625471,38.008022,38.524016,38.282908,38.960844,38.829165,39.591122,39.718517,39.958885,39.502628,39.826057,40.03402,39.352148,38.527891,38.215694,38.246827,38.725353,37.774357,37.98543,37.108556,36.159622,35.921467,35.965218],"X":[35.032983,36.148638,30.683983,32.183082,32.106899,35.380581,35.815412,35.210647,34.919945,35.023214,35.713456,36.74192,37.043876,36.955455,36.710045,37.907143,37.996866,38.169362,39.46329,40.538494,40.55779,40.359539,41.162401,42.90729,42.929216,43.818499,42.071848,41.131208,40.075342,39.802461,40.21881,39.626831,40.242023,40.641292,38.791897,37.807431,37.588929,37.450949,36.719391,37.957231,38.491639,37.987771,37.244651,36.959875,36.394244,37.63375,37.299091,36.974424,36.326466,36.614042,33.69664,33.991074,34.165697,33.187361,31.80895,30.627884,32.752069,31.303762,30.565475,31.834955,31.473874,31.406753,31.169059,31.184895,30.58102,30.324809,29.205757,29.012214]}},"Intl":{"dates":["2020-10","2020-11","2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05"],"series":{"Facebook":[1148.620979,1151.634999,1147.885584,1154.042287,1161.527973,1234.164089,1239.49333,1246.156446,1242.234602,1237.839129,1240.373902,1251.97769,1262.254101,1255.461843,1246.157636,1249.852,1252.361378,1256.965919,1257.630446,1268.696419,1283.229895,1286.861944,1291.554059,1292.789342,1294.787433,1286.832497,1280.814735,1287.60611,1290.1756,1292.667413,1296.590508,1294.948173,1288.329336,1278.949657,1273.046979,1271.986528,1269.375362,1261.889608,1248.384217,1251.172613,1280.681279,1289.837096,1297.749457,1309.905789,1322.098345,1320.589448,1323.229488,1330.153244,1326.873108,1322.611299,1318.28521,1319.519381,1320.860964,1316.21187,1317.668369,1322.182654,1321.970247,1317.117012,1312.719706,1310.264818,1309.037831,1304.01094,1292.901139,1297.987094,1298.213846,1307.883032,1291.253487,1268.660859],"Instagram":[1018.49746,1010.565877,995.198749,992.358477,1003.942504,1077.884426,1106.28191,1121.880477,1129.718875,1133.576644,1141.370523,1156.429029,1172.496202,1177.514546,1186.744581,1197.095619,1205.662799,1211.922087,1212.975401,1236.587194,1254.169017,1266.403842,1272.422421,1281.235651,1293.345356,1308.201706,1323.462162,1331.708168,1339.697488,1347.498175,1353.277689,1368.313461,1397.097717,1421.184938,1430.393695,1436.458136,1438.441181,1447.483706,1446.04851,1456.968013,1476.744371,1469.777845,1469.160131,1478.207685,1491.652432,1494.487814,1497.160463,1501.039875,1498.49393,1495.977372,1499.248243,1498.324998,1509.068603,1513.472497,1517.817175,1528.267287,1533.606164,1529.633208,1533.946472,1534.500882,1549.525335,1542.405244,1550.553101,1553.648759,1555.274584,1568.209317,1568.556773,1595.868457],"Pinterest":[72.720962,77.185638,78.949602,82.083861,84.848931,89.477576,91.64625,91.780728,90.117418,89.901454,91.775887,91.103612,93.863565,92.165498,91.47966,95.400919,95.444637,94.474708,95.588202,96.710423,98.919563,100.93975,103.954647,105.153798,109.305192,111.82914,115.517016,117.220428,118.527925,117.935142,119.491493,121.517111,128.358422,133.37011,136.230816,137.213365,142.440314,143.729208,146.482104,150.998211,145.303441,143.483532,143.486299,143.04531,144.090303,144.811815,147.85143,150.230182,152.576556,152.099546,154.472678,158.598868,160.626884,160.328298,159.833176,161.125115,162.760602,163.925195,167.296554,167.271151,169.896082,168.665329,170.738946,173.310054,175.831797,175.982499,176.729367,184.726985],"YouTube":[1472.045414,1520.60933,1541.459118,1537.555332,1549.722787,1591.559424,1610.971867,1620.80077,1609.263109,1601.895098,1612.256371,1620.703436,1628.311431,1627.454248,1622.359501,1639.462383,1644.793853,1650.497712,1655.006682,1665.864101,1663.075206,1666.289127,1677.708504,1682.654459,1691.947736,1690.531504,1691.226784,1700.774413,1706.232804,1712.108846,1719.214847,1740.35061,1758.285505,1768.873178,1780.037081,1785.034201,1792.733167,1790.621543,1796.31509,1810.692235,1801.41208,1799.233217,1801.11884,1810.11813,1819.238561,1819.961217,1823.075466,1829.678973,1834.821836,1826.637878,1829.80598,1834.609891,1834.001816,1834.943602,1830.313894,1841.064348,1838.793351,1831.999391,1832.317882,1832.363784,1826.124211,1823.87936,1816.380593,1824.562386,1828.933708,1830.95228,1830.748712,1843.76762],"TikTok":[408.2914,417.855541,426.347416,444.35477,467.301447,516.046155,537.112633,574.476024,586.371751,604.087071,625.316618,632.90399,652.669869,653.814725,660.934866,689.70144,697.907024,709.207972,720.059799,739.42259,749.003939,761.329871,772.288028,775.972352,792.151119,802.656096,805.92447,812.946491,810.583001,818.056067,839.708199,851.134559,894.201382,930.233947,936.014894,934.220293,934.514652,935.610448,935.136975,946.23773,933.666238,931.485929,936.037373,939.456501,953.703174,962.254029,968.583533,967.179787,969.351703,971.845471,978.501652,992.669909,989.277248,993.764284,999.825307,1010.444702,1015.829107,1024.091143,1029.818147,1029.051263,1022.099775,1026.676025,1029.808835,1035.446307,1037.901737,1039.429186,1048.851455,1081.231413],"Reddit":[10.787302,11.196698,11.101183,11.614424,12.564083,13.715256,14.309598,14.718062,15.310948,15.52985,15.968606,16.17281,16.63837,17.062418,17.61458,18.62002,19.095913,19.606525,20.907738,21.440252,22.17564,23.302382,23.662501,23.687136,24.086822,24.151969,24.460461,25.000236,24.810165,25.300519,25.91969,26.129277,26.67952,28.532893,28.74854,29.099906,29.361012,30.12689,31.594805,33.004837,33.402365,33.565716,34.254457,35.134555,35.996383,36.722018,37.884229,38.554928,38.687665,39.435101,39.678981,40.375534,40.662346,41.200683,41.477163,42.377372,42.356111,42.481982,42.650897,42.026912,42.111197,42.836927,43.223129,44.041975,43.341714,43.346712,43.977323,45.390853],"X":[160.884468,164.691379,158.847687,162.210902,165.879258,178.622429,185.786729,192.285564,191.651521,189.975183,190.873293,190.595655,193.854357,195.320285,196.082595,201.170419,203.473428,208.480273,209.837508,212.967095,212.899131,215.171799,216.931829,218.19553,221.673254,226.076036,220.624686,221.870757,221.070203,221.323212,221.514378,224.38803,223.169138,226.136863,222.658867,213.718467,216.010961,211.96151,207.791858,210.928974,214.182737,209.222243,207.020625,205.237292,207.161281,207.322188,208.899486,196.833229,198.046926,196.0672,189.957829,187.475809,186.76106,184.876897,183.010658,180.3776,182.94326,177.363769,173.44558,171.121493,170.990394,168.853132,164.591571,168.417847,167.871059,174.47614,169.793201,166.806624]}}}},"downloads":{"label":"Downloads","unit":"M/mo","regions":{"US":{"dates":["2020-10","2020-11","2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05"],"series":{"Facebook":[3.455014,3.742096,4.20977,3.830791,3.477428,4.423595,3.922944,3.807799,3.548527,3.611821,3.657599,3.311494,3.438175,3.106664,3.620853,3.682898,3.021304,3.792664,2.804322,2.482411,2.605135,2.562499,2.594085,2.466674,2.493245,2.454473,2.944792,2.743895,2.489894,2.651241,2.518973,2.672813,2.706209,2.871134,2.810793,2.612817,2.782063,2.527688,2.989877,2.871317,2.77144,3.481466,2.855282,2.767052,2.835779,2.714631,2.725268,2.459305,2.52363,2.316432,2.559762,2.57242,2.138518,2.307499,2.299468,2.559093,2.200914,2.328584,2.416243,2.422831,2.334472,2.026274,2.075445,2.11891,2.031338,2.327741,2.26889,2.403866],"Instagram":[3.637034,2.878775,3.16686,2.887276,2.455961,2.972913,2.680062,2.487507,2.829284,2.86638,2.982873,2.532519,2.713857,2.596637,3.158417,3.413818,2.869943,3.24822,3.24459,2.989874,3.034163,3.165333,3.42952,3.125541,3.522368,2.700245,2.830128,2.855403,2.390156,2.794681,2.743536,2.926746,2.894091,3.053396,3.39709,3.464359,3.358943,3.316929,3.700211,3.253718,3.464786,4.217052,3.330015,3.697701,3.644317,3.800989,3.714866,3.624816,3.444845,3.065379,3.326674,3.781263,3.025251,2.95582,2.99939,3.029376,3.141385,3.490093,3.537635,3.407811,3.076116,2.91617,3.091781,3.034845,2.957554,3.139746,2.802821,2.851277],"Pinterest":[18.87073,null,4.815811,3.907135,3.29619,4.434586,3.675763,3.204673,3.260968,3.234766,3.682664,2.466591,2.696821,2.618425,4.154982,4.199244,3.157284,4.423682,2.512359,1.526289,2.408325,2.58335,2.237892,2.282277,2.294803,1.702738,1.526902,1.824095,1.648431,1.610328,1.455826,1.504755,1.581237,1.710126,1.708426,1.787619,1.929729,1.882027,2.510107,2.069907,1.801362,2.031242,1.635259,1.762546,1.80634,1.684285,1.612933,1.620372,1.686224,1.525573,1.951875,1.846629,1.762695,1.47531,1.396887,1.451899,1.718033,1.86731,1.68622,1.605875,1.537112,1.465429,1.883218,1.729236,1.691918,1.680536,1.408409,1.525901],"YouTube":[3.365889,3.616505,4.815811,3.907135,3.29619,4.434586,3.675763,3.204673,3.260968,3.234766,3.682664,2.466591,2.696821,2.618425,4.154982,4.199244,3.157284,4.423682,2.512359,1.526289,2.408325,2.58335,2.237892,2.282277,2.294803,1.702738,2.608537,1.824095,1.648431,1.610328,1.455826,1.504755,1.581237,1.710126,1.708426,1.787619,1.929729,1.882027,2.510107,2.069907,1.801362,2.031242,1.635259,1.762546,1.80634,1.684285,1.612933,1.620372,1.686224,1.525573,1.951875,1.846629,1.762695,1.47531,1.396887,1.451899,1.718033,1.86731,1.68622,1.605875,1.537112,1.465429,1.883218,1.729236,1.691918,1.680536,1.408409,1.525901],"TikTok":[4.911783,4.313789,5.735651,6.001191,5.941147,6.079611,5.22726,5.758616,5.559369,5.760402,7.17358,5.835686,5.56322,5.755693,6.282415,8.021468,4.993268,6.645597,5.062545,4.019341,5.00303,4.970353,5.014576,4.651184,4.840276,4.417942,4.295318,4.626378,4.387648,4.421797,3.709694,4.141676,4.199085,4.508493,4.359483,4.129793,4.375772,4.343157,5.109586,4.388191,4.298299,4.095452,4.663879,4.53275,5.494345,4.794156,5.087874,3.773159,3.994697,3.313675,4.073495,1.953968,3.985354,5.219016,4.863167,4.881258,4.534129,4.778825,5.492866,5.281762,4.601903,4.53029,5.254497,5.043475,4.303676,5.64092,5.328454,5.38331],"Reddit":[1.488519,1.349742,1.551165,2.411389,1.68473,1.450181,1.598058,1.460651,1.777101,1.525954,1.530341,1.413233,1.413764,1.395207,1.555159,1.511233,1.329348,1.780634,1.592313,1.650819,1.744822,1.913612,1.451788,1.309748,1.648629,1.393932,1.352436,1.369112,1.171136,1.176557,1.229285,1.249035,1.393654,1.538404,1.418968,1.439317,1.662265,1.478383,1.593272,1.641873,1.631271,1.548811,1.610968,1.542012,1.552321,1.754376,1.629734,1.522984,1.349671,1.221421,1.221147,1.298849,1.005991,1.087667,1.098648,0.929946,0.778752,0.816046,0.782871,0.754972,0.766029,0.951175,0.82814,0.832247,0.799248,0.791258,0.755317,0.792891],"X":[1.904539,2.180285,2.14843,2.353828,1.819745,1.753628,1.632883,1.730847,1.660547,1.953566,2.065708,1.953075,1.969966,1.904787,2.002776,2.09388,1.716894,2.037348,2.22719,1.71297,1.41756,1.504875,1.628278,1.597797,2.179193,2.223215,1.981188,1.924346,1.495045,1.586553,1.579105,1.766813,1.722277,1.575683,1.264044,1.043467,1.261571,1.106931,1.201332,1.326179,1.771064,1.54087,1.404479,1.452468,1.814554,1.852952,1.700477,1.37604,1.499619,1.610175,1.398717,1.620663,1.413768,1.276141,1.084199,1.118768,1.316976,1.153989,1.394402,2.09194,1.906185,1.676005,1.563858,1.884334,1.630866,1.83075,1.686739,1.802713]}},"Intl":{"dates":["2020-10","2020-11","2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05"],"series":{"Facebook":[51.704995,47.610654,46.663435,45.343672,43.552352,46.06956,43.966867,45.223645,43.443454,44.314417,47.369071,44.763312,45.438541,42.654091,42.722042,42.319669,40.754152,47.768074,48.675098,48.509753,47.368753,51.402468,52.621964,49.208226,47.300838,44.399106,48.674986,52.114734,51.929088,57.726543,55.482281,57.579801,57.700718,60.256356,56.519179,56.033869,57.565133,51.239308,57.092013,58.091135,57.109509,95.823227,66.416394,67.216318,69.530134,59.735701,62.063044,52.216652,52.526475,51.282551,55.457327,57.759886,50.391738,49.081505,44.845149,52.242166,47.437258,47.562619,45.629071,45.183171,47.168909,45.395587,47.549994,48.390705,42.209977,46.484013,44.459298,43.974791],"Instagram":[40.907286,39.869961,40.826502,39.679443,40.763128,45.631421,43.947611,45.275864,45.035031,45.528389,57.209772,48.35693,50.737801,48.093171,49.343309,47.412643,43.381749,47.856731,48.629057,54.751525,58.386008,66.421674,55.382958,49.188959,55.97326,52.511205,64.470464,68.584775,61.393485,66.440788,58.229409,61.886976,72.312426,76.448394,72.645842,60.29667,54.920964,58.691603,70.264678,72.534251,68.601445,74.894146,62.210279,73.326147,73.69279,75.446824,85.27586,64.959223,61.460519,60.262226,65.647714,62.312314,56.28927,57.112342,49.364125,54.60513,50.225403,51.829486,51.972682,48.186045,52.08311,50.88369,52.202622,51.072051,47.904225,50.731534,49.644807,47.592854],"Pinterest":[15.504841,14.324127,13.147943,14.775425,13.24382,12.941417,12.317441,12.903707,11.499627,11.684968,11.792004,12.445423,12.232378,11.096979,10.179999,10.845063,10.595853,10.211927,11.594028,12.832575,11.555927,12.1378,12.75426,12.92033,13.288332,13.287656,13.830359,15.716718,14.136031,15.797773,14.186876,14.71396,14.737646,15.747336,16.030991,15.429425,16.361363,15.846399,16.225923,17.365464,16.319106,17.61729,16.802089,17.531291,17.759215,17.913551,18.874682,17.683468,18.190823,17.181688,18.553954,19.032025,16.414118,18.115812,17.425856,18.627263,17.844285,19.23733,19.956954,19.190585,19.987705,18.728565,19.379838,20.108549,17.956092,20.239232,18.608431,18.968282],"YouTube":[13.136302,13.784254,15.56612,13.669565,12.774546,14.047537,12.035714,12.339612,11.540105,11.684411,12.867663,10.842312,12.30548,12.695704,14.553281,14.079632,11.371586,13.208524,10.4736,10.246112,11.657727,13.596407,14.846556,13.291378,12.701712,10.85174,11.763365,13.464566,12.538399,13.015235,14.05431,13.447342,14.162459,14.220666,13.263408,11.959325,12.707492,10.976717,13.267293,14.299417,12.488176,13.040285,12.165636,12.509059,13.65605,12.308798,13.429805,11.544036,12.267253,10.156957,11.722999,12.11237,12.31992,8.701865,7.746501,8.366258,8.390226,7.705862,7.008975,6.630399,7.932231,7.310552,9.731716,9.437083,8.130094,9.418638,8.837112,8.48647],"TikTok":[62.653589,52.108949,51.750476,57.583992,52.605144,51.527415,52.306693,74.810391,58.620208,54.927481,59.262785,49.432505,48.42721,47.213396,53.063094,56.63805,47.772546,51.481109,51.315805,54.766468,51.581262,58.287472,56.046622,52.581954,52.936096,47.899614,54.788343,66.031395,61.53632,66.818818,66.448994,68.074325,75.464299,74.841583,78.950865,74.970453,71.830334,64.652788,68.774337,72.913222,68.471411,71.450821,73.678832,76.006713,76.393823,70.311502,71.415625,67.39597,68.602163,62.457651,72.160491,82.510928,67.580049,63.796857,60.793516,66.093222,61.029172,65.71467,66.399435,57.323009,60.035426,60.056118,66.895279,67.133004,63.40272,66.357716,67.206648,69.808077],"Reddit":[2.299581,2.247007,2.719823,3.722028,2.897415,2.516144,2.448484,2.573523,3.179982,2.600508,2.584094,2.726067,3.017799,2.470661,3.839264,3.671185,3.157813,3.278308,3.97135,3.615201,6.217317,4.864819,3.449582,3.162633,3.46188,3.307669,3.003286,2.839513,2.451988,2.602898,2.774728,2.57693,2.63091,4.095339,2.788844,2.634502,2.77866,2.6879,3.021515,3.228789,3.139225,2.829057,2.924479,3.00554,3.135158,3.479711,3.531348,3.17512,3.033433,3.11268,3.412875,2.967498,2.477569,2.765339,6.887686,4.629877,2.146348,2.381184,2.562697,2.560219,2.582893,3.336425,2.886982,2.834699,2.294962,2.684794,2.523847,2.726015],"X":[14.225957,14.620822,13.749999,14.789033,14.071533,13.605238,12.719741,15.475304,13.872578,13.762184,14.312067,13.162458,16.184142,16.191523,13.595125,14.117003,13.545809,15.038368,15.162055,14.312802,12.100771,13.397755,12.869215,12.58095,14.28416,15.19689,14.392385,16.870599,14.119521,14.435208,14.436814,15.853765,12.63423,14.351122,13.784104,10.37493,11.393381,10.078349,10.312507,10.651626,10.717516,11.290052,11.956871,12.552923,13.856632,13.437588,13.695369,11.469496,11.438053,10.610585,10.482723,10.667356,9.541922,11.350176,9.920949,10.297506,9.556692,10.440631,10.451289,10.388461,11.98841,11.198341,11.107905,12.615301,11.108852,12.739238,11.676672,11.65393]}}}}},"monetization":{"us_arpu":{"label":"US ARPU","unit":"$","periods":["1Q'21","2Q'21","3Q'21","4Q'21","1Q'22","2Q'22","3Q'22","4Q'22","1Q'23","2Q'23","3Q'23","4Q'23","1Q'24","2Q'24","3Q'24","4Q'24","1Q'25","2Q'25","3Q'25","4Q'25","1Q'26","2Q'26E"],"series":{"Meta":[61.010256,68.54359,66.806122,77.241026,61.346939,64.913706,64.80203,75.40201,63.55,69.955446,73.674877,86.75122,75.370732,80.548544,84.412621,99.857224,86.897963,95.397868,101.51818,122.039787,112.635637,119.956953],"YouTube":[23.956685,27.060406,27.854638,32.845324,26.380238,28.737122,27.350115,30.513815,25.602042,32.638987,32.96157,37.81054,33.627709,36.522907,37.62565,44.502123,37.373997,40.670414,42.428382,46.756312,40.87557,44.634692],"Pinterest":[11.284404,15.24,16.102041,21.757895,15.0,17.673913,18.157895,22.8,15.347368,17.842105,19.3125,24.092784,18.122449,20.602041,21.787879,27.0027,19.69697,22.133096,23.124448,28.253968,21.440823,23.842196],"Reddit":[3.045377,3.243446,3.897727,5.603113,4.434944,4.634981,5.359259,5.996324,4.566434,5.134913,5.280285,5.615247,4.423133,4.519121,5.424066,6.690417,5.727345,7.570577,8.738372,10.577143,9.247103,9.969991]}},"intl_arpu":{"label":"International ARPU","unit":"$","periods":["1Q'21","2Q'21","3Q'21","4Q'21","1Q'22","2Q'22","3Q'22","4Q'22","1Q'23","2Q'23","3Q'23","4Q'23","1Q'24","2Q'24","3Q'24","4Q'24","1Q'25","2Q'25","3Q'25","4Q'25","1Q'26","2Q'26E"],"series":{"Meta":[8.046346,8.881494,8.755479,10.136678,8.488662,8.675325,8.097929,9.02221,8.378334,9.322061,9.92933,10.982677,10.539948,11.244232,11.559155,12.99742,11.401237,12.926898,13.713079,15.32968,14.475079,15.281554],"YouTube":[1.538538,1.697358,1.70702,2.001408,1.557854,1.66975,1.572922,1.747885,1.435265,1.762795,1.788995,2.052171,1.794011,1.914307,1.956104,2.288653,1.946451,2.133364,2.240115,2.498836,2.162405,2.354359],"Pinterest":[0.611626,0.89161,0.927156,1.410714,0.928186,1.090909,0.939,1.311625,0.950389,1.159662,1.126943,1.511222,1.057143,1.278396,1.228582,1.703741,1.243124,1.612089,1.604811,2.006526,1.489177,1.827787],"Reddit":[0.611626,0.785861,0.672316,1.158582,0.878497,0.882649,0.885644,1.231947,1.045426,1.12489,1.133496,1.235831,0.949102,1.0386,1.097143,1.366108,1.237241,1.400998,1.523292,1.963716,1.774625,1.928778]}},"us_revhour":{"label":"US Revenue per hour spent","unit":"$/hr","periods":["1Q'21","2Q'21","3Q'21","4Q'21","1Q'22","2Q'22","3Q'22","4Q'22","1Q'23","2Q'23","3Q'23","4Q'23","1Q'24","2Q'24","3Q'24","4Q'24","1Q'25","2Q'25","3Q'25","4Q'25","1Q'26","2Q'26E"],"series":{"Meta":[0.641855,0.684227,0.654088,0.780739,0.629585,0.66485,0.647347,0.743644,0.630698,0.843428,0.858331,0.982127,0.874253,0.955213,0.999583,1.197625,1.008285,1.053031,1.10114,1.278976,1.190307,1.264399],"YouTube":[0.22931,0.260454,0.262502,0.308393,0.243357,0.258892,0.249954,0.269434,0.223679,0.290503,0.29031,0.331178,0.299305,0.320889,0.317627,0.379988,0.319499,0.341993,0.349166,0.38245,0.328876,0.351953],"Pinterest":[1.084095,1.523309,1.649198,2.281383,1.5284,1.791111,1.643282,1.960423,1.298038,1.222192,1.219495,1.591072,1.286101,1.601102,1.770122,2.121648,1.526189,1.778293,1.763771,1.968651,1.308559,1.43507],"Reddit":[0.752372,0.236707,0.254853,0.337774,0.262149,0.266777,0.306588,0.34377,0.282585,0.314054,0.31093,0.348426,0.304123,0.133116,0.159228,0.193724,0.169755,0.232444,0.284376,0.362469,0.340734,0.393597]}},"intl_revhour":{"label":"International Revenue per hour spent","unit":"$/hr","periods":["1Q'21","2Q'21","3Q'21","4Q'21","1Q'22","2Q'22","3Q'22","4Q'22","1Q'23","2Q'23","3Q'23","4Q'23","1Q'24","2Q'24","3Q'24","4Q'24","1Q'25","2Q'25","3Q'25","4Q'25","1Q'26","2Q'26E"],"series":{"Meta":[0.091401,0.097463,0.095394,0.114023,0.096661,0.098403,0.089374,0.096937,0.089653,0.078895,0.080906,0.089906,0.085566,0.089876,0.093665,0.109293,0.096221,0.104214,0.110828,0.123776,0.119342,0.125621],"YouTube":[0.014718,0.016426,0.016112,0.018809,0.01444,0.015067,0.014335,0.015349,0.012556,0.015047,0.014983,0.017154,0.014596,0.015635,0.015318,0.017643,0.015132,0.016738,0.017445,0.019808,0.0171,0.018838],"Pinterest":[0.047666,0.071307,0.073698,0.113988,0.074014,0.088418,0.068898,0.090647,0.066943,0.066638,0.059446,0.079003,0.05799,0.075018,0.07045,0.0952,0.069323,0.091761,0.091011,0.114481,0.084582,0.10506],"Reddit":[0.278766,0.076055,0.059992,0.10322,0.075857,0.075351,0.071125,0.097635,0.087416,0.090288,0.086134,0.097835,0.079479,-0.108567,0.041592,0.056227,0.052755,0.059643,0.070572,0.097633,0.093552,0.105419]}}},"meta":{"source":"Social Media Benchmarking - June'26_Client.xlsx","excluded":["Yelp","Snapchat / Snap"],"engagementCompanies":["Facebook","Instagram","YouTube","TikTok","Pinterest","Reddit","X"],"monetizationCompanies":["Meta","YouTube","Pinterest","Reddit"],"colors":{"Facebook":"#1877F2","Instagram":"#E1306C","Pinterest":"#8E24AA","YouTube":"#FF0000","TikTok":"#00BCD4","Reddit":"#FF5700","X":"#334155","Meta":"#1877F2"},"lastMonthly":"2026-05","lastQuarter":"2Q'26E","generated":"2026-06-18"}}</script>
 <script>
@@ -287,8 +303,8 @@ function visibleCompanies(c){ return c.companies.filter(function(n){ return !c.h
 
 var ENG_RANGES=[{k:'12',l:'1Y'},{k:'24',l:'2Y'},{k:'36',l:'3Y'},{k:'60',l:'5Y'},{k:'all',l:'All'}];
 var MON_RANGES=[{k:'8',l:'2Y'},{k:'12',l:'3Y'},{k:'20',l:'5Y'},{k:'all',l:'All'}];
-var ENG_SCALES=[{k:'absolute',l:'Absolute'},{k:'indexed',l:'Indexed'},{k:'share',l:'Share %'}];
-var MON_SCALES=[{k:'absolute',l:'Absolute'},{k:'indexed',l:'Indexed'}];
+var ENG_SCALES=[{k:'absolute',l:'Absolute'},{k:'indexed',l:'Indexed'},{k:'yoy',l:'Y/Y %'},{k:'share',l:'Share %'}];
+var MON_SCALES=[{k:'absolute',l:'Absolute'},{k:'indexed',l:'Indexed'},{k:'yoy',l:'Y/Y %'}];
 
 /* ================= RENDER ================= */
 function render(){
@@ -400,6 +416,15 @@ function transform(c, vis, idxOffset, N){
     });
     return {data:out, fmt:function(v){return nf(v,0);}, ax:function(v){return nf(v,0);}, mode:'indexed'};
   }
+  if(mode==='yoy'){
+    var lag=c.yoyLag;
+    vis.forEach(function(n){
+      var full=c.series[n];
+      var g=full.map(function(v,i){ var p=(i>=lag)?full[i-lag]:null; return (v!=null&&p!=null&&p!==0)?(v-p)/p:null; });
+      out[n]=g.slice(idxOffset);
+    });
+    return {data:out, fmt:function(v){return (v>0?'+':'')+nf(v*100,1)+'%';}, ax:function(v){return (v>0?'+':'')+nf(v*100,0)+'%';}, mode:'yoy'};
+  }
   // share %
   vis.forEach(function(n){ out[n]=[]; });
   for(var i=0;i<N;i++){
@@ -411,9 +436,13 @@ function transform(c, vis, idxOffset, N){
 
 /* ---------- LINE CHART ---------- */
 function renderLine(c){
-  var scaleTag = state.scale==='indexed' ? ' · indexed to 100' : state.scale==='share' ? ' · share of shown' : '';
+  var unitText;
+  if(state.scale==='indexed') unitText=c.unit+' · indexed to 100';
+  else if(state.scale==='share') unitText=c.unit+' · share of shown';
+  else if(state.scale==='yoy') unitText='Year-over-year % change'+(c.isMonth?' (vs. 12 months earlier)':' (vs. 4 quarters earlier)');
+  else unitText=c.unit;
   document.getElementById('lineTitle').textContent=c.title+(c.kind==='eng'?(' — '+(state.region==='US'?'United States':'International')):'');
-  document.getElementById('lineUnit').textContent=c.unit+scaleTag;
+  document.getElementById('lineUnit').textContent=unitText;
 
   var wrap=document.getElementById('lineWrap'), tip=document.getElementById('tooltip');
   var W=Math.max(360, wrap.clientWidth||900), H=448;
@@ -436,7 +465,7 @@ function renderLine(c){
     yScale=function(v){ return mT+ph*(1-(Math.log10(v)-loE)/(hiE-loE)); };
     yticks=[]; for(var e=loE;e<=hiE;e++) yticks.push(Math.pow(10,e));
   } else {
-    var lo = (T.mode==='indexed')? minV : 0;
+    var lo = (T.mode==='indexed'||T.mode==='yoy')? minV : 0;
     var rng=niceRange(lo, maxV);
     yScale=function(v){ return mT+ph*(1-(v-rng.lo)/(rng.hi-rng.lo)); };
     yticks=rng.ticks;
@@ -461,7 +490,7 @@ function renderLine(c){
     if(c.isMonth) lbl=monthLabel(dates[i]); else lbl=(i===N-1)?dates[i]:"'"+dates[i].split("'")[1].slice(0,2);
     svg+='<text class="ax" x="'+x.toFixed(1)+'" y="'+(H-mB+18)+'" text-anchor="middle">'+lbl+'</text>'; });
 
-  var single=(vis.length===1 && T.mode!=='share');
+  var single=(vis.length===1 && (T.mode==='absolute'||T.mode==='indexed'));
   vis.forEach(function(n,ix){ var arr=T.data[n], col=COLORS[n];
     var d='',pen=false,segs=[];
     for(var i=0;i<N;i++){ var v=arr[i]; if(v==null||(useLog&&v<=0)){pen=false;continue;}
