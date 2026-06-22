@@ -1,0 +1,141 @@
+{
+ "generated": "2026-06-22",
+ "models": [
+  {
+   "ticker": "ASML",
+   "img": "img/ASML.png",
+   "pdf": "img/ASML.pdf",
+   "asof": "2026-06-15",
+   "sheet": "Summary",
+   "pages": 2,
+   "px_w": 1901,
+   "px_h": 2938,
+   "name": "ASML / SemiCap peers",
+   "file": "ASML_Peers_SemiCap_v16.xlsx",
+   "keys": [
+    "ASML NA"
+   ]
+  },
+  {
+   "ticker": "GOOG",
+   "img": "img/GOOG.png",
+   "pdf": "img/GOOG.pdf",
+   "asof": "2026-06-05",
+   "sheet": "Summary",
+   "pages": 1,
+   "px_w": 1901,
+   "px_h": 1469,
+   "name": "Alphabet",
+   "file": "Google Modelo oficial.xlsx",
+   "keys": [
+    "GOOG"
+   ]
+  },
+  {
+   "ticker": "AAPL",
+   "img": "img/AAPL.png",
+   "pdf": "img/AAPL.pdf",
+   "asof": "2026-06-16",
+   "sheet": "Summary",
+   "pages": 1,
+   "px_w": 1901,
+   "px_h": 1469,
+   "name": "Apple",
+   "file": "Modelo Apple Felipe 2Q26 - WIP.xlsm",
+   "keys": [
+    "AAPL"
+   ]
+  },
+  {
+   "ticker": "AVGO",
+   "img": "img/AVGO.png",
+   "pdf": "img/AVGO.pdf",
+   "asof": "2026-06-10",
+   "sheet": "AVGO Summary",
+   "pages": 1,
+   "px_w": 1901,
+   "px_h": 1469,
+   "name": "Broadcom",
+   "file": "Modelo Avgo pós 2Q26.xlsx",
+   "keys": [
+    "AVGO"
+   ]
+  },
+  {
+   "ticker": "COHR",
+   "img": "img/COHR.png",
+   "pdf": "img/COHR.pdf",
+   "asof": "2026-05-26",
+   "sheet": "Summary",
+   "pages": 2,
+   "px_w": 1901,
+   "px_h": 2938,
+   "name": "Coherent",
+   "file": "Modelo COHR.xlsx",
+   "keys": [
+    "COHR"
+   ]
+  },
+  {
+   "ticker": "NVDA",
+   "img": "img/NVDA.png",
+   "pdf": "img/NVDA.pdf",
+   "asof": "2026-06-17",
+   "sheet": "Summary",
+   "pages": 1,
+   "px_w": 1901,
+   "px_h": 1469,
+   "name": "NVIDIA",
+   "file": "Modelo Felipe NVDA .xlsx",
+   "keys": [
+    "NVDA"
+   ]
+  },
+  {
+   "ticker": "TSM",
+   "img": "img/TSM.png",
+   "pdf": "img/TSM.pdf",
+   "asof": "2026-06-10",
+   "sheet": "Resumo",
+   "pages": 2,
+   "px_w": 1901,
+   "px_h": 2938,
+   "name": "TSMC",
+   "file": "Modelo Felipe TSM 1Q26.xlsm",
+   "keys": [
+    "TSM",
+    "2330 TT"
+   ]
+  },
+  {
+   "ticker": "META",
+   "img": "img/META.png",
+   "pdf": "img/META.pdf",
+   "asof": "2026-06-11",
+   "sheet": "Meta Summary",
+   "pages": 1,
+   "px_w": 1901,
+   "px_h": 1469,
+   "name": "Meta Platforms",
+   "file": "Modelo Meta pós 2Q26.xlsm",
+   "keys": [
+    "META"
+   ]
+  },
+  {
+   "ticker": "LITE",
+   "img": "img/LITE.png",
+   "pdf": "img/LITE.pdf",
+   "asof": "2026-06-16",
+   "sheet": "LITE Summary",
+   "pages": 1,
+   "px_w": 1901,
+   "px_h": 1469,
+   "name": "Lumentum",
+   "file": "Modelo consolidado incl. LITE .xlsx",
+   "keys": [
+    "LITE"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capstone — Modelos Oficiais</title>
+<style>
+:root{--bg:#0b1018;--panel:#121a27;--panel2:#0f1622;--line:#1f2b3e;--txt:#e8edf5;--mut:#8696ad;--acc:#5aa2ff;--gold:#e8b54d}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:"Segoe UI",system-ui,-apple-system,sans-serif;font-size:13px;padding:18px 22px 56px}
+a{color:inherit;text-decoration:none}
+header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+h1{font-size:20px;font-weight:600;letter-spacing:.3px}
+header .asof{color:var(--mut);font-size:12px}
+header .src{color:var(--mut);font-size:11px;margin-left:auto}
+header .back{color:var(--acc);font-size:12px}
+.chips{display:flex;gap:8px;margin:6px 0 16px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--panel);color:var(--mut);border-radius:16px;padding:5px 13px;cursor:pointer;font-size:12px;user-select:none}
+.chip:hover{color:var(--txt);border-color:var(--acc)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:16px}
+.mcard{background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:12px;overflow:hidden;display:block;transition:border-color .15s,transform .15s}
+.mcard:hover{border-color:var(--acc);transform:translateY(-2px)}
+.mcard:target{border-color:var(--gold);box-shadow:0 0 0 2px rgba(232,181,77,.35)}
+.mhead{display:flex;align-items:baseline;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.mhead .tk{color:var(--acc);font-weight:700;font-size:15px}
+.mhead .nm{font-weight:600}
+.mhead .asof{color:var(--mut);font-size:11px;margin-left:auto}
+.thumb{background:#fff;max-height:520px;overflow:hidden;display:flex;justify-content:center}
+.thumb img{width:100%;height:auto;display:block}
+footer{margin-top:30px;color:#6e7681;font-size:12px}
+</style></head><body>
+<header>
+  <h1>CAPSTONE <span style="color:var(--mut);font-weight:300">|</span> Modelos Oficiais</h1>
+  <span class="asof">9 modelos · resumos extraídos 2026-06-22</span>
+  <a class="back" href="../">← Capstone Wiki</a>
+  <span class="src">Snapshot da aba de resumo de cada modelo oficial (P:\…\Modelos oficiais). Clique no card pra abrir o PDF vetorial.</span>
+</header>
+<div class="chips" id="chips"><span class="chip" data-t="ASML">ASML</span><span class="chip" data-t="GOOG">GOOG</span><span class="chip" data-t="AAPL">AAPL</span><span class="chip" data-t="AVGO">AVGO</span><span class="chip" data-t="COHR">COHR</span><span class="chip" data-t="NVDA">NVDA</span><span class="chip" data-t="TSM">TSM</span><span class="chip" data-t="META">META</span><span class="chip" data-t="LITE">LITE</span></div>
+<div class="grid">
+    <a class="mcard" id="ASML" href="img/ASML.pdf" target="_blank" rel="noopener">
+      <div class="mhead"><span class="tk">ASML</span><span class="nm">ASML / SemiCap peers</span>
+        <span class="asof">resumo · 2026-06-15 · 2p</span></div>
+      <div class="thumb"><img loading="lazy" src="img/ASML.png?v=2026-06-15" alt="ASML summary"></div>
+    </a>
+    <a class="mcard" id="GOOG" href="img/GOOG.pdf" target="_blank" rel="noopener">
+      <div class="mhead"><span class="tk">GOOG</span><span class="nm">Alphabet</span>
+        <span class="asof">resumo · 2026-06-05</span></div>
+      <div class="thumb"><img loading="lazy" src="img/GOOG.png?v=2026-06-05" alt="GOOG summary"></div>
+    </a>
+    <a class="mcard" id="AAPL" href="img/AAPL.pdf" target="_blank" rel="noopener">
+      <div class="mhead"><span class="tk">AAPL</span><span class="nm">Apple</span>
+        <span class="asof">resumo · 2026-06-16</span></div>
+      <div class="thumb"><img loading="lazy" src="img/AAPL.png?v=2026-06-16" alt="AAPL summary"></div>
+    </a>
+    <a class="mcard" id="AVGO" href="img/AVGO.pdf" target="_blank" rel="noopener">
+      <div class="mhead"><span class="tk">AVGO</span><span class="nm">Broadcom</span>
+        <span class="asof">resumo · 2026-06-10</span></div>
+      <div class="thumb"><img loading="lazy" src="img/AVGO.png?v=2026-06-10" alt="AVGO summary"></div>
+    </a>
+    <a class="mcard" id="COHR" href="img/COHR.pdf" target="_blank" rel="noopener">
+      <div class="mhead"><span class="tk">COHR</span><span class="nm">Coherent</span>
+        <span class="asof">resumo · 2026-05-26 · 2p</span></div>
+      <div class="thumb"><img loading="lazy" src="img/COHR.png?v=2026-05-26" alt="COHR summary"></div>
+    </a>
+    <a class="mcard" id="NVDA" href="img/NVDA.pdf" target="_blank" rel="noopener">
+      <div class="mhead"><span class="tk">NVDA</span><span class="nm">NVIDIA</span>
+        <span class="asof">resumo · 2026-06-17</span></div>
+      <div class="thumb"><img loading="lazy" src="img/NVDA.png?v=2026-06-17" alt="NVDA summary"></div>
+    </a>
+    <a class="mcard" id="TSM" href="img/TSM.pdf" target="_blank" rel="noopener">
+      <div class="mhead"><span class="tk">TSM</span><span class="nm">TSMC</span>
+        <span class="asof">resumo · 2026-06-10 · 2p</span></div>
+      <div class="thumb"><img loading="lazy" src="img/TSM.png?v=2026-06-10" alt="TSM summary"></div>
+    </a>
+    <a class="mcard" id="META" href="img/META.pdf" target="_blank" rel="noopener">
+      <div class="mhead"><span class="tk">META</span><span class="nm">Meta Platforms</span>
+        <span class="asof">resumo · 2026-06-11</span></div>
+      <div class="thumb"><img loading="lazy" src="img/META.png?v=2026-06-11" alt="META summary"></div>
+    </a>
+    <a class="mcard" id="LITE" href="img/LITE.pdf" target="_blank" rel="noopener">
+      <div class="mhead"><span class="tk">LITE</span><span class="nm">Lumentum</span>
+        <span class="asof">resumo · 2026-06-16</span></div>
+      <div class="thumb"><img loading="lazy" src="img/LITE.png?v=2026-06-16" alt="LITE summary"></div>
+    </a>
+</div>
+<footer>Gerado por build_modelos.py · cada card abre o PDF da aba de resumo · re-renderize quando atualizar os modelos.</footer>
+<script>
+document.querySelectorAll('#chips .chip').forEach(c=>c.onclick=()=>{
+  const t=c.dataset.t; const el=document.getElementById(t);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+});
+</script>
+</body></html>
