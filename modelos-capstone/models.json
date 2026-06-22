@@ -1492,7 +1492,7 @@
   },
   "ASML": {
    "ticker": "ASML",
-   "name": "ASML / SemiCap",
+   "name": "ASML",
    "keys": [
     "ASML NA"
    ],
@@ -1500,14 +1500,619 @@
    "asof_model": "2026-06-22",
    "px": 1655.8,
    "crncy": "EUR",
-   "eps_kind": null,
-   "note": "Aba Summary = modelo de capex/WFE da indústria (peers), sem P&L consolidado — só PDF.",
-   "fy_labels": [],
-   "lines": [],
-   "anchor_ok": null,
+   "eps_kind": "Diluted (EUR)",
+   "note": "Income statement do modelo SemiCap, em EUR (street BBG ASML NA também em EUR).",
+   "fy_labels": [
+    "1FY",
+    "2FY",
+    "3FY"
+   ],
+   "lines": [
+    {
+     "section": "pnl",
+     "key": "revenue",
+     "label": "Receita",
+     "kind": "money",
+     "cmp": true,
+     "cap": [
+      48844.85539184383,
+      66267.42060421237,
+      80174.63637550123
+     ],
+     "street": [
+      39069.11627906977,
+      48014.90909090909,
+      53775.580645161295
+     ],
+     "delta": [
+      0.2502165404240573,
+      0.38014258193730766,
+      0.49091158874758345
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "gross_margin",
+     "label": "Margem bruta",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.525010334849111,
+      0.534995529614197,
+      0.545004712535344
+     ],
+     "street": [
+      0.525,
+      0.5405300000000001,
+      0.55289
+     ],
+     "delta": [
+      1.0334849110948952e-05,
+      -0.005534470385803014,
+      -0.007885287464655999
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "op_margin",
+     "label": "Margem EBIT",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.3779324093978342,
+      0.4,
+      0.4
+     ],
+     "street": [
+      0.36490490579024165,
+      0.394856013865612,
+      0.4109280882997308
+     ],
+     "delta": [
+      0.013027503607592528,
+      0.0051439861343880455,
+      -0.010928088299730798
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "net_income",
+     "label": "Lucro líquido",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      15375.378880756805,
+      22056.448273906048,
+      26669.29104394673
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "eps",
+     "label": "EPS",
+     "kind": "eps",
+     "cmp": true,
+     "cap": [
+      39.62726515658971,
+      56.84651616986095,
+      68.735286195739
+     ],
+     "street": [
+      31.553,
+      41.975,
+      49.333
+     ],
+     "delta": [
+      0.2558953239498529,
+      0.35429460797762835,
+      0.3932922424287799
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "shares",
+     "label": "Ações diluídas (M)",
+     "kind": "count",
+     "cmp": false,
+     "cap": [
+      388.0,
+      388.0,
+      388.0
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    }
+   ],
+   "anchor_ok": true,
    "stale_note": null,
    "pdf": "img/ASML.pdf",
    "page": "#ASML"
+  },
+  "AMAT": {
+   "ticker": "AMAT",
+   "name": "Applied Materials",
+   "keys": [
+    "AMAT"
+   ],
+   "bbg": "AMAT US Equity",
+   "asof_model": "2026-06-22",
+   "px": 640.18,
+   "crncy": "USD",
+   "eps_kind": "Diluted",
+   "note": null,
+   "fy_labels": [
+    "1FY",
+    "2FY",
+    "3FY"
+   ],
+   "lines": [
+    {
+     "section": "pnl",
+     "key": "revenue",
+     "label": "Receita",
+     "kind": "money",
+     "cmp": true,
+     "cap": [
+      38550.434621087246,
+      51858.78887626911,
+      63353.456026706735
+     ],
+     "street": [
+      33467.73529411764,
+      42599.529411764706,
+      49633.63157894737
+     ],
+     "delta": [
+      0.1518686365331372,
+      0.21735590961592344,
+      0.2764219343075185
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "gross_margin",
+     "label": "Margem bruta",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.471875,
+      0.473684210526316,
+      0.477777777777778
+     ],
+     "street": [
+      0.49929,
+      0.5036400000000001,
+      0.50665
+     ],
+     "delta": [
+      -0.027415000000000023,
+      -0.029955789473684102,
+      -0.02887222222222202
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "op_margin",
+     "label": "Margem EBIT",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.3249,
+      0.3409,
+      0.34
+     ],
+     "street": [
+      0.32624112830416097,
+      0.3464793472291484,
+      0.3649553386944324
+     ],
+     "delta": [
+      -0.0013411283041609434,
+      -0.005579347229148435,
+      -0.024955338694432394
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "net_income",
+     "label": "Lucro líquido",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      10896.781501300386,
+      15380.43518129052,
+      18739.952292699854
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "eps",
+     "label": "EPS",
+     "kind": "eps",
+     "cmp": true,
+     "cap": [
+      13.42133452555781,
+      18.943755611886342,
+      23.081601542923828
+     ],
+     "street": [
+      12.392,
+      16.644000000000002,
+      20.369
+     ],
+     "delta": [
+      0.08306443879582082,
+      0.1381732523363579,
+      0.13317303465677388
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "shares",
+     "label": "Ações diluídas (M)",
+     "kind": "count",
+     "cmp": false,
+     "cap": [
+      811.9,
+      811.9,
+      811.9
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    }
+   ],
+   "anchor_ok": true,
+   "stale_note": null,
+   "pdf": "img/AMAT.pdf",
+   "page": "#AMAT"
+  },
+  "KLAC": {
+   "ticker": "KLAC",
+   "name": "KLA Corp",
+   "keys": [
+    "KLAC"
+   ],
+   "bbg": "KLAC US Equity",
+   "asof_model": "2026-06-22",
+   "px": 269.16,
+   "crncy": "USD",
+   "eps_kind": "Diluted (pós-split)",
+   "note": null,
+   "fy_labels": [
+    "1FY",
+    "2FY",
+    "3FY"
+   ],
+   "lines": [
+    {
+     "section": "pnl",
+     "key": "revenue",
+     "label": "Receita",
+     "kind": "money",
+     "cmp": true,
+     "cap": [
+      13662.21404801603,
+      19146.850285633736,
+      24357.994108351086
+     ],
+     "street": [
+      13525.04,
+      17285.44,
+      18747.5
+     ],
+     "delta": [
+      0.010142228637847195,
+      0.10768660130339391,
+      0.299266254612673
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "gross_margin",
+     "label": "Margem bruta",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.62,
+      0.63,
+      0.64
+     ],
+     "street": [
+      0.62024,
+      0.62332,
+      0.62641
+     ],
+     "delta": [
+      -0.00024000000000001798,
+      0.006680000000000019,
+      0.013589999999999991
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "op_margin",
+     "label": "Margem EBIT",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.4418,
+      0.462,
+      0.47
+     ],
+     "street": [
+      0.42902522531048576,
+      0.45949654738323126,
+      0.49154998444237014
+     ],
+     "delta": [
+      0.012774774689514268,
+      0.0025034526167687643,
+      -0.021549984442370163
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "net_income",
+     "label": "Lucro líquido",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      5251.29056477973,
+      7695.885003807623,
+      9959.983790904758
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "eps",
+     "label": "EPS",
+     "kind": "eps",
+     "cmp": true,
+     "cap": [
+      4.020896297687389,
+      5.892714398015025,
+      7.626327558120029
+     ],
+     "street": [
+      3.708,
+      5.102,
+      6.05
+     ],
+     "delta": [
+      0.08438411480242425,
+      0.15498126186103978,
+      0.26055000960661645
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "shares",
+     "label": "Ações diluídas (M)",
+     "kind": "count",
+     "cmp": false,
+     "cap": [
+      1306.0,
+      1306.0,
+      1306.0
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    }
+   ],
+   "anchor_ok": true,
+   "stale_note": null,
+   "pdf": "img/KLAC.pdf",
+   "page": "#KLAC"
+  },
+  "LRCX": {
+   "ticker": "LRCX",
+   "name": "Lam Research",
+   "keys": [
+    "LRCX"
+   ],
+   "bbg": "LRCX US Equity",
+   "asof_model": "2026-06-22",
+   "px": 409.54,
+   "crncy": "USD",
+   "eps_kind": "Diluted (pós-split 10:1)",
+   "note": null,
+   "fy_labels": [
+    "1FY",
+    "2FY",
+    "3FY"
+   ],
+   "lines": [
+    {
+     "section": "pnl",
+     "key": "revenue",
+     "label": "Receita",
+     "kind": "money",
+     "cmp": true,
+     "cap": [
+      23071.37940587887,
+      32714.702796052406,
+      42236.56955157475
+     ],
+     "street": [
+      23186.1875,
+      30589.5625,
+      35465.545454545456
+     ],
+     "delta": [
+      -0.004951572746538457,
+      0.06947272606636345,
+      0.19091836908887805
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "gross_margin",
+     "label": "Margem bruta",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.485,
+      0.485,
+      0.484981818181818
+     ],
+     "street": [
+      0.502,
+      0.51057,
+      0.5121800000000001
+     ],
+     "delta": [
+      -0.017000000000000015,
+      -0.02556999999999998,
+      -0.027198181818182066
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "op_margin",
+     "label": "Margem EBIT",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.3639,
+      0.3822,
+      0.4123
+     ],
+     "street": [
+      0.35253747516705797,
+      0.37650835334606736,
+      0.3858508001363679
+     ],
+     "delta": [
+      0.011362524832942034,
+      0.005691646653932625,
+      0.02644919986363209
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "net_income",
+     "label": "Lucro líquido",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      7388.193969903402,
+      11003.132279613083,
+      15324.441110980557
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "eps",
+     "label": "EPS",
+     "kind": "eps",
+     "cmp": true,
+     "cap": [
+      5.777442891698,
+      8.604263590563875,
+      11.983454106178103
+     ],
+     "street": [
+      5.679,
+      7.986,
+      9.83
+     ],
+     "delta": [
+      0.017334546874097523,
+      0.07741843107486535,
+      0.21906959371089552
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "shares",
+     "label": "Ações diluídas (M)",
+     "kind": "count",
+     "cmp": false,
+     "cap": [
+      1278.8,
+      1278.8,
+      1278.8
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    }
+   ],
+   "anchor_ok": true,
+   "stale_note": null,
+   "pdf": "img/LRCX.pdf",
+   "page": "#LRCX"
   }
  }
 }
