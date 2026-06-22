@@ -12,64 +12,169 @@
    "px": 208.65,
    "crncy": "USD",
    "eps_kind": "Non-GAAP",
-   "note": null,
-   "years": [
+   "note": "Margem EBIT omitida: a linha do resumo calcula EBIT = Receita − Opex (s/ COGS).",
+   "fy_labels": [
+    "1FY",
+    "2FY"
+   ],
+   "lines": [
     {
-     "fy": "1FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 407277.8043539005,
-       "street": 391973.49206349207,
-       "delta": 0.03904425324743488
-      },
-      "gross_margin": {
-       "label": "Margem bruta",
-       "kind": "margin",
-       "cap": 0.7492742551608255,
-       "street": 0.74802,
-       "delta": 0.001254255160825446
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 9.300379529877933,
-       "street": 9.003,
-       "delta": 0.03303115959990377
-      }
-     }
+     "section": "pnl",
+     "key": "revenue",
+     "label": "Receita",
+     "kind": "money",
+     "cmp": true,
+     "cap": [
+      407277.8043539005,
+      660764.1432811317
+     ],
+     "street": [
+      391973.49206349207,
+      558089.8709677419
+     ],
+     "delta": [
+      0.03904425324743488,
+      0.18397444149156494
+     ]
     },
     {
-     "fy": "2FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 660764.1432811317,
-       "street": 558089.8709677419,
-       "delta": 0.18397444149156494
-      },
-      "gross_margin": {
-       "label": "Margem bruta",
-       "kind": "margin",
-       "cap": 0.7389999999999999,
-       "street": 0.74314,
-       "delta": -0.0041400000000001436
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 15.487551325550855,
-       "street": 12.814,
-       "delta": 0.20864299403393605
-      }
-     }
+     "section": "pnl",
+     "key": "gross_margin",
+     "label": "Margem bruta",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.7492742551608255,
+      0.7389999999999999
+     ],
+     "street": [
+      0.74802,
+      0.74314
+     ],
+     "delta": [
+      0.001254255160825446,
+      -0.0041400000000001436
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "net_income",
+     "label": "Lucro líquido",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      224737.71814465383,
+      369398.56136302813
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "ebitda",
+     "label": "EBITDA",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      277587.3059416337,
+      455511.01165855967
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "eps",
+     "label": "EPS",
+     "kind": "eps",
+     "cmp": true,
+     "cap": [
+      9.300379529877933,
+      15.487551325550855
+     ],
+     "street": [
+      9.003,
+      12.814
+     ],
+     "delta": [
+      0.03303115959990377,
+      0.20864299403393605
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "shares",
+     "label": "Ações diluídas (M)",
+     "kind": "count",
+     "cmp": false,
+     "cap": [
+      24275.388463333737,
+      23931.41563631499
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:Data Center",
+     "label": "Data Center",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      379463.053726575,
+      629130.5635641095
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:Outros (ex-DC)",
+     "label": "Outros (ex-DC)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      27814.7506273255,
+      31633.57971702225
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
     }
    ],
    "anchor_ok": true,
-   "anchor_col_rev": 215938.0,
-   "sales_actual": 215938.0
+   "stale_note": null,
+   "pdf": "img/NVDA.pdf",
+   "page": "#NVDA"
   },
   "AAPL": {
    "ticker": "AAPL",
@@ -83,77 +188,244 @@
    "crncy": "USD",
    "eps_kind": "Adjusted",
    "note": null,
-   "years": [
+   "fy_labels": [
+    "1FY",
+    "2FY"
+   ],
+   "lines": [
     {
-     "fy": "1FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 480436.41060614906,
-       "street": 478116.84444444446,
-       "delta": 0.004851462960690833
-      },
-      "gross_margin": {
-       "label": "Margem bruta",
-       "kind": "margin",
-       "cap": 0.48401410508349435,
-       "street": 0.48192999999999997,
-       "delta": 0.002084105083494381
-      },
-      "op_margin": {
-       "label": "Margem EBIT",
-       "kind": "margin",
-       "cap": 0.32911191811089935,
-       "street": 0.32440240835726475,
-       "delta": 0.0047095097536346
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 10.124035284327654,
-       "street": 8.757,
-       "delta": 0.15610771774896137
-      }
-     }
+     "section": "pnl",
+     "key": "revenue",
+     "label": "Receita",
+     "kind": "money",
+     "cmp": true,
+     "cap": [
+      480436.41060614906,
+      539302.2373610688
+     ],
+     "street": [
+      478116.84444444446,
+      520649.0444444445
+     ],
+     "delta": [
+      0.004851462960690833,
+      0.035826807166290164
+     ]
     },
     {
-     "fy": "2FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 539302.2373610688,
-       "street": 520649.0444444445,
-       "delta": 0.035826807166290164
-      },
-      "gross_margin": {
-       "label": "Margem bruta",
-       "kind": "margin",
-       "cap": 0.4767551004708355,
-       "street": 0.47824,
-       "delta": -0.001484899529164474
-      },
-      "op_margin": {
-       "label": "Margem EBIT",
-       "kind": "margin",
-       "cap": 0.3193907340939779,
-       "street": 0.32107156718118224,
-       "delta": -0.0016808330872043475
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 11.105906306491844,
-       "street": 9.652000000000001,
-       "delta": 0.15063264675630372
-      }
-     }
+     "section": "pnl",
+     "key": "gross_margin",
+     "label": "Margem bruta",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.48401410508349435,
+      0.4767551004708355
+     ],
+     "street": [
+      0.48192999999999997,
+      0.47824
+     ],
+     "delta": [
+      0.002084105083494381,
+      -0.001484899529164474
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "op_margin",
+     "label": "Margem EBIT",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.32911191811089935,
+      0.3193907340939779
+     ],
+     "street": [
+      0.32440240835726475,
+      0.32107156718118224
+     ],
+     "delta": [
+      0.0047095097536346,
+      -0.0016808330872043475
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "net_income",
+     "label": "Lucro líquido",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      144980.7455447897,
+      154796.3197426879
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "ebitda",
+     "label": "EBITDA",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      166594.7180885233,
+      180487.75185678966
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "eps",
+     "label": "EPS",
+     "kind": "eps",
+     "cmp": true,
+     "cap": [
+      10.124035284327654,
+      11.105906306491844
+     ],
+     "street": [
+      8.757,
+      9.652000000000001
+     ],
+     "delta": [
+      0.15610771774896137,
+      0.15063264675630372
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "shares",
+     "label": "Ações diluídas (M)",
+     "kind": "count",
+     "cmp": false,
+     "cap": [
+      14320.450440273036,
+      13938.197880546073
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:iPhone",
+     "label": "iPhone",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      252265.22280000002,
+      286068.7626552001
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:iPad",
+     "label": "iPad",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      30181.355526398,
+      32255.425063899045
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:Mac",
+     "label": "Mac",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      35059.03695115998,
+      39103.36191518011
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:Wearables/Home",
+     "label": "Wearables/Home",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      36638.17934060091,
+      36638.17934060091
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:Services",
+     "label": "Services",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      126292.61598799024,
+      145236.50838618877
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
     }
    ],
    "anchor_ok": true,
-   "anchor_col_rev": 416161.0,
-   "sales_actual": 416161.0
+   "stale_note": null,
+   "pdf": "img/AAPL.pdf",
+   "page": "#AAPL"
   },
   "AVGO": {
    "ticker": "AVGO",
@@ -167,77 +439,206 @@
    "crncy": "USD",
    "eps_kind": "Pro Forma",
    "note": null,
-   "years": [
+   "fy_labels": [
+    "1FY",
+    "2FY"
+   ],
+   "lines": [
     {
-     "fy": "1FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 115271.32305345,
-       "street": 105807.28571428572,
-       "delta": 0.08944598923669855
-      },
-      "gross_margin": {
-       "label": "Margem bruta",
-       "kind": "margin",
-       "cap": 0.7346798833795953,
-       "street": 0.74952,
-       "delta": -0.01484011662040463
-      },
-      "op_margin": {
-       "label": "Margem EBIT",
-       "kind": "margin",
-       "cap": 0.6548480591562108,
-       "street": 0.6626679541738676,
-       "delta": -0.007819895017656786
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 12.890621271458318,
-       "street": 11.57,
-       "delta": 0.11414185578723579
-      }
-     }
+     "section": "pnl",
+     "key": "revenue",
+     "label": "Receita",
+     "kind": "money",
+     "cmp": true,
+     "cap": [
+      115271.32305345,
+      190487.54091556498
+     ],
+     "street": [
+      105807.28571428572,
+      173087.51020408163
+     ],
+     "delta": [
+      0.08944598923669855,
+      0.1005273615119171
+     ]
     },
     {
-     "fy": "2FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 190487.54091556498,
-       "street": 173087.51020408163,
-       "delta": 0.1005273615119171
-      },
-      "gross_margin": {
-       "label": "Margem bruta",
-       "kind": "margin",
-       "cap": 0.7,
-       "street": 0.73119,
-       "delta": -0.03119000000000005
-      },
-      "op_margin": {
-       "label": "Margem EBIT",
-       "kind": "margin",
-       "cap": 0.6408033305180926,
-       "street": 0.6582820964757411,
-       "delta": -0.017478765957648523
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 21.070258643107508,
-       "street": 19.249,
-       "delta": 0.0946157537070762
-      }
-     }
+     "section": "pnl",
+     "key": "gross_margin",
+     "label": "Margem bruta",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.7346798833795953,
+      0.7
+     ],
+     "street": [
+      0.74952,
+      0.73119
+     ],
+     "delta": [
+      -0.01484011662040463,
+      -0.03119000000000005
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "op_margin",
+     "label": "Margem EBIT",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.6548480591562108,
+      0.6408033305180926
+     ],
+     "street": [
+      0.6626679541738676,
+      0.6582820964757411
+     ],
+     "delta": [
+      -0.007819895017656786,
+      -0.017478765957648523
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "net_income",
+     "label": "Lucro líquido",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      63585.606713308596,
+      103933.32882991117
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "ebitda",
+     "label": "EBITDA",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      75885.2021779203,
+      122505.05064089547
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "eps",
+     "label": "EPS",
+     "kind": "eps",
+     "cmp": true,
+     "cap": [
+      12.890621271458318,
+      21.070258643107508
+     ],
+     "street": [
+      11.57,
+      19.249
+     ],
+     "delta": [
+      0.11414185578723579,
+      0.0946157537070762
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "shares",
+     "label": "Ações diluídas (M)",
+     "kind": "count",
+     "cmp": false,
+     "cap": [
+      4932.703038456047,
+      4932.703038456047
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:AI Semiconductors",
+     "label": "AI Semiconductors",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      63006.754381449995,
+      132314.184201045
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:Non-AI Semis",
+     "label": "Non-AI Semis",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      18148.009906,
+      19962.8108966
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:Infrastructure Software",
+     "label": "Infrastructure Software",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      34116.558766,
+      38210.54581792001
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
     }
    ],
    "anchor_ok": true,
-   "anchor_col_rev": 68077.075,
-   "sales_actual": 63887.0
+   "stale_note": null,
+   "pdf": "img/AVGO.pdf",
+   "page": "#AVGO"
   },
   "COHR": {
    "ticker": "COHR",
@@ -251,110 +652,237 @@
    "crncy": "USD",
    "eps_kind": "Pro Forma",
    "note": null,
-   "years": [
+   "fy_labels": [
+    "1FY",
+    "2FY",
+    "3FY"
+   ],
+   "lines": [
     {
-     "fy": "1FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 9060.19679248318,
-       "street": 7059.913043478261,
-       "delta": 0.2833297997703701
-      },
-      "gross_margin": {
-       "label": "Margem bruta",
-       "kind": "margin",
-       "cap": 0.39924139843938006,
-       "street": 0.39389,
-       "delta": 0.0053513984393800396
-      },
-      "op_margin": {
-       "label": "Margem EBIT",
-       "kind": "margin",
-       "cap": 0.23965766829352256,
-       "street": 0.20396851790267154,
-       "delta": 0.03568915039085102
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 8.274064448399834,
-       "street": 5.455,
-       "delta": 0.5167854167552399
-      }
-     }
+     "section": "pnl",
+     "key": "revenue",
+     "label": "Receita",
+     "kind": "money",
+     "cmp": true,
+     "cap": [
+      9060.19679248318,
+      16591.337350258393,
+      19604.010019999187
+     ],
+     "street": [
+      7059.913043478261,
+      9614.636363636364,
+      12725.071428571428
+     ],
+     "delta": [
+      0.2833297997703701,
+      0.7256333700782172,
+      0.5405815307238726
+     ]
     },
     {
-     "fy": "2FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 16591.337350258393,
-       "street": 9614.636363636364,
-       "delta": 0.7256333700782172
-      },
-      "gross_margin": {
-       "label": "Margem bruta",
-       "kind": "margin",
-       "cap": 0.4073481252901992,
-       "street": 0.40547000000000005,
-       "delta": 0.0018781252901991508
-      },
-      "op_margin": {
-       "label": "Margem EBIT",
-       "kind": "margin",
-       "cap": 0.30466080334424006,
-       "street": 0.2267565548737247,
-       "delta": 0.07790424847051536
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 19.205608974654616,
-       "street": 8.325,
-       "delta": 1.3069800570155699
-      }
-     }
+     "section": "pnl",
+     "key": "gross_margin",
+     "label": "Margem bruta",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.39924139843938006,
+      0.4073481252901992,
+      0.412
+     ],
+     "street": [
+      0.39389,
+      0.40547000000000005,
+      0.41503
+     ],
+     "delta": [
+      0.0053513984393800396,
+      0.0018781252901991508,
+      -0.0030300000000000327
+     ]
     },
     {
-     "fy": "3FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 19604.010019999187,
-       "street": 12725.071428571428,
-       "delta": 0.5405815307238726
-      },
-      "gross_margin": {
-       "label": "Margem bruta",
-       "kind": "margin",
-       "cap": 0.412,
-       "street": 0.41503,
-       "delta": -0.0030300000000000327
-      },
-      "op_margin": {
-       "label": "Margem EBIT",
-       "kind": "margin",
-       "cap": 0.31964625206001207,
-       "street": 0.24537386823537338,
-       "delta": 0.07427238382463869
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 23.595256075722748,
-       "street": 11.975,
-       "delta": 0.9703762902482462
-      }
-     }
+     "section": "pnl",
+     "key": "op_margin",
+     "label": "Margem EBIT",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.23965766829352256,
+      0.30466080334424006,
+      0.31964625206001207
+     ],
+     "street": [
+      0.20396851790267154,
+      0.2267565548737247,
+      0.24537386823537338
+     ],
+     "delta": [
+      0.03568915039085102,
+      0.07790424847051536,
+      0.07427238382463869
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "net_income",
+     "label": "Lucro líquido",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      1652.1864675814581,
+      3984.171434204864,
+      4965.582145874127
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "ebitda",
+     "label": "EBITDA",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      2397.389637566971,
+      5054.730165685015,
+      6516.348328239663
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "eps",
+     "label": "EPS",
+     "kind": "eps",
+     "cmp": true,
+     "cap": [
+      8.274064448399834,
+      19.205608974654616,
+      23.595256075722748
+     ],
+     "street": [
+      5.455,
+      8.325,
+      11.975
+     ],
+     "delta": [
+      0.5167854167552399,
+      1.3069800570155699,
+      0.9703762902482462
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "shares",
+     "label": "Ações diluídas (M)",
+     "kind": "count",
+     "cmp": false,
+     "cap": [
+      199.68257171371,
+      207.44832613549102,
+      210.44832613549102
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:DC/Comms",
+     "label": "DC/Comms",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      7111.079260529502,
+      14533.257793667715,
+      17463.607281144883
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:Semi Devices",
+     "label": "Semi Devices",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      319.6733405295002,
+      332.65336004509345,
+      345.9594944468972
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:Industrials",
+     "label": "Industrials",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      1949.1175319536799,
+      2058.079556590676,
+      2140.402738854303
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
     }
    ],
    "anchor_ok": true,
-   "anchor_col_rev": 6294.300000000001,
-   "sales_actual": 5810.115
+   "stale_note": null,
+   "pdf": "img/COHR.pdf",
+   "page": "#COHR"
   },
   "GOOG": {
    "ticker": "GOOG",
@@ -368,63 +896,149 @@
    "crncy": "USD",
    "eps_kind": "Diluted",
    "note": null,
-   "years": [
+   "fy_labels": [
+    "1FY",
+    "2FY"
+   ],
+   "lines": [
     {
-     "fy": "1FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 504653.40557133325,
-       "street": 420856.3666666667,
-       "delta": 0.19911077873995153
-      },
-      "op_margin": {
-       "label": "Margem EBIT",
-       "kind": "margin",
-       "cap": 0.3623326011630787,
-       "street": 0.40402630822577645,
-       "delta": -0.04169370706269776
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 11.799115724840675,
-       "street": 14.278,
-       "delta": -0.1736156517130778
-      }
-     }
+     "section": "pnl",
+     "key": "revenue",
+     "label": "Receita",
+     "kind": "money",
+     "cmp": true,
+     "cap": [
+      504653.40557133325,
+      641237.6403417083
+     ],
+     "street": [
+      420856.3666666667,
+      511993.9666666667
+     ],
+     "delta": [
+      0.19911077873995153,
+      0.2524320247687326
+     ]
     },
     {
-     "fy": "2FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 641237.6403417083,
-       "street": 511993.9666666667,
-       "delta": 0.2524320247687326
-      },
-      "op_margin": {
-       "label": "Margem EBIT",
-       "kind": "margin",
-       "cap": 0.370347995624792,
-       "street": 0.405931632804397,
-       "delta": -0.035583637179605
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 16.203358185526117,
-       "street": 15.335,
-       "delta": 0.056625900588595846
-      }
-     }
+     "section": "pnl",
+     "key": "op_margin",
+     "label": "Margem EBIT",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.3623326011630787,
+      0.370347995624792
+     ],
+     "street": [
+      0.40402630822577645,
+      0.405931632804397
+     ],
+     "delta": [
+      -0.04169370706269776,
+      -0.035583637179605
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "net_income",
+     "label": "Lucro líquido",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      144397.57824060018,
+      198296.69747446862
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "eps",
+     "label": "EPS",
+     "kind": "eps",
+     "cmp": true,
+     "cap": [
+      11.799115724840675,
+      16.203358185526117
+     ],
+     "street": [
+      14.278,
+      15.335
+     ],
+     "delta": [
+      -0.1736156517130778,
+      0.056625900588595846
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "shares",
+     "label": "Ações diluídas (M)",
+     "kind": "count",
+     "cmp": false,
+     "cap": [
+      12238.0,
+      12238.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "extra",
+     "key": "ex:CapEx",
+     "label": "CapEx",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      182674.0,
+      310000.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "extra",
+     "key": "ex:CapEx % receita",
+     "label": "CapEx % receita",
+     "kind": "margin",
+     "cmp": false,
+     "cap": [
+      0.36197912861241727,
+      0.4834401172002387
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
     }
    ],
    "anchor_ok": true,
-   "anchor_col_rev": 402836.0,
-   "sales_actual": 402836.0
+   "stale_note": null,
+   "pdf": "img/GOOG.pdf",
+   "page": "#GOOG"
   },
   "META": {
    "ticker": "META",
@@ -438,63 +1052,111 @@
    "crncy": "USD",
    "eps_kind": "GAAP",
    "note": null,
-   "years": [
+   "fy_labels": [
+    "1FY",
+    "2FY"
+   ],
+   "lines": [
     {
-     "fy": "1FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 256763.68523072236,
-       "street": 253050.8153846154,
-       "delta": 0.014672427909247165
-      },
-      "op_margin": {
-       "label": "Margem EBIT",
-       "kind": "margin",
-       "cap": 0.36906965697103833,
-       "street": 0.35787024438239706,
-       "delta": 0.011199412588641267
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 32.716785017435164,
-       "street": 40.183,
-       "delta": -0.1858053152468665
-      }
-     }
+     "section": "pnl",
+     "key": "revenue",
+     "label": "Receita",
+     "kind": "money",
+     "cmp": true,
+     "cap": [
+      256763.68523072236,
+      313251.6959814813
+     ],
+     "street": [
+      253050.8153846154,
+      301688.8095238095
+     ],
+     "delta": [
+      0.014672427909247165,
+      0.03832719707410703
+     ]
     },
     {
-     "fy": "2FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 313251.6959814813,
-       "street": 301688.8095238095,
-       "delta": 0.03832719707410703
-      },
-      "op_margin": {
-       "label": "Margem EBIT",
-       "kind": "margin",
-       "cap": 0.3535549764047524,
-       "street": 0.34836616327536885,
-       "delta": 0.005188813129383574
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 38.236582071712675,
-       "street": 38.535000000000004,
-       "delta": -0.007744074952311664
-      }
-     }
+     "section": "pnl",
+     "key": "op_margin",
+     "label": "Margem EBIT",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.36906965697103833,
+      0.3535549764047524
+     ],
+     "street": [
+      0.35787024438239706,
+      0.34836616327536885
+     ],
+     "delta": [
+      0.011199412588641267,
+      0.005188813129383574
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "net_income",
+     "label": "Lucro líquido",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      82444.40615072845,
+      96353.97550388872
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "ebitda",
+     "label": "EBITDA",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      193702.098443184,
+      252296.47271062087
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "eps",
+     "label": "EPS",
+     "kind": "eps",
+     "cmp": true,
+     "cap": [
+      32.716785017435164,
+      38.236582071712675
+     ],
+     "street": [
+      40.183,
+      38.535000000000004
+     ],
+     "delta": [
+      -0.1858053152468665,
+      -0.007744074952311664
+     ]
     }
    ],
    "anchor_ok": true,
-   "anchor_col_rev": 200596.62908650184,
-   "sales_actual": 200966.0
+   "stale_note": null,
+   "pdf": "img/META.pdf",
+   "page": "#META"
   },
   "LITE": {
    "ticker": "LITE",
@@ -508,110 +1170,225 @@
    "crncy": "USD",
    "eps_kind": "Adjusted",
    "note": null,
-   "years": [
+   "fy_labels": [
+    "1FY",
+    "2FY"
+   ],
+   "lines": [
     {
-     "fy": "1FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 2105.2,
-       "street": 2996.777777777778,
-       "delta": -0.29751214267175863
-      },
-      "gross_margin": {
-       "label": "Margem bruta",
-       "kind": "margin",
-       "cap": 0.39165114953448604,
-       "street": 0.45292,
-       "delta": -0.06126885046551395
-      },
-      "op_margin": {
-       "label": "Margem EBIT",
-       "kind": "margin",
-       "cap": 0.18112483374501234,
-       "street": 0.29134626079863557,
-       "delta": -0.11022142705362323
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 4.1299,
-       "street": 8.156,
-       "delta": -0.49363658656204024
-      }
-     }
+     "section": "pnl",
+     "key": "revenue",
+     "label": "Receita",
+     "kind": "money",
+     "cmp": true,
+     "cap": [
+      4238.8180466308295,
+      8137.637008089913
+     ],
+     "street": [
+      2996.777777777778,
+      5571.407407407408
+     ],
+     "delta": [
+      0.4144585821689024,
+      0.46060706263745876
+     ]
     },
     {
-     "fy": "2FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 4238.8180466308295,
-       "street": 5571.407407407408,
-       "delta": -0.23918361436014313
-      },
-      "gross_margin": {
-       "label": "Margem bruta",
-       "kind": "margin",
-       "cap": 0.4454512168334063,
-       "street": 0.49745000000000006,
-       "delta": -0.05199878316659373
-      },
-      "op_margin": {
-       "label": "Margem EBIT",
-       "kind": "margin",
-       "cap": 0.3151626330997958,
-       "street": 0.389481479511793,
-       "delta": -0.07431884641199721
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 12.8127,
-       "street": 18.07,
-       "delta": -0.2909407858328722
-      }
-     }
+     "section": "pnl",
+     "key": "gross_margin",
+     "label": "Margem bruta",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.4454512168334063,
+      0.5063212704497849
+     ],
+     "street": [
+      0.45292,
+      0.49745000000000006
+     ],
+     "delta": [
+      -0.007468783166593662,
+      0.008871270449784863
+     ]
     },
     {
-     "fy": "3FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 8137.637008089913,
-       "street": 8647.78947368421,
-       "delta": -0.05899223924758157
-      },
-      "gross_margin": {
-       "label": "Margem bruta",
-       "kind": "margin",
-       "cap": 0.5063212704497849,
-       "street": 0.51554,
-       "delta": -0.009218729550215077
-      },
-      "op_margin": {
-       "label": "Margem EBIT",
-       "kind": "margin",
-       "cap": 0.43352604311154247,
-       "street": 0.41462984151715077,
-       "delta": 0.018896201594391704
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 30.0185,
-       "street": 29.144000000000002,
-       "delta": 0.030006176228383197
-      }
-     }
+     "section": "pnl",
+     "key": "op_margin",
+     "label": "Margem EBIT",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.3151626330997958,
+      0.43352604311154247
+     ],
+     "street": [
+      0.29134626079863557,
+      0.389481479511793
+     ],
+     "delta": [
+      0.023816372301160238,
+      0.04404456359974945
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "net_income",
+     "label": "Lucro líquido",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      1140.7077424339332,
+      2971.8297729500514
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "ebitda",
+     "label": "EBITDA",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      1515.5353093070103,
+      3683.8775723952713
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "eps",
+     "label": "EPS",
+     "kind": "eps",
+     "cmp": true,
+     "cap": [
+      12.8127,
+      30.0185
+     ],
+     "street": [
+      8.156,
+      18.07
+     ],
+     "delta": [
+      0.5709538989700833,
+      0.6612340896513558
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "shares",
+     "label": "Ações diluídas (M)",
+     "kind": "count",
+     "cmp": false,
+     "cap": [
+      89.02977973732543,
+      99.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:Cloud & Networking",
+     "label": "Cloud & Networking",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      4011.8401552231353,
+      7898.4223227454495
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:Datacom & AI",
+     "label": "Datacom & AI",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      2530.61352,
+      6269.073024
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:Telecom",
+     "label": "Telecom",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      1481.2266352231356,
+      1629.3492987454492
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "seg",
+     "key": "seg:Industrial Tech",
+     "label": "Industrial Tech",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      226.97789140769416,
+      239.21468534446382
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
     }
    ],
-   "anchor_ok": false,
-   "anchor_col_rev": 1413.8999999999999,
-   "sales_actual": 1645.0
+   "anchor_ok": true,
+   "stale_note": "Estimativa do último ano fiscal no modelo (2,105) vs real BBG (1,645), +28% — modelo provavelmente anterior ao último resultado.",
+   "pdf": "img/LITE.pdf",
+   "page": "#LITE"
   },
   "TSM": {
    "ticker": "TSM",
@@ -625,50 +1402,93 @@
    "px": 467.67,
    "crncy": "USD",
    "eps_kind": "USD/ADR",
-   "note": "Receita em US$bn e EPS em US$/ADR (linhas TWD do modelo não comparáveis em USD).",
-   "years": [
+   "note": "Receita US$bn e EPS US$/ADR; margens são % (linhas em TWD do modelo ficam no PDF).",
+   "fy_labels": [
+    "1FY",
+    "2FY"
+   ],
+   "lines": [
     {
-     "fy": "1FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 165323.07517233858,
-       "street": 164559.07372936956,
-       "delta": 0.004642718421139724
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 16.271927499395783,
-       "street": 15.631,
-       "delta": 0.0410036145733339
-      }
-     }
+     "section": "pnl",
+     "key": "revenue",
+     "label": "Receita",
+     "kind": "money",
+     "cmp": true,
+     "cap": [
+      165323.07517233858,
+      220237.05816754294
+     ],
+     "street": [
+      164559.07372936956,
+      209836.99942644447
+     ],
+     "delta": [
+      0.004642718421139724,
+      0.049562559365247116
+     ]
     },
     {
-     "fy": "2FY",
-     "metrics": {
-      "revenue": {
-       "label": "Receita",
-       "kind": "money",
-       "cap": 220237.05816754294,
-       "street": 209836.99942644447,
-       "delta": 0.049562559365247116
-      },
-      "eps": {
-       "label": "EPS",
-       "kind": "eps",
-       "cap": 22.777076989081717,
-       "street": 19.738,
-       "delta": 0.15397086782256153
-      }
-     }
+     "section": "pnl",
+     "key": "gross_margin",
+     "label": "Margem bruta",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.6587161294604339,
+      0.68
+     ],
+     "street": [
+      0.65712,
+      0.65156
+     ],
+     "delta": [
+      0.0015961294604338594,
+      0.02844000000000002
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "op_margin",
+     "label": "Margem EBIT",
+     "kind": "margin",
+     "cmp": true,
+     "cap": [
+      0.5789044192127224,
+      0.6081831162663086
+     ],
+     "street": [
+      0.5742457037971372,
+      0.5696496355368724
+     ],
+     "delta": [
+      0.004658715415585157,
+      0.03853348072943619
+     ]
+    },
+    {
+     "section": "pnl",
+     "key": "eps",
+     "label": "EPS",
+     "kind": "eps",
+     "cmp": true,
+     "cap": [
+      16.271927499395783,
+      22.777076989081717
+     ],
+     "street": [
+      15.631,
+      19.738
+     ],
+     "delta": [
+      0.0410036145733339,
+      0.15397086782256153
+     ]
     }
    ],
    "anchor_ok": true,
-   "anchor_col_rev": 122484.18230887482,
-   "sales_actual": 122555.60420314889
+   "stale_note": null,
+   "pdf": "img/TSM.pdf",
+   "page": "#TSM"
   },
   "ASML": {
    "ticker": "ASML",
@@ -677,13 +1497,17 @@
     "ASML NA"
    ],
    "bbg": "ASML NA Equity",
-   "asof_model": "2026-06-15",
+   "asof_model": "2026-06-22",
    "px": 1655.8,
    "crncy": "EUR",
    "eps_kind": null,
-   "note": "Modelo de capex/WFE da indústria (peers) — sem P&L consolidado; só consenso BBG + PDF.",
-   "years": [],
-   "anchor_ok": null
+   "note": "Aba Summary = modelo de capex/WFE da indústria (peers), sem P&L consolidado — só PDF.",
+   "fy_labels": [],
+   "lines": [],
+   "anchor_ok": null,
+   "stale_note": null,
+   "pdf": "img/ASML.pdf",
+   "page": "#ASML"
   }
  }
 }
