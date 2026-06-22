@@ -1,91 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-br"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Capstone — Modelos Oficiais</title>
+<title>Capstone — Modelos vs Street</title>
 <style>
-:root{--bg:#0b1018;--panel:#121a27;--panel2:#0f1622;--line:#1f2b3e;--txt:#e8edf5;--mut:#8696ad;--acc:#5aa2ff;--gold:#e8b54d}
+:root{--bg:#0b1018;--panel:#121a27;--panel2:#0f1622;--line:#1f2b3e;--txt:#e8edf5;--mut:#8696ad;--acc:#5aa2ff;--gold:#e8b54d;--up:#3ecf8e;--dn:#ff6b7a}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--txt);font-family:"Segoe UI",system-ui,-apple-system,sans-serif;font-size:13px;padding:18px 22px 56px}
-a{color:inherit;text-decoration:none}
-header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
 h1{font-size:20px;font-weight:600;letter-spacing:.3px}
-header .asof{color:var(--mut);font-size:12px}
-header .src{color:var(--mut);font-size:11px;margin-left:auto}
-header .back{color:var(--acc);font-size:12px}
-.chips{display:flex;gap:8px;margin:6px 0 16px;flex-wrap:wrap}
+header .asof{color:var(--mut);font-size:12px} header .back{color:var(--acc);font-size:12px}
+header .src{color:var(--mut);font-size:11px;margin-left:auto;max-width:540px;text-align:right}
+.chips{display:flex;gap:8px;margin:8px 0 16px;flex-wrap:wrap}
 .chip{border:1px solid var(--line);background:var(--panel);color:var(--mut);border-radius:16px;padding:5px 13px;cursor:pointer;font-size:12px;user-select:none}
 .chip:hover{color:var(--txt);border-color:var(--acc)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:16px}
-.mcard{background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:12px;overflow:hidden;display:block;transition:border-color .15s,transform .15s}
-.mcard:hover{border-color:var(--acc);transform:translateY(-2px)}
-.mcard:target{border-color:var(--gold);box-shadow:0 0 0 2px rgba(232,181,77,.35)}
-.mhead{display:flex;align-items:baseline;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
-.mhead .tk{color:var(--acc);font-weight:700;font-size:15px}
-.mhead .nm{font-weight:600}
-.mhead .asof{color:var(--mut);font-size:11px;margin-left:auto}
-.thumb{background:#fff;max-height:520px;overflow:hidden;display:flex;justify-content:center}
-.thumb img{width:100%;height:auto;display:block}
-footer{margin-top:30px;color:#6e7681;font-size:12px}
+.mcard{background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:16px}
+.mcard:target{border-color:var(--gold);box-shadow:0 0 0 2px rgba(232,181,77,.3)}
+.mhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.mhead .tk{color:var(--acc);font-weight:700;font-size:16px}
+.mhead .nm{font-weight:600;font-size:14px}
+.mhead .meta{color:var(--mut);font-size:11px}
+.mhead .pdf{margin-left:auto;font-size:11px;color:var(--gold)}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;white-space:nowrap;font-variant-numeric:tabular-nums}
+th,td{padding:6px 10px;text-align:right;border-bottom:1px solid rgba(31,43,62,.6)}
+thead th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--line)}
+thead tr:first-child th{border-left:1px solid var(--line)}
+th.ml,td.ml{text-align:left;font-weight:600;color:var(--txt)}
+td.cap{font-weight:600} td.st{color:var(--mut)}
+.up{color:var(--up)} .dn{color:var(--dn)}
+.warn{color:var(--gold);font-size:11px;margin-top:6px}
+.empty{color:var(--mut);font-size:12px;font-style:italic;padding:8px 2px}
+footer{margin-top:26px;color:#6e7681;font-size:12px}
 </style></head><body>
 <header>
-  <h1>CAPSTONE <span style="color:var(--mut);font-weight:300">|</span> Modelos Oficiais</h1>
-  <span class="asof">9 modelos · resumos extraídos 2026-06-22</span>
+  <h1>CAPSTONE <span style="color:var(--mut);font-weight:300">|</span> Modelos vs Street</h1>
+  <span class="asof">9 modelos · consenso BBG 2026-06-22</span>
   <a class="back" href="../">← Capstone Wiki</a>
-  <span class="src">Snapshot da aba de resumo de cada modelo oficial (P:\…\Modelos oficiais). Clique no card pra abrir o PDF vetorial.</span>
+  <span class="src">Linhas de P&L extraídas da aba de resumo de cada modelo oficial vs consenso Bloomberg BEst, alinhadas por ano fiscal (âncora no último real). Δ = Capstone vs Street (margens em pp).</span>
 </header>
-<div class="chips" id="chips"><span class="chip" data-t="ASML">ASML</span><span class="chip" data-t="GOOG">GOOG</span><span class="chip" data-t="AAPL">AAPL</span><span class="chip" data-t="AVGO">AVGO</span><span class="chip" data-t="COHR">COHR</span><span class="chip" data-t="NVDA">NVDA</span><span class="chip" data-t="TSM">TSM</span><span class="chip" data-t="META">META</span><span class="chip" data-t="LITE">LITE</span></div>
-<div class="grid">
-    <a class="mcard" id="ASML" href="img/ASML.pdf" target="_blank" rel="noopener">
-      <div class="mhead"><span class="tk">ASML</span><span class="nm">ASML / SemiCap peers</span>
-        <span class="asof">resumo · 2026-06-15 · 2p</span></div>
-      <div class="thumb"><img loading="lazy" src="img/ASML.png?v=2026-06-15" alt="ASML summary"></div>
-    </a>
-    <a class="mcard" id="GOOG" href="img/GOOG.pdf" target="_blank" rel="noopener">
-      <div class="mhead"><span class="tk">GOOG</span><span class="nm">Alphabet</span>
-        <span class="asof">resumo · 2026-06-05</span></div>
-      <div class="thumb"><img loading="lazy" src="img/GOOG.png?v=2026-06-05" alt="GOOG summary"></div>
-    </a>
-    <a class="mcard" id="AAPL" href="img/AAPL.pdf" target="_blank" rel="noopener">
-      <div class="mhead"><span class="tk">AAPL</span><span class="nm">Apple</span>
-        <span class="asof">resumo · 2026-06-16</span></div>
-      <div class="thumb"><img loading="lazy" src="img/AAPL.png?v=2026-06-16" alt="AAPL summary"></div>
-    </a>
-    <a class="mcard" id="AVGO" href="img/AVGO.pdf" target="_blank" rel="noopener">
-      <div class="mhead"><span class="tk">AVGO</span><span class="nm">Broadcom</span>
-        <span class="asof">resumo · 2026-06-10</span></div>
-      <div class="thumb"><img loading="lazy" src="img/AVGO.png?v=2026-06-10" alt="AVGO summary"></div>
-    </a>
-    <a class="mcard" id="COHR" href="img/COHR.pdf" target="_blank" rel="noopener">
-      <div class="mhead"><span class="tk">COHR</span><span class="nm">Coherent</span>
-        <span class="asof">resumo · 2026-05-26 · 2p</span></div>
-      <div class="thumb"><img loading="lazy" src="img/COHR.png?v=2026-05-26" alt="COHR summary"></div>
-    </a>
-    <a class="mcard" id="NVDA" href="img/NVDA.pdf" target="_blank" rel="noopener">
-      <div class="mhead"><span class="tk">NVDA</span><span class="nm">NVIDIA</span>
-        <span class="asof">resumo · 2026-06-17</span></div>
-      <div class="thumb"><img loading="lazy" src="img/NVDA.png?v=2026-06-17" alt="NVDA summary"></div>
-    </a>
-    <a class="mcard" id="TSM" href="img/TSM.pdf" target="_blank" rel="noopener">
-      <div class="mhead"><span class="tk">TSM</span><span class="nm">TSMC</span>
-        <span class="asof">resumo · 2026-06-10 · 2p</span></div>
-      <div class="thumb"><img loading="lazy" src="img/TSM.png?v=2026-06-10" alt="TSM summary"></div>
-    </a>
-    <a class="mcard" id="META" href="img/META.pdf" target="_blank" rel="noopener">
-      <div class="mhead"><span class="tk">META</span><span class="nm">Meta Platforms</span>
-        <span class="asof">resumo · 2026-06-11</span></div>
-      <div class="thumb"><img loading="lazy" src="img/META.png?v=2026-06-11" alt="META summary"></div>
-    </a>
-    <a class="mcard" id="LITE" href="img/LITE.pdf" target="_blank" rel="noopener">
-      <div class="mhead"><span class="tk">LITE</span><span class="nm">Lumentum</span>
-        <span class="asof">resumo · 2026-06-16</span></div>
-      <div class="thumb"><img loading="lazy" src="img/LITE.png?v=2026-06-16" alt="LITE summary"></div>
-    </a>
+<div class="chips" id="chips"><span class="chip" data-t="NVDA">NVDA</span><span class="chip" data-t="AAPL">AAPL</span><span class="chip" data-t="AVGO">AVGO</span><span class="chip" data-t="COHR">COHR</span><span class="chip" data-t="GOOG">GOOG</span><span class="chip" data-t="META">META</span><span class="chip" data-t="LITE">LITE</span><span class="chip" data-t="TSM">TSM</span><span class="chip" data-t="ASML">ASML</span></div>
+<div class="mcard" id="NVDA">
+  <div class="mhead"><span class="tk">NVDA</span><span class="nm">NVIDIA</span>
+    <span class="meta">modelo 2026-06-17 · px 209 · EPS Non-GAAP · street = BBG consenso</span>
+    <a class="pdf" href="img/NVDA.pdf" target="_blank" rel="noopener">resumo completo (PDF) ↗</a></div>
+  <div class="tw"><table><thead><tr><th class="ml" rowspan="2">Receita $mm · margens % · EPS/ação</th><th colspan="3">1FY</th><th colspan="3">2FY</th></tr><tr><th>Capstone</th><th>Street</th><th>Δ</th><th>Capstone</th><th>Street</th><th>Δ</th></tr></thead><tbody><tr><td class='ml'>Receita</td><td class="cap">407,278</td><td class="st">391,973</td><td class="up">+4%</td><td class="cap">660,764</td><td class="st">558,090</td><td class="up">+18%</td></tr><tr><td class='ml'>Margem bruta</td><td class="cap">74.9%</td><td class="st">74.8%</td><td class="up">+0.1pp</td><td class="cap">73.9%</td><td class="st">74.3%</td><td class="dn">-0.4pp</td></tr><tr><td class='ml'>EPS</td><td class="cap">9.30</td><td class="st">9.00</td><td class="up">+3%</td><td class="cap">15.49</td><td class="st">12.81</td><td class="up">+21%</td></tr></tbody></table></div>
+</div><div class="mcard" id="AAPL">
+  <div class="mhead"><span class="tk">AAPL</span><span class="nm">Apple</span>
+    <span class="meta">modelo 2026-06-16 · px 297 · EPS Adjusted · street = BBG consenso</span>
+    <a class="pdf" href="img/AAPL.pdf" target="_blank" rel="noopener">resumo completo (PDF) ↗</a></div>
+  <div class="tw"><table><thead><tr><th class="ml" rowspan="2">Receita $mm · margens % · EPS/ação</th><th colspan="3">1FY</th><th colspan="3">2FY</th></tr><tr><th>Capstone</th><th>Street</th><th>Δ</th><th>Capstone</th><th>Street</th><th>Δ</th></tr></thead><tbody><tr><td class='ml'>Receita</td><td class="cap">480,436</td><td class="st">478,117</td><td class="up">+0%</td><td class="cap">539,302</td><td class="st">520,649</td><td class="up">+4%</td></tr><tr><td class='ml'>Margem bruta</td><td class="cap">48.4%</td><td class="st">48.2%</td><td class="up">+0.2pp</td><td class="cap">47.7%</td><td class="st">47.8%</td><td class="dn">-0.1pp</td></tr><tr><td class='ml'>Margem EBIT</td><td class="cap">32.9%</td><td class="st">32.4%</td><td class="up">+0.5pp</td><td class="cap">31.9%</td><td class="st">32.1%</td><td class="dn">-0.2pp</td></tr><tr><td class='ml'>EPS</td><td class="cap">10.12</td><td class="st">8.76</td><td class="up">+16%</td><td class="cap">11.11</td><td class="st">9.65</td><td class="up">+15%</td></tr></tbody></table></div>
+</div><div class="mcard" id="AVGO">
+  <div class="mhead"><span class="tk">AVGO</span><span class="nm">Broadcom</span>
+    <span class="meta">modelo 2026-06-10 · px 392 · EPS Pro Forma · street = BBG consenso</span>
+    <a class="pdf" href="img/AVGO.pdf" target="_blank" rel="noopener">resumo completo (PDF) ↗</a></div>
+  <div class="tw"><table><thead><tr><th class="ml" rowspan="2">Receita $mm · margens % · EPS/ação</th><th colspan="3">1FY</th><th colspan="3">2FY</th></tr><tr><th>Capstone</th><th>Street</th><th>Δ</th><th>Capstone</th><th>Street</th><th>Δ</th></tr></thead><tbody><tr><td class='ml'>Receita</td><td class="cap">115,271</td><td class="st">105,807</td><td class="up">+9%</td><td class="cap">190,488</td><td class="st">173,088</td><td class="up">+10%</td></tr><tr><td class='ml'>Margem bruta</td><td class="cap">73.5%</td><td class="st">75.0%</td><td class="dn">-1.5pp</td><td class="cap">70.0%</td><td class="st">73.1%</td><td class="dn">-3.1pp</td></tr><tr><td class='ml'>Margem EBIT</td><td class="cap">65.5%</td><td class="st">66.3%</td><td class="dn">-0.8pp</td><td class="cap">64.1%</td><td class="st">65.8%</td><td class="dn">-1.7pp</td></tr><tr><td class='ml'>EPS</td><td class="cap">12.89</td><td class="st">11.57</td><td class="up">+11%</td><td class="cap">21.07</td><td class="st">19.25</td><td class="up">+9%</td></tr></tbody></table></div>
+</div><div class="mcard" id="COHR">
+  <div class="mhead"><span class="tk">COHR</span><span class="nm">Coherent</span>
+    <span class="meta">modelo 2026-05-26 · px 425 · EPS Pro Forma · street = BBG consenso</span>
+    <a class="pdf" href="img/COHR.pdf" target="_blank" rel="noopener">resumo completo (PDF) ↗</a></div>
+  <div class="tw"><table><thead><tr><th class="ml" rowspan="2">Receita $mm · margens % · EPS/ação</th><th colspan="3">1FY</th><th colspan="3">2FY</th><th colspan="3">3FY</th></tr><tr><th>Capstone</th><th>Street</th><th>Δ</th><th>Capstone</th><th>Street</th><th>Δ</th><th>Capstone</th><th>Street</th><th>Δ</th></tr></thead><tbody><tr><td class='ml'>Receita</td><td class="cap">9,060</td><td class="st">7,060</td><td class="up">+28%</td><td class="cap">16,591</td><td class="st">9,615</td><td class="up">+73%</td><td class="cap">19,604</td><td class="st">12,725</td><td class="up">+54%</td></tr><tr><td class='ml'>Margem bruta</td><td class="cap">39.9%</td><td class="st">39.4%</td><td class="up">+0.5pp</td><td class="cap">40.7%</td><td class="st">40.5%</td><td class="up">+0.2pp</td><td class="cap">41.2%</td><td class="st">41.5%</td><td class="dn">-0.3pp</td></tr><tr><td class='ml'>Margem EBIT</td><td class="cap">24.0%</td><td class="st">20.4%</td><td class="up">+3.6pp</td><td class="cap">30.5%</td><td class="st">22.7%</td><td class="up">+7.8pp</td><td class="cap">32.0%</td><td class="st">24.5%</td><td class="up">+7.4pp</td></tr><tr><td class='ml'>EPS</td><td class="cap">8.27</td><td class="st">5.46</td><td class="up">+52%</td><td class="cap">19.21</td><td class="st">8.32</td><td class="up">+131%</td><td class="cap">23.60</td><td class="st">11.97</td><td class="up">+97%</td></tr></tbody></table></div>
+</div><div class="mcard" id="GOOG">
+  <div class="mhead"><span class="tk">GOOG</span><span class="nm">Alphabet</span>
+    <span class="meta">modelo 2026-06-05 · px 349 · EPS Diluted · street = BBG consenso</span>
+    <a class="pdf" href="img/GOOG.pdf" target="_blank" rel="noopener">resumo completo (PDF) ↗</a></div>
+  <div class="tw"><table><thead><tr><th class="ml" rowspan="2">Receita $mm · margens % · EPS/ação</th><th colspan="3">1FY</th><th colspan="3">2FY</th></tr><tr><th>Capstone</th><th>Street</th><th>Δ</th><th>Capstone</th><th>Street</th><th>Δ</th></tr></thead><tbody><tr><td class='ml'>Receita</td><td class="cap">504,653</td><td class="st">420,856</td><td class="up">+20%</td><td class="cap">641,238</td><td class="st">511,994</td><td class="up">+25%</td></tr><tr><td class='ml'>Margem EBIT</td><td class="cap">36.2%</td><td class="st">40.4%</td><td class="dn">-4.2pp</td><td class="cap">37.0%</td><td class="st">40.6%</td><td class="dn">-3.6pp</td></tr><tr><td class='ml'>EPS</td><td class="cap">11.80</td><td class="st">14.28</td><td class="dn">-17%</td><td class="cap">16.20</td><td class="st">15.34</td><td class="up">+6%</td></tr></tbody></table></div>
+</div><div class="mcard" id="META">
+  <div class="mhead"><span class="tk">META</span><span class="nm">Meta Platforms</span>
+    <span class="meta">modelo 2026-06-11 · px 564 · EPS GAAP · street = BBG consenso</span>
+    <a class="pdf" href="img/META.pdf" target="_blank" rel="noopener">resumo completo (PDF) ↗</a></div>
+  <div class="tw"><table><thead><tr><th class="ml" rowspan="2">Receita $mm · margens % · EPS/ação</th><th colspan="3">1FY</th><th colspan="3">2FY</th></tr><tr><th>Capstone</th><th>Street</th><th>Δ</th><th>Capstone</th><th>Street</th><th>Δ</th></tr></thead><tbody><tr><td class='ml'>Receita</td><td class="cap">256,764</td><td class="st">253,051</td><td class="up">+1%</td><td class="cap">313,252</td><td class="st">301,689</td><td class="up">+4%</td></tr><tr><td class='ml'>Margem EBIT</td><td class="cap">36.9%</td><td class="st">35.8%</td><td class="up">+1.1pp</td><td class="cap">35.4%</td><td class="st">34.8%</td><td class="up">+0.5pp</td></tr><tr><td class='ml'>EPS</td><td class="cap">32.72</td><td class="st">40.18</td><td class="dn">-19%</td><td class="cap">38.24</td><td class="st">38.54</td><td class="dn">-1%</td></tr></tbody></table></div>
+</div><div class="mcard" id="LITE">
+  <div class="mhead"><span class="tk">LITE</span><span class="nm">Lumentum</span>
+    <span class="meta">modelo 2026-06-16 · px 894 · EPS Adjusted · street = BBG consenso</span>
+    <a class="pdf" href="img/LITE.pdf" target="_blank" rel="noopener">resumo completo (PDF) ↗</a></div>
+  <div class="tw"><table><thead><tr><th class="ml" rowspan="2">Receita $mm · margens % · EPS/ação</th><th colspan="3">1FY</th><th colspan="3">2FY</th><th colspan="3">3FY</th></tr><tr><th>Capstone</th><th>Street</th><th>Δ</th><th>Capstone</th><th>Street</th><th>Δ</th><th>Capstone</th><th>Street</th><th>Δ</th></tr></thead><tbody><tr><td class='ml'>Receita</td><td class="cap">2,105</td><td class="st">2,997</td><td class="dn">-30%</td><td class="cap">4,239</td><td class="st">5,571</td><td class="dn">-24%</td><td class="cap">8,138</td><td class="st">8,648</td><td class="dn">-6%</td></tr><tr><td class='ml'>Margem bruta</td><td class="cap">39.2%</td><td class="st">45.3%</td><td class="dn">-6.1pp</td><td class="cap">44.5%</td><td class="st">49.7%</td><td class="dn">-5.2pp</td><td class="cap">50.6%</td><td class="st">51.6%</td><td class="dn">-0.9pp</td></tr><tr><td class='ml'>Margem EBIT</td><td class="cap">18.1%</td><td class="st">29.1%</td><td class="dn">-11.0pp</td><td class="cap">31.5%</td><td class="st">38.9%</td><td class="dn">-7.4pp</td><td class="cap">43.4%</td><td class="st">41.5%</td><td class="up">+1.9pp</td></tr><tr><td class='ml'>EPS</td><td class="cap">4.13</td><td class="st">8.16</td><td class="dn">-49%</td><td class="cap">12.81</td><td class="st">18.07</td><td class="dn">-29%</td><td class="cap">30.02</td><td class="st">29.14</td><td class="up">+3%</td></tr></tbody></table></div><div class="warn">⚠ alinhamento aproximado — receita-âncora do modelo (1,414) destoa do último real BBG (1,645); modelo provavelmente anterior ao último resultado. Comparação por ano fiscal pode estar deslocada — conferir no PDF.</div>
+</div><div class="mcard" id="TSM">
+  <div class="mhead"><span class="tk">TSM</span><span class="nm">TSMC</span>
+    <span class="meta">modelo 2026-06-10 · px 468 · EPS USD/ADR · street = BBG consenso · Receita em US$bn e EPS em US$/ADR (linhas TWD do modelo não comparáveis em USD).</span>
+    <a class="pdf" href="img/TSM.pdf" target="_blank" rel="noopener">resumo completo (PDF) ↗</a></div>
+  <div class="tw"><table><thead><tr><th class="ml" rowspan="2">Receita $mm · margens % · EPS/ação</th><th colspan="3">1FY</th><th colspan="3">2FY</th></tr><tr><th>Capstone</th><th>Street</th><th>Δ</th><th>Capstone</th><th>Street</th><th>Δ</th></tr></thead><tbody><tr><td class='ml'>Receita</td><td class="cap">165,323</td><td class="st">164,559</td><td class="up">+0%</td><td class="cap">220,237</td><td class="st">209,837</td><td class="up">+5%</td></tr><tr><td class='ml'>EPS</td><td class="cap">16.27</td><td class="st">15.63</td><td class="up">+4%</td><td class="cap">22.78</td><td class="st">19.74</td><td class="up">+15%</td></tr></tbody></table></div>
+</div><div class="mcard" id="ASML">
+  <div class="mhead"><span class="tk">ASML</span><span class="nm">ASML / SemiCap</span>
+    <span class="meta">modelo 2026-06-15 · px 1,656 · EPS – · street = BBG consenso</span>
+    <a class="pdf" href="img/ASML.pdf" target="_blank" rel="noopener">resumo completo (PDF) ↗</a></div>
+  <div class="empty">Modelo de capex/WFE da indústria (peers) — sem P&L consolidado; só consenso BBG + PDF.</div>
 </div>
-<footer>Gerado por build_modelos.py · cada card abre o PDF da aba de resumo · re-renderize quando atualizar os modelos.</footer>
+<footer>Gerado por build_modelos.py · números do modelo extraídos da aba de resumo · street = BBG BEst (1FY/2FY/3FY) · re-rode quando atualizar os modelos.</footer>
 <script>
 document.querySelectorAll('#chips .chip').forEach(c=>c.onclick=()=>{
-  const t=c.dataset.t; const el=document.getElementById(t);
-  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  const el=document.getElementById(c.dataset.t); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
 });
-</script>
-</body></html>
+</script></body></html>
