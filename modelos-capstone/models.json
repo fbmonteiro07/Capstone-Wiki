@@ -10,7 +10,7 @@
    ],
    "bbg": "NVDA US Equity",
    "asof_model": "2026-06-17",
-   "px": 208.65,
+   "px": 201.01,
    "crncy": "USD",
    "eps_kind": "Non-GAAP",
    "note": "Margem EBIT omitida: a linha do resumo calcula EBIT = Receita − Opex (s/ COGS).",
@@ -49,12 +49,12 @@
       0.7389999999999999
      ],
      "street": [
-      0.74802,
-      0.74314
+      0.7486,
+      0.7433700000000001
      ],
      "delta": [
-      0.001254255160825446,
-      -0.0041400000000001436
+      0.000674255160825421,
+      -0.004370000000000207
      ]
     },
     {
@@ -172,6 +172,141 @@
      ]
     }
    ],
+   "kpi_lines": [
+    {
+     "section": "kpi",
+     "key": "kpi:GW implantados/ano",
+     "label": "GW implantados/ano",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      16.021538461538466,
+      24.806153846153837
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:GW acumulado (base instalada)",
+     "label": "GW acumulado (base instalada)",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      18.97416164647266,
+      35.098161646472654
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:Chips implantados (k)",
+     "label": "Chips implantados (k)",
+     "kind": "count",
+     "cmp": false,
+     "cap": [
+      7670.0,
+      7570.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:— Hopper (k)",
+     "label": "— Hopper (k)",
+     "kind": "count",
+     "cmp": false,
+     "cap": [
+      0.0,
+      0.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:— Blackwell (k)",
+     "label": "— Blackwell (k)",
+     "kind": "count",
+     "cmp": false,
+     "cap": [
+      6570.0,
+      1170.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:— Rubin (k)",
+     "label": "— Rubin (k)",
+     "kind": "count",
+     "cmp": false,
+     "cap": [
+      1100.0,
+      6400.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:Receita por GW ($mm)",
+     "label": "Receita por GW ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      23684.557799334903,
+      25361.874616513975
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    }
+   ],
    "anchor_ok": true,
    "stale_note": null,
    "pdf": "img/NVDA.pdf",
@@ -185,7 +320,7 @@
    ],
    "bbg": "AAPL US Equity",
    "asof_model": "2026-06-16",
-   "px": 297.01,
+   "px": 296.6101,
    "crncy": "USD",
    "eps_kind": "Adjusted",
    "note": null,
@@ -423,6 +558,46 @@
      ]
     }
    ],
+   "kpi_lines": [
+    {
+     "section": "kpi",
+     "key": "kpi:iPhone — unidades (mn)",
+     "label": "iPhone — unidades (mn)",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      266.78132485,
+      280.12039109250003
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:iPhone — ASP ($)",
+     "label": "iPhone — ASP ($)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      945.5880127360423,
+      1021.2350537549257
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    }
+   ],
    "anchor_ok": true,
    "stale_note": null,
    "pdf": "img/AAPL.pdf",
@@ -436,7 +611,7 @@
    ],
    "bbg": "AVGO US Equity",
    "asof_model": "2026-06-10",
-   "px": 392.13,
+   "px": 381.2,
    "crncy": "USD",
    "eps_kind": "Pro Forma",
    "note": null,
@@ -636,6 +811,255 @@
      ]
     }
    ],
+   "kpi_lines": [
+    {
+     "section": "kpi",
+     "key": "kpi:GW AI implantado (total)",
+     "label": "GW AI implantado (total)",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      4.1,
+      9.9
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:— Google",
+     "label": "— Google",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      2.5,
+      4.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:— Anthropic",
+     "label": "— Anthropic",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      1.4,
+      3.2
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:— OpenAI",
+     "label": "— OpenAI",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      0.0,
+      1.3
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:— Meta",
+     "label": "— Meta",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      0.0,
+      1.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:— Outros",
+     "label": "— Outros",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      0.2,
+      0.4
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:Receita AI total ($bn)",
+     "label": "Receita AI total ($bn)",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      57.400000000000006,
+      138.6
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:— Google ($bn)",
+     "label": "— Google ($bn)",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      25.0,
+      40.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:— Anthropic ($bn)",
+     "label": "— Anthropic ($bn)",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      14.0,
+      32.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:— OpenAI ($bn)",
+     "label": "— OpenAI ($bn)",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      0.0,
+      13.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:— Meta ($bn)",
+     "label": "— Meta ($bn)",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      0.0,
+      10.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:ASIC custom compute ($mm)",
+     "label": "ASIC custom compute ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      51718.400364550005,
+      90000.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:AI Networking ($mm)",
+     "label": "AI Networking ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      17239.46678818333,
+      40000.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    }
+   ],
    "anchor_ok": true,
    "stale_note": null,
    "pdf": "img/AVGO.pdf",
@@ -649,7 +1073,7 @@
    ],
    "bbg": "COHR US Equity",
    "asof_model": "2026-05-26",
-   "px": 425.48,
+   "px": 380.59,
    "crncy": "USD",
    "eps_kind": "Pro Forma",
    "note": null,
@@ -880,6 +1304,118 @@
      ]
     }
    ],
+   "kpi_lines": [
+    {
+     "section": "kpi",
+     "key": "kpi:Datacom puro (DC) ($mm)",
+     "label": "Datacom puro (DC) ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      5210.634000000001,
+      12286.2826944,
+      15357.853368
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:Comms ($mm)",
+     "label": "Comms ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      1580.7719200000001,
+      1914.3217392226204,
+      2105.7539131448825
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:R&D ($mm)",
+     "label": "R&D ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      744.06,
+      912.12,
+      971.4078
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:SG&A ($mm)",
+     "label": "SG&A ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      701.8,
+      791.6,
+      839.0960000000001
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:Margem EBITDA",
+     "label": "Margem EBITDA",
+     "kind": "margin",
+     "cmp": false,
+     "cap": [
+      0.2646067952470936,
+      0.30466080334423995,
+      0.3323987450318561
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    }
+   ],
    "anchor_ok": true,
    "stale_note": null,
    "pdf": "img/COHR.pdf",
@@ -893,7 +1429,7 @@
    ],
    "bbg": "GOOG US Equity",
    "asof_model": "2026-06-05",
-   "px": 348.78,
+   "px": 346.28,
    "crncy": "USD",
    "eps_kind": "Diluted",
    "note": null,
@@ -1036,6 +1572,84 @@
      ]
     }
    ],
+   "kpi_lines": [
+    {
+     "section": "kpi",
+     "key": "kpi:GW implantado",
+     "label": "GW implantado",
+     "kind": "num1",
+     "cmp": false,
+     "cap": [
+      4.56685,
+      7.75
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:FCF ($mm)",
+     "label": "FCF ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      -3032.319468596397,
+      -55479.42357039242
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:OCF pré-imposto ($mm)",
+     "label": "OCF pré-imposto ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      179641.6805314036,
+      254520.57642960758
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:D&A ($mm)",
+     "label": "D&A ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      35244.10229080344,
+      56223.878955138964
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    }
+   ],
    "anchor_ok": true,
    "stale_note": null,
    "pdf": "img/GOOG.pdf",
@@ -1049,7 +1663,7 @@
    ],
    "bbg": "META US Equity",
    "asof_model": "2026-06-11",
-   "px": 563.85,
+   "px": 563.565,
    "crncy": "USD",
    "eps_kind": "GAAP",
    "note": null,
@@ -1069,12 +1683,12 @@
       313251.6959814813
      ],
      "street": [
-      253050.8153846154,
-      301688.8095238095
+      253051.55384615384,
+      301688.49206349207
      ],
      "delta": [
-      0.014672427909247165,
-      0.03832719707410703
+      0.014669466866128689,
+      0.03832828968350466
      ]
     },
     {
@@ -1088,12 +1702,12 @@
       0.3535549764047524
      ],
      "street": [
-      0.35787024438239706,
-      0.34836616327536885
+      0.35786920003626593,
+      0.3483665298535967
      ],
      "delta": [
-      0.011199412588641267,
-      0.005188813129383574
+      0.011200456934772396,
+      0.005188446551155745
      ]
     },
     {
@@ -1154,6 +1768,103 @@
      ]
     }
    ],
+   "kpi_lines": [
+    {
+     "section": "kpi",
+     "key": "kpi:CapEx ($mm)",
+     "label": "CapEx ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      130862.407936,
+      169556.59811189
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:FCF ($mm)",
+     "label": "FCF ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      -16715.903342087564,
+      -23406.149897380412
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:OCF ex-SBC ($mm)",
+     "label": "OCF ex-SBC ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      114146.50459391244,
+      146150.44821450958
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:D&A ($mm)",
+     "label": "D&A ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      31702.098443183997,
+      49796.472710620874
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:SBC ($mm)",
+     "label": "SBC ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      24896.52984,
+      28248.047091200002
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    }
+   ],
    "anchor_ok": true,
    "stale_note": null,
    "pdf": "img/META.pdf",
@@ -1167,7 +1878,7 @@
    ],
    "bbg": "LITE US Equity",
    "asof_model": "2026-06-16",
-   "px": 893.93,
+   "px": 820.88,
    "crncy": "USD",
    "eps_kind": "Adjusted",
    "note": null,
@@ -1386,6 +2097,103 @@
      ]
     }
    ],
+   "kpi_lines": [
+    {
+     "section": "kpi",
+     "key": "kpi:Transceivers/Cloudlight ($mm)",
+     "label": "Transceivers/Cloudlight ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      1061.046,
+      2122.092
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:OCS ($mm)",
+     "label": "OCS ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      507.5,
+      1522.5
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:CPO ($mm)",
+     "label": "CPO ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      25.0,
+      1500.0
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:Lasers ($mm)",
+     "label": "Lasers ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      157.51650979309733,
+      168.36407609757504
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:3D Sensing ($mm)",
+     "label": "3D Sensing ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      69.46138161459683,
+      70.85060924688877
+     ],
+     "street": [
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null
+     ]
+    }
+   ],
    "anchor_ok": true,
    "stale_note": "Estimativa do último ano fiscal no modelo (2,105) vs real BBG (1,645), +28% — modelo provavelmente anterior ao último resultado.",
    "pdf": "img/LITE.pdf",
@@ -1400,7 +2208,7 @@
    ],
    "bbg": "TSM US Equity",
    "asof_model": "2026-06-10",
-   "px": 467.67,
+   "px": 438.59,
    "crncy": "USD",
    "eps_kind": "USD/ADR",
    "note": "Receita US$bn e EPS US$/ADR; margens são % (linhas em TWD do modelo ficam no PDF).",
@@ -1477,15 +2285,16 @@
       22.777076989081717
      ],
      "street": [
-      15.631,
-      19.738
+      15.603,
+      19.703
      ],
      "delta": [
-      0.0410036145733339,
-      0.15397086782256153
+      0.04287172334780376,
+      0.1560207577060202
      ]
     }
    ],
+   "kpi_lines": [],
    "anchor_ok": true,
    "stale_note": null,
    "pdf": "img/TSM.pdf",
@@ -1499,7 +2308,7 @@
    ],
    "bbg": "ASML NA Equity",
    "asof_model": "2026-06-22",
-   "px": 1655.8,
+   "px": 1560.8,
    "crncy": "EUR",
    "eps_kind": "Diluted (EUR)",
    "note": "Income statement do modelo SemiCap, em EUR (street BBG ASML NA também em EUR).",
@@ -1609,14 +2418,14 @@
       68.735286195739
      ],
      "street": [
-      31.553,
-      41.975,
-      49.333
+      31.664,
+      42.144,
+      49.63
      ],
      "delta": [
-      0.2558953239498529,
-      0.35429460797762835,
-      0.3932922424287799
+      0.25149270959416703,
+      0.34886380433421005,
+      0.3849543863739471
      ]
     },
     {
@@ -1629,6 +2438,140 @@
       388.0,
       388.0,
       388.0
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    }
+   ],
+   "kpi_lines": [
+    {
+     "section": "kpi",
+     "key": "kpi:Systems / equip. (€mm)",
+     "label": "Systems / equip. (€mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      37255.68,
+      50544.48,
+      61152.0
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:Serviços / IBM (€mm)",
+     "label": "Serviços / IBM (€mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      11589.175391843828,
+      15722.940604212365,
+      19022.63637550123
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:IBM % receita",
+     "label": "IBM % receita",
+     "kind": "margin",
+     "cmp": false,
+     "cap": [
+      0.2372650159136105,
+      0.23726501591361043,
+      0.23726501591361046
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:R&D (€mm)",
+     "label": "R&D (€mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      6349.315178858013,
+      8482.551789752946,
+      10021.829546937654
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:CapEx (€mm)",
+     "label": "CapEx (€mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      2804.4678351846396,
+      3130.092911347941,
+      3253.5000100017533
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:CapEx % vendas",
+     "label": "CapEx % vendas",
+     "kind": "margin",
+     "cmp": false,
+     "cap": [
+      0.0574158283955721,
+      0.0472342650854434,
+      0.0405801654623521
      ],
      "street": [
       null,
@@ -1655,7 +2598,7 @@
    ],
    "bbg": "AMAT US Equity",
    "asof_model": "2026-06-22",
-   "px": 640.18,
+   "px": 583.15,
    "crncy": "USD",
    "eps_kind": "Diluted",
    "note": null,
@@ -1679,12 +2622,12 @@
      "street": [
       33467.73529411764,
       42599.529411764706,
-      49633.63157894737
+      49884.77777777778
      ],
      "delta": [
       0.1518686365331372,
       0.21735590961592344,
-      0.2764219343075185
+      0.26999575519666563
      ]
     },
     {
@@ -1699,14 +2642,14 @@
       0.477777777777778
      ],
      "street": [
-      0.49929,
-      0.5036400000000001,
-      0.50665
+      0.49957,
+      0.50419,
+      0.50804
      ],
      "delta": [
-      -0.027415000000000023,
-      -0.029955789473684102,
-      -0.02887222222222202
+      -0.027695000000000025,
+      -0.030505789473684042,
+      -0.030262222222222024
      ]
     },
     {
@@ -1723,12 +2666,12 @@
      "street": [
       0.32624112830416097,
       0.3464793472291484,
-      0.3649553386944324
+      0.36311796163996746
      ],
      "delta": [
       -0.0013411283041609434,
       -0.005579347229148435,
-      -0.024955338694432394
+      -0.023117961639967433
      ]
     },
     {
@@ -1798,6 +2741,140 @@
      ]
     }
    ],
+   "kpi_lines": [
+    {
+     "section": "kpi",
+     "key": "kpi:Semiconductor Systems ($mm)",
+     "label": "Semiconductor Systems ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      28100.490000000005,
+      38425.38333333334,
+      47214.38333333334
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:Serviços AGS ($mm)",
+     "label": "Serviços AGS ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      8555.277954420577,
+      11683.405542935769,
+      14355.739360040065
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:AGS % receita",
+     "label": "AGS % receita",
+     "kind": "margin",
+     "cmp": false,
+     "cap": [
+      0.22192429316324244,
+      0.2252926802978649,
+      0.22659757273523298
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:R&D ($mm)",
+     "label": "R&D ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      4457.394003063213,
+      5595.290378755338,
+      6476.131060507786
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:CapEx ($mm)",
+     "label": "CapEx ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      1084.2309737180788,
+      1296.4697219067277,
+      1407.8545783712593
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:CapEx % vendas",
+     "label": "CapEx % vendas",
+     "kind": "margin",
+     "cmp": false,
+     "cap": [
+      0.028125,
+      0.025,
+      0.0222222222222222
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    }
+   ],
    "anchor_ok": true,
    "stale_note": null,
    "pdf": "img/AMAT.pdf",
@@ -1811,7 +2888,7 @@
    ],
    "bbg": "KLAC US Equity",
    "asof_model": "2026-06-22",
-   "px": 269.16,
+   "px": 244.365,
    "crncy": "USD",
    "eps_kind": "Diluted (pós-split)",
    "note": null,
@@ -1877,12 +2954,12 @@
       0.47
      ],
      "street": [
-      0.42902522531048576,
+      0.4303159177348089,
       0.45949654738323126,
       0.49154998444237014
      ],
      "delta": [
-      0.012774774689514268,
+      0.011484082265191153,
       0.0025034526167687643,
       -0.021549984442370163
      ]
@@ -1922,13 +2999,13 @@
      ],
      "street": [
       3.708,
-      5.102,
-      6.05
+      5.104,
+      6.054
      ],
      "delta": [
       0.08438411480242425,
-      0.15498126186103978,
-      0.26055000960661645
+      0.1545286829966741,
+      0.2597171387710653
      ]
     },
     {
@@ -1941,6 +3018,140 @@
       1306.0,
       1306.0,
       1306.0
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    }
+   ],
+   "kpi_lines": [
+    {
+     "section": "kpi",
+     "key": "kpi:Systems / equip. ($mm)",
+     "label": "Systems / equip. ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      10259.8056,
+      14289.923999999999,
+      18179.172
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:Serviços ($mm)",
+     "label": "Serviços ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      3402.40844801603,
+      4856.926285633737,
+      6178.822108351089
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:Serviços % receita",
+     "label": "Serviços % receita",
+     "kind": "margin",
+     "cmp": false,
+     "cap": [
+      0.24903785258071795,
+      0.25366711564449773,
+      0.25366711564449773
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:R&D ($mm)",
+     "label": "R&D ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      1554.6657364983778,
+      2178.7795152617728,
+      2771.771743364093
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:CapEx ($mm)",
+     "label": "CapEx ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      188.44433169677336,
+      266.8954888300453,
+      342.10665882515525
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:CapEx % vendas",
+     "label": "CapEx % vendas",
+     "kind": "margin",
+     "cmp": false,
+     "cap": [
+      0.0137931034482759,
+      0.0139393939393939,
+      0.0140449438202247
      ],
      "street": [
       null,
@@ -1967,7 +3178,7 @@
    ],
    "bbg": "LRCX US Equity",
    "asof_model": "2026-06-22",
-   "px": 409.54,
+   "px": 371.3799,
    "crncy": "USD",
    "eps_kind": "Diluted (pós-split 10:1)",
    "note": null,
@@ -2097,6 +3308,140 @@
       1278.8,
       1278.8,
       1278.8
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    }
+   ],
+   "kpi_lines": [
+    {
+     "section": "kpi",
+     "key": "kpi:Systems / equip. ($mm)",
+     "label": "Systems / equip. ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      15084.165600000004,
+      21441.273,
+      27681.921000000002
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:Serviços CSBG ($mm)",
+     "label": "Serviços CSBG ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      7987.213805878868,
+      11273.429796052407,
+      14554.64855157475
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:CSBG % receita",
+     "label": "CSBG % receita",
+     "kind": "margin",
+     "cmp": false,
+     "cap": [
+      0.34619576339001334,
+      0.34459826416068623,
+      0.3445982641606862
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:R&D ($mm)",
+     "label": "R&D ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      2464.442800173429,
+      3402.32909078945,
+      4300.450717978528
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:CapEx ($mm)",
+     "label": "CapEx ($mm)",
+     "kind": "money",
+     "cmp": false,
+     "cap": [
+      524.3495319517918,
+      719.7234615131529,
+      921.5251538525392
+     ],
+     "street": [
+      null,
+      null,
+      null
+     ],
+     "delta": [
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "section": "kpi",
+     "key": "kpi:CapEx % vendas",
+     "label": "CapEx % vendas",
+     "kind": "margin",
+     "cmp": false,
+     "cap": [
+      0.0227272727272727,
+      0.022,
+      0.0218181818181818
      ],
      "street": [
       null,
