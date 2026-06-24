@@ -10,7 +10,7 @@
    ],
    "bbg": "NVDA US Equity",
    "asof_model": "2026-06-17",
-   "px": 201.01,
+   "px": 200.04,
    "crncy": "USD",
    "eps_kind": "Non-GAAP",
    "note": "Margem EBIT omitida: a linha do resumo calcula EBIT = Receita − Opex (s/ COGS).",
@@ -62,18 +62,18 @@
      "key": "net_income",
      "label": "Lucro líquido",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       224737.71814465383,
       369398.56136302813
      ],
      "street": [
-      null,
-      null
+      218958.226,
+      308034.538
      ],
      "delta": [
-      null,
-      null
+      0.026395409984066198,
+      0.19921150323418635
      ]
     },
     {
@@ -81,18 +81,18 @@
      "key": "ebitda",
      "label": "EBITDA",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       277587.3059416337,
       455511.01165855967
      ],
      "street": [
-      null,
-      null
+      265460.84375,
+      377243.6666666667
      ],
      "delta": [
-      null,
-      null
+      0.04568079427583638,
+      0.20747159437682527
      ]
     },
     {
@@ -119,18 +119,18 @@
      "key": "shares",
      "label": "Ações diluídas (M)",
      "kind": "count",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       24275.388463333737,
       23931.41563631499
      ],
      "street": [
-      null,
-      null
+      24320.584916139065,
+      24038.90572810988
      ],
      "delta": [
-      null,
-      null
+      -0.0018583620813878987,
+      -0.004471505192900627
      ]
     },
     {
@@ -320,7 +320,7 @@
    ],
    "bbg": "AAPL US Equity",
    "asof_model": "2026-06-16",
-   "px": 296.6101,
+   "px": 294.3,
    "crncy": "USD",
    "eps_kind": "Adjusted",
    "note": null,
@@ -391,18 +391,18 @@
      "key": "net_income",
      "label": "Lucro líquido",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       144980.7455447897,
       154796.3197426879
      ],
      "street": [
-      null,
-      null
+      128718.88100000001,
+      139652.786
      ],
      "delta": [
-      null,
-      null
+      0.1263362796386467,
+      0.10843703284722084
      ]
     },
     {
@@ -410,18 +410,18 @@
      "key": "ebitda",
      "label": "EBITDA",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       166594.7180885233,
       180487.75185678966
      ],
      "street": [
-      null,
-      null
+      169812.66666666666,
+      183918.51515151514
      ],
      "delta": [
-      null,
-      null
+      -0.01894999143061582,
+      -0.018653713531229577
      ]
     },
     {
@@ -448,18 +448,18 @@
      "key": "shares",
      "label": "Ações diluídas (M)",
      "kind": "count",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       14320.450440273036,
       13938.197880546073
      ],
      "street": [
-      null,
-      null
+      14698.970081077996,
+      14468.79258184832
      ],
      "delta": [
-      null,
-      null
+      -0.025751439639449925,
+      -0.036671664086739275
      ]
     },
     {
@@ -611,7 +611,7 @@
    ],
    "bbg": "AVGO US Equity",
    "asof_model": "2026-06-10",
-   "px": 381.2,
+   "px": 380.15,
    "crncy": "USD",
    "eps_kind": "Pro Forma",
    "note": null,
@@ -682,18 +682,18 @@
      "key": "net_income",
      "label": "Lucro líquido",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       63585.606713308596,
       103933.32882991117
      ],
      "street": [
-      null,
-      null
+      57033.744,
+      94462.533
      ],
      "delta": [
-      null,
-      null
+      0.11487695272659293,
+      0.10025981232062842
      ]
     },
     {
@@ -701,18 +701,18 @@
      "key": "ebitda",
      "label": "EBITDA",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       75885.2021779203,
       122505.05064089547
      ],
      "street": [
-      null,
-      null
+      71930.64,
+      116992.96428571428
      ],
      "delta": [
-      null,
-      null
+      0.05497743629029728,
+      0.047114682398506025
      ]
     },
     {
@@ -739,18 +739,18 @@
      "key": "shares",
      "label": "Ações diluídas (M)",
      "kind": "count",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       4932.703038456047,
       4932.703038456047
      ],
      "street": [
-      null,
-      null
+      4929.450648228176,
+      4907.399501272794
      ],
      "delta": [
-      null,
-      null
+      0.000659787562543146,
+      0.005156200789581122
      ]
     },
     {
@@ -1073,7 +1073,7 @@
    ],
    "bbg": "COHR US Equity",
    "asof_model": "2026-05-26",
-   "px": 380.59,
+   "px": 381.22,
    "crncy": "USD",
    "eps_kind": "Pro Forma",
    "note": null,
@@ -1154,21 +1154,21 @@
      "key": "net_income",
      "label": "Lucro líquido",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       1652.1864675814581,
       3984.171434204864,
       4965.582145874127
      ],
      "street": [
-      null,
-      null,
-      null
+      1066.188,
+      1676.941,
+      2405.1820000000002
      ],
      "delta": [
-      null,
-      null,
-      null
+      0.5496202054248012,
+      1.3758566545900326,
+      1.064534885873138
      ]
     },
     {
@@ -1176,21 +1176,21 @@
      "key": "ebitda",
      "label": "EBITDA",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       2397.389637566971,
       5054.730165685015,
       6516.348328239663
      ],
      "street": [
-      null,
-      null,
-      null
+      1718.3,
+      2506.4545454545455,
+      3614.6666666666665
      ],
      "delta": [
-      null,
-      null,
-      null
+      0.3952101714293028,
+      1.0166853513668408,
+      0.802752211796292
      ]
     },
     {
@@ -1220,21 +1220,21 @@
      "key": "shares",
      "label": "Ações diluídas (M)",
      "kind": "count",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       199.68257171371,
       207.44832613549102,
       210.44832613549102
      ],
      "street": [
-      null,
-      null,
-      null
+      195.45151237396885,
+      201.43435435435438,
+      200.85027139874742
      ],
      "delta": [
-      null,
-      null,
-      null
+      0.021647616272447268,
+      0.029855740349816973,
+      0.047787113604086606
      ]
     },
     {
@@ -1429,7 +1429,7 @@
    ],
    "bbg": "GOOG US Equity",
    "asof_model": "2026-06-05",
-   "px": 346.28,
+   "px": 346.08,
    "crncy": "USD",
    "eps_kind": "Diluted",
    "note": null,
@@ -1481,18 +1481,18 @@
      "key": "net_income",
      "label": "Lucro líquido",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       144397.57824060018,
       198296.69747446862
      ],
      "street": [
-      null,
-      null
+      174311.27300000002,
+      182923.313
      ],
      "delta": [
-      null,
-      null
+      -0.17161078709694144,
+      0.08404278395323295
      ]
     },
     {
@@ -1519,18 +1519,18 @@
      "key": "shares",
      "label": "Ações diluídas (M)",
      "kind": "count",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       12238.0,
       12238.0
      ],
      "street": [
-      null,
-      null
+      12208.381636083486,
+      11928.484708183893
      ],
      "delta": [
-      null,
-      null
+      0.0024260679915979466,
+      0.02594757837127082
      ]
     },
     {
@@ -1663,7 +1663,7 @@
    ],
    "bbg": "META US Equity",
    "asof_model": "2026-06-11",
-   "px": 563.565,
+   "px": 562.2,
    "crncy": "USD",
    "eps_kind": "GAAP",
    "note": null,
@@ -1715,18 +1715,18 @@
      "key": "net_income",
      "label": "Lucro líquido",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       82444.40615072845,
       96353.97550388872
      ],
      "street": [
-      null,
-      null
+      103421.90000000001,
+      102643.38500000001
      ],
      "delta": [
-      null,
-      null
+      -0.2028341564917252,
+      -0.061274377263681346
      ]
     },
     {
@@ -1734,18 +1734,18 @@
      "key": "ebitda",
      "label": "EBITDA",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       193702.098443184,
       252296.47271062087
      ],
      "street": [
-      null,
-      null
+      125039.76923076922,
+      154180.4
      ],
      "delta": [
-      null,
-      null
+      0.5491239278096705,
+      0.6363718910485436
      ]
     },
     {
@@ -1878,7 +1878,7 @@
    ],
    "bbg": "LITE US Equity",
    "asof_model": "2026-06-16",
-   "px": 820.88,
+   "px": 827.92,
    "crncy": "USD",
    "eps_kind": "Adjusted",
    "note": null,
@@ -1949,18 +1949,18 @@
      "key": "net_income",
      "label": "Lucro líquido",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       1140.7077424339332,
       2971.8297729500514
      ],
      "street": [
-      null,
-      null
+      751.125,
+      1842.0
      ],
      "delta": [
-      null,
-      null
+      0.5186656580914404,
+      0.613371212242156
      ]
     },
     {
@@ -1968,18 +1968,18 @@
      "key": "ebitda",
      "label": "EBITDA",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       1515.5353093070103,
       3683.8775723952713
      ],
      "street": [
-      null,
-      null
+      978.4545454545455,
+      2374.7272727272725
      ],
      "delta": [
-      null,
-      null
+      0.5489072193976692,
+      0.5512844842028937
      ]
     },
     {
@@ -2006,18 +2006,18 @@
      "key": "shares",
      "label": "Ações diluídas (M)",
      "kind": "count",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       89.02977973732543,
       99.0
      ],
      "street": [
-      null,
-      null
+      92.09477685139774,
+      101.93691200885445
      ],
      "delta": [
-      null,
-      null
+      -0.033280900598933294,
+      -0.028811074918566715
      ]
     },
     {
@@ -2208,7 +2208,7 @@
    ],
    "bbg": "TSM US Equity",
    "asof_model": "2026-06-10",
-   "px": 438.59,
+   "px": 436.39,
    "crncy": "USD",
    "eps_kind": "USD/ADR",
    "note": "Receita US$bn e EPS US$/ADR; margens são % (linhas em TWD do modelo ficam no PDF).",
@@ -2228,12 +2228,12 @@
       220237.05816754294
      ],
      "street": [
-      164559.07372936956,
-      209836.99942644447
+      164331.15801717393,
+      209981.82553833333
      ],
      "delta": [
-      0.004642718421139724,
-      0.049562559365247116
+      0.0060360869303981435,
+      0.04883866783669544
      ]
     },
     {
@@ -2266,12 +2266,12 @@
       0.6081831162663086
      ],
      "street": [
-      0.5742457037971372,
-      0.5696496355368724
+      0.574538574768943,
+      0.5708454750658533
      ],
      "delta": [
-      0.004658715415585157,
-      0.03853348072943619
+      0.00436584444377941,
+      0.03733764120045535
      ]
     },
     {
@@ -2285,12 +2285,12 @@
       22.777076989081717
      ],
      "street": [
-      15.603,
-      19.703
+      15.615,
+      19.779
      ],
      "delta": [
-      0.04287172334780376,
-      0.1560207577060202
+      0.042070284943694025,
+      0.15157879514038708
      ]
     }
    ],
@@ -2389,21 +2389,21 @@
      "key": "net_income",
      "label": "Lucro líquido",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       15375.378880756805,
       22056.448273906048,
       26669.29104394673
      ],
      "street": [
-      null,
-      null,
-      null
+      12307.684000000001,
+      16198.026,
+      18842.154
      ],
      "delta": [
-      null,
-      null,
-      null
+      0.24925037730549504,
+      0.3616750753398006,
+      0.4154056401378914
      ]
     },
     {
@@ -2433,21 +2433,21 @@
      "key": "shares",
      "label": "Ações diluídas (M)",
      "kind": "count",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       388.0,
       388.0,
       388.0
      ],
      "street": [
-      null,
-      null,
-      null
+      388.69643759474485,
+      384.3495159453303,
+      379.6525085633689
      ],
      "delta": [
-      null,
-      null,
-      null
+      -0.0017917262094152564,
+      0.009497823994108812,
+      0.021987188938165092
      ]
     }
    ],
@@ -2598,7 +2598,7 @@
    ],
    "bbg": "AMAT US Equity",
    "asof_model": "2026-06-22",
-   "px": 583.15,
+   "px": 585.88,
    "crncy": "USD",
    "eps_kind": "Diluted",
    "note": null,
@@ -2679,21 +2679,21 @@
      "key": "net_income",
      "label": "Lucro líquido",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       10896.781501300386,
       15380.43518129052,
       18739.952292699854
      ],
      "street": [
-      null,
-      null,
-      null
+      9775.633,
+      13164.226,
+      15935.5
      ],
      "delta": [
-      null,
-      null,
-      null
+      0.11468807199496811,
+      0.16835089136957393,
+      0.17598771878509334
      ]
     },
     {
@@ -2723,21 +2723,21 @@
      "key": "shares",
      "label": "Ações diluídas (M)",
      "kind": "count",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       811.9,
       811.9,
       811.9
      ],
      "street": [
-      null,
-      null,
-      null
+      788.8664460942543,
+      790.9292237442921,
+      782.340812018263
      ],
      "delta": [
-      null,
-      null,
-      null
+      0.02919829334836943,
+      0.026514099651586243,
+      0.037783006494932714
      ]
     }
    ],
@@ -2888,7 +2888,7 @@
    ],
    "bbg": "KLAC US Equity",
    "asof_model": "2026-06-22",
-   "px": 244.365,
+   "px": 244.49,
    "crncy": "USD",
    "eps_kind": "Diluted (pós-split)",
    "note": null,
@@ -2969,21 +2969,21 @@
      "key": "net_income",
      "label": "Lucro líquido",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       5251.29056477973,
       7695.885003807623,
       9959.983790904758
      ],
      "street": [
-      null,
-      null,
-      null
+      4876.2080000000005,
+      6699.68,
+      7773.3330000000005
      ],
      "delta": [
-      null,
-      null,
-      null
+      0.07692095267054433,
+      0.14869441582398313,
+      0.28130157178455595
      ]
     },
     {
@@ -3013,21 +3013,21 @@
      "key": "shares",
      "label": "Ações diluídas (M)",
      "kind": "count",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       1306.0,
       1306.0,
       1306.0
      ],
      "street": [
-      null,
-      null,
-      null
+      1315.0507011866237,
+      1312.6332288401254,
+      1283.9995044598613
      ],
      "delta": [
-      null,
-      null,
-      null
+      -0.006882397141385388,
+      -0.005053375683614747,
+      0.0171343489337199
      ]
     }
    ],
@@ -3178,7 +3178,7 @@
    ],
    "bbg": "LRCX US Equity",
    "asof_model": "2026-06-22",
-   "px": 371.3799,
+   "px": 371.33,
    "crncy": "USD",
    "eps_kind": "Diluted (pós-split 10:1)",
    "note": null,
@@ -3259,21 +3259,21 @@
      "key": "net_income",
      "label": "Lucro líquido",
      "kind": "money",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       7388.193969903402,
       11003.132279613083,
       15324.441110980557
      ],
      "street": [
-      null,
-      null,
-      null
+      7150.871,
+      10011.226,
+      11881.0
      ],
      "delta": [
-      null,
-      null,
-      null
+      0.033187980863226496,
+      0.09907940142526828,
+      0.2898275491103912
      ]
     },
     {
@@ -3303,21 +3303,21 @@
      "key": "shares",
      "label": "Ações diluídas (M)",
      "kind": "count",
-     "cmp": false,
+     "cmp": true,
      "cap": [
       1278.8,
       1278.8,
       1278.8
      ],
      "street": [
-      null,
-      null,
-      null
+      1259.1778482127136,
+      1253.59704482845,
+      1208.646998982706
      ],
      "delta": [
-      null,
-      null,
-      null
+      0.015583304467385872,
+      0.02010451067631469,
+      0.05804258900765924
      ]
     }
    ],
