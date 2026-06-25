@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Memory Apple — exercise (iPhone BOM × Memory $/GB)</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#161a22; --panel2:#1b2029; --border:#232733; --border2:#2c3240;
+    --txt:#e7e7ea; --mut:#9aa0ad; --dim:#6b7280;
+    --green:#34d399; --red:#f87171; --amber:#fbbf24; --blue:#60a5fa; --violet:#a78bfa;
+    --apple:#60a5fa; --market:#f87171;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"Segoe UI",-apple-system,Arial,sans-serif;font-size:14px;line-height:1.45}
+  .wrap{max-width:1180px;margin:0 auto;padding:26px 20px 80px}
+  h1{font-size:23px;margin:0 0 4px;font-weight:700}
+  .sub{color:var(--mut);font-size:13px;margin:0 0 4px}
+  .tag{display:inline-block;background:#1f2a1f;color:var(--green);border:1px solid #2c3a2c;border-radius:5px;padding:2px 8px;font-size:11px;font-weight:600;margin-right:6px}
+  h2{font-size:15px;font-weight:700;margin:30px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+  h2 .n{display:inline-flex;width:21px;height:21px;align-items:center;justify-content:center;background:var(--panel2);border:1px solid var(--border2);border-radius:50%;font-size:11px;color:var(--mut)}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:9px;padding:16px 18px;margin-bottom:14px}
+  .row{display:flex;gap:14px;flex-wrap:wrap}
+  .ctl{display:flex;flex-direction:column;gap:4px}
+  .ctl label{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px}
+  input[type=number],select{background:var(--panel2);border:1px solid var(--border2);color:var(--txt);border-radius:6px;padding:6px 8px;font-size:13px;font-family:inherit;width:110px}
+  input[type=number]:focus,select:focus{outline:none;border-color:var(--blue)}
+  .seg{display:inline-flex;border:1px solid var(--border2);border-radius:7px;overflow:hidden}
+  .seg button{background:var(--panel2);color:var(--mut);border:none;padding:7px 13px;font-size:12.5px;font-family:inherit;cursor:pointer;font-weight:600}
+  .seg button.on{background:var(--blue);color:#0b1018}
+  .seg.market button.on{background:var(--red);color:#1a0c0c}
+  .preset{background:var(--panel2);color:var(--txt);border:1px solid var(--border2);border-radius:6px;padding:6px 11px;font-size:12px;cursor:pointer;font-family:inherit}
+  .preset:hover{border-color:var(--blue)}
+  .preset.on{border-color:var(--blue);background:#15263a;color:var(--txt)}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{padding:7px 9px;text-align:right;border-bottom:1px solid var(--border)}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--mut);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.3px}
+  tbody tr:hover{background:#1a1f29}
+  td.lbl{color:var(--txt)}
+  .gnum{font-variant-numeric:tabular-nums}
+  .qcol.sel{background:#15263a !important}
+  .qcol.sel.market{background:#3a1a1a !important}
+  .miniinp{width:62px;background:transparent;border:1px solid transparent;color:var(--txt);text-align:right;font-size:12.5px;font-family:inherit;border-radius:4px;padding:3px 4px}
+  .miniinp:hover{border-color:var(--border2)}
+  .miniinp:focus{outline:none;border-color:var(--blue);background:var(--panel2)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px}
+  .card{background:var(--panel2);border:1px solid var(--border);border-radius:9px;padding:13px 15px}
+  .card .k{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
+  .card .v{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
+  .card .d{font-size:12px;margin-top:3px}
+  .up{color:var(--red)} .dn{color:var(--green)} .neu{color:var(--mut)}
+  .bar{height:11px;background:var(--panel2);border-radius:6px;overflow:hidden;display:flex;margin-top:4px}
+  .bar i{display:block;height:100%}
+  .note{font-size:12px;color:var(--mut);line-height:1.55}
+  .note b{color:var(--txt)}
+  .src{font-size:11.5px;color:var(--dim);line-height:1.6}
+  .src b{color:var(--mut)}
+  .memrow{background:#15263a}
+  .memrow.market{background:#3a1a1a}
+  .pill{font-size:10.5px;padding:1px 6px;border-radius:4px;border:1px solid var(--border2);color:var(--mut)}
+  .legend{display:flex;gap:16px;font-size:12px;color:var(--mut);margin:6px 0 0;flex-wrap:wrap}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:middle}
+  .foot{font-size:11px;color:var(--dim);margin-top:30px;border-top:1px solid var(--border);padding-top:12px}
+  .hl{color:var(--amber);font-weight:600}
+  details{margin-top:6px}
+  summary{cursor:pointer;color:var(--mut);font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Memory Apple — <span style="color:var(--mut);font-weight:400">iPhone BOM &times; Memory $/GB exercise</span></h1>
+  <p class="sub"><span class="tag">CAPSTONE · BUY-SIDE</span> Memory cost as a function of <b>$/GB</b>, and how far the MU-led super-cycle pushes it through the iPhone bill of materials. Every input is editable.</p>
+  <p class="sub" id="stamp" style="color:var(--dim)">Generated 2026-06-25 · sources: empresas wiki — MU, AAPL, HBM/Memory theme · TrendForce/Conor/UBS/JPM checks (Jun-2026)</p>
+
+  <!-- ============ GLOBAL CONTROLS ============ -->
+  <div class="panel">
+    <div class="row" style="align-items:flex-end">
+      <div class="ctl"><label>Price track</label>
+        <div class="seg" id="trackSeg">
+          <button data-tr="apple" class="on">Apple realized (LTA)</button>
+          <button data-tr="market">Market · BBG contract</button>
+        </div>
+      </div>
+      <div class="ctl"><label>Quarter fed into BOM</label>
+        <select id="qsel"></select>
+      </div>
+      <div class="ctl"><label>Config preset</label>
+        <div>
+          <button class="preset" data-cfg="base">iPhone 17 (8/256)</button>
+          <button class="preset" data-cfg="pro">iPhone 17 Pro (12/256)</button>
+          <button class="preset" data-cfg="promax">17 Pro Max (12/512)</button>
+          <button class="preset" data-cfg="fold">Foldable (16/512)</button>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top:14px">
+      <div class="ctl"><label>DRAM in device (GB)</label><input type="number" id="dramGB" value="12" step="1"></div>
+      <div class="ctl"><label>NAND storage (GB)</label><input type="number" id="nandGB" value="256" step="64"></div>
+      <div class="ctl"><label>iPhone ASP ($)</label><input type="number" id="asp" value="1099" step="10"></div>
+      <div class="ctl"><label>BOM ex-memory ($)</label><input type="number" id="bomEx" value="485" step="5"></div>
+      <div class="ctl"><label>Price hike taken ($)</label><input type="number" id="hike" value="0" step="10"></div>
+    </div>
+    <div class="row" style="margin-top:14px;align-items:flex-end">
+      <div class="ctl"><label>Forward sensitivity (Q3'26 →) — sets the QoQ path of the estimated quarters</label>
+        <div id="fwdSeg">
+          <button class="preset" data-fwd="trendforce">TrendForce base (+10/6/4/3%)</button>
+          <button class="preset on" data-fwd="street">Street mid (+20/12/8/6%)</button>
+          <button class="preset" data-fwd="bull">Conor bull (+35/25/15/10%)</button>
+          <button class="preset" data-fwd="flat">Flat (0%)</button>
+          <button class="preset" data-fwd="rollover">Roll-over (−5/15/15/10%)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 1. COST-PER-GB ENGINE ============ -->
+  <h2><span class="n">1</span> The cost-per-GB engine — DRAM &amp; NAND through the super-cycle</h2>
+  <div class="panel">
+    <div style="background:#0f241a;border:1px solid #1d4534;border-radius:7px;padding:9px 12px;margin-bottom:12px;font-size:12.5px;color:#a7e8c8">
+      ✓ <b>Market track = real Bloomberg data.</b> The <b>Market · BBG contract</b> levels are the actual <b>inSpectrum Tech</b> memory price series pulled via the BBG wrapper — LPDDR5 16Gb contract <b>ISTPMR48 = $12.00/GB</b>, NAND TLC 256GB contract <b>ISTPND27 = $0.048/GB</b> (month-end, <b>asof 2026-05-31</b>); trough ~$2.50/GB DRAM. <span style="color:#e8d9a0">The <b>Apple realized</b> track (~60% of contract, → UBS ~$6/GB floor) and the <b>$485 ex-memory BOM</b> remain Capstone estimates.</span> Q3'26+ quarters are forward estimates. Edit any cell to impose your own view.
+    </div>
+    <p class="note" style="margin-top:0">Each quarter compounds the prior $/GB by an editable QoQ% step. Defaults are seeded from the on-disk checks: DRAM contract <b>+45-50% (Q4'25), +100% (Q1'26), +60% (Q2'26)</b> on the market track (MU printed DRAM ASP +63% QoQ / NAND +87% in F3Q26); the <b>Apple track</b> is cushioned — Apple agreed only <b>~+20% mobile DRAM in Q3</b>, carries the lowest memory % of BOM and supply priority, and lands near UBS's <b>~$6/GB DRAM SCA floor</b> by 2027. <span class="hl">Edit any cell.</span></p>
+    <div style="overflow-x:auto">
+      <table id="engine"></table>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--apple)"></i>DRAM — Apple realized</span>
+      <span><i style="background:var(--market)"></i>DRAM — Market · BBG contract</span>
+      <span><i style="background:#2563eb;opacity:.6"></i>NAND — Apple realized</span>
+      <span><i style="background:#b91c1c;opacity:.7"></i>NAND — Market · BBG contract</span>
+    </div>
+    <div style="overflow-x:auto;margin-top:6px"><svg id="chart" viewBox="0 0 1080 300" style="width:100%;min-width:760px"></svg></div>
+    <p class="note" style="margin-bottom:0"><b>Now grounded in real BBG data.</b> The <b style="color:var(--market)">Market · BBG contract</b> track is the actual <b>inSpectrum Tech</b> memory price series pulled via the Bloomberg wrapper: mobile <b>LPDDR5 16Gb contract (ISTPMR48) = $12.00/GB</b> and <b>NAND TLC 256GB contract (ISTPND27) = $0.048/GB</b>, both month-end <b>asof 2026-05-31</b>; trough (mid-2025) ~$2.50/GB DRAM, ~$0.006/GB NAND. Q3'26+ are estimates. The <b style="color:var(--apple)">Apple realized</b> track is the LTA-cushioned read (~60% of spot contract, converging toward UBS's <b>~$6/GB</b> floor). <b>Gb vs GB:</b> inSpectrum quotes $/chip (8Gb = 1GB); a 96Gb LPDDR5 part = the 12GB in an iPhone Pro. Raw NAND is ~$0.05/GB — so in an iPhone, <b>DRAM is ~90% of the memory bill and NAND is rounding</b>.</p>
+  </div>
+
+  <!-- ============ 2. iPhone BOM ============ -->
+  <h2><span class="n">2</span> iPhone bill of materials — memory plugged in live</h2>
+  <div class="panel">
+    <div style="overflow-x:auto"><table id="bom"></table></div>
+    <div class="row" style="margin-top:14px">
+      <div class="card" style="flex:1;min-width:200px">
+        <div class="k">Memory $ / unit <span class="pill" style="color:var(--green);border-color:#1d4534">market = BBG real · Apple = est</span></div>
+        <div class="v" id="memUSD">—</div>
+        <div class="d" id="memDelta">—</div>
+      </div>
+      <div class="card" style="flex:1;min-width:200px">
+        <div class="k">Memory % of total BOM</div>
+        <div class="v" id="memPct">—</div>
+        <div class="d"><div class="bar"><i id="memBar" style="background:var(--amber)"></i><i id="restBar" style="background:var(--panel2);opacity:.5"></i></div></div>
+      </div>
+      <div class="card" style="flex:1;min-width:200px">
+        <div class="k">Total BOM / unit</div>
+        <div class="v" id="bomTot">—</div>
+        <div class="d neu" id="bomNote">DRAM + NAND + ex-memory</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 3. MARGIN BRIDGE ============ -->
+  <h2><span class="n">3</span> Unit margin bridge — what memory does to gross profit</h2>
+  <div class="panel">
+    <div class="cards">
+      <div class="card"><div class="k">Gross profit / unit</div><div class="v gnum" id="gp">—</div><div class="d neu">ASP &minus; BOM</div></div>
+      <div class="card"><div class="k">Implied unit gross margin</div><div class="v gnum" id="gm">—</div><div class="d" id="gmDelta">—</div></div>
+      <div class="card"><div class="k">GM hit from memory vs trough</div><div class="v gnum up" id="gmHit">—</div><div class="d neu">at constant ASP</div></div>
+      <div class="card"><div class="k">Price hike to fully offset</div><div class="v gnum" id="offset">—</div><div class="d neu" id="offsetNote">to restore trough GM</div></div>
+    </div>
+    <p class="note" style="margin-bottom:0;margin-top:14px">Illustrative single-unit economics for the selected config — not the blended product line. For reference, Capstone's house model has <b>products GM 38.7%</b> (Q2 FY26) and overall GM guide <b>47.5-48.5%</b> (June qtr), with iPhone blended ASP <b>$874 → $946 → $1,021</b> (2025/26E/27E). Cook on memory inflation — two separately-sourced quotes: <span class="hl">"100-year flood"</span> (Cook via WSJ, relayed by MS, 2026-06-22) and <span class="hl">"unlike anything in 40+ years"</span> (Cook via Vital Knowledge, 2026-06-17) — the swing factor on June-qtr margins. The model's edge for Apple: lowest memory % of BOM in JPM's coverage + LTA + supply priority let it pass cost through where Android OEMs (market-spot track) cannot.</p>
+  </div>
+
+  <!-- ============ 3b. OFFSET BY SCENARIO ============ -->
+  <h2><span class="n">3b</span> Price increase needed to offset — by forward scenario</h2>
+  <div class="panel">
+    <div id="offNow" style="background:#15263a;border:1px solid #2c4a6b;border-radius:8px;padding:13px 16px;margin-bottom:14px;display:flex;flex-wrap:wrap;gap:20px;align-items:center">
+      <div>
+        <div style="font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px">To offset the current scenario</div>
+        <div style="font-size:13px;color:var(--txt)" id="offNowCtx">—</div>
+      </div>
+      <div style="border-left:1px solid var(--border2);padding-left:20px">
+        <div style="font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px">Hold gross-margin %</div>
+        <div style="font-size:26px;font-weight:700" class="gnum"><span id="offNowHold">—</span> <span style="font-size:14px;color:var(--mut)" id="offNowHoldPct"></span></div>
+      </div>
+      <div style="border-left:1px solid var(--border2);padding-left:20px">
+        <div style="font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px">Pass-through $ (hold GP$)</div>
+        <div style="font-size:26px;font-weight:700" class="gnum neu" id="offNowPass">—</div>
+      </div>
+      <div style="border-left:1px solid var(--border2);padding-left:20px">
+        <div style="font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px">vs reported ~$50 hike</div>
+        <div style="font-size:15px;font-weight:600;margin-top:5px" id="offNowGap">—</div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:0">For the selected <b id="offCtx">—</b>, the ASP increase that restores the pre-inflation (trough) unit gross margin under each forward path. <b>Hold-GM%</b> keeps the margin percentage whole; <b>Pass-through $</b> is the smaller dollar-for-dollar cost recovery that only keeps gross-profit <i>dollars</i> flat (margin % still drifts down as ASP rises). The active scenario is highlighted.</p>
+    <div style="overflow-x:auto"><table id="offsetTable"></table></div>
+    <p class="note" style="margin-bottom:0">Reference: the reported iPhone 18 hike is <b>~$50</b> (JPM, 2026-06-08; Cook confirmed "forced to raise pricing", WSJ). Compare that against the "Hold-GM%" column to see which scenarios a $50 bump actually covers.</p>
+  </div>
+
+  <!-- ============ 3c. 2026 vs 2027 COMPARABLE MODELS ============ -->
+  <h2><span class="n">3c</span> 2026 vs 2027 comparable models — BOM &amp; memory pass-through</h2>
+  <div class="panel">
+    <p class="note" style="margin-top:0">Like-for-like iPhone tiers across the two model years. <b>2026</b> uses the latest actual BBG memory (Q2'26); <b>2027</b> uses the <b id="modScen">—</b> forward path at Q2'27 — so this table re-prices as you change the forward scenario and the price track above. The last columns show the <b>price increase to pass the memory forward</b> (hold each model's pre-inflation GM%). 2027 ex-memory BOM steps up modestly for the A20 CoW packaging + TSMC's ~10% 2027 wafer hike (incl. Apple); the foldable is a separate ASP tier.</p>
+    <div style="overflow-x:auto"><table id="modelTable"></table></div>
+    <p class="note" style="margin-bottom:0" id="modNote">—</p>
+  </div>
+
+  <!-- ============ 3d. EPS IMPACT (CAPSTONE MODEL) ============ -->
+  <h2><span class="n">3d</span> EPS impact — wired to the Capstone Apple model</h2>
+  <div class="panel">
+    <p class="note" style="margin-top:0"><b>Baseline = memory already embedded in the model</b> (current contract, Q2'26) — NOT the mid-2025 trough. The model's $11.11 FY27 EPS is struck at 47.7% GM with memory ~at today's level, so the incremental hit is the <b>forward step from here</b>; measuring vs trough would double-count the $2.68→$12/GB rise already in the number. <b>ΔEPS = Δmemory/unit × iPhone units × (1−tax) ÷ diluted shares</b>, blended across the lineup mix, live with the active track + scenario: <span id="epsCtx">—</span>. "Absorbed" = zero pass-through; "net of ~$50" subtracts the price hike Apple has already taken. Full pass-through keeps EPS whole.</p>
+    <div style="overflow-x:auto"><table id="epsTable"></table></div>
+    <div class="cards" style="margin-top:14px">
+      <div class="card"><div class="k">FY27 EPS hit — absorbed (vs current)</div><div class="v gnum up" id="epsHit27">—</div><div class="d" id="epsHit27pct">—</div></div>
+      <div class="card"><div class="k">FY27 net of the ~$50 hike taken</div><div class="v gnum up" id="epsYoY">—</div><div class="d" id="epsYoYpct">—</div></div>
+      <div class="card"><div class="k">EPS sensitivity</div><div class="v gnum" id="epsSens">—</div><div class="d neu">per $10/unit absorbed (FY27)</div></div>
+      <div class="card"><div class="k">If fully passed through</div><div class="v gnum dn">~$0.00</div><div class="d neu">EPS neutral (GP$ held flat)</div></div>
+    </div>
+    <p class="note" style="margin:16px 0 6px"><b>FY27 EPS hit if absorbed — scenario × track matrix</b> (Δ vs current/embedded memory; active cell highlighted). Values are $ and % of the model's $11.11 FY27 EPS. <b>The Market column is the Android-OEM spot proxy — Apple's LTAs/supply priority mean its realized cost is the Apple column;</b> the Δ shows what's at risk only if that cushion fully fails.</p>
+    <div style="overflow-x:auto"><table id="epsMatrix"></table></div>
+    <p class="note" style="margin-bottom:0" id="epsNote">—</p>
+  </div>
+
+  <!-- ============ NOTES / SOURCES ============ -->
+  <h2><span class="n">4</span> Anchors &amp; sources</h2>
+  <div class="panel src">
+    <p style="margin-top:0"><b>Live Bloomberg memory prices (inSpectrum Tech via BBG wrapper, $/GB = px ÷ GB)</b> <span id="bbgStamp" class="pill" style="color:var(--green);border-color:#1d4534"></span></p>
+    <table style="margin:4px 0 12px;font-size:12px" id="bbgTable">
+      <thead><tr><th>Series</th><th>BBG ticker</th><th>px</th><th>$/GB</th><th>asof</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <p class="note" style="margin:0 0 10px" id="bbgSummary"></p>
+    <p style="margin-top:0"><b>$/GB reference points on disk (corroborating, all Jun-2026 unless noted):</b></p>
+    <ul style="margin:0 0 8px;padding-left:18px">
+      <li><b style="color:var(--amber)">iPhone-relevant (mobile) —</b> Citi/Counterpoint: <b>LPDDR5 +10-15% (Q3), +15-20% (Q2)</b>, accelerating on AI-phone penetration (2026-06-15) <span class="pill">wiki ordering reproduced verbatim — calendar vs fiscal labeling ambiguous in source; treated here as a directional reference only, NOT the driver of the model's QoQ steps</span></li>
+      <li><b style="color:var(--amber)">iPhone-relevant —</b> Apple: <b>"significantly higher memory costs"</b> in June, increasing beyond (AAPL Q2 FY26 call); lowest memory % of BOM + supply priority (JPM 2025-12-15); <b>camera-module-for-DRAM-allocation swap with Samsung</b> — single expert, "reportedly" (BofA best-ideas expert, 2026-04-09)</li>
+      <li>DRAM contract cadence (commodity/server): <b>+45-50% Q4'25, +100% Q1'26, +60% Q2'26</b>; Q3'26 TrendForce base +8-13% (conservative) vs Conor's experts +20-40% — wide desk spread; <b>Apple special ~+20% mobile</b> (TrendForce "Avril", 2026-06-23)</li>
+      <li>MU F3Q26 (2026-06-24): <b>DRAM ASP +63% QoQ, NAND ASP +87% QoQ</b>; GM 84.9%; 16 SCAs, take-or-pay (MU call; JPM/BofA/MS/Citi, 2026-06-25)</li>
+      <li><b>UBS DRAM SCA floor ~$6/GB</b> — the contracted downside, post-MU F3Q26 (UBS/Arcuri, 2026-06-25). <i>The only absolute $/GB level disclosed on disk;</i> the Apple-realized track is anchored to it.</li>
+      <li style="color:var(--dim)"><b>NOT iPhone memory — reference points only (datacenter):</b> Server DDR5 &gt;$2/Gb (=&gt;$16/GB); HBM3E ~$1.3-2/Gb; HBM4 ~$2.05/Gb→~$5/Gb 2027 (=$40/GB); NVDA HBM ~$17-18→$30-32/GB. The iPhone uses <b>zero HBM</b> and <b>no server DIMMs</b> — these calibrate the <i>market-spot</i> DRAM trajectory's shape but are not the device's memory price (StoneX/TrendForce, Redburn/Conor, 2026-06-23).</li>
+    </ul>
+    <p style="margin:8px 0"><b>BOM ex-memory ($485 Pro default — estimate, NOT from wiki sources):</b> Capstone teardown-style build — A19 Pro SoC ~$130, OLED display ~$75, camera system ~$75, modem+RF ~$42, enclosure/mechanical ~$58, PMIC/power ~$22, battery ~$9, connectivity ~$11, sensors/haptics/audio ~$28, PCB/passives ~$20, assembly+test ~$15. Adjust the <b>BOM ex-memory</b> field to your own teardown.</p>
+    <details><summary>Method &amp; caveats</summary>
+      <p class="note">$/GB[q] = $/GB[q-1] × (1 + QoQ%[q]). Market track ≈ server/contract DDR5 &amp; commodity NAND proxy; Apple track = LTA-cushioned realized price (lower steps in the melt-up quarters, converging to the ~$6/GB DRAM floor). Mobile LPDDR5/NAND $/GB is not disclosed at device level — these are proxy anchors calibrated so the market DRAM track lands near &gt;$16/GB ($2/Gb) by mid-2026 and the Apple track near the UBS floor by 2027. Treat absolute $ as illustrative; the <b>shape and the relative Apple-vs-market gap</b> are the analytical point. All numbers attributed above; the model is the synthesis, not a primary source.</p>
+    </details>
+  </div>
+
+  <div class="foot">Capstone internal · empresas wiki model · figures are estimates/synthesis for buy-side use, not investment advice. Edit inputs to stress your own view.</div>
+</div>
+
+<script>
+/* ---------- state ---------- */
+const Q = ["Q3'25","Q4'25","Q1'26","Q2'26","Q3'26","Q4'26","Q1'27","Q2'27"];
+const NACT = 4; // indices 0..3 = actual (BBG); 4..7 = forward estimate
+
+/* === BBG-DATA - auto-generated by _build_memory_json.py; do not hand-edit between markers === */
+const BBG_ASOF = "2026-05-31", BBG_SPOT_ASOF = "2026-06-25";
+const DRAM_ACT = [2.68, 3.76, 8.0, 12.0];   // LPDDR5 16Gb (ISTPMR48) $/GB, Q3'25..Q2'26
+const NAND_ACT = [0.0066, 0.0199, 0.0434, 0.0481]; // NAND TLC 256GB (ISTPND27) $/GB
+const BBG_LEVELS = [
+  {s:"Mobile LPDDR5 16Gb contract",t:"ISTPMR48 Index",px:24.0,gb:2,asof:"2026-05-31",hl:1},
+  {s:"DRAM DDR5 8Gb contract",t:"ISTPDR15 Index",px:11.88,gb:1,asof:"2026-05-31",hl:0},
+  {s:"DRAM DDR5 16Gb spot",t:"ISPPDR47 Index",px:44.04,gb:2,asof:"2026-06-25",hl:0},
+  {s:"Server DRAM DDR5 64GB RDIMM",t:"ISTPDR82 Index",px:1270.0,gb:64,asof:"2026-05-31",hl:0},
+  {s:"NAND TLC 256GB contract",t:"ISTPND27 Index",px:12.32,gb:256,asof:"2026-05-31",hl:1},
+  {s:"NAND TLC 512Gb spot",t:"ISPPN512 Index",px:20.96,gb:64,asof:"2026-06-25",hl:0}
+];
+/* === /BBG-DATA === */
+
+// Apple realized = market contract × cushion ramp (LTAs lock in over the melt-up); editable forward.
+const CUSHION_D = [1.00, 0.82, 0.62, 0.62];   // applied to DRAM_ACT
+const CUSHION_N = [1.00, 0.85, 0.78, 0.72];   // applied to NAND_ACT
+// forward QoQ% estimates (indices map to Q3'26..Q2'27). Market path; Apple = ~0.65× these.
+const FWD = {
+  trendforce:{d:[10,6,4,3],  n:[8,5,4,3]},
+  street:    {d:[20,12,8,6], n:[15,10,8,6]},
+  bull:      {d:[35,25,15,10],n:[25,18,12,8]},
+  flat:      {d:[0,0,0,0],   n:[0,0,0,0]},
+  rollover:  {d:[-5,-15,-15,-10], n:[-5,-12,-12,-8]}
+};
+let fwdScen = "street";
+
+// Build a {base,q[]} object from an actual-level array + forward QoQ%.
+function mkTrack(actLevels, fwdQoQ){
+  const q=[0]; // index0 = base, no step
+  for(let i=1;i<NACT;i++) q.push(actLevels[i]/actLevels[i-1]*100-100);
+  for(let i=0;i<fwdQoQ.length;i++) q.push(fwdQoQ[i]);
+  return {base:actLevels[0], q};
+}
+let D, N;
+function rebuildTracks(){
+  const f = FWD[fwdScen];
+  const appleD = DRAM_ACT.map((v,i)=>v*CUSHION_D[i]);
+  const appleN = NAND_ACT.map((v,i)=>v*CUSHION_N[i]);
+  const fwdAppleD = f.d.map(x=>+(x*0.65).toFixed(1));
+  const fwdAppleN = f.n.map(x=>+(x*0.65).toFixed(1));
+  D = { market: mkTrack(DRAM_ACT, f.d), apple: mkTrack(appleD, fwdAppleD) };
+  N = { market: mkTrack(NAND_ACT, f.n), apple: mkTrack(appleN, fwdAppleN) };
+}
+rebuildTracks();
+
+let track = "apple";
+let qi = 3; // Q2'26 = latest actual BBG print; Q3'26+ estimates
+
+const $ = id => document.getElementById(id);
+
+function series(obj, tr){
+  const o = obj[tr]; const out=[o.base];
+  for(let i=1;i<Q.length;i++) out.push(out[i-1]*(1+o.q[i]/100));
+  return out;
+}
+function fmt(n,d=2){return n.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});}
+function usd(n,d=0){return '$'+n.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});}
+
+/* ---------- engine table ---------- */
+function buildEngine(){
+  const rows = [
+    {key:'D',obj:D,tr:'apple', lbl:'DRAM (LPDDR5) $/GB — Apple realized', c:'var(--apple)', dec:2},
+    {key:'D',obj:D,tr:'market',lbl:'DRAM (LPDDR5) $/GB — Market · BBG contract', c:'var(--market)',dec:2},
+    {key:'N',obj:N,tr:'apple', lbl:'NAND $/GB — Apple realized', c:'#2563eb', dec:4},
+    {key:'N',obj:N,tr:'market',lbl:'NAND $/GB — Market · BBG contract', c:'#b91c1c', dec:4},
+  ];
+  let h='<thead><tr><th>$/GB track</th><th>Base</th>';
+  for(let i=1;i<Q.length;i++) h+=`<th class="qcol ${i===qi?'sel '+(track==='market'?'market':''):''}">${Q[i]}</th>`;
+  h+='</tr></thead><tbody>';
+  for(const r of rows){
+    const s=series(r.obj,r.tr);
+    h+=`<tr><td class="lbl" style="border-left:3px solid ${r.c};padding-left:9px">${r.lbl}</td>`;
+    h+=`<td><input class="miniinp" data-t="base" data-o="${r.key}" data-tr="${r.tr}" value="${r.obj[r.tr].base}"></td>`;
+    for(let i=1;i<Q.length;i++){
+      const selc = (i===qi)?'qcol sel '+(track==='market'?'market':''):'qcol';
+      h+=`<td class="${selc}"><div class="gnum" style="color:${r.c};font-weight:600">${'$'+fmt(s[i],r.dec)}</div>`+
+         `<input class="miniinp" data-t="q" data-i="${i}" data-o="${r.key}" data-tr="${r.tr}" value="${r.obj[r.tr].q[i]}" title="QoQ %">`+
+         `<span style="font-size:9px;color:var(--dim)">%QoQ</span></td>`;
+    }
+    h+='</tr>';
+  }
+  h+='</tbody>';
+  $('engine').innerHTML=h;
+  $('engine').querySelectorAll('.miniinp').forEach(inp=>{
+    inp.addEventListener('change',e=>{
+      const t=e.target, o=(t.dataset.o==='D')?D:N, tr=t.dataset.tr;
+      const v=parseFloat(t.value)||0;
+      if(t.dataset.t==='base') o[tr].base=v; else o[tr].q[+t.dataset.i]=v;
+      renderAll();
+    });
+  });
+}
+
+/* ---------- chart ---------- */
+function buildChart(){
+  const W=1080,H=300,L=54,R=54,T=18,B=42;
+  const dApple=series(D,'apple'), dMarket=series(D,'market');
+  const nApple=series(N,'apple'), nMarket=series(N,'market');
+  const dMax=Math.max(...dMarket)*1.08;
+  const nMax=Math.max(...nMarket)*1.08;
+  const x=i=> L + i*(W-L-R)/(Q.length-1);
+  const yD=v=> T + (1-v/dMax)*(H-T-B);
+  const yN=v=> T + (1-v/nMax)*(H-T-B);
+  let s=`<rect x="0" y="0" width="${W}" height="${H}" fill="#12151c" rx="6"/>`;
+  // gridlines + left axis (DRAM)
+  for(let g=0;g<=4;g++){const v=dMax*g/4; const yy=yD(v);
+    s+=`<line x1="${L}" y1="${yy}" x2="${W-R}" y2="${yy}" stroke="#1e2330"/>`;
+    s+=`<text x="${L-6}" y="${yy+3}" fill="var(--apple)" font-size="10" text-anchor="end">$${fmt(v,0)}</text>`;}
+  // right axis (NAND)
+  for(let g=0;g<=4;g++){const v=nMax*g/4; const yy=yN(v);
+    s+=`<text x="${W-R+6}" y="${yy+3}" fill="#b91c1c" font-size="10" text-anchor="start">$${fmt(v,3)}</text>`;}
+  s+=`<text x="${L-6}" y="12" fill="var(--apple)" font-size="9.5" text-anchor="end">DRAM $/GB</text>`;
+  s+=`<text x="${W-R+6}" y="12" fill="#b91c1c" font-size="9.5" text-anchor="start">NAND $/GB</text>`;
+  // x labels + selected marker
+  for(let i=0;i<Q.length;i++){
+    s+=`<text x="${x(i)}" y="${H-22}" fill="var(--mut)" font-size="10.5" text-anchor="middle">${Q[i]}</text>`;
+    if(i===qi) s+=`<line x1="${x(i)}" y1="${T}" x2="${x(i)}" y2="${H-B}" stroke="#3a4357" stroke-dasharray="3 3"/>`;
+  }
+  const path=(arr,yf)=> arr.map((v,i)=>(i?'L':'M')+x(i)+' '+yf(v)).join(' ');
+  const dots=(arr,yf,c)=> arr.map((v,i)=>`<circle cx="${x(i)}" cy="${yf(v)}" r="${i===qi?4:2.5}" fill="${c}"/>`).join('');
+  // NAND first (background)
+  s+=`<path d="${path(nMarket,yN)}" fill="none" stroke="#b91c1c" stroke-width="1.8" opacity=".75" stroke-dasharray="5 3"/>`;
+  s+=`<path d="${path(nApple,yN)}" fill="none" stroke="#2563eb" stroke-width="1.8" opacity=".75" stroke-dasharray="5 3"/>`;
+  // DRAM
+  s+=`<path d="${path(dMarket,yD)}" fill="none" stroke="var(--market)" stroke-width="2.4"/>`;
+  s+=`<path d="${path(dApple,yD)}" fill="none" stroke="var(--apple)" stroke-width="2.4"/>`;
+  s+=dots(dMarket,yD,'var(--market)')+dots(dApple,yD,'var(--apple)');
+  s+=dots(nMarket,yN,'#b91c1c')+dots(nApple,yN,'#2563eb');
+  // floor line for DRAM $6
+  if(dMax>6){const yy=yD(6); s+=`<line x1="${L}" y1="${yy}" x2="${W-R}" y2="${yy}" stroke="var(--green)" stroke-width="1" stroke-dasharray="2 4" opacity=".7"/><text x="${W-R}" y="${yy-4}" fill="var(--green)" font-size="9" text-anchor="end">UBS DRAM SCA floor ~$6/GB</text>`;}
+  $('chart').innerHTML=s;
+}
+
+/* ---------- BOM + margins ---------- */
+function buildBOM(){
+  const dGB=+$('dramGB').value, nGB=+$('nandGB').value, asp=+$('asp').value, bex=+$('bomEx').value, hike=+$('hike').value;
+  const dS=series(D,track), nS=series(N,track);
+  const dPx=dS[qi], nPx=nS[qi];
+  const dCost=dGB*dPx, nCost=nGB*nPx, mem=dCost+nCost, tot=bex+mem;
+  const aspH=asp+hike;
+  // trough baseline (qi=0) on the SAME track for deltas
+  const memT = dGB*series(D,track)[0] + nGB*series(N,track)[0];
+  const totT = bex+memT;
+  const gpT = asp - totT, gmT = gpT/asp;
+
+  const ex=[
+    ['Application processor (A-series SoC, TSMC N3)',130],
+    ['Display (LTPO OLED)',75],
+    ['Camera system (sensors + modules)',75],
+    ['Modem + RF front-end',42],
+    ['Enclosure / mechanical (Ti/Al, glass)',58],
+    ['PMIC / power management',22],
+    ['Battery',9],
+    ['Connectivity (Wi-Fi/BT/UWB)',11],
+    ['Sensors / haptics / audio',28],
+    ['PCB / passives / connectors',20],
+    ['Final assembly + test',15],
+  ];
+  const exSum=ex.reduce((a,b)=>a+b[1],0);
+  const scale=bex/exSum; // scale fixed list to match editable BOM ex-memory
+  let h='<thead><tr><th>Component</th><th>$ / unit</th><th>% of BOM</th></tr></thead><tbody>';
+  for(const [l,v] of ex){const sv=v*scale; h+=`<tr><td class="lbl">${l}</td><td class="gnum">${usd(sv,1)}</td><td class="gnum" style="color:var(--dim)">${fmt(sv/tot*100,1)}%</td></tr>`;}
+  const mc = track==='market'?'memrow market':'memrow';
+  h+=`<tr class="${mc}"><td class="lbl" style="font-weight:600">DRAM — ${dGB}GB @ ${usd(dPx,2)}/GB <span class="pill">${track}·${Q[qi]}</span></td><td class="gnum" style="font-weight:600">${usd(dCost,1)}</td><td class="gnum">${fmt(dCost/tot*100,1)}%</td></tr>`;
+  h+=`<tr class="${mc}"><td class="lbl" style="font-weight:600">NAND — ${nGB}GB @ ${usd(nPx,4)}/GB <span class="pill">${track}·${Q[qi]}</span></td><td class="gnum" style="font-weight:600">${usd(nCost,1)}</td><td class="gnum">${fmt(nCost/tot*100,1)}%</td></tr>`;
+  h+=`<tr style="border-top:2px solid var(--border2)"><td class="lbl" style="font-weight:700">Total BOM / unit</td><td class="gnum" style="font-weight:700">${usd(tot,1)}</td><td class="gnum">100%</td></tr>`;
+  h+='</tbody>';
+  $('bom').innerHTML=h;
+
+  // cards
+  $('memUSD').textContent=usd(mem,1);
+  const memDelta=mem-memT;
+  $('memDelta').innerHTML=`<span class="${memDelta>=0?'up':'dn'}">${memDelta>=0?'+':''}${usd(memDelta,1)} vs trough (${Q[0]})</span> · ×${fmt(mem/memT,1)}`;
+  const memP=mem/tot*100;
+  $('memPct').textContent=fmt(memP,1)+'%';
+  $('memBar').style.width=memP+'%'; $('restBar').style.width=(100-memP)+'%';
+  $('bomTot').textContent=usd(tot,0);
+
+  // margins
+  const gp=aspH-tot, gm=gp/aspH;
+  $('gp').textContent=usd(gp,0);
+  $('gm').textContent=fmt(gm*100,1)+'%';
+  const gmd=(gm-gmT)*100;
+  $('gmDelta').innerHTML=`<span class="${gmd>=0?'dn':'up'}">${gmd>=0?'+':''}${fmt(gmd,1)} pts vs trough</span>`;
+  const gmHitPts=(gmT-(asp-tot)/asp)*100; // at constant ASP (no hike)
+  $('gmHit').textContent=(gmHitPts>=0?'-':'+')+fmt(Math.abs(gmHitPts),1)+' pts';
+  // price hike needed to restore trough GM: asp' = tot/(1-gmT)
+  const aspNeed = tot/(1-gmT);
+  const offset = aspNeed - asp;
+  $('offset').textContent=usd(Math.max(0,offset),0);
+  $('offsetNote').textContent = offset<=0 ? 'already at/above trough GM' : `lift ASP to ${usd(aspNeed,0)}`;
+
+  buildOffset();
+  buildModels();
+}
+
+// Build market/apple tracks for an arbitrary forward scenario (no global mutation).
+function tracksFor(scen){
+  const f=FWD[scen];
+  const appleD=DRAM_ACT.map((v,i)=>v*CUSHION_D[i]);
+  const appleN=NAND_ACT.map((v,i)=>v*CUSHION_N[i]);
+  return {
+    D:{market:mkTrack(DRAM_ACT,f.d), apple:mkTrack(appleD, f.d.map(x=>+(x*0.65).toFixed(1)))},
+    N:{market:mkTrack(NAND_ACT,f.n), apple:mkTrack(appleN, f.n.map(x=>+(x*0.65).toFixed(1)))}
+  };
+}
+
+function buildOffset(){
+  const dGB=+$('dramGB').value, nGB=+$('nandGB').value, asp=+$('asp').value, bex=+$('bomEx').value;
+  $('offCtx').textContent = `${track==='apple'?'Apple realized':'Market (BBG)'} track · ${Q[qi]} · ${dGB}GB / ${nGB}GB · ASP ${usd(asp,0)}`;
+  const NAMES={trendforce:'TrendForce base',street:'Street mid',bull:'Conor bull',flat:'Flat',rollover:'Roll-over'};
+  let h='<thead><tr><th>Forward scenario</th><th>DRAM $/GB</th><th>NAND $/GB</th><th>DRAM $/u</th><th>NAND $/u</th><th>Memory $/u</th><th>GM (no hike)</th><th>Pass-through $</th><th>Hold-GM% hike</th><th>= % price ↑</th></tr></thead><tbody>';
+  for(const scen of Object.keys(FWD)){
+    const t=tracksFor(scen);
+    const dS=series(t.D,track), nS=series(t.N,track);
+    const dPx=dS[qi], nPx=nS[qi];
+    const dCost=dGB*dPx, nCost=nGB*nPx;
+    const mem=dCost+nCost, tot=bex+mem;
+    const memT=dGB*dS[0]+nGB*nS[0], totT=bex+memT;
+    const gmT=(asp-totT)/asp;                 // pre-inflation trough GM at current ASP
+    const gmNow=(asp-tot)/asp;
+    const passthru=Math.max(0,mem-memT);       // hold GP$ flat
+    const aspNeed=tot/(1-gmT);
+    const hold=Math.max(0,aspNeed-asp);        // hold GM% whole
+    const pctUp=hold/asp*100;
+    const on = (scen===fwdScen);
+    if(on){ // prominent current-scenario callout
+      $('offNowCtx').textContent=`${NAMES[scen]} · ${track==='apple'?'Apple realized':'Market (BBG)'} track · ${Q[qi]} · ${dGB}/${nGB}GB · ASP ${usd(asp,0)}`;
+      $('offNowHold').textContent=usd(hold,0);
+      $('offNowHoldPct').textContent=`(+${fmt(hold/asp*100,1)}%)`;
+      $('offNowPass').textContent=usd(passthru,0);
+      const gap=hold-50;
+      $('offNowGap').innerHTML = gap<=0
+        ? `<span class="dn">✓ $50 covers it (+$${fmt(-gap,0)} headroom)</span>`
+        : `<span class="up">✗ $50 short by ${usd(gap,0)}</span>`;
+    }
+    const covered = hold<=50;                  // ~$50 iPhone-18 hike reference
+    h+=`<tr style="${on?'background:#15263a':''}">`+
+       `<td class="lbl" style="font-weight:${on?700:400}">${NAMES[scen]}${on?' ◄':''}</td>`+
+       `<td class="gnum">$${fmt(dPx,2)}</td>`+
+       `<td class="gnum">$${fmt(nPx,4)}</td>`+
+       `<td class="gnum" style="color:var(--mut)">${usd(dCost,0)}</td>`+
+       `<td class="gnum" style="color:var(--mut)">${usd(nCost,0)}</td>`+
+       `<td class="gnum">${usd(mem,0)}</td>`+
+       `<td class="gnum" style="color:${gmNow<gmT-0.001?'var(--red)':'var(--green)'}">${fmt(gmNow*100,1)}%</td>`+
+       `<td class="gnum" style="color:var(--mut)">${usd(passthru,0)}</td>`+
+       `<td class="gnum" style="font-weight:700;color:${covered?'var(--green)':'var(--amber)'}">${usd(hold,0)}</td>`+
+       `<td class="gnum">${fmt(pctUp,1)}%</td></tr>`;
+  }
+  $('offsetTable').innerHTML=h+'</tbody>';
+}
+
+// ---- 2026 vs 2027 comparable models ----
+const MODELS={
+  2026:[ {n:'iPhone 17', d:8, s:256, asp:830, bex:385},
+         {n:'iPhone 17 Pro', d:12, s:256, asp:1099, bex:485},
+         {n:'iPhone 17 Pro Max', d:12, s:512, asp:1199, bex:505} ],
+  2027:[ {n:'iPhone 18', d:12, s:256, asp:880, bex:405},
+         {n:'iPhone 18 Pro', d:16, s:256, asp:1149, bex:520},
+         {n:'iPhone 18 Pro Max', d:16, s:512, asp:1249, bex:540},
+         {n:'Foldable', d:16, s:512, asp:2199, bex:760} ]
+};
+// unit-mix weights within each model year (sum to 1)
+const MIX={ 2026:{'iPhone 17':0.45,'iPhone 17 Pro':0.30,'iPhone 17 Pro Max':0.25},
+            2027:{'iPhone 18':0.42,'iPhone 18 Pro':0.28,'iPhone 18 Pro Max':0.22,'Foldable':0.08} };
+// Capstone official model drivers — Modelo Apple Felipe 2Q26 (2026-06-16)
+const MODEL={ units:{2026:266.78,2027:280.12}, shares:{2026:14320.45,2027:13938.20},
+              tax:0.16, eps:{2026:10.124,2027:11.106} };
+function buildModels(){
+  $('modScen').textContent = {trendforce:'TrendForce base',street:'Street mid',bull:'Conor bull',flat:'Flat',rollover:'Roll-over'}[fwdScen];
+  const t=tracksFor(fwdScen);
+  const dS=series(t.D,track), nS=series(t.N,track);
+  const QI={2026:3, 2027:7};                       // Q2'26 actual / Q2'27 forward
+  const trk = track==='apple'?'Apple realized':'Market (BBG)';
+  let h='<thead><tr><th>Year</th><th>Model</th><th>DRAM/NAND</th><th>$/GB (DRAM·NAND)</th><th>ex-mem BOM</th><th>Memory $/u</th><th>Total BOM</th><th>Mem % BOM</th><th>ASP</th><th>Price ↑ to pass mem</th><th>New ASP</th></tr></thead><tbody>';
+  const memOf={};
+  for(const yr of [2026,2027]){
+    const qq=QI[yr], dPx=dS[qq], nPx=nS[qq];
+    MODELS[yr].forEach((m,idx)=>{
+      const mem=m.d*dPx+m.s*nPx, tot=m.bex+mem;
+      const memT=m.d*dS[0]+m.s*nS[0], totT=m.bex+memT;
+      const gmT=(m.asp-totT)/m.asp;
+      const aspNeed=tot/(1-gmT), hike=Math.max(0,aspNeed-m.asp);
+      memOf[yr+'_'+m.n]={mem,hike};
+      const first=idx===0;
+      h+=`<tr style="border-top:${first?'2px solid var(--border2)':'1px solid var(--border)'}">`+
+         `<td class="lbl" style="color:var(--mut)">${first?yr:''}</td>`+
+         `<td class="lbl" style="font-weight:600">${m.n}</td>`+
+         `<td class="gnum">${m.d} / ${m.s}GB</td>`+
+         `<td class="gnum" style="color:var(--mut)">$${fmt(dPx,2)} · $${fmt(nPx,4)}</td>`+
+         `<td class="gnum">${usd(m.bex,0)}</td>`+
+         `<td class="gnum" style="font-weight:600">${usd(mem,0)}</td>`+
+         `<td class="gnum">${usd(tot,0)}</td>`+
+         `<td class="gnum" style="color:var(--amber)">${fmt(mem/tot*100,1)}%</td>`+
+         `<td class="gnum">${usd(m.asp,0)}</td>`+
+         `<td class="gnum" style="font-weight:700;color:var(--amber)">+${usd(hike,0)}</td>`+
+         `<td class="gnum">${usd(m.asp+hike,0)}</td></tr>`;
+    });
+  }
+  $('modelTable').innerHTML=h+'</tbody>';
+  buildEPS(dS,nS);
+  // YoY pass-forward note: Pro tier
+  const a=memOf["2026_iPhone 17 Pro"], b=memOf["2027_iPhone 18 Pro"];
+  if(a&&b){
+    $('modNote').innerHTML=`<b>Pass it forward (Pro tier, ${trk} · ${$('modScen').textContent}):</b> the 18 Pro's memory bill is <b>${usd(b.mem,0)}</b> vs the 17 Pro's <b>${usd(a.mem,0)}</b> — <b>+${usd(b.mem-a.mem,0)}</b> of incremental memory YoY (12→16GB DRAM + the 2027 price step). To hold its pre-inflation margin the 18 Pro needs <b style="color:var(--amber)">+${usd(b.hike,0)}</b> of price; the reported ~$50 hike covers ${b.hike<=50?'it':`only ${fmt(50/b.hike*100,0)}% of it`}.`;
+  }
+}
+
+function buildEpsMatrix(){
+  const NAMES={trendforce:'TrendForce base',street:'Street mid',bull:'Conor bull',flat:'Flat',rollover:'Roll-over'};
+  const eps27=MODEL.eps[2027];
+  let h='<thead><tr><th>Forward scenario</th><th>Apple realized (LTA)</th><th>Market spot<br><span style="font-weight:400;color:var(--dim)">Android proxy — not Apple\'s cost</span></th><th>Δ if cushion fails</th></tr></thead><tbody>';
+  for(const scen of Object.keys(FWD)){
+    const t=tracksFor(scen);
+    const cell=(trk)=>{
+      const dS=series(t.D,trk), nS=series(t.N,trk);
+      const bm=blendedMem(2027,dS,nS,7);          // Δ vs current (embedded) — not vs trough
+      const hit=epsHit(bm.incr,2027);
+      return {hit, f:fmtHit(hit,eps27)};
+    };
+    const a=cell('apple'), m=cell('market');
+    const dlt=fmtHit(m.hit-a.hit,eps27);
+    const onRow=(scen===fwdScen);
+    const hlA=onRow&&track==='apple', hlM=onRow&&track==='market';
+    h+=`<tr style="${onRow?'background:#15263a':''}">`+
+       `<td class="lbl" style="font-weight:${onRow?700:400}">${NAMES[scen]}${onRow?' ◄':''}</td>`+
+       `<td class="gnum ${a.f.cls}" style="${hlA?'font-weight:700;outline:1px solid var(--apple)':''}">${a.f.txt}</td>`+
+       `<td class="gnum ${m.f.cls}" style="${hlM?'font-weight:700;outline:1px solid var(--market)':''}">${m.f.txt}</td>`+
+       `<td class="gnum ${dlt.cls}">${dlt.txt}</td></tr>`;
+  }
+  $('epsMatrix').innerHTML=h+'</tbody>';
+}
+
+// The model's EPS embeds memory at the latest ACTUAL contract (Q2'26 = idx 3) — that is the
+// correct baseline for an incremental EPS hit. Measuring vs the mid-2025 trough (idx 0) would
+// double-count the $2.68->$12/GB rise that is already inside the model's 47.7% FY27 GM.
+const EMBEDDED_IDX=3;
+const HIKE_TAKEN=50;   // reported ~$50 iPhone-18 price increase Apple has already taken
+// blended memory $/unit for a model-year on the active track at quarter index qq
+function blendedMem(yr, dS, nS, qq){
+  let now=0, base=0, trough=0;
+  for(const m of MODELS[yr]){
+    const w=MIX[yr][m.n]||0;
+    now    += w*(m.d*dS[qq]           + m.s*nS[qq]);
+    base   += w*(m.d*dS[EMBEDDED_IDX] + m.s*nS[EMBEDDED_IDX]); // memory already in the model
+    trough += w*(m.d*dS[0]            + m.s*nS[0]);
+  }
+  return {now, base, trough, incr:now-base, incrTrough:now-trough};
+}
+function epsHit(deltaPerUnit, yr){
+  return deltaPerUnit*MODEL.units[yr]*(1-MODEL.tax)/MODEL.shares[yr];
+}
+// format a hit (>0 = EPS reduction, <0 = EPS benefit) with correct sign + colour class
+function fmtHit(hit, eps){
+  const pct=hit/eps*100;
+  if(hit>=0.005)  return {txt:`−$${fmt(hit,2)} <span style="color:var(--mut)">(−${fmt(pct,1)}%)</span>`, cls:'up'};
+  if(hit<=-0.005) return {txt:`+$${fmt(-hit,2)} <span style="color:var(--mut)">(+${fmt(-pct,1)}%)</span>`, cls:'dn'};
+  return {txt:`~$0.00`, cls:'neu'};
+}
+function buildEPS(dS,nS){
+  const trk = track==='apple'?'Apple realized':'Market (BBG)';
+  $('epsCtx').textContent = `${trk} track · ${$('modScen')?$('modScen').textContent:fwdScen} forward · tax 16% · units 266.8/280.1mn · shares 14,320/13,938mn (Modelo Apple 2Q26)`;
+  const QI={2026:3,2027:7};
+  let h='<thead><tr><th>FY</th><th>Model EPS</th><th>Blended mem $/u</th><th>Δ vs embedded (current)</th><th>EPS hit — absorbed</th><th>net of ~$50 hike</th><th>EPS after (net)</th></tr></thead><tbody>';
+  const res={};
+  for(const yr of [2026,2027]){
+    const bm=blendedMem(yr,dS,nS,QI[yr]);
+    const hit=epsHit(bm.incr,yr);
+    const hitNet=epsHit(Math.max(0,bm.incr-HIKE_TAKEN),yr);
+    res[yr]={bm,hit,hitNet};
+    const eps=MODEL.eps[yr];
+    const note = Math.abs(bm.incr)<1 ? ' <span class="pill">already in model</span>' : '';
+    const fa=fmtHit(hit,eps), fn=fmtHit(hitNet,eps);
+    h+=`<tr><td class="lbl" style="font-weight:600">${yr}E</td>`+
+       `<td class="gnum">$${fmt(eps,2)}</td>`+
+       `<td class="gnum">${usd(bm.now,0)}</td>`+
+       `<td class="gnum" style="color:var(--mut)">${bm.incr>=0?'+':'−'}${usd(Math.abs(bm.incr),0)}${note}</td>`+
+       `<td class="gnum ${fa.cls}" style="font-weight:700">${fa.txt}</td>`+
+       `<td class="gnum ${fn.cls}" style="font-weight:700">${fn.txt}</td>`+
+       `<td class="gnum">$${fmt(eps-hitNet,2)}</td></tr>`;
+  }
+  $('epsTable').innerHTML=h+'</tbody>';
+  // cards (FY27 is the live year; FY26 memory is already embedded)
+  const e27=MODEL.eps[2027];
+  const fH=fmtHit(res[2027].hit,e27), fN=fmtHit(res[2027].hitNet,e27);
+  $('epsHit27').innerHTML=`<span class="${fH.cls}">${res[2027].hit>=0?'−$':'+$'}${fmt(Math.abs(res[2027].hit),2)}</span>`;
+  $('epsHit27pct').innerHTML=`<span class="${fH.cls}">${res[2027].hit>=0?'−':'+'}${fmt(Math.abs(res[2027].hit)/e27*100,1)}% of $${fmt(e27,2)}</span>`;
+  $('epsYoY').innerHTML=`<span class="${fN.cls}">${res[2027].hitNet>=0.005?'−$':'+$'}${fmt(Math.abs(res[2027].hitNet),2)}</span>`;
+  $('epsYoYpct').innerHTML= res[2027].hitNet>0.005
+     ? `<span class="up">−${fmt(res[2027].hitNet/e27*100,1)}%</span> after $50 already taken`
+     : `<span class="dn">~covered by the $50 already taken</span>`;
+  $('epsSens').textContent='−$'+fmt(epsHit(10,2027),2);
+  buildEpsMatrix();
+  const troughHit=epsHit(res[2027].bm.incrTrough,2027);
+  $('epsNote').innerHTML=`<b>Read:</b> the model already embeds <i>current</i> (~$12/GB) memory in its 47.7% FY27 GM, so the marginal risk is the <b>forward step</b> — on the active track that's <b>−$${fmt(res[2027].hit,2)} absorbed (−${fmt(res[2027].hit/MODEL.eps[2027]*100,1)}%)</b>, and only <b>−$${fmt(res[2027].hitNet,2)} net</b> of the ~$50 hike Apple has already taken. For context, the full <i>vs-trough</i> figure is −$${fmt(troughHit,2)} (${fmt(troughHit/MODEL.eps[2027]*100,1)}%) — but that double-counts the $2.68→$12/GB rise that is <b>already in the $11.11</b>, so it is not an incremental hit. The <b>Market column is the Android-OEM proxy</b>: Apple's LTAs/supply priority mean its realized cost is the <i>Apple</i> column — the Market figure is only relevant if that cushion fully breaks. <span style="color:var(--dim)">Drivers from Modelo Apple Felipe 2Q26 (2026-06-16); mix weights (Pro/Pro Max ~55%/52% of units) are Capstone estimates.</span>`;
+}
+
+function renderBBG(){
+  $('bbgStamp').textContent = `contract asof ${BBG_ASOF} · spot ${BBG_SPOT_ASOF}`;
+  let h='<thead><tr><th>Series</th><th>BBG ticker</th><th>px</th><th>$/GB</th><th>asof</th></tr></thead><tbody>';
+  for(const r of BBG_LEVELS){
+    const pgb=r.px/r.gb, c=r.hl?'style="color:var(--amber)"':'';
+    h+=`<tr><td class="lbl">${r.s}</td><td class="lbl gnum">${r.t}</td><td class="gnum">${fmt(r.px,2)}</td><td class="gnum" ${c}>$${fmt(pgb, pgb<1?3:2)}</td><td class="lbl">${r.asof}</td></tr>`;
+  }
+  $('bbgTable').innerHTML=h+'</tbody>';
+  const dNow=DRAM_ACT[NACT-1], dLow=DRAM_ACT[0], nNow=NAND_ACT[NACT-1], nLow=NAND_ACT[0];
+  $('bbgSummary').innerHTML=`<b>Trough → latest (real):</b> DRAM contract ~$${fmt(dLow,2)}/GB (mid-25) → <b>$${fmt(dNow,2)}/GB</b> = <b>×${fmt(dNow/dLow,1)}</b>; NAND contract ~$${fmt(nLow,4)}/GB → <b>$${fmt(nNow,4)}/GB</b> = <b>×${fmt(nNow/nLow,1)}</b> (asof ${BBG_ASOF}). Refresh: <i>py -3 P:\\Felipe Monteiro\\US Equities\\_build_memory_json.py</i> re-pulls BBG and rewrites the data block. Raw archive: <b>models/memory-prices-bbg.csv</b>. inSpectrum NAND <b>contract</b> (raw chip) vs <b>SSD</b> (ISTPND25 $0.44/GB, incl. controller) — an iPhone uses raw managed NAND, so the chip series is the right BOM input.`;
+}
+
+function renderAll(){ buildEngine(); buildChart(); buildBOM(); }
+
+/* ---------- wiring ---------- */
+function buildQsel(){
+  let h=''; for(let i=1;i<Q.length;i++) h+=`<option value="${i}" ${i===qi?'selected':''}>${Q[i]}${i===3?' (latest actual)':(i>=4?' (est)':'')}</option>`;
+  $('qsel').innerHTML=h;
+}
+$('qsel').addEventListener('change',e=>{qi=+e.target.value; renderAll();});
+$('trackSeg').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+  track=b.dataset.tr;
+  $('trackSeg').querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  $('trackSeg').classList.toggle('market',track==='market');
+  renderAll();
+}));
+['dramGB','nandGB','asp','bomEx','hike'].forEach(id=>$(id).addEventListener('input',buildBOM));
+const CFG={base:{d:8,n:256,asp:830,bex:385},pro:{d:12,n:256,asp:1099,bex:485},promax:{d:12,n:512,asp:1199,bex:505},fold:{d:16,n:512,asp:2199,bex:760}};
+document.querySelectorAll('[data-cfg]').forEach(b=>b.addEventListener('click',()=>{
+  const c=CFG[b.dataset.cfg]; $('dramGB').value=c.d; $('nandGB').value=c.n; $('asp').value=c.asp; $('bomEx').value=c.bex;
+  buildBOM();
+}));
+// forward sensitivity scenarios — rewrite Q3'26+ QoQ for both tracks
+$('fwdSeg').querySelectorAll('[data-fwd]').forEach(b=>b.addEventListener('click',()=>{
+  fwdScen=b.dataset.fwd;
+  $('fwdSeg').querySelectorAll('[data-fwd]').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  rebuildTracks(); renderAll();
+}));
+
+buildQsel(); renderBBG(); renderAll();
+</script>
+</body>
+</html>
