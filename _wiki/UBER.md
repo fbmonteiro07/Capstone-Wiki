@@ -1,0 +1,123 @@
+# UBER — Uber Technologies, Inc.
+
+_Wiki · generated 2026-06-18 · sources: `E:\Wiki Felipe\UBER` (filings + transcripts + decks) · `_equity_calls` · `_briefings\by-ticker\UBER.md`. Master index: [../INDEX.md](../INDEX.md)._
+
+## Snapshot
+Global mobility/delivery aggregator running a three-segment platform: **Mobility** (ride-hailing, ~60% of bookings international), **Delivery** (Eats + grocery/retail, accelerating to multi-year highs), and **Freight** (back to growth after a ~2yr drought). The model is a demand-aggregation flywheel — 50M+ Uber One members (now >50% of bookings), 10M+ drivers/couriers, 200M+ MAPCs — increasingly cross-sold across verticals and monetized via a fast-growing **advertising** business (>$2B run-rate, +50% y/y per DB, 2026-05-20). In the AI/autonomy chain UBER positions itself as the **commercialization layer for AVs** — demand, fleet ops, financing, insurance, depots, data — rather than an AV developer; 30+ AV partners (Waymo, NVIDIA, Nuro/Lucid, Zoox, Waabi, WeRide, Pony, Baidu). Core debate is whether AV is a TAM expander UBER aggregates or a disruptor that disintermediates it.
+
+## At a glance — product · buyer · supplier
+| | |
+|---|---|
+| **Sells (top 3)** | 1) Mobility / ride-hailing (~60% of bookings) · 2) Delivery (Eats + grocery/retail) · 3) Freight + fast-growing Advertising (>$2B run-rate) |
+| **Main buyer(s)** | Consumers/riders & eaters (200M+ MAPCs, 50M+ Uber One members now >50% of bookings); advertisers (enterprise > SMB) on the ads layer |
+| **Key suppliers** | Supply side: 10M+ drivers/couriers; AV partners (Waymo, NVIDIA, Nuro/Lucid, Zoox, WeRide), Mobileye DRIVE hardware (~$50k/unit); cloud/compute |
+
+## Estado atual (Q1 FY26, call 2026-05-06)
+Print came in at/above the high end of guidance. Gross bookings **+21% y/y**, "trip and audience led," audience **+17%**. Mobility GBs **accelerated to +20%** with record margins; Delivery **+23%** (grocery/retail led); Freight returned to growth. Non-GAAP EPS **+44% y/y** — >2x bookings growth, on cost discipline and operating leverage. Generated strong FCF and returned a **record $3B via buybacks** in the quarter.
+
+Key drivers management leaned on:
+- **US Mobility acceleration thesis**: insurance is flipping from a multi-year deleveraging item to a tailwind — "hundreds of millions" of savings in 2026, auto renewals improved in March, more risk offloaded to 3P carriers; price held flat → elasticity → trip-growth acceleration, most visible in LA/CA (Q1 FY26 call). First year of insurance leverage on US Mobility since COVID.
+- **Uber One**: >50M members (30M exit-2024 → +20M in a year), growing ~50%, >50% of bookings, members spend 3x more. Hotels (Expedia inventory, 700k properties) is the newest cross-sell hook, economics handed back to members (10% credits).
+- **Cross-platform**: ~$15B run-rate delivery GBs sourced from the Mobility app; 30% of eligible Mobility users have never used Eats — explicit headroom. Cross-platform consumers growing 1.5x faster than overall.
+- **AV**: 30+ partners; **AV Mobility trips +>10x y/y**; on track for **up to 15 cities by YE26**. New **Uber Autonomous Solutions** (fleet mgmt, depots, charging, data) + ecosystem deals — **Santander** (fleet financing), **Hertz** (fleet mgmt), **Marsh/Apollo** (insurance), **NVIDIA** data factory targeting >3M hours real-world data. Capital-light intent but management conceded it will "step in with some vehicle purchases" early (Q4 FY25 call, 2026-02-04). On the supply side, **Mobileye** is supplying its **DRIVE** platform into both Uber's and Lyft's robotaxi programs — design wins announced through 2025, **rollout in 2026**, monetized via one-time hardware (~$50k/unit) + per-mile recurring; material volumes expected ~end-2026 (JPM Hardware & Networking, 2025-12-15) — another AV stack feeding UBER's aggregation layer alongside Waymo/Nuro/WeRide.
+- **AI cost**: re-upped the 2026 AI budget above November plan (new Dec models); ~10% of code now agent-committed; explicitly trading AI spend against slower headcount growth (Q1 FY26; the "burned a full year's AI budget in a quarter" line was the FinTwit framing, @patrick_oshag 2026-06-03). JPM now corroborates the framing with a named source — citing **Uber (with Microsoft) as an enterprise that "exhausted [its] full-year 2026 token budget within months" as agents entered production**, used as evidence of the logarithmic step-up in agentic token usage (JPM "AI Capex 2.0", 2026-06-16).
+- **Advertising**: penetration in Delivery has cleared the old 2% ceiling; enterprise ads now outgrowing SMB; grocery/retail/mobility ads still nascent (Q4 FY25 call).
+- **Under-discussed take-rate lever (JPM internet preview, 2026-04-15):** JPM flagged an **Uber Eats commission increase ~a month prior — lower-tier merchant rate up from ~15% to ~20%** — a material, lightly-covered take-rate tailwind, possibly getting lost because investors assume it gets reinvested. JPM also noted UBER is moving away from its capital-light model near-term (seeding the AV market via equity investments + early vehicle purchases) but views the shift as temporary, not a structural change to the model (JPM/Anmuth, 2026-04-15). [Source](../relat%C3%B3rios%20bons/2026_04_15_jpm_internet_preview_15_apr_26.html)
+- **AV "triumvirate" structure / Waymo-licensing read (BofA spec-sales, 2026-05-06):** BofA frames the NVIDIA-UBER tie-up as a potential "sea change" — a three-party structure (NVIDIA supplies AV tech + an OEM supplies the vehicle + Uber deploys the fleet) that makes UBER an **AV winner agnostic to which OEM/tech prevails**. Read-through: it would make sense for Waymo to pursue a licensing model into Uber's dominant fleet rather than compete 1P (far fewer rides than Uber), though no Google management signal yet (BofA/Wigg, 2026-05-06). [Source](../relat%C3%B3rios%20bons/2026_05_06_wigg_6_may_26.html)
+- **AV-ecosystem read-through from JPM's Tesla note (JPM "Tesla Robotaxi Deep-Dive", Rajat Gupta, 2026-06-24):** an AV-sector note centered on TSLA but corroborating UBER's multi-vendor-aggregator model widening. Specific UBER datapoints: (1) **WeRide + Uber + AVOMO** to launch **Spain's first commercial robotaxi pilot in Madrid via the Uber app** later this year (WeRide One on the GXR vehicle; AVOMO, a Moove Cars Group co., already runs **~400 Uber AVs in Austin and Atlanta**, handling ground ops); (2) **London** — Uber opened an interest list for its co-branded **Wayve** service, going live in coming months; (3) **Avride's Uber-integrated fleet** topped **60,000 passenger rides in Dallas**, doubled its service zone, crossed **1.3mn total autonomous miles (~1mn in 2026) across 200+ vehicles**. JPM reads TSLA's vertically-integrated 1P stack (vision-only, sub-$0.30/mile Cybercab target, ~35mn fleet by 2040) against the network/aggregator model UBER anchors. Competitive pricing context: Waymo prices **above** incumbent ride-hail (**~$20/ride vs Uber ~$17, Lyft ~$15 in SF**, Obi data early-Jan), so the first adoption phase is ride-hail substitution gated by price **and** sub-~5-minute wait times (the threshold Uber/Lyft set) — i.e. fleet density, where Uber's demand layer is the moat. Other ecosystem moves: Waymo launched invite-only **Premier at $29.99/mo** (priority pickup, ~10% cash back) and recalled ~3,800 robotaxis on a software defect; Mobileye plans to own/operate a US ride-hailing business from 2027 (~100 vehicles scaling to ~17,000). [Source](../relat%C3%B3rios%20bons/JPM_Tesla_Inc_Robotaxi_D_2026-06-24_5341280.html)
+
+FY25 context (Q4 FY25 call): 5th straight year of >20% GB growth; **$8.7B adj. EBITDA (+35%)**, **$9.8B FCF (+42%)**; ~50% FCF return-to-shareholders philosophy reaffirmed. CFO transition: Prashanth Mahendra-Rajah stepped down 2026-02-16; **Balaji Krishnamurthy** now CFO.
+
+## Debate / thesis
+- **Bull:**
+  - AV is a **trillion-dollar TAM expander, not winner-take-all** — UBER is the winner-take-most 3P aggregator; AVs on Uber show ~30% higher trips/vehicle/day than 1P; introduction of AVs grows the pie (SF/Austin/Atlanta bookings accelerated) (Dara, Q4 FY25 + Q1 FY26 calls). **BofA (Justin Post): Maintain Buy, PO $104** — Houston launch (Nuro/Lucid) + Zurich (WeRide) → **5 notable US/EU AV launches in 2H26**; successful launches "could change the narrative on AV supply competition" (briefing 2026-06-18). BofA (Fenske) at SF Tech Conf: **"short thesis is tired… a Zero Sum Thinking trade"** (2026-06-03).
+  - **Demand-aggregation / AV-monetization** thesis: **DB (Benjamin Black), Buy PT $108** — NVDA-UBER tie-up is "one of the most important mile markers in Uber's AV strategy"; building the car is half the battle, monetizing it is the other; ads +50% y/y at $2B+, ~$10B FCF (2026-06-08, 2026-05-20). **Rothschild/Redburn (J. Goodall), Buy PT $112** (trimmed from $120) — AV TAM expansion, 35% 3yr EPS CAGR, FY26-28 +1-3% vs cons (briefing 2026-06-17).
+  - **Jefferies (Colantuoni): top 2H26 pick** (2026-06-05). **Bernstein (Seidman)**: US Mobility GBs/volumes poised to accelerate in 2026 despite Waymo's "UBER One-like" Premier subscription (2026-06-12). Pershing/Ackman sized at **$2.25B (top-3 holding)** (2026-05-18).
+- **Bear:**
+  - **AV-disruption / winner-take-most**: capital-intensive hardware tech historically tilts winner-take-most; if Waymo/Tesla scale 1P in dense cities, UBER risks disintermediation in its most profitable urban geographies (the concern Nowak pressed Dara on, Q4 FY25). @garrytan: "time to short Uber and long DoorDash" (2026-06-03).
+  - **China AV-supply context** (read-through, not a direct UBER call): Bernstein's China robotaxi thesis flags an autonomous-driving **technological inflection** — World-Model training + hardware cost-down (Baidu RT6 RMB400k→206k; PonyAI next-gen ~-70% cost) driving robotaxi unit economics to breakeven, with PonyAI/Baidu/WeRide named first-movers scaling in Tier-1 cities; Uber is the US 3P platform Waymo (and WeRide) partner with rather than a 1P winner (Bernstein "China Next Winners", 2025-10-27). Implication for the UBER debate: AV supply gets cheaper and more plentiful — bullish for an aggregator's pie, but it also lowers the barrier for 1P operators globally.
+  - **Agentic disintermediation**: personal agents (Meta/Google/OpenAI) abstracting the app away — the inbound Morton flagged on the Q1 FY26 call; Dara's rebuttal = direct engagement + metasearch analogy.
+  - **Delivery Hero M&A overhang**: €33/$11.6B bid is a pivot away from bolt-on M&A. **JPM (Schilsky): "UBER shareholders will broadly not like this deal"** (2026-05-26). **Bernstein**: pro-forma +24%/+10% GB/EBITDA in 2027 but **~7% GAAP EPS dilutive**, and distracts from the AV ramp investors want (2026-05-26). EU antitrust overlap in Portugal/Spain/Sweden — **JPM (Silver/Diebel) "EC could bite," prefers Talabat** (2026-06-05); Barclays (Ross) sees a higher offer as likely but "many moving parts" (2026-06-17).
+  - **Delivery competition**: AMZN Now 30-min delivery + Walmart/Subway delivery = incremental negative for Eats (Redburn 2026-06-06, Bernstein 2026-05-12). **AI cost passthrough**: @DanielTNiles flags token-cost margin risk (2026-05-11).
+  - **Sentiment/position-sizing precedent**: a reminder that UBER can de-rate violently on demand-narrative wobbles regardless of LT thesis — Octahedron's LP post-mortem cites an oversized UBER long that "got hurt in 2021" when management commentary on demand spooked the market in Q4'21, a max-position-sizing lesson rather than a current fundamental view ("Octahedron LP day").
+- **Where the sell-side/buy-side stands:** Broadly Buy/OW with PTs clustered ~$104-115. **BofA Buy $104** (2026-06-18) · **Rothschild/Redburn Buy $112** (2026-06-17) · **DB Buy $108** (2026-06-08/05-20) · **GS (Sheridan) Buy, PT cut $125→$115** (2026-05-07) · **JPM (Anmuth) OW $110**, **Citi (Josey) Buy $110**, **Bernstein (Devnani) $110**, **Barclays (Sandler) OW $107** (2026-05-07). Stock ~$70.71-70.91 (briefings 2026-06-08/06-18) — i.e. PTs imply ~45-55% upside. Net: consensus constructive; the live edge is the AV-disruption-vs-aggregation split and the DH deal binary.
+
+## Catalysts / what to watch
+- **Q2 FY26 print** — likely July 2026 (briefing 2026-06-17); watch US Mobility acceleration confirmation + insurance leverage.
+- **2H26 AV launches** — Houston (Nuro/Lucid) vs Waymo, Zurich (WeRide); BofA's "5 notable launches" is the near-term narrative driver; YE26 = up-to-15-cities target. Watch the **Mobileye DRIVE-powered Uber/Lyft robotaxi rollout** — material volumes ~end-2026 (JPM, 2025-12-15).
+- **Delivery Hero / Prosus M&A** — Prosus sell-down deadline Oct 11; regional asset sales (LatAm/Asia/Europe, Talabat) to smooth antitrust; EU Phase 1/2 review if a voluntary offer materializes.
+- **AV fleet financing** — Santander/Hertz/Marsh/Apollo "financialization" newsflow; proof of capital-light scaling.
+- **Ads** — penetration past the 2% ceiling; enterprise ramp.
+
+## Risks
+- **AV winner-take-most disruption** in dense, high-margin urban markets (Waymo/Tesla 1P scaling); cheaper, more plentiful AV supply (China cost-down per Bernstein 2025-10-27) cuts both ways — grows the pie but lowers the barrier for 1P operators.
+- **Agentic disintermediation** of the consumer relationship by third-party AI agents.
+- **Delivery Hero deal**: EPS dilution (~7% GAAP), EU antitrust, integration complexity, new-CFO/M&A-track-record concerns into FY27.
+- **Regulatory / gig-worker reclassification** — Brazil STF "uberização" agenda (LatAm ops), recurring driver-classification risk (forwarded JOTA, briefing 2026-06-03).
+- **Delivery competition** from AMZN Now / Walmart eroding Eats economics.
+- **AI/token-cost** margin passthrough as agentic adoption scales.
+- **Insurance** reversal if favorable US auto-rate environment turns.
+- **Demand-narrative de-rating risk** — UBER has historically sold off hard on demand-commentary wobbles ("Octahedron LP day" Q4'21 precedent).
+
+## Intra-quarter — calls, comentários & relatórios (desde o último print)
+_Q1 FY26 · May 6 → Jun 18, 2026 · sell-side / expert calls / relatórios entre os earnings. Timeline visual: [timeline.html](timeline.html)._
+
+**Sinal vs gestão** — o que a gestão disse no último call × o que o fluxo intra-quarter está dizendo (✓ confirma · ⚠ nuança · ✗ contesta):
+
+| Tema | Gestão disse (Q1'26) | Fluxo intra-quarter | Sinal |
+|---|---|---|---|
+| **Demanda / GB** | GB +21%, "trip & audience led"; US Mobility acelera (LA/CA) | DB Black: ads +50% YoY a $2B+ run-rate, ~$10B FCF · Bernstein Seidman: US Mobility positionada p/ acelerar em '26 apesar do Waymo Premier | **✓ confirma** (aceleração de demanda) |
+| **Autonomous (AV)** | 30+ parceiros; AV trips +>10x; Autonomous Solutions | BofA Wigg: tie-up NVDA torna UBER vencedor de AV independente do OEM · BofA Post: 5 launches US/EU no 2H26 "podem mudar a narrativa" | **✓ confirma** (AV como ativo, não ameaça) |
+| **Margem / insurance** | 1º ano de leverage de seguro desde COVID; preço flat → elasticidade | @DanielTNiles: risco de margem via repasse de custo de token AI · JPM "AI Capex 2.0": UBER esgotou orçamento anual de tokens em meses | **⚠ nuança** (custo de token AI) |
+| **Capital / M&A** | EPS +44%; buyback recorde $3B no quarter | JPM Schilsky/Bernstein: overhang da Delivery Hero (€33/$11.6B), ~7% diluitivo GAAP, distrai do AV; "shareholders won't like this deal" | **✗ contesta** (M&A é overhang) |
+| **Competição (Eats)** | Delivery +23%, grocery/retail led | Bernstein: AMZN Now + Walmart/Subway são negativos incrementais p/ Eats | **⚠ nuança** (pressão competitiva) |
+
+**Log completo** (todo o fluxo intra-quarter, por data):
+
+| Data | Fonte | Tema | Viés | O que disse |
+|---|---|---|---|---|
+| 05-06 | Uber · mgmt (call) | margem | bull | US Mobility acceleration thesis: insurance shifts from a multi-year deleverage item to a tailwind ("hundreds of millions" of savings in 2026, the first year of insurance leverage in US Mobility since COVID); price held flat -> elasticity -> trip acceleration, most visible in LA/CA. |
+| 05-06 | BofA · Wigg (spec-sales) | competicao | bull | BofA (Wigg) frames the NVIDIA-UBER tie-up as a possible "sea change": the tripartite structure (NVIDIA supplies AV tech + OEM supplies the vehicle + Uber operates the fleet) makes UBER the AV winner regardless of which OEM/tech prevails; it would make sense for Waymo to license to Uber's dominant fleet rather than compete 1P. |
+| 05-07 | GS · Eric Sheridan (briefing) | valuation | bull | GS (Sheridan): Buy, PT cut from $125 to $115. Part of a cluster of constructive post-print ratings (JPM/Anmuth OW $110, Citi/Josey Buy $110, Bernstein/Devnani $110, Barclays/Sandler OW $107). |
+| 05-11 | @DanielTNiles (FinTwit) | margem | bear | @DanielTNiles flags margin risk from AI token cost pass-through as agentic adoption scales. |
+| 05-12 | Bernstein (research) | competicao | bear | Bernstein: AMZN Now (30-min delivery) + Walmart/Subway delivery are incremental negatives for Eats. |
+| 05-18 | Pershing Square / Ackman (positioning) | valuation | bull | Pershing/Ackman sized UBER at $2.25B (top-3 holding). |
+| 05-20 | DB · Benjamin Black (briefing) | demanda | bull | DB (Black): Buy PT $108. Ads +50% y/y at a $2B+ run-rate; ~$10B of FCF; the NVDA-UBER tie-up is "one of the most important mile markers" of Uber's AV strategy, monetizing the car is the other half of the battle. |
+| 05-26 | JPM · Schilsky / Bernstein (briefing) | capital | bear | Overhang from the Delivery Hero M&A (EUR33/$11.6B bid). JPM (Schilsky): "UBER shareholders will broadly not like this deal". Bernstein: pro-forma +24%/+10% GB/EBITDA in 2027 but ~7% dilutive to GAAP EPS, and it distracts from the AV ramp investors want. |
+| 06-03 | BofA · Fenske (SF Tech Conf) | valuation | bull | BofA (Fenske) at the SF Tech Conf: "short thesis is tired... a Zero Sum Thinking trade". (On the same day, @garrytan: "time to short Uber and long DoorDash".) |
+| 06-05 | Jefferies · Colantuoni / JPM (briefing) | valuation | mixed | Jefferies (Colantuoni) names UBER as top pick for 2H26. JPM (Silver/Diebel) warns that "EC could bite" on the Delivery Hero M&A (antitrust overlap in Portugal/Spain/Sweden), preferring Talabat. |
+| 06-08 | DB · Benjamin Black / BofA conference-wrap (equity call) | demanda | bull | DB (Black) reiterates Buy PT $108 at the BofA conference-wrap: demand-aggregation / AV-monetization thesis; stock ~$70.71-70.91 at the briefings (PTs imply ~45-55% upside). |
+| 06-12 | Bernstein · Seidman (briefing) | competicao | bull | Bernstein (Seidman): US Mobility GBs/volumes positioned to accelerate in 2026 despite Waymo's Premier subscription ("UBER One-like"). |
+| 06-16 | JPM · "AI Capex 2.0" (research) | demanda | neutral | JPM ("AI Capex 2.0") cites Uber (alongside Microsoft) as a company that "exhausted [its] full-year 2026 token budget within months" by putting agents into production, as evidence of the logarithmic step-up in agentic token usage. |
+| 06-17 | Rothschild/Redburn · J. Goodall (briefing) | valuation | bull | Rothschild/Redburn (Goodall): Buy PT $112 (cut from $120) on AV TAM expansion, 35% EPS CAGR over 3 years, FY26-28 +1-3% vs consensus. Barclays (Ross) sees a higher offer likely on Delivery Hero but "many moving parts". |
+| 06-18 | BofA · Justin Post (briefing) | produto | bull | BofA (Post): Maintain Buy, PO $104. Houston launch (Nuro/Lucid) + Zurich (WeRide) -> 5 notable AV launches in the US/EU in 2H26; successful launches "could change the narrative on AV supply competition". |
+
+**Síntese do quarter:** o debate migrou do AV-como-ameaça para o AV-como-ativo (tie-up NVDA + 5 launches no 2H26 reposicionam UBER como agregador vencedor), mas a controvérsia nova é o M&A da Delivery Hero — um overhang quase unânime no sell-side (diluitivo, distrai do AV) — com o risco de margem por custo de token AI como nuance de fundo.
+
+## Management commentary — evolution (last 6 quarters)
+
+| Theme | Q4'24 (2025-02-05) | Q1'25 (2025-05-07) | Q2'25 (2025-08-06) | Q3'25 (2025-11-04) | Q4'25 (2026-02-04) | Q1'26 (2026-05-06) |
+|---|---|---|---|---|---|---|
+| Gross bookings / trips | GB +21% cc, beat high end | Trips +18%, GB in line | Trips & GB both +18% | Trips +22% (fastest since '23), GB +21% | GB +22%; 5th yr >20% | GB +21%, "trip & audience led" |
+| US Mobility & insurance | CPI insurance +11%; expect high-single per-trip '25 | CPI fell to 7%; passing savings to consumers | Profit/ride up; US trips reaccelerated in July | "Hundreds of millions" savings into '26 | Insurance flips deleverage → leverage; US to accelerate | First yr of insurance leverage since COVID; LA/CA accel |
+| Uber One membership | 30M members, +60% y/y | 30M; >60% Delivery penetration | 36M, +60%; spend 3x more | 36M; ~2/3 of Delivery GBs | ~46M, +55% y/y | >50M (+20M in yr), >50% of GBs, +50% |
+| Delivery (Eats + grocery/retail) | GB accelerated; 1M+ merchants | Margin 3.7% of GB; grocery/retail accreting | Cross-sell/platform focus | Fastest in 4 yrs (+4pts); grocery/retail ~$12B run-rate | Multi-year highs; ads past 2% ceiling | +23%, grocery/retail led |
+| Autonomous (AV) | Austin interest list; ~$1T US TAM | ~100 Waymos in Austin; 5 partnerships | Atlanta launch + Lucid/Nuro; ~1.5M AV trips | NVIDIA tie-up; Stellantis 5k; 100k-vehicle goal | 15 cities by YE; Waabi 25k exclusive | 30+ partners; AV trips +>10x; Autonomous Solutions |
+| Capital return / profitability | FCF = 106% of EBITDA | Record adj EBITDA $1.9B (+35%); FCF $2.3B | $20B buyback authorized; share count -1% | EBITDA +33%; ~$9B TTM FCF | $8.7B EBITDA (+35%); $9.8B FCF (+42%) | EPS +44%; record $3B buyback |
+
+_Source: UBER earnings calls (dates above); management commentary, paraphrased._
+
+## Sources
+- **Filings:** [10-K FY2025 (2026-02-13)](../UBER/UBER_10-K_2026-02-13_0001543151-26-000015.html); [10-K FY2024 (2025-02-14)](../UBER/UBER_10-K_2025-02-14_0001543151-25-000008.html).
+- **Transcripts:** [Q1 FY26 (2026-05-06)](../UBER/transcripts/UBER_Q1-2026-earnings_2026-05-06.md); [Q4 FY25 (2026-02-04)](../UBER/transcripts/UBER_Q4-2025-earnings_2026-02-04.md).
+- **Decks:** [Investor Day 2022](../UBER/apresentações/UBER_InvestorDay_2022-02-10.pdf); [Investor Update 2024](../UBER/apresentações/UBER_InvestorUpdate_2024-02-14.pdf).
+- **Equity calls:** 3 calls (ver [INDEX](../INDEX.md) §UBER) — [2026-06-08 BofA conference-wrap](../_equity_calls/Overall/2026-06-08_BofA_conference-wrap.md), [2026-05-08 Fenske cyber-software](../_equity_calls/Overall/2026-05-08_Fenske_cyber-software.md), [2026-04-29 Amazon Q1-2026](../_equity_calls/Internet/2026-04-29_Amazon_Q1-2026-earnings.md).
+- **Research reports (relatórios bons):**
+  - [JPM Hardware & Networking (2025-12-15)](../relat%C3%B3rios%20bons/JPM_Hardware___Networkin_2025-12-15_5155719.html)
+  - [Bernstein — China Next Winners (2025-10-27)](../relat%C3%B3rios%20bons/20251027_-_Bernstein_Research_-_China_Next_Winners_-_174_pages_-_Optics.html)
+  - [Octahedron LP day](../relat%C3%B3rios%20bons/Octahedron_LP_day.html)
+  - [JPM — AI Capex 2.0: If You Build It, They Will Finance It (2026-06-16)](../relat%C3%B3rios%20bons/JPM_AI_Capex_2_0_If_You__2026-06-16_5315638.html) — Uber cited as enterprise exhausting its 2026 token budget within months (agentic-demand evidence).
+  - [JPM — Internet 1Q preview (Anmuth, 2026-04-15)](../relat%C3%B3rios%20bons/2026_04_15_jpm_internet_preview_15_apr_26.html) — Uber Eats lower-tier commission ~15%→20%; capital-light pivot framing.
+  - [BofA (Wigg) — internet/semis spec-sales (2026-05-06)](../relat%C3%B3rios%20bons/2026_05_06_wigg_6_may_26.html) — NVIDIA-UBER AV "triumvirate"; Waymo-licensing read-through.
+  - [JPM "Tesla Robotaxi Deep-Dive" (2026-06-24)](../relat%C3%B3rios%20bons/JPM_Tesla_Inc_Robotaxi_D_2026-06-24_5341280.html) — AV-sector note; UBER read-through: Madrid pilot (WeRide/AVOMO), London Wayve, Avride 60k+ Dallas rides; network-vs-Tesla-1P framing.
+- **Briefings:** [roll-up](../_briefings/by-ticker/UBER.md) — 36 datapoints / 29 days.

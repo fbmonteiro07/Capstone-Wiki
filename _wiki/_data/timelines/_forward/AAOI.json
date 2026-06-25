@@ -1,0 +1,25 @@
+{"ticker":"AAOI","forward":[
+{"metric":"FY26 Revenue","horizon":"FY26","trend":"up","trail":[
+{"date":"2026-02-26","val":"FY26 target ~$1.0B (2027 ramp focus)","src":"Q4 FY25 call"},
+{"date":"2026-05-07","val":"FY26 raised to >$1.1B rev with >$140M non-GAAP operating income; Q2 guide $180-198M; true demand $1.4-1.5B, internal target $1.2B (capacity-gated)","src":"Q1 FY26 call (Lin)"}],
+"note":"FY26 capacity-gated not demand-gated; 2H'26 a step function (Q3/Q4 each +60-80% QoQ)."},
+{"metric":"DC transceiver run-rate mid-2027","horizon":"mid-2027","trend":"up","trail":[
+{"date":"2026-02-26","val":"~$378M/month DC transceiver revenue target (mid-2027)","src":"Q4 FY25 call"},
+{"date":"2026-05-07","val":"raised to ~$471M/month by mid-2027 (~$90M 100G/400G + $217M 800G + $164M 1.6T; ~780k transceivers/mo; ~40% US capacity)","src":"Q1 FY26 call"}],
+"note":"FinTwit frames $471M/mo = ~$5.6B ARR; marquee bull number."},
+{"metric":"1.6T ramp","horizon":"late-2026 -> 2027","trend":"up","trail":[
+{"date":"2026-05-07","val":"1.6T first revenue late-2026, big ramp 2027; Lin: 'more than $2B for 1.6T transceivers' next year; returning hyperscaler placed first 1.6T volume order","src":"Q1 FY26 call"}],
+"note":""},
+{"metric":"Capacity build (800G/1.6T)","horizon":"YE26 -> YE27","trend":"up","trail":[
+{"date":"2026-02-26","val":"500k/mo by YE; Texas $300M; laser shortage","src":"Q4 FY25 call"},
+{"date":"2026-05-07","val":">650k/mo by YE26 (~30% Texas), >930k/mo by YE27 (>50% Texas); +350% laser-fab capacity","src":"Q1 FY26 call"}],
+"note":"Texas step-function the validation; Q3 print is the 'validation event' everyone cites."},
+{"metric":"Gross-margin trajectory","horizon":"exit-26 -> Q3/Q4 2027","trend":"up","trail":[
+{"date":"2026-02-26","val":"35-38% by Q2'27; 40% by Q3/Q4'27","src":"Q4 FY25 call"},
+{"date":"2026-05-07","val":"29.2% now; 35% exit-26, 40% non-GAAP GM by Q3/Q4 2027 as mix shifts to 800G/1.6T + laser","src":"Q1 FY26 call"}],
+"note":"40% GM target a 2027 exit aspiration off 29% today."},
+{"metric":"Laser fab / merchant lasers","horizon":"YE27 -> 2027","trend":"up","trail":[
+{"date":"2026-05-07","val":"targeting top-3 laser producer worldwide by YE27; 4-inch -> 6-inch InP by YE27; ELSFP/CPO laser ramp toward ~400k pcs/mo by 2027; 3-yr LTAs under negotiation with ~3 customers","src":"Q1 FY26 call"},
+{"date":"2026-05-26","val":"AAOI among new entrants into merchant laser market as CPO laser TAM scales toward ~$1B; oversupply/glut risk flagged","src":"650 Group"}],
+"note":"In-house InP at the binding constraint is the moat (bull) vs capacity-flooding (bear)."}
+]}

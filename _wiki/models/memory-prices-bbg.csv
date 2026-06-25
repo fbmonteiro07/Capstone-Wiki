@@ -1,0 +1,9 @@
+series,ticker,unit_gb,metric,2024-06,2025-01,2025-06,2025-09,2025-10,2025-11,2025-12,2026-01,2026-02,2026-03,2026-04,2026-05,asof
+DRAM DDR5 8Gb contract,ISTPDR15 Index,1,USD/chip,2.56,2.46,2.50,2.68,3.23,3.45,3.45,7.56,7.88,8.06,11.88,11.88,2026-05-31
+DRAM LPDDR5 16Gb contract,ISTPMR48 Index,2,USD/chip,,,,,6.35,7.26,7.52,13.60,13.60,16.00,24.00,24.00,2026-05-31
+NAND TLC 256GB contract,ISTPND27 Index,256,USD/unit,2.26,1.36,1.61,1.68,2.37,3.09,5.09,8.29,9.29,11.10,12.32,12.32,2026-05-31
+NAND TLC 512GB contract,ISTPND28 Index,512,USD/unit,4.30,2.50,3.00,3.115,4.503,5.86,9.60,16.00,18.00,22.20,24.60,24.60,2026-05-31
+Server DRAM DDR5 64GB RDIMM contract,ISTPDR82 Index,64,USD/unit,,,,,,,,,,,,1270.00,2026-05-31
+DRAM DDR5 16Gb spot,ISPPDR47 Index,2,USD/chip,,,,,,,,,,,,44.04,2026-06-25
+NAND TLC 512Gb spot,ISPPN512 Index,64,USD/chip,,,,,,,,,,,,20.96,2026-06-25
+NOTE,,,, "$/GB = px / unit_gb. LPDDR5 16Gb=2GB; NAND 256GB module. Source: inSpectrum Tech via Bloomberg (BBG wrapper bdh/bdp). Contract = month-end; spot = realtime.",,,,,,,,,,,,

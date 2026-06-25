@@ -1,0 +1,93 @@
+<!-- Per-company wiki page. Synthesis from co-located disk sources only. -->
+
+# NFLX — Netflix, Inc.
+
+_Wiki · generated 2026-06-18 · sources: `E:\Wiki Felipe\NFLX` (10-K + transcripts) · `_equity_calls` · `_briefings\by-ticker\NFLX.md`. Master index: [../INDEX.md](../INDEX.md)._
+
+## Snapshot
+Global subscription streaming + ads. One operating segment, revenue from monthly paid memberships across four regions (UCAN, EMEA, LATAM, APAC), now supplemented by a fast-ramping advertising tier and emerging adjacencies — live events/sports, video podcasts, and cloud-first games. Ended 2025 with >325M paid members and an audience "approaching ~1 billion people" (Q1 2026, 2026-04-16). Management frames the long runway against three TAM lenses: <45% of ~800M addressable smart-TV households penetrated, ~7% of a ~$670B addressable consumer+ad market captured, and <5% of global TV view-share (Q1 2026, 2026-04-16). Not semis — this is the buy-side's large-cap streaming long, increasingly an AI-tooling and ad-tech story on the margin.
+
+## At a glance — product · buyer · supplier
+| | |
+|---|---|
+| **Sells (top 3)** | 1) Paid streaming memberships (4 regions: UCAN/EMEA/LATAM/APAC) · 2) Advertising (ad-supported tier + own ad-tech) · 3) Adjacencies — live events/sports, cloud-first games, video podcasts |
+| **Main buyer(s)** | Consumers (>325M paid members, audience ~1B) + advertisers (base +70% y/y to >4,000 in 2025, still concentrated in largest buyers) |
+| **Key suppliers** | Content (studios/producers + own originals; large off-B/S content obligations) · cloud/compute (AWS-hosted + own Open Connect CDN) |
+
+## Current state (latest quarter — Q1 2026, call 2026-04-16)
+- **Guidance maintained, all organic.** FY26 revenue growth 12–14% (~$51B, +14% y/y per Q4 framing), operating margin 31.5% (+~2pts y/y), ad business "roughly doubling" to ~$3B (Q1 2026, 2026-04-16; Q4 2025, 2026-01-20). Note the FY26 op-margin target carries ~0.5pt drag from M&A-related expense (Q4 2025, 2026-01-20).
+- **2025 actuals (recapped on the calls):** +16% revenue growth, ~30% operating-profit growth, margin expansion, FCF growth, ad sales 2.5x (Q4 2025, 2026-01-20).
+- **Engagement:** Q1 view hours grew at a similar rate to 2H25 despite the Winter Olympics taking 17 days of competing streaming; the "primary member-quality metric" hit another all-time high (record again after Q4 2025) (Q1 2026, 2026-04-16). Management is deliberately steering the narrative away from raw view hours toward quality-weighted engagement tied to retention.
+- **Retention/pricing:** US price increase landed in line with historical patterns on acquisition/churn; churn improved y/y across every region (Q1 2026, 2026-04-16). Pricing changes are pre-baked into guidance — "very rare" to have a surprise increase. Ad plan held at $8.99 in the US.
+- **Advertising:** advertiser base +70% y/y in 2025 to >4,000; programmatic "on its way to >50% of non-live ads"; own ad-tech stack + more DSPs driving the mix shift (Q1 2026, 2026-04-16). Still concentrated in top accounts/largest buyers, mid-market expansion ahead.
+- **Content/live:** World Baseball Classic in Japan = most-watched program ever in Japan, 31.4M viewers, largest single sign-up day in Japan ever; APAC was the strongest FX-neutral revenue-growth region (Q1 2026, 2026-04-16). In NFL renewal discussions to "expand the relationship" within an events-focused (not regular-season) strategy. Content amortization guided +~10% y/y for FY26, an acceleration weighted to 1H (Q4 2025, 2026-01-20).
+- **Capital allocation:** unchanged — invest organically + opportunistic M&A, maintain liquidity, return excess cash via buyback (Q1 2026, 2026-04-16). Closed InterPositive (GenAI filmmaking tooling).
+
+## Debate / thesis
+- **Bull:** Organic algorithm intact — double-digit revenue, ~2pts/yr margin expansion, ad ramp (~$3B in 2026, programmatic inflecting), and optionality from live/games/podcasts, all without needing M&A. Walking away from Warner Bros. is read as discipline, not weakness ("nice to have, not need to have"; tested investment discipline — Q1 2026, 2026-04-16). Still by far the largest streaming platform at 52% of global streaming MAUs (Goldman/Sensor Tower call, 2026-04-16). Briefing tape: JPMorgan/Anmuth Reit. OW, PT $118, citing ad MAUs 250M+ and +5 NFL games in 2026 (briefing, 2026-05-14).
+- **The pricing-power case (Eric Seufert / Stratechery, 2026-04-24):** Netflix is "the baseline, must-have, default streaming service," and that status is the source of pricing power no one else (e.g. Disney+) has — "they've got all the content in the world to command that elasticity." The market had latent price elasticity NFLX wasn't capturing; basic-tier removal, the password crackdown, and broad price-point stratification have driven members toward willingness-to-pay (premium tier now ~$30 in the US). Seufert's key reframe: the ad tier matters less for its own ad revenue than because **it unlocks the high end** — it gives Netflix a low-priced catch-all to funnel down-traders into, freeing pricing at the top. On ads execution he is more critical: NFLX has been "not very aggressive," only rolling out its own proprietary ad tech in the US in April 2025 (a "false start"), now finally talking targeting/audience-development/proprietary formats. He cites a leaked pre-earnings business review: **2030 goal ~$9B ad revenue (vs. ~$2.15B in 2025, a ~4x ramp) on a doubling of total revenue by 2030** — and flags that $2.15B is "less than Pinterest" given NFLX's user base. Std-with-Ads had surpassed the Standard tier on ARPU, though Jan price hikes widened the ad/standard spread to ~$10 (from ~$8.50), muddying that. Underexploited optionality: pairing games (GTA, ~$1B-ish spend) with the ad initiative.
+- **AI-as-margin-lever (Felise Agranoff / JPM Asset Mgmt, Barron's Roundtable, 2026-03-26):** NFLX named a long. Thesis is narrow but distinct from the consumer angle — already a high-margin winner of the streaming market, NFLX can use scale + leadership to **deploy AI to lower content costs**, driving "a further inflection in profitability." NFLX referenced at $970.65 (3/26/25 price).
+- **Bear:** Engagement-quality reframing invites the question of whether raw view hours are stagnating — Ben Swinburne (Morgan Stanley) pushed exactly this on the Q4 call, framing the (since-abandoned) WB bid as evidence Netflix needed Warner/HBO IP to fix flat engagement; management rejected the conclusion (Q4 2025, 2026-01-20). Nielsen methodology change mechanically lowers reported streaming share (no behavior change, but optics/ad-narrative risk — Q1 2026, 2026-04-16). Near-term catalyst vacuum: Bernstein flagged NFLX "lacks N/T catalysts," keeping NFLX/DIS in the short camp for the summer with FIFA/NBA/F1 dominating attention (briefing, 2026-06-04). Founder/Chair Reed Hastings will not stand for reelection — governance/leadership-transition overhang (Q1 2026, 2026-04-16).
+- **JPM top-5 internet name into 1Q (JPM internet preview, 2026-04-15):** JPM framed NFLX as a "cleaner story" — double-digit revenue + ~2pts/yr margin expansion + ad ramp, **without the AI-heavy capex or the AI-disintermediation risk** that overhangs most internet names. The debate is whether NFLX raises the FY26 op-margin (>50bps unlikely) and revenue guides on the print (it can; the recent US price hike was largely already baked into the 12–14% guide); the one must-do was augmenting the buyback to dispel fears of another big M&A move post-Warner (JPM/Anmuth, 2026-04-15). [Source](../relat%C3%B3rios%20bons/2026_04_15_jpm_internet_preview_15_apr_26.html)
+- **Where the sell-side stands:** Coverage on disk is thin — only two briefing datapoints. JPMorgan/Anmuth OW, PT $118 (2026-05-14); Bernstein cautious/short-camp framing (2026-06-04). No PTs or full notes for MoffettNathanson, Morgan Stanley, UBS, Baird, Wells Fargo, TD Cowen, etc. on disk beyond their Q&A appearances in the transcripts. Treat the Street read as directional, not comprehensive.
+
+## Catalysts / what to watch
+- **Q2 2026 print** (~mid/late July; Q2 2025 was 2025-07-17) — first full read on US price-increase elasticity and ad-revenue trajectory toward the $3B FY target.
+- **Ad ramp milestones:** programmatic crossing >50% of non-live ads; advertiser-base expansion into mid-market; progress against the ~$9B 2030 ad-revenue ambition (Stratechery, 2026-04-24).
+- **NFL renewal/expansion** outcome and any incremental live-sports rights (events strategy).
+- **Annual meeting / Board reshaping** post-Hastings non-reelection.
+- **GenAI integration** of InterPositive into production + recommendation/ads (management says new model architectures already lifting engagement — Q1 2026, 2026-04-16); watch whether AI delivers the content-cost deflation Agranoff's profitability-inflection thesis needs (Barron's, 2026-03-26).
+
+## Risks
+- Intensely competitive for consumer leisure time vs. other video providers and broader entertainment (10-K 2026-01-23).
+- Large, partly off-balance-sheet content obligations require substantial cash deployment and could pressure financial position if engagement/monetization disappoint (10-K 2026-01-23).
+- Foreign-exchange exposure given majority-international membership and revenue (10-K 2026-01-23).
+- Engagement-quality reframing could mask deceleration in raw consumption; ad-revenue scale-up still early, concentrated, and (per Seufert) under-monetized relative to the user base (Stratechery, 2026-04-24).
+- Leadership transition (Hastings off Board) and M&A-discipline credibility post-WB.
+
+## Intra-quarter — calls, comentários & relatórios (desde o último print)
+_Q1 2026 · Apr 15 → Jun 04, 2026 · sell-side / expert calls / relatórios entre os earnings. Timeline visual: [timeline.html](timeline.html)._
+
+**Sinal vs gestão** — o que a gestão disse no último call × o que o fluxo intra-quarter está dizendo (✓ confirma · ⚠ nuança · ✗ contesta):
+
+| Tema | Gestão disse (Q1'26) | Fluxo intra-quarter | Sinal |
+|---|---|---|---|
+| **Receita / crescimento** | FY26 +12-14% mantido (~$51B); margem op 31,5% | JPM Anmuth: "cleaner story", OW PT $118 — double-digit rev + ~2pts/ano de margem sem capex AI-pesado | **✓ confirma** (history limpa) |
+| **Publicidade** | Ads ~2x p/ ~$3B; advertisers +70% a >4.000; programático rumo a >50% | Stratechery/Seufert: NFLX "not very aggressive", meta 2030 ~$9B mas '25 ~$2,15B "menos que Pinterest" | **⚠ nuança** (execução de ads atrás) |
+| **Posição competitiva** | — (liderança de streaming) | GS/Sensor Tower: NFLX ainda de longe o maior, 52% dos MAUs globais de streaming | **✓ confirma** (líder de share) |
+| **Catalisadores N/T** | WBC Japão recorde (31,4M); +5 jogos NFL em '26 | Bernstein (bear): "lacks N/T catalysts", NFLX/DIS no short camp do verão (FIFA/NBA/F1 dominam) | **✗ contesta** (sem gatilho de verão) |
+
+**Log completo** (todo o fluxo intra-quarter, por data):
+
+| Data | Fonte | Tema | Viés | O que disse |
+|---|---|---|---|---|
+| 04-15 | JPM · Anmuth (internet 1Q preview) | guidance | bull | JPM framed NFLX as a 'cleaner story' top-5 internet name — double-digit revenue + ~2pts/yr of margin expansion + an ads ramp, without the AI-heavy capex or the AI-disintermediation risk that weighs on most internet names. The debate is whether NFLX raises its FY26 op-margin guide (>50bps unlikely) and revenue on the print; the must-do was increasing the buyback to dispel fears of another large M&A deal post-Warner (JPM/Anmuth, 2026-04-15). |
+| 04-16 | Goldman / Sensor Tower (equity call) | competicao | bull | NFLX still by far the largest streaming platform with 52% of global streaming MAUs (Goldman/Sensor Tower call, 2026-04-16). |
+| 04-24 | Stratechery · Eric Seufert | valuation | mixed | Netflix is 'the baseline, must-have, default streaming service', a source of pricing power no one else has; the ad tier matters less for its own ad revenue and more because it unlocks the high-end. Critical on ads execution: NFLX is 'not very aggressive', only launched proprietary ad tech in the US in April 2025. Cites a leaked pre-earnings review: 2030 goal of ~US$9B in ad revenue (vs ~US$2.15B in 2025, a ~4x ramp) — and notes that US$2.15B is 'less than Pinterest' given the user base (Stratechery/Seufert, 2026-04-24). |
+| 05-14 | JPMorgan · Anmuth (via briefing) | valuation | bull | JPMorgan/Anmuth reiterates Overweight, PT US$118, citing ad MAUs of 250M+ and +5 NFL games in 2026 (briefing 2026-05-14). |
+| 06-04 | Bernstein (via briefing) | valuation | bear | Bernstein flagged that NFLX 'lacks N/T catalysts', keeping NFLX/DIS in the short camp for the summer with FIFA/NBA/F1 dominating attention (briefing 2026-06-04). |
+
+**Síntese do quarter:** o print foi limpo e o fluzo confirma a tese estrutural (líder de share, history sem capex AI), mas o debate migrou para (i) execução de ads — Seufert aponta que ~$2,15B em '25 é "menos que Pinterest" dada a base, e (ii) ausência de catalisadores de curto prazo no verão (Bernstein mantém short tático com FIFA/NBA/F1 dominando atenção).
+
+## Management commentary — evolution (last 5 quarters)
+
+| Theme | Q1'25 (2025-04-17) | Q2'25 (2025-07-17) | Q3'25 (2025-10-21) | Q4'25 (2026-01-20) | Q1'26 (2026-04-16) |
+|---|---|---|---|---|---|
+| Revenue guidance/growth | FY25 ~$43.5–44.5B; no macro change | Raised FY25 to $44.8–45.2B (mostly FX) | Raised FY25 to ~$44.5B, +16% y/y | 2025 +16%; FY26 ~$51B, +14% | Maintained FY26 +12–14% growth |
+| Operating margin | FY25 29% | Raised to 30% reported | Raised to 29.5% | FY26 target 31.5% (+2pts) | Held 31.5% (incl. M&A drag) |
+| Advertising | Own ad-tech in US/Canada; ~2x rev '25 | Ad Suite live all 12 markets; ~2x | ~2x again; fill-rate gains; up Q3 | Ads 2.5x in '25; ~$3B target '26 | Advertisers +70% to >4,000; ~$3B |
+| Live events & sports | Strategy unchanged; ~200B view hrs | Taylor–Serrano + WWE concurrent | NFL Xmas, WWE driving premium CPMs | >200 live events; WBC Japan March | WBC Japan = 31.4M, record sign-ups |
+| Games | Small % of content budget; $140B TAM | Ramp measured; GTA, Squid Game | Learning/building; retention lift | Cloud-first; ~1/3 members have TV games | Playground kids app; $150B TAM |
+| GenAI / AI tooling | Pedro Páramo de-aging "10% better" | El Eternaut: first GenAI final shot | — | — | InterPositive buy; recs lift engagement |
+
+_Source: NFLX earnings calls (dates above); management commentary, paraphrased._
+
+## Sources
+- **Filings:** [10-K 2026-01-23](../NFLX/NFLX_10-K_2026-01-23_0001065280-26-000034.html) (newest; business overview + risk factors skimmed).
+- **Transcripts:** [Q1 2026 (2026-04-16)](../NFLX/transcripts/NFLX_Q1-2026-earnings_2026-04-16.md) · [Q4 2025 (2026-01-20)](../NFLX/transcripts/NFLX_Q4-2025-earnings_2026-01-20.md).
+- **Equity calls:** 1 attributed — [2026-04-16 Goldman / Sensor Tower](../_equity_calls/Internet/2026-04-16_Goldman_SensorTower.md) (streaming MAU share, ad-spend share, Paramount/WB context). See [INDEX](../INDEX.md) §NFLX.
+- **Briefings:** [NFLX roll-up](../_briefings/by-ticker/NFLX.md) — 2 datapoints / 2 days (JPM/Anmuth OW $118; Bernstein N/T catalyst caution).
+- **Research reports (relatórios bons):**
+  - [Stratechery — Eric Seufert on Advertising](../relat%C3%B3rios%20bons/Stratecherry_-_Eric_ADS.html) (ad-tier pricing power, ~$9B 2030 ad target, own ad-server execution, games+ads optionality)
+  - [Barron's Tech Roundtable — 4 Experts on the Next Phase of AI and 22 Favorite Stocks](../relat%C3%B3rios%20bons/Barrons_Tech_Roundtable__Our_4_Experts_on_the_Next_Phase_of_AIand_22_Favorite_Stocks_-_Barrons.html) (Agranoff/JPM: AI-driven content-cost deflation → profitability inflection)
+  - [JPM — Internet 1Q preview (Anmuth, 2026-04-15)](../relat%C3%B3rios%20bons/2026_04_15_jpm_internet_preview_15_apr_26.html) — top-5 name; cleaner story, less AI-disintermediation risk; margin/rev guide + buyback debate.

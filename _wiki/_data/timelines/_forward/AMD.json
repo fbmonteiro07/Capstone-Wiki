@@ -1,0 +1,30 @@
+{"ticker":"AMD","forward":[
+{"metric":"Server CPU TAM 2030","horizon":"2030","trend":"up","trail":[
+{"date":"2025-11-11","val":"~$60B by CY30 at ~18% CAGR (Nov FAD framing)","src":"AMD Financial Analyst Day"},
+{"date":"2026-05-06","val":"raised to >$120B by 2030 at >35% CAGR (agentic CPU, CPU/GPU ratio toward 1:1)","src":"AMD Q1 FY26 call"},
+{"date":"2026-05-21","val":"UBS sizes total server-CPU TAM $31B(2025)→$74B(2027E)→$173B(2030E); AMD unit share 24%→27%→29%","src":"UBS CPU TAM"}],
+"note":"TAM doubled in six months; AMD holds/gains modest unit share, Intel the structural loser."},
+{"metric":"Data Center GPU / AI revenue FY27","horizon":"FY27","trend":"up","trail":[
+{"date":"2026-05-06","val":"AI revenue path $14-15B FY26 → $30-40B+ FY27; ~$15B+ rev capture/GW; 2027 GPU dispersion $30-50B","src":"AMD/BofA callback"},
+{"date":"2026-06-13","val":"Citi upgrades to Buy PT $575, ~+12-13% above Street CY26-28E (SOTP)","src":"Citi Atif Malik"},
+{"date":"2026-06-16","val":"JPM: AMD rev $15-20B/GW; GPU unit shipments 0.7M(2025)→0.6M(2026E)→1.0M(2027E) as MI450 ramps","src":"JPM AI Capex 2.0"}],
+"note":"OpenAI ~6GW + Meta ~6GW the anchor; UBS flags Street ~$30B C2027 GPU as likely too conservative."},
+{"metric":"MI450/Helios rack ramp","horizon":"Q4 2026→2027","trend":"contested","trail":[
+{"date":"2025-12-17","val":"only a few hundred racks Q4'26, major volume 2027; UALink system-level issues could delay MP","src":"Jefferies Q425 Techknowledge"},
+{"date":"2026-05-06","val":"MI450/Helios ramps Q3 (initial) → significant Q4, into 2027","src":"AMD Q1 FY26 guide"},
+{"date":"2026-06-23","val":"MI450 chip on track; rack forecast steady ~30,000 units next year (mostly Meta/OpenAI); ODM timing split (late Q4'25 vs Q1'26)","src":"Redburn Conor O'Mara Asia Trip"}],
+"note":"Chip not the gate — rack assembly / UALink system-level resolution is; vs NVDA ~70-80K racks."},
+{"metric":"EPS trajectory FY26-28","horizon":"FY26→FY28","trend":"up","trail":[
+{"date":"2025-11-11","val":">$20 EPS over strategic horizon; >35% rev CAGR, GM 55-58%; \"tens of billions\" AI rev 2027","src":"AMD FAD"},
+{"date":"2026-05-06","val":"BofA frames ~$7.25 EPS FY26 / ~$12+ FY27 / ~$15 FY28; $450-500 PT range","src":"BofA Vivek Arya recap"}],
+"note":"Under-owned (~1-in-3 large-caps at ~0.41x rel weight) — positioning gap is itself the catalyst."},
+{"metric":"2027 CoWoS / MI400 supply","horizon":"2027","trend":"up","trail":[
+{"date":"2025-12-17","val":"2027 CoWoS bookings revised up 99K→120K wafers (~413K MI350 + ~580K MI400/450 units); realization Helios-dependent","src":"Jefferies Q425 Techknowledge"},
+{"date":"2026-06-23","val":"capacity-constrained at TSMC 3nm + ABF (Kinsus ~40%/+10%) + CCL (iTeq ~60% at 75% util, T-glass shortage)","src":"Redburn Conor O'Mara Asia Trip"}],
+"note":"Conor: trim ~20% into the print on guide-light risk from substrate/laminate bottlenecks."},
+{"metric":"Venice EPYC (Zen 6, 2nm)","horizon":"2H 2026→2027","trend":"up","trail":[
+{"date":"2026-05-06","val":"Server CPU guided >70% y/y Q2, sustainable through 2H","src":"AMD Q1 FY26"},
+{"date":"2026-06-05","val":"Gen-6 EPYC 256 cores on TSMC N2 + ASE FoCoS; Venice among ASE's three flagship 2027 packaging projects","src":"Fubon 2027 outlook"},
+{"date":"2026-06-16","val":"Joe Moore \"very enthused\" on Venice (2nm, ramps 2H); agentic CPU incremental net-new demand","src":"MS Joe Moore bus tour"}],
+"note":"CPU carries the margins (60-65%+ GM) and is the under-appreciated upside vs the show-me GPU."}
+]}

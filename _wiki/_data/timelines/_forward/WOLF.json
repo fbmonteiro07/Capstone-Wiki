@@ -1,0 +1,21 @@
+{"ticker":"WOLF","forward":[
+{"metric":"Q4 FY26 revenue guide","horizon":"Q4 FY26","trend":"flat","trail":[
+{"date":"Q3 FY26 (2026-05-05)","val":"Q4 FY26 guide $140–160M; still-negative GM (sequential improvement)","src":"WOLF Q3 FY26 call"}],
+"note":"Guided roughly flat vs $150M Q3; GM path toward break-even is the watch."},
+{"metric":"Datacenter / 800V revenue ramp","horizon":"2026→2027","trend":"up","trail":[
+{"date":"Q2 FY26 (2026-02-04)","val":"datacenter rev +50% QoQ","src":"WOLF Q2 FY26 call"},
+{"date":"Q3 FY26 (2026-05-05)","val":"+30% QoQ; customers migrating 400V→800V; first commercial 10kV SiC MOSFET; TOL D portfolio","src":"WOLF Q3 FY26 call"},
+{"date":"2026-06-15","val":"NVDA Vera Rubin 800V pulled ahead to Q3 2026; 'WOLF power-semi basket should go brrr'","src":"briefing 2026-06-15 (Serenity/FinTwit)"}],
+"note":"Only real growth vector; the levered 800V call option on the franchise."},
+{"metric":"Mohawk Valley utilization / GM path","horizon":"2026→2027","trend":"up","trail":[
+{"date":"Q2 FY26 (2026-02-04)","val":"non-GAAP GM -34%; underutil ~$48M","src":"WOLF Q2 FY26 call"},
+{"date":"Q3 FY26 (2026-05-05)","val":"non-GAAP GM -20.6%; underutil ~$46M; guide sequential GM improvement","src":"WOLF Q3 FY26 call"}],
+"note":"MV utilization is the single biggest GM lever; all device production now at Mohawk."},
+{"metric":"WBG content opportunity / market","horizon":"2030","trend":"up","trail":[
+{"date":"2026-06-09","val":"WBG power-device market (AI DC + grid) ~$1bn (2025) → $5bn+ by 2030 (30%+ CAGR); 2x power → ~5x SiC content; $25–35K/MW LT; WOLF power ~10% of revenue; APH/FLEX/TEL/WOLF best-positioned","src":"JPM 'Watts Up! 800V'"}],
+"note":"Theme-level call; JPM still UW the equity (PT $18.56) — likes the SiC content, not the levered turnaround."},
+{"metric":"Refinancing / cost of capital","horizon":"mid-CY26","trend":"down","trail":[
+{"date":"Q2 FY26 (2026-02-04)","val":"rate steps up mid-CY26; 'very high cost of capital… something to be looked at'","src":"WOLF Q2 FY26 call (CFO)"},
+{"date":"Q3 FY26 (2026-05-05)","val":"~$476M gross private placements; senior-secured-note balance cut 43%; first maturity 2030","src":"WOLF Q3 FY26 call"}],
+"note":"Next debt step-up mid-CY26; sky-high refi cost of capital is a bear overhang."}
+]}

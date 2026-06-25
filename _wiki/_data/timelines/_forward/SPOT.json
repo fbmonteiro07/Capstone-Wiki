@@ -1,0 +1,24 @@
+{"ticker":"SPOT","forward":[
+{"metric":"Operating margin by 2030","horizon":"2030","trend":"up","trail":[
+{"date":"2026-02-10","val":"FY25 operating income +50%+ to a 13% FY margin","src":"SPOT Q4 FY25 prepared remarks"},
+{"date":"2026-05-21","val":"LT targets: mid-teens rev growth, 35-40% GM, 20%+ op margin by 2030","src":"Investor Day (sell-side recaps)"}
+],"note":"Investor Day reframed story from user growth to monetization; 2030 op-margin target the anchor."},
+{"metric":"Gross margin trajectory","horizon":"FY26→2030","trend":"up","trail":[
+{"date":"Q4'25 (2026-02-10)","val":"33.1% (+80bp y/y)","src":"SPOT Q4 FY25"},
+{"date":"2026-04-28","val":"FY26 GM to improve full-year; Q2 guide GM 33.1%","src":"SPOT Q1 FY26 prepared remarks"},
+{"date":"2026-05-21","val":"35-40% GM target by 2030","src":"Investor Day"}
+],"note":"GM expansion the multi-year margin lever bulls underwrite."},
+{"metric":"AI Music / Remix revenue contribution","horizon":"2030","trend":"contested","trail":[
+{"date":"2026-04-28","val":"AI inference reinvestment pressuring near-term OI; Remix add-on framed as monetization vector","src":"SPOT Q1 FY26"},
+{"date":"2026-05-21","val":"UMG/UMPG AI remix licensing positioned as real ARPU vector (BofA: 'clear answer to AI disintermediation')","src":"Investor Day / BofA $685"},
+{"date":"2026-06-17","val":"Redburn: Remix <2% of Premium revs by 2030e; models rev -1%, EBIT -2-3% vs Street (PT cut $600→$550)","src":"Redburn/Rothschild (Vyvyan)"}
+],"note":"Cleanest bull/bear split: AI add-on as real revenue vs <2% of Premium by 2030."},
+{"metric":"FCF (FY26)","horizon":"FY26","trend":"up","trail":[
+{"date":"2026-02-10","val":"FY25 FCF record €2.9B","src":"SPOT Q4 FY25"},
+{"date":"2026-04-28","val":"FY26 FCF to 'meaningfully exceed' 2025's record €2.9B; normalized tax rate by 2027","src":"SPOT Q1 FY26"}
+],"note":"FCF compounding against €8.8B net cash; out-year tax normalization a 2027 lever."},
+{"metric":"ARPU growth","horizon":"FY26 forward","trend":"up","trail":[
+{"date":"Q1'26 (2026-04-28)","val":"ARPU +5.7% y/y","src":"SPOT Q1 FY26"},
+{"date":"2026-04-28","val":"Q2 guide ARPU +7-7.5% y/y on new pricing actions","src":"SPOT Q1 FY26 guide"}
+],"note":"Pricing the near-term monetization lever; price hikes churning cleanly."}
+]}

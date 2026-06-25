@@ -1,0 +1,23 @@
+{"ticker":"CEG","forward":[
+{"metric":"EPS guidance / base-earnings growth","horizon":"FY26→2029","trend":"up","trail":[
+{"date":"2026-03-31","val":"FY26 guidance initiated $11.00-$12.00/share (combined entity post-Calpine)","src":"Q4'25 Business Outlook"},
+{"date":"2026-05-11","val":"FY26 reaffirmed $11.00-$12.00 (mid $11.50); base-earnings growth 'above 20% through 2029'","src":"Q1 FY26 call"}
+],"note":"Calpine adds ~$2/share EPS one year after close; the >20% base growth is the core forward earnings frame."},
+{"metric":"Free cash flow trajectory","horizon":"2026-2029","trend":"up","trail":[
+{"date":"2026-05-11","val":"FCF ~$8.4B for 2026-2027; $11.5-13B for 2028-2029 (~45% growth at midpoint)","src":"Q1 FY26 call"}
+],"note":"Step-up into 2028-29 underpins the $5B buyback authorization and capital-return story."},
+{"metric":"Hyperscaler PPA ramps (Clinton/Crane)","horizon":"2027→2028","trend":"up","trail":[
+{"date":"2025-06-03","val":"Meta-Clinton 20yr PPA, full 1,121 MW output, starting June 2027","src":"announced / JPM"},
+{"date":"2024-09-23","val":"Microsoft-Crane (TMI Unit 1 restart) 20yr PPA, 835 MW, starting 2028","src":"announced / JPM"},
+{"date":"2026-05-11","val":"Crane restart progressing 'no new challenges'; filed CIR transfer targeting 2027 capacity credit","src":"Q1 FY26 call"},
+{"date":"2026-06-16","val":"JPM deal table reconfirms Constellation-Meta Clinton 1.1 GW 20-yr beginning June 2027","src":"JPM AI Capex 2.0"}
+],"note":"Two marquee contracts ramp 2027 (Clinton) and 2028 (Crane); FERC CIR-transfer ruling Jun-Jul 2026 unlocks 2027 credit."},
+{"metric":"Nuclear uprates / new capacity","horizon":"2027→post-2030","trend":"up","trail":[
+{"date":"2025-11-07","val":"~900-1,000 MW of uprates identified; 1,000 MW demand response (=an entire nuclear plant in PJM ELCC)","src":"Q3 FY25 call"},
+{"date":"2026-05-11","val":"~5,000 MW new resources (uprates/gas/battery) into PJM queue; Byron/Braidwood accretive in plan; LaSalle/Limerick/Calvert Cliffs out of EPS until 2030","src":"Q1 FY26 call"}
+],"note":"Uprates are capital-efficient (>10% organic IRRs, no incremental O&M/fuel); the bigger uprates only hit EPS post-2030."},
+{"metric":"Hyperscaler deal pipeline / contracting","horizon":"by year-end 2026","trend":"contested","trail":[
+{"date":"2025-11-07","val":"demand 'hotter than ever'; deals promised 'before the Q4 call'","src":"Q3 FY25 call"},
+{"date":"2026-05-11","val":"deals still not announced; some conversations 'paused' awaiting PJM clarity; expects regulatory clarity 'by year-end' as the unlock; hyperscaler capex ~75% higher","src":"Q1 FY26 call"}
+],"note":"Deal timing keeps slipping on PJM/FERC dependence - the central bear point on long-term contracted visibility vs BYOG."}
+]}

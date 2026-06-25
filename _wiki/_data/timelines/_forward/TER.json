@@ -1,0 +1,26 @@
+{"ticker":"TER","forward":[
+{"metric":"FY26 revenue / EPS target","horizon":"FY26","trend":"flat","trail":[
+{"date":"2026-02-03","val":"~$6B revenue / $9.50-$11 non-GAAP EPS (evergreen target)","src":"Q4 FY25 call"},
+{"date":"2026-04-29","val":"reiterated ~$6B / $9.50-$11; H1-weighted (~55-60% of FY26 in H1)","src":"Q1 FY26 call"}
+],"note":"Capstone house model more cautious: 2026E EPS $5.46, below NTM consensus ~$8.25."},
+{"metric":"SoC-Test TAM + NVDA opportunity","horizon":"2027","trend":"up","trail":[
+{"date":"2025-12-15","val":"NVDA dual-source optionality (Vera Rubin insertion vs Advantest) a swing factor","src":"JPM (Chatterjee)"},
+{"date":"2025-12-22","val":"SoC-Test TAM + NVDA opportunity could approach ~$1B+/yr by 2027","src":"UBS (Arcuri)"}
+],"note":"Call option for GPU test; StoneX channel skeptical GPU test leaves Advantest."},
+{"metric":"AI revenue mix","horizon":"FY26","trend":"up","trail":[
+{"date":"2025-10-29","val":"AI ~50% of revenue; ~60% guided Q4","src":"Q3 FY25 call"},
+{"date":"2026-02-03","val":"AI >60% of revenue; ~70% guided Q1; mix steps 20%->41% FY25->FY26E","src":"Q4 FY25 call / JPM"},
+{"date":"2026-04-29","val":"AI ~70% of total revenue; three AI waves framed","src":"Q1 FY26 call"}
+],"note":"Structural swing from mobile-driven to AI-dominant mix."},
+{"metric":"Google ASIC (VIP compute) qualification / ramp","horizon":"end-3Q FY26 -> 2027","trend":"up","trail":[
+{"date":"2026-06-12","val":"Google VIP-compute qual finishing ~end-3Q; modest 4Q revenue then 2027 ramp","src":"JPM (Chatterjee)"},
+{"date":"2026-06-15","val":"Teradyne 'talking about being qualified for Google TPU - pretty good stuff'","src":"UBS (Arcuri)"}
+],"note":"Incremental SoC-test design-win color for the ASIC ramp."},
+{"metric":"CPO / silicon-photonics TAM","horizon":"mid-term","trend":"up","trail":[
+{"date":"2026-05-04","val":"four test insertions, $300-700M mid-term TAM; first-mover via Fi-Con/Quantifi/Photon 100","src":"UBS CPO call"}
+],"note":"Ramp weighted to H2; share split with Advantest/FormFactor unsettled."},
+{"metric":"H2 FY26 demand trajectory","horizon":"2H FY26","trend":"up","trail":[
+{"date":"2025-12-15","val":"several 'on-the-cusp' high-volume sockets straddle the 2025/26 boundary","src":"JPM (Chatterjee)"},
+{"date":"2026-06-12","val":"2H improvement 'nuanced positive'; memory test demand stronger -> H2 upside; whether H2 guide ticks up","src":"JPM (Chatterjee)"}
+],"note":"1H still leads 2H on VIP-compute split (~85/15 H1/H2); JPM expects H2 guide to tick up."}
+]}

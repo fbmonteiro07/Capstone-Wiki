@@ -1,0 +1,22 @@
+{"ticker":"NXPI","forward":[
+{"metric":"Revenue growth CY26/CY27","horizon":"2026→2027","trend":"up","trail":[
+{"date":"2026-04-28","val":"reaffirmed Analyst Day targets: double-digit revenue growth 2026 & 2027","src":"Q1 FY26 call"},
+{"date":"2026-05-22","val":"guided double-digit-% growth in both CY26 and CY27; no major restocking yet (tailwind ahead)","src":"JPM \"Conf feedback\""}
+],"note":"UBS models rev +11% (26E) / +12% (27E); restock is the still-to-come leg."},
+{"metric":"Gross margin trajectory","horizon":"2026→2028","trend":"up","trail":[
+{"date":"2026-02-03","val":"GM 57.4%; VSMC/ESMC JV ~200bps GM uplift by 2028","src":"Q4 FY25 call"},
+{"date":"2026-04-28","val":"GM 57.1%, Q2 guide 58%; reaffirmed toward 60%+; JV 67% through, ~200bps by 2028","src":"Q1 FY26 call"}
+],"note":"JV ramp + utilization recovery; UBS models GM 58% (26E) → 60% (27E)."},
+{"metric":"Data-center revenue","horizon":"2026","trend":"up","trail":[
+{"date":"2026-02-03","val":"physical AI cited as NXP-specific driver","src":"Q4 FY25 call"},
+{"date":"2026-04-28","val":"data center >$500m guided for 2026 (vs ~$200m 2025), control-plane, GM-accretive","src":"Q1 FY26 call"}
+],"note":"NXP-specific growth on top of the auto recovery."},
+{"metric":"2H26 pricing","horizon":"Jun/Jul 2026","trend":"up","trail":[
+{"date":"2026-06-03","val":"announced July price increases alongside TI and Infineon","src":"Jefferies/Menon"},
+{"date":"2026-06-15","val":"joined IFX/TXN with a second round of price hikes effective June/July; fab utilization recovered to mid-80s%","src":"Citi \"800V power\""}
+],"note":"Pricing power as the up-cycle and supply tightness build."},
+{"metric":"MCU channel restock","horizon":"2026","trend":"up","trail":[
+{"date":"2025-12-22","val":"MCU the laggard: distributor $ inventory +24% YoY, ASP only +4% YoY (vs True Analog +42%)","src":"UBS/Arcuri"},
+{"date":"2026-05-22","val":"no major restocking yet — a tailwind still to come","src":"JPM \"Conf feedback\""}
+],"note":"MCU normalization is the next leg of the recovery; relevant to NXP's embedded mix."}
+]}

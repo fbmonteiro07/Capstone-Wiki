@@ -1,0 +1,26 @@
+{"ticker":"SNDK","forward":[
+{"metric":"Q4 FY26 revenue/EPS","horizon":"Q4 FY26 (Jun-qtr)","trend":"up","trail":[
+{"date":"2026-04-30","val":"Q4 FY26 guide rev $7.75-8.25B, GM 79-81%, EPS $30-33 (vs Q3 $5.95B / 78.4% / $23.41)","src":"Q3 FY26 call (Goeckeler/Visoso)"}],
+"note":"Steep ramp off the spin; entirely price/mix-driven as bits shrink."},
+{"metric":"NBM / LTA backlog FY27 bits","horizon":"FY27","trend":"up","trail":[
+{"date":"2026-04-30","val":"5 multiyear NBMs; $42B minimum contractual revenue, >$11B financial guarantees; >1/3 of FY27 bit supply locked","src":"Q3 FY26 call"},
+{"date":"2026-05-22","val":"Undersupply call extended end-CY26 -> end-CY27; LTAs floor-and-ceiling pricing + pre-pay walkaways w/ guarantees","src":"JPM Conf feedback"}],
+"note":"LTA layer is the durability/re-rating mechanism; ~25% effective floor on a downturn."},
+{"metric":"CY26 data-center growth","horizon":"CY26","trend":"up","trail":[
+{"date":"2026-01-29","val":"Data center growing fast; DC $440M +64% q/q","src":"Q2 FY26 call"},
+{"date":"2026-04-30","val":"CY26 data-center growth raised to mid-70s% (from 60s%)","src":"Q3 FY26 call"}],
+"note":"DC growth guide raised alongside QLC 'Stargate' ramp."},
+{"metric":"BiCS 8 mix","horizon":"exit FY26","trend":"up","trail":[
+{"date":"2025-11-06","val":"BiCS 8 15% of bits; majority of bits exit FY26","src":"Q1 FY26 call"},
+{"date":"2026-04-30","val":"BiCS 8 'gold standard'; led TLC eSSD; to majority of bit production exiting FY26","src":"Q3 FY26 call"}],
+"note":"Node transition is the eSSD share-gain lever vs Micron/Hynix-Solidigm."},
+{"metric":"HBF samples / inference devices","horizon":"2H26->early 2027","trend":"up","trail":[
+{"date":"2025-09-10","val":"HBF first samples 2H26; first AI-inference devices early 2027; 8-16x HBM capacity at ~1.2TB/s; SK Hynix MOU","src":"MS AI NAND overview"}],
+"note":"Bull-case optionality; not HBM-drop-in, needs GPU redesign + ecosystem standardization."},
+{"metric":"HPF (IO/latency product)","horizon":"2028","trend":"down","trail":[
+{"date":"2026-06-23","val":"HPF (vs Kioxia Super IO) not due until 2028; 'dead on arrival' if Super IO succeeds (R&D w/ Global Unichip)","src":"Redburn (Conor O'Mara Asia trip)"}],
+"note":"Late vs Kioxia Super IO already shipping; competitive worry on the agentic-AI IO angle."},
+{"metric":"2028 LTA lock-in pricing","horizon":"2028","trend":"contested","trail":[
+{"date":"2026-06-22","val":"NAND 8/10 vs DRAM 10/10; SanDisk price-setter but pricier on 2028 numbers; some 2028 LTA lock-in prices DOWN vs 2027 (esp. enterprise TLC), with escalators","src":"MS Memory & semicap"}],
+"note":"MS prefers Micron — SanDisk looks expensive on 2028 after the run; 2028 floor prices soft."}
+]}

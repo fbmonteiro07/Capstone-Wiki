@@ -1,0 +1,152 @@
+<!-- Per-company wiki page. Synthesis of co-located disk sources only.
+     NO SEC filings — Japanese issuer (TSE: 285A), IPO Dec-2024. Coverage is thin.
+     Sources: transcripts/IR + repo briefings + BBG (JPY). Financials block auto-injected — do NOT hand-write. -->
+
+# KIOXIA — Kioxia Holdings Corporation (TSE: 285A)
+
+_Wiki · generated 2026-06-19 · **No SEC filings — Japanese issuer (TSE Prime: 285A), IPO Dec-2024; thin coverage.** Sources: `E:\Wiki Felipe\KIOXIA\transcripts` (IR results briefings) + `E:\briefings\2026` roll-up + BBG (JPY). Master index: [../INDEX.md](../INDEX.md)._
+
+## Snapshot
+Kioxia is the ex-Toshiba Memory NAND flash pure-play — one of the scaled NAND suppliers alongside Samsung, SK Hynix/Solidigm and Micron, and the manufacturing partner of **SanDisk (ex-Western Digital)** in the long-running Yokkaichi/Kitakami flash JV. It is the only large NAND maker without a captive DRAM business, so it is the cleanest listed proxy for the NAND/SSD cycle. Revenue splits into **SSD & Storage** (~55–60% — datacenter/enterprise/client SSD) and **Smart Devices** (mobile/consumer NAND), plus Other (FY25 results, 2026-05-15). The thesis runs through AI: NAND demand for cloud/AI-server SSD has tightened supply and re-priced the franchise; management targets datacenter + enterprise >60% of revenue by FY2028 (Investor Day, 2026-06-02). IPO'd on TSE Dec-2024; filing to list ADRs in the US to broaden the investor base (Q4 FY25, 2026-05-15). Reports in English; fiscal year ends March. See cross-theme: [hbm-memory](themes/hbm-memory.md).
+
+## At a glance — product · buyer · supplier
+| | |
+|---|---|
+| **Sells (top 3)** | 1) Datacenter/enterprise SSD (incl. QLC eSSD) · 2) Client SSD · 3) Smart Devices mobile/consumer NAND |
+| **Main buyer(s)** | Hyperscalers & datacenter/enterprise (targeted >60% of revenue by FY2028) plus client/mobile OEMs; DC-server SSD is the demand driver |
+| **Key suppliers** | Silicon wafers + WFE/equipment (TEL, Disco, etc.); manufacturing JV with SanDisk (Yokkaichi/Kitakami BiCS fabs) |
+
+## Position in the value chain
+Kioxia sits in the middle of the NAND chain: it buys wafers and WFE/equipment from upstream suppliers, fabricates 3D-NAND (BiCS) in the SanDisk JV fabs, and sells flash/SSD to datacenter, hyperscaler and client customers. It is NAND-only (no DRAM/HBM), so its read-through to the HBM trade is via the broader memory-tightness narrative, not direct HBM supply.
+
+<svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+  <rect x="10" y="70" width="160" height="80" rx="6" fill="#eef3fb" stroke="#3b6db3"/>
+  <text x="90" y="100" text-anchor="middle" font-weight="bold">Suppliers</text>
+  <text x="90" y="120" text-anchor="middle">Silicon wafers,</text>
+  <text x="90" y="136" text-anchor="middle">WFE / equipment</text>
+
+  <rect x="250" y="55" width="220" height="110" rx="6" fill="#fdf1e3" stroke="#c87f2a"/>
+  <text x="360" y="82" text-anchor="middle" font-weight="bold">Kioxia</text>
+  <text x="360" y="102" text-anchor="middle">NAND flash / BiCS (ex-Toshiba)</text>
+  <text x="360" y="120" text-anchor="middle">BiCS JV with SanDisk</text>
+  <text x="360" y="138" text-anchor="middle">Yokkaichi / Kitakami fabs</text>
+  <text x="360" y="156" text-anchor="middle">NAND-only (no DRAM/HBM)</text>
+
+  <rect x="550" y="55" width="160" height="110" rx="6" fill="#eaf6ed" stroke="#3a8f51"/>
+  <text x="630" y="82" text-anchor="middle" font-weight="bold">Customers</text>
+  <text x="630" y="104" text-anchor="middle">Enterprise /</text>
+  <text x="630" y="120" text-anchor="middle">datacenter SSD</text>
+  <text x="630" y="136" text-anchor="middle">Hyperscalers</text>
+  <text x="630" y="152" text-anchor="middle">Client / mobile</text>
+
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#444"/>
+    </marker>
+  </defs>
+  <line x1="170" y1="110" x2="248" y2="110" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="470" y1="110" x2="548" y2="110" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+</svg>
+
+## Current state (latest quarter)
+**Q4 FY2025 (quarter ended Mar-2026; reported 2026-05-15) — a blowout.** Revenue **¥1,002.9bn, +84.5% QoQ**; net income **¥407.7bn** (vs ¥87.8bn prior quarter); non-GAAP operating profit **¥599bn vs consensus ¥519bn** (+15% beat, briefing 2026-05-15). The move was ASP-driven: **ASP +100%+ QoQ** — the highest among NAND peers (Korean peers ~80%) — partly offset by **bit shipments −10% QoQ** on planned maintenance. **SSD & Storage revenue ¥600.3bn, +99.8%**; Smart Devices ¥337.3bn (+81%). DOI built 87→103 days (strategic supply build). **Full-year FY2025: revenue ¥2.337tn (+37% YoY), net profit ¥554.5bn** (vs ¥272.3bn). CEO Hiroo Oota: "We are riding the wave of AI demand… the strength of the flash memory market is expected to continue."
+
+**Guidance — Q1 FY2026:** operating profit **~¥1.3tn** vs buyside ¥1.1–1.2tn (briefing 2026-05-15); OP run-rate flagged as higher than Toyota; OP margin guide **~74%** (Investor Day, 2026-06-02). Prior quarter (Q3 FY25, reported 2026-02-13): revenue ¥543.6bn (+21.3% QoQ), net income ¥89.5bn; management confirmed **CY2026 NAND capacity entirely sold out** with the market "tight" on datacenter demand.
+
+**Mgmt commentary into the inflection (Jefferies Techknowledge, 2025-12-17 — i.e. around the Dec-2025 print, before the May blowout):** Kioxia guided **mid-teens bit growth** for the following year and flagged a **significant ASP inflection from Q4** as the smartphone/tech-migration mix headwind rolled off (the prior quarter's blended ASP fell QoQ on iPhone-launch mix even as like-for-like price rose mid-single-digit; one DC customer also swapped SSD for raw NAND chips, lifting the chip mix to >20% vs a normal ~10%). Management said it would **run fabs above seasonal through 1H CY26** (2.5-month wafer-in-to-wafer-out cycle), called **general-server SSD demand "strong"** alongside AI servers, and framed **YMTC as a China-only threat confined to PC/mobile** (Kioxia is ~20% China, high-end only — no China mobile/PC). The standing watch-item was **despec risk**: no PC/phone vendor had committed to cutting NAND densities, but Kioxia assumed they eventually must, with hyperscaler demand the offset.
+
+**Investor Day (2026-06-02):** datacenter + enterprise targeted >60% of revenue by FY2028; NAND market CAGR 20%+ (up to 46%) 2025→2028; BiCS Gen.10 (332 layers) sampling summer 2026, mass production within a year; capex averaging **¥470bn/yr** FY26-28, R&D rising to ¥230bn/yr; ROIC >60%, equity ratio toward ~60%; capital return **up to 50% of net cash flow** with progressive dividends from FY2027; shift to multi-year LTAs with hyperscalers/enterprise.
+
+## Debate / thesis
+- **Bull:** Cleanest NAND cycle proxy at the most violent point of the up-cycle. JPM (Mio Shikanai / Jay Kwon, OW) holds the Street-high PT, raised **¥38,000 → ¥80,000**, FY26-28E EPS **+63% to +80%**, on ASP/bit +250%+ CY26E and OP 65–90% above consensus FY26E/27E; SSD mix ~60% (briefing 2026-05-17). BofA/JPM team Buy, FY3/27 OP/EPS +52%/+54% (briefing 2026-05-18). MS (Amerian) "very positive — watch IR Day." Structural framing: CY2026 capacity sold out, LTAs (multi-year, prepay, penalties) becoming the "this time is different" catalyst across Samsung/Hynix/Kioxia/MU (JPM Global Memory, briefing 2026-05-18). 2D NAND/MLC exits across the industry (Kioxia phasing out 2D NAND + Gen-3 BiCS by end-2028) are tightening legacy supply, MLC 64Gb spot +300% since end-2024 (briefings 2026-05-08/05-13). FinTwit high-conviction list pairs SNDK/Kioxia as 2-3x candidates (@ParadisLabs, briefing 2026-06-19).
+- **"Too cheap to ignore," prefer over SanDisk (BofA, Mikio Hirokawa, 2026-04-16):** even after a ~50% share-price run, BofA's Japan SPE analyst saw "very little downside" — at ~¥30,000 the stock was ~6x FY3/27 EPS (his consensus-level ~¥5,000 EPS), and on TrendForce's bullish NAND pricing (+70-75% QoQ in June quarter) EPS could top **¥7,000 → sub-5x P/E**; the most-bullish investor ran ¥10,000. The re-rate catalyst he flagged: Kioxia is **negotiating floor-price (not fixed-price) contracts to keep the upside while cutting earnings volatility** — which should lift the multiple from ~5x toward ~10x ("¥30,000 a floor"). Jefferies independently came away "a lot more positive on NAND" and **prefers Kioxia over SanDisk** precisely because Kioxia is conservative (only positive surprises) while SanDisk "is out there telling you everything" (so any miss disappoints); Kioxia's NAND-market sizing was **~1,100 EB now → ~2,000 EB by 2030**, and its **XL Flash** product (high-IOPS, for NVIDIA inference) was an under-appreciated angle — but Kioxia is **not bullish on LTAs reducing cyclicality** (Jefferies "Asia tech", 2026-04-07).
+- **AI-NAND secular framing (MS, 2025-09-10 — early structural call, pre-print):** "The AI era finally comes to NAND." MS rates Kioxia **OW alongside SanDisk (Top Pick) and Samsung** as the biggest beneficiaries (PT then ¥3,900 at 7.2x FY3/27 EPS — now stale vs current Street; rerate path was the point, not the level). QLC eSSD is the optimal store for pretrained models, checkpoints, KV-cache off-load and fine-tune data — MS sizes the **AI-NAND market at 34% of global NAND by 2029E, +US$29bn incremental TAM**, AI-related bits reaching 431EB (~20% of global NAND bits) by 2029E. Inflection trigger: multiple hyperscalers placed very large eSSD orders — **tens of exabytes** — against a CY25 market of ~250-300EB total, enough to flip MS's 2026E supply balance into a **~2% shortage** (bull case 8% shortfall on NL-SSD substitution for nearline HDD; 6-8x SSD-vs-HDD TCO gap is the swing variable). Idiosyncratic Kioxia angle: **BiCS-8 combines planar shrink + CBA (CMOS-bonded-array) + MLC** for higher density at low capex burden; continued QLC eSSD enhancement could close the gap to SK Hynix/Solidigm in high-density QLC.
+- **Hybrid-bonding / tech-leadership edge (Jefferies, 2025-12-17):** Kioxia and YMTC are the **only two NAND makers in mass production with copper-to-copper hybrid bonding** (Samsung/Hynix/Micron not yet, per Disco) — a cost/scaling edge into >400-layer nodes. Kioxia's CBA is judged comparable to YMTC's XStacking 4.0 ex chip size (YMTC die larger → lower output/wafer); the BiCS8 218L 20-hole vertical-channel design is the reference YMTC tracks.
+- **Super IO / XL Flash — the agentic-AI angle (Redburn, Conor, 2026-06-23):** Conor's single biggest reason to **prefer Kioxia over SanDisk**: for agentic AI you need not just KV-cache (the reasoning-model story) but **much faster IO and lower latency**, which is exactly Kioxia's **Super IO (XL Flash) — SLC-based, ultra-low-latency NAND**. It is **shipping 10M units this year vs 3M last, targeting 100M next year, with NVIDIA as a partner**. SanDisk's competing product (HPF) "isn't coming until 2028," so by the time it arrives Super IO will have been in the market two years — "if this takes off, Kioxia is definitely going to be in much better shape than SanDisk." Caveat: being SLC-based, there is a die/trade-ratio penalty (like the DRAM→HBM trade ratio) (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23).
+- **QLC strength for enterprise SSD density (StoneX/TrendForce "Memory expert call — Avril", 2026-06-23):** QLC is the most critical product for high-density enterprise SSD (the tightest-supply demand segment); **Kioxia and Solidigm are "doing great"** on QLC mix, whereas **YMTC is only 13% QLC, confining it to consumer** — a structural quality moat for Kioxia at the high end (same source).
+- **Bear:** NAND is still a commodity and Kioxia carries the structural geopolitical discount. @MF_Camillus (briefing 2026-06-19): "Kioxia probably won't close the gap with $SNDK… geopolitical premium [stays] in US-domiciled memory names — don't wish for multiple convergence." Bernstein (2025-09-16) quantifies the discount: SanDisk trades at a 54% discount to ~$25bn fab replacement value, **Kioxia at a wider ~65% discount** (Mark Li coverage) — cheap, but the relative gap is structural, not a convergence trade. ADATA chairman thesis (briefing 2026-06-16): AI has broken the 4-year cycle but supply crunch eases ~2028 — i.e. the up-cycle is finite. **Oversupply risk into 2027** if HDD adds capacity and YMTC keeps investing (TEL, via Jefferies 2025-12-17); NAND is more price-sensitive than DRAM, so demand can shrink quickly (Inspectrum, same note). NAND-only means no HBM/DRAM offset when NAND rolls over; bit shipments already −10% in Q4 means the entire beat is price, which mean-reverts. US ADR listing introduces rotational risk vs WDC/SNDK/MU (briefing 2026-05-16).
+- **Where the sell-side stands:** Uniformly bullish on disk — JPM OW Street-high ¥80,000 (2026-05-17), BofA/JPM Buy (2026-05-18), MS OW (early AI-NAND call, 2025-09-10). UBS carries Kioxia **Not Rated** but in its 2026 preview (2025-12-22) shows it screening cheap on forward multiples (~9.7x/7.5x P/E FY26/27E, ~16x/15x EV/EBITDA) on +35% then +10% rev growth — corroborating the "optically cheap pure-play" read. Stock limit-up in Tokyo on the May print. The debate is duration (tightness "tight through 2027" per Investor Day) and the structural valuation discount to US-domiciled peers, not direction.
+- **LTA structure + valuation re-rate (JPM, Mio, 2026-05-28):** Kioxia runs everything on **one-year LTAs today** (volumes locked, price negotiated QoQ — ~70% of the June quarter already fixed at a ~60-65% QoQ price hike, the rest open higher); multi-year LTAs start *next* year. Its LTA priorities (shared pre-investor-day): **cancel-fee/binding clauses over prepayment** (the #1 ask, to avoid a repeat of customers walking to spot in a downturn), and a **floor price with no ceiling** — i.e. earnings durability without capping upside. As the volatility narrows, JPM hears the valuation debate shifting from ~3-5x toward **7-8x, with bulls at 10-11x**. NAND consensus rev growth has crept up to ~25-30% (this year) / ~20-25% (next). The Theban-held overhang (~20% from the Bain consortium, recently reclassified) limits buyback/disclosure; **dividend over buyback** with a likely-minimal payout (10-20%, below the 30% Japanese-SPE benchmark) given balance-sheet priority and the stock's run (JPM "Memory", 2026-05-28; corroborated BofA "Japan SPE", 2026-04-16). eSSD market sizing has moved up: Samsung/Hynix now peg ~**500 EB** (vs SanDisk's mid-400s earlier), ~50-60% CAGR (JPM, 2026-05-28).
+
+## Catalysts / what to watch
+- **Q1 FY2026 print — Aug 7, 2026** (next reporting date per IR). Watch ASP trajectory past the +70% guided QoQ, bit-shipment recovery post-maintenance, and OP vs the ~¥1.3tn guide.
+- **US ADR listing** — timing/structure; potential rotational flow vs WDC/SNDK/MU.
+- **LTA disclosures** — multi-year hyperscaler/enterprise agreements into 2027; JPM calls LTA cadence/quality the next major stock driver for the memory complex. Watch the LTA *structure*: Kioxia's stated priorities are cancel-fee/binding over prepayment and a floor-with-no-ceiling price (JPM "Memory", 2026-05-28). The pre-Investor-Day watch-item (BofA, 2026-04-16) was a **capex-risk inversion** — if Kioxia raised its NAND bit-growth outlook from ~20% to ~30% CAGR, it would imply capex up from ~¥400bn to ~¥600bn/yr, which "could worry the market a lot" (and invite Hynix/others to follow); the actual Investor-Day capex landed ~¥470bn/yr, threading that needle.
+- **BiCS Gen.10 (332L)** — sample shipments summer 2026, mass production within ~12 months; cost/power competitiveness vs Samsung/SK Hynix V-NAND. Hybrid-bonding maturity (Kioxia + YMTC the only two in mass production) is the scaling enabler into >400 layers (Jefferies, 2025-12-17).
+- **eSSD / NL-SSD adoption** — QLC eSSD and nearline-SSD ramp (vendors launching NL-SSD from end-2025) is the swing for MS's shortage thesis; every 1% of NL-SSD taking nearline-HDD share ≈ ~2% NAND shortage in 2026E (MS, 2025-09-10).
+- Capital return: first progressive dividend from FY2027; possible stock split / higher equity comp.
+- Capacity adds and CY2027 NAND WFE up-cycle (BofA Hosseini flagged $200bn+ annualized WFE into 2H CY27, briefing 2026-05-15) — supply-discipline watch.
+
+## Risks
+- **ASP/cyclicality** — Q4 beat was entirely price (ASP +100%+, bits −10%); NAND ASP mean-reverts, and NAND-only leaves no DRAM/HBM offset on the downturn. NAND is more price-sensitive than DRAM — demand can contract fast (Inspectrum via Jefferies, 2025-12-17).
+- **Despec** — no PC/phone vendor has committed, but Kioxia itself assumes density cuts will eventually come; hyperscaler demand is the offset it is "monitoring" before committing capex (Jefferies, 2025-12-17).
+- **Oversupply into 2027 / double-ordering** — Kioxia is deliberately cautious on capex (then ~¥280bn/yr, sized to a ~20% bit-growth CAGR, two Yokkaichi fabs with empty space so it can flex on equipment lead time, not new buildings) precisely because it fears customer over-ordering and a 2027 reversal; TEL flags NAND oversupply risk into 2027 if HDD/YMTC add (Jefferies, 2025-12-17). Supply crunch may also ease ~2028 as new capacity lands (ADATA thesis, briefing 2026-06-16); 2D-NAND/Gen-3 BiCS phase-out to end-2028 is a transitional cost.
+- **Geopolitical/valuation discount** — Japanese issuer perceived to carry a persistent multiple discount vs US-domiciled SNDK/MU (@MF_Camillus, briefing 2026-06-19); Bernstein puts Kioxia at a ~65% discount to fab replacement value vs SanDisk's 54% (2025-09-16) — wider, and likely durable.
+- **JV dependence** — flash fabrication shared with SanDisk (Yokkaichi/Kitakami); capacity/capex split (Bernstein assumes ~60/40 Kioxia/SanDisk) and any JV friction affect output.
+- **Competitive QLC gap** — Kioxia/WDC lead Samsung in QLC bit mix but trail SK Hynix+Solidigm (~36% of 2026E QLC output) on high-density QLC eSSD; competitiveness also rides controller/module integration and customer relationships (MS, 2025-09-10; Bernstein, 2025-05-05).
+- **Thin/short public history** — IPO Dec-2024, no SEC filings, limited financial track record; disclosure depth below US peers.
+- **Customer concentration / demand elasticity** — hyperscaler datacenter SSD demand drives the mix; AI-capex air-pocket would hit the most-priced part of the book.
+
+<!-- Consensus estimates (BBG, JPY) block auto-injected here by the HTML builder from _data/estimates.json — do NOT hand-write. Currency: JPY. -->
+
+## In the inbox (Outlook — recent sell-side flow)
+- **JPM 'Bits, Broadcasts & Bandwidth'** _(2026-05-29)_: NAND/flash pricing up-cycle read-through across the storage ecosystem.
+- _Direct desk coverage of Kioxia is thin in the inbox (Japanese issuer, IPO Dec-2024) — mostly NAND-complex read-through._
+
+## Intra-quarter — calls, comentários & relatórios (desde o último print)
+_Q4 FY25 print + intra-quarter · Apr 16 → Jun 23, 2026 · sell-side / expert calls / relatórios entre os earnings. Timeline visual: [timeline.html](timeline.html)._
+
+**Sinal vs gestão** — o que a gestão disse no último call × o que o fluxo intra-quarter está dizendo (✓ confirma · ⚠ nuança · ✗ contesta):
+
+| Tema | Gestão disse (Q4 FY25) | Fluxo intra-quarter | Sinal |
+|---|---|---|---|
+| **Demanda / NAND** | CEO Oota "riding the wave of AI demand"; capacidade CY2026 sold out; LTAs até 2027 | BofA: NAND +70-75% QoQ (TrendForce), "too cheap to ignore" · JPM/BofA: capacidade sold out, LTAs multi-ano são o "this time is different" | **✓ confirma** (sold out + LTAs) |
+| **ASP / pricing** | ASP +100%+ QoQ, a maior entre peers NAND (Coreia ~80%) | JPM: ASP/bit +250%+ CY26E, OP 65-90% acima do consenso FY26E/27E; ~70% do trimestre de jun já fixado +60-65% QoQ | **✓ confirma** (pricing extremo) |
+| **Produto / mix DC** | DC+enterprise alvo >60% da receita FY28; BiCS Gen.10 (332L) sampling verão-2026 | Redburn: Super IO (XL Flash) p/ AI agentic, 10M unidades este ano → 100M, NVIDIA parceiro · StoneX: moat em QLC enterprise (YMTC só 13%) | **✓ confirma** (moat de produto) |
+| **Capital / valuation** | Retorno até 50% do net cash flow; dividendo progressivo desde FY2027; payout mín. 10-20% | JPM: valuation migra de ~3-5x p/ 7-8x (bulls 10-11x); overhang Bain (~20%) limita buyback → dividendo > recompra | **⚠ nuança** (overhang Bain) |
+
+**Log completo** (todo o fluxo intra-quarter, por data):
+
+| Data | Fonte | Tema | Viés | O que disse |
+|---|---|---|---|---|
+| 04-16 | BofA · Mikio Hirokawa (Japan SPE) | valuation | bull | BofA 'too cheap to ignore': even after a ~50% rally, sees 'very little downside' — at ~¥30,000 the stock was at ~6x EPS FY3/27; with NAND prices +70-75% QoQ (TrendForce), EPS could exceed ¥7,000 → sub-5x P/E. Re-rate catalyst: Kioxia negotiating floor-price contracts (not fixed) to preserve the upside, taking the multiple from ~5x to ~10x. |
+| 05-17 | JPM · Mio Shikanai / Jay Kwon (briefing) | valuation | bull | JPM (OW) raised Street-high PT ¥38,000 → ¥80,000; EPS FY26-28E +63% to +80%, with ASP/bit +250%+ CY26E and OP 65-90% above consensus FY26E/27E; SSD mix ~60%. |
+| 05-18 | BofA/JPM (briefing) | valuation | bull | BofA/JPM team Buy, OP/EPS FY3/27 +52%/+54%; CY2026 with capacity sold out, LTAs (multi-year, prepay, penalties) being the 'this time is different' catalyst across the memory complex (Samsung/Hynix/Kioxia/MU). |
+| 05-28 | JPM · Mio (Memory) | capital | mixed | Kioxia runs everything on 1-year LTAs today (~70% of the June quarter already fixed at +60-65% QoQ); multi-year begins next year. LTA priorities: cancel-fee/binding over prepayment, and floor price with no cap. Valuation debate migrating from ~3-5x to 7-8x (bulls at 10-11x). Bain overhang (~20%) limits buyback; dividend over buyback, minimum payout (10-20%). |
+| 06-02 | Kioxia Investor Day | produto | bull | Datacenter + enterprise targeted at >60% of revenue by FY2028; NAND market CAGR 20%+ (up to 46%) 2025→2028; BiCS Gen.10 (332 layers) sampling summer-2026, mass production within a year; capex averaging ¥470bn/yr FY26-28; ROIC >60%; capital return up to 50% of net cash flow with progressive dividends from FY2027; OP margin guided ~74%. |
+| 06-23 | Redburn · Conor O'Mara (Asia Trip) | produto | bull | Conor's biggest reason to prefer Kioxia over SanDisk: Super IO (XL Flash) — ultra-low-latency SLC NAND for agentic AI — shipping 10M units this year vs 3M in the past, targeting 100M next year, with NVIDIA as a partner. SanDisk's competing HPF only arrives in 2028. Caveat: trade-ratio penalty for being SLC. |
+| 06-23 | StoneX/TrendForce · Avril (Memory expert call) | produto | bull | QLC is the most critical product for high-density enterprise SSD (the tightest-supply segment); Kioxia and Solidigm 'doing very well' in QLC mix, while YMTC has only 13% QLC (confined to consumer) — a structural quality moat for Kioxia at the high end. |
+
+**Síntese do quarter:** o fluxo é quase todo bull — demanda sold out, ASP +100%+ e moat de produto (Super IO/QLC) todos confirmados, com PT da JPM saltando p/ ¥80.000 (Street-high); o debate migrou de "se o ciclo é real" para *quanto re-ratar o múltiplo* (de ~3-5x para 7-11x) e como retornar capital sob o overhang de ~20% da Bain, que empurra dividendo acima de buyback.
+
+## Management commentary — evolution (last 2 quarters)
+
+| Theme | Q3 FY25 (Dec-2025, rpt 2026-02-13) | Q4 FY25 (Mar-2026, rpt 2026-05-15) |
+|---|---|---|
+| AI demand framing | "Strong AI demand" drove record sales | "Riding the wave of AI demand"; strength to continue (CEO Oota) |
+| NAND market / supply | CY2026 capacity "sold out"; market "tight" | LTAs negotiated into 2027; multi-year hyperscaler deals |
+| ASP / pricing | — (no ASP disclosed this quarter) | ASP +100%+ QoQ, highest among NAND peers (Korea ~80%) |
+| SSD & Storage mix | ~¥300.4bn, ~55% of revenue | ¥600.3bn, +99.8% QoQ; record SSD on AI servers |
+| Revenue / net income | ¥543.6bn (+21.3% QoQ); NI ¥89.5bn | ¥1,002.9bn (+84.5% QoQ); NI ¥407.7bn |
+| Guidance / strategic | Q4 guide rev ~¥890bn, adj NI ~¥340bn | Q1 FY26 OP ~¥1.3tn; US ADR listing; BiCS 332L sampling summer-2026 |
+
+_Source: KIOXIA earnings calls (dates above); management commentary, paraphrased._
+
+## Sources
+- **Filings:** none — Japanese issuer (TSE Prime: 285A), IPO Dec-2024; no SEC filings exist.
+- **Transcripts / IR:** [Q4 FY25 results (2026-05-15)](../KIOXIA/transcripts/KIOXIA_Q4-FY25-earnings_2026-05-15.md) · [Q3 FY25 results (2026-02-13)](../KIOXIA/transcripts/KIOXIA_Q3-FY25-earnings_2026-02-13.md). Compiled from Kioxia IR press summaries, Quartr event summaries, Blocks & Files and TrendForce — primary IR transcript/webcast not redistributable; figures attributed.
+- **Investor Day:** Kioxia Investor Day 2026 (2026-06-02) — capacity/BiCS roadmap, capex ¥470bn/yr, capital-return policy (via Quartr summary).
+- **Research reports (relatórios bons):**
+  - [Q425 Techknowledge tech takeaways (Jefferies, 2025-12-17)](../relat%C3%B3rios%20bons/Q425_Techknowledge_tech_takeaways.html)
+  - [MS AI NAND overview (2025-09-10)](../relat%C3%B3rios%20bons/AI_Nand_overview_MS.html)
+  - [Bernstein Semis deck (May-2025)](../relat%C3%B3rios%20bons/Bernstein_Deck_Semis_Maio25.html)
+  - [Bernstein initiation on AAPL/STX/DELL/SNDK (2025-09-16)](../relat%C3%B3rios%20bons/Bernstein_initiation_on_AAPL_STX_DELL_SNDK.html)
+  - [UBS 2026 overview (2025-12-22)](../relat%C3%B3rios%20bons/UBS_2026_overview.html)
+  - [Jefferies Asia tech (2026-04-07)](../relat%C3%B3rios%20bons/2026_04_07_jef_asia_7_apr_2026.html) — prefer Kioxia > SanDisk; NAND 1,100→2,000EB by 2030; XL Flash for NVDA; not bullish on LTAs
+  - [BofA Japan SPE (2026-04-16)](../relat%C3%B3rios%20bons/2026_04_16_japan_spe_baml_16_apr_2026.html) — "too cheap to ignore" ~6x; floor-price contracts; IALD capex risk; minimal dividend
+  - [JPM Memory (2026-05-28)](../relat%C3%B3rios%20bons/2026_05_28_jpm_memory_28_may_26.html) — 1yr→multi-yr LTAs; cancel-fee > prepay, floor no ceiling; 7-8x re-rate; eSSD ~500EB
+  - [Redburn "Conor O'Mara Asia Trip Takeaways" (2026-06-23)](../relat%C3%B3rios%20bons/77420a6c-61c1-4757-8047-3a24cced258c_Key_Takeaways_from_Conor_OMaras_recent_Management_Meetings_across_ASIA_1.html) — Super IO (XL Flash) SLC ultra-low-latency for agentic AI, 3M→10M→100M units w/ NVIDIA; prefer Kioxia > SanDisk
+  - [StoneX/TrendForce "Memory expert call — Avril" (2026-06-23)](../relat%C3%B3rios%20bons/TrendForce.html) — QLC strength for enterprise SSD density (Kioxia/Solidigm "doing great" vs YMTC only 13% QLC)
+- **Briefings:** `E:\briefings\2026` — Kioxia datapoints in 2026-05-15/05-16/05-17/05-18/05-08/05-13 (earnings, JPM Street-high PT, memory complex) and 2026-06-16/06-19 (SNDK/Kioxia gap, FinTwit conviction).
+- **Outlook:** not pulled for this page (repo + IR sufficient); priority sell-side inbox not scoped to this name.
+- **Cross-theme:** [hbm-memory](themes/hbm-memory.md).

@@ -1,0 +1,27 @@
+{"ticker":"CRDO","forward":[
+{"metric":"Revenue growth","horizon":"FY27","trend":"up","trail":[
+{"date":"Q3'26","val":"FY27 >50% y/y (MSD seq growth)","src":"Q3 FY26 call"},
+{"date":"2026-06-01","val":"FY27 raised to >80% y/y; Q1 FY27 guide $465-475M","src":"Q4 FY26 call"}
+],"note":"FY27 growth raised from >50% to >80% at the Q4 print; but JPM desk flags rev/guide missed buyside bars, 'show-me' until 2H re-accel."},
+{"metric":"Optical revenue","horizon":"FY27→FY28","trend":"up","trail":[
+{"date":"Q3'26","val":"on track to double FY26; ZeroFlap shipping to TensorWave; ramp pulled into Q1 FY27","src":"Q3 FY26 call"},
+{"date":"2026-06-01","val":"FY27 raised to >$600M (3 legs each >$100M, +80% y/y); FY28 optical floor ~$1.2B","src":"Q4 FY26 call"},
+{"date":"2026-06-01","val":"Jefferies FY27 optical >$600M, ~doubles F28; Barclays FY28 optical ~$1.6B","src":"Jefferies/Barclays"}
+],"note":"Optical (DSP + SiPho/Dust Photonics + ZeroFlap optics) is the second leg and the sell-side's biggest upside surprise."},
+{"metric":"Gross / net margin","horizon":"FY27","trend":"flat","trail":[
+{"date":"Q3'26","val":"68.6% NG GM (+92bps q/q)","src":"Q3 FY26 call"},
+{"date":"2026-06-01","val":"Q4 68.3%; FY26 68.1%; FY27 guide GM ~flat, net margin ~50%","src":"Q4 FY26 call"}
+],"note":"Margin structurally superior (~50% net) but JPM bear case sees share loss/pricing pressure moderating GM off above-range highs."},
+{"metric":"Customer diversification","horizon":"coming years","trend":"up","trail":[
+{"date":"Q3'26","val":"three >10% (39/32/17%); guides to 3-4 in coming qtrs","src":"Q3 FY26 call"},
+{"date":"2026-06-01","val":"four >=10% (34/27/16/10%); Neocloud/Tier-2 guided to ~20% of revenue over coming years","src":"Q4 FY26 call"}
+],"note":"Broadening from 3 to 4 >10% customers; Neocloud/Tier-2 tail the diversification path off ~90% top-10 concentration."},
+{"metric":"AEC roadmap (PCIe/200G)","horizon":"FY27","trend":"up","trail":[
+{"date":"Q3'26","val":"extended to fifth hyperscaler; PCIe Gen6 sampling, MP 1H FY27","src":"Q3 FY26 call"},
+{"date":"2026-06-01","val":"PCIe Gen6 AECs to MP 1H FY27; 200G/lane light FY27, inflection 2H","src":"Q4 FY26 call"}
+],"note":"AEC remains the durable first leg; 200G/lane inflection is a 2H FY27 catalyst."},
+{"metric":"FY28 step-ups (ALC / OmniConnect)","horizon":"FY28","trend":"up","trail":[
+{"date":"2026-03-11","val":"ALCs sample F2027, production ramp F2028; lower-risk path to NPO vs laser CPO (Hyperlume microLED)","src":"TD Cowen"},
+{"date":"2026-06-01","val":"FY28 optical floor ~$1.2B; ALCs and Weaver/OmniConnect gearbox ramping FY28","src":"Q4 FY26 call / Barclays"}
+],"note":"FY28 leg layers ALCs + OmniConnect onto the optical floor; adoption 'far from foregone' per TD Cowen."}
+]}

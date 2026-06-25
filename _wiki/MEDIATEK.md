@@ -1,0 +1,133 @@
+<!-- Consensus estimates (BBG) block auto-injected by build_wiki_html.py from _data/estimates.json
+     under key MEDIATEK (TWD). NOT yet present in estimates.json as of 2026-06-19 — financials
+     will populate once the data team adds MEDIATEK. Do NOT hand-write financials here. -->
+
+# MEDIATEK — MediaTek Inc (2454.TW)
+
+_Wiki · generated 2026-06-20 · **Taiwan issuer — no SEC filings**; sources: transcripts (`E:\Wiki Felipe\MEDIATEK\transcripts`) + MediaTek IR + BBG (**TWD**) · `_equity_calls` · briefings roll-up. Master index: [00_INDEX.md](00_INDEX.md)._
+
+## Snapshot
+World's largest mobile-SoC vendor by units and a fast-emerging custom-ASIC house. FY25 revenue TWD 596bn (+12.3% y/y, >USD 19bn record), GM 47.5%, OpM 17.4%, EPS TWD 66.16 (Q4 FY25, 2026-02-04). Three reporting segments: **Mobile Phone** (Dimensity SoCs; 49% of Q1 FY26 rev), **Smart Edge Platforms** (connectivity/Wi-Fi/5G modem, compute, auto, edge-AI + the data-center ASIC business; 46%), and **Power IC** (5%) (Q1 FY26, 2026-04-30). The structural story is the pivot from a cyclical handset chipmaker to a data-center ASIC supplier: per JPM's Gopal Chatterjee, data center is ~30% of revenue in 2027 and could be **~60% in 2028** as TPU ramps, "essentially becoming a data center company from nothing in two to two-and-a-half years" (Gopal/Samik, 2026-06-10).
+
+## At a glance — product · buyer · supplier
+| | |
+|---|---|
+| **Sells (top 3)** | 1) Dimensity mobile SoCs (~49% rev) · 2) Smart Edge / connectivity (Wi-Fi 7/8, 5G/NTN modem, edge-AI; ~46%) · 3) Custom data-center ASIC (Google TPU co-design, growth leg) |
+| **Main buyer(s)** | Smartphone OEMs (incl. China) + hyperscaler ASIC (Google TPU — "pretty much the only DC project," extreme single-customer concentration); some auto |
+| **Key suppliers** | TSMC foundry (N3/N2, CoWoS-L/EMIB), Arm IP (CSS royalty dispute), HBM (no margin on ASIC), substrates/packaging |
+
+## Position in the value chain
+MediaTek is fabless: it designs SoCs and ASICs, outsources all manufacturing to **TSMC** (a top-3 N3 customer; large N3/N2 allocation), and sells to smartphone OEMs, hyperscalers (Google TPU) and auto. The differentiated leg is **custom-ASIC optionality** — MediaTek is the co-design ("semi-COT") partner on Google's TPU (V8 "Zerafish"/8T today, primary candidate for V9 in 2028), which converts a commodity mobile-chip franchise into a data-center growth story (Gopal/Samik, 2026-06-10). MediaTek is one of TSMC's recognised ASIC design-service partners (alongside Broadcom, Marvell, Alchip, GUC, Socionext), positioned as a **large product company** that cross-leverages SerDes/connectivity/compute IP for full-stack design (Robert Hsu/Gokul, JPM ASIC design-services teach-in).
+
+<svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#444"/>
+    </marker>
+  </defs>
+  <!-- Suppliers -->
+  <rect x="10" y="70" width="150" height="80" rx="6" fill="#eef3fa" stroke="#5577aa"/>
+  <text x="85" y="95" text-anchor="middle" font-weight="bold">Suppliers</text>
+  <text x="85" y="115" text-anchor="middle">TSMC foundry</text>
+  <text x="85" y="131" text-anchor="middle">(N3 / N2, CoWoS/EMIB)</text>
+  <!-- MediaTek -->
+  <rect x="245" y="35" width="230" height="150" rx="6" fill="#fef4e6" stroke="#cc8844"/>
+  <text x="360" y="58" text-anchor="middle" font-weight="bold">MediaTek (2454.TW)</text>
+  <text x="360" y="82" text-anchor="middle">Dimensity mobile SoC</text>
+  <text x="360" y="104" text-anchor="middle">Custom-ASIC / accelerator</text>
+  <text x="360" y="120" text-anchor="middle">(Google TPU co-design)</text>
+  <text x="360" y="142" text-anchor="middle">Connectivity / edge-AI</text>
+  <text x="360" y="164" text-anchor="middle">(Wi-Fi, 5G, NTN)</text>
+  <!-- Customers -->
+  <rect x="560" y="35" width="150" height="150" rx="6" fill="#eaf6ee" stroke="#55aa77"/>
+  <text x="635" y="58" text-anchor="middle" font-weight="bold">Customers</text>
+  <text x="635" y="84" text-anchor="middle">Smartphone OEMs</text>
+  <text x="635" y="108" text-anchor="middle">Hyperscaler ASIC</text>
+  <text x="635" y="124" text-anchor="middle">(Google TPU)</text>
+  <text x="635" y="150" text-anchor="middle">Auto (Dimensity Auto,</text>
+  <text x="635" y="166" text-anchor="middle">DENSO ADAS)</text>
+  <!-- arrows -->
+  <line x1="160" y1="110" x2="243" y2="110" stroke="#444" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="475" y1="110" x2="558" y2="110" stroke="#444" stroke-width="1.5" marker-end="url(#arr)"/>
+</svg>
+
+See cross-company theme: [custom-asic-tpu](themes/custom-asic-tpu.md).
+
+## Current state (latest quarter)
+**Q1 FY26 (2026-04-30):** Revenue TWD 149.2bn, −0.7% q/q / −2.7% y/y, at the high end of guidance. GM 46.3% (+0.2pt q/q, −1.8pt y/y); OpM 15.3%; net income TWD 24.4bn; EPS TWD 15.17. Mobile −17% q/q / −15% y/y (49% of rev) as OEMs raised retail prices and skewed to higher-end on memory/BOM inflation; Smart Edge +23% q/q / +13% y/y (46%); Power IC 5% (Q1 FY26, 2026-04-30).
+
+**Guidance / messages:**
+- **Q2 FY26:** revenue TWD 140.2–149.2bn (flat to −6% q/q); GM **43% ±1.5pt** (step-down from 46.3% — mix/no one-off); opex ratio 31% ±2pt (Q1 FY26, 2026-04-30).
+- **FY26 revenue:** mid- to high single-digit USD growth y/y; smartphone to decline significantly on memory/BOM cost, non-smartphone offsetting (Q4 FY25, 2026-02-04).
+- **Data-center ASIC:** revenue to **exceed USD 1bn in FY26**, with **~USD 2bn in Q4 FY26 alone**, scaling to **multiple billions in 2027**; targeting **10–15% share** of a cloud-ASIC TAM put at **USD 70–80bn in 2027** (raised from "USD 50bn by 2028") (Q1 FY26 / Q3 FY25). A **second ASIC project** is in design, MP targeted end-2027 (Q1 FY26). As of Dec-2025 MediaTek reiterated the **USD 1bn FY26 TPU target with no push-out** and confirmed it had **passed key tape-out milestones** (shipment revenue, not NRE) (Jefferies, 2025-12-17).
+- **Products:** first **2nm Dimensity flagship** SoC, phones by end-Q3 FY26; **3nm Dimensity Auto** agentic-AI cockpit; Wi-Fi 7/8, 5G + 5G satellite (NTN); USD 90m stake in Air Labs (CPO) (Q1 FY26).
+
+## Debate / thesis
+- **Bull:** The data-center ASIC ramp is the re-rating engine. MediaTek is the **co-design ("semi-COT") partner on Google's TPU** — V8e "Zebrafish" (8T; 2nm, bigger than Ironwood, 4 compute dies vs Ironwood's 2) is ramping after a year's delay, and MediaTek is the **primary candidate for V9 in 2028** while Broadcom's "Pumafish" V9 (EMIB) got pushed out/cancelled, replaced by a "Sunfish Ultra" extension. JPM models MediaTek TPU revenue at **USD 10–12bn in 2027** and DC ASIC at **USD 25–30bn by 2028** — a steep ramp from ~USD 2bn (Gopal/Samik, 2026-06-10). Additional RFQs in hand from **Meta, Microsoft, Tesla**, with another customer potentially announced before end-2026; "they pretty much see every RFQ right now" (Gopal, 2026-06-10). V9 ASP rises to USD 12–15K (from ~USD 4.5K on V8) on a 4-compute-die N2 design with EMIB and more MediaTek content (Gopal, 2026-06-10). DC ASIC is **operating-margin accretive** (Q1 FY26).
+- **Bull (Fubon 2027 outlook, 2026-06-05):** Fubon raises its MediaTek TP to **NT$6,000** (Buy) on higher TPU V9 involvement + the Meta Arke project. Key model: MediaTek now handles the **two N2 compute dies** on V9 (not just I/O), lifting dollar content to **US$15–16K/chip** (vs ~US$4.5K Zebrafish). TPU market share (by compute-die count) **6% in 2026 → 17% in 2027 → 30% in 2028**; **V8t "Zebrafish" volume 2.5–3M units in 2027** (~99.9k CoWoS wafers, 5.3% of TSMC CoWoS, raised from prior). On packaging, Fubon argues **Intel EMIB-T is not yet MP-ready**, so the V9 priority stays **TSMC CoWoS-L** — "risky to bet on one side." **Meta Arke** deal expected to finalize **late 3Q26** (a 2028 growth driver); also positive on the NVIDIA **RTX Spark** project though volume is only ~5–10M (limited revenue) (Fubon "Semi 2027 outlook", 2026-06-05).
+- **Bull (channel corroboration, Dec-2025):** Jefferies/Sherman raises his TPU estimate to **~1m units across 2026+2027 combined, ~15% of total 2027 TPU shipments**, at ~USD 4K dollar-content/TPU → a **~USD 4bn TAM for 2026/27 combined**; total TPU volume could **double to 5–6m units in 2027** (5m Broadcom + ~1m MediaTek) at USD 23–34K system pricing. Follow-on TPU projects (more complex design) carry **sales in 2028**; MediaTek is a finalist (vs a US competitor) for **Meta**, decision "in the next few months." MediaTek raised its cloud-ASIC **TAM from USD 40bn to USD 50bn by 2028**, targeting **10–15% share (>USD 5bn in 2–3 yrs)**; its **224G SerDes IP is already approved** and it is "more flexible than others" but **will not move into lower-margin back-end** work, and is investing heavily into DC/CPO/silicon photonics/2nm/large-reticle and US headcount (Jefferies, 2025-12-17). Note: where JPM models V9 ASP at USD 12–15K, the Jefferies/MediaTek channel figure for current V8e dollar-content is ~USD 4K.
+- **Bull (Bernstein, the original semi-COT thesis):** frames the engagement as **TPU V7e front+back-end design** and models **TPU revenue USD 1.9bn CY26 / USD 2.5bn CY27** at **~40% GM ex-HBM**; sizes the data-center custom-accelerator TAM for MediaTek at **USD 40–60bn in CY28**. Unlike US rivals that demand high margin, MediaTek "uniquely combines cost advantage, scale, and capabilities" — the Google+MediaTek combination could **save Google USD 3–4bn/yr** via lower MediaTek logic/CoWoS margins and direct HBM sourcing (Bernstein, 2025-05-05).
+- **Bull (HBM-cost advantage drives Google share gains; Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23):** Conor's supply-chain read is that the **rising HBM cost is the key driver of Google's shift to MediaTek** — MediaTek **does not bundle HBM in the BOM** (Broadcom does charge for it), so Google cuts a large chunk of the bill of materials by moving to MediaTek as long as it stays as good as Broadcom. Frames MediaTek's Google share going **6% (2026) → 30% (2028)** (Broadcom's share falling correspondingly), with the **400G switch timing (V9 vs V10)** the swing factor — Broadcom is still the only 400G supplier, so Google adopting 400G earlier (V9) could cap MediaTek's gains. No signs of MediaTek (or Qualcomm) cutting orders amid the compute shortage (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23). Corroborated by StoneX/TrendForce: MediaTek (TPU V8/V9) is **increasingly handling Google's HBM procurement directly** and is in **talks with Samsung** on HBM3E/HBM4E supply — Google previously relied entirely on Broadcom for HBM (StoneX/TrendForce "Memory expert call — Avril", 2026-06-23).
+- **Bear (2026 ramp-timing skepticism, Citi/Jefferies Asia checks):** Citi's Blayne Curtis flags that **MediaTek's TPU compute die was "still in the fab"** as of late May — and since Broadcom "essentially takes a year to get to volume production," if MediaTek's chip "hasn't even started the clock, I really don't know how they ship units this year" (vs MediaTek's ~$2bn 2026 talk); the "MediaTek frenzy" is pushing buy-side estimates up while Broadcom's TPU share "should remain substantial, like potentially 80%+" (Citi "Asia recap," 2026-05-22). Jefferies' Connor (Asia tech) is even more cautious near-term: he models **MediaTek 1-2m TPU units next year vs Broadcom 5-6m**, calls the investors at "3-5m for MediaTek next year" view "totally impossible from a Co-Packaged-Optics point of view," notes MediaTek is **"struggling to make the current ASIC"** (prompting a Sherman/Jefferies downgrade), and warns long-onlys are taking profits in MediaTek (the early-2026 TPU play) and rotating into Samsung — "be very, very careful on MediaTek in the short term" (Jefferies "Asia tech," 2026-04-07). The same note flags the **smartphone risk**: the ~15-31% Android unit decline is concentrated in the **non-Samsung Android camp — i.e. MediaTek's clients** — "that's why MediaTek's looking really bad" (Jefferies "Asia tech," 2026-04-07).
+- **Bull (MS Asia checks):** Morgan Stanley's Charlie Chan is constructive on the TPU ramp — MediaTek is **"on time to enter mass production this year"** with **~2.5m units of TPU production next year**, MS is "still very confident on MediaTek's TPU market share," and the supply chain shows MediaTek's TPU supporting **HBM3E + T-glass**; importantly MS is "not seeing MediaTek cutting their TPU production" (MS "Memory/Asia semis," 2026-04-14).
+- **Bear:** Extreme **single-customer concentration** — TPU is "pretty much the only project they have right now" (Gopal, 2026-06-10). UBS clarified that the **Anthropic 5-gigawatt build is "all Broadcom… doesn't include any MediaTek,"** trimming one speculated incremental MediaTek path (UBS "AVGO," 2026-06-04). Longer term, Google's **COT (customer-owned-tooling) insourcing** risk: as Google spends >USD 100bn on silicon it will want to own more of the design and may shift volume to lower-margin players like Alchip (Gopal, 2026-06-10). On V8 the MediaTek logic ASP is only ~USD 4.5K at ~40% logic margin with **no margin on HBM** — economics thinner than Broadcom's (Bernstein triangulates Broadcom at ~70% GM on logic/CoWoS, ~10% on HBM; 2025-05-05). Core handset cyclicality is real: China smartphone "nothing is improving," units still declining; risk of a post-Q3 "double dip" after the Oct/11-11 flagship build (Gopal, 2026-06-10). Auto is years behind Qualcomm (~USD 1bn by 2028, "negligible"); the NVIDIA N1X Windows-on-Arm chip likely low volume (Gopal, 2026-06-10). FY26 GM compresses (Q2 guide 43% vs FY25 47.5%).
+- **Bear (Arm/CSS royalty dispute):** SoftBank claims **Arm is charging MediaTek full CSS (Compute Subsystems) royalties** — MediaTek says it doesn't use CSS (only one part of the IP), Arm counters that even partial use of the packaged CSS solution triggers the full licence, and MediaTek denies. Context: Armv9 royalties are ~2x v8 and CSS is ~2x v9, so an adverse outcome would be a step-up in Dimensity per-unit IP cost (Jefferies, 2025-12-17). Watch as a smartphone-SoC gross-margin overhang.
+- **Where the sell-side stands:** **UBS Buy, PT NT$1,800** (analyst Lin; EPS NT$71.2 CY26E / NT$65.0 CY27E; was already growing in CY25 on flagship share gain in mobile & Wi-Fi + auto, accelerating in CY26 as AI ASIC bears fruit, more customers CY27+) (UBS, 2025-12-22). **Morgan Stanley Overweight, PT NT$1,410** (MS on AI supply chain, 2025-08-18; NT$1,390 in the slightly earlier MS Asia AI-factories deck, 2025-08-15) — MediaTek is a top AI pick across MS's Asia-semis ASIC-design-service coverage (with Alchip). **JPM** (Gopal/Samik) is the most vocal on the supply chain — MediaTek "definitely brought into the map" for accelerator programs after proving TPU execution; TSMC now allocating it more N3/N2 wafers (fungible with smartphone) as disbelief fades (2026-06-10). **Bernstein** is Outperform (least tariff-exposed in coverage; US exposure low-to-mid teens % of revenue) (2025-05-05). Twitter/channel chatter corroborates Google adopting **EMIB for MediaTek's TPU** (briefing 2026-05-11).
+
+## Catalysts / what to watch
+- **Q2 FY26 print (late-July 2026)** — GM step-down to 43% guide; smartphone trajectory into H2.
+- **New ASIC customer announcement before end-2026** (Tesla / Microsoft / Meta order of likelihood per Gopal, 2026-06-10); **Meta TPU/MTIA-class vendor decision "in the next few months"** vs a US competitor (Jefferies, 2025-12-17). Fubon expects the **Meta Arke project to finalize late 3Q26** (Fubon, 2026-06-05).
+- **TPU V9 packaging path** — Fubon sees EMIB-T not MP-ready, V9 priority on TSMC **CoWoS-L**; V10 migrates to **400G SerDes** (a gating capability for MediaTek's further share gains) (Fubon, 2026-06-05).
+- **V8 respin (A1/B0 silicon)** back ~now — A0 ships ~300–400K units, B0 carries the ~2.5–2.6M unit 2027 volume (Gopal, 2026-06-10).
+- **V9 / V10 selection** — V10 RFQs out to Broadcom, MediaTek, Marvell; selection expected within ~3–4 months of the call (Gopal, 2026-06-10).
+- **CoWoS allocation for 2026** — MediaTek's key 2026 TPU constraint is securing enough CoWoS; allocation is expected to loosen materially in 2027 (Jefferies, 2025-12-17).
+- **Arm/CSS royalty resolution** — potential Dimensity IP-cost step-up if Arm prevails (Jefferies, 2025-12-17).
+- **2nm Dimensity flagship launch** (phones by end-Q3 FY26); Oct/11-11 China flagship cycle.
+- TSMC EMIB-vs-CoWoS-L decision on the TPU V9 path (Gokul/JPM, 2026-05-27, via [TSM.md](TSM.md)).
+
+## Risks
+- Single-customer (Google TPU) concentration; one major program today.
+- Google COT insourcing / shift to lower-margin ASIC vendors over time.
+- HBM carries no margin; logic margin (~40%) below merchant-ASIC peers (Broadcom ~70% on logic/CoWoS).
+- Arm/CSS royalty dispute — full-CSS-royalty claim could raise Dimensity per-unit IP cost.
+- China handset weakness / unit declines; memory-cost-driven BOM inflation; post-flagship double-dip risk.
+- TSMC wafer/CoWoS allocation dependency (N3/N2 shortage; ~600K-wafer supply-demand gap cited; 2026 TPU constrained by CoWoS).
+- Geopolitical / export-control exposure on Chinese ASIC engagements (TSMC could pull support).
+- Auto and NVIDIA N1X (Windows-on-Arm) likely small near-term; resources concentrated on DC ASIC.
+
+<!-- Consensus estimates (BBG, TWD) block auto-injected here by the HTML builder once MEDIATEK is added to _data/estimates.json -->
+
+## Management commentary — evolution (last 4 quarters)
+
+| Theme | Q2 FY25 (2025-07-30) | Q3 FY25 (2025-10-31) | Q4 FY25 (2026-02-04) | Q1 FY26 (2026-04-30) |
+|---|---|---|---|---|
+| Revenue | TWD 150.4bn, +18.1% y/y | TWD 142.1bn, −5.5% q/q (orders pulled to H1) | TWD 150.2bn, +8.8% y/y; FY25 record TWD 596bn | TWD 149.2bn, high end of guide; −2.7% y/y |
+| Gross margin | 49.1%, but ~1.9pt one-off; ~47.2% underlying | 46.5%, −2.6pt q/q on mix + no one-off | 46.1% Q4; FY25 47.5% | 46.3%; Q2 guided to 43% ±1.5pt |
+| Mobile / flagship SoC | Flagship ~USD 3bn on D9400; +40% y/y FY | D9500 stronger than expected; flagship +40% y/y | Mobile 59% of rev, +18% q/q; D9500/8500 | 49% of rev, −17% q/q; OEMs raised prices, H2 recovery |
+| Smart Edge / connectivity | — | — | 37% of rev, FY +21%; Wi-Fi 7 3x, 5G modem 2x | 46% of rev, +23% q/q; guided double-digit % growth FY26 |
+| Data-center ASIC | Multi-year cloud-ASIC opportunity reiterated | TAM ≥USD 50bn by 2028; target 10–15% share | >USD 1bn FY26, multiple bn 2027; TAM USD 50–70bn | ~USD 2bn in Q4 alone; 2027 TAM USD 70–80bn; OpM accretive |
+| Forward message / guidance | 2nm tape-out begins Q3'25 | Q4 rev TWD 142.1–150.1bn; GM 46% ±1.5pt | FY26 mid-/high-single-digit USD; smartphone down on BOM | Q2 rev TWD 140.2–149.2bn; "AI megatrend" supports growth |
+
+_Source: MEDIATEK earnings calls (dates above); management commentary, paraphrased._
+
+## Sources
+- **Filings:** none — **Taiwan issuer (TWSE: 2454), no SEC filings**.
+- **Transcripts:** [Q1 FY26 (2026-04-30)](../MEDIATEK/transcripts/MEDIATEK_Q1-2026-earnings_2026-04-30.md); [Q4 FY25 (2026-02-04)](../MEDIATEK/transcripts/MEDIATEK_Q4-2025-earnings_2026-02-04.md); [Q3 FY25 (2025-10-31)](../MEDIATEK/transcripts/MEDIATEK_Q3-2025-earnings_2025-10-31.md); [Q2 FY25 (2025-07-30)](../MEDIATEK/transcripts/MEDIATEK_Q2-2025-earnings_2025-07-30.md).
+- **Equity calls:** [2026-06-10 Samik/Gopal (JPM) — QCOM & MediaTek custom-ASIC deep dive](../_equity_calls/Semis/2026-06-10_Samik_QCOM-MediaTek.md).
+- **Research reports (relatórios bons):**
+  - [Jefferies Q425 Techknowledge tech takeaways (2025-12-17)](../relat%C3%B3rios%20bons/Q425_Techknowledge_tech_takeaways.html)
+  - [Bernstein Semis deck (May-2025)](../relat%C3%B3rios%20bons/Bernstein_Deck_Semis_Maio25.html)
+  - [Morgan Stanley on AI supply chain (2025-08-18)](../relat%C3%B3rios%20bons/MS_on_AI_supply_Chain_18-08-25.html)
+  - [Morgan Stanley Asia on AI Factories (2025-08-15)](../relat%C3%B3rios%20bons/MS_asia_on_AI_Factories.html)
+  - [UBS 2026 overview (2025-12-22)](../relat%C3%B3rios%20bons/UBS_2026_overview.html)
+  - [JPM ASIC Design Services Teach-in](../relat%C3%B3rios%20bons/JPM_ASIC_Design_Services_Teach-in.html)
+  - [Fubon — Semi 2027 outlook / Sector Snapshot (2026-06-05): TP NT$6,000, V9 two N2 compute dies / US$15–16K content, TPU share 17%(27)/30%(28), Meta Arke late 3Q26](../relat%C3%B3rios%20bons/Semi_2027_outlook_Sector_Snapshot_English_06052026.html)
+  - [Citi "Asia recap" (Blayne Curtis, 2026-05-22) — MediaTek TPU die "still in fab," 2026 ship doubt; Broadcom ~80%+ TPU share](../relat%C3%B3rios%20bons/2026_05_22_jef_asia_recal_call_22_may_2026.html)
+  - [Jefferies "Asia tech" (Connor, 2026-04-07) — MediaTek 1-2m TPU units '27 vs Broadcom 5-6m; "struggling to make current ASIC," Sherman downgrade; Android/smartphone risk](../relat%C3%B3rios%20bons/2026_04_07_jef_asia_7_apr_2026.html)
+  - [MS "Memory/Asia semis" (Charlie Chan, 2026-04-14) — MediaTek MP this year, ~2.5m TPU units '27, HBM3E + T-glass, no production cut](../relat%C3%B3rios%20bons/2026_04_14_ms_memory_14_apr_2026.html)
+  - [UBS "AVGO" (2026-06-04) — Anthropic 5GW all Broadcom, no MediaTek](../relat%C3%B3rios%20bons/2026_06_04_ubs_avgo_4_jun_26.html)
+  - [Redburn (Conor O'Mara) — Asia Trip Takeaways (2026-06-23)](../relat%C3%B3rios%20bons/77420a6c-61c1-4757-8047-3a24cced258c_Key_Takeaways_from_Conor_OMaras_recent_Management_Meetings_across_ASIA_1.html) — MediaTek doesn't bundle HBM (cost edge vs Broadcom for Google); Google share 6%(26)→30%(28); 400G V9-vs-V10 swing; no order cuts.
+  - [StoneX/TrendForce — "Memory expert call (Avril)" (2026-06-23)](../relat%C3%B3rios%20bons/TrendForce.html) — MediaTek (TPU V8/V9) increasingly handling Google HBM procurement directly, in talks with Samsung.
+- **Briefings:** EMIB-for-TPU channel chatter (2026-05-11 company-specific); MOSAIC AOC reference (2026-05-11). No dedicated by-ticker roll-up.
+- **Theme:** [custom-asic-tpu](themes/custom-asic-tpu.md).
+- **Outlook:** attempted (`outlook.py --no-body --days 14`) — returned no data in this environment; no inbox notes incorporated.

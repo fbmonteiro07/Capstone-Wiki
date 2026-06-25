@@ -1,0 +1,26 @@
+{"ticker":"INTC","forward":[
+{"metric":"Intel Foundry break-even","horizon":"exit-2027","trend":"contested","trail":[
+{"date":"2025-07-24","val":"Foundry op loss $(3.2B); break-even an aspiration","src":"Q2 FY25 call"},
+{"date":"2026-05-12","val":"Targets quarterly loss reduction through FY26 toward exit-2027 break-even; slips when a big customer is won","src":"StoneX"},
+{"date":"2026-06-01","val":"IFS break-even goal exit-2027 but every new customer win pushes it out","src":"Jefferies (Brent Thill)"}],"note":"Break-even date repeatedly caveated to slip on customer wins."},
+{"metric":"First major external 14A / foundry customer","horizon":"2H26→1H27 design-win window","trend":"contested","trail":[
+{"date":"2025-07-24","val":"14A volume gated on binding external commitment; volume 2028-29","src":"Q2 FY25 call"},
+{"date":"2026-04-23","val":"14A maturity/yield outpacing 18A; customers in definition phase","src":"Q1 FY26 call"},
+{"date":"2026-05-12","val":"14A design-win window opens 2H-2026 into 1H-2027; risk production 2H-2027 internal / 2H-2029 external","src":"StoneX"},
+{"date":"2026-06-15","val":"4 potential foundry deals this fall once 14A PDKs land","src":"UBS (Arcuri)"}],"note":"Single biggest swing factor; still no disclosed binding commitment."},
+{"metric":"EMIB-T advanced-packaging contribution","horizon":"2H26→2027 ramp","trend":"up","trail":[
+{"date":"2025-12-17","val":"EMIB-T meaningful contribution in 2H26 (Pitzer); Google TPU v9 / Meta MTIA evaluating","src":"Jefferies Techknowledge"},
+{"date":"2026-04-23","val":"Per-engagement value re-rated to billions/yr (from hundreds of M)","src":"Q1 FY26 call"},
+{"date":"2026-05-12","val":"Backlog growing; first ramp year 2027, billions/engagement by year two","src":"StoneX"}],"note":"Packaging-as-trojan-horse; yield (60-70% vs CoWoS 95%+) is the contested gate."},
+{"metric":"Server-CPU share trajectory","horizon":"2026→2030","trend":"contested","trail":[
+{"date":"2026-02-23","val":"BofA: INTC server value share 63% (CY24) → ~40% (CY30E)","src":"BofA CPU deep-dive"},
+{"date":"2026-05-21","val":"UBS: server-CPU unit share 60% (2025) → 29% (2030)","src":"UBS server-CPU TAM"},
+{"date":"2026-06-23","val":"ODM expert: x86 server share 50% (24) → 55% (25) → ~60% (26); less constrained than AMD","src":"Redburn (Conor O'Mara)"}],"note":"Sell-side models erosion to AMD/ARM; supply-chain expert sees Intel gaining — sharply contested."},
+{"metric":"Capex FY26→FY27","horizon":"FY26→FY27","trend":"up","trail":[
+{"date":"2026-01-22","val":"2026 capex flat to down slightly","src":"Q4 FY25 call"},
+{"date":"2026-04-23","val":"Capex flat y/y, equipment spend +25% y/y (first capex guide-up in the saga)","src":"Q1 FY26 call"},
+{"date":"2026-06-11","val":"SemiAnalysis argues Intel should raise ~$40B to fund Terafab ramp; $20-35B financing hole","src":"SemiAnalysis 'Intel Should Raise Capital'"}],"note":"FY27 capex number not yet given; Terafab WFE could reach ~$10B by 2028 (UBS)."},
+{"metric":"Gross-margin trajectory","horizon":"exit-2026→structural","trend":"up","trail":[
+{"date":"2026-06-01","val":"Exit-2026 GM low-40s on 40-60% drop-through; mid-40s the bar for durable turnaround","src":"Jefferies (Brent Thill)"},
+{"date":"2026-04-24","val":"BofA EPS build ~$1.00 (2026) / $1.50 (2027) / $2+ (2028); $4 2028 bull case","src":"BofA (Vivek Arya)"}],"note":"18A drag neutral-to-product by year-end but still a manufacturing headwind."}
+]}

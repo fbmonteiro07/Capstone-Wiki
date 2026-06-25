@@ -1,0 +1,30 @@
+{"ticker":"AVGO","forward":[
+{"metric":"AI revenue FY27","horizon":"FY27","trend":"contested","trail":[
+{"date":"2026-03-04","val":"line of sight >$100B AI chips FY27 (Q1 FY26 call)","src":"AVGO Q1 FY26"},
+{"date":"2026-06-03","val":"FY27 AI reiterated \">$100B\" (\"easily exceed\"), no raise — drove -12.6% reaction","src":"AVGO Q2 FY26 / briefing 2026-06-06"},
+{"date":"2026-06-04","val":"AVGO told UBS FY27 AI could be raised to $110-120B but won't ratchet every quarter; investors already ~$150B FY27","src":"UBS Tim Rohde callback"},
+{"date":"2026-06-16","val":"JPM models AVGO $150B+ AI revenue in 2027 (>2x ~$60B 2026E); views >$100B backlog as conservative","src":"JPM AI Capex 2.0"}],
+"note":"Binary debate: disclosed >$100B vs buyside $150B+; omission of a raise, not demand, was the issue."},
+{"metric":"GW shipments FY27","horizon":"FY27→FY28","trend":"up","trail":[
+{"date":"2026-06-03","val":"~10GW shipments in FY27, back-half loaded; \"a lot more gigawatts\" in FY28; 20GW XPU platform through 2028","src":"AVGO Q2 FY26 (Hock)"},
+{"date":"2026-06-04","val":"FY28 steps up materially more than FY27-over-FY26; 20GW SPV implies ~15GW Anthropic+OpenAI parked into FY28","src":"UBS Tim Rohde callback"},
+{"date":"2026-06-05","val":"JPM: ~20-22GW deploy in FY28 → $250-300B AI rev, ~$35-38 EPS vs cons ~$25","src":"JPM Harlan Sur"}],
+"note":"FY28 is the real story; multi-GW ramp gated by power/datacenter readiness, not HBM."},
+{"metric":"TPU order book / units 2027","horizon":"2027","trend":"up","trail":[
+{"date":"2026-05-22","val":"~3M TPU units 2025 (supply-chain check), buy-side crept to ~4M","src":"Citi/Jefferies Blaine"},
+{"date":"2026-05-29","val":"TPU order book ~6.5M units for next year (up from prior ~5.5-6M); >$150B backlog next year","src":"JPM Harlan Sur Semis Spring"},
+{"date":"2026-06-05","val":"Total AVGO TPU ~6.2M units in 2027 (mix V8i/V9i); 2027 CoWoS share cut to 24-25%","src":"Fubon/Jefferies Semi 2027 outlook"}],
+"note":"V8i Sunfish the FY27 driver; OpenAI/Meta projects slip to 2H27, limiting V9i."},
+{"metric":"AI semis FY26","horizon":"FY26","trend":"up","trail":[
+{"date":"2026-03-04","val":"FY26 accelerates; >$100B AI chips FY27 line of sight","src":"AVGO Q1 FY26"},
+{"date":"2026-06-03","val":"FY26 AI semis $56B (~+180% y/y)","src":"AVGO Q2 FY26"}],
+"note":"FY26 raised/reiterated; Q3 FY26 guide AI $16.0B was the clear miss vs buyside ~$18.5B."},
+{"metric":"Gross margin trajectory","horizon":"structural (FY26-27)","trend":"down","trail":[
+{"date":"2026-06-03","val":"Q3 FY26 GM down ~310bps q/q to ~74% on ASIC mix","src":"AVGO Q2 FY26"},
+{"date":"2026-06-04","val":"GM held to ~74% over next 3-4 quarters (down on AI-semi/XPU mix, not HBM, not racks)","src":"UBS Tim Rohde callback"}],
+"note":"Structural GM dilution as low-margin ASICs scale; ~$2.5k HBM pass-through per ~$12k TPU an added drag."},
+{"metric":"Google share / V9-vs-V10 400G","horizon":"2026→2028","trend":"contested","trail":[
+{"date":"2026-06-05","val":"V9 NOT cancelled, pushed out: V8i MP late 3Q26, V9 MP late 3Q27 → V9i very limited 2027","src":"Fubon/Jefferies"},
+{"date":"2026-06-23","val":"Broadcom Google share 6%(2026)→30%(2028) [MediaTek gain]; 400G V9-vs-V10 the key swing; MediaTek doesn't charge HBM in BOM","src":"Redburn Conor O'Mara Asia Trip"}],
+"note":"HBM-in-BOM is the structural reason Google shifts TPU share to MediaTek; 400G timing the cap on MediaTek's gains."}
+]}

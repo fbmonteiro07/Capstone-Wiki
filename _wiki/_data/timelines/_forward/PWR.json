@@ -1,0 +1,27 @@
+{"ticker":"PWR","forward":[
+{"metric":"Earnings power 2030","horizon":"2030","trend":"up","trail":[
+{"date":"2026-02-19","val":">2x earnings power by 2030; 15-20% adj. EPS CAGR through 2030","src":"Q4 FY25 call"},
+{"date":"2026-04-30","val":"Reaffirmed >2x by 2030; visibility to 2032; CCGT execution into 2033+","src":"Q1 FY26 call"}],
+"note":"The framing target the whole bull case rests on; demand 'a decade plus'."},
+{"metric":"FY26 adj. EPS guide","horizon":"FY26","trend":"up","trail":[
+{"date":"2026-02-19","val":"FY25 adj. EPS $10.75 (+20%)","src":"Q4 FY25 call"},
+{"date":"2026-04-30","val":"Raised FY26 guide: rev $34.7-35.2bn, adj. EBITDA $3.49-3.65bn, adj. EPS $13.55-14.25","src":"Q1 FY26 call"}],
+"note":"FCF guide held with confidence at the higher end."},
+{"metric":"Backlog trajectory","horizon":"ongoing","trend":"up","trail":[
+{"date":"2025-10-30","val":"Record $39.2bn","src":"Q3'25 call"},
+{"date":"2026-02-19","val":"Record $44bn; 'no SunZia', broad-based","src":"Q4 FY25 call"},
+{"date":"2026-04-30","val":"Record $48.5bn; 765kV <25%/<$1bn of rise; expects backlog to 'continue to rise'","src":"Q1 FY26 call"}],
+"note":"Quality of growth high — not single mega-project dependent."},
+{"metric":"NiSource/Alphabet GenCo opportunity","horizon":"2H2026+","trend":"up","trail":[
+{"date":"2025-10-30","val":"NiSource JV 3 GW; no fixed-price risk","src":"Q3'25 call"},
+{"date":"2026-04-30","val":"$5.7bn '...growing every day'; CCGT/gen work NOT yet in backlog (air permits pending), expected 'later half of the year and beyond'","src":"Q1 FY26 call"}],
+"note":"Watch for this generation work to enter backlog 2H26 — a near-term catalyst."},
+{"metric":"765kV transmission award cadence","horizon":"late-2027+","trend":"flat","trail":[
+{"date":"2026-02-19","val":"No big 765kV in backlog; major awards not expected until 'late half of 2027' then over 3-5 yrs","src":"Q4 FY25 call"},
+{"date":"2026-04-30","val":"AEP capex rising; 765 still <$1bn of backlog rise","src":"Q1 FY26 call"}],
+"note":"Air-pocket risk on the biggest projects; permitting reform a swing factor."},
+{"metric":"Transformer manufacturing investment","horizon":"multi-year","trend":"up","trail":[
+{"date":"2026-02-19","val":"$500-700m transformer plant announced","src":"Q4 FY25 call"},
+{"date":"2026-04-30","val":"$500-700m HV (345-765kV) transformer mfg to attack '36 months' lead time; de-risks AEP via US supply chain","src":"Q1 FY26 call"}],
+"note":"Vertical integration turns a competitor bottleneck into a Quanta advantage."}
+]}

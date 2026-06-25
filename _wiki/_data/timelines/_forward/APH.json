@@ -1,0 +1,25 @@
+{"ticker":"APH","forward":[
+{"metric":"AI revenue","horizon":"2026E-2027E","trend":"up","trail":[
+{"date":"2025-12-15","val":"AI rev ~$4.2bn (2025) → as high as ~$6.3bn (2026); AI mix 18% (2025)→24% (2026E)→30% (2027E)","src":"JPM Hardware & Networking"},
+{"date":"2026-04-29","val":"IT datacom 41% of sales, +81% organic, +27% QoQ — 'virtually all' sequential growth from AI","src":"Q1-2026 call (Norwitt)"}],
+"note":"2026 debate is magnitude of deceleration off the ~40% organic run-rate (lower content step-up on Vera Rubin/Oberon vs Blackwell)."},
+{"metric":"FY26/27 revenue & EPS estimates","horizon":"FY27","trend":"up","trail":[
+{"date":"2025-12-15","val":"FY25E rev $22.8B/EPS $3.30 → FY26E $26.65B/$4.00 → FY27E rev $30.5B; PT $160 (Dec-26) on 34x CY27E EPS $4.75","src":"JPM Hardware & Networking"}],
+"note":"First attributable broker PT/rating; OW, on Analyst Focus List, #2 H&W pick."},
+{"metric":"Q2-2026 guide","horizon":"Q2 2026","trend":"up","trail":[
+{"date":"2026-04-29","val":"Q2-2026 sales $8.1-8.2B, adj. EPS $1.14-1.16 (+43-45% / +41-43% YoY)","src":"Q1-2026 call"}],
+"note":"Watch IT datacom organic deceleration and book-to-bill normalization off 1.24:1."},
+{"metric":"AI power-interconnect TAM (800V)","horizon":"2028","trend":"up","trail":[
+{"date":"2026-06-09","val":"APH best-positioned (w/ FLEX/TEL/WOLF); power ~$150 of ~$870 content/XPU; AI power-interconnect TAM ~$2bn (2025)→$4bn+ (2028), 40%+ CAGR; Omdia power cable+busway $10bn→$20bn (2028)","src":"JPM 'Watts Up!' 800V"},
+{"date":"2026-06-15","val":"APH favorably positioned; ±400V HVDC sidecar adopted first (250kW-1MW racks), NVDA 800V sidecars w/ Rubin Ultra late-2H27, SST-based 800V for >1MW from ~2029","src":"Citi '800V DC power'"}],
+"note":"800V/power content the strategic swing factor as racks move to higher densities."},
+{"metric":"CommScope contribution","horizon":"FY2026","trend":"flat","trail":[
+{"date":"2026-01-28","val":"CCS ~$10.5B closed Jan'26; FY26 contribution ~$4.1B sales / $0.15 EPS accretion","src":"Q4-2025 call"},
+{"date":"2026-04-29","val":"CCS growing ~at APH's own organic pace; ~$4.1B sales / $0.15 accretion reaffirmed","src":"Q1-2026 call"}],
+"note":"Fiber exposure addresses the copper-terminal-value bear thesis."},
+{"metric":"Copper-vs-optical content durability","horizon":"structural","trend":"contested","trail":[
+{"date":"2025-10-27","val":"APH #1 global copper connectivity ~27% share; Luxshare share-gain risk on GB300 backplane + CPC threat at 224→448 Gbps","src":"Bernstein China Next Winners"},
+{"date":"2026-05-12","val":"GLW-CPO bear narrative — APH framed copper-terminal-value share loser; CommScope 'not vertically integrated like GLW'","src":"briefing (JPM J. Meyers)"},
+{"date":"2026-05-26","val":"400G/lane can still be copper ('no longer up for debate'); co-packaged-copper benefits APH/Molex/TE/TTM; copper 'lives longer than anticipated'","src":"650 Group networking"}],
+"note":"Architecture outcome (copper vs optical vs CPO) the core forward debate; APH thesis is 'more interconnect, no matter what'."}
+]}

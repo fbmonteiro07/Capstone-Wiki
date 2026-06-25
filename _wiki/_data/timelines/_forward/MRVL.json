@@ -1,0 +1,31 @@
+{"ticker":"MRVL","forward":[
+{"metric":"FY27 revenue","horizon":"FY27","trend":"up","trail":[
+{"date":"2025-12-02","val":"FY27 ~$10B; DC >25% growth (Q3 FY26 framing)","src":"MRVL Q3 FY26"},
+{"date":"2026-03-05","val":"FY27 ~$11B; FY28 ~$15B, EPS >$5 (Q4 FY26 framing)","src":"MRVL Q4 FY26"},
+{"date":"2026-05-27","val":"FY27 ~$11.5B (~+40%); Q2 FY27 ~$2.7B (±5%, +35% y/y)","src":"MRVL Q1 FY27"}],
+"note":"Sequential guide-raises; interconnect raised to >70% y/y growth in FY27."},
+{"metric":"FY28 revenue","horizon":"FY28","trend":"up","trail":[
+{"date":"2025-12-22","val":"UBS FY28E revenue $12.34B; MS FY28E $9.81B — wide Street dispersion on ASIC pace","src":"UBS / MS 2025-12-22"},
+{"date":"2026-03-05","val":"FY28 ~$15B framing","src":"MRVL Q4 FY26"},
+{"date":"2026-05-27","val":"FY28 raised to ~$16.5B (~+45%), +$1.5B vs prior, data center ~+55% y/y","src":"MRVL Q1 FY27"}],
+"note":"Bull-bear axis is now pace of ASIC ramp: MS $9.8B vs UBS $12.3B vs guide $16.5B."},
+{"metric":"Custom silicon revenue FY29","horizon":"FY29","trend":"up","trail":[
+{"date":"2025-12-02","val":">20% growth FY27, double FY28 (18 wins)","src":"MRVL Q3 FY26"},
+{"date":"2026-05-27","val":"line of sight to >$10B annual custom silicon revenue for FY29 (existing programs + XPU-attach + new tier-1 wins)","src":"MRVL Q1 FY27"},
+{"date":"2026-05-29","val":"~$9B AI ASIC+networking 2025 → ~$15B 2026; Trainium 3 ships now/2H ramp, T4 2nm ramps 2H'27","src":"JPM Harlan Sur Semis Spring"}],
+"note":"Off a $75B lifetime funnel and 18+ XPU/XPU-attach sockets; Trainium + Maia roadmaps owned that AVGO doesn't."},
+{"metric":"XPU roadmaps (Trainium/Maia) defended","horizon":"2026→cal-28","trend":"up","trail":[
+{"date":"2026-05-22","val":"Trainium server ~flat Q2 on Trn2→Trn3; MRVL \"doesn't get paid on all units\" (bear check)","src":"Citi/Jefferies Blaine"},
+{"date":"2026-05-29","val":"Trainium 4 (2nm) ramps 2H next year + Celestial CPO/Elink/UALink; Maia 3nm on track + 2nm Maia cal-28","src":"JPM Harlan Sur"},
+{"date":"2026-06-17","val":"Sur: AWS Trainium + Microsoft Maia 3nm roadmaps un-lost; MRVL #2 semis pick","src":"JPM Harlan Sur AVGO/Marvell"}],
+"note":"Refutes the year-ago bear claim that MRVL lost Trainium/Maia; Google SmartNIC/DPU + CXL + LPU optionality on top."},
+{"metric":"Interconnect / DCI FY28","horizon":"FY28→CY28","trend":"up","trail":[
+{"date":"2026-03-05","val":"1.6T into production; DCI to all 5 US hyperscalers","src":"MRVL Q4 FY26"},
+{"date":"2026-05-27","val":"interconnect >70% y/y FY27; DCI to $1B annualized FY28; Celestial AI closed (CPO); Polariton 3.2T+","src":"MRVL Q1 FY27"}],
+"note":"Optical leadership ~65-70% DSP share; Celestial CPO ~$1B by CY28, earn-out $2.0B cum rev by Jan-2029."},
+{"metric":"1.6T DSP share durability","horizon":"2026→2027","trend":"contested","trail":[
+{"date":"2026-05-19","val":"Susquehanna: pushback on 1.6T DSP perf; NVDA not sourcing MRVL at 1.6T; will look different than ~80% at 800G","src":"Susquehanna networking"},
+{"date":"2026-05-26","val":"650 Group: new NVDA DSP + dual-sourcing → \"by definition\" MRVL at slightly lower share at 1.6T vs 800G","src":"650 Group networking"},
+{"date":"2026-06-17","val":"a US sell-side competitor downgraded MRVL on 1.6T DSP share concerns","src":"JPM Index/Sur note"}],
+"note":"Jefferies counter: ~75% DSP share, CPO years away, any AEC/optical-DSP shift is TAM-additive."}
+]}

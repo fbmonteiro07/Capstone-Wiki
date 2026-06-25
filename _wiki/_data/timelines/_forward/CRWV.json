@@ -1,0 +1,33 @@
+{"ticker":"CRWV","forward":[
+{"metric":"Backlog / RPO","horizon":"2Q26 / FY27","trend":"up","trail":[
+{"date":"Q2'25","val":"$30.1B, +86% YoY","src":"Q2'25 call (2025-08-12)"},
+{"date":"Q3'25","val":"$55.6B, nearly doubled QoQ","src":"Q3'25 call (2025-11-10)"},
+{"date":"Q4/FY'25","val":"$66.8B, +$11.2B QoQ","src":"Q4/FY'25 call (2026-02-26)"},
+{"date":"Q1'26","val":"$99.4B, ~4x YoY; $40B+ new bookings; ~75% of 2027's >$30B guide contracted","src":"Q1'26 call (2026-05-07)"},
+{"date":"2026-06-18","val":"Cantor models updated total RPO ~$125–130B; sees big RPO beat at 2Q (cons. $104B) + likely Anthropic deal","src":"Cantor \"CoreWeave call\""}],
+"note":"Anchors the multi-year visibility; Cantor expects 2nd straight $30–40B TCV-add quarter."},
+{"metric":"ARR","horizon":"FY26 exit / FY27","trend":"up","trail":[
+{"date":"Q1'26","val":"exit ARR raised to $18B–$19B; FY26 rev reaffirmed $12B–$13B","src":"Q1'26 call (2026-05-07)"},
+{"date":"2026-06-18","val":"Cantor: ~$17B ARR end-FY25 → $30B FY26; 2027/28 ests up 15–20%; run-rate EBITDA ~$25–26B in '27 (vs $18B)","src":"Cantor \"CoreWeave call\""}],
+"note":"Cantor sees 2026 as sold-out/irrelevant — the re-rate is in 2027/28 numbers."},
+{"metric":"FY26 Adjusted Operating Income guide","horizon":"FY26","trend":"contested","trail":[
+{"date":"Q1'26","val":"$900M–$1.1B reaffirmed","src":"Q1'26 call (2026-05-07)"},
+{"date":"2026-05-08","val":"Bernstein: \"nearly unhittable per math\" — needs fit-out <8wks AND stabilized margins >21%","src":"Bernstein (Rezaei/Madison) UP $67"},
+{"date":"2026-06-22","val":"Bernstein reit. UP $67; steady-state margin guided 25–30% but reported \"volatile and below steady-state for an extended period\"","src":"Bernstein \"Cloud in the Quarter\""}],
+"note":"Fit-out time + stabilized contribution margin are the key 2H26 bear bogeys."},
+{"metric":"Capex","horizon":"FY26","trend":"up","trail":[
+{"date":"Q3'25","val":"$12B–$14B FY25 (cut)","src":"Q3'25 call (2025-11-10)"},
+{"date":"Q4/FY'25","val":"$30B–$35B FY26 (>2x)","src":"Q4/FY'25 call (2026-02-26)"},
+{"date":"Q1'26","val":"raised to $31B–$35B on component pricing","src":"Q1'26 call (2026-05-07)"}],
+"note":"Debt-funded build is the crux of the leverage/FCF bear case."},
+{"metric":"Active / contracted power","horizon":"YE2026","trend":"up","trail":[
+{"date":"Q3'25","val":"590 MW active, 2.9 GW contracted","src":"Q3'25 call (2025-11-10)"},
+{"date":"Q4/FY'25","val":"850+ MW active, 3.1+ GW contracted","src":"Q4/FY'25 call (2026-02-26)"},
+{"date":"Q1'26","val":"1+ GW active, 3.5+ GW contracted; on track for 1.7+ GW active by YE2026","src":"Q1'26 call (2026-05-07)"}],
+"note":"Power ramp gates the revenue conversion of backlog."},
+{"metric":"GPU useful life / re-contracting","horizon":"structural","trend":"contested","trail":[
+{"date":"2025-12","val":"Hedgeye: like-for-like neocloud GPU pricing fell for first time in 3 months — leading indicator of softer contract pricing","src":"Hedgeye \"Neocloud Winter\" short"},
+{"date":"2026-06-16","val":"JPM: rebounding Neocloud H100 rental index = \"draconian obsolescence assumptions flawed\"; supportive of ~6yr schedule","src":"JPM \"AI Capex 2.0\""},
+{"date":"2026-06-18","val":"Cantor: consensus moved 3–4yr → 7–8yr; thinks true life ~10yr; re-contracting holds as original taker renews","src":"Cantor \"CoreWeave call\""}],
+"note":"GPU depreciation schedule is the crux of the reported-profitability bear case; sources diverge sharply."}
+]}

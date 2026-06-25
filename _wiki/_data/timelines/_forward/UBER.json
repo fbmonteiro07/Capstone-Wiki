@@ -1,0 +1,28 @@
+{"ticker":"UBER","forward":[
+{"metric":"AV cities deployed","horizon":"YE26","trend":"up","trail":[
+{"date":"Q4'25 (2026-02-04)","val":"15 cities by YE","src":"UBER Q4 FY25 call"},
+{"date":"2026-05-06","val":"AV Mobility trips +>10x y/y; on track for up to 15 cities by YE26","src":"UBER Q1 FY26 call"},
+{"date":"2026-06-18","val":"5 notable US/EU AV launches in 2H26 (Houston Nuro/Lucid, Zurich WeRide)","src":"BofA (Justin Post) briefing"}
+],"note":"Near-term AV-scaling narrative driver; YE26 up-to-15-cities target."},
+{"metric":"Mobileye DRIVE robotaxi volumes","horizon":"end-2026","trend":"up","trail":[
+{"date":"2025-12-15","val":"design wins through 2025, rollout 2026; material volumes ~end-2026 (~$50k/unit + per-mile)","src":"JPM Hardware & Networking"}
+],"note":"Another AV stack feeding UBER's aggregation layer; volume inflection late 2026."},
+{"metric":"FY26-28 EPS / EPS CAGR","horizon":"FY26→FY28","trend":"up","trail":[
+{"date":"2026-06-17","val":"35% 3yr EPS CAGR; FY26-28 EPS +1-3% vs cons (Redburn PT $112, trimmed from $120)","src":"Rothschild/Redburn (Goodall) briefing"}
+],"note":"Out-year EPS trajectory the bull PTs underwrite (~45-55% upside on ~$70 stock)."},
+{"metric":"Advertising run-rate","horizon":"forward / structural","trend":"up","trail":[
+{"date":"Q4'25 (2026-02-04)","val":"penetration past 2% ceiling; enterprise ads outgrowing SMB; grocery/retail/mobility nascent","src":"UBER Q4 FY25 call"},
+{"date":"2026-05-20","val":">$2B run-rate, +50% y/y","src":"DB (Black)"},
+{"date":"2026-06-08","val":"ads +50% y/y at $2B+; ~$10B FCF","src":"DB (Black) conference-wrap"}
+],"note":"High-margin monetization lever still early in grocery/retail/mobility surfaces."},
+{"metric":"Delivery Hero pro-forma impact","horizon":"2027","trend":"contested","trail":[
+{"date":"2026-05-26","val":"Bernstein: pro-forma +24%/+10% GB/EBITDA in 2027 but ~7% GAAP EPS dilutive; JPM 'shareholders will broadly not like this deal'","src":"Bernstein / JPM (Schilsky)"},
+{"date":"2026-06-05","val":"JPM (Silver/Diebel) 'EC could bite', prefers Talabat (EU antitrust overlap)","src":"JPM briefing"},
+{"date":"2026-06-17","val":"Barclays (Ross) sees higher offer likely but 'many moving parts'","src":"Barclays briefing"}
+],"note":"M&A binary into FY27; dilution + antitrust overhang vs accretive GB/EBITDA."},
+{"metric":"US Mobility insurance leverage","horizon":"2026","trend":"up","trail":[
+{"date":"Q3'25 (2025-11-04)","val":"'hundreds of millions' savings into '26","src":"UBER Q3 FY25 call"},
+{"date":"Q4'25 (2026-02-04)","val":"insurance flips deleverage → leverage; US Mobility to accelerate","src":"UBER Q4 FY25 call"},
+{"date":"2026-05-06","val":"first year of insurance leverage on US Mobility since COVID; LA/CA acceleration; 'hundreds of millions' 2026 savings","src":"UBER Q1 FY26 call"}
+],"note":"Insurance-cost flip is the engine of the US Mobility acceleration thesis for 2026."}
+]}

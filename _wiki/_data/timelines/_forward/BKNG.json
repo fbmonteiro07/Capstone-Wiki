@@ -1,0 +1,22 @@
+{"ticker":"BKNG","forward":[
+{"metric":"FY26 guidance (GBV/rev/EBITDA/EPS)","horizon":"FY26","trend":"down","trail":[
+{"date":"2026-02-18","val":"$700M above-baseline reinvestment in 2026 → ~$400M revenue / ~$300M net EBITDA, largely self-funded","src":"BKNG Q4 FY25 call"},
+{"date":"2026-04-28","val":"FY26 lowered at midpoint but high end of GBV and adj. EPS held: GBV high-single-low-double, rev high-single, EBITDA slightly faster than rev, margin +0-25bps, adj. EPS low-to-mid-teens","src":"BKNG Q1 FY26 call (Steenbergen)"}
+],"note":"Midpoint cut on Middle East conflict; high end held — FY26 swing tied to end-June recovery assumption."},
+{"metric":"Long-term cc algorithm","horizon":"structural","trend":"flat","trail":[
+{"date":"2026-02-18","val":"long-term cc algorithm in place","src":"BKNG Q4 FY25 call"},
+{"date":"2026-04-28","val":"reaffirmed: ≥8% GBV, ≥8% revenue, ≥15% adj. EPS","src":"BKNG Q1 FY26 call"}
+],"note":"The durable-compounding framework; reiterated despite near-term geopolitics."},
+{"metric":"Q2 FY26 guide","horizon":"Q2'26","trend":"down","trail":[
+{"date":"2026-04-28","val":"Q2'26 room nights +2-4% (conflict ~3pts headwind; underlying ~5-7%); GBV/rev/EBITDA each +4-6%","src":"BKNG Q1 FY26 call"}
+],"note":"Cleanest near-term read on Middle East trajectory vs end-June recovery assumption."},
+{"metric":"Transformation savings → reinvestment","horizon":"2026","trend":"up","trail":[
+{"date":"2025-10-28 (Q3'25)","val":"$500-550M target; $225M+ in-year","src":"BKNG Q3 FY25 call"},
+{"date":"2026-02-18","val":"$550M run-rate exiting 2025; $700M above-baseline reinvestment in 2026, ~$250M incremental in-year transformation savings to fund it","src":"BKNG Q4 FY25 call"},
+{"date":"2026-04-28","val":"on track $500-550M in-year for 2026","src":"BKNG Q1 FY26 call"}
+],"note":"Self-funding mechanic for the 2026 GenAI/Connected-Trip/US-Asia reinvestment push."},
+{"metric":"Connected Trip / verticals growth","horizon":"forward","trend":"up","trail":[
+{"date":"2026-02-18 (Q4'25)","val":"high-20s% FY transactions; flights +37% (68M tix)","src":"BKNG Q4 FY25 call"},
+{"date":"2026-04-28","val":"Connected Trip txns +high-teens, ~3x total transaction growth, low-double-digit % of Booking.com txns; airline tix +28%, attractions ~25%","src":"BKNG Q1 FY26 call"}
+],"note":"Connected Trip ~3x base growth + agentic (Penny direct booking) the forward product story."}
+]}

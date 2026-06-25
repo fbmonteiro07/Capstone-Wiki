@@ -1,0 +1,160 @@
+# CRWV — CoreWeave, Inc.
+
+_Wiki · generated 2026-06-20 · sources: `E:\Wiki Felipe\CRWV` (10-K FY2025, four 10-Qs, transcripts) · `E:\briefings\2026`. Master index: [../INDEX.md](../INDEX.md)._
+
+## Snapshot
+GPU "neocloud" — rents NVIDIA accelerated compute (GPU-as-a-service) to AI labs, hyperscalers and enterprises on multi-year contracts. IPO'd March 2025; short public history. FY2025 revenue **$5.1B, +168% YoY** (10-K FY2025, 2026-03-02), essentially all from AI cloud compute. Differentiated by purpose-built AI datacenters, early NVIDIA allocation (Exemplar Cloud / GB200 first-mover) and scale of contracted power. The model is capital-intensive and debt-funded: it converts a massive contracted backlog into revenue by building/leasing datacenters and buying GPUs ahead of the revenue ramp. Sits squarely in the AI infrastructure chain between NVIDIA silicon and the frontier-model demand layer.
+
+## At a glance — product · buyer · supplier
+| | |
+|---|---|
+| **Sells (top 3)** | 1) Multi-year reserved GPU cloud compute (GPU-as-a-service) · 2) Leading-edge GB200/Blackwell NVL72 clusters (Exemplar Cloud) · 3) Inference compute (>50% of usage) |
+| **Main buyer(s)** | Hyperscalers & AI labs — Microsoft (~67% of FY25 rev), OpenAI (~$11.9B+$4B), Meta, Google; top-2 ~65% of Q1-26 rev |
+| **Key suppliers** | NVIDIA GPUs (GB200/Blackwell); datacenter/power lessors (3.5+ GW contracted); debt capital (~$25B DDTL facilities) |
+
+## Position in the value chain
+CoreWeave is the financing-and-operating layer that turns GPUs + power + debt into rentable AI compute. Its edge is a $99.4B backlog (Q1-26) and NVIDIA-preferred allocation; its fragility is that the same backlog is funded with ~$25B of debt and $8.2B+ of operating-lease liabilities, against revenue still ~65% concentrated in its top two customers. Strong demand visibility, thin equity cushion, high customer concentration.
+
+<svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+  <rect x="10" y="40" width="170" height="130" rx="8" fill="#eef4ff" stroke="#4477cc"/>
+  <text x="95" y="60" text-anchor="middle" font-weight="bold">Suppliers</text>
+  <text x="95" y="82" text-anchor="middle">NVIDIA GPUs</text>
+  <text x="95" y="100" text-anchor="middle">(GB200 / Blackwell)</text>
+  <text x="95" y="120" text-anchor="middle">Datacenters / power</text>
+  <text x="95" y="138" text-anchor="middle">3.5+ GW contracted</text>
+  <text x="95" y="156" text-anchor="middle">Debt capital (~$25B)</text>
+  <rect x="270" y="40" width="180" height="130" rx="8" fill="#fff4e6" stroke="#dd8822"/>
+  <text x="360" y="62" text-anchor="middle" font-weight="bold">CoreWeave</text>
+  <text x="360" y="84" text-anchor="middle">GPU neocloud</text>
+  <text x="360" y="104" text-anchor="middle">AI compute rental</text>
+  <text x="360" y="126" text-anchor="middle">FY25 rev $5.1B (+168%)</text>
+  <text x="360" y="146" text-anchor="middle">Backlog $99.4B (Q1-26)</text>
+  <rect x="540" y="40" width="170" height="130" rx="8" fill="#eafbea" stroke="#33aa55"/>
+  <text x="625" y="60" text-anchor="middle" font-weight="bold">Customers</text>
+  <text x="625" y="82" text-anchor="middle">Microsoft</text>
+  <text x="625" y="100" text-anchor="middle">OpenAI (~$11.9B)</text>
+  <text x="625" y="118" text-anchor="middle">Meta, AI labs</text>
+  <text x="625" y="136" text-anchor="middle">Enterprise</text>
+  <line x1="180" y1="105" x2="268" y2="105" stroke="#333" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="450" y1="105" x2="538" y2="105" stroke="#333" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="360" y="195" text-anchor="middle" fill="#aa3333">Backlog strength vs. capex/debt load + top-2 customer concentration (~65%)</text>
+  <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+</svg>
+
+Themes: [ai-datacenter-power](themes/ai-datacenter-power.md) · [custom-asic-tpu](themes/custom-asic-tpu.md).
+
+## Current state (latest quarter)
+Q1 FY2026 (call 2026-05-07): revenue **$2.1B, +112% YoY / +32% QoQ**; Adjusted EBITDA **$1.2B (~56% margin)**; Adjusted Operating Income only **$21M (~1% margin)**; net loss **$(740)M** (vs. $(315)M PY) as interest expense hit **$536M** (10-Q Q1-26, 2026-05-08; transcript 2026-05-07). Revenue backlog **$99.4B**, +~50% QoQ (~4x YoY), with $40B+ new bookings in Q1 and 10 customers at $1B+ commitments; ~75% of 2027's >$30B guide already contracted. Active power crossed **1 GW**; contracted power **3.5+ GW**; on track for 1.7+ GW active by year-end 2026. Capex guide raised to **$31B–$35B** for FY2026 on component pricing. FY2026 revenue reaffirmed **$12B–$13B**, Adjusted Operating Income **$900M–$1.1B**, exit ARR raised to **$18B–$19B**. >50% of compute now used for inference (Intrator). Balance sheet: total principal debt **$25.1B** at Mar-31 (effective rates 10–15% across DDTL facilities), operating-lease liabilities **$10.1B** ROU assets, cash $3.3B (10-Q Q1-26).
+
+## Unit economics / ROIC (DB CRWV unit economics, 16 Jun 2025)
+DB walked through the company's illustrative contract (a 4yr $5bn TCV deal + 2 incremental years of asset useful-life monetization) and its own per-GPU model, concluding current contract economics are **sustainable**: CapEx is "more than recouped within the initial 4-year term" including cost of capital, with the majority of equity NPV captured in years 5–6 of GPU life (DB CRWV unit economics, 16 Jun 2025).
+- **Revenue yield:** company example ~**$0.44 of annual revenue per $1 of capex** over the initial 4yr contract; DB's own estimate slightly lower at ~$0.40 (partly offset by a 15–20% TCV upfront prepayment).
+- **Contract EBITDA margin ~80%** in the company example (DB framework 78%); contracts span ~65–90% run-rate depending on size/duration/prepayment. The reported corporate Adj. EBITDA margin was a lower 64% in CY24 — delta is R&D/S&M/G&A overhead plus timing of standing up new capacity (OpEx ex-D&A is MSD% of revenue, trending down).
+- **Payback ~2.5yrs** (incl. prepayment) on committed contracts at CYE24; DB models a ~breakeven NPV on the initial 4yr contract and **positive NPV ~$0.30 per $1 of net capex over a 6yr useful life** — i.e., value creation sits in the tail (re-contracting / on-demand).
+- **Re-contracting:** company assumes capacity re-leased at **75% of original ASP** in years 5–6; DB more conservative at 50% (A100 precedent). Sensitivity: NPV/$ net capex ranges ~$0.12–$0.44 at a 10% WACC across $1.90–$2.40 /GPU/hr.
+- **Cost of capital:** company example used 85% loan-to-cost and **9% cost of debt** (trending down) vs. DB's 10% WACC; effective rate on existing debt is >10%. $3bn+ NOLs limit near-term cash taxes (DB argues a tax allowance still belongs in unit economics).
+- DB rated **Hold, PT $50** (16 Jun 2025) — its open questions are longer-term: contract structure as the base broadens, supply normalizes, hyperscalers close the leading-edge gap, and whether AI app monetization sustains the capex.
+
+## Debate / thesis
+- **Bull:** Demand far exceeds supply — "largely sold out of 2026 capacity with prices increasing across the board from Ampere to Hopper to Blackwell... extending into 2027" (CFO, via @TheTranscript_, briefing 2026-05-16). Backlog $99.4B and NVIDIA preference (Exemplar Cloud, $2B NVDA strategic investment Jan-2026 at $87.20, plus an additional $2B per @The_AI_Investor, briefing 2026-06-13) give multi-year visibility. Independent validation: CoreWeave sits at the **top of SemiAnalysis's ClusterMAX Gold tier**, ahead of Nebius, Oracle and Crusoe — "a case-study of a player with no initial scale winning over the market by executing perfectly on speed, site selection and financing" (SemiAnalysis Microsoft AI Strategy, Dec 2025). Microsoft, after under-building, is now "forced to go with the worst option: renting GPUs from Neoclouds and reselling at materially lower-than-usual margins" — direct confirmation of neocloud pricing power and that hyperscalers are short near-term capacity (SemiAnalysis Microsoft AI Strategy, Dec 2025). Added to Nasdaq-100 June 2026 (briefings 2026-06-13/17) → passive flow. NVDA 13F holds 47.21M CRWV shares — public ecosystem endorsement (briefing 2026-05-16 morning).
+- **Bear:** Bernstein reiterates **Underperform, TP $67** in its 1Q26 hyperscaler review — while CRWV has shown impressive growth standing up a neocloud to monetize power assets, it is "much smaller than any of the other cloud providers," has **no structural right-to-win** (GPUs or otherwise) and is at a structural disadvantage vs hyperscalers long-term; may sign more deals in the next ~12 months but Bernstein has concerns on the **viability of the business model** and CRWV's role in the infra ecosystem. Bernstein frames CRWV as an "interim capacity provider" benefiting from near-term power/GPU scarcity but facing concentrated-customer, buyer-insourcing and structurally-constrained-return headwinds; 1Q26 adj. op margin just ~0.5% on the OpEx-revenue lag (~6-8wk fit-out), with steady-state margin guided 25-30% but reported margins "volatile and below steady-state for an extended period." Note the $8.5B DDTL 4.0 (first IG-rated financing, ~7%, backed solely by the Meta take-or-pay) is viewed as a bespoke "proof of concept," not a repeatable funding baseline (Bernstein "Cloud in the Quarter", 2026-06-22).
+- **Bear:** Bernstein **Underperform, PT $67** (Rezaei/Madison) — FY26 AOI guide $900M–$1.1B is "nearly unhittable per math": needs fit-out <8 weeks **and** stabilized margins >21%; blue-sky 6 weeks + 25% only reaches top of range (briefings 2026-05-08/12, 2026-05-16). Heavy fixed debt payments are a structural disadvantage vs. equity-funded hyperscalers — "Short: ORCL/CoreWeave encumbered by fixed debt payments vs GOOG's now-equity-funded flexibility" (Rothschild, briefing 2026-06-03). NVDA Vera Rubin / MI455 racks at CoreWeave "still Engineering/Quality Samples — 800G OSFP cages not even populated" (@SemiAnalysis_, briefings 2026-06-04/05) → near-term delivery/ramp risk. **Hedgeye is short CRWV (the "Neocloud Winter" call)** — short since 4/11/2025 at $43, thesis: "CoreWeave 2.0" contagion risk for the space, monetization per connected MW didn't improve in 2025 vs 2024, high cost inflation (memory, electricity, labor) caps margins, hyperscalers' internal pipeline + Bitcoin-miner competition lower the odds of another megadeal, and **for the first time in 3 months like-for-like neocloud GPU pricing fell** — a leading indicator of softer future contract pricing; de-rating expected on the liability surge (HE Global Technology BB, Dec 2025).
+- **Bernstein Gen-AI Handbook — CRWV as the neocloud margin floor (2026-06-22, framework):** the 247-page Handbook uses CoreWeave as the **pure-play IaaS benchmark to argue hyperscalers should out-earn neoclouds**: it cites CRWV at **~24% GAAP gross margin in FY24** vs Oracle's guided 30-40% OCI AI GM and Microsoft's "significantly higher" AI margins (full AI-PaaS stack + data gravity). Constructive on the asset-intensity side — Bernstein notes CRWV "was able to drive an improvement" in asset intensity as it scaled — but the net framing is that scale + unique IP + PaaS mix accrue to the hyperscalers, leaving the pure-rental neocloud structurally lower-margin. Consistent with Bernstein's separate Underperform/$67 on the name (Bernstein "Scaling Intelligence", 2026-06-22). [Source](../relat%C3%B3rios%20bons/Bernstein_on_Gen_AI_Software.html)
+- **JPM "AI Capex 2.0" (2026-06-16):** notes the AI buildout has so far "effectively only been financing the data-center boxes in public markets — **with the exception of term loans and bonds for neocloud CoreWeave**," positioning CRWV as the proof-of-concept for public GPU financing and naming it (with Iren) as a natural Leveraged-Loan home for amortizing 5-yr GPU paper. Two read-throughs for the bear depreciation case: (1) JPM cites a **rebounding Neocloud H100 rental price index** as "a very positive indicator that some of the draconian obsolescence assumptions people have been using are flawed" — supportive of CRWV's ~6yr schedule; (2) but JPM flags the structural **duration mismatch** (markets want 10yr+ paper vs ~3-7yr GPU economic life) and notes the **single largest Leveraged-Loan tranche is just ~$13bn** — i.e. the LevLoan market alone can't scale to neocloud GPU-financing needs (JPM "AI Capex 2.0", 2026-06-16).
+- **Day-0 inference proof point (SemiAnalysis "DeepSeek V4 Day 0→43", 2026-06-09):** when SemiAnalysis's own GB300 cluster was down for the DeepSeek V4 launch, **CoreWeave contributed two spare GB300 NVL72 racks** to the open-source effort and is named an InferenceX supporter — incidental confirmation CRWV's GB300 NVL72 fleet is operational and being used around the clock.
+- **GPU depreciation debate:** CoreWeave depreciates GPUs over **~6 years** vs. ~4yr at hyperscalers, ~3yr crypto mining, ~1.5yr EDA servers — a longer schedule flatters near-term margins and is the crux of the bear case on reported profitability (Morgan Stanley AI Factories; MS ties the 6yr life to Keith Weiss's CRWV initiation). MS cross-checks CRWV's GB200 NVL72 rental at **~$10.5/GPU/hr** against AI-factory unit economics (a 100MW NVL72 factory shows >50% profit margin), arguing CRWV's pricing is consistent with profit-seeking utilization (MS AI Factories).
+- **Where sell-side/buy-side stands:** Bernstein UP $67 and Hedgeye's neocloud short are the loudest bear views in-corpus; DB Hold/$50 sits in between (sound current economics, longer-term skepticism). NVDA stake / Nasdaq-100 inclusion / SemiAnalysis Gold-tier ranking are the offsetting positives. Lockup overhang flagged: 9.2M shares registered for Jane Street's $1B equity investment, lockup expires July 15 — potential supply overhang (briefing 2026-06-11).
+
+## Customer concentration & the OpenAI/hyperscaler web
+- **OpenAI:** the break in OpenAI's compute exclusivity with Microsoft made CoreWeave a primary spillover beneficiary. OpenAI signed **two deals — an $11.9B multi-year contract plus a $4B expansion ($16B total over a 4–5yr timeframe)** — **and took an equity stake in CoreWeave**; the debt raise partly funds the build-out to service OpenAI (UBS OpenAI deep-dive, 2 Sep 2025).
+- **Google Cloud:** Google itself signed a deal with CoreWeave that the press describes as offloading OpenAI workloads — i.e., CRWV is now sub-contracted compute for both OpenAI directly and via Google (UBS OpenAI deep-dive, 2 Sep 2025).
+- **Microsoft loop:** much OpenAI spend on CoreWeave/Oracle is orchestrated on Azure software and reported partly as Azure revenue; Microsoft is also itself renting bare-metal GPU capacity from neoclouds to resell at thin margin (SemiAnalysis Microsoft AI Strategy, Dec 2025) — so the customer base is concentrated in a small, interlocking set of AI-infra buyers (Microsoft, OpenAI, Google, Meta).
+
+## Hedgeye model snapshot (HE Global Technology BB, Dec 2025)
+Hedgeye estimates 2026 CoreWeave revenue ~**$11.68B (+126%)** on ~477k average GPUs across ~50 datacenters, implying **2026 revenue/GPU ~$24,487** (vs. Nebius ~$18,949). It pegs total EV ~**$92.8B** with debt incl. lease obligations ~**$50.2B** and cash (ex-restricted) ~$0.9B → ~7.9x 2026 EV/sales; it models a 2026 adjusted loss. Use as a directional bear model, not consensus.
+
+## Catalysts / what to watch
+- **Q2 FY2026 print** (Aug 2026) — first read on whether the $900M–$1.1B AOI guide holds; watch fit-out time and stabilized contribution margin (the Bernstein bogey).
+- **July 15 lockup expiry** (Jane Street tranche) — supply overhang risk (briefing 2026-06-11).
+- **Vera Rubin / MI455 production transition** — move from engineering samples to at-scale tokens (@SemiAnalysis_).
+- **Capex/financing cadence** — incremental DDTL facilities and interest-rate trajectory (WACD down ~600 bps since 2023; DB sees scope to narrow further from the ~9% cost of debt).
+- **Neocloud GPU pricing** — like-for-like price declines (Hedgeye) and re-contracting ASP (DB's 75% vs 50% debate) are the key margin/NPV swing factors.
+- **Customer diversification** — non-IG AI-native share of backlog (now <30%); incremental enterprise/hyperscaler signings.
+
+## Risks
+- **Customer concentration:** ~67% of FY2025 revenue from top customer (Microsoft); ~65% of Q1-26 revenue from top two; OpenAI commitment ~$11.9B (plus $4B expansion, ~$16B total per UBS OpenAI deep-dive) through Oct-2030, Microsoft + Meta the other anchors; OpenAI also holds equity in CRWV (10-K FY2025; 10-Q Q1-26; UBS OpenAI deep-dive). The buyer base is a small interlocking AI-infra set — loss/reduction from any one would be material.
+- **Substantial indebtedness:** $25.1B principal debt at high effective rates (10–15%), $536M quarterly interest expense, covenant-heavy non-recourse DDTL facilities; debt could divert cash flow and constrain flexibility (10-K/10-Q risk factors). Hedgeye flags a "liability surge" (debt incl. leases ~$50.2B by 2026YE on its model) as a de-rating risk.
+- **Lease commitments:** leases all datacenters — $10.1B operating-lease ROU / $9.6B+ non-current lease liabilities; long-dated fixed obligations against contract-dependent revenue (10-Q Q1-26).
+- **Margin/timing mismatch:** capacity costs commence before revenue ramps; near-term margin compression (Q4-25 / Q1-26 calls). The ~6yr GPU depreciation schedule is favorable but contested vs. ~4yr peer norm (MS AI Factories).
+- **Pricing/re-contracting:** neocloud GPU prices have begun to fall like-for-like (Hedgeye); tail NPV depends on re-leasing at 50–75% of original ASP (DB) — a key downside lever if supply normalizes.
+- **Supply / NVIDIA dependence:** GPU allocation and datacenter-provider delivery (single-provider Q4 delay flagged Q3-25); concentration in NVIDIA silicon.
+
+## In the inbox (Outlook — recent sell-side flow)
+- **Cantor CoreWeave bull call (Cantor "CoreWeave call", 2026-06-18):** the cleanest in-corpus bull restatement into the 2Q print. Cantor models CRWV ending FY25 ~**$17B ARR → $30B FY26**, with **~75% of 2027's >$30B guide already contracted**; sees a **big RPO beat at 2Q** (consensus $104B; Cantor models updated total RPO ~**$125–130B** off the bond-memo $125B at 80% through the quarter — a 2nd straight quarter adding $30–40B TCV) **plus a likely sizeable new deal, "going to guess Anthropic"** (current Anthropic deal is only ~$2–3B / 70 MW, signed Apr 10/11 — "Anthropic isn't in the business of finding 70 MW"). Argues 2026 is sold-out/largely irrelevant and the **2027/28 estimates go up 15–20%** — run-rate EBITDA could be **~$25–26B in '27** (vs $18B). On the GPU-life bear: consensus moved from 3–4yr to **7–8yr**, Cantor thinks true useful life is **~10yr**; re-contracting holds because the original taker (e.g., Microsoft, 11 deals signed) renews. Spot vs contract pricing gap is wide — a 5yr GB300 contract ~**$3.50/GPU-hr** vs spot **~$7–9**; the Google–SpaceX deal at **~$10/GPU-hr for an H100** is above-market (Cantor reads it as Google passing compute to Anthropic into its IPO). CoreWeave's NVIDIA relationship (NVDA helps secure DC capacity + may backstop/finance GPUs to enable short-term/on-demand) is the differentiator vs other neoclouds; adding more spot/on-demand capacity is the next re-rating lever (Cantor "CoreWeave call", 2026-06-18).
+- **Fluidstack / neocloud financing read-through (Wells Fargo "Fluidstack call", 2026-06-08):** off-coverage neocloud (FluidStack CEO Mike McDonald, deploying ~1 GW this year + multi-GW next) read-through to CRWV economics. Core point: **financing cost is the swing variable** — "if you're financing it at 6%, ship it; at high-teens, I'm less excited" (Oracle/CoreWeave named as having brought financing in-house). The **Anthropic Q1 inflection drove the sector's supply-demand imbalance**; inference is increasingly the interesting bit (Bedrock "is just 95% Claude" despite 30+ models). Inference economics approaching **human dollar-per-hour output** in vertical tasks (e.g., the Kirkland & Ellis $500M deal) is the demand-durability argument supporting CRWV's tail-value/re-contracting case (Wells Fargo "Fluidstack call", 2026-06-08).
+- **Jefferies conference desk color (Jefferies "Brent Thill AI", 2026-06-01):** "**CoreWeave absolutely crushing** … they're sold out"; a top-3 AI company told the desk "we need tokens and can't find enough … we cannot find enough infrastructure" — corroborates the sold-out/demand-exceeds-supply thesis (Jefferies "Brent Thill AI software/infra", 2026-06-01).
+- **Bernstein Underperform PT $67** + **Rothschild debt-encumbrance call** _(briefings, 2026)_: $99.4B backlog vs ~$25B high-coupon debt, $536M/qtr interest, ~65% top-2 customer concentration; FY26 AOI guide called 'nearly unhittable.'
+
+## Intra-quarter — calls, comentários & relatórios (desde o último print)
+_Q1 FY26 · May 07 → Jun 22, 2026 · sell-side / expert calls / relatórios entre os earnings. Timeline visual: [timeline.html](timeline.html)._
+
+**Sinal vs gestão** — o que a gestão disse no último call × o que o fluxo intra-quarter está dizendo (✓ confirma · ⚠ nuança · ✗ contesta):
+
+| Tema | Gestão disse (Q1'26) | Fluxo intra-quarter | Sinal |
+|---|---|---|---|
+| **Demanda** | Backlog $99.4B (~4x y/y), $40B+ novos bookings; CFO "largely sold out of 2026", preços subindo Ampere→Hopper→Blackwell | Jefferies/desk "sold out, can't find enough infra" · Cantor RPO 2Q ~$125-130B vs cons $104B + provável novo big deal (Anthropic?) | **✓ confirma** (demanda > oferta) |
+| **Margem / profitabilidade** | EBITDA 56%; AOI só $21M (~1%) | Bernstein: guide AOI $900M-1.1B "quase inalcançável pela conta" (fit-out <8 sem + margem >21%) | **✗ contesta** (AOI é o furo) |
+| **Capital / financiamento** | Capex elevado p/ $31-35B FY26 (pricing de componentes) | Rothschild/Bernstein: dívida fixa = desvantagem estrutural vs hyperscalers · JPM: CRWV é proof-of-concept de financing GPU, mas duration mismatch | **⚠ nuança** (financing é o swing) |
+| **Produto / supply** | 1+ GW ativo, 3.5+ GW contratado; fleet operacional | SemiAnalysis: racks Vera Rubin/MI455 ainda "Eng/Quality Samples" → risco de ramp · GB300 NVL72 confirmado em uso (DeepSeek V4) | **⚠ nuança** (ramp próx. gen escorrega) |
+
+**Log completo** (todo o fluxo intra-quarter, por data):
+
+| Data | Fonte | Tema | Viés | O que disse |
+|---|---|---|---|---|
+| 05-08 | Bernstein · Rezaei/Madison | guidance | bear | Bernstein Underperform, PT US$67 — the FY26 AOI guide of US$900M-1.1B is 'nearly unhittable per the math': it needs fit-out <8 weeks AND stabilized margins >21%; a blue-sky 6-week + 25% scenario only reaches the top of the range (briefings 2026-05-08/12/16). |
+| 05-16 | FinTwit · @TheTranscript_ (via briefing) | demanda | bull | CFO: 'largely sold out of 2026 capacity with prices increasing across the board from Ampere to Hopper to Blackwell... extending into 2027'. NVDA's 13F holds 47.21M CRWV shares — a public endorsement from the ecosystem (briefing 2026-05-16). |
+| 06-01 | Jefferies · Brent Thill (desk) | demanda | bull | Desk color: 'CoreWeave absolutely crushing… they're sold out'; one of the top-3 AI companies told the desk 'we need tokens and can't find enough… we cannot find enough infrastructure' — corroborates the sold-out/demand-exceeds-supply thesis (Jefferies 'Brent Thill AI', 2026-06-01). |
+| 06-03 | Rothschild (via briefing) | capital | bear | Heavy fixed debt payments are a structural disadvantage vs equity-funded hyperscalers — 'Short: ORCL/CoreWeave encumbered by fixed debt payments vs GOOG's now-equity-funded flexibility' (briefing 2026-06-03). |
+| 06-04 | FinTwit · @SemiAnalysis_ (via briefing) | supply | bear | NVDA Vera Rubin / MI455 racks at CoreWeave are 'still Engineering/Quality Samples — 800G OSFP cages not even populated' → near-term delivery/ramp risk (briefings 2026-06-04/05). |
+| 06-08 | Wells Fargo · Fluidstack call | capital | mixed | Neocloud read-through (FluidStack CEO): financing cost is the swing variable — 'if you're financing it at 6%, ship it; at high-teens, I'm less excited' (Oracle/CoreWeave brought financing in-house). The Anthropic inflection in Q1 drove the sector's supply-demand imbalance; inference economics approaching dollar-per-hour human output sustain demand durability (Wells Fargo 'Fluidstack call', 2026-06-08). |
+| 06-09 | SemiAnalysis · 'DeepSeek V4 Day 0' | produto | bull | When SemiAnalysis's GB300 cluster went down at the DeepSeek V4 launch, CoreWeave contributed two spare GB300 NVL72 racks to the open-source effort — incidental confirmation that CRWV's GB300 NVL72 fleet is operational and in use (SemiAnalysis 'DeepSeek V4 Day 0→43', 2026-06-09). |
+| 06-11 | briefing 2026-06-11 | valuation | bear | Lockup overhang flagged: 9.2M shares registered for Jane Street's US$1B equity investment, lockup expires July 15 — potential supply overhang (briefing 2026-06-11). |
+| 06-13 | FinTwit · @The_AI_Investor (via briefing) | capital | bull | NVDA made an additional US$2B strategic investment (after the US$2B in Jan-2026 at US$87.20). Added to the Nasdaq-100 in June 2026 → passive flow (briefings 2026-06-13/17). |
+| 06-16 | JPM · 'AI Capex 2.0' | capital | mixed | JPM names CRWV as the proof-of-concept for public GPU financing ('with the exception of term loans and bonds for neocloud CoreWeave'). Two reads: (1) the rebounding neocloud H100 rental-price index is a 'very positive indicator' against draconian obsolescence assumptions — supportive of the ~6-year schedule; (2) but a structural duration mismatch (the market wants 10yr+ vs ~3-7yr GPU economic life) and the largest LevLoan tranche is only ~US$13bn (JPM 'AI Capex 2.0', 2026-06-16). |
+| 06-18 | Cantor · 'CoreWeave call' | valuation | bull | Cantor models CRWV ending FY25 at ~US$17B ARR → US$30B FY26, with ~75% of the 2027 >US$30B guide already contracted; sees a large RPO beat in 2Q (consensus US$104B; Cantor ~US$125-130B) plus a likely new big deal ('going to guess Anthropic'). 2027/28 up 15-20%; run-rate EBITDA could be ~US$25-26B in '27 (vs US$18B). GPU useful life: consensus moved from 3-4yr to 7-8yr, Cantor thinks ~10yr (Cantor 'CoreWeave call', 2026-06-18). |
+| 06-22 | Bernstein · 'Cloud in the Quarter' | valuation | bear | Bernstein reiterates Underperform, TP US$67 in its 1Q26 hyperscaler review — CRWV is 'much smaller than any of the other cloud providers', with no 'structural right-to-win' and a structural disadvantage vs hyperscalers over the long term. Framed as an 'interim capacity provider'; 1Q26 adjusted operating margin only ~0.5%. The US$8.5B DDTL 4.0 (first IG-rated, ~7%, backed solely by Meta's take-or-pay) is viewed as a bespoke 'proof of concept', not a repeatable baseline (Bernstein 'Cloud in the Quarter', 2026-06-22). |
+
+**Síntese do quarter:** o debate saiu da demanda (consenso: sold out, Cantor vê beat de RPO + Anthropic) e migrou para a *qualidade* dos lucros e a estrutura de capital — Bernstein ataca o AOI guide como inalcançável e a dívida fixa como desvantagem vs hyperscalers, enquanto a NVDA dobra a aposta (+$2B) e o ramp de Vera Rubin vira o novo risco de execução.
+
+## Management commentary — evolution (last 4 quarters)
+
+| Theme | Q2'25 (2025-08-12) | Q3'25 (2025-11-10) | Q4/FY'25 (2026-02-26) | Q1'26 (2026-05-07) |
+| --- | --- | --- | --- | --- |
+| Revenue growth | $1.2B, +207% YoY | $1.4B, +134% YoY | Q4 $1.6B; FY $5.1B, +168% | $2.1B, +112% YoY, +32% QoQ |
+| Backlog / RPO | $30.1B, +86% YoY | $55.6B, nearly doubled QoQ | $66.8B, +$11.2B QoQ | $99.4B, ~4x YoY; $40B+ new bookings |
+| Power / capacity | Aggressive build-out flagged | 590 MW active, 2.9 GW contracted | 850+ MW active, 3.1+ GW contracted | 1+ GW active, 3.5+ GW contracted |
+| Capex | — | $12B–$14B FY25 (cut) | $30B–$35B FY26 (>2x) | Raised to $31B–$35B on component pricing |
+| Margin / profitability | Adj. EBITDA 62% | EBITDA 61%; AOI $217M (~16%) | EBITDA 57%; near-term ramp pressure flagged | EBITDA 56%; AOI just $21M (~1%) |
+| Customer mix | Hyperscaler expansions | Top customer ~35% (from ~50%) | $1M+ customers up ~150% | 10 customers at $1B+; non-IG <30% |
+
+_Source: CRWV earnings calls (dates above); management commentary, paraphrased._
+
+## Sources
+- **Filings:** [10-K FY2025](../CRWV/CRWV_10-K_2026-03-02_0001769628-26-000104.html) · [10-Q Q1-26](../CRWV/CRWV_10-Q_2026-05-08_0001769628-26-000222.html) · [10-Q Q3-25](../CRWV/CRWV_10-Q_2025-11-13_0001769628-25-000062.html) · [10-Q Q2-25](../CRWV/CRWV_10-Q_2025-08-13_0001769628-25-000041.html) · [10-Q Q1-25](../CRWV/CRWV_10-Q_2025-05-15_0001769628-25-000014.html).
+- **Transcripts:** [Q1-26](../CRWV/transcripts/CRWV_Q1-2026-earnings_2026-05-07.md) · [Q4-25](../CRWV/transcripts/CRWV_Q4-2025-earnings_2026-02-26.md) · [Q3-25](../CRWV/transcripts/CRWV_Q3-2025-earnings_2025-11-10.md) · [Q2-25](../CRWV/transcripts/CRWV_Q2-2025-earnings_2025-08-12.md).
+- **Briefings:** 2026-05-08, 2026-05-12, 2026-05-16, 2026-06-03, 2026-06-04, 2026-06-05, 2026-06-11, 2026-06-13, 2026-06-17 (`E:\briefings\2026`).
+- **Research reports (relatórios bons):**
+  - [DB CoreWeave unit economics](../relat%C3%B3rios%20bons/DB_on_Unit_economics_CRWV.html)
+  - [UBS OpenAI deep-dive](../relat%C3%B3rios%20bons/oAI_UBS.html)
+  - [Morgan Stanley Asia — AI Factories TCO](../relat%C3%B3rios%20bons/MS_asia_on_AI_Factories.html)
+  - [Morgan Stanley — Microsoft / OpenAI](../relat%C3%B3rios%20bons/MSFT_OAI.html)
+  - [SemiAnalysis — Microsoft's AI Strategy Deconstructed](../relat%C3%B3rios%20bons/Microsofts_AI_Strategy_Deconstructed_-_from_Energy_to_Tokens.html)
+  - [Hedgeye — Global Technology Black Book (Dec 2025)](../relat%C3%B3rios%20bons/HE_Global_Technology_BB_DEC2025_1.html)
+  - [Bernstein — Cloud in the Quarter: hyperscalers 1Q26 (2026-06-22)](../relat%C3%B3rios%20bons/Bernstein_on_Clouds.html)
+  - [Bernstein — Scaling Intelligence: The Generative AI Handbook (2026-06-22)](../relat%C3%B3rios%20bons/Bernstein_on_Gen_AI_Software.html) — CRWV used as pure-play IaaS benchmark (~24% GAAP GM FY24 vs ORCL 30-40% / MSFT higher); scale + PaaS mix accrues to hyperscalers (framework; ties to UP/$67).
+  - [JPM — AI Capex 2.0: If You Build It, They Will Finance It (2026-06-16)](../relat%C3%B3rios%20bons/JPM_AI_Capex_2_0_If_You__2026-06-16_5315638.html)
+  - [SemiAnalysis — DeepSeek V4 1.6T Day 0→43 Performance (2026-06-09)](../relat%C3%B3rios%20bons/Dylan.html)
+  - [Cantor — CoreWeave call (2026-06-18)](../relat%C3%B3rios%20bons/2026_06_18_call_coreweave_cantor.html) — $17B→$30B ARR; RPO beat ~$125–130B + likely Anthropic deal; 7–8→~10yr GPU life; spot vs contract pricing.
+  - [Wells Fargo — Fluidstack / neocloud financing call (2026-06-08)](../relat%C3%B3rios%20bons/2026_06_08_fluidstack_welss_fargo_8_un_26.html) — financing cost (6% vs high-teens) the swing variable; Anthropic Q1 inflection; Bedrock ~95% Claude.
+  - [Jefferies — Brent Thill AI software/infra (2026-06-01)](../relat%C3%B3rios%20bons/2026_06_01_brent_jeff_ai_1_jun_26.html) — desk color: CoreWeave "crushing," sold out, token-supply shortage.
+- **Outlook:** attempted (`outlook.py --no-body --days 14`); returned no data this session — sell-side stance sourced from briefing roll-ups instead.

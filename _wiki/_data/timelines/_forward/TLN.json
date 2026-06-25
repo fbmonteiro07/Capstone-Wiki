@@ -1,0 +1,28 @@
+{"ticker":"TLN","forward":[
+{"metric":"FCF/share outlook","horizon":"2027→2028","trend":"up","trail":[
+{"date":"2026-02-26","val":"flywheel framing - FCF/sh growth via contract/acquire/recycle","src":"Q4 FY25 call"},
+{"date":"2026-05-05","val":"preliminary (incl. Cornerstone, marks to 3/31): ~$34/sh FCF 2027, ~$36 2028 base, ~$41 2028 w/ 70% of FCF to buybacks - a 30% lift vs January (~11% FCF yield)","src":"Q1 FY26 call"}
+],"note":"~$5/MWh further spark-spread appreciation since 3/31 not in the numbers; multiple un-modeled upside levers."},
+{"metric":"Cornerstone close / accretion","horizon":"summer 2026→2027","trend":"up","trail":[
+{"date":"2026-02-26","val":"Cornerstone signed (3 plants OH/IN)","src":"Q4 FY25 call"},
+{"date":"2026-05-05","val":"Cornerstone ~$500M run-rate EBITDA, >$4/sh incremental FCF; close 'as soon as this summer' pending FERC 203 (HSR cleared March, Indiana order pending)","src":"Q1 FY26 call"}
+],"note":"Close triggers the 2026 guidance reset; pre-funded with $4bn notes at ~6.25% ahead of regulatory close."},
+{"metric":"2026 guidance","horizon":"FY26","trend":"flat","trail":[
+{"date":"2026-02-26","val":"2026 adj EBITDA $1.75-2.05bn, adj FCF $0.98-1.18bn","src":"Q4 FY25 call"},
+{"date":"2026-05-05","val":"2026 guidance reaffirmed (adj EBITDA $1.75-2.05bn, adj FCF $0.98-1.18bn) - explicitly excludes pending Cornerstone","src":"Q1 FY26 call"}
+],"note":"Base guidance held; upside sits in Cornerstone + spark spreads not yet in the numbers."},
+{"metric":"Contracted gross margin / next PPA","horizon":"~2028","trend":"up","trail":[
+{"date":"2025-11-05","val":"'things take time'; redoubled, no rush on new PPAs","src":"Q3 FY25 call"},
+{"date":"2026-05-05","val":"35% of gross margin contracted long-term; each incremental 1 GW PPA adds ~15pts, next deal could reach ~50%; delivery wouldn't start before ~2028","src":"Q1 FY26 call"}
+],"note":"AWS ~1.9 GW Susquehanna PPA is the anchor; the swing factor is the next 1 GW+ signing toward ~50% contracted."},
+{"metric":"PJM RVP / co-location regulatory","horizon":"fall 2026","trend":"contested","trail":[
+{"date":"2026-02-26","val":"RBP/RVP proposed; 15-yr award unlocks new-build financing","src":"Q4 FY25 call"},
+{"date":"2026-05-05","val":"submitted >2 GW to PJM cluster; RVP timing pulled to this fall; pay-as-bid + 15-yr awards the key unlock; new-build doesn't clear merchant ('gap is pretty large')","src":"Q1 FY26 call"},
+{"date":"2026-06-16","val":"JPM cites FERC's 2024 rejection of Talen/AWS Susquehanna BTM co-location -> FOTM pivot; power the binding constraint","src":"JPM AI Capex 2.0"}
+],"note":"RVP/co-location is the swing factor for new-build financing and the FOTM contracting path."},
+{"metric":"Load growth (PPL/AEP zones)","horizon":"5-yr","trend":"up","trail":[
+{"date":"2025-11-05","val":"+3.4% weather-adj PJM deliveries YoY","src":"Q3 FY25 call"},
+{"date":"2026-02-26","val":"PPL zone peak load projected +70% over five years, AEP +30%","src":"Q4 FY25 call"},
+{"date":"2026-05-05","val":"+3% weather-adj YoY; 'value of steel in the ground'","src":"Q1 FY26 call"}
+],"note":"PPL-zone leverage (Susquehanna) is the demand backdrop for the contracting/flywheel thesis."}
+]}

@@ -1,0 +1,163 @@
+<!-- Per-company wiki page. Financials/consensus block auto-injected by build_wiki_html.py from _data/estimates.json — do NOT hand-write it. -->
+
+# QCOM — QUALCOMM Incorporated
+
+_Wiki · generated 2026-06-19 · sources: `E:\Wiki Felipe\QCOM` (10-K FY25, 10-Q Q2 FY26, transcripts) · `_briefings` roll-up. Master index: [../INDEX.md](../INDEX.md)._
+
+## Snapshot
+Qualcomm is the leading merchant supplier of premium mobile SoCs and cellular modem/RF, plus the dominant 3G/4G/5G patent licensor. Two reporting engines: **QCT** (chips — Handsets, Automotive, IoT) and **QTL** (licensing). FY25 revenue $44.3B, +14% YoY (10-K, 2025-11-05). QCT $38.4B (Handsets $27.8B / Auto $4.0B / IoT $6.6B); QTL ~flat YoY but ~70%+ EBT margin and the bulk of pre-tax profit. The structural debate: Handsets (≈72% of QCT) is a mature, China-heavy, Apple-eroding base, so the equity story rests on **diversification** (auto Snapdragon Digital Chassis, IoT/edge-AI, Snapdragon X PCs) and a nascent **data-center CPU / AI-inference** push offsetting Apple's modem in-sourcing.
+
+## At a glance — product · buyer · supplier
+| | |
+|---|---|
+| **Sells (top 3)** | 1) Handset Snapdragon SoCs + modem/RF ($27.8B) · 2) QTL cellular-IP licensing (bulk of pre-tax profit) · 3) Automotive Snapdragon Digital Chassis |
+| **Main buyer(s)** | Smartphone OEMs — Samsung (>70% Snapdragon), Xiaomi/China OEMs, Apple (declining); Apple, Samsung & Xiaomi each ≥10% of FY25 revenue |
+| **Key suppliers** | TSMC / Samsung foundry (fabless); ASE / Amkor assembly & test |
+
+## Position in the value chain
+QCOM is fabless: it designs Snapdragon SoCs, modem/RF and auto/IoT silicon (built at TSMC/Samsung foundries) and sells to smartphone, auto and PC OEMs, while QTL monetizes its cellular IP across the industry regardless of who makes the chip. Key tension: **Apple is in-sourcing its baseband modem** ("we expect that Apple will increasingly use its own modem products… which will have a significant negative impact on our QCT revenues" — 10-K FY25), pushing QCOM to diversify non-handset revenue (auto exiting FY26 at a >$6B run-rate; data-center shipments to a hyperscaler starting Dec-2026). On the DC side, QCOM is now positioned as an **ARM-based merchant data-center vendor**: it launched the **AI200/AI250 inference-optimized accelerator cards and rack solutions on 2026-10-27** (PCIe for scale-up; AI200 commercial 2026, AI250 in 2027) (TD Cowen, 2025-10-27), and is one of two named CPU-side partners (with Fujitsu) on NVIDIA's **NVLink Fusion**, which extends NVLink to third-party CPUs/accelerators (MS Scale-up primer). First DC design win surfaced: **HUMAIN targeting 200MW from 2026 using QCOM AI200/AI250 rack solutions** (JPM, 2025-11/Oct-25).
+
+<svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif" font-size="11">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#555"/>
+    </marker>
+  </defs>
+  <!-- Suppliers -->
+  <rect x="10" y="70" width="150" height="80" rx="6" fill="#eef3fb" stroke="#3b6db5"/>
+  <text x="85" y="92" text-anchor="middle" font-weight="bold">Suppliers</text>
+  <text x="85" y="110" text-anchor="middle">TSMC / Samsung</text>
+  <text x="85" y="125" text-anchor="middle">foundry (fabless)</text>
+  <text x="85" y="140" text-anchor="middle">ASE/Amkor assy</text>
+  <!-- Qualcomm -->
+  <rect x="240" y="40" width="220" height="140" rx="6" fill="#fff3e0" stroke="#d98324"/>
+  <text x="350" y="62" text-anchor="middle" font-weight="bold">QUALCOMM (QCOM)</text>
+  <text x="350" y="82" text-anchor="middle">QCT: Snapdragon SoC +</text>
+  <text x="350" y="97" text-anchor="middle">modem/RF</text>
+  <text x="350" y="115" text-anchor="middle">Auto (Digital Chassis)</text>
+  <text x="350" y="130" text-anchor="middle">IoT / edge-AI / PC X2</text>
+  <text x="350" y="150" text-anchor="middle" font-style="italic">QTL: cellular IP licensing</text>
+  <text x="350" y="168" text-anchor="middle">Data-center CPU (2027+)</text>
+  <!-- Customers -->
+  <rect x="540" y="40" width="170" height="140" rx="6" fill="#eafaf0" stroke="#2e8b57"/>
+  <text x="625" y="62" text-anchor="middle" font-weight="bold">Customers</text>
+  <text x="625" y="82" text-anchor="middle">Samsung (&gt;70% SD)</text>
+  <text x="625" y="98" text-anchor="middle">Xiaomi, China OEMs</text>
+  <text x="625" y="116" text-anchor="middle">Apple (declining —</text>
+  <text x="625" y="130" text-anchor="middle">modem in-sourcing)</text>
+  <text x="625" y="150" text-anchor="middle">Auto OEMs (VW/Audi)</text>
+  <text x="625" y="166" text-anchor="middle">PC OEMs (Snapdragon)</text>
+  <!-- arrows -->
+  <line x1="160" y1="110" x2="238" y2="110" stroke="#555" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="460" y1="110" x2="538" y2="110" stroke="#555" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="200" y="103" text-anchor="middle" font-size="10">wafers</text>
+  <text x="500" y="103" text-anchor="middle" font-size="10">chips + IP</text>
+  <text x="350" y="205" text-anchor="middle" font-size="10" fill="#b00">Headwind: Apple modem in-sourcing · Offset: auto + IoT/edge-AI + data-center diversification</text>
+</svg>
+
+## Current state (latest quarter)
+**2026 Investor Day — June 24, 2026 (New York) — the datacenter pivot quantified.** QCOM raised **FY29E non-handset revenue to $40B** (from $22B prior) — DC $15B+ / Auto $10B / IoT $14B+ — anchored by a new **$15B+ DC revenue target** with **$5B guided for FY27** (vs ~$300M F26), backed by **two global hyperscaler custom-silicon deals (each >$1B)**. Proof points: **MSFT deploying QCOM HBC (High Bandwidth Compute) XPU solutions inside Azure** (Satya Nadella confirmed live on stage); **META signed an MOU for the Dragonfly C1000 CPU** to power its next-gen server fleet (production 2H2028); AI-accelerator/connectivity ramp from 2H FY27. Non-handset reaches **~50% of revenue FY27 / ~65%+ FY29** (from ~30%); **FY29E non-GAAP EPS target >$18** (vs consensus $14-15); longer-term DC ambition ~$50B at 5%+ share within 5-7 years in a $1T+ 2029 DC TAM. Auto design-win pipeline raised **$45B→$65B**. QCOM also acquired **Modular (~$4B)** for its open software stack (Mojo language / MAX inference engine) to compete with CUDA. Stock +~10% on the event. (Sources: JPM / Joseph Cardoso; MS / Joseph Moore; Citi / Atif Malik; Barclays / Tom O'Malley; BofA / Vivek Arya, 2026-06-25; @PatrickMoorhead live tweets, 2026-06-24.)
+
+**Q2 FY26 (reported 2026-04-29, quarter ended 2026-03-29)** — Revenue $10.6B, **-3% YoY**; non-GAAP EPS $2.65 (high end of guide). QCT $9.1B (10-Q QCT total $9.08B; **Handsets $6.02B, -13% YoY**; Auto $1.33B, +38%; IoT $1.73B, +9%). QCT EBT margin compressed to **27%** (from 30%). QTL $1.4B at 72% EBT margin (+5% YoY on better mix). GAAP net income $7.4B was flattered by a **$5.7B income-tax benefit** releasing the DTA valuation allowance that had been charged in Q4 FY25 — not operating strength (10-Q, 2026-04-29).
+- **Guidance Q3 FY26:** revenue $9.2–$10.0B, non-GAAP EPS $2.10–$2.30; QCT $7.9–$8.5B. CFO: China handset revenue "will reach a bottom in the third quarter" (Q2 FY26 call).
+- **Demand read-through (light):** amid the broad CPU/compute shortage, Conor's Asia checks see **no signs of Qualcomm cutting orders** — "any compute is good" — with Qualcomm also marketing its own ARM-based servers (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23).
+- **Diversification proof points:** Automotive crossed >$5B annualized for the first time, exiting FY26 at a >$6B run-rate; data-center initial shipments to a leading hyperscaler expected **December**, framed margin-accretive (Q2 FY26 call). VW Group (Audi/Porsche) LOI signed (Q1 FY26 call). Snapdragon X2 → 150 PC designs targeted for 2026.
+
+## Debate / thesis
+- **Bull:** Diversification is real and accelerating — Auto +38% YoY, FY29 Auto+IoT target $22B; data-center CPU/inference optionality (Alphawave Semi + Ventana acquisitions, first hyperscaler shipments Dec-26) opens a new TAM; QTL remains a high-margin cash engine; capital return ~$3.7B/quarter. Server-CPU thesis circulated buy-side (CPU:GPU ratio toward 1:1 in agentic AI; lead times stretching) (@fundaai, briefing 2026-05-15). **JPM (Samik, OW, 2025-12-15)** frames the bull case as a re-rating from a mid-teens to a **low-20x multiple** driven by the revenue-mix shift away from smartphones, with the DC opportunity (starting FY27) reaching a multi-billion-dollar level by ~FY28 — putting QCOM "into the elite club of data center silicon providers"; auto ADAS/AD is ~1/3 of the $45B design-win pipeline. Server-CPU TAM ~$27B CY25 → ~$60B CY30E with ARM taking 20%+ server share by CY30E (BofA, 2026-02-23). At JPM's TMC conference QCOM struck a "very bullish tone" on the data-center compute TAM, outlining **four sockets it is pursuing**: (1) **custom ASIC** (the announced hyperscaler win, ramping end-2026 into 2027 — explicitly framed "like MediaTek on Google TPU"), (2) **CPUs** (using ARM IP, claiming it can exceed ARM's own vertically-integrated CPU performance), (3) **accelerators**, and (4) **connectivity chips from Alpha Wave**; the custom ASIC ramps first with CPU/accelerator layering in over time, the wins span **both US and Chinese hyperscalers** (ByteDance speculated in press), a single customer is expected to adopt multiple sockets over time (an amplifier effect), and QCOM quantified this as **multi-billion dollars in 2027** (JPM "Conf feedback," 2026-05-22). Citi reads the first custom-silicon win as **likely an LPU inference chip, "most likely with someone like Google,"** consistent with Marvell also having an LPU program — i.e. hyperscalers engaging ASIC providers beyond Broadcom/MediaTek (Citi "MSFT C1Q26 recap," 2026-04-30). Channel color corroborates a real **automotive design moat**: a German auto Tier-1 expert described QCOM as **having "a monopoly… in certain product lines,"** so OEMs are "forced to work with a company like Qualcomm," and named QCOM (with Infineon) as one of the only chipset suppliers compatible with **ASIL-D zonal controllers** — NXP/STM "don't stand a chance at the moment to work on these product lines." Qualcomm runs a **standardized-part, higher-margin model** (vs NXP/TI customizing to the OEM), and sits at the top of the price stack — the expert pegged a **15–20% price delta vs NXP / Chinese suppliers** (Expert call, 2026-06-08).
+- **Bear:** Handsets still ~70% of QCT and shrinking — Apple modem in-sourcing is an explicit, management-acknowledged "significant negative" (10-K FY25). **JPM sizes the Apple in-sourcing drag at a $6-7B revenue headwind over the next few years**, "likely to overwhelm most of the growth in other parts of the business," so share-price outcomes hinge on DC roadmap updates (JPM, 2025-12-15); JPM also flags QTL litigation risk and the challenge of managing the cost base to a lower revenue run-rate while ramping DC investment. **UBS (Arcuri, Neutral) is the skeptic:** smartphones stay **>50% of OP even in CY27/28**; QCOM "can be a player in data center" but it is "at best several years away from moving the needle," and the adjacencies "are still not needle moving and Street estimates already seem to assume this outcome," so UBS sees no path to a sustained estimate-revision cycle (UBS, prices 12/19/25). UBS sizes the internal-competition risk: **Apple modem ~$5B, QTL license cessation ~$1.5B, Samsung ~$1B**. China handset units soft on the DRAM/memory shortage (Q1/Q2 FY26 calls). The rally was called the "problem child" of the chip complex — Tae Kim newsletter flagged +80% off lows as overdone given DC ambition; **QCOM -11% on 2026-05-13** (briefing 2026-05-13). AMD overtook QCOM in semi revenue in 1QC26 with the gap "widening from here" (@SKundojjala, briefing 2026-05-06). Citi's read on the QCOM print is a clean statement of the bull/bear split: **estimates are coming down** (70% of sales still smartphone-exposed; QCOM missed the Sept quarter on smartphone weakness), yet the **stock re-rated up on multiple expansion** (off ~12x) purely on the custom-silicon teaser — with **short interest at a high** and China Android guided to bottom in the June quarter; the data-center detail is gated until QCOM's **June 24 investor day** (Citi "MSFT C1Q26 recap," 2026-04-30).
+- **Where the Street stands:** Bifurcated, no longer a blank — **JPM OW** (Samik Chatterjee, QCOM ~$178 12/2025) on the diversification re-rate thesis, vs **UBS Neutral, PT $185** (raised from prior $175), ~6% implied upside, "hard to get excited" on the transition overhang (Arcuri, 12/19/25). The disagreement is precisely on whether DC/diversification can outrun the Apple drag and force estimate upgrades (JPM yes / UBS no). Briefing color stays mixed-to-cautious: JPM ran a QCOM bogey survey into the print (briefing 2026-05-12); semis broadly flagged extended (R&Co: "63% above 200d, largest since Dot-Com," briefing 2026-05-12). Longer-term modem-displacement read-through repeatedly cited vs Intel 14A smartphone wins (briefing 2026-05-14).
+- **Where the Street stands — post-Investor Day (2026-06-25):** the DC pivot is now more credible, but the FY29 ramp stays a "show-me" story for most.
+  - **MS (Joseph Moore):** **upgraded UW→EW; PT $146→$231.** "We have been wrong to be skeptical"; "$5bn of guidance for AI in FY27 from a proven management team clearly pushes them into the AI beneficiaries category," $15B FY29 "aspirational" — but remains mindful of smartphone headwinds (MS / Joseph Moore, 2026-06-25).
+  - **Citi (Atif Malik):** Neutral; PT **$160→$198**. "Lifts L/T Model and Target EPS >$18 by F29"; 20x F28 EPS (above 3yr avg) for DC traction; maintains Neutral on handset softness from memory costs (Citi / Atif Malik, 2026-06-25).
+  - **BofA (Vivek Arya):** Underperform (maintained); PO **$195→$220**. "Investor Day impresses, but AI execution still unproven"; FY29E non-handset $40B; SOTP 16x blended CY28E PE; China/Apple-QTL/DC-execution risks remain (BofA / Vivek Arya, 2026-06-25).
+  - **JPM (Joseph Cardoso):** Neutral; PT $265 (unch.). QCOM provided evidence it can be "a genuine data center winner" ($5B FY27→$15B+ FY29, HBC, hyperscaler engagements, Modular), share ambitions to 5%+ (~$50B in 5-7yr) — tempered by "candid acknowledgement of near-term" execution challenges (JPM / Joseph Cardoso, 2026-06-25).
+  - **Barclays (Tom O'Malley):** Underweight (maintained); PT $150. "All Eyes on DC"; MSFT HBC + META C1000 + two unnamed hyperscalers confirmed; "two named customers seem like enough for the stock to work" but remains a "show-me story in a highly competitive market" (Barclays / Tom O'Malley, 2026-06-25).
+
+## Catalysts / what to watch
+- **DC ramp execution (post-Investor Day, 2026-06-24)** — the $5B FY27 → $15B+ FY29 DC trajectory is the new central watch item: AI accelerator/connectivity ramp begins **2H FY27**; **META Dragonfly C1000 CPU production 2H2028**; MSFT Azure HBC deployment; the two unnamed hyperscaler custom-silicon wins (each >$1B). Progress toward non-handset ~50% FY27 / ~65%+ FY29 and FY29E EPS >$18 (broker post-event notes, 2026-06-25).
+- **Modular (~$4B) acquisition close** — open software stack (Mojo/MAX) to compete with CUDA; integration alongside Ventana (RISC-V) (JPM / Joseph Cardoso, 2026-06-25).
+- **Q3 FY26 print** (late Jul-2026) — does China handset trough confirm; QCT margin trajectory.
+- **Data-center first shipments** to lead hyperscaler — December 2026; any DC revenue disclosure (FY27 ramp guided on Q1 FY26 call). AI200 commercial in 2026, AI250 in 2027 (TD Cowen, 2025-10-27); HUMAIN 200MW ramp from 2026 (JPM).
+- **DC roadmap updates** — JPM argues share-price outcomes are "dictated by updates on the datacenter silicon roadmap and revenue opportunities" (JPM, 2025-12-15).
+- **Apple modem share** — QCOM held "20% share assumption for fall Apple phones" (Q2 FY26 call); watch the glidepath as Apple's in-house modem scales toward the $6-7B (JPM) / ~$5B+$1.5B QTL (UBS) at-risk base.
+- **Auto run-rate** — exit FY26 >$6B; FY29 Auto+IoT $22B target progress; ADAS/AD ~1/3 of the $45B design-win pipeline (JPM).
+- **Memory/DRAM availability** — gating China handset units near-term.
+- **6G** — coalition launched; silicon 2028, launches 2029 (long-dated).
+
+## Risks
+- **Apple modem in-sourcing** — explicit material headwind to QCT (10-K FY25); JPM $6-7B revenue over next few years; UBS ~$5B modem + ~$1.5B QTL license cessation.
+- **Customer concentration** — Apple, Samsung and Xiaomi each ≥10% of consolidated revenue in FY25 (10-K).
+- **China exposure** — large share of handset demand; Huawei export license revoked, no further product revenue expected; share shifts to Huawei-supplied OEMs a risk (10-K).
+- **QTL durability** — licensing renewals / per-unit royalty caps / regulatory scrutiny / customer litigation; QTL carries the profit mix (JPM, UBS).
+- **Customer in-house silicon** — competition "from products internally developed by our customers, including some of our largest customers" (10-K).
+- **Premium-tier cyclicality + memory pricing** — DRAM shortage constraining handset units (Q1/Q2 FY26 calls).
+- **Data-center execution** — unproven entry into an entirely new market vs entrenched x86/ARM incumbents; ecosystem/software support still ~80-90% x86 in CY26E (BofA); revenue not until FY27.
+- **PC push** — faces AMD/INTC competition and lacks an edge-AI "killer app"; tariff-related demand destruction a risk to adjacent markets (UBS).
+
+<!-- Consensus estimates (BBG) block auto-injected here by the HTML builder -->
+
+## In the inbox (Outlook — recent sell-side flow)
+- **JPM (Samik Chatterjee) — Hardware & Networking, 2025-12-15** _(OW)_: long-term re-rating from diversification (PC/IoT/auto/DC); Apple modem in-sourcing a $6-7B headwind; share-price outcomes "dictated by" DC roadmap updates; multi-billion DC revenue by ~FY28.
+- **UBS (Tim Arcuri) — 2026 US Semis overview** _(Neutral, PT $185, prices 12/19/25)_: smartphones >50% of OP through CY27/28; DC "several years away from moving the needle," offers an inferencing chip but adjacencies "not needle moving"; no sustained estimate-revision cycle.
+- **UBS (Tim Arcuri) — 'Qualcomm: Animal Spirits Evident, But Still A Company In Transition'** _(2026-04-30)_: data-center entry could stir animal spirits, but 'hard to get excited' — handset/Apple-modem transition overhang.
+- **Samik (JPM) QCOM/MediaTek call** (repo): handset/China + diversification (auto/PC/edge-AI) debate.
+
+## Intra-quarter — calls, comentários & relatórios (desde o último print)
+_Q2 FY26 print + intra-quarter · Apr 29 → Jun 23, 2026 · sell-side / expert calls / relatórios entre os earnings. Timeline visual: [timeline.html](timeline.html)._
+
+**Sinal vs gestão** — o que a gestão disse no último call × o que o fluxo intra-quarter está dizendo (✓ confirma · ⚠ nuança · ✗ contesta):
+
+| Tema | Gestão disse (Q2 FY26) | Fluxo intra-quarter | Sinal |
+|---|---|---|---|
+| **Data center / diversificação** | Embarques iniciais a hyperscaler em dezembro; margem-acretivo | JPM/Samik: tom "muito bullish", 4 sockets (ASIC custom "tipo MediaTek no TPU", CPU ARM, aceleradores, conectividade Alphawave), multi-bilhões em '27, US+China · Citi/Malik: 1º win provável LPU "tipo Google" | **✓ confirma** (otializa o roadmap) |
+| **Handsets / China** | Handset ~$6,0B; China faz fundo no Q3 | Citi/Malik: 70% das vendas ainda smartphone, estimativas caindo, errou o trimestre de set. · Redburn/O'Mara: sem sinais de QCOM cortar pedidos na Ásia | **⚠ nuança** (fundo ainda "show-me") |
+| **Automotive** | Auto $1,3B (+38%); >$5B anualizado, sai do FY26 >$6B | Expert call Tier-1 alemão: QCOM "monopólio em certas linhas", OEMs "forçados a trabalhar com a Qualcomm"; único (c/ Infineon) em ASIL-D, prêmio de 15-20% vs NXP/chineses | **✓ confirma** (moat de preço) |
+| **Re-rating do equity** | Diversificação (DC/auto/IoT) justifica múltiplo maior | Citi/Malik: re-rate (de ~12x) puramente no "teaser" de custom-silicon · Tae Kim: "problem child", +80% das mínimas exagerado, -11% em 13-mai · @SKundojjala: AMD ultrapassa QCOM em receita semi | **✗ contesta** (múltiplo à frente da prova) |
+
+**Log completo** (todo o fluxo intra-quarter, por data):
+
+| Data | Fonte | Tema | Viés | O que disse |
+|---|---|---|---|---|
+| 04-30 | Citi · Malik | competicao | mixed | Citi reads the first custom-silicon win as likely an LPU inference chip "very likely with someone like Google," consistent with Marvell also having an LPU program — hyperscalers engaging ASIC providers beyond Broadcom/MediaTek ("MSFT C1Q26 recap"). |
+| 04-30 | Citi · Malik | valuation | bear | Citi: estimates are coming down (70% of sales still smartphone; QCOM missed the September quarter on smartphone weakness), but the stock re-rated up on multiple expansion (from ~12x) purely on the custom-silicon teaser — with short interest rising and data-center detail held back until the Jun-24 investor day ("MSFT C1Q26 recap"). |
+| 05-06 | @SKundojjala | competicao | bear | AMD overtook QCOM in semi revenue in 1QC26 with the gap "widening from here" (briefing). |
+| 05-13 | Tae Kim newsletter | valuation | bear | The rally was called the "problem child" of the chip complex — +80% off the lows seen as overdone given the DC ambition; QCOM -11% on May-13 (briefing). |
+| 05-15 | @fundaai | demanda | bull | A server-CPU thesis circulated on the buy-side (CPU:GPU ratio heading toward 1:1 in agentic AI; lead times stretching) as optionality for QCOM (briefing). |
+| 05-22 | JPM · Samik Chatterjee | produto | bull | At JPM's TMC conference, QCOM struck a "very bullish tone" on the DC compute TAM, outlining four sockets: (1) custom ASIC (the announced hyperscaler win, ramping late-2026 into 2027, "like MediaTek on Google TPU"), (2) CPUs (ARM IP), (3) accelerators, (4) Alphawave connectivity; wins at US and China hyperscalers, multi-billions in 2027 ("Conf feedback"). |
+| 06-08 | Expert call · auto Tier-1 | competicao | bull | German Tier-1 expert described QCOM as having "a monopoly in certain product lines," with OEMs "forced to work with Qualcomm"; named QCOM (with Infineon) as one of the only ones compatible with ASIL-D zonal controllers (NXP/STM "have no chance"). Standardized higher-margin model, 15-20% price premium vs NXP/Chinese players. |
+| 06-23 | Redburn · Conor O'Mara | demanda | bull | Amid the broad CPU/compute shortage, checks in Asia see no signs of QCOM cutting orders — "any compute is good" — with QCOM also marketing its own ARM servers ("Conor O'Mara Asia Trip Takeaways"). |
+
+**Síntese do quarter:** o debate migrou de "a diversificação supera o dreno da Apple?" para "o re-rating do múltiplo já precificou um DC ainda não-comprovado?" — o fluxo dá crédito ao roadmap de datacenter e ao moat em auto, mas trava na valuation, com a prova adiada para o investor day de 24-jun.
+
+## Management commentary — evolution (last 4 quarters)
+
+| Theme | Q3 FY25 (2025-07-30) | Q4 FY25 (2025-11-05) | Q1 FY26 (2026-02-04) | Q2 FY26 (2026-04-29) |
+|---|---|---|---|---|
+| Handsets / China demand | QCT chips $9.0B; handsets growing | Q4 QCT $9.8B (+9% QoQ), premium Android | Record handset $7.8B; China cutting inventory | Handset ~$6.0B; China to bottom in Q3 |
+| Automotive | Auto +21% YoY; FY29 Auto+IoT $22B | Record auto qtr >$1B; FY25 auto +36% | Auto $1.1B (+15%); VW Group LOI signed | Auto $1.3B (+38%); >$5B annualized, exit >$6B |
+| IoT / edge-AI / PC | IoT +24% YoY | FY25 IoT +22%; Wi-Fi 7, FWA, glasses | IoT $1.7B (+9%); Snapdragon X2, 150 PCs 2026 | IoT $1.7B (+9%); auto+IoT +20% YoY |
+| Data center / diversification | Non-Apple QCT >15% growth framing | DC ambition central long-term story | Alphawave + Ventana closed; DC rev in 2027 | Hyperscaler shipments in December; margin accretive |
+| Apple modem in-sourcing | — | Reiterates non-Apple QCT growth offset | — | No change to 20% share on fall Apple phones |
+| Memory / DRAM constraint | — | — | DRAM shortage constrains handset units | DRAM still pressuring handset units |
+
+_Source: QCOM earnings calls (dates above); management commentary, paraphrased._
+
+## Changelog
+- 2026-06-25 — Folded in the 2026 Investor Day (held 2026-06-24) and post-event sell-side reactions from research-wiki source. Added the FY29E $40B non-handset target ($15B DC / $10B Auto / $14B IoT), $5B FY27 DC guide, MSFT HBC / META C1000 proof points, Modular (~$4B) acquisition, and post-event PT moves to Debate/thesis and Catalysts. **Superseded ratings/PTs (moved here):** the prior "Where the Street stands" snapshot of JPM OW ~$178 (12/2025) and UBS Neutral $185 (12/19/25) is now stale — current post-event coverage: MS upgraded UW→EW $146→$231; Citi Neutral $160→$198; BofA U/P $195→$220; JPM Neutral $265; Barclays UW $150. (Note destination still labels JPM "OW" from Dec-2025; the source's post-event JPM note shows Cardoso at Neutral $265 — both retained with their dates rather than overwriting, per fact-vs-stale convention.)
+
+## Sources
+- **Filings:** [10-K FY25](../QCOM/QCOM_10-K_2025-11-05_0000804328-25-000085.html) · [10-Q Q2 FY26](../QCOM/QCOM_10-Q_2026-04-29_0000804328-26-000061.html).
+- **Transcripts:** [Q2 FY26](../QCOM/transcripts/QCOM_Q2-FY26-earnings_2026-04-29.md) · [Q1 FY26](../QCOM/transcripts/QCOM_Q1-FY26-earnings_2026-02-04.md) · [Q4 FY25](../QCOM/transcripts/QCOM_Q4-FY25-earnings_2025-11-05.md) · [Q3 FY25](../QCOM/transcripts/QCOM_Q3-FY25-earnings_2025-07-30.md).
+- **Research reports (relatórios bons):**
+  - [UBS 2026 US Semis overview](../relat%C3%B3rios%20bons/UBS_2026_overview.html)
+  - [JPM Hardware & Networking (2025-12-15)](../relat%C3%B3rios%20bons/JPM_Hardware___Networkin_2025-12-15_5155719.html)
+  - [MS Scale-up primer](../relat%C3%B3rios%20bons/Scale_up_primer_MS.html)
+  - [BofA US Semiconductors — CPU / ARM server](../relat%C3%B3rios%20bons/CPU.html)
+  - [TD Cowen — scale-up / AI200-AI250](../relat%C3%B3rios%20bons/TDCOWEN.html)
+  - [Expert call — auto analog; QCOM ASIL-D moat & pricing premium (2026-06-08)](../relat%C3%B3rios%20bons/IFXDE_-_ExpertCall_document_dated_09-06-2026.html)
+  - [JPM "Conf feedback" — QCOM four DC sockets (custom ASIC/CPU/accelerator/Alpha Wave connectivity), multi-billion 2027, US+China hyperscalers (2026-05-22)](../relat%C3%B3rios%20bons/2026_05_22_jpm_conf_feedback_22_may_26.html)
+  - [Citi "MSFT C1Q26 recap" — QCOM custom-silicon win likely LPU/Google; estimates down but multiple re-rate; June 24 investor day (Malik, 2026-04-30)](../relat%C3%B3rios%20bons/2026_04_30_msft_wfc_c1q26_recap_30_apr_26.html)
+  - [Redburn (Conor O'Mara) — Asia Trip Takeaways (2026-06-23)](../relat%C3%B3rios%20bons/77420a6c-61c1-4757-8047-3a24cced258c_Key_Takeaways_from_Conor_OMaras_recent_Management_Meetings_across_ASIA_1.html) — no signs of Qualcomm cutting orders amid CPU/compute shortage (light read-through).
+- **Briefings:** roll-up across `E:\briefings\2026` — QCOM "problem child"/Tae Kim substack and -11% day (2026-05-12, 2026-05-13); JPM bogey survey (2026-05-12); AMD overtakes QCOM in semi rev (2026-05-06); server-CPU thesis (2026-05-15); Intel 14A modem-displacement read-through (2026-05-14); Trump China CEO list incl. QCOM (2026-05-12).
+- **Outlook:** prior session returned no output (Outlook COM unavailable); Street ratings/PTs above now sourced from sell-side research notes (JPM, UBS) per attribution.

@@ -1,0 +1,36 @@
+{"ticker":"AAPL","forward":[
+{"metric":"Revenue (Capstone model)","horizon":"2026E→2028E","trend":"up","trail":[
+{"date":"2024","val":"$391bn (actual)","src":"Capstone official model (2026-06-16)"},
+{"date":"2025E","val":"$416bn","src":"Capstone official model (2026-06-16)"},
+{"date":"2026E","val":"$480bn","src":"Capstone official model (2026-06-16)"},
+{"date":"2027E","val":"$539bn","src":"Capstone official model (2026-06-16)"},
+{"date":"2028E","val":"$585bn","src":"Capstone official model (2026-06-16)"}],
+"note":"House model: iPhone ASP mix ($874→$1,021) + Services compounding to ~$164bn."},
+{"metric":"Adj EPS (Capstone model)","horizon":"2026E→2028E","trend":"up","trail":[
+{"date":"2024","val":"$6.82 (actual)","src":"Capstone official model (2026-06-16)"},
+{"date":"2025E","val":"$8.35 (+22%)","src":"Capstone official model (2026-06-16)"},
+{"date":"2026E","val":"$10.12","src":"Capstone official model (2026-06-16)"},
+{"date":"2027E","val":"$11.11","src":"Capstone official model (2026-06-16)"},
+{"date":"2028E","val":"$12.55","src":"Capstone official model (2026-06-16)"}],
+"note":"House view; sell-side PTs largely set on C27 EPS multiples."},
+{"metric":"Foldable iPhone / FY27 ASP catalyst","horizon":"FY27","trend":"up","trail":[
+{"date":"2026-01-20","val":"Citi models industry foldable units 20m/29m/45m (2025/26E/27E); Apple foldable ASP just under $1,000 in 2026/27","src":"Citi China Tech"},
+{"date":"2026-06-15","val":"Citi/Counterpoint: ~6M foldable units 2026 (book-style); base iPhone 18 shifts to ~March 2027","src":"Citi/Counterpoint WWDC"},
+{"date":"2026-06-16","val":"MS (Woodring): FY27 \"iPhone X-like cycle saved by pricing\" — ~20m foldable units, $2,400 start, ~10pts ASP growth from foldable mix; OW PT $360, FY27E EPS $10.30","src":"MS equity call"}],
+"note":"The next ASP catalyst; FY27 the key cycle year on the foldable + base-iPhone calendar shift."},
+{"metric":"Memory cost / DRAM pricing","horizon":"Q3 2026 → 2027","trend":"up","trail":[
+{"date":"2026-04-30","val":"Cook: \"significantly higher\" memory cost in June qtr, increasing impact beyond June; \"range of options\" (pricing)","src":"Q2 FY26 call"},
+{"date":"2026-06-15","val":"Citi/Counterpoint: LPDDR5 +10–15% in Q3, +15–20% in Q2 (Q2 = calendar)","src":"Citi/Counterpoint WWDC"},
+{"date":"2026-06-23","val":"StoneX/TrendForce (Avril): Apple agreed ~+20% mobile DRAM increase in Q3; in first LTA wave w/ CSPs/NVIDIA (3-yr 2026-28); short of LPDDR5 output (fighting NVIDIA)","src":"StoneX/TrendForce \"Memory expert call\""}],
+"note":"Largest near-term GM/pricing risk; relative mitigant = lowest memory BOM + supply priority."},
+{"metric":"TSMC wafer-price pass-through","horizon":"FY26→FY27","trend":"up","trail":[
+{"date":"2026-06-05","val":"Fubon: TSMC raised Apple wafer price only 1–2% FY26 (vs ~10% AI/HPC); FY27 N2/N3 hike starts ~10% including Apple (first time)","src":"Fubon \"Semi 2027 outlook\""},
+{"date":"2026-06-23","val":"Redburn (Conor): TSMC Apple wafer hike low-single-digit 2026, then +≥10% in 2027 (first time Apple included)","src":"Redburn \"Conor O'Mara Asia Trip\""}],
+"note":"Forward COGS headwind into the A-series/foldable cycle; two independent reads corroborate."},
+{"metric":"Services revenue (Capstone model)","horizon":"2026E→2028E","trend":"up","trail":[
+{"date":"2025E","val":"$109bn","src":"Capstone official model (2026-06-16)"},
+{"date":"2026E","val":"$126bn","src":"Capstone official model (2026-06-16)"},
+{"date":"2027E","val":"$145bn","src":"Capstone official model (2026-06-16)"},
+{"date":"2028E","val":"$164bn","src":"Capstone official model (2026-06-16)"}],
+"note":"High-margin annuity on 2.5bn+ devices, plus the Apple Ads expansion lever."}
+]}

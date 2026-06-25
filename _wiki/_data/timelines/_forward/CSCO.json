@@ -1,0 +1,33 @@
+{"ticker":"CSCO","forward":[
+{"metric":"Hyperscaler AI orders","horizon":"FY26→FY27","trend":"up","trail":[
+{"date":"Q1'26","val":"$1.3B; guide ~$3B AI revenue FY26","src":"Q1 FY26 call"},
+{"date":"Q2'26","val":"$2.1B; raised FY26 orders to >$5B","src":"Q2 FY26 call"},
+{"date":"2026-05-13","val":"Q3 $1.9B; YTD $5.3B; raised FY26 to ~$9B (4.5x FY25)","src":"Q3 FY26 call"},
+{"date":"2026-05-15","val":"P200 design wins NOT in the $9B; now selling G300 (102.4T) with no win/order yet","src":"BofA IR call (Sammy)"}
+],"note":"Core forward driver; FY26 order target raised 3x through the year, but mgmt itself calls AI orders nonlinear/lumpy."},
+{"metric":"AI revenue","horizon":"FY27","trend":"up","trail":[
+{"date":"Q1'26","val":"~$3B AI revenue guide FY26","src":"Q1 FY26 call"},
+{"date":"2026-05-13","val":"~$4B AI revenue FY26; expect >=$6B hyperscaler AI revenue FY27","src":"Q3 FY26 call (Patterson)"},
+{"date":"2026-05-14","val":"GS F2027 framework >$68B total revenue","src":"GS (Mike Ng) briefing"}
+],"note":"FY27 >=$6B AI-rev frame to be confirmed at the Q4 print (first formal FY27 guide)."},
+{"metric":"Campus refresh wave","horizon":"CY26→CY27","trend":"up","trail":[
+{"date":"Q4'25","val":"new Cat9k smart switches; multiyear cycle starts","src":"Q4 FY25 call"},
+{"date":"2026-05-13","val":"record campus orders +25%, wireless +40% (WiFi7 half mix)","src":"Q3 FY26 call"},
+{"date":"2026-05-15","val":"Cat 4k EOL concludes end-CY26, Cat 6k end-CY27 (6k far larger base = 2027 bigger wave); ~$40B aged gear in scope","src":"BofA IR call (Sammy)"},
+{"date":"2026-06-04","val":"~12-18 month cycle, CSCO gaining share at Juniper's expense; revenue outgrowing units on price","src":"650 Group"}
+],"note":"EOL is the structural forcing function; 2027 is the bigger leg given the larger 6k install base."},
+{"metric":"Gross margin trajectory","horizon":"FY26→structural","trend":"down","trail":[
+{"date":"Q2'26","val":"67.5% NG GM; memory cost + price increases","src":"Q2 FY26 call"},
+{"date":"2026-05-13","val":"66.0% NG GM (-260bps YoY); mgmt says 'stabilized'; Q4 guide midpoint also ~66%","src":"Q3 FY26 call"},
+{"date":"2026-05-15","val":"GM flat Q3->Q4 despite AI mix; op margin the more controllable lever as hyperscale scales","src":"BofA IR call (Sammy)"}
+],"note":"AI optics ~40% GM vs ~68% aggregate (JPM) is the structural mix drag as AI hardware scales vs flat software."},
+{"metric":"Acacia / coherent optics","horizon":"FY26","trend":"up","trail":[
+{"date":"Q2'26","val":"record qtr; triple-digit bookings growth","src":"Q2 FY26 call"},
+{"date":"2026-05-13","val":">$1B orders in Q3; on track >200% YoY FY26","src":"Q3 FY26 call"},
+{"date":"2026-06-04","val":"650 Group 'very bullish' on 1.6T PAM4 receiver - first inside-DC organic optic, millions of units, multibillion-$ opportunity","src":"650 Group / JPM 2026-06-08"}
+],"note":"Optics is the bull's second leg; Acacia capped near-term by assembly/CPO ramp."},
+{"metric":"Scale-across (DCI) TAM","horizon":"FY27","trend":"up","trail":[
+{"date":"2025-12-05","val":"$10B+ incremental DCI TAM; $300-500M content per DCI connection; Arista+Cisco best-positioned for switch","src":"JPM"},
+{"date":"2026-05-13","val":"first two Silicon One P200 scale-across design wins (plus a third early Q4); 'at scale' only in FY27","src":"Q3 FY26 call (Robbins)"}
+],"note":"P200 scale-across maps to JPM's DCI TAM but is not yet in the $9B AI-orders number."}
+]}

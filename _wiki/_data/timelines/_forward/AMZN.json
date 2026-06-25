@@ -1,0 +1,22 @@
+{"ticker":"AMZN","forward":[
+{"metric":"AWS growth / run-rate","horizon":"2026→FY27","trend":"up","trail":[
+{"date":"2026-02-05","val":"Q4'25 AWS +24%, $142B run-rate (fastest in 13q)","src":"Q4'25 call"},
+{"date":"2026-04-29","val":"Q1'26 AWS +28%, $150B run-rate (fastest in 15q), +$2B q/q; backlog $364B","src":"Q1 FY26 call"},
+{"date":"2026-04-30","val":"Bernstein reads rev guide as implying continued accel into 'low-to-mid 30s'","src":"Bernstein (Shmulik)"}],"note":"Backlog $364B excludes the >$100B Anthropic deal; non-frontier-lab breadth a tell."},
+{"metric":"Custom-silicon (Trainium) revenue commitments","horizon":"2027→2028","trend":"up","trail":[
+{"date":"2025-12-04","val":"Trainium3 GA, Trainium4 announced; Trn4 backend to Alchip; first non-Nvidia switched scale-up rack","src":"SemiAnalysis Trainium3 Deep Dive"},
+{"date":"2026-04-29","val":"Custom silicon >$20B run-rate +40% q/q; Trainium revenue commitments >$225B; Trn3 nearly fully subscribed","src":"Q1 FY26 call"},
+{"date":"2026-06-16","val":"OpenAI ~$100B+/~2GW Trainium deal (Feb-26) starting 2027; Trn3 ~30% better TCO/FP8 PFLOP vs GB300 NVL72","src":"JPM 'AI Capex 2.0'"},
+{"date":"2026-06-22","val":"Bernstein: Trn3 shipping early-26 nearly fully subscribed; Trn4 (~18mo out) already largely reserved","src":"Bernstein 'Cloud in the Quarter'"}],"note":"Mgmt argues program saves 'tens of billions' in annual capex; possible external Trainium-rack sales."},
+{"metric":"FY26→FY28 capex","horizon":"FY26→FY28","trend":"up","trail":[
+{"date":"2026-02-05","val":"FY26 capex guide ~$200B, predominantly AWS","src":"Q4'25 call"},
+{"date":"2026-04-30","val":"Expert: ~+20%/unit cost lands 2027 (~$235B vs $200B same units)","src":"expert recap"},
+{"date":"2026-06-16","val":"JPM: ~$200bn FY26 → ~$300bn FY27E → ~$350bn FY28E; ~$97bn cumulative funding gap FY26-28","src":"JPM 'AI Capex 2.0'"}],"note":"TTM FCF collapsed to ~$1bn; ~$85bn new funding (bonds + term loan) arranged in <6 months."},
+{"metric":"Advertising growth","horizon":"FY26 (Q2→Q4)","trend":"up","trail":[
+{"date":"2026-06-17","val":"UBS Legg: Amazon ad FY ~27%; video +83% y/y, DSP +77% y/y both accelerating","src":"UBS (Ben Legg)"},
+{"date":"2026-06-22","val":"UBS Linzer: Q2 +4%, Q3 ~7%, Q4 +7.5-8%, FY ~6-7%; DSP taking budget from Trade Desk","src":"UBS (Scott Linzer)"}],"note":"Tariff-refund reallocation a potential 2H incremental lever."},
+{"metric":"Prime subs / price hike","horizon":"2026→2027","trend":"up","trail":[
+{"date":"2026-06-23","val":"370M+ global subs ending 2026 (+23M net); $20 US hike ≈ ~$3B annualized, now slipping to 2027","src":"JPM/Anmuth Prime deep-dive"}],"note":"Unbundled Prime worth ~$1,440/yr vs $139; structural edge in agentic commerce."},
+{"metric":"Logistics square-footage build-out","horizon":"2027","trend":"up","trail":[
+{"date":"2026-04-09","val":"MWPVL: 2027 square footage ~35% higher than 2026; targeting fully Amazon-controlled network by ~2030","src":"Jefferies/MWPVL"}],"note":"Automation ~14-15yr payback; 'no boogie man' margin offset to AWS investment cycle on retail side."}
+]}

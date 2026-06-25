@@ -1,0 +1,30 @@
+{"ticker":"WMB","forward":[
+{"metric":"EBITDA/EPS CAGR 2025-2030","horizon":"2025→2030","trend":"up","trail":[
+{"date":"2026-02-10","val":"Analyst Day: 10%+ EBITDA & EPS CAGR; contracted base CAGR ~8%","src":"Analyst Day"},
+{"date":"2026-05-05","val":"Contracted base CAGR moved ~8%→~9% with Q1 projects; called 'still pretty conservative'; reaffirmed 10%+","src":"Q1 FY26 call (Porter)"},
+{"date":"2026-05-06","val":"JSD models ~13% EBITDA CAGR; argues EPS CAGR 'north of 20%' on financial leverage","src":"JSD equity call"}],
+"note":"8%→9% contracted floor is mgmt breadcrumbing; Street/desk see beat by 200-300bps."},
+{"metric":"Power Innovation BTM capacity / EBITDA","horizon":"structural / 2030","trend":"up","trail":[
+{"date":"2025-11-03","val":"Committed PI capital ~$5.1bn; ~6 GW backlog","src":"Q3 FY25 call"},
+{"date":"2026-01-21","val":"$5.1bn sanctioned ≈ ~1.5 GW installed; ~3.5 GW incremental BTM could add ~$2.5bn annual EBITDA over time; 5 GW Siemens reserve","src":"Barclays"},
+{"date":"2026-05-05","val":"NEO (5th PI), 682MW, ~$2.3bn, 12.5-yr, ISD H2-2028, 5x build multiple","src":"Q1 FY26 call"},
+{"date":"2026-06-05","val":"~15% upside if 2030 BTM targets hit; WMB discounting ~5 of its 8 GW BTM target; 9.5x power SOTP","src":"Wells Fargo midstream"}],
+"note":"BTM 8 GW 2030 target; equity discounting only ~5 GW per WFC."},
+{"metric":"FY26 growth capex","horizon":"FY26","trend":"up","trail":[
+{"date":"2025-11-03","val":"Growth capex $3.95-4.25bn","src":"Q3 FY25 call"},
+{"date":"2026-05-05","val":"Growth capex midpoint raised to $7.3bn for FY26","src":"Q1 FY26 call"}],
+"note":"Reflects accelerating PI + transmission sanctions."},
+{"metric":"Transco / Power Express expansion","horizon":"2030","trend":"up","trail":[
+{"date":"2025-05-06","val":"Power Express FID, 950 MMcf/d to Virginia","src":"Q1'25 call"},
+{"date":"2025-11-03","val":"Power Express trimmed to 689 MMcf/d","src":"Q3 FY25 call"},
+{"date":"2026-05-05","val":"Power Express upsized to 750 MMcf/d, online 2030; Silver Spur (Idaho) 275 MMcf/d ISD early-2030","src":"Q1 FY26 call"}],
+"note":"Long-dated transmission EBITDA (run-rate only 2031-32) — long-cycle compounder."},
+{"metric":"PI financing / JV","horizon":"2026","trend":"contested","trail":[
+{"date":"2026-05-05","val":"PI partnership/JV or 'creative financing' promised within 'a couple of months'; leverage 4.1x","src":"Q1 FY26 call"},
+{"date":"2026-06-05","val":"Investor feedback on PI-JV 'lukewarm' — questions on why and low upfront multiple; sell-off risk if done in isolation","src":"Wells Fargo midstream"}],
+"note":"Financing structure is the near-term swing; bears flag PI earnings-quality / terminal value."},
+{"metric":"LNG (Woodside Line 200)","horizon":"2029","trend":"up","trail":[
+{"date":"2025-11-03","val":"Woodside Line 200 (3.1 Bcf/d, 20-yr) + 10% LNG stake, $1.9bn","src":"Q3 FY25 call"},
+{"date":"2026-05-05","val":"Woodside on track; first cargo ~2029; 1.5 MTPA offtake option","src":"Q1 FY26 call"}],
+"note":""}
+]}

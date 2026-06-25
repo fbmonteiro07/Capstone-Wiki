@@ -1,0 +1,24 @@
+{"ticker":"ADI","forward":[
+{"metric":"FQ3 FY26 revenue/EPS","horizon":"FQ3 FY26 (~Aug)","trend":"up","trail":[
+{"date":"2026-05-20","val":"FQ3 guide ~$3.9bn / EPS ~$3.30 vs Street ~$3.62bn / $3.01 (~8% rev beat, ~9th consecutive above-seasonal q); GM guided -50bps as channel repricing rolls off","src":"GS/JPM/Citi recaps"}],
+"note":"Above-seasonal streak + the -50bps GM step-down are the watch-items."},
+{"metric":"$20bn revenue target","horizon":"2030","trend":"up","trail":[
+{"date":"2026-05-20","val":"Capacity supports the $20bn revenue target by 2030","src":"FQ2 FY26 call / 10-Q"}],
+"note":"Long-range model anchored on industrial recovery + datacenter layer."},
+{"metric":"CY27 EPS","horizon":"CY27","trend":"up","trail":[
+{"date":"2025-12-22","val":"UBS above Street: CY27 rev $15.2bn / EPS $13.11 (Street $14.33bn / $11.62, +12.9%); FY27 non-GAAP EPS $12.61 vs $11.26","src":"UBS 2026 overview"},
+{"date":"2026-05-29","val":"CY27 EPS for ADI/TXN/MCHP already revised up ~23% over past two earnings seasons; positive pricing actions may 'fire' in 2H26","src":"JPM Semis spring update"}],
+"note":"Out-year estimates being revised up across the cycle recovery."},
+{"metric":"Empower / vertical-power ramp","horizon":"2H26->2027","trend":"up","trail":[
+{"date":"2026-05-20","val":"Empower Semiconductor $1.5bn all-cash; close ~2H CY26; minimal FY26, 'significant revenue' 2027","src":"FQ2 FY26 call"},
+{"date":"2026-06-15","val":"Empower = key IVR pure-play (2028+ co-packaged power); ADI guiding initial IVR design wins in 2H26","src":"Citi 800V power"}],
+"note":"Datacenter-power content into AI accelerators (TPU/GPU); TXN-long/ADI-short pair-trade swing."},
+{"metric":"AI-DC analog TAM","horizon":"2030","trend":"contested","trail":[
+{"date":"2025-12-22","val":"UBS cautious: analog AIDC attach only ~0.4% of 1GW DC spend; ADI DC/AI exposure ~7% of revenue — narrative real but small","src":"UBS 2026 overview"},
+{"date":"2026-06-09","val":"BofA pegs AI-DC analog TAM ~$8bn (2025) -> ~$27bn by 2030 (~28% CAGR), ADI a beneficiary","src":"briefing 2026-06-09"}],
+"note":"Sources diverge sharply on size of the datacenter-power opportunity."},
+{"metric":"Auto / industrial cycle inflection","horizon":"FY26","trend":"up","trail":[
+{"date":"2026-02-18","val":"Auto 'well below seasonal' (China pull-in unwind); industrial recovering","src":"FQ1 FY26 call"},
+{"date":"2026-05-20","val":"Auto path to double-digit y/y FY26 (BMS/ADAS/GMSL); BMS back to y/y growth first time in 2 years; industrial +56% y/y","src":"FQ2 FY26 call"}],
+"note":"Broadening cyclical recovery is the base-business swing factor (vs the smaller DC layer)."}
+]}

@@ -1,0 +1,22 @@
+{"ticker":"SNPS","forward":[
+{"metric":"Ansys revenue synergies","horizon":"FY27","trend":"up","trail":[
+{"date":"2026-05-13","val":"$400M first-phase revenue synergies beginning FY27; ~50% of committed cost synergies by end-FY26","src":"Citi (Malik)"},
+{"date":"2026-05-28","val":"reiterated; September 2026 Investor Day the venue to quantify silicon-to-systems roadmap","src":"briefings (Citi, GS, MS)"}
+],"note":"Core post-merger synergy unlock; Investor Day the catalyst to quantify."},
+{"metric":"Design IP growth FY27","horizon":"FY27","trend":"contested","trail":[
+{"date":"2026-05-20","val":"FY26 a 'transition year' with muted Design IP growth (IP ~-12% y/y earlier reads)","src":"MS (Simpson)"},
+{"date":"Q2 FY26 (2026-05-27)","val":"Design IP $454.2M, -6% y/y but +12% q/q (trough signal)","src":"SNPS Q2 FY26 10-Q / briefing"},
+{"date":"2026-05-28","val":"Citi sees IP +16% y/y in FY27","src":"Citi (Malik) PT $610"}
+],"note":"The segment turn: bears flag decline + foundry/China weakness, Citi models +16% FY27 recovery."},
+{"metric":"FY26 revenue / op margin guide","horizon":"FY26","trend":"up","trail":[
+{"date":"2025-12-22","val":"FY26 guides muted IP growth (10-K)","src":"SNPS 10-K FY25"},
+{"date":"2026-05-28","val":"FY26 raised: revenue ~$9.67B (from $9.61B), non-GAAP EPS mid $14.76, op margin +50bp to 41.0%","src":"briefing"}
+],"note":"Guide raised post-Ansys; still framed conservative by JPM."},
+{"metric":"FY27 EPS / consensus","horizon":"FY27","trend":"up","trail":[
+{"date":"2026-05-28","val":"consensus FY27 EPS ~$18.05 (MS raised from $17.80)","src":"briefing (MS)"}
+],"note":"Out-year EPS the multiple-narrowing-vs-CDNS thesis hangs on."},
+{"metric":"Deleveraging","horizon":"forward","trend":"up","trail":[
+{"date":"2025-12-22","val":"~$13.5B total debt at FY25 year-end after Ansys ($10B notes + $4.3B term loan)","src":"SNPS 10-K FY25"},
+{"date":"2026-05-27","val":"paid off remaining $3.5B term loan in Q1 FY26 (terminated); toward ~$10B notes-only","src":"SNPS Q1 FY26 10-Q"}
+],"note":"Fast deleveraging is the balance-sheet de-risking watch item."}
+]}

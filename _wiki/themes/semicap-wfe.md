@@ -1,0 +1,273 @@
+<!-- Cross-company THEME page — Semicap / WFE. Synthesis from disk only. -->
+
+# Theme — Semicap / WFE (Wafer-Fab Equipment)
+
+_Wiki · generated 2026-06-19 · cross-company theme · sources: equity calls (`../../../equity_calls_transcripts/Semis`), briefing roll-ups (`../_briefings/by-ticker`), earnings transcripts, research library (`E:\research_library`). Company pages: [../00_INDEX.md](../00_INDEX.md) · themes index: [00_THEMES.md](00_THEMES.md)._
+
+## What it is / why it matters
+WFE is the toolset that builds the fabs — litho, deposition, etch, metrology/inspection, advanced packaging and test. We are in the early-to-mid innings of a multi-year up-cycle whose ceiling keeps getting raised: the bull-case WFE TAM is now ~$200B for CY27 and ~$250B for CY28 (Arcuri/UBS, 2026-05-15), i.e. roughly +$50B added each of the next two years off a base the Street still models at high-$160s/$170s. The driver is memory capex (DRAM, HBM) plus a foundry/logic node-transition wave (3nm/2nm and the first sub-2nm) and an Intel/Terafab greenfield leg layered on top. For a buy-sider the read is simple: order visibility is unprecedented (Applied cited eight quarters of customer visibility — Sur/JPM, 2026-05-15), positioning is *less* crowded than the tape implies, and the equipment names have barely flexed pricing/margin upside.
+
+## State of play (latest)
+- **WFE TAM marching up.** UBS holds $200B CY27 / $250B CY28, going higher again in CY29; Arcuri stresses the buy side is "not there" — he says these numbers in every meeting and people "look at me like I have two heads" (Arcuri/UBS, 2026-05-15). More conservative house views have ratcheted up too: JPM/Tokyo desk now hears CY26 +25–30% and CY27 +20–25%, up from prior 21%/18% (Mio Shikona, JPM memory call, 2026-05-28).
+- **The large caps raised guides this print.** AMAT took systems growth from ~20% to 30%+ for the year; all three US names (AMAT/LRCX/KLAC) saw a step-up in orders over the prior 90 days. KLA is the only one to commit publicly that CY27 WFE > CY26; AMAT now flags CY28 as another growth year — a notable stake in the ground from a conservative company (Sur/JPM, 2026-05-15).
+- **Arcuri thinks AMAT is sandbagging H2.** AMAT's "up 30%" implies shipments barely grow in Oct/Jan quarters after +$900M sequential steps; Arcuri sees "zero evidence" of a decel in the slots and models shipments +40%, reading the guide as conservatism (Arcuri/UBS, 2026-05-15).
+- **Segment leadership rotates by year.** CY26 favors the deposition/etch-intensive names (LRCX, AMAT) as DRAM/HBM bulk capacity ramps; CY27 shifts toward the new-node leaders (KLAC, ASML) as sub-2nm programs fire — TSMC A14, Intel 14A, plus 2nm expansion at Samsung/Rapidus and initial Terafab orders (Sur/JPM, 2026-05-15).
+- **Advanced packaging re-accelerating.** After a soft 2025 (tough HBM-WFE compare from Q4-2024), LRCX and AMAT both guide advanced packaging +50%+ this year, KLA ~60%; AMAT advanced packaging becomes a ~$2B business, nearing 10% of systems (Sur/JPM, 2026-05-15). AMAT's EnexX (panel-level plating, ex-ASMPT) and earlier Tango (panel PVD) buys are CoPoS plays for 510–600mm panels (Arcuri/UBS, 2026-05-15).
+- **Litho is the choke point.** ASML EUV capacity of ~90 tools by end-2027 looks insufficient against Samsung/Hynix/Micron each adding ~100k wfr/mo from 2028 (needing 20–25 tools each, Micron 10–15) plus TSMC already near 40 tools — EUV is "really, really the bottleneck" (Jay/JPM memory call, 2026-05-28). UBS counters that ASML will "march to that drum" and add capacity rather than cap the cycle (Arcuri/UBS, 2026-05-15).
+- **ASML can break its own 90-EUV ceiling — and the Street is way behind.** JPM (Deshpande) reports ASML's message has shifted from a "≥80 Low-NA EUV" floor to *capacity*: it can lift EUV output **without new clean rooms** (cycle time 20→14 weeks by 2H27, fewer R&D cabins, repurposing High-NA capacity for Low-NA, Covid-style "fast ship") — JPM thinks **110+ Low-NA tools** are feasible. JPM models **90/105 EUV units in '27/'28** and a big DUV-Immersion call (**200 units '27** vs cons 137, as China reverts to '25 levels + non-China ramps). Result: FY27/28 revenue €55.4B/€63.8B (+16.7%/+21.8% vs cons), EPS +31.7%/+35.4% vs cons; PT €1,900/$2,200 (29.4x '28 EPS) (JPM "ASML", 2026-06-03). Redburn independently puts ASML FY30 litho sales at $54B (24.9% litho intensity, **stable 91% share**), raises FY27-30 EPS 9-12% to 14% above cons, PT €1,900 — ASML its top semicap pick (Redburn, 2026-06-17).
+- **Redburn lifts the whole WFE curve: $272B by 2030.** Redburn's Silicon Valley bus tour ("demand parabolic") drives global semi revenue to **$1.67T by 2030 (16% CAGR)** and WFE to **$272B by 2030 (18% CAGR, ~16% intensity)** — depo $59B, etch&clean $73B, litho $67B, process control $32B. Raised estimates across the group (LRCX/VAT/ASMI Buys alongside AMAT/KLAC Neutral); LRCX preferred depo/etch pick on logic-foundry share wins, PT $420; AMAT PT $560 (15% discount on China risk); KLAC PT $260 (Redburn, 2026-06-17).
+- **TSMC capex/ASP — the foundry swing factor inflecting up.** Fubon raises TSMC FY27 revenue to a Street-high NT$7,057bn (+37% y/y, vs cons +26%) on a **15-20% supply-demand gap** and wafer pricing turning aggressive: FY27 increases "start at 10%" including Apple, blended ASP +≥10% on N2/N3; super-hot-run orders carry 15-20% premium; N2/N3 utilization 110-120% in FY27; GM to 68-70%. TSMC capex (UBS) ramps $40.7B (2025) → $56B (2026) → $75B (2027) → $85B (2028) (UBS, 2026-05-21; Fubon, 2026-06-05). UBS adds the server-CPU leg: agentic AI drives server-CPU units 23M (2025) → 63-70M (2030, 30% CAGR), N2/A14 node TAM scaling to 300-350kwpm vs 120-130kwpm at prior good nodes — a direct WFE pull (UBS "CPU TAM", 2026-05-21).
+- **Intel WFE — a real greenfield leg (older note).** SemiAnalysis pegs Intel's full multi-phase leading-edge buildout at **up to $119B**, with the committed near-term plan alone calling for ~$33B of leading-edge tooling (credible case toward $50B) against a ~$5B/qtr base capex run-rate — a "$20-35B financing hole." If the agentic-CPU TAM is ~$200B, that maps to ~100k WSPM of incremental 18A/14A capacity (initial 14A target 100k WSPM scaling to 1M); the first capex guide-*up* of the whole saga. Bullish-on-the-margin for WFE if Intel funds it (SemiAnalysis "INTC SemiCap", 2024-12-09).
+- **UBS pushes the ceiling again: $250B CY28, into the $300s CY29 (Arcuri, 2026-06-15).** On a Jun-15 call Arcuri took 2028 WFE to **$250B** and said "it's not inconceivable you get into the threes [$300B+] for 2029" — at which point an A-rated semicap (e.g. AMAT) "would earn close to $50/sh." Litho is *not* the bottleneck until ~**110 EUV slots ≈ ~$225B WFE**; ASML "will march to that drum" and add capacity rather than cap the cycle. He ranks DRAM-dollar leverage **ASML ~30% → AMAT ~25% → (gap) → LRCX → KLAC** (LRCX has gained DRAM share but trails; KLAC "fundamentally not that exposed"). Memory overcapacity not seen until "the middle of 2028 at the earliest," so the first low-multiple year for the group would be ~2029 (UBS "Arcuri", 2026-06-15).
+- **MS WFE: $149B / $191B / +mid-teens 2026/27/28 (Moore-Shane, 2026-06-22).** MS revised WFE up in mid-May; DRAM-WFE ~60% growth in 2026 decelerating to mid-to-high-20s% in 2027; NAND-WFE "resurrection" a 2027 story (capital discipline still "remarkable"); Intel a 2027 WFE driver (~$25B to supply +20M CPUs). Reads the buy-side as ~$150B (2026) / $200B (2027) / $250B (2028) — i.e. converging on the bull case. Shane prefers **LAM + KLA over AMAT** (LAM = NAND + share-gain; KLA = the Intel play) (MS "On Memory and Semicap", 2026-06-22).
+- **JPM WFE: ~$140B (2026) → $171B (2027) → $200B (2030); KLA flags $215B by 2030.** JPM models WFE +20-25% in 2026, +20%+ in 2027 (chip-design software +10-15%); 2030 base $200B, with KLA itself signaling WFE could reach **$215B by 2030** and JPM's own global-semi forecast implying upside "well into the mid-$200Bs." Cloud DC capex +80% in 2026, +50% in 2027 (top-4 hyperscalers ~$575B in 2026, +$250B incremental); 2027 hyperscaler capex growth raised to +50% from +40% (JPM "Semis Spring Series", 2026-05-29).
+- **EUV is now a multi-buyer scramble — DRAM makers competing with foundries for litho (Conor + Avril, 2026-06-23).** Two 2026-06-23 sources independently flag EUV/advanced-litho as *the* 2027 constraint, and crucially that **memory makers now compete with TSMC and foundries for the same tools**. Conor's checks: **TSMC has already booked 40–45 EUV units for 2027** and finds it "difficult to get more" because "the memory guys also need it" — capping TSMC capex upside beyond ~$70–75B (vs bull talk of $80–85B) (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23). TrendForce frames the same dynamic from the DRAM side: 2026's binding limit is clean-room space, but **2027 adds EUV/high-end litho as a second constraint — DRAM makers "have to fight for EUV with TSMC and a lot of foundry companies"** even after placing orders (StoneX/TrendForce "Memory expert call — Avril", 2026-06-23). This is the same ~90-tool ASML ceiling the JPM/UBS desks debate, now corroborated by primary supply-chain checks on both the foundry and memory sides.
+- **Wafer shortage emerging — TSMC at its prior peak (Conor, 2026-06-23).** A new takeaway from the Asia trip: the industry is "probably going into a wafer shortage." **TSMC is back to ~8M wafers/month — its prior peak — with limited new capacity added**, and Samsung "acknowledged wafer-shortage risk" (Conor's group was the first to ask Samsung about it). For memory the implication is mix optimization: a wafer shortage + the TSV/backend penalty on HBM pushes makers to **favor conventional DRAM over HBM**, tightening HBM further (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23). TSMC's supply/demand gap is seen widening to **15–20% in 2027**; 2027 wafer pricing "starts at 10% including Apple" (vs 2026 blended ASP ex-2nm only +3–4%: AI/HPC +10%, consumer +5%, Apple LSD), pushing GM toward high-60s/70% (Redburn, 2026-06-23 — Sherman).
+- **Ferrotec semi-cap consumables +35%; Hamamatsu/M.A.Tech lab equipment +51% (Conor, 2026-06-23).** Two new off-coverage Asian semi-cap reads from the trip: **Ferrotec**'s semi-cap consumables business is growing **~35% vs an expected 25%** (its customers for the new double-capacity Malaysia plant are laminate makers and AMAT), with capex tapering and an activist (Hong Kong) involved; and lab-equipment house **M.A.Tech** — which counts "just about everybody" in its top-10 customers — is growing **+51%**, the lead that surfaced IR/CCD detector maker **Hamamatsu Photonics** as a probe/metrology supply-chain idea (Conor hasn't met them yet) (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23). Daifuku (Conor's lead indicator) shows orders confirming the WFE-to-2028 runway: **Taiwan/TSMC ~NT$103bn (+30% vs 73), Hynix ~NT$74bn (+40%), China ~NT$100bn (vs 90), Intel only ~NT$5bn** — Daifuku visibility now out to mid-2028 (Redburn, 2026-06-23).
+- **CY26 WFE consensus consolidating around ~$140B.** LRCX raised CY26 WFE to ~$140B (from $135B); KLA to >$140B; Citi/Citi-house and the AlphaSense primers all converge on ~$140B for CY26 (+~27% y/y off ~$110B CY25) (AlphaSense "DR LRCX primer", 2026-06-22; Citi "C1Q26 recap", 2026-04-30).
+- **Citi's relative-growth read (2026-04-30):** AMAT/LAM growing total sales "more in the 20s" in 2026 vs **KLA "high teens"** — KLA's lower growth an artifact of tougher 2025 advanced-packaging comps + a higher-DRAM 2026 WFE mix that "impacts them negatively versus peers." Citi in-house 2027 WFE ~$180B (vs Street ~$200B) (Citi "C1Q26 recap", 2026-04-30).
+- **Peer valuation snapshot (AlphaSense primers, late-May/Jun 2026):** Mizuho CY27E P/E — LRCX 36.6x, AMAT 26.8x, ASML 39.2x, KLAC 35.6x, TER 38.2x, TEL 29.3x; Mizuho frames cumulative CY24→27 revenue growth LRCX 128% > WFE 85% > AMAT 65%. Bernstein reported FY27E P/E — LRCX 34.8x, AMAT 26.6x, ASML 26.9x (post multiple-compression, now "aligned with AMAT"), KLAC 34.3x — Bernstein views KLAC as a "premium vehicle" on process-control growth + lower China replacement risk (AlphaSense "DR LRCX/ASML primers", 2026-06-22).
+
+## WFE — sizing & sequential growth (the numbers)
+
+The qualitative "$200B/$250B" bull case resolves to a concrete, sequential ramp. After a two-year digestion (2023–24), WFE re-accelerates hard from 2026 with **memory (DRAM/HBM/NAND) the dollar driver** and a foundry/logic node leg on top. The **Capstone model sits materially above the Street** in the out-years — house WFE **$260B by 2028E vs consensus ~$202B** (a ~$58B gap), and above UBS's $247.5B.
+
+<svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,Arial,sans-serif" style="max-width:100%;background:#0f1115;border:1px solid #232733;border-radius:8px">
+<text x="52" y="24" fill="#e7e7ea" font-size="15" font-weight="700">WFE TAM — sequential growth (Capstone vs Street)</text>
+<text x="746" y="24" fill="#9aa0ad" font-size="11" text-anchor="end">US$ bn</text>
+<line x1="52" y1="312.0" x2="746" y2="312.0" stroke="#232733"/>
+<text x="46" y="316.0" fill="#6b7280" font-size="10" text-anchor="end">0</text>
+<line x1="52" y1="258.8" x2="746" y2="258.8" stroke="#232733"/>
+<text x="46" y="262.8" fill="#6b7280" font-size="10" text-anchor="end">56</text>
+<line x1="52" y1="205.6" x2="746" y2="205.6" stroke="#232733"/>
+<text x="46" y="209.6" fill="#6b7280" font-size="10" text-anchor="end">112</text>
+<line x1="52" y1="152.4" x2="746" y2="152.4" stroke="#232733"/>
+<text x="46" y="156.4" fill="#6b7280" font-size="10" text-anchor="end">168</text>
+<line x1="52" y1="99.2" x2="746" y2="99.2" stroke="#232733"/>
+<text x="46" y="103.2" fill="#6b7280" font-size="10" text-anchor="end">224</text>
+<line x1="52" y1="46.0" x2="746" y2="46.0" stroke="#232733"/>
+<text x="46" y="50.0" fill="#6b7280" font-size="10" text-anchor="end">280</text>
+<text x="121.4" y="330" fill="#9aa0ad" font-size="11" text-anchor="middle">2024</text>
+<rect x="76.4" y="216.7" width="27.0" height="95.3" fill="#f59e0b" rx="1.5"/>
+<text x="89.9" y="213.7" fill="#cbd1da" font-size="9" text-anchor="middle">100</text>
+<rect x="106.4" y="215.6" width="27.0" height="96.4" fill="#38bdf8" rx="1.5"/>
+<text x="119.9" y="212.6" fill="#cbd1da" font-size="9" text-anchor="middle">102</text>
+<rect x="136.4" y="215.4" width="27.0" height="96.6" fill="#6b7280" rx="1.5"/>
+<text x="149.9" y="212.4" fill="#cbd1da" font-size="9" text-anchor="middle">102</text>
+<text x="260.2" y="330" fill="#9aa0ad" font-size="11" text-anchor="middle">2025</text>
+<rect x="215.2" y="207.9" width="27.0" height="104.1" fill="#f59e0b" rx="1.5"/>
+<text x="228.7" y="204.9" fill="#cbd1da" font-size="9" text-anchor="middle">110</text>
+<rect x="245.2" y="201.8" width="27.0" height="110.2" fill="#38bdf8" rx="1.5"/>
+<text x="258.7" y="198.8" fill="#cbd1da" font-size="9" text-anchor="middle">116</text>
+<rect x="275.2" y="201.5" width="27.0" height="110.5" fill="#6b7280" rx="1.5"/>
+<text x="288.7" y="198.5" fill="#cbd1da" font-size="9" text-anchor="middle">116</text>
+<text x="399.0" y="330" fill="#9aa0ad" font-size="11" text-anchor="middle">2026E</text>
+<rect x="354.0" y="161.5" width="27.0" height="150.5" fill="#f59e0b" rx="1.5"/>
+<text x="367.5" y="158.5" fill="#cbd1da" font-size="9" text-anchor="middle">158</text>
+<rect x="384.0" y="172.3" width="27.0" height="139.7" fill="#38bdf8" rx="1.5"/>
+<text x="397.5" y="169.3" fill="#cbd1da" font-size="9" text-anchor="middle">147</text>
+<rect x="414.0" y="171.2" width="27.0" height="140.8" fill="#6b7280" rx="1.5"/>
+<text x="427.5" y="168.2" fill="#cbd1da" font-size="9" text-anchor="middle">148</text>
+<text x="537.8" y="330" fill="#9aa0ad" font-size="11" text-anchor="middle">2027E</text>
+<rect x="492.8" y="107.8" width="27.0" height="204.2" fill="#f59e0b" rx="1.5"/>
+<text x="506.3" y="104.8" fill="#cbd1da" font-size="9" text-anchor="middle">215</text>
+<rect x="522.8" y="123.9" width="27.0" height="188.1" fill="#38bdf8" rx="1.5"/>
+<text x="536.3" y="120.9" fill="#cbd1da" font-size="9" text-anchor="middle">198</text>
+<rect x="552.8" y="140.6" width="27.0" height="171.4" fill="#6b7280" rx="1.5"/>
+<text x="566.3" y="137.6" fill="#cbd1da" font-size="9" text-anchor="middle">180</text>
+<text x="676.6" y="330" fill="#9aa0ad" font-size="11" text-anchor="middle">2028E</text>
+<rect x="631.6" y="65.0" width="27.0" height="247.0" fill="#f59e0b" rx="1.5"/>
+<text x="645.1" y="62.0" fill="#cbd1da" font-size="9" text-anchor="middle">260</text>
+<rect x="661.6" y="76.9" width="27.0" height="235.1" fill="#38bdf8" rx="1.5"/>
+<text x="675.1" y="73.9" fill="#cbd1da" font-size="9" text-anchor="middle">248</text>
+<rect x="691.6" y="120.0" width="27.0" height="192.0" fill="#6b7280" rx="1.5"/>
+<text x="705.1" y="117.0" fill="#cbd1da" font-size="9" text-anchor="middle">202</text>
+<rect x="52" y="341" width="11" height="11" fill="#f59e0b" rx="2"/>
+<text x="67" y="350" fill="#9aa0ad" font-size="11">Capstone</text>
+<rect x="156" y="341" width="11" height="11" fill="#38bdf8" rx="2"/>
+<text x="171" y="350" fill="#9aa0ad" font-size="11">UBS</text>
+<rect x="215" y="341" width="11" height="11" fill="#6b7280" rx="2"/>
+<text x="230" y="350" fill="#9aa0ad" font-size="11">Consensus</text>
+</svg>
+
+**WFE TAM (US$bn) — Capstone vs Street**
+
+| WFE estimate | 2024 | 2025 | 2026E | 2027E | 2028E |
+|---|---|---|---|---|---|
+| **Capstone (house)** | 100 | 110 | 158 | 215 | 260 |
+| UBS (09-Jun-26) | 102 | 116 | 147 | 198 | 248 |
+| Consensus (BBG-implied) | 102 | 116 | 148 | 180 | 202 |
+| _Capstone vs consensus_ | — | — | +10 | +34 | +58 |
+
+_House WFE is built bottom-up: Top-5 SPE systems revenue ÷ ~70% Top-5 share (Capstone model — ASML_Peers_SemiCap v16, 2026-06-15; UBS WFE, 2026-06-09; consensus from BBG BEst)._
+
+Underneath, **total semiconductor capex** troughs in 2024 and steps up every year to 2028E, with the memory line doing the heavy lifting (memory back to ~46% of capex by 2026E vs ~32% at the 2023 bottom):
+
+**Total semi capex (US$bn), bottom-up by spender**
+
+| | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026E | 2027E | 2028E |
+|---|---|---|---|---|---|---|---|---|---|
+| **Total capex** | 110 | 151 | 182 | 172 | 162 | 177 | 219 | 245 | 266 |
+| — Memory | 49 | 59 | 61 | 55 | 55 | 73 | 101 | 112 | 123 |
+| — Leading edge | 32 | 49 | 61 | 56 | 53 | 58 | 71 | 82 | 88 |
+| Memory % of total | 45% | 39% | 34% | 32% | 34% | 41% | 46% | 46% | 46% |
+
+_(Capstone model — ASML_Peers_SemiCap v16, 2026-06-15; consensus capex from BBG BEst.)_
+
+### …and where it lands by company
+
+The Top-5 equipment makers' **systems revenue roughly doubles 2024→2028E ($73B → $146B)** — LRCX grows fastest (depo/etch into the memory ramp + logic-foundry share gains), ASML stays the largest absolute dollar, and the whole basket re-rates as memory mix richens:
+
+<svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,Arial,sans-serif" style="max-width:100%;background:#0f1115;border:1px solid #232733;border-radius:8px">
+<text x="52" y="24" fill="#e7e7ea" font-size="15" font-weight="700">Top-5 toolmakers — Systems revenue by company</text>
+<text x="746" y="24" fill="#9aa0ad" font-size="11" text-anchor="end">US$ bn</text>
+<line x1="52" y1="312.0" x2="746" y2="312.0" stroke="#232733"/>
+<text x="46" y="316.0" fill="#6b7280" font-size="10" text-anchor="end">0</text>
+<line x1="52" y1="258.8" x2="746" y2="258.8" stroke="#232733"/>
+<text x="46" y="262.8" fill="#6b7280" font-size="10" text-anchor="end">32</text>
+<line x1="52" y1="205.6" x2="746" y2="205.6" stroke="#232733"/>
+<text x="46" y="209.6" fill="#6b7280" font-size="10" text-anchor="end">64</text>
+<line x1="52" y1="152.4" x2="746" y2="152.4" stroke="#232733"/>
+<text x="46" y="156.4" fill="#6b7280" font-size="10" text-anchor="end">96</text>
+<line x1="52" y1="99.2" x2="746" y2="99.2" stroke="#232733"/>
+<text x="46" y="103.2" fill="#6b7280" font-size="10" text-anchor="end">128</text>
+<line x1="52" y1="46.0" x2="746" y2="46.0" stroke="#232733"/>
+<text x="46" y="50.0" fill="#6b7280" font-size="10" text-anchor="end">160</text>
+<rect x="89.4" y="273.1" width="64.0" height="38.9" fill="#60a5fa"/>
+<text x="121.4" y="295.6" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">ASML</text>
+<rect x="89.4" y="237.7" width="64.0" height="35.4" fill="#f59e0b"/>
+<text x="121.4" y="258.4" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">AMAT</text>
+<rect x="89.4" y="221.7" width="64.0" height="16.0" fill="#34d399"/>
+<text x="121.4" y="232.7" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">LRCX</text>
+<rect x="89.4" y="209.3" width="64.0" height="12.5" fill="#f472b6"/>
+<rect x="89.4" y="190.0" width="64.0" height="19.3" fill="#a78bfa"/>
+<text x="121.4" y="202.7" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">TEL</text>
+<text x="121.4" y="186.0" fill="#e7e7ea" font-size="10" font-weight="700" text-anchor="middle">73</text>
+<text x="121.4" y="330" fill="#9aa0ad" font-size="11" text-anchor="middle">2024</text>
+<rect x="228.2" y="265.1" width="64.0" height="46.9" fill="#60a5fa"/>
+<text x="260.2" y="291.6" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">ASML</text>
+<rect x="228.2" y="230.4" width="64.0" height="34.7" fill="#f59e0b"/>
+<text x="260.2" y="250.8" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">AMAT</text>
+<rect x="228.2" y="208.1" width="64.0" height="22.3" fill="#34d399"/>
+<text x="260.2" y="222.2" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">LRCX</text>
+<rect x="228.2" y="191.8" width="64.0" height="16.3" fill="#f472b6"/>
+<text x="260.2" y="203.0" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">KLAC</text>
+<rect x="228.2" y="172.5" width="64.0" height="19.3" fill="#a78bfa"/>
+<text x="260.2" y="185.2" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">TEL</text>
+<text x="260.2" y="168.5" fill="#e7e7ea" font-size="10" font-weight="700" text-anchor="middle">84</text>
+<text x="260.2" y="330" fill="#9aa0ad" font-size="11" text-anchor="middle">2025</text>
+<rect x="367.0" y="255.6" width="64.0" height="56.4" fill="#60a5fa"/>
+<text x="399.0" y="286.8" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">ASML</text>
+<rect x="367.0" y="208.8" width="64.0" height="46.9" fill="#f59e0b"/>
+<text x="399.0" y="235.2" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">AMAT</text>
+<rect x="367.0" y="178.3" width="64.0" height="30.4" fill="#34d399"/>
+<text x="399.0" y="196.5" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">LRCX</text>
+<rect x="367.0" y="158.6" width="64.0" height="19.8" fill="#f472b6"/>
+<text x="399.0" y="171.5" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">KLAC</text>
+<rect x="367.0" y="134.1" width="64.0" height="24.4" fill="#a78bfa"/>
+<text x="399.0" y="149.3" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">TEL</text>
+<text x="399.0" y="130.1" fill="#e7e7ea" font-size="10" font-weight="700" text-anchor="middle">107</text>
+<text x="399.0" y="330" fill="#9aa0ad" font-size="11" text-anchor="middle">2026E</text>
+<rect x="505.8" y="243.3" width="64.0" height="68.7" fill="#60a5fa"/>
+<text x="537.8" y="280.7" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">ASML</text>
+<rect x="505.8" y="185.7" width="64.0" height="57.7" fill="#f59e0b"/>
+<text x="537.8" y="217.5" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">AMAT</text>
+<rect x="505.8" y="148.4" width="64.0" height="37.2" fill="#34d399"/>
+<text x="537.8" y="170.0" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">LRCX</text>
+<rect x="505.8" y="124.3" width="64.0" height="24.1" fill="#f472b6"/>
+<text x="537.8" y="139.3" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">KLAC</text>
+<rect x="505.8" y="95.2" width="64.0" height="29.1" fill="#a78bfa"/>
+<text x="537.8" y="112.8" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">TEL</text>
+<text x="537.8" y="91.2" fill="#e7e7ea" font-size="10" font-weight="700" text-anchor="middle">130</text>
+<text x="537.8" y="330" fill="#9aa0ad" font-size="11" text-anchor="middle">2027E</text>
+<rect x="644.6" y="235.5" width="64.0" height="76.5" fill="#60a5fa"/>
+<text x="676.6" y="276.8" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">ASML</text>
+<rect x="644.6" y="171.7" width="64.0" height="63.8" fill="#f59e0b"/>
+<text x="676.6" y="206.6" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">AMAT</text>
+<rect x="644.6" y="130.1" width="64.0" height="41.6" fill="#34d399"/>
+<text x="676.6" y="153.9" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">LRCX</text>
+<rect x="644.6" y="102.4" width="64.0" height="27.8" fill="#f472b6"/>
+<text x="676.6" y="119.3" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">KLAC</text>
+<rect x="644.6" y="69.4" width="64.0" height="32.9" fill="#a78bfa"/>
+<text x="676.6" y="88.9" fill="#0f1115" font-size="9" font-weight="700" text-anchor="middle">TEL</text>
+<text x="676.6" y="65.4" fill="#e7e7ea" font-size="10" font-weight="700" text-anchor="middle">146</text>
+<text x="676.6" y="330" fill="#9aa0ad" font-size="11" text-anchor="middle">2028E</text>
+<rect x="52" y="341" width="11" height="11" fill="#60a5fa" rx="2"/>
+<text x="67" y="350" fill="#9aa0ad" font-size="11">ASML</text>
+<rect x="114" y="341" width="11" height="11" fill="#f59e0b" rx="2"/>
+<text x="129" y="350" fill="#9aa0ad" font-size="11">AMAT</text>
+<rect x="176" y="341" width="11" height="11" fill="#34d399" rx="2"/>
+<text x="191" y="350" fill="#9aa0ad" font-size="11">LRCX</text>
+<rect x="238" y="341" width="11" height="11" fill="#f472b6" rx="2"/>
+<text x="253" y="350" fill="#9aa0ad" font-size="11">KLAC</text>
+<rect x="300" y="341" width="11" height="11" fill="#a78bfa" rx="2"/>
+<text x="315" y="350" fill="#9aa0ad" font-size="11">TEL</text>
+</svg>
+
+**Top-5 SPE systems revenue (US$bn) + implied WFE**
+
+| Company | 2024 | 2025 | 2026E | 2027E | 2028E | '24→'28E |
+|---|---|---|---|---|---|---|
+| ASML | 23 | 28 | 34 | 41 | 46 | +97% |
+| AMAT | 21 | 21 | 28 | 35 | 38 | +80% |
+| LRCX | 10 | 13 | 18 | 22 | 25 | +161% |
+| KLAC | 8 | 10 | 12 | 15 | 17 | +121% |
+| TEL | 12 | 12 | 15 | 17 | 20 | +71% |
+| **Top-5 total** | **73** | **84** | **107** | **130** | **146** | **+99%** |
+| _÷ ~70% share → implied WFE_ | 100 | 110 | 158 | 215 | 260 | |
+
+_(Capstone model — ASML_Peers_SemiCap v16, 2026-06-15.) These systems-revenue ramps drive the house EPS folded into each page: ASML $40/$57/$69 (26-28E), AMAT $13/$19/$23, LRCX $6/$8/$12, TER $5.5/$6.9 (below Street). KLAC's model EPS line is flagged inconsistent (formula error) — excluded pending a fix._
+
+## Key debates
+- **Bull / where the money is:** memory is the engine. DRAM ASP +50–60% Q/Q in 2Q26, +20% Q/Q in 3Q26; NAND +75–100% Q/Q in 2Q (briefings, 2026-05-29). Agentic AI lifts the GPU:CPU ratio and DRAM content — AI-CPU demand alone (Vera 500k units CY26 → 3M CY27, Gokul/JPM) could add 15–20%+ to server bit demand (Jay/JPM memory call, 2026-05-28). CPU is far more WFE-intensive than GPU, so a rotation toward inference/CPU racks is *more* WFE per dollar (Arcuri/UBS, 2026-05-15). DRAM is the dollar driver of the incremental $50B/yr, favoring high-DRAM-share toolmakers (AMAT ~25% of every DRAM WFE dollar; AMAT PVD ~80%+ share at ~70% gross margin).
+- **KV-cache → NAND, the new structural leg:** agentic inference grows context ~30x/yr, inflating the KV-cache that must be stored and served across a memory hierarchy — HBM → DRAM/CXL expansion → and crucially a *new* NAND-flash "context memory" tier (tens-to-hundreds of TB), an entirely new data-center use case for NAND. SSD data-center demand is growing faster than HDD (Sathya Kumar, Arcuri-Micron memory call, 2026-05-15). Supportive of NAND-WFE durability even though Applied still sees little greenfield NAND.
+- **Bear / what could break it:** (1) buy-side bars are already very high — AMAT's guide-up "wasn't enough" to clear them and the stock sold off on the print despite a strong number (Sur/JPM, 2026-05-15); (2) the H2 decel AMAT itself guided to, if real rather than conservatism, would dent the slope; (3) China ICAP overcapacity caps mature-node tool demand (AMAT: don't expect China growth); (4) NAND greenfield is still absent — first greenfield NAND wafer-outs not until CY28 (Micron Singapore), so the NAND leg is technology-migration-only near term (Sur/JPM, 2026-05-15); (5) a China equipment-export ban under US discussion would hit CXMT's expansion (Jay/JPM, 2026-05-28) — bearish for tool sales into China, marginally bullish for ex-China supply tightness.
+- **Timeline / inflection points:** CY26 = depo/etch + DRAM bulk capacity; H2-26 = memory mix richens, EUV-capacity confirmation from ASML is the catalyst the Street is waiting on; CY27 = sub-2nm node wave + first Terafab/Intel orders; CY28 = first greenfield NAND, +$50B WFE; CY29 = UBS sees the TAM higher again. Near-term datapoint: MU reports F3Q26 on 2026-06-24 (briefings, 2026-06-12).
+
+## Who's exposed (companies)
+| Ticker | Angle | Read |
+|---|---|---|
+| [ASML](../ASML.md) | Litho near-monopoly; EUV/High-NA + immersion DUV. The cycle's choke point. | Net positive, capacity-gated. JPM (Deshpande) FY27/28 rev EUR55.4B/63.8B (+17%/+22% vs cons), PT EUR1,900; 90 EUV units 2027, 200 immersion DUV (+35% vs cons) (JPM "ASML", 2026-06-03 — full note now on disk: capacity > 90-EUV ceiling, 110+ Low-NA feasible w/o new clean rooms, China DUV reverts to '25 levels in '27). Redburn corroborates: $54B litho sales / 91% share by 2030, PT €1,900, top semicap pick (Redburn, 2026-06-17). Terafab + High-NA + DRAM capex the upside; capacity/Europe-China discount the pushback. |
+| [MU](../MU.md) | Both a memory-capex *spender* (drives WFE) and the demand-side beneficiary (DRAM/HBM/NAND pricing + KV-cache NAND tier). | Strongly positive. UBS (Arcuri) PT $1,625, path to >$100 EPS; ~$400bn FCF C27–29E; LTAs lock ~30% of industry DDR bits (briefings, 2026-05-26/05-31). DRAM tightness extends to 2028+. EUV access (post-Idaho fabs) a watch item. |
+| [TSM](../TSM.md) | Foundry capex — the logic leg of WFE; ~40 EUV tools and rising; A14 in the sub-2nm wave. | Positive. Anchor customer for the CY27 node transition; capex/EUV pull a primary WFE swing factor (Jay/JPM, 2026-05-28; Sur/JPM, 2026-05-15). Capex (UBS) $40.7B→$56B→$75B→$85B (2025-28); 15-20% supply-demand gap, FY27 wafer pricing +≥10% incl. Apple, N2/N3 util 110-120%, server-CPU TAM (23M→63-70M units by 2030) a fresh N2/A14 WFE pull (UBS "CPU TAM", 2026-05-21; Fubon, 2026-06-05). |
+
+**Not in the universe but central to the theme (prose):** **AMAT** (Applied) — depo/PVD/CMP leader, ~25% DRAM WFE share, ~80%+ PVD share at ~70% GM, advanced packaging ~$2B; systems guide raised to +30%, UBS/JPM both OW. Redburn Neutral, PT $560 (FY26-30 ests +4-9%, but 15% peer discount on China-share risk to Naura/Piotech; partnered with BESI on hybrid bonding) (Redburn, 2026-06-17). **LRCX** (Lam) — etch/deposition leader, the highest-conviction WFE share-gainer; UBS pairs LRCX + AMAT as "the two stocks you want to own." Redburn's preferred depo/etch pick (Buy, PT $420, FY27-30 EBIT +10-12% vs cons) on logic-foundry share wins away from memory (Redburn, 2026-06-17). **KLAC** (KLA) — metrology/inspection, levered to early-stage new-node ramps; only large-cap to commit CY27 WFE > CY26, advanced packaging +~60%. Redburn Neutral, PT $260 (well-reflected at 37x 2yr-fwd EV/EBIT) (Redburn, 2026-06-17). **TER** (Teradyne) — test, with AI/compute and CPO leverage. **VAT Group** & **ASMI** — Redburn covers both (VAT Buy PT CHF750 on China-semicap exposure + 17% WFE growth; ASMI Neutral on GAA/2nm ALD leadership) (Redburn, 2026-06-17). On the memory-maker side, **SK Hynix / Samsung / Kioxia / SanDisk / CXMT** are the capex spenders setting DRAM/NAND tool demand.
+
+## Management commentary — cross-company evolution (4–6 quarters)
+
+How the semicap names have talked about the key themes across their last 4–6 earnings calls (arc shown start→latest; ↑ rising, ↓ falling, → stable). Per-company quarter-by-quarter tables live on each name's page. _Source: company earnings calls; management commentary, paraphrased. For toolmakers the first column is WFE TAM; for MU/TSM it is their own capex._
+
+| Company | WFE TAM / own capex | Memory (DRAM/HBM/NAND) | Nodes & adv. packaging | China | AI demand / visibility | Margins / pricing |
+|---|---|---|---|---|---|---|
+| [ASML](../ASML.md) | FY26 guide €34–39B → **€36–40B** raised, H2-wtd; 2030 €44–60B held ↑ | "strong" → **sold out, tight beyond 2026** ↑ | High-NA >500k wafers (1 ≈ 3–4 Low-NA); first adv-pkg tool ↑ | >25% → **~20%** FY26, guide absorbs controls ↓→ | "key driver" → **demand outpaces supply foreseeable future** ↑ | GM ~51–53% flat; ASP/wph-led → |
+| [AMAT](../AMAT.md) | own equip growth nil → >20% → **>30% CY** ↑ | DRAM record (LE spend +50%), **~80% of WFE growth**; NAND <10% ↑ | GAA $5→4.5B then "LE full, prices up"; adv-pkg >$3B → **+50%** ↑ | 35% → 28% → 27% → **24%**, stabilizing ↓→ | 1–2yr → **rolling 8-qtr forecasts "unprecedented"** ↑ | GM 48.8% → **50.0% record**; LE prices up ↑ |
+| [LRCX](../LRCX.md) | CY26 ~$135B → **~$140B**, all segments ↑ | DRAM 14% → **27%** of systems; **NAND inflecting**, ~$40B conversion pulled fwd ↑ | etch/depo intensity; first dielectric-etch win; adv-pkg >40% → **>50%** ↑ | 35% → 43% → **34%**, June-qtr to decline ↓ | AI engine; **cleanroom-space constrained**; 2nd Malaysia fab ↑ | GM ~50% → **50.5%**; EPS record $1.47 ↑ |
+| [KLAC](../KLAC.md) | CY26 mid-SD → low-$120B → **>$140B**; own PC >20% ↑ | PC mix 25% → 41% → **~18% CY26** (foundry/logic wins); NAND marginal ↑ | "all WFE"; **~82% foundry/logic** sub-2nm; adv-pkg +70%/yr → ~$1B ↑ | ~30% → mid-20s ($300–350M loss) → **"immaterial"** ↓↓ | 6–8mo lead → **"as fast as we can support"**, CY27>CY26 ↑ | GM ~63% → **~61.75%**, ~100bps DRAM-cost drag ↓ |
+| [TER](../TER.md) | test rev $652M → **$1.28B** record; 2026 H1-wtd, ~2-cust ↑ | memory test $61M → **$206M** record; HBM3E/HBM4 ↑ | test intensity ↑ (chiplets); **SiPh/CPO $300–700M TAM** ↑ | — (not discussed) | AI mix 50% → **~70%**; candid lead-time caution ↑ | GM 57% → **60.9% record**; evergreen 59–61% ↑ |
+| [MU](../MU.md) | capex ~$14B → $20B → **>$25B** FY26; FY27 higher ↑ | DRAM **+mid-60s% q/q**, NAND +high-70s%; fills only 50–66% ↑ | — | legacy DDR4/LP4 only (Q1FY25); ~n/a after | DC mix >50% → **DC bits >50% of TAM**; "strategic asset" ↑ | GM 37.9% → **75%** → guide ~81% ↑ |
+| [TSM](../TSM.md) | capex $38–42B → **$52–56B** FY26; 3yrs "significantly higher" ↑ | n/a (high-end skew, "no impact") | N2 HVM 4Q25; **first-ever N3 expansion**; CoWoS perpetually tight ↑ | episodic; mid-40s+ AI CAGR holds even if restricted → | "robust" → **"insane"**; AI-accel CAGR mid-40s → **mid/high-50s** ↑ | GM floor 53% → **56%+**; reported 66.2% ↑ |
+
+**Read:** every name's narrative inflected *up and to the right* over the last year — the debate is no longer *whether* the up-cycle is real but *how high* (WFE TAM, capex, memory pricing) and *what gates it* (litho/EUV capacity, cleanroom space, lead times). The two clear de-rating lines are **China** (managed down across AMAT/KLAC/LRCX/ASML) and, at the equipment names, a modest **gross-margin give-back** from DRAM-component cost inflation — even as the demand lines accelerate.
+
+## Sources
+- Equity calls (`../../../equity_calls_transcripts/Semis/`):
+  - [`2026-05-15_Harlan_semicap-AMAT.md`](../../../equity_calls_transcripts/Semis/2026-05-15_Harlan_semicap-AMAT.md) — Sur/JPM: AMAT print, 8-qtr visibility, segment leadership by year, adv. packaging, NAND greenfield CY28.
+  - [`2026-05-15_Arcuri_AMAT-recap.md`](../../../equity_calls_transcripts/Semis/2026-05-15_Arcuri_AMAT-recap.md) — Arcuri/UBS: $200B/$250B CY27/28 WFE, H2 sandbag thesis, PVD margins, CoPoS M&A, EUV-bottleneck rebuttal, prefers AMAT/LRCX.
+  - [`2026-05-28_JPM_memory-China.md`](../../../equity_calls_transcripts/Semis/2026-05-28_JPM_memory-China.md) — Jay/Mio/JPM: WFE +25–30% CY26 / +20–25% CY27, EUV bottleneck math, CXMT/China export-ban risk, CPU/Vera DRAM uplift.
+  - [`2026-05-15_Arcuri-Micron_memory.md`](../../../equity_calls_transcripts/Semis/2026-05-15_Arcuri-Micron_memory.md) — Sathya Kumar (Micron): agentic inference, KV-cache memory hierarchy, NAND "context memory" tier.
+- Briefings (`../_briefings/by-ticker/`): [`ASML.md`](../_briefings/by-ticker/ASML.md), [`MU.md`](../_briefings/by-ticker/MU.md) — PT/estimate revisions, DRAM/NAND ASP cadence, Terafab.
+- Research reports (relatórios bons): [JPM — ASML "Street is Behind the Curve" (2026-06-03)](../../relat%C3%B3rios%20bons/JPM_ASML_The_Street_is_B_2026-06-03_5320001.html) (EUV capacity > 90 ceiling, 90/105 EUV '27/'28, 200 DUV-Imm '27, PT €1,900); [UBS — CPU TAM (2026-05-21)](../../relat%C3%B3rios%20bons/CPU_TAM_-_UBS.html) (server-CPU TAM/TSMC capex+ASP, N2/A14 WFE pull); [Fubon — Semi 2027 outlook (2026-06-05)](../../relat%C3%B3rios%20bons/Semi_2027_outlook_Sector_Snapshot_English_06052026.html) (TSMC pricing/GM, CoWoS/SoIC capacity); [SemiAnalysis — INTC SemiCap (2024-12-09)](../../relat%C3%B3rios%20bons/INTC_-_SemiCap.html) (Intel $119B buildout, 14A/Terafab WFE leg). Redburn "A Week in Silicon Valley" (2026-06-17, no HTML) — WFE $272B by 2030, ASML/LRCX/AMAT/KLAC ests + PTs.
+- Inbox sell-side .txt / Deep-Research (relatórios bons):
+  - [AlphaSense Deep Research — LRCX primer (2026-06-22)](../../relat%C3%B3rios%20bons/DR-Report-by-Alphasense-06-22-2026-20-13.html) — CY26 WFE ~$140B; SAM/GAA/HBM economics; Mizuho/Bernstein peer comp & PTs.
+  - [AlphaSense Deep Research — ASML primer (2026-06-22)](../../relat%C3%B3rios%20bons/DR-Report-by-Alphasense-06-22-2026-20-18.html) — ASML 80+ Low-NA 2027, China to ~20%; Bernstein peer P/E comp incl. KLAC premium read.
+  - [UBS (Arcuri) — semis/memory (2026-06-15)](../../relat%C3%B3rios%20bons/2026_06_15_ubs_arcuri_15_jun_26.html) — WFE $250B CY28 / $300s CY29; ~110 EUV slots ≈ $225B; DRAM-dollar share ranking.
+  - [MS — On Memory and Semicap (2026-06-22)](../../relat%C3%B3rios%20bons/2026_06_22_ms_on_memory_and_semicap_22_jun_26.html) — WFE $149B/$191B/+mid-teens 2026/27/28; prefers LAM+KLA.
+  - [Redburn — Conor O'Mara Asia Trip Takeaways (2026-06-23)](../../relat%C3%B3rios%20bons/77420a6c-61c1-4757-8047-3a24cced258c_Key_Takeaways_from_Conor_OMaras_recent_Management_Meetings_across_ASIA_1.html) — TSMC booked 40-45 EUV '27 (capex capped ~$70-75B); wafer shortage (TSMC ~8M wafers/mo prior peak); Ferrotec consumables +35%, M.A.Tech/Hamamatsu +51%; Daifuku orders to mid-2028.
+  - [StoneX/TrendForce — Memory expert call "Avril" (2026-06-23)](../../relat%C3%B3rios%20bons/TrendForce.html) — 2027 EUV/advanced-litho the second constraint as DRAM makers compete with TSMC/foundries; clean-room the 2026 binding limit.
+  - [JPM (Sur) — Semis Spring Series (2026-05-29)](../../relat%C3%B3rios%20bons/2026_05_29_jpm_semis_29_may_26.html) — WFE +20-25% 2026/27, $200-215B by 2030; hyperscaler capex +80%/+50%.
+  - [JPM (Sur) — conference feedback (2026-05-22)](../../relat%C3%B3rios%20bons/2026_05_22_jpm_conf_feedback_22_may_26.html) — 80% of CY26 incremental WFE in advanced foundry/logic+DRAM+adv-packaging; KLA 100+ 3nm/2nm design starts.
+  - [Citi (Malik) — MSFT C1Q26 recap (2026-04-30)](../../relat%C3%B3rios%20bons/2026_04_30_msft_wfc_c1q26_recap_30_apr_26.html) — KLA high-teens vs LAM/AMAT 20s; Citi WFE ~$180B 2027.
+  - [BofA — ASML call (2026-04-15)](../../relat%C3%B3rios%20bons/2026_04_15_asml_baml_call_15_apr_26.html) — EUV ASP/throughput ladder; immersion-supply fix; DRAM litho-intensity.
+  - [MS — Memory webcast (2026-04-14)](../../relat%C3%B3rios%20bons/2026_04_14_ms_memory_14_apr_2026.html) — 2027 EUV forecast raised to 84 systems.
+  - [Jefferies — Asia tech (2026-04-07)](../../relat%C3%B3rios%20bons/2026_04_07_jef_asia_7_apr_2026.html) — Daifuku/clean-room order checks: Taiwan logic +60%, Korea memory +40%, China splurge; ASMI ALD tailwind (Moly); high-NA insertion debate.
+- Research library (`E:\research_library`, catalog `00_CATALOGO.md`): `SemiCap_2025_Actuals_and_Outlook.pdf` (2026-04-28, ASML/AMAT/LRCX/KLAC/TER/Hynix, WFE & memory cycle `[06]`); `semicap_logic_and_memory_process_maps_10_slides.pptx` (2026-05-21, litho/depo/etch/metrology/packaging/test maps `[06]`).

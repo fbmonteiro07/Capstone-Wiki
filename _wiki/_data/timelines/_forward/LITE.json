@@ -1,0 +1,35 @@
+{"ticker":"LITE","forward":[
+{"metric":"Revenue / OFC target","horizon":"18-24 months -> 2027/2028","trend":"up","trail":[
+{"date":"2026-05-06","val":"Q4 FY26 guide rev $960M-$1.01B, non-GAAP OM 35-36%, EPS $2.85-3.05","src":"Q3 FY26 call (Ali)"},
+{"date":"2026-05-18","val":"~halfway to OFC target of $2B quarterly rev / 40% OM in 18-24 months","src":"JPM fireside (Hurlston)"},
+{"date":"2026-06-16","val":"Capstone model 2027E revenue $8.1B (+92%), adj EPS $30.02, op margin ~43%","src":"Capstone official model (consolidated optics)"}],
+"note":"'Sold out through 2028' possible; fill order book through 2028 within two quarters."},
+{"metric":"EML units / supply imbalance","horizon":"Dec-Q 2026","trend":"up","trail":[
+{"date":"2026-02-03","val":"record EML; 40% expansion front-loaded","src":"Q2 FY26 call"},
+{"date":"2026-05-06","val":"EML imbalance '>30%' (undershipping demand, widening); targeting >50% growth in EML units by Dec-Q 2026; +100% YoY units","src":"Q3 FY26 call"}],
+"note":"Tight EML drives pricing power on 100G and 200G/lane; LITE ~50% AI EML share."},
+{"metric":"OCS ramp","horizon":"1H-FY27 / 2027","trend":"up","trail":[
+{"date":"2026-02-03","val":"first $10M qtr early; backlog >$400M","src":"Q2 FY26 call"},
+{"date":"2026-05-06","val":"multiyear, multibillion-$ agreement; backlog well past $400M, majority shipping 2027; three customers","src":"Q3 FY26 call"},
+{"date":"2026-05-08","val":"OCS ~$70M June qtr steps to ~$170M/qtr 1H-FY27 (~$100M sequential from OCS alone)","src":"JPM Networking recap"},
+{"date":"2026-05-11","val":"Dec-Q OCS >=$200M, hopefully ~$250M run-rate","src":"LITE IR call"}],
+"note":"September quarter the primary revenue driver."},
+{"metric":"Scale-across / pump lasers","horizon":"next 4-6 quarters","trend":"up","trail":[
+{"date":"2026-05-07","val":"scale-across pumps run mid-$10s (~$40-60M/qtr), guided 3-4x output/revenue over next 4-6 quarters; LITE 70-80% pump share, 'kingmaker'; supply behind demand ~50-60%; mid-double-digit % price increases","src":"JPM LITE mgmt call (Hurlston)"},
+{"date":"2026-05-11","val":"charge-pump line (~$30M/qtr) doubles next quarter; customers Nokia/Cisco/Molex/Ciena placing scale-across orders","src":"LITE IR call"}],
+"note":"New growth leg; margins better than even EMLs."},
+{"metric":"CPO ramp (scale-out -> scale-up)","horizon":"2H cal-26 -> cal-27 -> cal-28","trend":"up","trail":[
+{"date":"2026-02-03","val":"incremental multi-$100M UHP order (ships '27); scale-up CPO first shipments late cal-2027","src":"Q2 FY26 call"},
+{"date":"2026-05-06","val":"~$50M scale-out Dec-Q (cal Q4'26); inflection H2 cal'26; sole-source moat","src":"Q3 FY26 call"},
+{"date":"2026-05-11","val":"CPO ramps more meaningfully from Dec-Q through cal-27, another inflection cal-28 as Greensboro comes online; first scale-up CPO demand (NVL576/Feynman) early cal-28","src":"LITE IR call"},
+{"date":"2026-05-26","val":"NVDA scale-out CPO adoption tracking >50% vs ~40% a few quarters ago","src":"JPM Networking notes"}],
+"note":"Scale-up CPO >10x the InP need of scale-out; bears flag CPO-timing wobble."},
+{"metric":"Transceiver business","horizon":"next ~4 quarters","trend":"up","trail":[
+{"date":"2026-05-07","val":"sole-source at Google, 100% share on key 1.6T SKUs near-term; Virgo back-end lifts optics attach per TPU; transceiver business roughly doubles over ~4 quarters (margin still soft spot)","src":"JPM LITE mgmt call"},
+{"date":"2026-05-08","val":"feeding ~20% of transceiver mix with own CW lasers (response to LD supplier decommit), modestly moderating EML revenue growth","src":"JPM Networking recap"}],
+"note":"GM in the 20s vs Coherent mid-30s — the soft spot."},
+{"metric":"InP capacity / Greensboro","horizon":"2028 (HVP) -> 2029","trend":"up","trail":[
+{"date":"2025-12-15","val":"5th InP fab Greensboro NC (six-inch, ~2yr to HVP -> 2028); Sagamihara 40% expansion front-loaded","src":"JPM Hardware & Networking"},
+{"date":"2026-05-26","val":"non-NVIDIA customers seeking to lock remaining Greensboro capacity, pressuring NVDA to make further fab investment","src":"JPM Networking notes"}],
+"note":"Phase-four fab decision needed late-'26/early-'27 to serve '29; bear watches InP oversupply."}
+]}

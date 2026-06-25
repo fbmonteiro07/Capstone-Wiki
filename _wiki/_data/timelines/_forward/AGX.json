@@ -1,0 +1,21 @@
+{"ticker":"AGX","forward":[
+{"metric":"Revenue target","horizon":"down the road","trend":"up","trail":[
+{"date":"2026-06-04","val":"Targeting $2B of revenue 'down the road'; capacity for 10-12 simultaneous jobs (currently 8)","src":"Q1 FY27 call (Watson)"}],
+"note":"FY26 ref revenue $944.6M — implies a multi-year doubling-plus runway."},
+{"metric":"Backlog","horizon":"FY27+","trend":"contested","trail":[
+{"date":"2025-12-04","val":"Record ~$3.0B (>6 GW)","src":"Q3'26 call"},
+{"date":"2026-03-26","val":"$2.9B; +$2.5B booked FY","src":"Q4 FY26 call"},
+{"date":"2026-06-04","val":"$2.8B; mgmt stresses backlog 'swings' between job completion and next award; new GW-plus jobs guided over 10-18 months","src":"Q1 FY27 call (Watson)"}],
+"note":"Non-linear: large new jobs gated by third-party development milestones (permits, gas, turbines, financing)."},
+{"metric":"New Power contract conversion","horizon":"10-18 months","trend":"up","trail":[
+{"date":"2026-03-26","val":"$2.5B booked over FY; backlog 77% gas","src":"Q4 FY26 call"},
+{"date":"2026-06-04","val":"Guides 'a handful' of large new jobs in 10-18 months; each GW-plus moves backlog materially","src":"Q1 FY27 call (Watson)"}],
+"note":"Conversion cadence is the key forward catalyst — sector tailwind of ~25 GW gas starts '26, ~35 GW '27, ~38 GW '28 (Jefferies 2026-06-22)."},
+{"metric":"Industrial / data-center tanks runway","horizon":"multi-year","trend":"up","trail":[
+{"date":"2026-06-04","val":"Industrial record rev, $225M backlog, multi-year runway in data-center tanks; NC fabrication plant ($10-13M capex) completion still 2026","src":"Q1 FY27 call (Watson)"}],
+"note":"Growing optionality / data-center growth proxy."},
+{"metric":"Renewables demand","horizon":"structural","trend":"down","trail":[
+{"date":"2026-03-26","val":"Backlog 14% renewable","src":"Q4 FY26 call"},
+{"date":"2026-06-04","val":"Renewable demand 'softened'; backlog renewable mix 13%; solar/battery exposure less attractive","src":"Q1 FY27 call (Watson)"}],
+"note":"Forward mix shifting further toward gas."}
+]}

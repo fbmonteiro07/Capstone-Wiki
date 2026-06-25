@@ -1,0 +1,23 @@
+{"ticker":"TXN","forward":[
+{"metric":"FCF/share target","horizon":"structural","trend":"up","trail":[
+{"date":"2026-01-27","val":"FY25 FCF $2.9bn (~doubled); capex super-cycle winding down","src":"Q4 FY25 call"},
+{"date":"2026-04-22","val":"\"~$8 FCF/share very probable\" as long as rev grows mid-to-high single digits; TTM FCF $4.4bn","src":"Ilan, Q1 FY26 call"}
+],"note":"The core long thesis: completed 300mm capex converts to FCF/share inflection."},
+{"metric":"Capex roll-off","horizon":"2026→2027","trend":"down","trail":[
+{"date":"2025-12-22","val":"capex $2.35bn 2026E → $2.0bn 2027E vs ~$5bn 2025 peak","src":"UBS/Arcuri"},
+{"date":"2026-04-22","val":"capex cut to $2-3bn for 2026 (from ~$5bn peak)","src":"Lizardi, Q1 FY26 call"}
+],"note":"Faster roll-off is UBS's upside case behind the FCF inflection."},
+{"metric":"AI/data-center revenue","horizon":"long-term","trend":"up","trail":[
+{"date":"2026-04-22","val":"DC ~+90% YoY/+25% QoQ; \"almost every analog socket on the rack\"","src":"Q1 FY26 call"},
+{"date":"2026-05-26","val":"AI sales potentially >3x to $4.5bn LT; best-positioned analog share gainer in 800V era","src":"BofA/Arya"},
+{"date":"2026-06-15","val":"DC-power share gains expected in 2H26 vs IFX/MPWR/Renesas; internal GaN capacity quadrupled since Oct'24","src":"Citi/Malik"}
+],"note":"New growth leg layered on the cyclical analog recovery."},
+{"metric":"C28 EPS / valuation","horizon":"2026→2028","trend":"up","trail":[
+{"date":"2025-12-22","val":"2026E EPS $7.07 / 2027E $10.14 (well above cons $6.22/$8.05)","src":"UBS/Arcuri"},
+{"date":"2026-06-15","val":"C26/C27/C28 EPS +1%/+1%/+6% to $8.03/$10.10/$11.42; PT $280→$345 (30x 2028E)","src":"Citi/Malik"}
+],"note":"Estimate-revision cycle; CY27 EPS +23% across ADI/TXN/MCHP over two seasons (JPM)."},
+{"metric":"2H26 pricing","horizon":"2H26","trend":"up","trail":[
+{"date":"2026-04-22","val":"prices flat YoY/QoQ; \"may go up in the second half\"","src":"Ilan, Q1 FY26 call"},
+{"date":"2026-06-03","val":"raising prices again in July, 2nd (possibly 3rd) increase this cycle, far faster than 2021","src":"Jefferies/Menon"}
+],"note":"Pricing leg of the analog upcycle; mature-node insulated from China."}
+]}

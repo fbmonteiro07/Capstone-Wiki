@@ -1,0 +1,25 @@
+{"ticker":"FLEX","forward":[
+{"metric":"FY27 revenue / EPS guide","horizon":"FY27","trend":"up","trail":[
+{"date":"Q4 FY26 (2026-05-06)","val":"FY27 (combined, pre-spin) revenue $32.3–33.8B (+18% mid); adj op margin 7.0–7.1%; adj EPS $4.21–4.51 (+32% mid); CapEx $1.4–1.6B","src":"FLEX Q4 FY26 call"}],
+"note":"First FY27 guide; well above legacy EMS growth, CPI the engine."},
+{"metric":"CPI segment growth","horizon":"FY27→FY28","trend":"up","trail":[
+{"date":"Q1 FY26 (2025-07-24)","val":"FY26 DC target $6.5B, ~35% growth, ~25% of co.","src":"FLEX Q1 FY26 call"},
+{"date":"Q3 FY26 (2026-02-04)","val":"reaffirmed 35% DC growth; double-digit to continue","src":"FLEX Q3 FY26 call"},
+{"date":"Q4 FY26 (2026-05-06)","val":"CPI FY26 $6.6B +38%; FY27 CPI +65–75% (multi-year incl. Google); ramps 80%+ in FY28","src":"FLEX Q4 FY26 call"}],
+"note":"CPI ($3.2B FY24 → $4.8B FY25 → $6.6B FY26) the AI-power engine; FY28 ramp 80%+."},
+{"metric":"CPI spin-off","horizon":"Q1 CY2027","trend":"up","trail":[
+{"date":"Q3 FY26 (2026-02-04)","val":"new segments coming; Investor Day May 13","src":"FLEX Q3 FY26 call"},
+{"date":"2026-05-05","val":"announced CPI spin into standalone public co; target Q1 CY2027, intended tax-free; Advaithi→CPI CEO, Hartung→RemainCo CEO","src":"FLEX Q4 FY26 call"}],
+"note":"Crystallizes AI-power pure-play SpinCo at higher multiple vs EMS base; key swing factor."},
+{"metric":"OP margin to ~7% by FY28","horizon":"FY28","trend":"up","trail":[
+{"date":"2025-12-15","val":"OP margins to ~7% by end-FY28 as Power (mid-teens) + Services mix up vs 4–5% EMS base","src":"JPM H&N Year-Ahead"},
+{"date":"2026-05-26","val":"~15% power margin NOT the LT target — room to rise with scale","src":"JPM Networking conf recap"},
+{"date":"Q4 FY26 (2026-05-06)","val":"FY27 guide adj op margin 7.0–7.1%; power margins > cloud","src":"FLEX Q4 FY26 call"}],
+"note":"Power-mix-up margin trajectory; JPM bull leg."},
+{"metric":"Power business mix of CPI","horizon":"2027","trend":"up","trail":[
+{"date":"2026-06-09","val":"power ~32% of CPI/SpinCo revenue today, on track to exceed 40% by 2027; FLEX most relevant to power-distribution TAM ($50bn→$90bn 2028, 20%+ CAGR)","src":"JPM 'Watts Up! 800V'"}],
+"note":"800V portfolio: power shelves, PSUs, CBUs, BBUs, liquid-cooled busbars, switchgear, integrated power racks."},
+{"metric":"AI mix of revenue","horizon":"FY27","trend":"up","trail":[
+{"date":"2025-12-15","val":"AI mix 19% (2024) → 24% (2025) → 31% (2026E) → 37% (2027E)","src":"JPM H&N Year-Ahead"}],
+"note":"FY27 AI mix 37% mid-pack vs CLS 74% / JBL 41%; underpins re-rate debate."}
+]}

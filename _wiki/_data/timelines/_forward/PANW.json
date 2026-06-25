@@ -1,0 +1,30 @@
+{"ticker":"PANW","forward":[
+{"metric":"NGS ARR guide / FY30 target","horizon":"FY26→FY30","trend":"up","trail":[
+{"date":"Q4 FY25 (Aug'25)","val":"$5.6B exiting FY25; FY30 target $20B","src":"PANW Q4 FY25 call"},
+{"date":"Q1 FY26 (Nov'25)","val":"$5.85B, +29% YoY","src":"PANW Q1 FY26 call"},
+{"date":"Q2 FY26 (Feb'26)","val":"$6.33B, +33% (+28% organic)","src":"PANW Q2 FY26 call"},
+{"date":"Q3 FY26 (Jun'26)","val":"$8.13B, +60% (incl. ~$1.6B M&A); FY26 guide raised to $8.9–8.95B (+59–60%)","src":"PANW Q3 FY26 call"}],
+"note":"Core KPI; FY26 headline flattered by CyberArk + Chronosphere — organic-vs-inorganic the central debate."},
+{"metric":"FY26 RPO / revenue guide","horizon":"FY26","trend":"up","trail":[
+{"date":"Q3 FY26 (2026-06-02)","val":"FY26 RPO $20.9–21.0B; revenue $11.415–11.425B (+24%); op margin 28.9–29.2%; adj FCF margin 37.5%; FQ4 EPS ~$0.97","src":"PANW Q3 FY26 call"}],
+"note":"Raised guide post-Q3; RPO $18.4B exiting Q3 (+36% YoY)."},
+{"metric":"Organic NNARR trajectory","horizon":"FY27","trend":"contested","trail":[
+{"date":"2026-06-03","val":"organic NNARR $370M vs $350M guide; UBS models ~$610M organic NNARR for 4Q (vs ~$570M prior)","src":"Barclays/UBS post-print"},
+{"date":"2026-06-08","val":"4Q26 organic NNARR guide up $20M+ at midpoint; FY27 could add $1.9B+ total NNARR","src":"Barclays (Kalia) IR takeaways"}],
+"note":"Bull's FY27 reacceleration case vs bear's 'organic underwhelming' / subs+support decline; backlog build is the bridge."},
+{"metric":"Adjusted FCF margin","horizon":"FY28","trend":"up","trail":[
+{"date":"Q1 FY26 (Nov'25)","val":"long-term target 40%+ adj FCF margin by FY28","src":"PANW Q1 FY26 call"},
+{"date":"Q3 FY26 (Jun'26)","val":"FY26 guide 37.5% adj FCF margin","src":"PANW Q3 FY26 call"}],
+"note":"Margin trajectory toward 40%+ by FY28; accelerating NetSec can support FCF margins (Barclays)."},
+{"metric":"XSIAM / agentic-AI security ARR","horizon":"FY27","trend":"up","trail":[
+{"date":"Q1 FY26 (Nov'25)","val":"XSIAM ~470 customers, avg ARR >$1M","src":"PANW Q1 FY26 call"},
+{"date":"Q2 FY26 (Feb'26)","val":"XSIAM ARR >$0.5B; 600+ customers","src":"PANW Q2 FY26 call"},
+{"date":"Q3 FY26 (Jun'26)","val":"XSIAM ARR >$600M, +100% YoY (740+ cust); Prisma AIRS >300 cust (tripled QoQ); 'Mythos moment'","src":"PANW Q3 FY26 call"},
+{"date":"2026-06-18","val":"Nikesh: Mythos impact = 'chaos'; strategic decisions 6+ months out, 'cutting checks immediately not a thing'","src":"UBS / BTG Mythos call"}],
+"note":"Agentic-AI demand inflection is the bull story; UBS cautions near-term urgency overstated, 6mo+ timeline."},
+{"metric":"Platformized customers","horizon":"FY27","trend":"up","trail":[
+{"date":"Q1 FY26 (Nov'25)","val":"16 net new; XSIAM doubled YoY","src":"PANW Q1 FY26 call"},
+{"date":"Q2 FY26 (Feb'26)","val":"~110 net new; ~1,550 total","src":"PANW Q2 FY26 call"},
+{"date":"Q3 FY26 (Jun'26)","val":"110 net new; ~2,280 total; 120% net retention","src":"PANW Q3 FY26 call"}],
+"note":"Platformization the strategic spine; land-and-consolidate engine for ARR."}
+]}

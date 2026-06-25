@@ -1,0 +1,26 @@
+{"ticker":"TEL","forward":[
+{"metric":"AI / DDN revenue","horizon":"FY26","trend":"up","trail":[
+{"date":"2025-11-10","val":"Tripled AI sales to ~$900m in FY25; guided +$600m AI growth in FY26 (~65%+ y/y)","src":"Jefferies"},
+{"date":"2026-01-21","val":"DDN +~70% y/y; AI raised +~$200m","src":"FQ1 FY26 call"},
+{"date":"2026-04-22","val":"DDN +~50% y/y, DDN orders +60% building 2027 backlog; AI raised +$150m → approaching ~$2.4bn for FY26","src":"FQ2 FY26 call (Curtin)"}],
+"note":"~$300m (FY24)→>$800m (FY25)→~$2.4bn (FY26); raised twice in last two prints."},
+{"metric":"FQ3 FY26 guide","horizon":"FQ3 2026","trend":"up","trail":[
+{"date":"2026-04-22","val":"FQ3 guide ~$5.0bn / adj. EPS ~$2.83 (+10% / +17% y/y)","src":"FQ2 FY26 call (Mitts)"}],
+"note":"Watch whether FY26 AI tracks/exceeds ~$2.4bn and 2027 backlog keeps building."},
+{"metric":"AI revenue mix (% of sales)","horizon":"2026","trend":"up","trail":[
+{"date":"2025-12-15","val":"JPM models TE AI revenue 6% of sales (2025)→8% (2026); content per chip at least ~$870; AI/Cloud $1.4bn (2025)→implied ~$2.2bn (2026)","src":"JPM Hardware & Networking"}],
+"note":"NVDA share-gain optionality — TE minority at NVDA vs ~1/3 share outside; valuation ~22x vs APH ~34x."},
+{"metric":"800V / HVDC content","horizon":"FY25-FY27 / late-2H27","trend":"up","trail":[
+{"date":"2026-06-09","val":"TE best-positioned (w/ APH/FLEX/WOLF); power ~25% of DC-related revenue; transferable auto-800V (EV) 'grid-to-chip' IP; AI power-interconnect TAM ~$2bn→$4bn+ (2028)","src":"JPM 'Watts Up!' 800V"},
+{"date":"2026-06-15","val":"DDN 50%+ FY25-FY27 CAGR; power ~25% of segment; 800V could drive 30%+ content increase vs today; NVDA 800V sidecars w/ Rubin Ultra late-2H27, SST 800V ~2029","src":"Citi '800V DC power'"},
+{"date":"2026-06-18","val":"TE VP/Head of ICT: HVDC 400→800V cuts energy loss 2-5%/conversion stage; liquid cooling mainstream by 2030","src":"expert call briefing"}],
+"note":"800V timing contested — @bubbleboi sees rack content '2-3 years before hitting earnings' (briefing 2026-06-15)."},
+{"metric":"Capex (AI/DDN ramp)","horizon":"FY26","trend":"up","trail":[
+{"date":"2026-01-21","val":"Capex raised to 'closer to 6%' for AI","src":"FQ1 FY26 call"},
+{"date":"2026-04-22","val":"Capex raised to ~6% of revenue, 'almost entirely' for AI/DDN ramp","src":"FQ2 FY26 call (Mitts)"}],
+"note":"Capex deployed into demand, not speculatively."},
+{"metric":"Auto / EV inflection","horizon":"2027","trend":"down","trail":[
+{"date":"2025-12-15","val":"Global EV penetration for 2027 cut to ~25% (from ~30% late-2024, ~35% late-2023); ~2/3 of growth outlook EV-linked","src":"JPM Hardware & Networking"},
+{"date":"2026-04-22","val":"Auto -4% organic, NA production weak; auto outperformance at low end of 4-6% target","src":"FQ2 FY26 call"}],
+"note":"Transportation 54% of sales — the main drag on the otherwise-secular AI story."}
+]}

@@ -1,0 +1,43 @@
+{
+  "ticker": "NVDA",
+  "name": "NVIDIA",
+  "asof": "2026-06-23",
+  "coverage": "rich",
+  "window": "Q2 FY27 · May 19 → Jun 23, 2026",
+  "events": [
+    {"date": "2026-05-19", "src": "BofA · Vivek Arya (setup call)", "theme": "valuation", "lean": "bull", "text": "PO $320. Buy-side cal-26 EPS $13–15 vs sell-side ~$8.50; ~70% of the sector's economics on ~50%+ of the units. Rubin: the large customer ramp is Q4, not Q3. On the agentic CPU:GPU ratio — \"pure BS\"."},
+    {"date": "2026-05-20", "src": "NVDA · Q1 FY27 earnings", "theme": "print", "lean": "neutral", "text": "Revenue $82B (+85% y/y), DC $75B (+92%). Guide Q2 $91B ±2%. $1T Blackwell+Rubin (cal25–27). Vera Rubin ships Q3. Vera CPU = $200B TAM / ~$20B this year. GM 75%. $80B buyback + dividend. China DC = $0 in the outlook."},
+    {"date": "2026-05-21", "src": "UBS · Tim Arcuri (recap call)", "theme": "margem", "lean": "bull", "text": "The $20B of CPU is mostly systems/head-nodes + DRAM — \"apples-to-apples\" on the chip is ~$5B. GM 75% defensible even with HBM4E ~2x (consignment helps). Supply $119B → capacity for ~$130B of revenue exiting the year. DC has outpaced hyperscaler capex for 5 quarters."},
+    {"date": "2026-05-22", "src": "Citi/Jefferies · Blaine (Asia recal)", "theme": "competicao", "lean": "neutral", "text": "NVDA remains a \"funding short\" — the thesis hasn't broken, but the buy-side sees larger inflections in other names. Rubin capacity ~2M units in Q4. Axion mix ~60% / Graviton ~60% higher than expected = headwind for x86."},
+    {"date": "2026-05-27", "src": "JPM · Gokul (CoWoS update)", "theme": "supply", "lean": "bull", "text": "NVDA still ~50%+ of TSMC's CoWoS allocation in 2027 — the packaging bottleneck remains favorable to NVDA."},
+    {"date": "2026-05-29", "src": "JPM · Harlan Sur (Semis Spring)", "theme": "demanda", "lean": "bull", "text": "Cloud DC capex +80% '26 / +50% '27 (~$575B). Agentic = 10–100x compute per user. Enterprise is NVDA's stronghold (~95% share). ASIC $70–75B at 40–50% CAGR."},
+    {"date": "2026-06-02", "src": "DB · Ross Seymore", "theme": "valuation", "lean": "neutral", "text": "Hold, PT $255 — on valuation. Nothing wrong with the fundamentals; the question is the multiple."},
+    {"date": "2026-06-03", "src": "AlphaSense · 800V expert call", "theme": "produto", "lean": "neutral", "text": "Kyber rack (2027/28) = the 800V DC inflection. Vera Rubin (mid-2027) still on the 480V shelf. NVDA targets ~7% of electrical efficiency gain — \"so the customer buys more chips\". Power $ content only accelerates in 2027+."},
+    {"date": "2026-06-04", "src": "BofA · Tim Rohde (AVGO callback)", "theme": "competicao", "lean": "bull", "text": "If forced to choose, prefers NVDA to AVGO: NVDA's multiple has already collapsed, AVGO \"still has room to fall\". GPU/ASIC split ~70/30 durable; NVDA gaining share at Anthropic; more degrees of freedom."},
+    {"date": "2026-06-05", "src": "Fubon · 2027 outlook", "theme": "supply", "lean": "bull", "text": "NVDA ~50%+ of CoWoS in 2027; total GPU production \"could reach 10mn+ in 2027\". Vera CPU migrates to ASE FoCoS packaging (outside the CoWoS queue)."},
+    {"date": "2026-06-09", "src": "SemiAnalysis · DeepSeek V4 (Dylan)", "theme": "competicao", "lean": "mixed", "text": "GB300 NVL72 dominates all systems ($0.156/Mtok) — the 72-GPU NVLink domain wins. CUDA Day-0 (SGLang/vLLM), but NVDA's own TensorRT-LLM shipped with bugs. Warning: Huawei CANN now also delivers Day-0."},
+    {"date": "2026-06-09", "src": "Briefing · dnystedt (Jensen)", "theme": "demanda", "lean": "bull", "text": "Jensen: \"next year's 2H much bigger than this one\"; memory scarcity should \"persist for several years\"."},
+    {"date": "2026-06-11", "src": "Vital Knowledge · Crisafulli", "theme": "demanda", "lean": "bear", "text": "Low PE = market doubting the sustainability of demand. Oracle F27 capex/sales >100%; hyperscalers don't generate FCF; \"picks-and-shovels making a fortune, but low PEs\". \"Toxic\" price war."},
+    {"date": "2026-06-13", "src": "Jim Chanos", "theme": "demanda", "lean": "bear", "text": "Pokes at the cost economics of the GPU datacenter — questions the return on the capital deployed in the buildout."},
+    {"date": "2026-06-15", "src": "UBS · Tim Arcuri (semis/memory)", "theme": "valuation", "lean": "neutral", "text": "\"Over on earnings, under on the multiple\" — nothing bad in the fundamentals, but a persistently low multiple. The Anthropic deal helps: it grows a model-builder that reinvests in capex. WFE $250B in 2028."},
+    {"date": "2026-06-15", "src": "Barclays · Tom O'Malley/Rand", "theme": "valuation", "lean": "bear", "text": "NVDA the \"popular funding short\", behind SOX/AMD; \"hard to find a high-conviction upside catalyst\" near term."},
+    {"date": "2026-06-16", "src": "JPM · AI Capex 2.0", "theme": "competicao", "lean": "mixed", "text": "NVDA captures $25–35B of revenue/GW (~2x AMD). GPU units 6.2M→8.9M→9.9M. But ASIC share of units 42%(26E)→53%(27E) — ASIC overtakes merchant GPU in 2027; Broadcom AI $60B→$150B+."},
+    {"date": "2026-06-16", "src": "MS · Joe Moore (bus tour)", "theme": "valuation", "lean": "bull", "text": "Top Pick, OW PT $288. \"Definitively the best product in the market\"; best token-per-watt and AI-factory ROI. Trades at ~mid-teens next year vs speculative AI names — a value setup."},
+    {"date": "2026-06-18", "src": "Cantor · CoreWeave/neocloud", "theme": "demanda", "lean": "bull", "text": "NVDA = 40 GW of US chip sales '25–30 (vs ~21 GW of DC built in the prior 25 years). GPU useful life ~7–8 years; revenue per GPU-hour ≈ the current token price (VR ~$10/h)."},
+    {"date": "2026-06-22", "src": "MS · Joe Moore (memory+semicap)", "theme": "supply", "lean": "mixed", "text": "NVDA cutting LPDDR5 ~by half in the Vera Rubin racks — not bad news, it's a tell of how acute the scarcity is (\"everything getting nerfed\"). DRAM = the #1 bottleneck for AI builds, worse than CPU."},
+    {"date": "2026-06-22", "src": "Jefferies Asia · Conor O'Mara", "theme": "produto", "lean": "bear", "text": "The \"Kyber\" rack (orthogonal backplane) slips from Rubin Ultra 2027 to ≥2028; Rubin Ultra 2027 stays on Oberon/NVL72. AI PCB/CCL impact ~5%/8% in 2027 (up to ~11%/16% in 2028). Benefits copper cables."},
+    {"date": "2026-06-23", "src": "Redburn · Conor O'Mara (Asia trip)", "theme": "margem", "lean": "bear", "text": "NVDA's HBM $17–18 → $30–32/GB (+70–80%). GPU+HBM ~$4.3M/rack; total memory bill ~$200B in 2027. Risk: if hyperscalers force HBM consignment, it compresses revenue/ASP/EPS — \"the stock that looks cheap isn't that cheap\"."},
+    {"date": "2026-06-23", "src": "StoneX/TrendForce · Avril", "theme": "margem", "lean": "mixed", "text": "NVDA gets the LOWEST HBM price (AMD, Broadcom, AWS pay more). HBM4 needs ~3x for ~$5/Gb in 2027. LPDDR5 = the tightest-supply product of 2027 (Vera/next-gen CPU vs smartphones)."}
+  ],
+  "evolution": {
+    "columns": ["Q1 FY26 (May'25)", "Q2 FY26 (Aug'25)", "Q3 FY26 (Nov'25)", "Q4 FY26 (Feb'26)", "Q1 FY27 (May'26)"],
+    "rows": [
+      {"theme": "Revenue / Data Center", "cells": ["Rev $44B +69%; DC $39B +73%", "Rev $46.7B; DC +56%", "Rev $57B +62%; DC $51B +66%", "Rev $68B +73%; DC $62B +75%", "Rev $82B +85%; DC $75B +92%"]},
+      {"theme": "Blackwell→Rubin cycle", "cells": ["Blackwell ~70% of DC; GB300 sampling", "GB300 in production; Rubin in the fab", "GB300 > GB200; Rubin 2H26", "Rubin at CES; first samples", "GB300 fastest ramp ever; Vera Rubin Q3"]},
+      {"theme": "Gross margin (non-GAAP)", "cells": ["61% (71.3% ex-China); mid-70s target", "72.7%; reiterates mid-70s", "73.6%; guides 74.8–75%", "75.2%; mid-70s FY27", "75% flat; mid-70s FY"]},
+      {"theme": "AI infra spend / visibility", "cells": ["~$1T multi-year", "$3–4T by end of decade; ~$600B capex", "$0.5T Blackwell+Rubin thru cal'26", "$500B+ visibility; capex ~$700B", "$1T Blackwell+Rubin (cal25–27); capex >$1T in '27"]},
+      {"theme": "China / H20", "cells": ["$4.5B charge; ~$50B TAM lost", "Licenses issued, nothing shipped", "H20 ~$50M; outside the guide", "H200 approved, no revenue", "H200 licensed, $0; outside the outlook"]},
+      {"theme": "Networking", "cells": ["$5B +64% q/q; NVLink >$1B", "Record $7.3B +98%", "$8.2B +162%", "$11B +3.5x", "$15B, ~tripled y/y"]}
+    ]
+  }
+}

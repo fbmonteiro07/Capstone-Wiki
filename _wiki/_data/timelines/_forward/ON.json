@@ -1,0 +1,22 @@
+{"ticker":"ON","forward":[
+{"metric":"AI data-center power revenue","horizon":"2026","trend":"up","trail":[
+{"date":"2026-02-09","val":">$250m FY25; guide to double YoY in 2026; ~$115k content per 800V rack","src":"Q4 FY25 call"},
+{"date":"2026-05-04","val":"AI-DC +30%+ QoQ, doubled YoY; guided to double again in 2026","src":"Q1 FY26 call"}
+],"note":"The structural kicker layered on the cyclical auto/industrial trough."},
+{"metric":"Vertical GaN first revenue","horizon":"2027","trend":"up","trail":[
+{"date":"2026-02-09","val":"VGaN first revenue 2027; funnel >$400m auto","src":"Q4 FY25 call"},
+{"date":"2026-05-04","val":"GaN funnel >$1.5bn, 20 products sampling 2026; VGaN revenue 2027","src":"Q1 FY26 call"},
+{"date":"2026-06-15","val":"only name in Citi coverage developing vertical GaN; sampling now, shipment 2H27","src":"Citi \"800V power\""}
+],"note":"onsemi's differentiated 800V angle (GaN leads sub-650V at the rack)."},
+{"metric":"FY27 revenue & margin recovery","horizon":"FY26→FY27","trend":"contested","trail":[
+{"date":"2025-12-22","val":"FY26 rev $6.37bn (+6%) → FY27 $7.17bn (+13%); op margin 20.5% → 25.7% (vs 40% target); EPS $2.97 → $4.40","src":"UBS/Arcuri (Neutral $55)"},
+{"date":"2026-06-15","val":"C26/C27/C28 EPS +1%/+12%/+9% to $3.07/$4.64/$6.00; PT $100→$120 (20x 2028E)","src":"Citi/Malik"}
+],"note":"UBS sees margins structurally capped absent a V-shaped recovery; Citi more constructive on extended analog recovery + pricing."},
+{"metric":"GM expansion to LT model","horizon":"structural","trend":"up","trail":[
+{"date":"2026-02-09","val":"LT model 53% GM / 40% op margin / 25-30% FCF margin","src":"Q4 FY25 call"},
+{"date":"2026-06-15","val":"ON (with TXN) largest GM-expansion opportunity (>10pp) given ~65% internal wafer manufacturing","src":"Citi \"800V power\""}
+],"note":"GM utilization-sensitive (68%→77%, still below optimal); FabRite footprint cuts the lever."},
+{"metric":"Sept 16 Analyst Day target model","horizon":"2026-09-16","trend":"up","trail":[
+{"date":"2026-06-15","val":"Citi 90-day upside Catalyst Watch into Sept 16 Analyst Day; expects raised target model + renewed SiC momentum","src":"Citi/Malik"}
+],"note":"Key forward event; watch raised LT target model + SiC/800V framing."}
+]}

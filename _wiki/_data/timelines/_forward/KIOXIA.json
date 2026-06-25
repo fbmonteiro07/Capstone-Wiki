@@ -1,0 +1,24 @@
+{"ticker":"KIOXIA","forward":[
+{"metric":"Q1 FY26 operating profit","horizon":"Q1'26 (Jun-qtr)","trend":"up","trail":[
+{"date":"2026-05-15","val":"Q1 FY26 OP guide ~JPY1.3tn vs buyside JPY1.1-1.2tn; OP run-rate higher than Toyota","src":"briefing 2026-05-15"},
+{"date":"2026-06-02","val":"OP margin guide ~74% (Investor Day)","src":"Investor Day"}],
+"note":"Guide is the cleanest near-term read on the NAND ASP up-cycle."},
+{"metric":"Datacenter+enterprise mix","horizon":"FY2028","trend":"up","trail":[
+{"date":"2026-06-02","val":"Datacenter + enterprise targeted >60% of revenue by FY2028; NAND market CAGR 20%+ (up to 46%) 2025->2028","src":"Investor Day"}],
+"note":"Strategic mix-shift toward hyperscaler/enterprise SSD."},
+{"metric":"Capex FY26-28","horizon":"FY26-28","trend":"up","trail":[
+{"date":"2025-12-17","val":"Deliberately cautious capex ~JPY280bn/yr, sized to ~20% bit-growth CAGR","src":"Jefferies Techknowledge"},
+{"date":"2026-04-16","val":"Watch-item: if bit-growth outlook raised 20%->30% CAGR, capex up ~JPY400bn->JPY600bn/yr — 'could worry the market'","src":"BofA Japan SPE"},
+{"date":"2026-06-02","val":"Capex averaging ~JPY470bn/yr FY26-28; R&D rising to JPY230bn/yr","src":"Investor Day"}],
+"note":"Actual capex threaded the needle below the feared ~JPY600bn."},
+{"metric":"BiCS Gen.10 (332L)","horizon":"summer-2026 -> ~2027","trend":"flat","trail":[
+{"date":"2026-06-02","val":"BiCS Gen.10 (332 layers) sampling summer 2026, mass production within a year","src":"Investor Day"}],
+"note":"Cost/power competitiveness vs Samsung/SK Hynix V-NAND is the watch-item."},
+{"metric":"Super IO (XL Flash) units","horizon":"2026->2027","trend":"up","trail":[
+{"date":"2026-06-23","val":"Super IO (SLC, ultra-low-latency) shipping 10M units this year vs 3M last, targeting 100M next year; NVIDIA partner; SanDisk HPF not until 2028","src":"Redburn (Conor O'Mara Asia trip)"}],
+"note":"Agentic-AI IO/latency angle; Conor's top reason to prefer Kioxia over SanDisk."},
+{"metric":"NAND market size","horizon":"2030","trend":"up","trail":[
+{"date":"2026-04-07","val":"Kioxia NAND-market sizing ~1,100 EB now -> ~2,000 EB by 2030","src":"Jefferies Asia tech (Conor)"},
+{"date":"2026-05-28","val":"eSSD sizing moved up: Samsung/Hynix now peg ~500 EB (vs SanDisk mid-400s), ~50-60% CAGR","src":"JPM Memory (Mio)"}],
+"note":"TAM trajectory underpinning multi-year LTA negotiations into 2027."}
+]}

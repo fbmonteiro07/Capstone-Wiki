@@ -1,0 +1,9 @@
+{
+  "_comment": "Per-ticker high-water mark for /wiki-ingest. Cutoff = entry for the ticker, else _default. Ingest only material dated AFTER the cutoff; write the new max date back here after each run.",
+  "_default": "2026-06-23",
+  "MU": "2026-06-25",
+  "QCOM": "2026-06-25",
+  "NET": "2026-06-25",
+  "AKAM": "2026-06-25",
+  "FSLY": "2026-06-25"
+}

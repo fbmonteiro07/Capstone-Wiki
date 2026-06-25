@@ -1,0 +1,33 @@
+{"ticker":"VRT","forward":[
+{"metric":"FY26 adj EPS guide","horizon":"FY26","trend":"up","trail":[
+{"date":"Q4 FY25 (2026-02-11)","val":"FY26 adj EPS $6.20","src":"VRT Q4 FY25 call"},
+{"date":"Q1 FY26 (2026-04-22)","val":"raised to $6.35 (+51%); net sales ~$13.75B (+34%); op margin ~23.3%; FCF ~$2.2B; Q2'26 EPS ~$1.40","src":"VRT Q1 FY26 call"}],
+"note":"Beat-and-raise; JPM had modeled FY26/27 $5.50/$7.00 (~30% CAGR) pre-raise."},
+{"metric":"Backlog / order visibility","horizon":"2027","trend":"up","trail":[
+{"date":"Q2 FY25 (2025-07-30)","val":"orders >$3.0B +15%; B2B 1.2x; backlog $8.5B","src":"VRT Q2 FY25 call"},
+{"date":"Q3 FY25 (2025-10-22)","val":"orders +60%; B2B 1.4x; backlog $9.5B","src":"VRT Q3 FY25 call"},
+{"date":"Q4 FY25 (2026-02-11)","val":"orders +152%; B2B 2.9x; backlog $15.0B; stops quarterly disclosure","src":"VRT Q4 FY25 call"},
+{"date":"Q1 FY26 (2026-04-22)","val":"no quantitative orders; 'pipeline momentum strong', backlog 'a bit more elongated', good visibility into 2027","src":"VRT Q1 FY26 call"}],
+"note":"Backlog doubled to $15.0B YE25; mgmt then halted quarterly orders/backlog disclosure — bear's loss of leading indicator."},
+{"metric":"800V HVDC launch / NVIDIA cycle","horizon":"2027","trend":"up","trail":[
+{"date":"Q2 FY25 (2025-07-30)","val":"first on GB300 + Vera Rubin reference designs","src":"VRT Q2 FY25 call"},
+{"date":"Q3 FY25 (2025-10-22)","val":"800V aligned to NVIDIA Rubin 2027; R&D +20% in '26","src":"VRT Q3 FY25 call"},
+{"date":"Q4 FY25 (2026-02-11)","val":"NVIDIA 800VDC collaboration; components finalized; thermal-chain integration","src":"VRT Q4 FY25 call"},
+{"date":"Q1 FY26 (2026-04-22)","val":"800V launches H2'26, volume 2027+; Rubin Ultra-aligned","src":"VRT Q1 FY26 call"},
+{"date":"2026-06-15","val":"Vera Rubin 800V HVDC pulled ahead to small-volume Q3 2026 (Taiwanese media); direct VRT catalyst","src":"briefing 2026-06-15"}],
+"note":"Volume shipping 2027 into Rubin Ultra; pull-ahead to Q3'26 small volume is a near-term catalyst."},
+{"metric":"Power-management content TAM / per-MW","horizon":"2028","trend":"up","trail":[
+{"date":"2025-09-15","val":"infra content/MW $2.8mn (DGX) → $3.1mn (NVL72); thermal +18%","src":"BofA DC Primer"},
+{"date":"2025-11-04","val":"PSU TAM 3-4x to ~$38bn by 2028; liquid-cooling TAM ~$30bn by 2028; VRT key beneficiary","src":"JPM AI Datacenters & Power"},
+{"date":"2026-06-09","val":"power-management TAM (built off VRT ~$1mn/MW) $20bn→$45bn (2028); power-distribution TAM $50bn→$90bn","src":"JPM 'Watts Up! 800V'"}],
+"note":"Architecture shift framed as content-accretive; VRT's own content estimate anchors JPM's TAM."},
+{"metric":"EMEA inflection to growth","horizon":"H2'26","trend":"contested","trail":[
+{"date":"Q2 FY25 (2025-07-30)","val":"+7% organic; resolve by year-end","src":"VRT Q2 FY25 call"},
+{"date":"Q3 FY25 (2025-10-22)","val":"−4% organic; margins 'low point'","src":"VRT Q3 FY25 call"},
+{"date":"Q4 FY25 (2026-02-11)","val":"−14% organic","src":"VRT Q4 FY25 call"},
+{"date":"Q1 FY26 (2026-04-22)","val":"−29% organic; guided back to growth H2'26","src":"VRT Q1 FY26 call"}],
+"note":"Live execution sore — deteriorated before guided H2'26 turn; restructuring payoff into 2026 margins."},
+{"metric":"DC market unit growth guide","horizon":"2023→2029","trend":"flat","trail":[
+{"date":"2025-11-10","val":"VRT guides 10-13% blended unit growth (15-17% hyperscale/colo, 4-6% enterprise); ~100GW added 2023-29; JPM calls 'conservative'","src":"JPM AI Capex & Financing"}],
+"note":"Mgmt's blended market guide; JPM's own ~25% GW CAGR model sees it as conservative."}
+]}

@@ -1,0 +1,22 @@
+{"ticker":"CEREBRAS","forward":[
+{"metric":"Revenue ramp","horizon":"2026→2028","trend":"up","trail":[
+{"date":"2026-05-06","val":"UBS models rev ~+60% in 2026, ~$2.7B in 2027 (~3x), ~$7B in 2028 (+160%)","src":"UBS IPO-education call (Tim Archer)"}],
+"note":"Single-broker IPO-education model (not consensus); steep OpenAI-driven ramp."},
+{"metric":"Profitability / FCF","horizon":"2H27 → 2028","trend":"up","trail":[
+{"date":"2026-05-06","val":"UBS: profitability in 2H27, FCF-positive 2028; long-term low-60s GM / low-40s op margin","src":"UBS IPO-education call (Tim Archer)"}],
+"note":"Not operationally profitable today (2025 net income flattered by non-cash forward-contract gain)."},
+{"metric":"OpenAI ramp / revenue mix","horizon":"2028","trend":"up","trail":[
+{"date":"2026-05-06","val":"OpenAI ~750MW take-or-pay, three ~$8B tranches, ~$25B total; UBS models cloud → 85–90% of rev and OpenAI → 70–80% of rev by 2028","src":"UBS IPO-education call (Tim Archer)"}],
+"note":"The swing factor — also the concentration risk that replaces UAE concentration."},
+{"metric":"AWS hardware ramp","horizon":"2027→2028","trend":"contested","trail":[
+{"date":"2026-03","val":"AWS signed to deploy CS-3/WSE-3 in its cloud","src":"SiliconANGLE"},
+{"date":"2026-06-15","val":"UBS/Arcuri: \"supply not demand\" — TSMC wafer request finalized Feb accounting only for OpenAI; meaningful AWS capacity unlikely before 2027 (UBS models AWS only from 2028)","src":"UBS \"Arcuri call\""}],
+"note":"Concentration-diluting datapoint but supply-gated; timing contested vs the deal signing."},
+{"metric":"Product roadmap (node/SRAM)","horizon":"2027→2029","trend":"up","trail":[
+{"date":"2026-05-06","val":"CS-4 (better platform/power) ramps early 2027; CS-5 (new core, more SRAM, still N5) 2028; first N3 part CS-6 late-2028/2029","src":"UBS IPO-education call (Tim Archer)"}],
+"note":"No near-term N3 contention with NVIDIA; CS-5 SRAM lift addresses the model-size knock."},
+{"metric":"Token-price / market-size tailwind","horizon":"structural","trend":"up","trail":[
+{"date":"2026-05-06","val":"BofA (Vivek Arya): fast-inference ~10–20% incremental to the market (~$100bn if AI is trillion-plus)","src":"BofA \"AMD recap\""},
+{"date":"2026-06-22","val":"MS init Overweight: high-speed-token prices up ~10x; \"really opens up the opportunity\"; Cerebras \"in pole position\"; Kimmy trillion-param rebuttal","src":"MS \"Memory + semicap\""}],
+"note":"MS Overweight initiation ahead of first print is the most recent dated forward view."}
+]}

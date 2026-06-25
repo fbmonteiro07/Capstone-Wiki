@@ -1,0 +1,10 @@
+# Wiki text layer only — the heavy binary archive (per-ticker filings, decks,
+# audio, briefings, equity calls, reports) stays UNtracked. Rollback safety net
+# for the _wiki synthesis + derived feature artifacts only.
+/*
+!/.gitignore
+!/.gitattributes
+!/INDEX.md
+!/_wiki/
+# throwaway previews inside _wiki
+_wiki/_preview_*.html
