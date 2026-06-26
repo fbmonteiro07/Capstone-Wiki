@@ -163,8 +163,8 @@ _intra-quarter · Apr 23 → Jun 23, 2026 · sell-side / expert calls / reports 
 - [UBS "The Ramp in Token Optimization" (2026-06-23)](../relat%C3%B3rios%20bons/ued46392.html) — model layer the biggest impact of token optimization; frontier API rev growth pressured by down-tiering to cheaper frontier/SLM/open-source Chinese models (Qwen/Kimi/DeepSeek/Z.ai), especially non-coding use cases.
 
 **Repo (primary):**
-- Equity calls — [`../../equity_calls_transcripts/Semis/2026-06-05_Harlan_AVGO.md`](../../equity_calls_transcripts/Semis/2026-06-05_Harlan_AVGO.md) (OpenAI/Anthropic 15GW ASIC math)
-- Equity calls — [`../../equity_calls_transcripts/Semis/2026-05-06_AMD-callback_OpenAI-Meta-deals.md`](../../equity_calls_transcripts/Semis/2026-05-06_AMD-callback_OpenAI-Meta-deals.md) (6GW/$100bn/warrant deal)
+- Equity calls — [`../../equity_calls_transcripts/Semis/2026-06-05_Harlan_AVGO.md`](../_equity_calls/Semis/2026-06-05_Harlan_AVGO.md) (OpenAI/Anthropic 15GW ASIC math)
+- Equity calls — [`../../equity_calls_transcripts/Semis/2026-05-06_AMD-callback_OpenAI-Meta-deals.md`](../_equity_calls/Semis/2026-05-06_AMD-callback_OpenAI-Meta-deals.md) (6GW/$100bn/warrant deal)
 - Research library — [`../../research_library/00_CATALOGO.md`](../../research_library/00_CATALOGO.md): CFO Sarah Friar (2026-06-03, compute/IPO), AWS Bedrock + Altman (2026-04-29), Laffont $4T AI IPO Wave (2026-06-04), Stanford CS153 Altman (2026-06-17)
 - Research library — [`../../research_library/Outros/2026-06-12_BG2Pod_SpaceX-Fable5-AI-capex.md`](../../research_library/Outros/2026-06-12_BG2Pod_SpaceX-Fable5-AI-capex.md) (frontier Pareto, frontier-token accrual)
 - Briefings — [`../../briefings/2026/2026-06-19-company-specific.md`](../../briefings/2026/2026-06-19-company-specific.md) (Shazeer hire, GPT-5.5 Instant, 230M WAU), [`../../briefings/2026/2026-06-18-company-specific.md`](../../briefings/2026/2026-06-18-company-specific.md) (ARR $28bn, sub-50% share, $34bn spend, DeepSeek substitution)
