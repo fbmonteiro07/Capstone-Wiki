@@ -1,6 +1,6 @@
 # What changed — last 7 days
 
-_Generated 2026-06-25 (since 2026-06-18) · rolls up every page's `## Changelog` + the ingest run log. ⭐ = rating/PT move. Rebuild: `py _wiki/_tools/build_diff.py [days]`._
+_Generated 2026-06-26 (since 2026-06-19) · rolls up every page's `## Changelog` + the ingest run log. ⭐ = rating/PT move. Rebuild: `py _wiki/_tools/build_diff.py [days]`._
 
 | Date | Ticker | Change |
 |---|---|---|
@@ -26,7 +26,8 @@ _Generated 2026-06-25 (since 2026-06-18) · rolls up every page's `## Changelog`
 | 2026-06-25 | AOSL | page created; ported from research-wiki corpus. |
 | 2026-06-25 | AKAM | page created from CDN archive (filings + transcripts + decks + BofA note). |
 
-## Ingest runs in window (2)
+## Ingest runs in window (3)
 
+- **2026-06-25** — daily ingest (default HWM 2026-06-23 → 2026-06-25) · ~686 emails filtered / ~200+ tweets / 0 new transcripts · 11 company pages + 3 themes touched · headline: OpenAI "Jalapeño" inference ASIC (Broadcom partnership confirmed); CBRS -19% below IPO; MediaTek wins Google TPU v9 primary orders (AVGO 448G SerDes missed deadline); QCOM Investor Day (META first DC CPU customer, HBC in Azure/Satya endorsement, C1000 $15B FY29); ON semi acquiring SYNA ~$7B (MS rating NA); AAPL tariff pricing +15-25% (MS/JPM); Anthropic Alibaba/Qwen distillation accusation; Anthropic billing overcharges $1.7M; OpenAI IPO delay to 2027; Nancy Pelosi $1M-$5M INTC March-2027 calls; NVDA GB300 firmware reboot bug (66.5 days); SemiAnalysis BTM 40+GW by 2028. Pages: AVGO / OPENAI / ANTHROPIC / AAPL / ON / CEREBRAS / NVDA / INTC / META / MSFT / AMAT. Themes: custom-asic-tpu / ai-datacenter-power / hyperscaler-capex.
 - **2026-06-25** — CDN coverage · 3 new pages NET/AKAM/FSLY synthesized from the CDNs archive (filings + transcripts through Q1 2026 + decks + BofA note); added "CDN / Edge cloud" section to 00_INDEX. Headline: AKAM $1.8B 7-yr frontier-model infra deal (BofA upgrade Buy $175); NET agentic-AI RIF; FSLY first profitable year.
 - **2026-06-25** — migration · — · ported from retired research-wiki: 4 new themes (cxl-memory-fabric, humanoids-robotics, china-export, macro-cycle), 13 new company pages (ETN, BE, POWI, AOSL, AXTI, TSEM, SANM, POET, MP, TSLA, PLTR, APP, VEEV), fresh MU F3Q26 + QCOM Investor Day datapoints folded into MU/QCOM. Daily ingest repointed here from E:\research-wiki. · headline: empresas wiki is now the single reference.

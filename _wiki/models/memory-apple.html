@@ -209,15 +209,15 @@
   <!-- ============ 3d. EPS IMPACT (CAPSTONE MODEL) ============ -->
   <h2><span class="n">3d</span> EPS impact — wired to the Capstone Apple model</h2>
   <div class="panel">
-    <p class="note" style="margin-top:0"><b>Baseline = memory already embedded in the model</b> (current contract, Q2'26) — NOT the mid-2025 trough. The model's $11.11 FY27 EPS is struck at 47.7% GM with memory ~at today's level, so the incremental hit is the <b>forward step from here</b>; measuring vs trough would double-count the $2.68→$12/GB rise already in the number. <b>ΔEPS = Δmemory/unit × iPhone units × (1−tax) ÷ diluted shares</b>, blended across the lineup mix, live with the active track + scenario: <span id="epsCtx">—</span>. "Absorbed" = zero pass-through; "net of ~$50" subtracts the price hike Apple has already taken. Full pass-through keeps EPS whole.</p>
+    <p class="note" style="margin-top:0"><b>Per-year baseline (your spec):</b> FY26 EPS is anchored to the <b>BBG contract price of Q1'26</b>; FY27 to <b>Q4'26</b>. The EPS hit each year is the memory move <b>beyond its anchor</b> — so FY26 carries the full Q1'26→Q4'26 rise and FY27 carries only the move <i>after</i> Q4'26 (the two years tile at the Q4'26 handoff; earlier increases are assumed locked into the FY27 base). <b>ΔEPS = Δmemory/unit × iPhone units × (1−tax) ÷ diluted shares</b>, blended across the lineup mix, live with the active track + scenario: <span id="epsCtx">—</span>. "Absorbed" = zero pass-through; "net of ~$50" subtracts the price hike Apple has already taken. Full pass-through keeps EPS whole.</p>
     <div style="overflow-x:auto"><table id="epsTable"></table></div>
     <div class="cards" style="margin-top:14px">
-      <div class="card"><div class="k">FY27 EPS hit — absorbed (vs current)</div><div class="v gnum up" id="epsHit27">—</div><div class="d" id="epsHit27pct">—</div></div>
+      <div class="card"><div class="k">FY27 EPS hit — absorbed (vs Q4'26 base)</div><div class="v gnum up" id="epsHit27">—</div><div class="d" id="epsHit27pct">—</div></div>
       <div class="card"><div class="k">FY27 net of the ~$50 hike taken</div><div class="v gnum up" id="epsYoY">—</div><div class="d" id="epsYoYpct">—</div></div>
       <div class="card"><div class="k">EPS sensitivity</div><div class="v gnum" id="epsSens">—</div><div class="d neu">per $10/unit absorbed (FY27)</div></div>
       <div class="card"><div class="k">Price ↑ to offset (blended)</div><div class="v gnum" id="epsOffset">—</div><div class="d neu" id="epsOffsetRef">—</div></div>
     </div>
-    <p class="note" style="margin:16px 0 6px"><b>FY27 EPS hit if absorbed — scenario × track matrix</b> (Δ vs current/embedded memory; active cell highlighted). Values are $ and % of the model's $11.11 FY27 EPS. <b>The Market column is the Android-OEM spot proxy — Apple's LTAs/supply priority mean its realized cost is the Apple column;</b> the Δ shows what's at risk only if that cushion fully fails.</p>
+    <p class="note" style="margin:16px 0 6px"><b>FY27 EPS hit if absorbed — scenario × track matrix</b> (Δ vs the Q4'26 base; active cell highlighted). Values are $ and % of the model's $11.11 FY27 EPS. <b>The Market column is the Android-OEM spot proxy — Apple's LTAs/supply priority mean its realized cost is the Apple column;</b> the Δ shows what's at risk only if that cushion fully fails.</p>
     <div style="overflow-x:auto"><table id="epsMatrix"></table></div>
     <p class="note" style="margin-bottom:0" id="epsNote">—</p>
   </div>
@@ -590,19 +590,21 @@ function buildEpsMatrix(){
   $('epsMatrix').innerHTML=h+'</tbody>';
 }
 
-// The model's EPS embeds memory at the latest ACTUAL contract (Q2'26 = idx 3) — that is the
-// correct baseline for an incremental EPS hit. Measuring vs the mid-2025 trough (idx 0) would
-// double-count the $2.68->$12/GB rise that is already inside the model's 47.7% FY27 GM.
-const EMBEDDED_IDX=3;
+// Per-year embedded baseline (user spec): FY26 EPS is anchored to the BBG contract price of
+// Q1'26 (idx 2); FY27 is anchored to Q4'26 (idx 5). The EPS hit for each year is the memory
+// move BEYOND its anchor. (Trough = idx 0 kept only for the §3b/§3c full-pass-through view.)
+const BASE_IDX={2026:2, 2027:5};   // Q1'26 / Q4'26
+const Q_LABEL ={2026:"Q1'26", 2027:"Q4'26"};
 const HIKE_TAKEN=50;   // reported ~$50 iPhone-18 price increase Apple has already taken
 // blended memory $/unit for a model-year on the active track at quarter index qq
 function blendedMem(yr, dS, nS, qq){
+  const bi=BASE_IDX[yr];
   let now=0, base=0, trough=0;
   for(const m of MODELS[yr]){
     const w=MIX[yr][m.n]||0;
-    now    += w*(m.d*dS[qq]           + m.s*nS[qq]);
-    base   += w*(m.d*dS[EMBEDDED_IDX] + m.s*nS[EMBEDDED_IDX]); // memory already in the model
-    trough += w*(m.d*dS[0]            + m.s*nS[0]);
+    now    += w*(m.d*dS[qq] + m.s*nS[qq]);
+    base   += w*(m.d*dS[bi] + m.s*nS[bi]);   // FY26->Q1'26, FY27->Q4'26
+    trough += w*(m.d*dS[0]  + m.s*nS[0]);
   }
   return {now, base, trough, incr:now-base, incrTrough:now-trough};
 }
@@ -619,8 +621,8 @@ function fmtHit(hit, eps){
 function buildEPS(dS,nS){
   const trk = track==='apple'?'Apple realized':'Market (BBG)';
   $('epsCtx').textContent = `${trk} track · ${$('modScen')?$('modScen').textContent:fwdScen} forward · tax 16% · units 266.8/280.1mn · shares 14,320/13,938mn (Modelo Apple 2Q26)`;
-  const QI={2026:3,2027:7};
-  let h='<thead><tr><th>FY</th><th>Model EPS</th><th>Blended mem $/u</th><th>Δ vs embedded (current)</th><th>EPS hit — absorbed</th><th>net of ~$50 hike</th><th>EPS after (net)</th></tr></thead><tbody>';
+  const QI={2026:5,2027:7};  // FY26 spans Q1'26->Q4'26; FY27 spans Q4'26->Q2'27 (Q4'26 = shared handoff)
+  let h='<thead><tr><th>FY</th><th>Model EPS</th><th>Blended mem $/u</th><th>Δ vs base (Q1\'26 / Q4\'26)</th><th>EPS hit — absorbed</th><th>net of ~$50 hike</th><th>EPS after (net)</th></tr></thead><tbody>';
   const res={};
   for(const yr of [2026,2027]){
     const bm=blendedMem(yr,dS,nS,QI[yr]);
@@ -649,15 +651,17 @@ function buildEPS(dS,nS){
      ? `<span class="up">−${fmt(res[2027].hitNet/e27*100,1)}%</span> after $50 already taken`
      : `<span class="dn">~covered by the $50 already taken</span>`;
   $('epsSens').textContent='−$'+fmt(epsHit(10,2027),2);
-  // price increase to offset (EPS-neutral pass-through) = blended incremental memory/unit
-  const offU=res[2027].bm.incr;
-  $('epsOffset').textContent=(offU>=0?'+$':'−$')+fmt(Math.abs(offU),0)+' /iPhone';
-  $('epsOffsetRef').textContent= offU>=0
-     ? `18 Pro $1,149 → ~$${fmt(1149+offU,0)} (net of $50: ~$${fmt(1149+Math.max(0,offU-HIKE_TAKEN),0)})`
-     : `memory tailwind — no hike needed`;
+  // price increase to offset (EPS-neutral pass-through) = blended incremental memory/unit, per year
+  const o26=res[2026].bm.incr, o27=res[2027].bm.incr;
+  const sgn=v=>(v>=0?'+$':'−$')+fmt(Math.abs(v),0);
+  $('epsOffset').innerHTML=`<span style="font-size:18px">FY26 ${sgn(o26)} · FY27 ${sgn(o27)}</span>`;
+  const peak=Math.max(o26,o27,0);
+  $('epsOffsetRef').textContent= peak>0.5
+     ? `/iPhone (peak yr) → 18 Pro $1,149 → ~$${fmt(1149+peak,0)}; net of $50 ~$${fmt(1149+Math.max(0,peak-HIKE_TAKEN),0)}`
+     : `memory ~flat vs base — minimal hike needed`;
   buildEpsMatrix();
   const troughHit=epsHit(res[2027].bm.incrTrough,2027);
-  $('epsNote').innerHTML=`<b>Read:</b> the model already embeds <i>current</i> (~$12/GB) memory in its 47.7% FY27 GM, so the marginal risk is the <b>forward step</b> — on the active track that's <b>−$${fmt(res[2027].hit,2)} absorbed (−${fmt(res[2027].hit/MODEL.eps[2027]*100,1)}%)</b>, and only <b>−$${fmt(res[2027].hitNet,2)} net</b> of the ~$50 hike Apple has already taken. For context, the full <i>vs-trough</i> figure is −$${fmt(troughHit,2)} (${fmt(troughHit/MODEL.eps[2027]*100,1)}%) — but that double-counts the $2.68→$12/GB rise that is <b>already in the $11.11</b>, so it is not an incremental hit. The <b>Market column is the Android-OEM proxy</b>: Apple's LTAs/supply priority mean its realized cost is the <i>Apple</i> column — the Market figure is only relevant if that cushion fully breaks. <span style="color:var(--dim)">Drivers from Modelo Apple Felipe 2Q26 (2026-06-16); mix weights (Pro/Pro Max ~55%/52% of units) are Capstone estimates.</span>`;
+  $('epsNote').innerHTML=`<b>Read (per-year anchors — your spec):</b> FY26 EPS is pinned to the <b>Q1'26</b> BBG contract, FY27 to <b>Q4'26</b>. FY26 therefore carries the Q1'26→Q4'26 rise = <b>−$${fmt(res[2026].hit,2)} absorbed (−${fmt(res[2026].hit/MODEL.eps[2026]*100,1)}%)</b>; FY27 carries only the move after Q4'26 = <b>−$${fmt(res[2027].hit,2)} absorbed (−${fmt(res[2027].hit/MODEL.eps[2027]*100,1)}%)</b>, just <b>−$${fmt(res[2027].hitNet,2)} net</b> of the ~$50 hike. For context, the full <i>vs-trough</i> (whole-flood) figure is −$${fmt(troughHit,2)} — that is the §3b/§3c pricing view, not an incremental EPS hit (it includes memory already in the $11.11). The <b>Market column is the Android-OEM proxy</b>: Apple's LTAs/supply priority mean its realized cost is the <i>Apple</i> column — Market is relevant only if that cushion fully breaks. <span style="color:var(--dim)">Drivers from Modelo Apple Felipe 2Q26 (2026-06-16); mix weights (Pro/Pro Max ~55%/52% of units) are Capstone estimates.</span>`;
 }
 
 function renderBBG(){
