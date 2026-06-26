@@ -1,0 +1,111 @@
+<!-- SEARCH-WIDGET START (self-contained: full-text search + optional Claude Q&A). Paste this
+     block just before </body> in the wiki HTML, or let _tools/inject_search.py insert it. -->
+<style>
+#aiq-fab{position:fixed;right:22px;bottom:22px;z-index:50;background:#4f8cff;color:#fff;border:0;border-radius:24px;padding:11px 18px;font:600 13px -apple-system,Segoe UI,Roboto,sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(15,23,41,.28)}
+#aiq-fab:hover{background:#3b78ec}
+#aiq-overlay{position:fixed;inset:0;z-index:60;background:rgba(15,23,41,.55);display:none;align-items:flex-start;justify-content:center}
+#aiq-overlay.open{display:flex}
+#aiq-modal{background:#fff;margin-top:8vh;width:min(760px,92vw);max-height:82vh;border-radius:14px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 18px 50px rgba(15,23,41,.4);font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;color:#1a1f29}
+#aiq-head{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid #e3e7ee}
+#aiq-input{flex:1;border:1px solid #cfd6e2;border-radius:8px;padding:9px 11px;font-size:14px;outline:none}
+#aiq-input:focus{border-color:#4f8cff}
+#aiq-ask{background:#0f1729;color:#fff;border:0;border-radius:8px;padding:9px 13px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+#aiq-ask:hover{background:#1b2540}
+#aiq-x{background:none;border:0;font-size:20px;color:#8492ad;cursor:pointer;padding:2px 6px}
+#aiq-body{overflow-y:auto;padding:6px 0}
+.aiq-hit{padding:9px 16px;cursor:pointer;border-left:3px solid transparent}
+.aiq-hit:hover{background:#f0f5ff;border-left-color:#4f8cff}
+.aiq-hit b{color:#0f1729}
+.aiq-hit .tk{font-weight:700;font-size:13px;color:#1c5fd6;margin-right:6px}
+.aiq-hit .co{font-size:12px;color:#8492ad}
+.aiq-snip{font-size:12.5px;color:#4a5468;margin-top:3px}
+.aiq-snip mark{background:#fff3bf;padding:0 1px}
+#aiq-answer{padding:14px 16px;border-top:1px solid #e3e7ee;background:#fafbfc;white-space:pre-wrap;font-size:13.5px;color:#1a1f29}
+#aiq-answer .lbl{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6b7691;margin-bottom:6px}
+#aiq-foot{padding:8px 16px;border-top:1px solid #e3e7ee;font-size:11.5px;color:#8492ad;display:flex;justify-content:space-between;align-items:center}
+#aiq-foot a{color:#1c5fd6;cursor:pointer;text-decoration:none}
+.aiq-empty{padding:18px 16px;color:#8492ad;font-size:13px}
+</style>
+<button id="aiq-fab" onclick="AIQ.open()">🔎 Search / Ask</button>
+<div id="aiq-overlay" onclick="if(event.target===this)AIQ.close()">
+  <div id="aiq-modal">
+    <div id="aiq-head">
+      <input id="aiq-input" placeholder="Search the wiki, or ask a question…" autocomplete="off">
+      <button id="aiq-ask" onclick="AIQ.ask()">✨ Ask AI</button>
+      <button id="aiq-x" onclick="AIQ.close()" aria-label="Close">×</button>
+    </div>
+    <div id="aiq-body"><div class="aiq-empty">Type to search across every company. Hit <b>Ask AI</b> for a synthesized answer.</div></div>
+    <div id="aiq-foot">
+      <span id="aiq-status"></span>
+      <a onclick="AIQ.setKey()">Set Claude API key</a>
+    </div>
+  </div>
+</div>
+<script>
+var AIQ=(function(){
+  var idx=null, lastHits=[];
+  function build(){
+    if(idx)return idx; idx=[];
+    document.querySelectorAll('.page').forEach(function(p){
+      var tk=(p.id||'').replace(/^p-/,'');
+      if(!tk||tk==='SCREENER'||tk==='HOME')return;
+      var h1=p.querySelector('h1'), title=h1?h1.textContent.trim():tk;
+      var raw=(p.innerText||p.textContent||'').replace(/\s+/g,' ').trim();
+      idx.push({tk:tk,title:title,raw:raw,low:raw.toLowerCase()});
+    });
+    return idx;
+  }
+  function score(terms,d){var s=0;for(var i=0;i<terms.length;i++){var t=terms[i];if(!t)continue;var n=d.low.split(t).length-1;if(d.tk.toLowerCase()===t)s+=50;if(d.title.toLowerCase().indexOf(t)>-1)s+=8;s+=n;}return s;}
+  function snippet(terms,d){
+    var pos=-1;for(var i=0;i<terms.length;i++){var p=d.low.indexOf(terms[i]);if(p>-1&&(pos<0||p<pos))pos=p;}
+    if(pos<0)return d.raw.slice(0,150);
+    var st=Math.max(0,pos-60), txt=(st>0?'…':'')+d.raw.slice(st,pos+150)+'…';
+    terms.forEach(function(t){if(t)txt=txt.replace(new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>');});
+    return txt;
+  }
+  function search(q){
+    var terms=q.toLowerCase().split(/\s+/).filter(Boolean);
+    if(!terms.length){lastHits=[];return [];}
+    var ranked=build().map(function(d){return {d:d,s:score(terms,d)};}).filter(function(x){return x.s>0;}).sort(function(a,b){return b.s-a.s;});
+    lastHits=ranked.slice(0,8).map(function(x){return x.d;});
+    var body=document.getElementById('aiq-body');
+    if(!lastHits.length){body.innerHTML='<div class="aiq-empty">No matches.</div>';return lastHits;}
+    body.innerHTML=lastHits.map(function(d){
+      return '<div class="aiq-hit" onclick="AIQ.go(\''+d.tk+'\')"><span class="tk">'+d.tk+'</span><span class="co">'+d.title.replace(/^[A-Z0-9.]+\s*[—-]\s*/,'')+'</span><div class="aiq-snip">'+snippet(terms,d)+'</div></div>';
+    }).join('');
+    return lastHits;
+  }
+  function go(tk){if(window.show)show(tk);close();}
+  function open(){document.getElementById('aiq-overlay').classList.add('open');var i=document.getElementById('aiq-input');i.focus();i.select();}
+  function close(){document.getElementById('aiq-overlay').classList.remove('open');}
+  function setKey(){var cur=localStorage.getItem('anthropic_api_key')||'';var k=prompt('Paste your Anthropic API key (sk-ant-…). Stored only in this browser.',cur);if(k!==null)localStorage.setItem('anthropic_api_key',k.trim());}
+  function ask(){
+    var q=document.getElementById('aiq-input').value.trim();if(!q)return;
+    var hits=lastHits.length?lastHits:search(q);
+    var key=localStorage.getItem('anthropic_api_key');
+    if(!key){setKey();key=localStorage.getItem('anthropic_api_key');if(!key)return;}
+    var ctx=hits.slice(0,5).map(function(d){return '### '+d.tk+' — '+d.title+'\n'+d.raw.slice(0,3500);}).join('\n\n');
+    var body=document.getElementById('aiq-body');
+    var ans=document.getElementById('aiq-answer')||document.createElement('div');ans.id='aiq-answer';
+    ans.innerHTML='<span class="lbl">AI answer</span>Thinking…';
+    if(!document.getElementById('aiq-answer'))body.parentNode.insertBefore(ans,document.getElementById('aiq-foot'));
+    fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'content-type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-opus-4-8',max_tokens:1500,
+        system:'You are a buy-side equity research assistant answering over an internal company wiki. Use ONLY the provided context. Be concise and specific; cite the ticker(s) you used in brackets like [NVDA]. If the context does not contain the answer, say so plainly.',
+        messages:[{role:'user',content:'Context from the wiki:\n\n'+ctx+'\n\n---\nQuestion: '+q}]})
+    }).then(function(r){return r.json();}).then(function(j){
+      if(j.error){ans.innerHTML='<span class="lbl">AI answer</span>Error: '+(j.error.message||'request failed');return;}
+      var txt=(j.content||[]).filter(function(b){return b.type==='text';}).map(function(b){return b.text;}).join('\n');
+      ans.innerHTML='<span class="lbl">AI answer · sources: '+hits.slice(0,5).map(function(d){return d.tk;}).join(', ')+'</span>'+txt.replace(/</g,'&lt;');
+    }).catch(function(e){ans.innerHTML='<span class="lbl">AI answer</span>Error: '+e.message;});
+  }
+  document.addEventListener('keydown',function(e){
+    if((e.key==='/'||((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'))&&document.activeElement.tagName!=='INPUT'&&document.activeElement.tagName!=='TEXTAREA'){e.preventDefault();open();}
+    if(e.key==='Escape')close();
+  });
+  document.addEventListener('input',function(e){if(e.target&&e.target.id==='aiq-input'){var a=document.getElementById('aiq-answer');if(a)a.remove();search(e.target.value.trim());}});
+  document.addEventListener('keydown',function(e){if(e.target&&e.target.id==='aiq-input'&&e.key==='Enter'){e.preventDefault();ask();}});
+  return {open:open,close:close,ask:ask,go:go,setKey:setKey};
+})();
+</script>
+<!-- SEARCH-WIDGET END -->
