@@ -4,6 +4,23 @@
 
 _Wiki · generated 2026-06-18 · sources: `E:\Wiki Felipe\NOW` (filings + transcripts + decks) · `_briefings\by-ticker\NOW.md`. Master index: [../INDEX.md](../INDEX.md)._
 
+<!-- SNAPSHOT:START (auto: _tools/build_snapshot.py — do not hand-edit) -->
+### 📊 Consensus snapshot — BBG · asof 2026-06-22 · USD
+
+| Metric | CY2026E | CY2027E |
+|---|--:|--:|
+| Revenue | $16.2bn | $19.2bn |
+| Gross profit | $12.9bn | $15.3bn |
+| Gross margin | 79.6% | 79.7% |
+| EBITDA | $6.1bn | $7.3bn |
+| EPS | $4.16 | $5.05 |
+| Capex | $921m | $999m |
+| OCF (≈EBITDA) | $6.1bn | $7.3bn |
+
+**EPS revision** (BBG est. trend) — FY1 ▁█▆▆ -0.5% 3m · +1.8% 6m · FY2 ▁▆██ +0.5% 3m · +3.6% 6m
+_Gross profit = Revenue × GM%. OCF: no forward BBG consensus — EBITDA shown as proxy._
+<!-- SNAPSHOT:END -->
+
 > **Fidelity flag:** the two transcripts used (Q1-26, Q4-25) are third-party reconstructions (fool.com / insidermonkey via WebFetch) — close paraphrase of the source, **not verbatim**, with quotation marks only where the source has them. Treat the numbers as directional, not as exact quotation.
 
 ## Snapshot
@@ -30,6 +47,7 @@ Beat-and-raise. Subscription revenue $3.671bn (+19% y/y); cRPO +21% y/y (~100bps
 - **Bull:** context/data moat — 22 years, "95 billion workflows and more than 7 trillion transactions"; one CIO said it would need to be "at least 10x more expensive" to replace (McDermott, Q1-26, 2026-04-22). AI reinvigorates the core (ITSM gains importance as AI complexity rises), it does not cannibalize (McDermott responding to Borges/GS, Q1-26). A platform open to any model "aligned to customers' policies, permissions and rules" wins in an environment of AI confusion (McDermott, Q1-26). **TAM expansion**: rather than charging a slice of the IT budget per seat, agentic pricing lets vendors tap the far larger pool of white-collar labour spend — NOW's CFO Mastantuono: "GenAI and our new product launches continue to expand our massive TAM"; Gartner sees global software TAM growing from ~$1.1tn (2024) to ~$2tn (2029), a 13% CAGR (JPM, 2025-09-03). **Incumbent advantage**: J.P. Morgan's 2025 CIO Survey shows enterprises leaning to established vendors for AI needs, with NOW among the named incumbents (alongside MSFT, AMZN, GOOGL, SAP) — though only 1.2% of respondents named it top-of-mind vs MSFT 32.7% / OpenAI 22.0% (JPM, 2025-09-03). BofA reinstated at **Buy, PO $130**, thesis "AI beneficiary, entrenched workflow position" (morning briefing, 2026-05-19). Bernstein's 247-page Gen-AI Handbook reinforces the incumbent-moat case structurally: it argues AI-native SaaS challengers face the same multi-year ramp the original SaaS leaders did — "one need only look at how long it took Salesforce, Workday, or **ServiceNow** to ramp their businesses" — so disruption of entrenched, multi-product platforms is slow, not sudden, and well-run incumbents survive/thrive rather than being displaced (Bernstein "Scaling Intelligence", 2026-06-22; thematic framework, not a fresh datapoint).
 - **Bear:** (1) Risk of core pricing cannibalization as AI reduces seats — a premise Borges/GS raised and management rejected (Q1-26); the Street acknowledges seat-based disruption as a real sector risk that the move to consumption/outcome pricing is meant to offset, not eliminate (JPM, 2025-09-03). (2) Negative stock reaction post-print despite good numbers; Keith Weiss/MS questioned when NOW would show acceleration comparable to "AI platforms" (Q1-26) — the "AI tax" debate on application software. (3) M&A cadence (Moveworks, Armis, Veza) generated "investor concern" about dependence on acquisitions vs organic growth (Samana/Jefferies, Q4-25); Veza/Pyramid contribution was minimal in Q1. (4) Structural gross-margin headwind from hyperscalers/LLM cost (Mastantuono, Q4-25). (5) Deals "more complex... longer, more expensive sales cycles, increased pricing pressure" (Risk Factors, 10-K FY25).
 - **Financial Analyst Day (2026-05-04) — third-party reads (UBS/Keirstead):** likely a positive catalyst — **$30bn 2030 subscription revenue (~17.5% four-year CAGR; in line with UBS's $29.6bn est.), with $32bn offered as an upside case**, and a **"Rule of 60" 2030 guide** (growth + FCF margin) implying better op-margin gains than the ~50bps/yr UBS modeled. The growth algo leans heavily on a **pricing pivot: 20–30% average pricing uplift** from a combination of straight price increases, usage-based meters customers exceed, and outcome/productivity-share deals — SKUs renamed **foundation / advanced / prime** with AI embedded across all. Mgmt (Gina) confirmed the **path to $30bn is non-linear** — the real ACV inflection from seat→agent substitution lands ~two years out (~2028), leaving 2027 growth potentially "a little more modest." NOW also flagged a move down-market via a **new fully AI-native ITSM product priced 100% consumption-based** (a watch-item for Atlassian JSM / Freshworks). Keirstead stays "measured" on three worries: Bill McDermott's unhedged optimism (zero acknowledged disruption risk, vs Palantir on the same day declaring "the death of legacy software"); uncertainty the coding-style seat→usage uplift translates to non-coding use cases (Salesforce backed off a similar outcome-pricing pitch a year ago); and the non-linear trajectory (UBS "NOW investor day / PLTR" call, 2026-05-05). McDermott's own framing of who gets disrupted: software firms that lack NOW's portfolio breadth ("Workday in HR fits that description"), have lower usage intensity, or bolt AI on as a side-car SKU rather than embedding it (UBS, 2026-05-05). [../relat%C3%B3rios%20bons/2026_05_05_now_pltr_ubs_review_5_may_26.html](../relat%C3%B3rios%20bons/2026_05_05_now_pltr_ubs_review_5_may_26.html)
+- **Token-optimization read-through — mixed (third-party):** UBS names ServiceNow (with Salesforce and Workday) as a "larger and well-penetrated seat-based SaaS firm" that is NOT helped as enterprises cut headcount growth / optimize seats / trim app-software budget growth to fund rising AI token costs — and warns the seat-plus-usage pricing transition "may now be met with even greater resistance" (directly relevant to NOW's 50%-non-seat mix and 20-30% pricing uplift). The offset: model-neutral software firms (don't own 1P models) could gain by playing an independent "token optimizer" role like Palantir's Evolve (UBS "The Ramp in Token Optimization" / Keirstead, 2026-06-23).
 - **Renewal-pause read-through (third-party):** UBS/Keirstead flagged Microsoft citing weaker Dynamics contract renewals as enterprises paused to evaluate "new AI scenarios, including new usage-based pricing models" — a negative read to the broader SaaS apps space that "is likely to show up in pending SaaS prints" and "may have already weighed on the recent results and guide of ServiceNow and SAP" (UBS MSFT print recap, 2026-04-30). [../relat%C3%B3rios%20bons/2026_04_30_msft_ubs_recap_30_par_2026.html](../relat%C3%B3rios%20bons/2026_04_30_msft_ubs_recap_30_par_2026.html)
 - **Where the sell-side stands:** broad and constructive coverage on the calls — JPMorgan (Murphy), Deutsche (Zelnick), Goldman (Borges), Morgan Stanley (Weiss/Zukin), Jefferies (Samana), Wells Fargo (Turrin), AllianceBernstein (Weed), RBC (Hedberg), Oppenheimer (Schwartz), JMP (Walravens). Only PO on disk: **BofA Buy $130** (briefing 2026-05-19). JPMorgan's agentic-software thematic (Ogg, 2025-09-03) treats NOW as a core agentic incumbent (hybrid pricing exemplar + SecOps agents + Moveworks M&A) but carries no NOW-specific PT in that note. No equity calls attributed in the INDEX.
 
@@ -49,28 +67,29 @@ Beat-and-raise. Subscription revenue $3.671bn (+19% y/y); cRPO +21% y/y (~100bps
 - M&A: risk of failing to realize expected benefits, management distraction, dilution.
 - Cybersecurity / data-localization and regulatory expectations around data use and movement.
 
-## Intra-quarter — calls, comentários & relatórios (desde o último print)
-_Q1 FY26 · Apr 22 → Jun 23, 2026 · sell-side / expert calls / relatórios entre os earnings. Timeline visual: [timeline.html](timeline.html)._
+## Intra-quarter — calls, commentary & reports (since the last print)
+_Q1 FY26 · Apr 22 → Jun 23, 2026 · sell-side / expert calls / reports between earnings. Timeline visual: [timeline.html](timeline.html)._
 
-**Sinal vs gestão** — o que a gestão disse no último call × o que o fluxo intra-quarter está dizendo (✓ confirma · ⚠ nuança · ✗ contesta):
+**Signal vs management** — what management said on the last call × what the intra-quarter flow is saying (✓ confirms · ⚠ nuances · ✗ contests):
 
-| Tema | Gestão disse (Q1 FY26) | Fluxo intra-quarter | Sinal |
+| Theme | Management said (Q1 FY26) | Intra-quarter flow | Signal |
 |---|---|---|---|
-| **Crescimento / cRPO** | Sub rev +19% y/y, beat-and-raise; cRPO +21% (~100bps acima do guide) | UBS Keirstead: clientes pausam renovações (Dynamics) p/ avaliar "novos cenários AI / usage-based" — leitura negativa que "pode já ter pesado em NOW/SAP" | **⚠ nuança** (pausa de avaliação AI) |
-| **AI monetização** | Target de AI-commit elevado de $1bn → $1,5bn | BofA: "AI beneficiary, entrenched workflow position", reinstate Buy PO $130 | **✓ confirma** (alavanca AI) |
-| **Pricing shift (seat→usage)** | 50% do net new é não-baseado em seat; uplift médio 20-30% (FAD) | UBS: incerto se uplift seat→usage estilo coding se traduz a casos não-coding; inflexão real só ~2028, '27 "mais modesto" | **⚠ nuança** (translação incerta) |
-| **Guidance LT** | Guide 2030: $30bn de sub rev (~17,5% CAGR), "Rule of 60" | UBS: catalisador provável, mas "measured" — otimismo de McDermott sem reconhecer risco de disrupção | **⚠ nuança** (otimismo sem hedge) |
+| **Growth / cRPO** | Sub rev +19% y/y, beat-and-raise; cRPO +21% (~100bps above guide) | UBS Keirstead: customers pausing renewals (Dynamics) to evaluate "new AI scenarios / usage-based" — a negative read that "may have already weighed on NOW/SAP" | **⚠ nuance** (AI-evaluation pause) |
+| **AI monetization** | AI-commit target raised from $1bn → $1.5bn | BofA: "AI beneficiary, entrenched workflow position", reinstate Buy PO $130 | **✓ confirms** (AI lever) |
+| **Pricing shift (seat→usage)** | 50% of net new is non-seat-based; average uplift 20-30% (FAD) | UBS: uncertain whether the coding-style seat→usage uplift translates to non-coding use cases; real inflection only ~2028, '27 "more modest" | **⚠ nuance** (uncertain translation) |
+| **LT guidance** | 2030 guide: $30bn of sub rev (~17.5% CAGR), "Rule of 60" | UBS: likely catalyst, but "measured" — McDermott's optimism without acknowledging disruption risk | **⚠ nuance** (optimism without a hedge) |
 
-**Log completo** (todo o fluxo intra-quarter, por data):
+**Full log** (all intra-quarter flow, by date):
 
-| Data | Fonte | Tema | Viés | O que disse |
+| Date | Source | Theme | Bias | What was said |
 |---|---|---|---|---|
-| 04-30 | UBS · Keirstead | demanda | bear | UBS/Keirstead (MSFT print recap): Microsoft cited weaker Dynamics contract renewals as enterprises paused to evaluate "new AI scenarios, including new usage-based pricing models" — a negative read for the SaaS apps space that "may have already weighed on the recent results and guide of ServiceNow and SAP." |
+| 04-30 | UBS · Keirstead | demand | bear | UBS/Keirstead (MSFT print recap): Microsoft cited weaker Dynamics contract renewals as enterprises paused to evaluate "new AI scenarios, including new usage-based pricing models" — a negative read for the SaaS apps space that "may have already weighed on the recent results and guide of ServiceNow and SAP." |
 | 05-04 | NOW · Financial Analyst Day | guidance | bull | Financial Analyst Day: $30bn subscription revenue guide for 2030 (~17.5% 4-year CAGR), with $32bn as an upside case, and a "Rule of 60" guide for 2030. Some of the growth rests on the pricing pivot: an average uplift of 20-30%. |
 | 05-05 | UBS · Keirstead ("NOW investor day / PLTR call") | guidance | mixed | UBS/Keirstead read-through from the FAD: a likely positive catalyst, but "measured" on three concerns — McDermott's unhedged optimism (zero disruption risk acknowledged), uncertainty over whether the coding-style seat→usage uplift translates to non-coding use cases, and the non-linear trajectory (the real seat→agent ACV inflection only ~2028, leaving 2027 potentially "a little more modest"). NOW also flagged an AI-native down-market ITSM at 100% consumption. |
 | 05-19 | BofA | valuation | bull | BofA reinstated coverage at Buy, PO $130 (via morning briefing): "AI beneficiary, entrenched workflow position" thesis. |
+| 06-23 | UBS · Keirstead | demand | mixed | UBS names NOW (with CRM/WDAY) as a well-penetrated seat-based SaaS firm NOT helped as enterprises cut headcount/optimize seats/trim app-budget growth to offset AI token costs; seat-plus-usage pricing "may now be met with even greater resistance." Offset: model-neutral software could gain playing an independent "token optimizer" role like Palantir's Evolve. |
 
-**Síntese do quarter:** o print foi beat-and-raise e o Financial Analyst Day pôs uma meta de $30bn p/ 2030, mas o debate migrou para o timing e a translação do pivot de pricing — UBS é construtivo no longo prazo, porém "measured": o seat→usage uplift pode não se generalizar p/ casos não-coding e a inflexão real de ACV só vem ~2028, deixando '27 potencialmente mais modesto, ainda mais com clientes pausando renovações p/ reavaliar modelos de AI.
+**Quarter synthesis:** the print was a beat-and-raise and the Financial Analyst Day set a $30bn target for 2030, but the debate has shifted to the timing and translation of the pricing pivot — UBS is constructive on the long term, but "measured": the seat→usage uplift may not generalize to non-coding use cases and the real ACV inflection only comes ~2028, leaving '27 potentially more modest, all the more so with customers pausing renewals to reassess AI models.
 
 ## Management commentary — evolution (last 6 quarters)
 
@@ -96,3 +115,4 @@ _Source: NOW earnings calls (dates above); management commentary, paraphrased._
   - [Bernstein — Scaling Intelligence: The Generative AI Handbook (2026-06-22)](../relat%C3%B3rios%20bons/Bernstein_on_Gen_AI_Software.html) — incumbents-survive framework; NOW (with CRM/WDAY) cited as proof that even superior new SaaS takes years to ramp → slow, not sudden, disruption risk.
   - [UBS (Keirstead) — ServiceNow Investor Day + PLTR review (2026-05-05)](../relat%C3%B3rios%20bons/2026_05_05_now_pltr_ubs_review_5_may_26.html) — FAD: $30bn/$32bn FY30 sub-rev, Rule of 60, 20–30% pricing uplift, non-linear path, AI-native consumption ITSM down-market.
   - [UBS (Keirstead) — MSFT print recap (2026-04-30)](../relat%C3%B3rios%20bons/2026_04_30_msft_ubs_recap_30_par_2026.html) — AI/pricing renewal pause read-through to NOW/SAP.
+  - [UBS "The Ramp in Token Optimization" (2026-06-23)](../relat%C3%B3rios%20bons/ued46392.html) — seat-based SaaS (CRM/NOW/WDAY) not helped by token-cost offsets, seat-plus-usage pricing meets greater resistance; offset = model-neutral "token optimizer" role (Palantir Evolve).

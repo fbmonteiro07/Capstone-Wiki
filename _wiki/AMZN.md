@@ -2,6 +2,23 @@
 
 _Wiki · generated 2026-06-18 · sources: `E:\Wiki Felipe\AMZN` (filings + transcripts) · `_equity_calls` · `_briefings\by-ticker\AMZN.md`. Master index: [../INDEX.md](../INDEX.md)._
 
+<!-- SNAPSHOT:START (auto: _tools/build_snapshot.py — do not hand-edit) -->
+### 📊 Consensus snapshot — BBG · asof 2026-06-22 · USD
+
+| Metric | CY2026E | CY2027E |
+|---|--:|--:|
+| Revenue | $821.1bn | $933.2bn |
+| Gross profit | $419.6bn | $491.8bn |
+| Gross margin | 51.1% | 52.7% |
+| EBITDA | $208.3bn | $267.4bn |
+| EPS | $9.33 | $11.87 |
+| Capex | $199.6bn | $232.5bn |
+| OCF (≈EBITDA) | $208.3bn | $267.4bn |
+
+**EPS revision** (BBG est. trend) — FY1 ▁▁██ +9.0% 3m · +10.2% 6m · FY2 ▆▁█▆ +4.5% 3m · +0.1% 6m
+_Gross profit = Revenue × GM%. OCF: no forward BBG consensus — EBITDA shown as proxy._
+<!-- SNAPSHOT:END -->
+
 ## Snapshot
 Three reportable segments: **North America** (Q1'26 $104.1B rev, +12%, 7.9% OI margin), **International** ($39.8B, +11% ex-FX), and **AWS** ($37.6B, +28%, $14.2B OI). AWS is ~21% of revenue but the overwhelming majority of operating income and the entire valuation debate. On top of the retail flywheel (1P/3P marketplace, FBA, Prime, fast/quick commerce) sit three high-margin attach businesses — **Advertising** ($17.2B Q1'26, +22%), **Prime Video**, and now an AI-infrastructure complex (Trainium/Graviton custom silicon, Bedrock, Anthropic anchor). New optionality: **Amazon LEO** (satellite broadband, commercial launch Q3'26) and **Amazon Supply Chain Services** (3P logistics / LTL). The stock is positioned by the Street as the "infrastructure backbone of AI" — OpenAI + Anthropic both running on AWS (JPM AI Capex & Financing, 2025-11-10: "best positioned of the hyperscalers to generate tangible returns from AI investment").
 
@@ -35,6 +52,7 @@ Three reportable segments: **North America** (Q1'26 $104.1B rev, +12%, 7.9% OI m
 - **Bear:** Capex/ROIC is the swing factor — $200B FY26 capex, capex/rev gone from 7%→20% (Q1'20→Q1'26), and Jassy concedes early-year FCF is "challenged." JPM (AI Capex & Financing, 2025-11-10) pegs AMZN as the **largest hyperscaler capex spender at ~$125B FY25 (up from $78B FY24), reaching ~$150B FY26** — but uniquely **funded entirely from internal cash flow** (no new debt in ~3 years); JPM expects AMZN to re-engage the IG market and/or use sale-leaseback / JV structures around its DC footprint over the next two years. Memory/component cost inflation pressures unit economics. AWS web/SSO metrics softening: Bernstein (Shmulik/Arbsman) flagged non-AI cloud SSO growth "unusually flattened" in May with **4Q non-AI cloud growth at risk** if it persists (briefing 2026-06-06); Bernstein (Shuster) earlier cut AWS web-metric color, 4-week weakening, "Q4 risk" (briefing 2026-06-05). Agentic-commerce threat to retail/ad funnel (JPM Horvers/Anmuth "Retail vs. AMZN" deep dive, 2026-06-16); JPM (AI Capex & Financing) flags Anthropic tension over AI shopping plus reports AMZN aims to automate up to 75% of its labor force — margin upside but unique social/regulatory risk. Ownership signal mixed: **Berkshire fully exited** in Q1; Druckenmiller trimmed to a token position — offset by Ackman ($3.01B, top position) and Tiger (briefings 2026-05-18).
 - **Prime deep dive — the retail-side long (JPM/Anmuth — Prime deep-dive, 2026-06-23):** unbundling Prime's components implies ~**$1,440/yr of member value vs the $139 US annual cost (~10x)** — flattish vs ~$1,430 in 2025 but ~3x the ~$544 estimated in 2016 ("best deal in shopping"). JPM models **370M+ global Prime subs ending 2026 (~371M: ~139M US + ~231M Int'l incl. Business Prime), ~40/60 US/Int'l split, +23M net adds (vs +25M in 2025)**; Int'l still the growth lever — ~19% penetrated across 27 markets (~33% ex-China), and lifting ex-China penetration ~33%→~45% would add **~75M members** (last official disclosure was 200M+ in the 2020 shareholder letter). Value build rests on delivery: US members saved **~$550 avg delivery fees in 2025** (up from $500+ in 2024), **$105B of global delivery-fee savings**, 13B+ items SD/1D globally in 2025 (8B+ US, +30% y/y), ~100M US same-day customers, 85+ SSD FCs carrying the top 90k SKUs. A **$20 US Prime price increase ≈ ~$3B incremental annualized net sales** — JPM now sees the next hike slipping from 2026 **into 2027** (every-~4yr cadence; macro/gas-price pressure), with no expected churn. JPM frames Prime's scale + delivery speed as a structural edge in agentic commerce (agents rank on delivery/price/availability thresholds in LLM queries), reiterating AMZN as a **Best Idea / Analyst Focus List, OW, Dec-26 PT $330 (~32x 2027E GAAP EPS of $10.38)** (JPM/Anmuth — Prime deep-dive, 2026-06-23).
 - **Where the sell-side/buy-side stands:** **BofA (Justin Post) Buy, PO $310** (briefing 2026-06-18). **Barclays (Ross Sandler) OW, PT $330** (Leo + India, briefing 2026-06-09/06-11); Barclays OpenAI note (2025-11-25) reiterates **OW/Positive** ($232.87 ref). **Bernstein Outperform, $315** (Shuster, briefing 2026-06-05). **Citi (Ronald Josey) Buy**. **JPM (Anmuth) OW**. **MS (Nowak) Attractive**. **Jefferies (Thill) top 2H26 pick.** Broad-based bullish; the disagreement is on the 4Q non-AI cloud-consumption flag (Bernstein) vs. the AWS-acceleration narrative everyone else is underwriting.
+- **Token-optimization read-through — neutral:** UBS is **neutral** on hyperscalers re: token optimization — enterprise down-tiering to cheaper SLMs/open-source Chinese models (Qwen, Z.ai, Kimi, DeepSeek) could weigh on frontier-model API revenue growth and AI price sensitivity could limit near-term GPU pricing, but the hyperscalers are already multi-model platforms facing a wall of AI demand. For AMZN, **AWS Bedrock is the multi-model platform** (already offering a drop-down of open-source Chinese models alongside Anthropic/OpenAI; Databricks/Anthropic run on AWS), and any enterprise down-tiering still needs AWS-hosted inference compute — being model-agnostic framed as an edge "similar to the advantage secured by the likes of Snowflake and MongoDB that were multi-cloud while AWS and Microsoft were pushing their native databases" (UBS "The Ramp in Token Optimization" / Keirstead-Arcuri, 2026-06-23).
 
 ## Catalysts / what to watch
 - **Prime Day — begins June 23, 96 hrs**, BofA est. ~$22B GMV (≈+5% y/y; Japan/Australia shifted to 3Q). Near-term retail check (briefing 2026-06-18).
@@ -53,37 +71,38 @@ Three reportable segments: **North America** (Q1'26 $104.1B rev, +12%, 7.9% OI m
 - **Competition**: Azure (MSFT AI ARR >$37B, +123% — Bernstein 2026-04-30) and GCP (backlog surge, TPU rack sales) contesting AI cloud; Trainium still trails Nvidia on FP4 and CUDA-ecosystem maturity (SemiAnalysis, 2025-12-04); agentic commerce threatening retail/ad funnel.
 - **Regulatory/antitrust, FX, energy/power availability, geopolitical** (10-K FY25 risk factors; LEO/supply-chain execution risk); labor-automation (up to ~75%) carries social/regulatory exposure (JPM, 2025-11-10).
 
-## Intra-quarter — calls, comentários & relatórios (desde o último print)
-_Q1 FY26 · Apr 29 → Jun 23, 2026 · sell-side / expert calls / relatórios entre os earnings. Timeline visual: [timeline.html](timeline.html)._
+## Intra-quarter — calls, commentary & reports (since the last print)
+_Q1 FY26 · Apr 29 → Jun 23, 2026 · sell-side / expert calls / reports between earnings. Timeline visual: [timeline.html](timeline.html)._
 
-**Sinal vs gestão** — o que a gestão disse no último call × o que o fluxo intra-quarter está dizendo (✓ confirma · ⚠ nuança · ✗ contesta):
+**Signal vs management** — what management said on the last call × what the intra-quarter flow is saying (✓ confirms · ⚠ nuances · ✗ contests):
 
-| Tema | Gestão disse (Q1'26 · 2026-04-29) | Fluxo intra-quarter | Sinal |
+| Theme | Management said (Q1'26 · 2026-04-29) | Intra-quarter flow | Signal |
 |---|---|---|---|
-| **Demanda AWS** | +28% y/y, $150B run-rate (mais rápido em 15 trim.); backlog $364B ex-Anthropic; AI run-rate >$15B | JPM corrobora +28%/$150B/$364B · Shmulik lê guide como aceleração p/ "low-to-mid 30s" — mas Bernstein (Shuster + Shmulik/Arbsman) flagra SSO de cloud não-AI "anormalmente plana" em maio, "risco no 4Q" | **⚠ nuança** (AI on, não-AI fraqueja) |
-| **Custom silicon** | >$20B run-rate, +40% q/q; compromissos Trainium >$225B | JPM confirma >$225B (Anthropic+OpenAI); Bernstein Trn2 ~30% melhor price/perf, Trn3/Trn4 quase vendidos; BofA ~$50B se fosse programa externo | **✓ confirma** (tese do silício validada) |
-| **Margem** | margem AWS ~38% (+270bps q/q); range histórico reposicionado p/ "low-30s" | Citi: melhor que esperado, "no one-timers", Trainium poupa "várias centenas de bps" vs alugar Nvidia · mas BofA preview: margens de deals de AI ~10-20%, risco no Q2 c/ ramp da Anthropic | **✓ confirma** (com ressalva mix-AI) |
-| **Capex / capital** | ~$200B FY26, predominantemente AWS; FCF "challenged" no início do ano | JPM "AI Capex 2.0": ~$200B→~$300B FY27E→~$350B FY28E; FCF TTM colapsou p/ ~$1bn (de ~$26bn); ~$85bn de funding novo em <6m (bonds + term loan) sem tocar equity | **⚠ nuança** (financiável, mas FCF sumiu) |
+| **AWS demand** | +28% y/y, $150B run-rate (fastest in 15 qtrs); backlog $364B ex-Anthropic; AI run-rate >$15B | JPM corroborates +28%/$150B/$364B · Shmulik reads the guide as acceleration to "low-to-mid 30s" — but Bernstein (Shuster + Shmulik/Arbsman) flags "unusually flat" non-AI cloud SSO in May, "4Q risk" | **⚠ nuance** (AI on, non-AI softening) |
+| **Custom silicon** | >$20B run-rate, +40% q/q; Trainium commitments >$225B | JPM confirms >$225B (Anthropic+OpenAI); Bernstein Trn2 ~30% better price/perf, Trn3/Trn4 nearly sold out; BofA ~$50B if it were an external program | **✓ confirms** (silicon thesis validated) |
+| **Margin** | AWS margin ~38% (+270bps q/q); historical range repositioned to "low-30s" | Citi: better than expected, "no one-timers", Trainium saves "several hundred bps" vs renting Nvidia · but BofA preview: AI-deal margins ~10-20%, Q2 risk on the Anthropic ramp | **✓ confirms** (with an AI-mix caveat) |
+| **Capex / capital** | ~$200B FY26, predominantly AWS; FCF "challenged" early in the year | JPM "AI Capex 2.0": ~$200B→~$300B FY27E→~$350B FY28E; TTM FCF collapsed to ~$1bn (from ~$26bn); ~$85bn of new funding in <6m (bonds + term loan) without touching equity | **⚠ nuance** (financeable, but FCF vanished) |
 
-**Log completo** (todo o fluxo intra-quarter, por data):
+**Full log** (all intra-quarter flow, by date):
 
-| Data | Fonte | Tema | Viés | O que disse |
+| Date | Source | Theme | Bias | What was said |
 |---|---|---|---|---|
-| 04-15 | JPM · Doug Anmuth (internet preview) | demanda | bull | Framed AMZN as an 'AI laggard→winner' transition, with the OpenAI deal adding ~$100B to backlog at the print and AI ARR >$15B / chips >$20B. |
-| 04-16 | BofA · Fenske (spec-sales) | competicao | bull | Called AWS 'my favorite business', with Jassy's redemption arc (OpenAI $50B + Anthropic = 'two AI winners solidified', Trainium3/4 sold out); ~$50B if Trainium were an external chip program vs Broadcom's ~$100B AI-semi target. |
-| 04-20 | BofA · Post (earnings preview) | margem | mixed | Preview math: ~$150B of the $200B FY26 capex is AWS-driven (~100% of AWS revenue), implying a build toward ~$400B of AWS revenue; lower AI-deal margins (~10-20%) and Q2 margin risk as Anthropic ramps. |
+| 04-15 | JPM · Doug Anmuth (internet preview) | demand | bull | Framed AMZN as an 'AI laggard→winner' transition, with the OpenAI deal adding ~$100B to backlog at the print and AI ARR >$15B / chips >$20B. |
+| 04-16 | BofA · Fenske (spec-sales) | competition | bull | Called AWS 'my favorite business', with Jassy's redemption arc (OpenAI $50B + Anthropic = 'two AI winners solidified', Trainium3/4 sold out); ~$50B if Trainium were an external chip program vs Broadcom's ~$100B AI-semi target. |
+| 04-20 | BofA · Post (earnings preview) | margin | mixed | Preview math: ~$150B of the $200B FY26 capex is AWS-driven (~100% of AWS revenue), implying a build toward ~$400B of AWS revenue; lower AI-deal margins (~10-20%) and Q2 margin risk as Anthropic ramps. |
 | 04-30 | Bernstein · Mark Shmulik (recap) | guidance | bull | Called the OI guide 'very conservative' and read the revenue guide as implying continued AWS acceleration to 'low-to-mid 30s'. ~$20B of the sequential step-up is non-frontier-lab, the largest ever recorded; Trainium 30-40% better price/perf allows it to 'save billions in capex and extract margin points'. |
-| 04-30 | Citi · C1Q26 recap | margem | bull | AWS grew 28% with better-than-expected 1Q margins and 'no one-timers' (mgmt reframed the historical range as effectively just 'low-30s'); Trainium saves AWS 'several hundred bps' of margin vs renting Nvidia GPUs; Bedrock model-access revenue is booked NET. AWS margins are low only because it is a 'newer-stage, more capital-intensive' business. |
-| 06-05 | Bernstein · Shuster (briefing) | demanda | bear | Cut AWS web-metric color, weakening for 4 weeks, 'Q4 risk' in non-AI cloud growth. Maintains Outperform, $315. |
-| 06-06 | Bernstein · Shmulik/Arbsman (briefing) | demanda | bear | Flagged 'unusually flat' non-AI cloud SSO growth in May, with non-AI cloud 4Q growth at risk if it persists. |
+| 04-30 | Citi · C1Q26 recap | margin | bull | AWS grew 28% with better-than-expected 1Q margins and 'no one-timers' (mgmt reframed the historical range as effectively just 'low-30s'); Trainium saves AWS 'several hundred bps' of margin vs renting Nvidia GPUs; Bedrock model-access revenue is booked NET. AWS margins are low only because it is a 'newer-stage, more capital-intensive' business. |
+| 06-05 | Bernstein · Shuster (briefing) | demand | bear | Cut AWS web-metric color, weakening for 4 weeks, 'Q4 risk' in non-AI cloud growth. Maintains Outperform, $315. |
+| 06-06 | Bernstein · Shmulik/Arbsman (briefing) | demand | bear | Flagged 'unusually flat' non-AI cloud SSO growth in May, with non-AI cloud 4Q growth at risk if it persists. |
 | 06-08 | Jefferies · Russell rebal call | valuation | mixed | The June-26 Russell reclassification moves ~600bps of Amazon into the Russell 1000 Value benchmark (AMZN goes to ~zero in the 1000 Growth) — a mechanical flow event (forced selling of 'winners'), part of a Mag7 growth→value rotation. |
 | 06-16 | JPM · AI Capex 2.0 | capital | mixed | Corroborates the AWS re-acceleration (+28%, $150bn run-rate, $364bn backlog excluding Anthropic >$100bn); >$225bn of Trainium revenue commitments from Anthropic+OpenAI. Funding: capex ~$200bn FY26 → ~$300bn FY27E → ~$350bn FY28E; TTM FCF collapsed to ~$1bn (from ~$26bn the year before). AMZN responded with ~$67bn of bonds in 1H + a $17.5bn term loan — ~$85bn of new funding capacity in <6 months without touching equity, read as pre-funding the FY27 ramp. |
-| 06-17 | UBS · Ben Legg (ad expert) | demanda | bull | Amazon ad FY ~27% (sponsored products 65% of spend, softening to ~+16% May vs +21% April), but video ads +83% y/y and DSP +77% y/y, both accelerating; Amazon 'declared war' on The Trade Desk (take rate 20% vs 1%). |
-| 06-17 | UBS · Karl Keirstead (tokenmaxxing) | demanda | bull | Hyperscaler bull case: the AWS/GCP accelerations are not explained by hourly accelerator rental alone — the hyperscalers are increasingly the distribution endpoint for the frontier labs (enterprises deploying Claude Code via AWS/Azure). Lower gross margin but powerful upsell; investor mood on AMZN/MSFT/ORCL 'more mixed than I would expect'. |
+| 06-17 | UBS · Ben Legg (ad expert) | demand | bull | Amazon ad FY ~27% (sponsored products 65% of spend, softening to ~+16% May vs +21% April), but video ads +83% y/y and DSP +77% y/y, both accelerating; Amazon 'declared war' on The Trade Desk (take rate 20% vs 1%). |
+| 06-17 | UBS · Karl Keirstead (tokenmaxxing) | demand | bull | Hyperscaler bull case: the AWS/GCP accelerations are not explained by hourly accelerator rental alone — the hyperscalers are increasingly the distribution endpoint for the frontier labs (enterprises deploying Claude Code via AWS/Azure). Lower gross margin but powerful upsell; investor mood on AMZN/MSFT/ORCL 'more mixed than I would expect'. |
 | 06-18 | BofA · Justin Post / MS · Nowak (briefing) | valuation | bull | BofA Buy, PO $310. MS (Nowak) flags the SpaceX compute deal at $50/watt as ~16% of upside to AWS '27 revenue if monetization reaches $25/watt. Prime Day (96 hrs, starting Jun-23) estimated by BofA at ~$22B of GMV (≈+5% y/y). |
-| 06-23 | JPM · Doug Anmuth (Prime deep-dive) | demanda | bull | OW, Dec-26 PT $330 (~32x 2027E GAAP EPS $10.38), AMZN Best Idea / Analyst Focus List. Prime 'unbundled' worth ~$1,440/year vs the $139 cost (~10x); 370M+ global subs at year-end 2026 (~139M US / ~231M Int'l); ~$7B-$8B of Prime Day revenue shifted into Q2'26; a $20 hike in the US price ≈ ~$3B of annualized sales, now seen slipping from 2026 to 2027. |
+| 06-23 | JPM · Doug Anmuth (Prime deep-dive) | demand | bull | OW, Dec-26 PT $330 (~32x 2027E GAAP EPS $10.38), AMZN Best Idea / Analyst Focus List. Prime 'unbundled' worth ~$1,440/year vs the $139 cost (~10x); 370M+ global subs at year-end 2026 (~139M US / ~231M Int'l); ~$7B-$8B of Prime Day revenue shifted into Q2'26; a $20 hike in the US price ≈ ~$3B of annualized sales, now seen slipping from 2026 to 2027. |
+| 06-23 | UBS · Keirstead/Arcuri | demanda | neutral | Neutral on hyperscalers re: token optimization — AWS Bedrock is the multi-model platform (already lists open Chinese models alongside Anthropic/OpenAI) and down-tiering still needs AWS inference compute, so model-agnosticism is an edge "like Snowflake/MongoDB being multi-cloud"; offset is that frontier-API rev growth could soften and AI price sensitivity could cap near-term GPU pricing. |
 
-**Síntese do quarter:** o debate migrou da pergunta "AWS reacelera?" (já respondida: +28%, silício validado, margem inflectindo) para a sustentabilidade do funding e a saúde do core não-AI — JPM mostra o FCF colapsando enquanto AMZN pré-funda ~$85bn da rampa FY27, e a única rachadura no bull é a fraqueza de SSO de cloud não-AI que a Bernstein vê ameaçando o 4Q.
+**Quarter synthesis:** the debate migrated from "is AWS reaccelerating?" (already answered: +28%, silicon validated, margin inflecting) to the sustainability of the funding and the health of the non-AI core — JPM shows FCF collapsing while AMZN pre-funds ~$85bn of the FY27 ramp, and the only crack in the bull is the non-AI cloud SSO weakness that Bernstein sees threatening 4Q.
 
 ## Management commentary — evolution (last 6 quarters)
 
@@ -126,5 +145,6 @@ _Source: AMZN earnings calls (dates above); management commentary, paraphrased._
   - [BofA (Wigg) — internet/semis spec-sales (2026-05-06)](../relat%C3%B3rios%20bons/2026_05_06_wigg_6_may_26.html)
   - [Jefferies — software/internet conf recap (Brent Thill, 2026-06-01)](../relat%C3%B3rios%20bons/2026_06_01_brent_jeff_ai_1_jun_26.html)
   - [UBS (Ben Legg) — digital advertising expert (2026-06-17)](../relat%C3%B3rios%20bons/2026_06_17_ben_legg_ubs_17_jun_26.html) · [UBS (Karl Keirstead) — tokenmaxxing/hyperscalers (2026-06-18)](../relat%C3%B3rios%20bons/2026_06_18_karl_ubs_18_jun_26.html)
+  - [UBS "The Ramp in Token Optimization" (2026-06-23)](../relat%C3%B3rios%20bons/ued46392.html)
   - [UBS (Scott Linzer) — ad checks META/AMZN/GOOG (2026-06-22)](../relat%C3%B3rios%20bons/2026_06_22_scott_linzer_ubs_adv_call_22_jun_26.html)
   - [Jefferies — Russell rebalance / mega-cap IPOs (2026-06-08)](../relat%C3%B3rios%20bons/2026_06_08_jeff_rtya_rebal_8_jun_26.html)

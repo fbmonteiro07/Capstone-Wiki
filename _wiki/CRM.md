@@ -4,6 +4,23 @@
 
 _Wiki · generated 2026-06-20 · sources: `E:\Wiki Felipe\CRM` (filings + transcripts) · `E:\briefings\2026` (morning + company-specific). Master index: [00_INDEX.md](00_INDEX.md)._
 
+<!-- SNAPSHOT:START (auto: _tools/build_snapshot.py — do not hand-edit) -->
+### 📊 Consensus snapshot — BBG · asof 2026-06-22 · USD
+
+| Metric | CY2026E | CY2027E |
+|---|--:|--:|
+| Revenue | $46.0bn | $50.4bn |
+| Gross profit | $37.1bn | $40.8bn |
+| Gross margin | 80.7% | 81.0% |
+| EBITDA | $19.0bn | $20.8bn |
+| EPS | $13.40 | $15.77 |
+| Capex | $693m | $745m |
+| OCF (≈EBITDA) | $19.0bn | $20.8bn |
+
+**EPS revision** (BBG est. trend) — FY1 ▁▁▂█ +6.9% 3m · +7.4% 6m · FY2 ▂▁▁█ +4.8% 3m · +3.4% 6m
+_Gross profit = Revenue × GM%. OCF: no forward BBG consensus — EBITDA shown as proxy._
+<!-- SNAPSHOT:END -->
+
 > **Fidelity flag:** the transcripts used (Q1 FY27, Q4 FY26) are third-party reconstructions (fool.com / investing.com via WebFetch) — close paraphrase, **not verbatim**, with quotation marks only where the source has them. Treat figures as directional. **Outlook:** attempted (`outlook.py --no-body --days 14`) — returned no output in this environment, so no email-sourced notes; sell-side stances below are from the on-disk briefings.
 
 ## Snapshot
@@ -69,6 +86,7 @@ Beat that "cleared the bar but didn't change the AI debate" — stock ~flat to -
 - **Bear:** **AI-driven structural reset of a mature platform.** BofA reinstated **Underperform, PO $160** — FY27 rev growth ~11%, FY28 ~9.6%, only 9x EV/FCF, "mature platform facing AI-driven structural reset" (briefing 2026-05-19). UBS (Keirstead) **Neutral**: "simply won't re-rate off 6-8% revs growth" (2026-05-28). cRPO came at the low end of buyside; JPM (Schilsky) tagged the print "**CRM = meh** — nothing changes the AI debate" (2026-05-28). The seat-cannibalization fear is the same one that hammered app-SW peers — see HubSpot-style "AI-driven customer behavior change" read-throughs and the [tokenmaxxing](themes/tokenmaxxing.md) SaaS-apocalypse thread. Benioff routing ~$300M to Anthropic ([tokenmaxxing](themes/tokenmaxxing.md), briefing 2026-05-16) cuts both ways: validates agentic spend but flags rising COGS / dependence on frontier-model suppliers.
   - **The seat-base is already eroding, pre-AI (third-party):** JPM documents CRM's cRPO yoy cc decelerating from ~23-28% in 2018-19 to ~10-12% now, driven partly by *customers cutting headcount* — Washington (Q1'26, per JPM): "CRPO will continue to be materially impacted by the cumulative effect of the measured sales performance… and our slower exploration base"; the read is that seat-based renewals were already softening on customer headcount cuts before agents arrive, and agentic automation could accelerate it (JPM, Ogg, 2025-09-03). Bain's "AI cannibalizes SaaS" quadrant flags high-automation / high-AI-penetration workflows as battlegrounds where incumbents keep the edge *only if* they proactively replace SaaS activity with AI, else risk "disruption, obsolescence" (Bain Technology Report 2025). UBS's monetization map cuts against the agentic-ARR bull near-term: 2-3 years post-ChatGPT, direct AI revenue from CRM/NOW/Adobe *combined* is <$1bn vs OpenAI alone likely out-earning the entire app-software ecosystem — most AI monetization is still "below the apps layer" (UBS, 2025-09).
   - **Competitive threat — Sierra (third-party):** JPM flags Sierra (founded by ex-CRM co-CEO Bret Taylor; ~$4.5bn val, ~$20m ARR Oct-24) as a CX/contact-center agent that "could look to address budget from legacy CRM softwares," with voice ("Sierra Speaks") diverting IVR/contact-center spend; per JPM, CRM has already had to defend large accounts to keep them on Agentforce over Sierra (JPM, Ogg, 2025-09-03).
+  - **Token-optimization read-through — mixed (third-party):** UBS names CRM (with ServiceNow and Workday) as a "larger and well-penetrated seat-based SaaS firm" that is NOT helped as enterprises cut headcount growth / optimize seats / trim app-software budget growth to fund rising AI token costs — and warns their seat-plus-usage pricing transition "may now be met with even greater resistance"; the offsetting positive is that model-neutral software firms (don't own 1P models) could gain by playing an independent "token optimizer" role like Palantir's Evolve (UBS "The Ramp in Token Optimization" / Keirstead, 2026-06-23). [tokenmaxxing](themes/tokenmaxxing.md).
   - **Apps-spend pressure intensifying (third-party):** UBS's team (Keirstead/McGinnis) reports a "stronger barbell" in IT budgets — enterprises funding AI/data/hyperscaler/cyber by tempering headcount growth, throttling IT services, and on apps "pushing back on budget increases, minimizing seat growth, minimizing module expansion, negotiating much tougher on pricing" and compressing contract durations; "becoming a tougher apps software spend environment… probably going to get a little worse before it gets a little bit better." Caveat for CRM's moat: Karpathy flagged that **Claude is "getting very good at absorbing workflow knowledge"** — a long-term chip at Salesforce's "20 years of understanding the sales rep" edge — though UBS still credits real incumbency/complexity moats (UBS "Karl software call", 2026-06-18). [tokenmaxxing](themes/tokenmaxxing.md). Salesforce's recent **down-market move (Intercom/"Fin"/Intercom acquisition)** flagged alongside ServiceNow pushing down-market as a potential opening for HubSpot (UBS, 2026-06-18).
   - **The "agentic layer on top" framing (Poio expert, third-party):** ex-Google Cloud / Poio CEO Matt Slotnick argues the growth market for incumbents like CRM is **"a layer above their existing system"** — the automation/agent layer — and that owning the data/customer relationships is "a huge advantage" but does NOT guarantee winning that layer ("the fact that you have a bunch of data… magically means you're going to win that AI layer… that is not true yet"). The "last mile" (driving the actual outcome) is where value accrues and where big SW companies have historically been weakest; frontier models stay "super valuable" for the hardest tasks even as cheaper models (e.g. Kimi 2.6) approximate Claude for known workloads (WFC agentic-software expert call, 2026-05-29). [tokenmaxxing](themes/tokenmaxxing.md). [../relat%C3%B3rios%20bons/2026_05_29_wfc_sw_agentic_29_may_2026.html](../relat%C3%B3rios%20bons/2026_05_29_wfc_sw_agentic_29_may_2026.html)
   - **Conference tone (third-party):** Jefferies (Brent Thill) — Salesforce off its print sounded "stable, steady… not super exciting"; the team flags the broader "software is not dead, these AI companies are not going to eat them" takeaway, but also a striking **magnitude of sales-org turnover in Silicon Valley** (Jefferies "Brent/Jeff AI" call, 2026-06-01). [../relat%C3%B3rios%20bons/2026_06_01_brent_jeff_ai_1_jun_26.html](../relat%C3%B3rios%20bons/2026_06_01_brent_jeff_ai_1_jun_26.html)
@@ -95,23 +113,23 @@ Beat that "cleared the bar but didn't change the AI debate" — stock ~flat to -
 - **UBS Tech** _(2026-06-16)_: CRM featured in the 'software pain-trade' / positioning note (with PLTR).
 - **Barclays & BofA desks** _(2026-06-16)_: CRM acquired **Fin** (AI); **BofA Underperform PT $160** (mature-platform / AI-reset bear); Benioff cites a $300M Anthropic deal.
 
-## Intra-quarter — calls, comentários & relatórios (desde o último print)
-_Q1 FY27 · May 19 → Jun 18, 2026 · sell-side / expert calls / relatórios entre os earnings. Timeline visual: [timeline.html](timeline.html)._
+## Intra-quarter — calls, commentary & reports (since the last print)
+_Q1 FY27 · May 19 → Jun 18, 2026 · sell-side / expert calls / reports between earnings. Timeline visual: [timeline.html](timeline.html)._
 
-**Sinal vs gestão** — o que a gestão disse no último call × o que o fluxo intra-quarter está dizendo (✓ confirma · ⚠ nuança · ✗ contesta):
+**Signal vs management** — what management said on the last call × what the intra-quarter flow is saying (✓ confirms · ⚠ nuances · ✗ contests):
 
-| Tema | Gestão disse (Q1 FY27) | Fluxo intra-quarter | Sinal |
+| Theme | Management said (Q1 FY27) | Intra-quarter flow | Signal |
 |---|---|---|---|
-| **Crescimento / cRPO** | Rev $11,13bn, +13% (+12% cc), acima do guide; cRPO $33,6bn (+13% cc), no low end | JPM (Schilsky): "CRM = meh", cRPO no low end do buyside · UBS (Keirstead): "não re-rateia em 6-8% de rev" | **⚠ nuança** (cRPO decepciona) |
-| **Agentforce / IA monetização** | Agentforce ARR >$1bn; AI & Data ARR $3,4bn; 28,6tn tokens (+152% q/q) | Benioff: ~$300M de Anthropic este ano → valida spend mas eleva COGS/dependência de vendor frontier | **⚠ nuança** (custo do frontier model) |
-| **Moat / competição** | A1E/A4x bookings +~60% y/y; FY30 target $63bn | WFC (Slotnick/Poio): mercado de crescimento é "a camada acima" (agêntica), dado próprio não garante vencer · UBS: Karpathy alerta Claude "absorve workflow knowledge" | **✗ contesta** (ameaça à camada agêntica) |
-| **Demanda / apps** | Guide FY27 elevado p/ ~$45,9-46,2bn | UBS: "barbell mais forte" em budgets de TI — empresas minimizam seats/módulos e negociam preço mais duro | **✗ contesta** (ambiente de apps mais duro) |
+| **Growth / cRPO** | Rev $11.13bn, +13% (+12% cc), above guide; cRPO $33.6bn (+13% cc), at the low end | JPM (Schilsky): "CRM = meh", cRPO at the low end of buyside · UBS (Keirstead): "won't re-rate off 6-8% rev" | **⚠ nuance** (cRPO disappoints) |
+| **Agentforce / AI monetization** | Agentforce ARR >$1bn; AI & Data ARR $3.4bn; 28.6tn tokens (+152% q/q) | Benioff: ~$300M of Anthropic this year → validates spend but raises COGS/frontier-vendor dependence | **⚠ nuance** (frontier-model cost) |
+| **Moat / competition** | A1E/A4x bookings +~60% y/y; FY30 target $63bn | WFC (Slotnick/Poio): the growth market is "the layer above" (agentic), owning the data doesn't guarantee winning · UBS: Karpathy warns Claude "absorbs workflow knowledge" | **✗ contests** (threat to the agentic layer) |
+| **Demand / apps** | FY27 guide raised to ~$45.9-46.2bn | UBS: "stronger barbell" in IT budgets — enterprises minimize seats/modules and negotiate harder on price | **✗ contests** (tougher apps environment) |
 
-**Log completo** (todo o fluxo intra-quarter, por data):
+**Full log** (all intra-quarter flow, by date):
 
-| Data | Fonte | Tema | Viés | O que disse |
+| Date | Source | Theme | Bias | What was said |
 |---|---|---|---|---|
-| 05-16 | @theallinpod (briefing) · Benioff | margem | bear | Benioff (via @theallinpod): "~$300M of Anthropic this year at Salesforce" — validates agentic spend but signals rising COGS / dependence on frontier-model vendors. |
+| 05-16 | @theallinpod (briefing) · Benioff | margin | bear | Benioff (via @theallinpod): "~$300M of Anthropic this year at Salesforce" — validates agentic spend but signals rising COGS / dependence on frontier-model vendors. |
 | 05-19 | BofA · reinstate | valuation | bear | BofA reinstated Underperform, PO $160 — FY27 revenue growth ~11%, FY28 ~9.6%, only 9x EV/FCF, "mature platform facing AI-driven structural reset". |
 | 05-27 | JPM · Murphy | valuation | neutral | JPM (Murphy) suspended rating/PT for policy reasons going into the print. |
 | 05-28 | JPM · Schilsky | guidance | bear | JPM (Schilsky) tagged the print as "CRM = meh" — nothing changes the AI debate; cRPO came in at the low end of buyside. |
@@ -119,13 +137,14 @@ _Q1 FY27 · May 19 → Jun 18, 2026 · sell-side / expert calls / relatórios en
 | 05-28 | Barclays · Lenschow | valuation | mixed | Barclays (Lenschow): Overweight, PT cut from $252 to $236, "solid but not thesis-changing". |
 | 05-28 | UBS · Keirstead | valuation | bear | UBS (Keirstead): Neutral — "simply won't re-rate off 6-8% revs growth". |
 | 05-28 | Redburn Atlantic · R&Co | valuation | bull | R&Co Redburn: Buy — "Q1 clears the bar, H2 acceleration on track". |
-| 05-29 | WFC · Matt Slotnick (Poio) expert call | competicao | bear | Ex-Google Cloud / Poio CEO argues the growth market for incumbents like CRM is "a layer above their existing system" (the agentic layer); owning the data/relationships is an advantage but does not guarantee winning that layer. The "last mile" is where value accrues and where large SW vendors have historically been weak. |
+| 05-29 | WFC · Matt Slotnick (Poio) expert call | competition | bear | Ex-Google Cloud / Poio CEO argues the growth market for incumbents like CRM is "a layer above their existing system" (the agentic layer); owning the data/relationships is an advantage but does not guarantee winning that layer. The "last mile" is where value accrues and where large SW vendors have historically been weak. |
 | 06-01 | Jefferies · Brent Thill | valuation | mixed | Jefferies (Brent Thill): Salesforce post-print sounded "stable, steady… not super exciting"; broader takeaway that "software is not dead", but notable magnitude of turnover in Silicon Valley sales orgs. |
 | 06-16 | UBS · Tech desk | valuation | mixed | UBS Tech (Outlook): CRM featured in the 'software pain-trade' / positioning note (alongside PLTR). |
 | 06-16 | Barclays & BofA · desks | capital | mixed | Barclays & BofA desks (Outlook): CRM acquired Fin (AI); BofA Underperform PT $160 (mature-platform/AI-reset bear); Benioff cites $300M deal with Anthropic. |
-| 06-18 | UBS · Keirstead/McGinnis | demanda | bear | UBS reports a "stronger barbell" in IT budgets — enterprises pressuring apps: "minimizing seat growth, minimizing module expansion, negotiating much tougher on pricing"; the apps-spend environment is getting harder. Karpathy warned that Claude is "getting very good at absorbing workflow knowledge", a long-term threat to Salesforce's 20-year moat; down-market move (Intercom/Fin) cited. |
+| 06-18 | UBS · Keirstead/McGinnis | demand | bear | UBS reports a "stronger barbell" in IT budgets — enterprises pressuring apps: "minimizing seat growth, minimizing module expansion, negotiating much tougher on pricing"; the apps-spend environment is getting harder. Karpathy warned that Claude is "getting very good at absorbing workflow knowledge", a long-term threat to Salesforce's 20-year moat; down-market move (Intercom/Fin) cited. |
+| 06-23 | UBS · Keirstead | demand | mixed | UBS names CRM (with NOW/WDAY) as a well-penetrated seat-based SaaS firm NOT helped as enterprises cut headcount/optimize seats/trim app-budget growth to offset AI token costs; seat-plus-usage pricing "may now be met with even greater resistance." Offset: model-neutral software could gain by playing an independent "token optimizer" role like Palantir's Evolve. |
 
-**Síntese do quarter:** o print "limpou a barra mas não mudou o debate de IA" — apesar de Agentforce >$1bn de ARR, o fluxo migrou para o *risco estrutural*: pressão em seats/módulos (UBS "barbell"), ameaça da camada agêntica/Claude ao moat de 20 anos, e a dependência de ~$300M de Anthropic que valida o spend mas eleva COGS; bulls (MS PT $287) seguem isolados frente a um coro bear (BofA Underperform $160, UBS, JPM).
+**Quarter synthesis:** the print "cleared the bar but didn't change the AI debate" — despite Agentforce >$1bn of ARR, the flow shifted to *structural risk*: pressure on seats/modules (UBS "barbell"), the agentic-layer/Claude threat to the 20-year moat, and the dependence on ~$300M of Anthropic that validates the spend but raises COGS; bulls (MS PT $287) remain isolated against a bear chorus (BofA Underperform $160, UBS, JPM).
 
 ## Management commentary — evolution (last 4 quarters)
 
@@ -150,6 +169,7 @@ _Source: CRM earnings calls (dates above); management commentary, paraphrased._
   - [Bain Technology Report 2025](../relat%C3%B3rios%20bons/bain_report_technology_report_2025.html) — Salesforce one of few giants that can be both neutral agent platform and unique-data supplier; "AI cannibalizes SaaS" battleground quadrant; outcome/usage pricing shift.
   - [Bernstein — Scaling Intelligence: The Generative AI Handbook (2026-06-22)](../relat%C3%B3rios%20bons/Bernstein_on_Gen_AI_Software.html) — incumbents-survive framework; AI a "small headwind + mostly offsetting small tailwind (Agentforce)" for CRM; credit-based GenAI pricing as margin-defensive; SAP/Oracle "best positioned."
   - [UBS (Keirstead) — software/AI team call (2026-06-18)](../relat%C3%B3rios%20bons/2026_06_18_karl_ubs_18_jun_26.html) — tougher apps-spend environment, seat/module/pricing pushback; Claude absorbing workflow knowledge; CRM/NOW down-market moves.
+  - [UBS "The Ramp in Token Optimization" (2026-06-23)](../relat%C3%B3rios%20bons/ued46392.html) — seat-based SaaS (CRM/NOW/WDAY) not helped by token-cost offsets, seat-plus-usage pricing meets greater resistance; offset = model-neutral "token optimizer" role (Palantir Evolve).
   - [WFC — agentic-software expert call (Matt Slotnick/Poio, 2026-05-29)](../relat%C3%B3rios%20bons/2026_05_29_wfc_sw_agentic_29_may_2026.html) — "agentic layer above the system" is the growth market; data/relationships an advantage not a guarantee; last-mile = where value accrues.
   - [Jefferies (Brent Thill) — AI software/infra call (2026-06-01)](../relat%C3%B3rios%20bons/2026_06_01_brent_jeff_ai_1_jun_26.html) — Salesforce "stable, steady, not super exciting"; SV sales-org turnover.
 - **Theme:** [tokenmaxxing](themes/tokenmaxxing.md) — AI-monetization / SaaS-apocalypse debate.
