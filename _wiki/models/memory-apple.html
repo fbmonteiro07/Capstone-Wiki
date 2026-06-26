@@ -209,7 +209,7 @@
   <!-- ============ 3d. EPS IMPACT (CAPSTONE MODEL) ============ -->
   <h2><span class="n">3d</span> EPS impact — wired to the Capstone Apple model</h2>
   <div class="panel">
-    <p class="note" style="margin-top:0"><b>Per-year baseline (your spec):</b> FY26 EPS is anchored to the <b>BBG contract price of Q1'26</b>; FY27 to <b>Q4'26</b>. The EPS hit each year is the memory move <b>beyond its anchor</b> — so FY26 carries the full Q1'26→Q4'26 rise and FY27 carries only the move <i>after</i> Q4'26 (the two years tile at the Q4'26 handoff; earlier increases are assumed locked into the FY27 base). <b>ΔEPS = Δmemory/unit × iPhone units × (1−tax) ÷ diluted shares</b>, blended across the lineup mix, live with the active track + scenario: <span id="epsCtx">—</span>. "Absorbed" = zero pass-through; "net of ~$50" subtracts the price hike Apple has already taken. Full pass-through keeps EPS whole.</p>
+    <p class="note" style="margin-top:0"><b>Per-year baseline (your spec):</b> FY26 EPS is anchored to the <b>BBG contract price of Q1'26</b>; FY27 to <b>Q4'26</b>. The EPS hit each year is the memory move <b>beyond its anchor</b> — so FY26 carries the Q1'26→<b>Q3'26</b> rise (Apple's FY26 closes ~Sep'26 = cal Q3'26) and FY27 carries the move from <b>Q4'26</b> (FY27 opens ~Oct'26) to Q2'27. The Q3'26→Q4'26 step is the fiscal-year boundary and sits in the FY27 base — so bull-scenario late-2026 spikes land in FY27's base, not in FY26. <b>ΔEPS = Δmemory/unit × iPhone units × (1−tax) ÷ diluted shares</b>, blended across the lineup mix, live with the active track + scenario: <span id="epsCtx">—</span>. "Absorbed" = zero pass-through; "net of ~$50" subtracts the price hike Apple has already taken. Full pass-through keeps EPS whole.</p>
     <div style="overflow-x:auto"><table id="epsTable"></table></div>
     <div class="cards" style="margin-top:14px">
       <div class="card"><div class="k">FY27 EPS hit — absorbed (vs Q4'26 base)</div><div class="v gnum up" id="epsHit27">—</div><div class="d" id="epsHit27pct">—</div></div>
@@ -621,7 +621,7 @@ function fmtHit(hit, eps){
 function buildEPS(dS,nS){
   const trk = track==='apple'?'Apple realized':'Market (BBG)';
   $('epsCtx').textContent = `${trk} track · ${$('modScen')?$('modScen').textContent:fwdScen} forward · tax 16% · units 266.8/280.1mn · shares 14,320/13,938mn (Modelo Apple 2Q26)`;
-  const QI={2026:5,2027:7};  // FY26 spans Q1'26->Q4'26; FY27 spans Q4'26->Q2'27 (Q4'26 = shared handoff)
+  const QI={2026:4,2027:7};  // AAPL fiscal: FY26 ends ~Sep'26 = cal Q3'26 (idx4); FY27 starts ~Oct'26 = cal Q4'26 (idx5, the FY27 base). The Q3'26->Q4'26 step is the FY boundary and sits in the FY27 base, not in FY26.
   let h='<thead><tr><th>FY</th><th>Model EPS</th><th>Blended mem $/u</th><th>Δ vs base (Q1\'26 / Q4\'26)</th><th>EPS hit — absorbed</th><th>net of ~$50 hike</th><th>EPS after (net)</th></tr></thead><tbody>';
   const res={};
   for(const yr of [2026,2027]){
@@ -661,7 +661,7 @@ function buildEPS(dS,nS){
      : `memory ~flat vs base — minimal hike needed`;
   buildEpsMatrix();
   const troughHit=epsHit(res[2027].bm.incrTrough,2027);
-  $('epsNote').innerHTML=`<b>Read (per-year anchors — your spec):</b> FY26 EPS is pinned to the <b>Q1'26</b> BBG contract, FY27 to <b>Q4'26</b>. FY26 therefore carries the Q1'26→Q4'26 rise = <b>−$${fmt(res[2026].hit,2)} absorbed (−${fmt(res[2026].hit/MODEL.eps[2026]*100,1)}%)</b>; FY27 carries only the move after Q4'26 = <b>−$${fmt(res[2027].hit,2)} absorbed (−${fmt(res[2027].hit/MODEL.eps[2027]*100,1)}%)</b>, just <b>−$${fmt(res[2027].hitNet,2)} net</b> of the ~$50 hike. For context, the full <i>vs-trough</i> (whole-flood) figure is −$${fmt(troughHit,2)} — that is the §3b/§3c pricing view, not an incremental EPS hit (it includes memory already in the $11.11). The <b>Market column is the Android-OEM proxy</b>: Apple's LTAs/supply priority mean its realized cost is the <i>Apple</i> column — Market is relevant only if that cushion fully breaks. <span style="color:var(--dim)">Drivers from Modelo Apple Felipe 2Q26 (2026-06-16); mix weights (Pro/Pro Max ~55%/52% of units) are Capstone estimates.</span>`;
+  $('epsNote').innerHTML=`<b>Read (per-year anchors — your spec):</b> FY26 EPS is pinned to the <b>Q1'26</b> BBG contract, FY27 to <b>Q4'26</b>. FY26 therefore carries the Q1'26→Q3'26 rise (FY26 closes ~Sep'26 = cal Q3'26) = <b>−$${fmt(res[2026].hit,2)} absorbed (−${fmt(res[2026].hit/MODEL.eps[2026]*100,1)}%)</b>; FY27 carries the move from Q4'26 (FY27 base) to Q2'27 = <b>−$${fmt(res[2027].hit,2)} absorbed (−${fmt(res[2027].hit/MODEL.eps[2027]*100,1)}%)</b>, just <b>−$${fmt(res[2027].hitNet,2)} net</b> of the ~$50 hike. For context, the full <i>vs-trough</i> (whole-flood) figure is −$${fmt(troughHit,2)} — that is the §3b/§3c pricing view, not an incremental EPS hit (it includes memory already in the $11.11). The <b>Market column is the Android-OEM proxy</b>: Apple's LTAs/supply priority mean its realized cost is the <i>Apple</i> column — Market is relevant only if that cushion fully breaks. <span style="color:var(--dim)">Drivers from Modelo Apple Felipe 2Q26 (2026-06-16); mix weights (Pro/Pro Max ~55%/52% of units) are Capstone estimates.</span>`;
 }
 
 function renderBBG(){
