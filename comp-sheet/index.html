@@ -2704,7 +2704,7 @@ async function removeTicker(k){
 function renderExtras(){
   const keys = Object.keys(EXTRAS).filter(k=>COMP[k]);
   document.getElementById("extraChips").innerHTML = keys.length ?
-    keys.map(k=>`<span class="chip" data-k="${k}">${k} (${COMP[k].sector})<b class="xbtn" data-k="${k}">✕</b></span>`).join("") : "";
+    keys.map(k=>`<span class="chip" data-k="${k}">${k}<b class="xbtn" data-k="${k}">✕</b></span>`).join("") : "";
   document.querySelectorAll("#extraChips .chip").forEach(c=>c.onclick=()=>select(c.dataset.k));
   document.querySelectorAll("#extraChips .xbtn").forEach(x=>x.onclick=e=>{
     e.stopPropagation(); removeTicker(x.dataset.k);});
