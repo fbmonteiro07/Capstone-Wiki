@@ -2361,7 +2361,7 @@ function flat(c){
 }
 
 const COLS = [
-  ["k","Ticker"],["sector","Sector"],["px","Px"],["ytd","YTD"],
+  ["k","Ticker"],["px","Px"],["ytd","YTD"],
   ["px4wk","Px Δ4wk"],["px3mo","Px Δ3m"],["px6mo","Px Δ6m"],
   ["pe","Fwd P/E"],["pe2","2Y P/E"],["pe27cy","CY27 P/E"],["vs5y","vs 5y avg"],
   ["eps","NTM EPS"],["eps2","2Y EPS"],["cy27eps","CY27 EPS"],["gr12","Y2 gr"],
@@ -2382,7 +2382,7 @@ function renderTable(){
   });
   const tb = document.querySelector("#tbl tbody");
   tb.innerHTML = rows().map(r=>`<tr data-k="${r.k}" class="${r.k===selected?"sel":""}">
-    <td class="tk">${r.k}</td><td>${r.sector}</td>
+    <td class="tk">${r.k}</td>
     <td>${fmt(r.px,2)}</td><td class="${cls(r.ytd)}">${pctRaw(r.ytd)}</td>
     <td class="${cls(r.px4wk)}">${pctRaw(r.px4wk)}</td>
     <td class="${cls(r.px3mo)}">${pctRaw(r.px3mo)}</td>
