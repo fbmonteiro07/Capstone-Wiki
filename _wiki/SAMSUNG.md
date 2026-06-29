@@ -133,6 +133,7 @@ _Foundry-vs-TSMC angle: TSMC advanced-node capacity is pre-booked through 2028+,
 <!-- Consensus estimates (BBG) block auto-injected here by the HTML builder (KRW) -->
 
 ## In the inbox (Outlook — recent sell-side flow)
+- **Nutty "Part 4 — BSPDN & PowerVia" (nuttycld.substack.com, 2026-04-25):** Pre-print piece on Backside Power Delivery Networks (BSPDN) that briefly mentions Samsung in the context of the broader industry shift toward BSPDN and hybrid bonding for advanced memory. Samsung's BSPDN roadmap targets 2027 adoption via Direct Backside Contact (vs Intel's PowerVia approach); the piece frames Samsung as a laggard on BSPDN vs Intel (first mover, 18A) and TSMC (A16 Super Power Rail, late-2026 volume). Separately, hybrid bonding for HBM was noted as a Samsung disclosure area to watch — consistent with the later Redburn/Conor O'Mara Asia trip report (2026-06-23) confirming Samsung's first-ever hybrid-bonding disclosure at a management meeting. (Nutty "Part 4", nuttycld.substack.com, 2026-04-25)
 - **Digitimes** _(2026-06-19)_: Samsung Foundry signed a strategic deal to **make 'Claros' power-management chips for AI data centers** — foundry AI-DC traction.
 - **Capstone Morning Briefing** _(2026-06-19)_: memory super-cycle tape — conventional-DRAM ASP melt-up + HBM5 (2028-29) roadmap; Samsung framed as the **HBM4 catch-up** story vs SK Hynix.
 

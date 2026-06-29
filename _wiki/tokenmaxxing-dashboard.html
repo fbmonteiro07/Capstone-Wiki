@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tokenmaxxing — Theme Dashboard</title>
+<style>
+  :root{
+    --bg:#0e1014; --panel:#161a22; --panel2:#1c212b; --line:#2a313d;
+    --ink:#e8eaef; --mut:#9aa3b2; --dim:#6f7888;
+    --bull:#36d399; --bear:#f87272; --warn:#fbbd23; --accent:#7aa2ff; --accent2:#c084fc;
+    --chip:#222936;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  header.top{position:sticky;top:0;z-index:20;background:rgba(14,16,20,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 22px}
+  .top-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;max-width:1180px;margin:0 auto}
+  .top h1{font-size:18px;margin:0;letter-spacing:.2px}
+  .top .sub{color:var(--mut);font-size:13px}
+  nav{margin-left:auto;display:flex;gap:16px;flex-wrap:wrap;font-size:13px}
+  nav a{color:var(--mut)}
+  nav a:hover{color:var(--ink);text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:26px 22px 80px}
+  section{margin:38px 0 0}
+  h2{font-size:15px;text-transform:uppercase;letter-spacing:1.4px;color:var(--accent);
+    border-bottom:1px solid var(--line);padding-bottom:8px;margin:0 0 16px}
+  h3{font-size:14px;margin:0 0 8px;color:var(--ink)}
+  p{margin:0 0 12px;color:#d6dae2}
+  .lede{font-size:18px;line-height:1.5;color:#eef1f6;max-width:900px}
+  .q{border-left:3px solid var(--accent);background:var(--panel);padding:14px 18px;border-radius:0 8px 8px 0;margin:14px 0;color:#e8eaef;font-size:16px}
+  .grid{display:grid;gap:14px}
+  .kpis{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .kpi .v{font-size:26px;font-weight:700;letter-spacing:.3px}
+  .kpi .l{color:var(--mut);font-size:12.5px;margin-top:2px}
+  .kpi .s{color:var(--dim);font-size:11.5px;margin-top:6px}
+  .up{color:var(--bull)} .down{color:var(--bear)} .neu{color:var(--warn)}
+  .two{grid-template-columns:1fr 1fr}
+  @media(max-width:780px){.two{grid-template-columns:1fr}}
+  ul.tight{margin:0;padding-left:18px}
+  ul.tight li{margin:0 0 8px;color:#d6dae2}
+  .pill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;background:var(--chip);color:var(--mut);border:1px solid var(--line);white-space:nowrap}
+  .pill.bull{color:var(--bull);border-color:#1f5b45}
+  .pill.bear{color:var(--bear);border-color:#5e2a2a}
+  .pill.new{color:#0e1014;background:var(--warn);border-color:var(--warn);font-weight:700}
+  .pill.gap{color:#0e1014;background:var(--accent2);border-color:var(--accent2);font-weight:700}
+  .src{color:var(--dim);font-size:12px}
+  table{width:100%;border-collapse:collapse;font-size:13px;display:block;overflow-x:auto;white-space:nowrap}
+  th,td{border-bottom:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  th{color:var(--mut);font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.6px}
+  td .tick{font-weight:700;color:var(--ink)}
+  .read-pos{color:var(--bull)} .read-neg{color:var(--bear)} .read-neu{color:var(--warn)}
+  .bars{margin:6px 0}
+  .bar-row{display:grid;grid-template-columns:150px 1fr 90px;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+  .bar-track{background:var(--panel2);border-radius:6px;height:18px;overflow:hidden;border:1px solid var(--line)}
+  .bar-fill{height:100%;border-radius:6px 0 0 6px}
+  .bar-row .lab{color:var(--mut)}
+  .bar-row .val{text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
+  .ledger{grid-template-columns:1fr 1fr}
+  @media(max-width:780px){.ledger{grid-template-columns:1fr}}
+  .ledger .card.bullc{border-color:#1f5b45}
+  .ledger .card.bearc{border-color:#5e2a2a}
+  .ledger h3 .pill{vertical-align:middle;margin-left:6px}
+  .gapcard{border-left:3px solid var(--accent2)}
+  .gapcard h3{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .note{background:var(--panel2);border:1px dashed var(--line);border-radius:8px;padding:12px 14px;color:var(--mut);font-size:13px}
+  .foot{margin-top:50px;border-top:1px solid var(--line);padding-top:16px;color:var(--dim);font-size:12px}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--mut);margin-bottom:10px}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:10px;height:10px;border-radius:50%}
+  code{background:var(--panel2);padding:1px 6px;border-radius:5px;font-size:12.5px;color:#cfe0ff}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-row">
+    <h1>Tokenmaxxing</h1>
+    <span class="sub">AI Monetization · Theme Dashboard · synthesis through 2026-06-29</span>
+    <nav>
+      <a href="#q">Question</a>
+      <a href="#snap">Snapshot</a>
+      <a href="#ledger">Bull / Bear</a>
+      <a href="#backlash">Backlash</a>
+      <a href="#econ">Unit econ</a>
+      <a href="#cos">Companies</a>
+      <a href="#gaps">Audit gaps</a>
+      <a href="#watch">Watch</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- QUESTION -->
+  <section id="q">
+    <p class="lede"><b>"Tokenmaxxing"</b> was the 2025 reflex of maxing out token consumption to look AI-forward. The 2026 sequel is the pullback — enterprises demanding <b>control</b> over token spend, routing cheap tasks to cheap models, and testing open-source / Chinese substitutes.</p>
+    <div class="q">The buy-side fork this resolves: <b>does economic value keep accruing to frontier models</b> (Anthropic / OpenAI pricing power + the GPU capex that underwrites it) — <b>or does substitution &amp; cost discipline cap the monetization curve?</b></div>
+    <p>The on-disk evidence is deliberately two-sided and that tension <i>is</i> the theme: spend is still climbing fast and the frontier still captures <b>~90% of economic value</b>, but a real cost-control backlash is now moving enterprise behavior, vendor pricing, and hyperscaler demand reads. The deepest framing is <b>Jevons Paradox</b> — per-token cost falls 60–70%/yr, but usage more than re-absorbs it.</p>
+  </section>
+
+  <!-- SNAPSHOT -->
+  <section id="snap">
+    <h2>Snapshot — the numbers that frame the debate</h2>
+    <div class="grid kpis">
+      <div class="card kpi"><div class="v">~90% / ~80%</div><div class="l">Frontier share of <i>value</i> vs open-source share of <i>tokens</i></div><div class="s">BG2Pod, 2026-06-12</div></div>
+      <div class="card kpi"><div class="v up">15×</div><div class="l">Per-business AI token spend, Jan-25 → May-26 (+14% m/m last print)</div><div class="s">Ramp, 2026-06-18</div></div>
+      <div class="card kpi"><div class="v up">~$50B</div><div class="l">Anthropic run-rate (from ~$9B YE2025)</div><div class="s">JPM, 2026-06-16</div></div>
+      <div class="card kpi"><div class="v up">&gt;$25B</div><div class="l">OpenAI run-rate (from ~$20B Nov-2025)</div><div class="s">JPM, 2026-06-16</div></div>
+      <div class="card kpi"><div class="v up">&gt;$130B</div><div class="l">3 leading labs, CY26 revenue (~$200B exit-ARR — a year early)</div><div class="s">Barclays, 2026-06-01</div></div>
+      <div class="card kpi"><div class="v">3.2 quadrillion</div><div class="l">Google tokens / month (~7× Y/Y)</div><div class="s">JPM / Google I/O 2026</div></div>
+      <div class="card kpi"><div class="v neu">~60%</div><div class="l">Enterprises now throttling AI spend via guardrails</div><div class="s">UBS, 2026-06-23</div></div>
+      <div class="card kpi"><div class="v">$11 / $611 / $7,449</div><div class="l">Median / top-10% / top-1% AI spend per employee / mo</div><div class="s">Ramp, 2026-06-18 · still &lt;2% of non-payroll spend</div></div>
+    </div>
+  </section>
+
+  <!-- LEDGER -->
+  <section id="ledger">
+    <h2>The two-sided ledger</h2>
+    <div class="grid ledger">
+      <div class="card bullc">
+        <h3>Bull — where the money is <span class="pill bull">value accrues to frontier</span></h3>
+        <ul class="tight">
+          <li><b>"Two things can be true"</b> — majority of <i>value</i> to the frontier, majority of <i>tokens</i> open-source; and the better open-source does, the <b>more</b> labs spend on raw compute (Baker, BG2Pod 06-12).</li>
+          <li><b>Inference GM expansion</b> — model gains deliver better token-efficiency <i>and</i> higher revenue/token; Barclays models lab inference margin <b>~34% → ~65%</b> from 2026 (06-01).</li>
+          <li><b>Jevons demand</b> — cheaper tokens unlock workflows that lacked ROI; usage scales 2–3× &gt; the unit-cost drop, so GPU/HBM/power net-grows (FundaAI, 06-24).</li>
+          <li><b>Long-running agents</b> = structural token demand "as far as the eye can see"; Stripe refactored a <b>50M-line</b> codebase in a day (BG2Pod).</li>
+          <li><b>&lt;1% penetrated</b> — MS Byrd frames the episode as a "healthy phase of early adoption"; ROI of ~$55 saved per $2–3 of tokens (06-26).</li>
+        </ul>
+      </div>
+      <div class="card bearc">
+        <h3>Bear — what could break it <span class="pill bear">substitution &amp; capital intensity</span></h3>
+        <ul class="tight">
+          <li><b>"A big speed bump"</b> — Databricks corrected UBS: the cost-control backlash is real, and enterprises are deploying cheap open Chinese models in contained ways (06-18).</li>
+          <li><b>Capital-intensive price war</b> — "historically toxic"; ORCL OCI capex/sales &gt;100% is the exhibit A on FCF sustainability (Vital Knowledge).</li>
+          <li><b>Funding gap</b> — Bernstein: ~$623B 2026 hyperscaler capex vs ~$635B CFO; capex outgrows CFO in 2027 → monetization must inflect or the math breaks (06-22).</li>
+          <li><b class="pill gap">audit add</b> <b>H100 spot −40%</b> from May peak to $2.42/hr — SemiAnalysis flags the open question: demand waning vs structural cost improvement (briefing 06-27).</li>
+          <li><b>Chanos</b> — if GPU economics are this good, why not raise prices 3–4×? Either the premium is overstated or rent is left on the table.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACKLASH -->
+  <section id="backlash">
+    <h2>The cost-control backlash — "a big speed bump"</h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>The macro turn</h3>
+        <ul class="tight">
+          <li><b>UBS Part 1 (06-18):</b> first "token cost pushback" note; <b>Palantir AIP Evolve</b> hit 90% adoption in ~3 weeks; Databricks confirms the spike.</li>
+          <li><b>UBS Part 2 (06-23):</b> ~60% of enterprises throttling. Impact map: <b>model layer biggest hit</b> (down-tier to Qwen / Z.ai / Kimi / DeepSeek, now F500 — BMW+Qwen); <b>semis no material risk</b>; hyperscalers neutral; <b>software mixed</b>. One model swap cut tokens <b>−97%</b>. ORCL &amp; Datadog "outsized frontier exposure."</li>
+          <li><b>The scaffolding tax</b> (WFC/Slotnick 05-29): you <i>can</i> move known workloads to cheaper models "but you'll build a lot more scaffolding"; discovery still needs frontier.</li>
+          <li><b>DeepSeek still tiny</b> — ~0.4% of firms; open-source platforms ~5%; history rhymes (spiked early-2025, collapsed once labs cut prices).</li>
+        </ul>
+      </div>
+      <div class="card gapcard">
+        <h3>Concrete CTO-level behavior <span class="pill gap">from audit — not yet in dossier</span></h3>
+        <ul class="tight">
+          <li><b>Anthropic enterprises cutting Claude cost 90%+</b> via Sonnet-default / Opus-only-hardest routing + prompt caching (briefing 06-27).</li>
+          <li><b>Block / Square:</b> "don't take a Ferrari to the grocery store" — cheap models default, engineers must <i>opt in</i> to frontier (BofA wrap 06-08).</li>
+          <li><b>Uber:</b> burned its full 2026 AI budget in 4 months, then capped spend at <b>$1,500/person/month per tool</b> (FundaAI Pt 1, 06-23).</li>
+          <li><b>Priceline:</b> Cursor renewal at <b>+4–5×</b> (FundaAI Pt 1).</li>
+          <li><b>Vaudit</b> bill-audit: found <b>~$1.7M improper charges across $34M audited Claude spend (~5%)</b> — billing opacity as a new cost-control vector (The Information 06-25).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECONOMICS -->
+  <section id="econ">
+    <h2>Unit economics — the inference cost curve &amp; the China gap</h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>List price per 1M tokens — the substitution wedge <span class="pill gap">audit detail</span></h3>
+        <div class="legend">
+          <span><span class="dot" style="background:var(--bear)"></span>frontier (US)</span>
+          <span><span class="dot" style="background:var(--bull)"></span>open / Chinese</span>
+        </div>
+        <div class="bars">
+          <div class="bar-row"><span class="lab">Fable 5 (output)</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--bear)"></div></div><span class="val">$50.0</span></div>
+          <div class="bar-row"><span class="lab">Fable 5 (blended ~)</span><div class="bar-track"><div class="bar-fill" style="width:15.4%;background:var(--bear)"></div></div><span class="val">$7.7</span></div>
+          <div class="bar-row"><span class="lab">GPT-5.5</span><div class="bar-track"><div class="bar-fill" style="width:8.8%;background:var(--bear)"></div></div><span class="val">$4.4</span></div>
+          <div class="bar-row"><span class="lab">GLM-5.2 (Z.ai)</span><div class="bar-track"><div class="bar-fill" style="width:8.8%;background:var(--bull)"></div></div><span class="val">$4.4</span></div>
+          <div class="bar-row"><span class="lab">DeepSeek V4 Flash</span><div class="bar-track"><div class="bar-fill" style="width:0.2%;background:var(--bull)"></div></div><span class="val">$0.1</span></div>
+        </div>
+        <p class="src">Briefings 06-20 / 06-22 / FundaAI Pt 1. Chinese APIs &lt;20% of US pricing; 4 of 5 top OpenRouter models are Chinese; GLM-5.2 compressed the quality gap to near-parity in ~2 weeks. <b>But</b> FundaAI's COGS estimate: true compute-cost gap is small (Opus ~$3.8–6.3 vs GLM ~$3.5–4.0 /Mtok) — list-price gaps mostly compress Opus's <i>premium</i>, not the compute bill.</p>
+      </div>
+      <div class="card">
+        <h3>Supply side is collapsing in cost</h3>
+        <ul class="tight">
+          <li><b>GB300 NVL72 at $0.156 / 1M output tokens</b> (50 tok/s/user) — rack-scale NVLink "mogs" 8-GPU islands (SemiAnalysis 06-09).</li>
+          <li><b>B200 tokens/MW +1.7×</b> in ~6 weeks purely from software, at fixed power — tokens-per-MW is the best fleet-ROI figure of merit.</li>
+          <li><b class="pill gap">audit add</b> <b>CoreWeave/Cantor (06-18):</b> GB300 spot ~$7–8/GPU-hr ≈ <b>$0.14/Mtok</b>; GPU-hr pricing stable but per-token cost falls with throughput — <b>efficiency accrues to the hyperscaler, not the infra provider</b>; long-term contracts inflecting <b>$10–12M → $15–16M/MW</b>; GPU useful life <b>3–4yr → 7–8yr</b>; Anthropic the anchor customer.</li>
+          <li><b>Coding assistants</b> = "greatest B2B SaaS ever": <b>$30B+ ARR</b> across the six biggest, on track for <b>$100B by year-end</b>; Anthropic avg spend <b>$211/user — 8.4× OpenAI's $25</b> (SemiAnalysis / FundaAI).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPANIES -->
+  <section id="cos">
+    <h2>Who's exposed</h2>
+    <table>
+      <thead><tr><th>Ticker</th><th>Angle</th><th>Net read</th></tr></thead>
+      <tbody>
+        <tr><td class="tick">MSFT</td><td>Copilot → usage pricing; weighing hosted DeepSeek; MAI in-house</td><td><span class="read-neu">Neutral-positive optionality</span> — but DeepSeek substitution + OpenAI ARR risk is the key bear flag. AI ARR <b>$37B</b> (+123% Y/Y).</td></tr>
+        <tr><td class="tick">GOOG</td><td>Diversified revenue → can offer cost-control / routing + AI as loss-leader</td><td><span class="read-pos">Underrated winner</span> of cost discipline. GenAI rev +~800% Y/Y; Cloud margin ~33%.</td></tr>
+        <tr><td class="tick">AMZN</td><td>Bedrock TaaS (Anthropic); AWS pricing power as compute reallocates</td><td><span class="read-neu">"Tokenmaxxing hangover"</span> risk on 4Q non-AI cloud; AWS op margin ~38%.</td></tr>
+        <tr><td class="tick">ORCL</td><td>OCI capex/sales &gt;100%</td><td><span class="read-neg">Bear's exhibit A</span> — capital intensity vs uncertain FCF if a price war hits.</td></tr>
+        <tr><td class="tick">NVDA</td><td>Tokens → GPUs; "tokenmaxx" bull vs price-war bear</td><td><span class="read-pos">Net positive on volume</span> (open-source diffusion <i>raises</i> compute demand); GB300 cheapest serving system; CUDA moat.</td></tr>
+        <tr><td class="tick">AMD</td><td>Inference-tilted; cheaper-model substitution favors inference volume</td><td><span class="read-pos">Indirect positive</span>; MI355X improved &gt;100× in &lt;1 month but ROCm still maturing.</td></tr>
+        <tr><td class="tick">SAMSUNG / SK HYNIX</td><td>DRAM structural P/B → P/E rerating; Jevons picks-and-shovels</td><td><span class="read-pos">Chris Wood's direct trade</span> (06-25): sells Alphabet, buys SK Hynix (new 4%) + Samsung (+1ppt). "Falling token prices → rising DRAM prices."</td></tr>
+        <tr><td class="tick">AAPL <span class="pill gap">audit</span></td><td>On-device AI driving LPDDR/DRAM content &amp; shortages — consumer-side Jevons</td><td><span class="read-neu">New angle</span> — +20% Q3 DRAM hike, CXMT lobbying; MacBook/iPad prices +15–25% → <b>$263B single-day mcap loss</b>.</td></tr>
+        <tr><td class="tick">MU <span class="pill gap">audit</span></td><td>HBM4 ramp; memory as the binding Jevons constraint</td><td><span class="read-pos">Beneficiary</span> — &gt;$1B HBM4 sales already; new fabs US/Asia; BofA raising memory forecasts.</td></tr>
+        <tr><td colspan="3" class="src"><b>Private (theme objects):</b> Anthropic (~$50B run-rate, overtook OpenAI in US business adoption ~41% vs ~39.5%, $3T IPO chatter, MSFT commercial alignment via Foundry) &amp; OpenAI (&gt;$25B; possible IPO delay; in-house "Jalapeño" silicon on TSMC 3nm). Both profitable on per-token API, lose money on flat subscriptions; ~80% token-based revenue → structurally unincentivized to build cost-control tooling. <b>DeepSeek raised $7.4B (&gt;$50B valuation), reportedly triggered by Anthropic's Mythos preview.</b></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- GAPS -->
+  <section id="gaps">
+    <h2>Deep-dive audit — what the dossier missed</h2>
+    <p class="src">Four parallel read-only sweeps over the raw sources (company pages · sell-side notes · transcripts &amp; newsletters · recent/inbox). Six real gaps + one missing source.</p>
+    <div class="grid two">
+      <div class="card gapcard"><h3>1 · Consumer / on-device Jevons <span class="pill new">missing angle</span></h3><p>The dossier is entirely datacenter-framed. AAPL on-device AI is driving DRAM content step-up (9GB base A20 / iOS 27), +20% Q3 hikes, CXMT lobbying, and a $263B single-day mcap loss on 15–25% device price hikes. MU &gt;$1B HBM4. Consumer-side proof of the same "tokens → DRAM" trade.</p></div>
+      <div class="card gapcard"><h3>2 · FundaAI <b>Part 1</b> (06-23) <span class="pill new">source on disk, not cited</span></h3><p>Dossier cites only Part 2. Part 1 carries the <b>Agent Scaling Law</b>, Fable 5 <b>$10/$50 per Mtok (~2× Opus)</b>, the Silicon Data index <b>"premium pullback ≠ demand collapse"</b> reframe, the Linux Foundation <b>"Tokenomics Foundation"</b> metering standard, Salesforce "Agentic Work Units," Uber's $1,500/seat cap, Priceline +4–5×.</p></div>
+      <div class="card gapcard"><h3>3 · Named cost-control behavior <span class="pill gap">deepens backlash</span></h3><p>Anthropic 90%+ cost cuts via routing+caching; Block/Square "no Ferrari to the grocery store"; Vaudit ~5% overcharge across $34M audited Claude spend. The dossier had macro backlash but no named CTO-level policy.</p></div>
+      <div class="card gapcard"><h3>4 · Sharper China cost gap <span class="pill gap">quantified</span></h3><p>DeepSeek V4 Flash $0.1 vs GPT-5.5 $4.4 vs Fable 5 $7.7 /Mtok; Chinese APIs &lt;20% of US; GLM-5.2 near-parity in ~2 weeks; 4 of 5 top OpenRouter models Chinese; DeepSeek's $7.4B raise.</p></div>
+      <div class="card gapcard"><h3>5 · New supply-side econ + a new bear signal <span class="pill gap">add</span></h3><p>CoreWeave/Cantor (06-18): efficiency accrues to hyperscaler not infra; $15–16M/MW contracts; useful life 7–8yr. And the cleanest new bear print: <b>H100 spot −40%</b> to $2.42/hr.</p></div>
+      <div class="card gapcard"><h3>6 · Alt-silicon / vertical integration <span class="pill gap">under-covered</span></h3><p>OpenAI "Jalapeño" in-house chip (TSMC 3nm; Jalapeño2 on A16+CoWoS); Sol 5.6 on Cerebras at 750 tok/s; SambaNova $1B at $10B (5× in 4 months). Bears on who captures token economics as inference leaves merchant GPUs.</p></div>
+    </div>
+    <div class="note" style="margin-top:14px"><b>Keep out of this theme:</b> SemiAnalysis grid-constraints / AI-power-semis sizing belongs in the <code>ai-datacenter-power</code> and <code>800v-dc-power</code> theme pages — cross-link, don't duplicate.</div>
+  </section>
+
+  <!-- WATCH -->
+  <section id="watch">
+    <h2>What to watch — next 12 months "the most indicative"</h2>
+    <div class="grid kpis">
+      <div class="card"><h3>MSFT pricing</h3><p class="src">Copilot usage-pricing rollout + the hosted-DeepSeek V4 decision.</p></div>
+      <div class="card"><h3>Price cuts</h3><p class="src">Whether OpenAI's mooted cuts dislodge stickiness.</p></div>
+      <div class="card"><h3>Open-source share</h3><p class="src">Ramp's next prints on DeepSeek / open-source; GLM-5.2 trajectory.</p></div>
+      <div class="card"><h3>Returns-on-capex</h3><p class="src">Proof points vs the 2026–27 funding gap.</p></div>
+      <div class="card"><h3>Orchestration risk</h3><p class="src">"Open Router Fusion"-type tools cobbling cheap models to match frontier — could commoditize. "Jury is out" (Byrd).</p></div>
+      <div class="card"><h3>Demand vs cost</h3><p class="src">Is the H100 spot −40% structural cost improvement or demand waning?</p></div>
+    </div>
+    <div class="q" style="margin-top:18px">Bottom line: monetization is showing up everywhere and token volume is inflecting hard — the Jevons signal is unambiguous. The divergence is on <b>returns &amp; pricing</b>: hyperscalers building compute eat negative FCF; the app layer converts the same wave into high-margin ARR via seat→usage repricing. The contested edge is substitution — so far a <b>speed bump, not a reversal</b>.</div>
+  </section>
+
+  <div class="foot">
+    Sources: BG2Pod (06-12) · Ramp/Big Technology (06-18) · UBS Keirstead/Arcuri (06-18, 06-23) · WFC (04-13, 05-29) · Jefferies/Thill (06-01) &amp; Chris Wood GREED &amp; fear (06-25) · Barclays "AI's S-Curve" (06-01) · Bernstein "Cloud in the Quarter" + "Gen AI Handbook" (06-22) · JPM "AI Capex 2.0" (06-16) · BofA "AI 2030" (05-13) &amp; conf wrap (06-08) · Morgan Stanley/Byrd (06-26) · SemiAnalysis DeepSeek V4 (06-09) &amp; RL Systems (06-16) · CoreWeave/Cantor (06-18) · FundaAI Deep|LLM 26H1 <a href="../relat%C3%B3rios%20bons/FundaAI_LLM.html">Pt 1 (06-23)</a> &amp; <a href="../relat%C3%B3rios%20bons/LLM_Part_2_funda.html">Pt 2 (06-24)</a> · morning/company-specific briefings (06-20 → 06-28). Built from <code>_wiki/themes/tokenmaxxing.md</code> + a 4-sweep gap audit, 2026-06-29. <span class="pill gap">audit</span>/<span class="pill new">new</span> tags = added beyond the current dossier.
+  </div>
+
+</div>
+</body>
+</html>

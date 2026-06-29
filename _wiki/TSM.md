@@ -61,6 +61,41 @@ Revenue USD 35.9bn, +6.4% q/q, above the high end of guidance. GM 66.2% (+390bp 
 - Offload strategy: TSMC routing non-AI-accelerator packaging (AMD Venice CPU, AVGO networking processors) to ASE FoCoS and SPIL to free in-house CoWoS for GPUs/ASICs; all AI accelerators stay on TSMC CoWoS (Fubon/Jefferies, 2025-10-28; Q425 Techknowledge, 2025-12-17). US CoWoS will come via Amkor outsourcing (~20–30k WPM by 2028, US$7bn invest); TSMC's two US AP fabs do SoIC (AP9) / CoPoS (2030), not CoWoS (Fubon, 2025-10-28).
 - CPO: TSMC's **COUPE** (Compact Universal Photonic Engine) is emerging as the integration option of choice — NVIDIA showed COUPE optical engines at GTC-2025 (first to ship), AVGO and Ayar Labs on the roadmap. EIC on N7, PIC on SOI; TSMC is the only foundry with die-to-wafer hybrid bonding at scale (volume on AMD parts). Adopting COUPE locks customers into TSMC PICs (TSMC won't package SiPho wafers from other foundries) (CPO/SemiAnalysis, 2026-01-02).
 
+## N3 bottoms-up supply/demand model (UBS)
+_Source: UBS (Sunny Lin / Randy Abrams), N3 capacity model accompanying the Q2 FY26 preview (2026-06-28). Quarterly columns are **kwpm** (monthly run-rate that quarter); annual columns (**2026E / 2027E**) are **thousand wafers** for the full year (≈ sum of the four quarters' kwpm × 3). Die size in mm²._
+
+**Read:** the model shows N3 running at **102–110% utilisation every quarter through 2027** (a structural sold-out node), with the demand mix flipping hard from consumer to Cloud AI. Cloud AI goes from **7% of N3 demand in Q126E to 64% by Q426E and ~71–72% across 2027**, as Apple's consumer base (iPhone/Mac/iPad) gives way to NVIDIA Rubin/Rubin Ultra/Vera CPU, Broadcom (Google TPU v7/v8i, Meta MTIA v3, OpenAI), Alchip (Amazon Trainium 3) and MediaTek (Google TPU v8t). Total N3 demand grows from 1,837k wafers (2026E) to 2,266k (2027E) against TSMC capacity of 1,710k → 2,190k — i.e. demand persistently runs ahead of capacity, consistent with the "supply-demand gap widens to 15–20% in 2027" view elsewhere on this page and UBS's N3-capacity road to ~220kwpm by 2028E.
+
+| Client | Product | Die (mm²) | Q126E | Q226E | Q326E | Q426E | **2026E (k)** | Q127E | Q227E | Q327E | Q427E | **2027E (k)** |
+|---|---|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|
+| Nvidia | Rubin | 1,628 | 0 | 4 | 15 | 26 | 137 | 34 | 39 | 32 | 15 | 360 |
+| Nvidia | Rubin Ultra | 1,628 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 16 | 36 | 169 |
+| Nvidia | Vera CPU | 800 | 0 | 1 | 5 | 11 | 51 | 11 | 13 | 13 | 12 | 146 |
+| Broadcom | Google — TPU v7 Ironwood | 1,400 | 6 | 11 | 16 | 21 | 158 | 14 | 8 | 6 | 0 | 85 |
+| Broadcom | Google — TPU v8i | 1,400 | 0 | 0 | 2 | 4 | 18 | 7 | 17 | 25 | 35 | 250 |
+| Broadcom | Meta — MTIA v3 | 1,600 | 0 | 0 | 0 | 0 | 2 | 1 | 1 | 2 | 3 | 19 |
+| Broadcom | OpenAI | 1,600 | 0 | 0 | 0 | 3 | 11 | 3 | 4 | 4 | 1 | 36 |
+| AMD | MI355 | 840 | 2 | 2 | 1 | 1 | 17 | 1 | 1 | 0 | 0 | 7 |
+| Alchip | Amazon — Trainium 3 | 1,600 | 0 | 4 | 11 | 22 | 110 | 20 | 17 | 10 | 2 | 149 |
+| Marvell | Amazon — Trainium 2.5 | 1,600 | 0 | 0 | 0 | 2 | 7 | 0 | 0 | 0 | 0 | 2 |
+| MediaTek | Google — TPU v8t | 800 | 0 | 0 | 1 | 4 | 15 | 7 | 10 | 9 | 7 | 101 |
+| _Other_ | CPUs / accelerators & networking | — | 2 | 4 | 10 | 19 | 105 | 20 | 23 | 23 | 28 | 281 |
+| **Cloud AI** | **Capacity requirement (kwpm)** | | **9** | **26** | **61** | **114** | **631** | **117** | **138** | **140** | **139** | **1,604** |
+| _% of N3 demand_ | | | _7%_ | _19%_ | _37%_ | _64%_ | _34%_ | _66%_ | _72%_ | _72%_ | _72%_ | _71%_ |
+| Apple | iPhone apps processor | 110 | 43 | 43 | 39 | 22 | 442 | 13 | 11 | 9 | 10 | 128 |
+| Apple | Mac processor | 165 | 10 | 10 | 8 | 7 | 106 | 7 | 6 | 6 | 6 | 74 |
+| Apple | iPad M processor (Pro & Air) | 160 | 14 | 12 | 12 | 8 | 135 | 11 | 10 | 8 | 8 | 111 |
+| Apple | iPad A17 Pro processor | 104 | 2 | 2 | 1 | 1 | 15 | 3 | 2 | 2 | 2 | 30 |
+| Qualcomm | Flagship smartphone SoC | 120 | 17 | 13 | 9 | 3 | 129 | 5 | 5 | 4 | 3 | 51 |
+| MediaTek | 5G smartphone SoC | 120 | 5 | 4 | 3 | 1 | 39 | 2 | 2 | 2 | 1 | 19 |
+| Intel | Outsourced PC CPUs | 100 | 19 | 19 | 11 | 4 | 161 | 8 | 8 | 8 | 5 | 85 |
+| _Other_ | Bitcoin, tablet, ARM-based PC CPU | — | 10 | 10 | 20 | 20 | 180 | 10 | 10 | 15 | 20 | 165 |
+| **Consumer & other** | **Capacity requirement (kwpm)** | | **120** | **113** | **104** | **65** | **1,206** | **60** | **53** | **53** | **55** | **663** |
+| _% of N3 demand_ | | | _93%_ | _81%_ | _63%_ | _36%_ | _66%_ | _34%_ | _28%_ | _28%_ | _28%_ | _29%_ |
+| **Total N3 demand** | | | **129** | **139** | **164** | **180** | **1,837** | **177** | **191** | **193** | **194** | **2,266** |
+| **TSMC N3 capacity** | | | 120 | 130 | 150 | 170 | 1,710 | 175 | 180 | 185 | 190 | 2,190 |
+| _Capacity utilisation_ | | | _107%_ | _107%_ | _110%_ | _106%_ | _107%_ | _101%_ | _106%_ | _104%_ | _102%_ | _103%_ |
+
 ## Capstone estimates (house model)
 _Source: Capstone official model (`Modelo Felipe TSM 1Q26.xlsm`, 2026-06-10)._
 
@@ -116,6 +151,7 @@ _Q1 FY26 · Apr 16 → Jun 23 2026 · sell-side / expert calls / reports between
 
 | Date | Source | Theme | Bias | What was said |
 |---|---|---|---|---|
+| 04-25 | Nutty "Part 4 — BSPDN & PowerVia" (nuttycld.substack.com, 2026-04-25) | product | mixed | At the TSMC North America Technology Symposium (April 2026), TSMC disclosed the **Super Power Rail** on A16 — its implementation of backside power delivery, confirmed production-ready for 2026 with volume ramp pushed to 2027 (previously H2 2026). Nutty's Part 4 frames NVIDIA Feynman (2028) as the first potential mainstream AI-accelerator on A16/Super Power Rail, making it the inflection year for this node. Intel is identified as an 18A/BSPDN first mover (ahead of TSMC's late-2026 A16 volume ramp), framing the Super Power Rail timeline as a competitive response. Read-through: A16's delayed volume ramp to 2027 opens a window where Intel's PowerVia-based 18A products are nominally ahead on backside power, though TSMC's overall yield/process advantage remains intact. (Nutty Part 4, nuttycld.substack.com, 2026-04-25) |
 | 05-18 | Bernstein · Mark Li | valuation | bull | Bernstein OP, PT $430 vs ~$351, calling TSM the 'most reliable compounder in AI' — 28% EPS CAGR through '28, +50% EPS this year, '27 capex $68B, trading at ~20% discount vs SOX. |
 | 05-21 | UBS · Sunny Lin | demand | bull | Quantifying the server CPU opportunity: sizes the server-CPU market at ~$170bn by 2030 (units 23m→63m, 30% CAGR); server CPUs need ~200kwpm of leading-edge by 2030, of which TSMC serves 122kwpm — an opportunity of ~$44bn of TSMC revenue (11% of sales) in 2030, from $3.7bn/3% in 2025. Raises sales 3-7%/EPS 4-9% in 2027-30. Buy, PT NT$3,000. |
 | 05-27 | JPM · Gokul | supply | bull | CoWoS update: TSMC turning aggressive on CoWoS 2027, raising capacity to 115k/175k/220k WPM by end-26/27/28; total CoWoS consumption +86% this year / +30% next. N3 hot-run/super-hot-run pricing rising further in Q3, regular N3 hikes ~10% and N2 ~5-6% in Jan-27. EMIB vs CoWoS-L decision on Google TPU V9 expected late-2026/early-2027. |
@@ -168,6 +204,7 @@ _Source: TSMC earnings calls (dates above); management commentary, paraphrased._
 ## Changelog
 | Date | Change |
 |---|---|
+| 2026-06-29 | Added "N3 bottoms-up supply/demand model (UBS)" section — full client/product N3 wafer-demand table by quarter (Q126E–Q427E) with Cloud-AI vs consumer split, total demand vs TSMC capacity, and 102–110% utilisation. (UBS / Sunny Lin, Randy Abrams, 2026-06-28) |
 | 2026-06-27 | Added 1 intra-quarter row (06-27): SFG "Feeding the Foundry Beast" (Hosseini, $432.35, Positive) — SCA/LTA template migrating from memory to foundry logic. Updated quarter synthesis. |
 - **Capstone model:** `P:\Felipe Monteiro\US Equities\Modelos oficiais\Modelo Felipe TSM 1Q26.xlsm` (house estimates).
 - **Briefings:** [TSM roll-up](../_briefings/by-ticker/TSM.md) — 2 datapoints / 2 days — Bernstein PT $430 (2026-05-18).

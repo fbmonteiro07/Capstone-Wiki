@@ -123,6 +123,7 @@ _Source: Capstone peer model (`ASML_Peers_SemiCap_v16.xlsx` — Peer Comp, 2026-
 <!-- Consensus estimates (BBG) block auto-injected here by the HTML builder -->
 
 ## In the inbox (Outlook — recent sell-side flow)
+- **Nutty "Part 4 — BSPDN & PowerVia" (nuttycld.substack.com, 2026-04-25):** Nutty's Part 4 identifies AMAT as the **leading D2W hybrid bonding supplier** (in partnership with BESI), with a joint hybrid bonding inline system being ordered by SK Hynix for its HBM line. The BSPDN/GAA architecture wave (18A/Intel PowerVia, TSMC A16/Super Power Rail) is framed as a content-per-wafer tailwind for AMAT across deposition, etch, and metrology — "picks and shovels" beneficiary of increased complexity in both logic (backside power requires additional deposition/patterning layers) and memory (HBM hybrid bonding). The AMAT+BESI JDA on hybrid bonding positions AMAT as the enabler for D2W at the highest-end HBM/3D-IC stack. (Nutty Part 4, nuttycld.substack.com, 2026-04-25)
 - **Jefferies (Will Beavington)** — Global SEMIS Daily _(2026-06-16)_: **AMAT named "Top pick"** in the semicap complex.
 - **BofA TMT sales** _(2026-06-18)_: AMAT in the constructive semis tape (alongside MU/INTC) post-AAPL/Intel deal pop.
 - **UBS (Arcuri) — semis/memory** _(2026-06-15)_: in the DRAM-dollar leverage ranking, **AMAT ~25% of DRAM WFE dollars** (vs ASML ~30%) — "ASML first, Applied second, then a distant gap, then Lamb, and then KLA"; KLAC "fundamentally not that exposed to DRAM" (UBS "Arcuri", 2026-06-15).

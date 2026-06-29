@@ -142,6 +142,7 @@ Each page follows the [_TEMPLATE](_TEMPLATE.md): Snapshot · Current state (late
 | SANM | [SANM](SANM.md) | EMS re-rating via ZT Systems AMD-rack integration (FY27 $16B+, ~2x FY25); bear = ZT margin/pull-forward (JPM/BofA/SIG all Neutral). |
 | NBIS | [NBIS](NBIS.md) | Highest-octane listed neocloud (ARR→$7-9B, NVDA stake); capex burn + circular-financing scrutiny. |
 | CEREBRAS | [Cerebras](CEREBRAS.md) | Wafer-scale fast-inference vs NVDA; OpenAI take-or-pay; UAE concentration. Recent IPO, no public consensus. |
+| SPCX | [SpaceX](SPCX.md) | IPO'd Jun-2026 (~$75bn, largest ever); Starlink + Launch + AI (ex-xAI: Grok/X/COLOSSUS ~1GW, ~325k GPUs). FY25 rev $17.2bn, net loss ~$(4.9)bn; Musk ~82% vote. Read-through to NVDA/CRDO. |
 
 ## Consumer / Internet / Other
 | Ticker | Page | One-line thesis |

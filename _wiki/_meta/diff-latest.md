@@ -1,9 +1,10 @@
 # What changed — last 7 days
 
-_Generated 2026-06-28 (since 2026-06-21) · rolls up every page's `## Changelog` + the ingest run log. ⭐ = rating/PT move. Rebuild: `py _wiki/_tools/build_diff.py [days]`._
+_Generated 2026-06-29 (since 2026-06-22) · rolls up every page's `## Changelog` + the ingest run log. ⭐ = rating/PT move. Rebuild: `py _wiki/_tools/build_diff.py [days]`._
 
 | Date | Ticker | Change |
 |---|---|---|
+| 2026-06-29 | SPCX | page created (original, since superseded). Seeded from the Jeff Pu tweet only. |
 | 2026-06-27 | QCOM | Added 2 intra-quarter rows (06-27 compiled briefing highlighting 06-24 Investor Day outputs): META multi-generation CPU deal + MSFT HBC endorsement (two hyperscalers publicly committed); Modular AI acquisition ($4B, software-stack completion). Updated quarter synthesis to reflect these as de-risking the $5B FY27 DC guide. |
 | 2026-06-26 | MU | Read the previously-unincorporated Q2 FY26 10-Q (filed 2026-03-19, qtr ended Feb-26-2026); the page's Q2 FY26 coverage had cited only the earnings transcript. Added to Current state: first segment-level BU revenue/op-income breakdown (CMBU/CDBU/MCBU/AEBU), y/y DRAM +207% / NAND +169% ASP-vs-bit split, deleveraging ($4.63B prepaid, LT debt $14.0B→$9.56B), 1H26 OCF $20.3B and net capex (~$9.5B after $2.26B incentives), the "not material" beyond-1yr performance obligations (SCA prepayments not yet on B/S) + $2.55B consideration-payable, receivables doubling to $17.3B, and 14.7% Pillar-Two effective tax rate. Added the 10-Q to Sources › Filings. Decks folder holds only pre-2024 investor decks (2022-05-12, 2021-08-02) — stale vs the AI/HBM-era thesis, so not incorporated. |
 | 2026-06-26 | LITE | coverage-audit remediation: read the **OFC 2026 Investor Briefing deck (2026-03-17)**, previously uncited. Added the management target financial model (margin bridge to $2B/qtr), the $5B ex-Qorvo Greensboro fab, the InP-lane/UHP/OCS demand CAGRs, the $18B→$90B+ 2030 optical-AI TAM, record backlog-by-product, the NVDA joint OFC demos, and management's direct rebuttal to the SiPho/InP-oversupply bear (EMLs de facto at 3.2T; InP 91%→79% of lanes 2025→2030F per LightCounting). |

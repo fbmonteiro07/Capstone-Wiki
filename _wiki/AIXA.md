@@ -93,6 +93,7 @@ A textbook "weak P&L, strong bookings" quarter. **Revenue EUR 59m, -47% yoy** (w
 <!-- Consensus estimates (BBG, EUR) block auto-injected here by the HTML builder -->
 
 ## In the inbox (Outlook — recent sell-side flow)
+- **Nutty "Part 2 — NVIDIA Kyber Rack & 800V Ecosystem" (nuttycld.substack.com, 2026-04-17):** Pre-print piece covering the NVIDIA Kyber rack (1MW, 800V HVDC) and the 800V ecosystem. AIXA is mentioned in the context of GaN epitaxy equipment demand — the 800V HVDC ramp requires compound-semiconductor GaN device production, which requires MOCVD/epitaxy tools from AIXTRON (near-monopoly ~90% GaN MOCVD share). Directionally consistent with the AIXA thesis that the 800V power ramp is a meaningful GaN-equipment demand driver. (Nutty "Part 2", nuttycld.substack.com, 2026-04-17)
 - **Jefferies (Will Beavington)** — "AIXTRON: The Multi-Year OPTICAL Play" _(2026-06-19)_: **Buy, PT raised to €73**; US optical model has transceiver units +~5x 2025-2028; **~100% InP MOCVD share**, opto >2/3 of order intake.
 - **Capstone Morning Briefing** _(2026-06-19)_: AIXTRON PT↑ Jefferies Buy €73, **+8%/+16% vs consensus FY28 rev/EPS**.
 - **Jefferies Global SEMIS Daily** _(2026-06-19)_: "AIXTRON — A Multi-Year A.I. Capex Play?"; **Crux Capital (optics)** _(2026-06-19)_ lists Aixtron among upstream optical tool providers.
@@ -115,6 +116,7 @@ _Q1 FY26 print → intra-quarter · Apr 30 → Jun 19, 2026 · sell-side / exper
 | Date | Source | Theme | Bias | What was said |
 |---|---|---|---|---|
 | 05-11 | Capstone Morning Briefing | demand | bull | Read-across from Q1/26 tagged "positive in Optical and Power." |
+| 06-19 | Nutty "Optics Primer" (nuttycld.substack.com, 2026-06-19) | product | bull | Nutty's CPO/silicon-photonics primer mentions AIXTRON in the optical supply-chain context — specifically as the dominant InP MOCVD epitaxy equipment supplier. AIXA's ~100% InP laser epitaxy share positions it as the upstream tool chokepoint for the entire CPO light-source supply chain (COHR/LITE depend on AIXA-grown InP wafers). Reinforces the optical re-rate thesis and the "choke-point" framing from Jefferies' Feb 2026 upgrade. (Nutty "Optics Primer", nuttycld.substack.com, 2026-06-19) |
 | 06-19 | Jefferies · Will Beavington | valuation | bull | "AIXTRON: The Multi-Year OPTICAL Play" — Buy, PT raised to EUR 73. US optical model has transceiver units +~5x 2025-2028 against AIXA's ~100% InP MOCVD share; +8%/+16% above the FY28 consensus on revenue/EPS, with GM upside on tool volumes + a growing G10 mix; opto >2/3 of order intake. |
 | 06-19 | Jefferies Global SEMIS Daily | demand | bull | "AIXTRON — A Multi-Year A.I. Capex Play?". Crux Capital (optics) lists Aixtron among the upstream optical-tool suppliers. |
 

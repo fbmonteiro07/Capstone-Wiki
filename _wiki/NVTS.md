@@ -100,6 +100,8 @@ Navitas sits in the middle of the AI-power stack: it does **no fabrication itsel
 <!-- Consensus estimates (BBG) block auto-injected here by the HTML builder (figures in USD). NVTS not in estimates.json as of 2026-06-20 — block may be absent. -->
 
 ## In the inbox (Outlook — recent sell-side flow)
+- **Nutty "Part 2 — NVIDIA Kyber Rack & 800V Ecosystem" (nuttycld.substack.com, 2026-04-17):** Pre-print piece covering the NVIDIA Kyber rack (1MW, 800V HVDC) and the 800V power-semiconductor ecosystem. NVTS is named alongside IFX as a key supplier in the 800V architecture, framing Navitas's GaN/SiC portfolio as well-positioned for the rack-scale power inflection — consistent with the NVIDIA 800V HVDC design win announced May-2025. (Nutty "Part 2", nuttycld.substack.com, 2026-04-17)
+- **Nutty "Part 3 — 800V Ecosystem Follow-up" (nuttycld.substack.com, ~2026-04-21):** Brief follow-up naming NVTS alongside IFX and ADI in the 800V power-semiconductor stack (3 mentions, brief). No new company-specific data beyond reinforcing NVTS's place in the 800V ecosystem. (Nutty "Part 3", nuttycld.substack.com, ~2026-04-21)
 - A two-pass Outlook pull was attempted (`outlook.py --no-body --days 14`) but **returned no usable output in this environment** (empty result). Sell-side/FinTwit stance below is therefore sourced from the **briefing archive** and the **research-report set**, not a live inbox.
 - **Morgan Stanley (Joseph Moore)** — **Underweight** (since 2025-04-06, ref $6.04 per Scale-up primer); PT **$13.70** (from $12.50), "tracking but proofpoints pending" _(briefing 2026-05-06)_.
 - **Jefferies** — **HOLD**, ref $6.43 _(Asia takeaways, 2025-09-26; NVTS is a Jefferies underwriting client — conflict noted)_.

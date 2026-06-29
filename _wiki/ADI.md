@@ -103,6 +103,7 @@ ADI runs a **hybrid manufacturing** model: it operates internal wafer fabs (Wilm
 <!-- Consensus estimates (BBG) block auto-injected here by the HTML builder -->
 
 ## In the inbox (Outlook — recent sell-side flow)
+- **Nutty "Part 3 — 800V Ecosystem Follow-up" (nuttycld.substack.com, ~2026-04-21):** Brief follow-up on the 800V power-semiconductor ecosystem; ADI mentioned alongside IFX and NVTS (3 total mentions, brief) as a participant in the 800V analog/mixed-signal supply chain. No new company-specific financial or design-win data beyond confirming ADI's place in the 800V ecosystem — consistent with the existing thesis that ADI is one of BofA's "best ideas" in the 800V/AI-power theme. (Nutty "Part 3", nuttycld.substack.com, ~2026-04-21)
 - **'VIVEK on Analog' expert call** _(2026-06-09)_ + **BofA TMT 'Analog Semis Call, APH CEO'** _(2026-06-09)_: analog up-cycle dynamics; ADI the premium franchise — the **TXN-long / ADI-short pair-trade** is the live debate.
 - **BofA Tech Conference lighting round** _(2026-06-08)_: analog recovery + datacenter-power content (Empower/AI-power).
 

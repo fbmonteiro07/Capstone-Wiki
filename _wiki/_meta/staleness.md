@@ -1,15 +1,15 @@
 # Wiki staleness report
 
-_Generated 2026-06-25 · 97 pages checked._
+_Generated 2026-06-29 · 100 pages checked._
 
-## 🔴 BBG estimates missing/errored (14)
-AOSL, APP, AXTI, BE, CEREBRAS, ETN, MP, PLTR, POET, POWI, SANM, TSEM, TSLA, VEEV
+## 🔴 BBG estimates missing/errored (98)
+AAOI, AAPL, ADI, ADVANTEST, AGX, AIXA, AKAM, ALAB, AMAT, AMD, AMZN, ANET, AOSL, APH, APP, ARM, ASML, AVGO, AXTI, BE, BESI, BKNG, CDNS, CEG, CEREBRAS, CIEN, COHR, CRDO, CRM, CRWD, CRWV, CSCO, DELL, DISCO, ETN, FLEX, FSLY, GEV, GLW, GOOG, HPE, IFX, INTC, KIOXIA, KLAC, LITE, LRCX, MCHP, MEDIATEK, META, MP, MRVL, MSFT, MU, NBIS, NET, NFLX, NOW, NVDA, NVT, NVTS, NXPI, ON, ORCL, PANW, PLTR, POET, POWI, PWR, QCOM, RDDT, SAMSUNG, SANM, SHOP, SKHYNIX, SMCI, SMIC, SNDK, SNPS, SPOT, STX, TEL, TER, TLN, TM, TOKYOELEC, TSEM, TSLA, TSM, TXN, UBER, VECO, VEEV, VRT, VST, WDC, WMB, WOLF
 
 ## 🟠 Transcripts stale (>100d since latest) (0)
 _none_
 
-## 🟡 No transcripts on disk (16)
-AOSL, APP, AXTI, BE, CDNS, CEREBRAS, ETN, MP, PLTR, POET, POWI, SANM, SNPS, TSEM, TSLA, VEEV
+## 🟡 No transcripts on disk (19)
+AKAM, AOSL, APP, AXTI, BE, CDNS, CEREBRAS, ETN, FSLY, MP, NET, PLTR, POET, POWI, SANM, SNPS, TSEM, TSLA, VEEV
 
 ## ⚪ Scaffold <TODO> not filled (0)
 _none_

@@ -102,6 +102,8 @@ Morgan Stanley (Humanoids, 2025-04-29; IFX **Overweight, PT EUR 40**, Lee Simpso
 <!-- Consensus estimates (BBG) block auto-injected here by the HTML builder (figures in EUR) -->
 
 ## In the inbox (Outlook — recent sell-side flow)
+- **Nutty "Part 2 — NVIDIA Kyber Rack & 800V Ecosystem" (nuttycld.substack.com, 2026-04-17):** Pre-print piece covering the NVIDIA Kyber rack (1MW, 800V HVDC) and the ecosystem of power-semi vendors positioned around it. IFX is named in the 800V ecosystem alongside NVTS as a key supplier of power semiconductors for the 800V architecture — the note frames 800V adoption as a structural inflection for IFX's SiC/GaN portfolio and datacenter-power revenue trajectory. Context: source date (Apr 17) is before the Q2 FY26 print (May 06), so this represents pre-print field work directionally consistent with the EUR 1.5bn FY26 AI-power guide IFX confirmed on May 06. (Nutty "Part 2", nuttycld.substack.com, 2026-04-17)
+- **Nutty "Part 3 — 800V Ecosystem Follow-up" (nuttycld.substack.com, ~2026-04-21):** Brief follow-up naming IFX alongside NVTS and ADI (3 mentions total) in the 800V power-semiconductor stack. Directionally reinforces the 800V theme without providing company-specific new data. (Nutty "Part 3", nuttycld.substack.com, ~2026-04-21)
 - **JPM Euro TMT Daily (S. Silver)** _(2026-06-18)_ & **BofA EU TMT** _(2026-06-18)_: Infineon carried in the EU power/analog semis complex (BESI/AMS context); cyclical-recovery tape.
 - _(IFX-specific broker notes are thinner in the 90-day inbox window; sell-side stance leans on the dated briefings, the research reports below + the 800V theme.)_
 
