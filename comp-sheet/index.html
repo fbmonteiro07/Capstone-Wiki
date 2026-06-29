@@ -104,7 +104,7 @@ details summary:hover{color:var(--txt)}
   <span class="asof">as of <span id="asofVal">2026-06-26</span></span>
   <button id="pxRefresh" class="mbtn" title="Re-fetch price + BEst for every ticker from Bloomberg and republish (terminal BBG must be open · ~1–2 min)">↻ update prices</button>
   <a id="gpLink" href="gp-panel.html" style="display:none; color:var(--gold); font-size:12px; text-decoration:none">GP Panel (preço &amp; P/E 10a) ↗</a>
-  <span class="src">Source: Bloomberg BEst consensus · NTM/1Y = blended fwd 12m (1BF) · 2Y = 2nd blended fwd yr (2BF) · CAGR = CY2025→CY2027 (fiscal-aligned)</span>
+  <span class="src">Source: Bloomberg BEst consensus · NTM/1Y = blended fwd 12m (1BF) · 2Y = 2nd blended fwd yr (2BF) · CY27 EPS/P/E = calendar 2027 (fiscal-aligned) · CAGR = CY2025→CY2027 (fiscal-aligned)</span>
 </header>
 
 <div class="kpis" id="kpis"></div>
@@ -2346,11 +2346,13 @@ function rows(){
   return r;
 }
 function flat(c){
-  const y2 = c.y2 || {}, pxc = c.px_chg || {};
+  const y2 = c.y2 || {}, pxc = c.px_chg || {}, f = c.fy || {};
   const gap3m = (pxc.chg3mo!=null && y2.chg3mo!=null) ? pxc.chg3mo - y2.chg3mo : null;
+  const e27 = (f["2027"]||{}).eps;
   return {sector:c.sector, px:c.px, ytd:c.ytd, pe:c.ntm.pe,
     vs5y: (c.ntm.pe&&c.pe_hist.mean)? c.ntm.pe/c.pe_hist.mean-1 : null,
     eps:c.ntm.eps, hi:c.ntm.hi, hivs:(c.ntm.hi&&c.ntm.eps)? c.ntm.hi/c.ntm.eps-1 : null,
+    cy27eps:e27, pe27cy:(c.px&&e27>0)? c.px/e27 : null,
     pe2:y2.pe, eps2:y2.eps, chg3mo2:y2.chg3mo,
     px4wk:pxc.chg4wk, px3mo:pxc.chg3mo, px6mo:pxc.chg6mo, gap3m,
     gr12:(y2.eps&&c.ntm.eps&&c.ntm.eps>0)? y2.eps/c.ntm.eps-1 : null,
@@ -2361,8 +2363,8 @@ function flat(c){
 const COLS = [
   ["k","Ticker"],["sector","Sector"],["px","Px"],["ytd","YTD"],
   ["px4wk","Px Δ4wk"],["px3mo","Px Δ3m"],["px6mo","Px Δ6m"],
-  ["pe","Fwd P/E"],["pe2","2Y P/E"],["vs5y","vs 5y avg"],
-  ["eps","NTM EPS"],["eps2","2Y EPS"],["gr12","Y2 gr"],
+  ["pe","Fwd P/E"],["pe2","2Y P/E"],["pe27cy","CY27 P/E"],["vs5y","vs 5y avg"],
+  ["eps","NTM EPS"],["eps2","2Y EPS"],["cy27eps","CY27 EPS"],["gr12","Y2 gr"],
   ["hi","Street Hi"],["hivs","Hi vs cons"],
   ["numest","#Est"],["chg4wk","Δ4wk"],["chg3mo","Δ3m"],["chg6mo","Δ6m"],["chg3mo2","Δ3m 2Y"],
   ["rev_cagr","Rev CAGR 25-27"],["eps_cagr","EPS CAGR 25-27"],
@@ -2385,8 +2387,8 @@ function renderTable(){
     <td class="${cls(r.px4wk)}">${pctRaw(r.px4wk)}</td>
     <td class="${cls(r.px3mo)}">${pctRaw(r.px3mo)}</td>
     <td class="${cls(r.px6mo)}">${pctRaw(r.px6mo)}</td>
-    <td>${fmt(r.pe)}</td><td>${fmt(r.pe2)}</td><td class="${cls(r.vs5y)}">${pct(r.vs5y,0)}</td>
-    <td>${fmt(r.eps,2)}</td><td>${fmt(r.eps2,2)}</td><td class="${cls(r.gr12)}">${pct(r.gr12,0)}</td>
+    <td>${fmt(r.pe)}</td><td>${fmt(r.pe2)}</td><td>${fmt(r.pe27cy)}</td><td class="${cls(r.vs5y)}">${pct(r.vs5y,0)}</td>
+    <td>${fmt(r.eps,2)}</td><td>${fmt(r.eps2,2)}</td><td>${fmt(r.cy27eps,2)}</td><td class="${cls(r.gr12)}">${pct(r.gr12,0)}</td>
     <td>${fmt(r.hi,2)}</td><td class="${cls(r.hivs)}">${pct(r.hivs,0)}</td>
     <td class="mut">${r.numest==null?"–":Math.round(r.numest)}</td>
     <td class="${cls(r.chg4wk)}">${pctRaw(r.chg4wk)}</td>
