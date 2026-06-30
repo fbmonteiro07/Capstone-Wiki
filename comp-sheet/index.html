@@ -36,7 +36,7 @@ header .src{color:var(--mut); font-size:11px; margin-left:auto}
 table{border-collapse:collapse; width:100%; white-space:nowrap}
 th,td{padding:6px 9px; text-align:right; font-variant-numeric:tabular-nums}
 th{color:var(--mut); font-size:11px; text-transform:uppercase; letter-spacing:.4px; cursor:pointer;
-  border-bottom:1px solid var(--line); position:sticky; top:0; background:var(--panel)}
+  border-bottom:1px solid var(--line); position:sticky; top:0; z-index:3; background:var(--panel)}
 th:hover{color:var(--txt)}
 .thi{margin-left:4px; opacity:.5; font-size:10px; cursor:help; font-weight:400}
 .thi:hover{opacity:1; color:var(--acc)}
@@ -50,6 +50,13 @@ td:nth-child(2),th:nth-child(2){text-align:left; color:var(--mut)}
 tbody tr{border-bottom:1px solid rgba(31,43,62,.5); cursor:pointer}
 tbody tr:hover{background:rgba(90,162,255,.07)}
 tbody tr.sel{background:rgba(90,162,255,.14); outline:1px solid rgba(90,162,255,.4)}
+/* Freeze the Ticker (first) column on horizontal scroll — comp & capstone tables */
+#tbl td.tk,#capTbl td.tk{position:sticky; left:0; z-index:2;
+  background:var(--panel); border-right:1px solid var(--line)}
+#tbl th:first-child,#capTbl th:first-child{left:0; z-index:4;
+  border-right:1px solid var(--line)}
+#tbl tbody tr:hover td.tk,#capTbl tbody tr:hover td.tk{background:#172436}
+#tbl tbody tr.sel td.tk,#capTbl tbody tr.sel td.tk{background:#1c2d45}
 .up{color:var(--up)} .dn{color:var(--dn)} .mut{color:var(--mut)}
 .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
 @media(max-width:1100px){.grid2{grid-template-columns:1fr}}
