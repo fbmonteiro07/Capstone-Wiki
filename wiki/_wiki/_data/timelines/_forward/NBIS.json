@@ -1,0 +1,30 @@
+{"ticker":"NBIS","forward":[
+{"metric":"ARR","horizon":"FY26 exit","trend":"up","trail":[
+{"date":"Q2'25","val":"end-2025 ARR raised to $900m–$1.1bn","src":"Q2'25 call (2025-08-07)"},
+{"date":"Q3'25","val":"first $7–9bn-by-2026 target","src":"Q3'25 call (2025-11-11)"},
+{"date":"Q4'25","val":"~$1.2bn exit (above guide)","src":"Q4'25 call (2026-02-12)"},
+{"date":"Q1'26","val":"~$1.9bn exit, +50% q/q; 2026 target $7–9bn exit","src":"Q1'26 call (2026-05-13)"}],
+"note":"Core forward metric; the ramp racing the capex burn is the whole thesis."},
+{"metric":"2026 revenue guide","horizon":"FY26","trend":"up","trail":[
+{"date":"Q1'26","val":"group revenue $3.0–3.4bn; adj. EBITDA margin ~40%","src":"Q1'26 call (2026-05-13)"}],
+"note":"First full-year group revenue guide; back-end-weighted deploys flagged."},
+{"metric":"Capex","horizon":"FY26","trend":"up","trail":[
+{"date":"Q3'25","val":"2025 capex raised ~$2bn → ~$5bn","src":"Q3'25 call (2025-11-11)"},
+{"date":"Q4'25","val":"2026 capex $16–20bn","src":"Q4'25 call (2026-02-12)"},
+{"date":"Q1'26","val":"raised to $20–25bn \"in response to pre-committed customer demand for 2027 capacity\"","src":"Q1'26 call (2026-05-13)"}],
+"note":"$20–25bn dwarfs revenue — funding-dependence is the core bear flag."},
+{"metric":"Contracted power capacity","horizon":"YE2026 / 2030","trend":"up","trail":[
+{"date":"Q3'25","val":"supply tight into 2026","src":"Q3'25 call (2025-11-11)"},
+{"date":"Q4'25","val":"2+ GW contracted, 3+ GW YE26 target","src":"Q4'25 call (2026-02-12)"},
+{"date":"Q1'26","val":"3.5+ GW contracted, targeting 4+ GW YE2026; >75% owned; PA site 250–300 MW by end-2027, 1.2 GW by 2030","src":"Q1'26 call (2026-05-13)"}],
+"note":"Owned capacity is the scarce contractable asset; PA/AL/MO sites push into 2027."},
+{"metric":"Anchor contract ramp (Meta/Microsoft)","horizon":"2027","trend":"contested","trail":[
+{"date":"2025-12-10","val":"Hedgeye: MSFT $17.4bn (upsize to $19.4bn possible) thru 2031; Meta signed value $2.9bn vs $27bn headline; ~20% chance MSFT falls through on NJ delay","src":"Hedgeye (Felix Wang)"},
+{"date":"Q1'26","val":"Meta $27bn/5yr ($12bn dedicated from early-2027 + $15bn discretionary option); MSFT ramps H2'26","src":"Q1'26 call (2026-05-13)"}],
+"note":"Vineland NJ delivery on the must-deliver-or-terminate (60-day cure) clock is the key bear gate; Meta headline-vs-signed gap unresolved."},
+{"metric":"Adj. EBITDA margin trajectory","horizon":"FY26","trend":"up","trail":[
+{"date":"Q3'25","val":"core AI margin ~19%","src":"Q3'25 call (2025-11-11)"},
+{"date":"Q4'25","val":"core margin 24%; group inflected positive","src":"Q4'25 call (2026-02-12)"},
+{"date":"Q1'26","val":"group 32%; core 45%; FY26 target ~40% (nonlinear quarterly progression)","src":"Q1'26 call (2026-05-13)"}],
+"note":"Margin inflection now the bull story; Hedgeye counters gross margins may not grow on power/memory/labor costs."}
+]}

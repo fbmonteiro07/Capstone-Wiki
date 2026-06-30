@@ -1,0 +1,35 @@
+{"ticker":"CIEN","forward":[
+{"metric":"FY26 Revenue","horizon":"FY26","trend":"up","trail":[
+{"date":"2025-12-11","val":"FY25 record $4.77B","src":"Q4 FY25 call"},
+{"date":"2026-03-05","val":"FY26 guide raised (Q1 FY26 record $1.43B +33%)","src":"Q1 FY26 call"},
+{"date":"2026-06-04","val":"FY26 revenue $6.3B +/-$100M (~+32% YoY) — 3rd raise this FY; Q3 ~$1.625B","src":"Q2 FY26 call"}],
+"note":"Guidance raised three times this fiscal year."},
+{"metric":"Backlog / visibility 2027","horizon":"2027","trend":"up","trail":[
+{"date":"2025-12-11","val":"backlog exit ~$5B; FY25 orders record $7.8B","src":"Q4 FY25 call"},
+{"date":"2026-03-05","val":"backlog ~$7B, +$2B QoQ; new orders mostly FY27","src":"Q1 FY26 call"},
+{"date":"2026-06-04","val":"backlog $7.7B, +$600M QoQ (~$6.4B hardware, ~80% deliverable next 12mo); 'visibility into 2027'","src":"Q2 FY26 call (Graff)"}],
+"note":"Confidence into 2027; bear watches drawdown as live traffic converts."},
+{"metric":"RLS Hyper-Rail multi-rail ramp","horizon":"FY27","trend":"up","trail":[
+{"date":"2025-12-05","val":"multi-rail densifies hut 16->128 fiber pairs; Lumen multi-rail alone could be $200M+","src":"JPM"},
+{"date":"2026-06-04","val":"industry-first multi-rail (RLS Hyper-Rail) order from leading hyperscaler; 'hundreds of millions over multiple years', revenue starts/linear in '27","src":"Q2 FY26 call (Smith)"}],
+"note":"Key margin-mix lever; GA / first revenue in FY27."},
+{"metric":"800G pluggable ramp","horizon":"2026","trend":"up","trail":[
+{"date":"2026-03-05","val":"on track to triple pluggables; 800G ramping","src":"Q1 FY26 call"},
+{"date":"2026-06-04","val":"on track to >2x pluggables vs 2025; coherent-module competitive takeaway win","src":"Q2 FY26 call"},
+{"date":"2026-06-12","val":">2x pluggable revenue vs 2025; exiting year #1 or near-#1 share at 800G","src":"Ciena equity call"}],
+"note":""},
+{"metric":"Gross-margin trajectory","horizon":"structural -> 50%+","trend":"up","trail":[
+{"date":"2026-03-05","val":"adj GM 44.7%, ahead of guide","src":"Q1 FY26 call"},
+{"date":"2026-06-04","val":"adj GM 44.9% +4pts YoY; FY26 44.5-45%; '45% a waypoint not the destination'","src":"Q2 FY26 call"},
+{"date":"2026-06-23","val":"GM to upper-40s with path to 50%+ on product re-engineering + mix; op leverage from R&D reuse + concentrated hyperscaler base","src":"Citi (Asia investor mtg, Graff/Trautwein)"}],
+"note":"Structural product re-engineering + mix the drivers."},
+{"metric":"Nubis CPO / linear redriver","horizon":"2027 -> 2028","trend":"up","trail":[
+{"date":"2026-06-04","val":"Nitro linear redriver GA 'this summer'; Vesta 6.4T CPO samples; scale-up/scale-out ramp into '27/'28","src":"Q2 FY26 call"},
+{"date":"2026-06-12","val":"~$5B opportunity over 3-4 yrs","src":"Ciena equity call"}],
+"note":"Optional greenfield upside into intra-DC infrastructure."},
+{"metric":"TAM / scale-across","horizon":"2029","trend":"up","trail":[
+{"date":"2026-03-11","val":"scale-across ~$13B component / ~$80B systems TAM; coherent optics ~+20% CAGR to 2030","src":"TD Cowen"},
+{"date":"2026-06-04","val":"TAM framed to ~double to ~$50B by 2029","src":"Q2 FY26 call"},
+{"date":"2026-06-23","val":"TAM doubling to ~$50B by 2029; EPS expected to nearly triple","src":"Citi (Asia investor mtg)"}],
+"note":""}
+]}

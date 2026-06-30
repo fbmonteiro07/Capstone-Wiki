@@ -1,0 +1,23 @@
+{"ticker":"NFLX","forward":[
+{"metric":"FY26 revenue growth","horizon":"FY26","trend":"flat","trail":[
+{"date":"Q4'25","val":"FY26 ~$51B, +14% y/y","src":"Q4 2025 call (2026-01-20)"},
+{"date":"Q1'26","val":"maintained FY26 +12–14% growth (all organic)","src":"Q1 2026 call (2026-04-16)"}],
+"note":"Reiterated; recent US price hike largely pre-baked into the guide."},
+{"metric":"FY26 operating margin","horizon":"FY26","trend":"flat","trail":[
+{"date":"Q4'25","val":"FY26 target 31.5% (+~2pts y/y; ~0.5pt M&A drag)","src":"Q4 2025 call (2026-01-20)"},
+{"date":"Q1'26","val":"held 31.5% incl. M&A drag","src":"Q1 2026 call (2026-04-16)"},
+{"date":"2026-04-15","val":"JPM: >50bps op-margin raise on the print unlikely","src":"JPM internet preview (Anmuth)"}],
+"note":"~2pts/yr margin expansion is the core organic-algorithm bull point."},
+{"metric":"Advertising revenue","horizon":"FY26 → 2030","trend":"up","trail":[
+{"date":"Q4'25","val":"ad sales 2.5x in 2025; ~$3B target 2026","src":"Q4 2025 call (2026-01-20)"},
+{"date":"Q1'26","val":"ad business \"roughly doubling\" to ~$3B; advertisers +70% to >4,000; programmatic on way to >50% of non-live ads","src":"Q1 2026 call (2026-04-16)"},
+{"date":"2026-04-24","val":"Seufert: leaked review shows 2030 goal ~$9B ad revenue (vs ~$2.15B 2025, ~4x) on a doubling of total revenue by 2030","src":"Stratechery (Eric Seufert)"}],
+"note":"Ad ramp toward ~$3B FY26 and the ~$9B 2030 ambition; programmatic inflection the near-term tell."},
+{"metric":"Content amortization","horizon":"FY26","trend":"up","trail":[
+{"date":"Q4'25","val":"content amortization guided +~10% y/y for FY26, weighted to 1H","src":"Q4 2025 call (2026-01-20)"}],
+"note":"Cost line to watch against the margin-expansion target."},
+{"metric":"AI-driven content-cost deflation","horizon":"structural","trend":"up","trail":[
+{"date":"2026-03-26","val":"Agranoff (JPM AM): NFLX can deploy AI to lower content costs → \"further inflection in profitability\"","src":"Barron's Roundtable"},
+{"date":"2026-04-16","val":"InterPositive (GenAI filmmaking tooling) acquired closed; new model architectures already lifting engagement","src":"Q1 2026 call"}],
+"note":"The distinct AI-as-margin-lever long thesis; watch whether AI delivers the content-cost deflation."}
+]}

@@ -1,0 +1,25 @@
+{"ticker":"SKHYNIX","forward":[
+{"metric":"HBM ASP 2026","horizon":"2026","trend":"up","trail":[
+{"date":"2025-12-17","val":"HBM ASP guided +40-50% YoY in 2026; pricing 'finalized', tracking start-of-year expectations; HBM4 ~35% more expensive than HBM3E","src":"Jefferies Techknowledge"},
+{"date":"2026-04-07","val":"HBM4 ~35% pricier than HBM3E; Hynix HBM op margins flat (not -20% feared) — customers absorbing the hike","src":"Jefferies Asia tech (Conor)"}],
+"note":"Pricing locked higher; debate is whether buyers keep absorbing into 2027."},
+{"metric":"HBM4 mix crossover","horizon":"2H26","trend":"flat","trail":[
+{"date":"2025-10-29","val":"HBM4 mass production in Sept; ships Q4","src":"Q3 2025 call"},
+{"date":"2025-12-17","val":">70% of 2026 HBM bits still HBM3; HBM4 does NOT cross over in 2026 — blended <=50% of mix, ramping 2H26","src":"Jefferies Techknowledge"}],
+"note":"HBM4 ramps 2H26 but stays minority of 2026 mix."},
+{"metric":"HBM wafer cap / share","horizon":"2026->2027","trend":"contested","trail":[
+{"date":"2025-12-17","val":"Cannot increase non-NVDA above 20% in 2026; declined ASIC/AMD volume; NVDA nudging Samsung to ramp","src":"Jefferies Techknowledge"},
+{"date":"2025-12 (UBS 2026 overview)","val":"UBS models 2026 HBM share SK Hynix/Samsung/Micron = 56%/22%/22%, off historical ~90%","src":"UBS 2026 overview"},
+{"date":"2026-06-23","val":"Dominant HBM supplier, largest HBM wafer cap ~200K end-2026 (vs Samsung 180K, Micron 100K); risk Samsung overtakes as #1 in 2027","src":"StoneX/TrendForce (Avril)"}],
+"note":"Share normalizing off ~90%; 2027 #1-spot now genuinely contested by Samsung HBM4."},
+{"metric":"DRAM wafer capacity","horizon":"end-2027","trend":"up","trail":[
+{"date":"2026-06-23","val":"Exits 2026 #2 DRAM at ~610K wafers/month (vs Samsung ~740K); reaches 710K by end-2027, narrowing gap (Samsung adds only ~45K)","src":"StoneX/TrendForce (Avril)"}],
+"note":"Clean-room space — not equipment/demand — is the binding constraint through end-2028."},
+{"metric":"Yongin FAB1 / capacity to deploy","horizon":"end-2027->2028","trend":"up","trail":[
+{"date":"2026-01-29","val":"Capex up 'significantly YoY'; M15X, Yongin, Indiana build-out","src":"Q4 2025 / FY25 call"},
+{"date":"2026-06-23","val":"Yongin FAB1 (200-250K, geometry-dependent) ready end-2027, chip output only 2028; FAB2 just announced, 'far along'","src":"StoneX/TrendForce (Avril)"}],
+"note":"Greenfield clusters land output in 2028 given install + wafer-cycle lags."},
+{"metric":"HBM supply for 2027","horizon":"2027","trend":"down","trail":[
+{"date":"2026-06-23","val":"2027 HBM supply revised DOWN (60->50bn Gb-eq) as conventional DRAM more profitable; LTAs treated as call options; wafer shortage","src":"Redburn (Conor O'Mara Asia trip)"}],
+"note":"Hynix electing more commodity DRAM over HBM where margins favor it."}
+]}

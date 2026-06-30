@@ -1,0 +1,28 @@
+{"ticker":"GEV","forward":[
+{"metric":"Total backlog target","horizon":"2027","trend":"up","trail":[
+{"date":"2026-01-28","val":"$163B backlog at Q4'25; $200B total backlog targeted by '28","src":"Q4 FY25 call"},
+{"date":"2026-04-22","val":"Now expects $200B total backlog by '27 (pulled forward from '28); ≥110 GW under contract by YE'26","src":"GEVernova callback"}],
+"note":"Pull-forward of the $200B target from '28 to '27 is the key forward signal."},
+{"metric":"Gas Power GW under contract","horizon":"YE2026","trend":"up","trail":[
+{"date":"2025-07-23","val":"55 GW (29 backlog + 25 SRA); ≥60 GW by YE","src":"Q2'25 call"},
+{"date":"2025-10-22","val":"62 GW; approaching 70 GW by YE","src":"Q3'25 call"},
+{"date":"2026-01-28","val":"83 GW (40 + 43 SRA); ~100 GW by YE'26","src":"Q4'25 call"},
+{"date":"2026-04-22","val":"100 GW (44 firm + 56 SRA); ≥110 GW by YE'26","src":"GEVernova callback"}],
+"note":"Out-year contracted GW the leading indicator for gas equipment + services annuity."},
+{"metric":"Gas capacity ramp","horizon":"2026→2028","trend":"up","trail":[
+{"date":"2026-01-21","val":"16→20 GW (3Q26)→24 GW (2028); largely sold out 2028, ~10 GW left 2029","src":"Barclays Powering AI Gas Turbines"},
+{"date":"2026-04-22","val":"~20 GW annualized mid-'26; 24 GW by 2028; may raise the 24 GW target","src":"GEVernova callback"}],
+"note":"Watch for upward revision to the 24 GW 2028 production target as 2030 slots fill."},
+{"metric":"Gas pricing $/kW","horizon":"FY26-27","trend":"up","trail":[
+{"date":"2026-01-28","val":"SRAs priced 10-20 pts $/kW above backlog","src":"Q4'25 call"},
+{"date":"2026-04-22","val":"H1'26 orders +10-20 pts $/kW vs Q4'25; another 10-20 pts upside in SRAs","src":"GEVernova callback"}],
+"note":"Pricing power flagged as eroding over 2-3 yrs as supply catches up (Wells Fargo expert 2026-04-10)."},
+{"metric":"FY26 FCF guide","horizon":"FY26","trend":"up","trail":[
+{"date":"2026-01-28","val":"FY26 FCF guide $5-5.5B","src":"Q4 FY25 call"},
+{"date":"2026-04-22","val":"FY26 FCF raised to $6.5-7.5B; $4.8B already in Q1 on order down-payments","src":"GEVernova callback"}],
+"note":"FCF surge driven by ~25% slot-reservation deposits on orders."},
+{"metric":"Electrification TAM","horizon":"end-of-decade","trend":"up","trail":[
+{"date":"2026-03","val":"TAM ~$150B (Strazik, London, mid-March)","src":"GEV London (Strazik)"},
+{"date":"2026-04-22","val":"TAM doubled to ~$300B by end of decade; DC orders $2.4B in Q1 alone (>all FY25)","src":"GEVernova callback"}],
+"note":"Electrification flipped from 'peaking' to accelerating — the biggest recent narrative shift."}
+]}

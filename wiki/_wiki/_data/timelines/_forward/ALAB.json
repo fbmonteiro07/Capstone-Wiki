@@ -1,0 +1,29 @@
+{"ticker":"ALAB","forward":[
+{"metric":"Scorpio scale-up the #1 line","horizon":"Q4'26","trend":"up","trail":[
+{"date":"Q4'25","val":"P-Series >15% of revenue; X-Series initial ship","src":"Q4 2025 call"},
+{"date":"2026-05-05","val":"Scorpio X-Series in production; guided to be the largest product line by Q4 2026","src":"Q1 2026 call"},
+{"date":"2026-05-22","val":"ALAB 'the way to play the Trainium trade'; scale-up content-per-accelerator underestimated","src":"Citi/Jefferies (Blaine)"}
+],"note":"Scorpio scale-up (X-Series) is the growth leg; MS base case has Scorpio >doubling to $186M in 2026 (~70% Scorpio-X)."},
+{"metric":"Revenue / Q2 guide","horizon":"Q2'26","trend":"up","trail":[
+{"date":"Q4'25","val":"$270.6M, +17% q/q; FY25 $852.5M +115%","src":"Q4 2025 call"},
+{"date":"2026-05-05","val":"Q1 $308.4M +93% y/y; Q2 guide $355-365M (+15-18% q/q), EPS $0.68-0.70","src":"Q1 2026 call"}
+],"note":"Sustained ~+90%+ y/y growth into Q2; revision-trade risk flagged on stretched momentum."},
+{"metric":"Scale-up TAM / UALink ramp","horizon":"2027→2030","trend":"up","trail":[
+{"date":"2026-03-11","val":"TD Cowen scale-up components TAM (redrivers/retimers/switches) >$67B by 2030 inside >$155B systems market","src":"TD Cowen"},
+{"date":"2026-05-05","val":"UALink switches (higher ASP than PCIe) deploy 2027 alongside Amazon + AMD ASIC/GPU launches - the 'key inflection point'","src":"Q1 2026 call (Gajendra)"},
+{"date":"2026-05-06","val":"MS scale-up market 34% CAGR 2024-30 to ~$17B; ALAB guides incremental $5B scale-up TAM by 2030","src":"MS (J. Moore)"}
+],"note":"2027 UALink (higher ASP) is the next inflection; TD Cowen sees NVLink-Fusion attach on Trainium 4 as ~2028/29 re-accel."},
+{"metric":"Content per accelerator / SAM","horizon":"5-yr structural","trend":"up","trail":[
+{"date":"2026-02-10","val":"SAM >10x to $25B over five years","src":"Q4 2025 call (Mohan)"},
+{"date":"2026-05-05","val":"content per accelerator >$1,000 and rising (optical NPO 2027, CPO 2028, NVLink Fusion/KV-cache layering on)","src":"Q1 2026 call"},
+{"date":"2026-05-29","val":"memory tightness + higher memory/storage intensity on inferencing creating fresh CXL/PCIe-switch opportunities","src":"JPM (Sur)"}
+],"note":"Content compounding as optical and custom layer on; memory-tiering a new pull-forward driver for Leo/CXL."},
+{"metric":"Gross margin","horizon":"Q2'26→FY26","trend":"down","trail":[
+{"date":"Q4'25","val":"75.7% NG GM, -70bps q/q on hardware mix","src":"Q4 2025 call"},
+{"date":"2026-05-05","val":"Q1 76.4% (+70bps); Q2 guide ~73% incl. ~200bps drag from Amazon warrant/customer agreement","src":"Q1 2026 call"}
+],"note":"Amazon warrant non-cash charge hits GM from Q2 2026; richer hardware-module/Scorpio mix also dilutive."},
+{"metric":"Hyperscaler design wins / anchoring","horizon":"2026→2027","trend":"up","trail":[
+{"date":"2026-02-10","val":"$6.5B cumulative Amazon warrant-linked purchase agreement; two new US-hyperscaler Scorpio design wins","src":"Q4 2025 call (Tate)"},
+{"date":"2026-05-05","val":"Scorpio P to two additional major hyperscalers late-2026; 2nd Leo CXL win + KV-cache controller win (ships 2027)","src":"Q1 2026 call"}
+],"note":"Design-win cadence underpins the forward ramp; binary on hyperscaler timing given top-5 ~90% concentration."}
+]}

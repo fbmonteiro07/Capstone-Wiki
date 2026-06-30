@@ -1,0 +1,250 @@
+{
+ "asof": "2026-06-29",
+ "units": "native reporting currency, millions (see per-company ccy; EPS per share, margins %)",
+ "note": "Quarterly = direct BBG kFQ consensus. CY = calendar-year sum on a uniform non-GAAP basis: forecast quarters use kFQ consensus, and reported quarters use the BBG comparable/adjusted actual via a past fiscal-period override (NOT the GAAP bdh actual, which would mix bases and understate adjusted EPS/NI); fiscal quarters snapped to nearest calendar quarter. Street-high: _HI fields (capex _LO=high spend), outlier-guarded; CY street-high = sum of quarterly highs. OCF/capex/FCF = latest reported FY actual (no forward OCF consensus on wrapper). ccy = fundamentals currency (ADRs report native: TM ¥, TSM NT$, ASML/IFX €).",
+ "companies": {
+  "AAOI": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "AAPL": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "AGX": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "AMD": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "AMZN": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "ANET": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "ASML": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "AVGO": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "BKNG": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "CEG": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "CIEN": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "COHR": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "CSCO": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "GEV": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "GLW": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "GOOG": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "LITE": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "META": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "MSFT": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "MU": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "NFLX": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "NOW": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "NVDA": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "ORCL": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "PWR": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "SPOT": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "TLN": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "TM": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "TSM": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "UBER": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "VST": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "WMB": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "INTC": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "AMAT": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "KLAC": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "MRVL": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "TER": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "VECO": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "IFX": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "AIXA": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "SNDK": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "STX": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "WDC": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "ADI": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "TXN": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "QCOM": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "MCHP": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "ON": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "NXPI": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "ARM": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "SAMSUNG": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "SKHYNIX": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "KIOXIA": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "LRCX": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "CRDO": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "ALAB": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "APH": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "TEL": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "NVT": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "VRT": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "FLEX": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "WOLF": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "NVTS": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "PANW": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "CRWD": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "CRM": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "RDDT": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "SHOP": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "DELL": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "HPE": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "SMCI": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "CRWV": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "NBIS": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "CDNS": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "SNPS": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "TOKYOELEC": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "ADVANTEST": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "BESI": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "DISCO": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "SMIC": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  },
+  "MEDIATEK": {
+   "error": "Erro HTTP 503: {\"error\": \"Bloomberg connection test failed - please ensure you are logged in to Bloomberg Terminal\"}"
+  }
+ }
+}

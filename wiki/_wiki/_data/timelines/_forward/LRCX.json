@@ -1,0 +1,34 @@
+{"ticker":"LRCX","forward":[
+{"metric":"WFE CY26","horizon":"CY26","trend":"up","trail":[
+{"date":"2026-01-28","val":"CY26 framed ~$135B (off ~$110B CY25)","src":"Q2 FY26 call"},
+{"date":"2026-04-22","val":"CY26 raised ~$140B; 'higher across all device segments'","src":"Q3 FY26 call"},
+{"date":"2026-06-22","val":"MS WFE $149B for 2026","src":"MS On Memory and Semicap"}
+],"note":"Mgmt raised CY26 WFE to ~$140B (+~27% y/y) at Q3, from $135B prior."},
+{"metric":"WFE CY27 / CY28 ceiling","horizon":"CY27 -> CY28","trend":"up","trail":[
+{"date":"2025-12-22","val":"UBS WFE $145B (+6%) 2027; ~$148B peak run-rate 1H27; $200B/$250B CY27/28","src":"UBS (Arcuri)"},
+{"date":"2026-05-18","val":"3rd Malaysia site discussed = $250B-and-beyond WFE signal","src":"UBS (Arcuri)"},
+{"date":"2026-06-22","val":"MS WFE $191B (2027) / +mid-teens 2028","src":"MS On Memory and Semicap"}
+],"note":"Lam's capacity actions (2nd/3rd Malaysia site) read as confirmation of rising WFE ceiling."},
+{"metric":"NAND layer-conversion wave","horizon":"CY27","trend":"up","trail":[
+{"date":"2026-01-28","val":"'moving faster than expected' on upgrades; greenfield ~2027/28","src":"Q2 FY26 call"},
+{"date":"2026-04-22","val":"~$40B conversion, majority of spend before end-CY27 (pulled forward)","src":"Q3 FY26 call"},
+{"date":"2026-05-15","val":"first NAND greenfield not until CY28","src":"Sur/JPM"}
+],"note":"Structural new leg; MS the dissenter (UW basis) on conservative NAND-supplier capex."},
+{"metric":"DRAM / HBM mix","horizon":"CY26 -> CY27","trend":"up","trail":[
+{"date":"2026-01-28","val":"record DRAM 23% of systems; HBM4/HBM4E, 16-high","src":"Q2 FY26 call"},
+{"date":"2026-04-22","val":"record DRAM 27%, +45% y/y; Stryker ALD; 1c SAM +20%","src":"Q3 FY26 call"},
+{"date":"2025-12-22","val":"UBS: DRAM >half the 2026 WFE increase, >2/3 of 2027","src":"UBS (Arcuri)"}
+],"note":"HBM ~$450M SAM per 100k wfr/mo; >90% est. share in high-aspect TSV etch for HBM."},
+{"metric":"Advanced-packaging revenue growth","horizon":"CY26","trend":"up","trail":[
+{"date":"2026-01-28","val":"guided >40% growth in CY2026","src":"Q2 FY26 call"},
+{"date":"2026-04-22","val":"guided to exceed +50% growth in CY2026","src":"Q3 FY26 call"},
+{"date":"2026-06-22","val":"adv-packaging rev +~50% y/y CY26 (>$1B run-rate)","src":"AlphaSense DR LRCX primer"}
+],"note":"Wafer-level packaging market $6B (2025) -> $11B (2028)."},
+{"metric":"Gross-margin trajectory","horizon":"FY26","trend":"up","trail":[
+{"date":"2026-04-22","val":"FQ4 GM guided 50.5% +/-1pp (all-time-high post-Novellus); 'level out for rest of year'","src":"Q3 FY26 call"},
+{"date":"2026-06-22","val":"June-guide GM 50.5% well ahead of Street 49.2%","src":"AlphaSense DR LRCX primer"}
+],"note":"GM at record levels; Bettinger says it levels out for the rest of the year."},
+{"metric":"Capstone house EPS","horizon":"2026E-2028E","trend":"up","trail":[
+{"date":"2026-06-15","val":"diluted EPS 2026E $5.78 / 2027E $8.43 / 2028E $11.57 (above NTM cons ~$7.59)","src":"Capstone peer model"}
+],"note":"House view above consensus; implied P/E ~67x->46x->34x."}
+]}

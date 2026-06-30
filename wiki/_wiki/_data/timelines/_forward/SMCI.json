@@ -1,0 +1,29 @@
+{"ticker":"SMCI","forward":[
+{"metric":"FY26 revenue guide","horizon":"FY26","trend":"down","trail":[
+{"date":"Q4'25","val":"\"at least $33B\"","src":"Q4 FY25 call (2025-08-05)"},
+{"date":"Q1'26","val":"raised to \"at least $36B\"","src":"Q1 FY26 call (2025-11-04)"},
+{"date":"Q2'26","val":"raised to \"at least $40B\"","src":"Q2 FY26 call (2026-02-03)"},
+{"date":"Q3'26","val":"trimmed to $38.9–40.4B (below prior \"at least $40B\")","src":"Q3 FY26 call (2026-05-05)"}],
+"note":"Guide raised three quarters running then cut at Q3 on site-readiness/supply push-outs."},
+{"metric":"Gross-margin trajectory","horizon":"Q4 FY26 / structural","trend":"contested","trail":[
+{"date":"Q2'26","val":"trough 6.4% (mix, expedite, components)","src":"Q2 FY26 call (2026-02-03)"},
+{"date":"Q3'26","val":"snaps to 10.1%; Q4 FY26 guided back DOWN to 8.2–8.4% (GB300 mega-rack ramp)","src":"Q3 FY26 call (2026-05-05)"},
+{"date":"2025-12-15","val":"JPM: industry converging to mid-single-digit assembly margins; SMCI most exposed; DCBBS the credible recovery lever","src":"JPM (Samik Chatterjee)"}],
+"note":"Bull says transitory mix; JPM says structural compression — the central debate on the equity."},
+{"metric":"AI mix of revenue","horizon":"2025→2027","trend":"up","trail":[
+{"date":"Q3'26","val":"AI GPU platforms >80% of revenue","src":"Q3 FY26 call (2026-05-05)"},
+{"date":"2025-12-15","val":"JPM models AI 63% of rev 2025 → 70% (2026) → 78% (2027)","src":"JPM (Samik Chatterjee)"}],
+"note":"Rising AI mix tied to GB300 → Vera Rubin / AMD Helios ramps."},
+{"metric":"DCBBS + software mix","horizon":"medium-term / CY26","trend":"up","trail":[
+{"date":"Q2'26","val":"~4% of H1 profit; target 2x by CY26","src":"Q2 FY26 call (2026-02-03)"},
+{"date":"Q3'26","val":"software rev >$46M; target ≥20% of net income medium-term","src":"Q3 FY26 call (2026-05-05)"},
+{"date":"2026-05-26","val":"JPM conf: DCBBS mix improving, giving more margin visibility; very big TAM","src":"JPM \"Networking recap\""}],
+"note":"The only credible structural margin-recovery lever per both mgmt and JPM."},
+{"metric":"FCF / cash conversion","horizon":"through FY27","trend":"contested","trail":[
+{"date":"2025-09-15","val":"Bernstein models negative FCF through FY27 vs Street's $1.1B (expensive on EV/FCF)","src":"Bernstein (Mark Newman)"},
+{"date":"Q3'26","val":"OCF ≈ −$6.6B; net debt ~$7.5B; cash-conversion cycle 106 days","src":"Q3 FY26 call (2026-05-05)"}],
+"note":"Reversal of the cash/leverage build is the single most important non-margin forward item."},
+{"metric":"Rack capacity","horizon":"current/forward","trend":"up","trail":[
+{"date":"Q3'26","val":">6,000 high-end racks/month","src":"Q3 FY26 call (2026-05-05)"}],
+"note":"Supports the GB300 NVL72 → Vera Rubin / AMD Helios ramp into H2'26/CY26."}
+]}

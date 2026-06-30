@@ -1,0 +1,217 @@
+<!-- Per-company wiki page. Synthesis of co-located disk sources + public transcripts/IR. Korean issuer — NO SEC filing. -->
+
+# SAMSUNG — Samsung Electronics Co., Ltd. (KRX:005930)
+
+_Wiki · generated 2026-06-19 · sources: `E:\Wiki Felipe\SAMSUNG\transcripts` (public English earnings transcripts) · Samsung IR · `_briefings` roll-up · BBG (KRW, auto-injected). Master index: [../00_INDEX.md](00_INDEX.md)._
+
+<!-- SNAPSHOT:START (auto: _tools/build_snapshot.py — do not hand-edit) -->
+### 📊 Consensus snapshot — BBG · asof 2026-06-22 · KRW
+
+| Metric | CY2026E | CY2027E |
+|---|--:|--:|
+| Revenue | ₩681155.3bn | ₩915569.4bn |
+| Gross profit | ₩467953.7bn | ₩686677.1bn |
+| Gross margin | 68.7% | 75.0% |
+| EBITDA | ₩407757.2bn | ₩580153.9bn |
+| EPS | ₩43007.00 | ₩65543.24 |
+| Capex | ₩75960.6bn | ₩90333.7bn |
+| OCF (≈EBITDA) | ₩407757.2bn | ₩580153.9bn |
+
+<svg xmlns="http://www.w3.org/2000/svg" width="326" height="88" viewBox="0 0 326 88" font-family="-apple-system,Segoe UI,Roboto,sans-serif"><text x="0" y="10" font-size="11" font-weight="600" fill="#33405c">FY1 EPS revision</text><rect x="0" y="46.1" width="20" height="11.9" rx="2" fill="#1c5fd6"/><text x="10" y="69" font-size="9" text-anchor="middle" fill="#8492ad">6m</text><rect x="28" y="33.3" width="20" height="24.7" rx="2" fill="#1c5fd6"/><text x="38" y="69" font-size="9" text-anchor="middle" fill="#8492ad">3m</text><rect x="56" y="16.1" width="20" height="41.9" rx="2" fill="#1c5fd6"/><text x="66" y="69" font-size="9" text-anchor="middle" fill="#8492ad">1m</text><rect x="84" y="14.0" width="20" height="44.0" rx="2" fill="#1c7d3f"/><text x="94" y="69" font-size="9" text-anchor="middle" fill="#8492ad">now</text><text x="0" y="84" font-size="10" fill="#1c7d3f">+78.3% 3m · +269.1% 6m</text><text x="176" y="10" font-size="11" font-weight="600" fill="#33405c">FY2 EPS revision</text><rect x="176" y="48.2" width="20" height="9.8" rx="2" fill="#1c5fd6"/><text x="186" y="69" font-size="9" text-anchor="middle" fill="#8492ad">6m</text><rect x="204" y="35.7" width="20" height="22.3" rx="2" fill="#1c5fd6"/><text x="214" y="69" font-size="9" text-anchor="middle" fill="#8492ad">3m</text><rect x="232" y="18.0" width="20" height="40.0" rx="2" fill="#1c5fd6"/><text x="242" y="69" font-size="9" text-anchor="middle" fill="#8492ad">1m</text><rect x="260" y="14.0" width="20" height="44.0" rx="2" fill="#1c7d3f"/><text x="270" y="69" font-size="9" text-anchor="middle" fill="#8492ad">now</text><text x="176" y="84" font-size="10" fill="#1c7d3f">+97.1% 3m · +347.2% 6m</text></svg>
+
+_Gross profit = Revenue × GM%. OCF: no forward BBG consensus — EBITDA shown as proxy._
+<!-- SNAPSHOT:END -->
+
+> **No SEC filings (Korean issuer).** Samsung Electronics files in Korea (KRX 005930) and via GDR (LSE: SMSN); it is **not a US SEC registrant** — no 10-K/10-Q/20-F on disk or on EDGAR. All financials below are from public English-language earnings-call transcripts and Samsung IR, in **KRW**, with the consensus block auto-injected from BBG. Transcripts are summaries, not verbatim. Byline: transcripts + IR + BBG (KRW) + equity calls.
+
+## Snapshot
+Samsung Electronics is the world's largest memory maker and a vertically integrated tech conglomerate spanning four engines: **Device Solutions (DS — DRAM, HBM, NAND + Foundry + System LSI)**, **Mobile Experience (MX — Galaxy smartphones/foldables, networks)**, **Samsung Display (SDC — mobile/large OLED)**, and consumer electronics (DX/VD). The investable story is overwhelmingly DS/memory: DS sales were KRW 81.7tn (~$55bn) in Q1-2026, of which memory KRW 74.8tn, +292% y/y (Q1-2026 call, 2026-04-30). Within memory, Samsung is the #1 DRAM/NAND maker by capacity but the **laggard in HBM** — it trails SK Hynix on the NVIDIA HBM ramp and only began HBM4 mass production in February 2026 (Q1-2026 call). Its Foundry is the credible #2 logic foundry behind TSMC, increasingly winning interest as TSMC advanced-node capacity is pre-booked (briefings, May–Jun 2026). The two debates that move the stock: **HBM4 catch-up vs SK Hynix** and **Foundry share gains vs TSMC**.
+
+## At a glance — product · buyer · supplier
+| | |
+|---|---|
+| **Sells (top 3)** | 1) Memory — DRAM/HBM4/NAND (DS memory KRW 74.8tn, the story) · 2) Foundry / System LSI (2nm GAA, 1.4nm, Taylor TX) · 3) Devices — MX (Galaxy) + SDC (OLED panels) |
+| **Main buyer(s)** | NVIDIA (HBM4) + hyperscalers for memory; foundry to AMD/Google/Tesla/Qualcomm; smartphone/consumers (Galaxy) — Samsung HBM share ~20% in 2025 |
+| **Key suppliers** | WFE (ASML, AMAT, Lam, KLA, TEL — EUV the 2028 supply governor); wafers/materials; substrates (SEMCO) |
+
+## Position in the value chain
+Samsung sits in the middle of the AI-memory chain: it buys equipment and wafers upstream, and sells memory (HBM/DRAM/NAND), foundry wafers, and finished devices/panels downstream. Its differentiation: the only player that is simultaneously a top-3 HBM supplier to NVIDIA **and** a logic-foundry alternative to TSMC **and** a device OEM — but it lags SK Hynix on HBM qualification and trails TSMC on foundry yield, so it competes largely on availability and price rather than leadership.
+
+<svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="11">
+  <rect x="0" y="0" width="720" height="220" fill="#ffffff"/>
+  <!-- Suppliers -->
+  <rect x="10" y="40" width="160" height="140" rx="6" fill="#eef2f7" stroke="#5b6b7c" stroke-width="1"/>
+  <text x="90" y="60" text-anchor="middle" font-weight="bold">Suppliers</text>
+  <text x="90" y="82" text-anchor="middle">WFE: ASML, AMAT,</text>
+  <text x="90" y="98" text-anchor="middle">LRCX, KLAC, TEL</text>
+  <text x="90" y="118" text-anchor="middle">Wafers / materials,</text>
+  <text x="90" y="134" text-anchor="middle">substrates (SEMCO)</text>
+  <text x="90" y="158" text-anchor="middle" font-style="italic">EUV is the 2028</text>
+  <text x="90" y="172" text-anchor="middle" font-style="italic">supply governor</text>
+  <!-- Samsung (center) -->
+  <rect x="250" y="20" width="220" height="180" rx="6" fill="#1f3a5f" stroke="#13243b" stroke-width="1.5"/>
+  <text x="360" y="42" text-anchor="middle" fill="#ffffff" font-weight="bold" font-size="13">Samsung Electronics</text>
+  <text x="360" y="66" text-anchor="middle" fill="#cfe0f3">DS — Memory:</text>
+  <text x="360" y="82" text-anchor="middle" fill="#ffffff">DRAM · HBM4 · NAND</text>
+  <text x="360" y="104" text-anchor="middle" fill="#cfe0f3">DS — Foundry / System LSI:</text>
+  <text x="360" y="120" text-anchor="middle" fill="#ffffff">2nm GAA · 1.4nm · Taylor TX</text>
+  <text x="360" y="142" text-anchor="middle" fill="#cfe0f3">Devices:</text>
+  <text x="360" y="158" text-anchor="middle" fill="#ffffff">MX (Galaxy) · SDC (OLED)</text>
+  <text x="360" y="184" text-anchor="middle" fill="#ffd27f" font-style="italic">HBM4 catch-up vs SK Hynix</text>
+  <!-- Customers -->
+  <rect x="550" y="40" width="160" height="140" rx="6" fill="#eef2f7" stroke="#5b6b7c" stroke-width="1"/>
+  <text x="630" y="60" text-anchor="middle" font-weight="bold">Customers</text>
+  <text x="630" y="82" text-anchor="middle">NVDA (HBM4),</text>
+  <text x="630" y="98" text-anchor="middle">hyperscalers</text>
+  <text x="630" y="114" text-anchor="middle">Foundry: AMD, Google,</text>
+  <text x="630" y="130" text-anchor="middle">Tesla, Qualcomm</text>
+  <text x="630" y="152" text-anchor="middle">Smartphone /</text>
+  <text x="630" y="168" text-anchor="middle">consumer (Galaxy)</text>
+  <!-- Arrows -->
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#1f3a5f"/>
+    </marker>
+  </defs>
+  <line x1="170" y1="110" x2="248" y2="110" stroke="#1f3a5f" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="470" y1="110" x2="548" y2="110" stroke="#1f3a5f" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="209" y="102" text-anchor="middle" font-size="10" fill="#5b6b7c">tools/wafers</text>
+  <text x="509" y="102" text-anchor="middle" font-size="10" fill="#5b6b7c">chips/panels</text>
+</svg>
+
+_Foundry-vs-TSMC angle: TSMC advanced-node capacity is pre-booked through 2028+, pushing AMD, Google (Axion ~2028 / TPU), Tesla and others to engage Samsung Foundry on availability despite lagging yields (briefings 2026-05-07 / 2026-06-18). Cross-themes: [HBM / memory super-cycle](themes/hbm-memory.md) · [semicap / WFE](themes/semicap-wfe.md)._
+
+## Current state (latest quarter)
+**Q1-2026 (reported 2026-04-30) — record quarter on AI memory.** Revenue **KRW 134tn** (+43% q/q); operating profit **KRW 57tn** (+185% q/q); operating margin **43%** (from 21%); net profit KRW 47tn; EPS KRW 7,123 (Q1-2026 call). The OP ramp over four quarters frames the inflection: **KRW 4.7tn (Q2-25) → 12.2tn (Q3-25) → 20.1tn (Q4-25) → 57tn (Q1-26)** (transcripts).
+- **DS KRW 81.7tn (~$55bn), +225% y/y**; memory KRW 74.8tn, +292% y/y (Q1-2026 call).
+- **DRAM:** bit growth low-teens % q/q, ASP up "low 90% range" q/q. **NAND:** bit +low-20s %, ASP +high-80s % q/q (Q1-2026 call). Note: conventional DRAM currently *more* profitable than HBM (Q1-2026 call; corroborated wccftech 2026-04-30) — the cycle is being led by commodity DRAM, not HBM, at Samsung.
+- **NAND:** Samsung is the **#1 NAND maker, ~33% revenue share (2Q25e)**, with structurally higher OPM than peers on scale and a lower QLC mix (eSSD-skewed); MS has it as a **Top Pick (OW)** beneficiary of the AI-NAND upcycle, alongside KIOXIA/SanDisk (MS AI NAND overview). Industry NAND supply seen growing only **15-20% y/y in 2026** as Samsung/SK/Micron divert capex toward HBM and smaller players are cash-constrained — supportive of pricing (MS AI NAND overview; Phison 2Q25).
+- **HBM:** first to mass-produce/ship **HBM4 in February 2026**; "demand for HBM4 fully booked"; HBM4 >50% of HBM sales from Q3; HBM sales **>3x y/y in 2026**; HBM4E samples in Q2 (16 Gbps, 4.0 TB/s) (Q1-2026 call; Q4-2025 call reiterated "HBM triples in 2026"). Supply-chain checks size Samsung HBM share at **~20% in 2025, set to rise in 2026**, with **1c-node HBM4 test yields ~50-60%** (ramp framed "on track") and a claimed **11 Gbps** HBM4 (some bins higher); Samsung is taking the riskier swing of jumping straight to **1c DRAM** for HBM4 vs SK Hynix/Micron staying on 1b (Q425 Techknowledge takeaways; SemiAnalysis HBM). Mix to ASICs is a relative strength — SK Hynix is capacity-capped on M15x and steering non-NVIDIA HBM demand (Google/AMD ASICs) toward Samsung, with NVIDIA also "encouraging Samsung to ramp" given conventional-DRAM tightness (Q425 Techknowledge takeaways).
+- **Foundry:** double-digit y/y revenue growth, earnings down q/q on seasonality; **Taylor TX** equipment move-in Apr 23, ops 2026 / mass production 2027; 1.4nm on track; 2nm GAA ramping (first-gen new products from Q4-25, Q3-2025 call). Foundry capability is also a structural HBM differentiator: only Samsung can in-house its own advanced-logic **HBM4 custom base die**, whereas SK Hynix/Micron must outsource to TSMC — though customers are reluctant to tape out Samsung-compatible base dies given roadmap-delivery doubts (SemiAnalysis HBM). **Backside power (BSPDN):** Samsung targets adoption in **2027** (Intel end-2025, TSMC late-26/early-27) via Direct Backside Contact (vs Intel's simpler Power Via); Bernstein models BSPDN reaching ~45% of Intel/TSMC/Samsung volume by 2030 (Bernstein Semis deck, May-2025).
+- **MX:** revenue KRW 37.5tn; MX+Network OP KRW 2.8tn; Q2 profitability decline "inevitable" on memory cost. **SDC:** mobile weak on seasonality + memory cost; premium/QD-OLED strategy.
+- **Capex/return:** Q1 capex KRW 11.2tn (DS 10.2tn); 2026 "substantial y/y increase." Quarterly dividend KRW 372/sh; KRW 9.8tn annual minimum payout (2024–26); share cancellation ~KRW 14.6tn (Q1-2026 call).
+- **DRAM wafer capacity (the structural #1):** Samsung exits 2026 with the largest DRAM wafer cap at **~740K wafers/month** (vs SK Hynix ~610K, Micron ~365K), adding only ~45K in 2027 (clean-room space, not equipment/demand, is the binding constraint through end-2028); P5L phase-1 capacity **won't be ready until mid-2028**, and P5L phase-2 construction was **just announced (within the prior week) with earliest output ~2030** — so Samsung's 2027 supply growth is "very limited." Korea contractors carry longer build lead times than SK Hynix (paid less). At end-2026 ~180K of the 740K is HBM wafer cap (StoneX/TrendForce "Memory expert call — Avril", 2026-06-23).
+- **NAND→DRAM conversion / losing NAND share:** Samsung (and SK Hynix) are converting NAND wafer capacity to the more-lucrative DRAM, driving global NAND wafer cap **−3% in 2026**; Samsung is **losing NAND market share** as it prioritizes DRAM/HBM (StoneX/TrendForce "Memory expert call — Avril", 2026-06-23).
+- **HBM4 catch-up — possible #1 in 2027:** Samsung is "doing a better job" on HBM4; the analyst flags a **real possibility Samsung overtakes SK Hynix as the #1 HBM supplier in 2027** (StoneX/TrendForce "Memory expert call — Avril", 2026-06-23) — corroborated by Conor, who notes the HBM4 price was still not finalized two weeks ago "despite Samsung already shipping," expected +90-100% vs last year's LTA (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23).
+- **First-ever hybrid-bonding disclosure:** at the meeting Samsung disclosed **for the first time that it has a hybrid-bonding project** and is "willing to offer it at a premium" (i.e. for higher HBM stacks / HBM4E) — read bullishly by Besi holders (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23).
+- **Anthropic angle:** Anthropic is pursuing an HBM (2028) deal with Samsung as well as SK Hynix — same structure as its Micron deal (server DRAM + eSSD 2027 / HBM 2028), implying an in-house Anthropic ASIC (StoneX/TrendForce "Memory expert call — Avril", 2026-06-23).
+- **Wafer-shortage acknowledgement:** met in Korea on the trip, Samsung said the buy-side were "the first to ask about a wafer shortage" next year and that if one materializes it would **optimize product mix — pushing conventional DRAM at the expense of HBM** (TSV backend penalty), further limiting HBM capacity (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23).
+- **Hyperscaler affordability ceiling (demand-durability frame):** at the Jefferies Asia Forum, Samsung itself put the memory bill hyperscalers "can bear" at **30-35% of their total operating cash flow** — vs ~**20% of combined hyperscaler OCF in Q1** (DRAM+NAND); a ~100% ASP move would already put the industry at that 30-35% ceiling, the key check on whether 2H ASP gains can match 1H (Jefferies/Conor equity call, 2026-04-07). This is the demand-side bear that pairs with the supply-side bull (StoneX wafer-cap constraint).
+- **EUV is the hard cap on 2028 DRAM supply:** ASML's ~**90 EUV tools/yr by end-2027 is insufficient** — Samsung, SK Hynix and Micron each need to add ≥**100K DRAM wafers/month from 2028**, requiring ~**20-25 tools each for Samsung/Hynix** (Micron 10-15) while TSMC already absorbs ~**40 tools**; the math leaves "no easy" industry capacity add, structurally tight (JPM "Memory" equity call, 2026-05-28) — corroborating the page's clean-room-constraint thesis with the tool-level governor.
+- **New AI-CPU memory pull:** NVIDIA Vera standalone-CPU demand ~**500K (2026) → 3M (2027)**; JPM models AI-CPU + head-node attach lifting **total server DRAM demand by >15-20%** vs prior view (server is ~60-65% of total DRAM), with LPDDR5X SO-DIMM content draining mobile-DRAM supply — Samsung/Hynix said they could **fill their fabs without supplying any smartphone DRAM** (JPM "Memory" equity call, 2026-05-28).
+- **HBM ASP for 2027 +~30% blended:** JPM models **~+30% blended HBM ASP into 2027** on Samsung/Hynix — ~**10% like-for-like + mix** (HBM4 bit mix skewed 2H/2027 as the ramp slipped) — vs only a high-teens like-for-like on conventional DDR5; HBM4 price negotiation seen starting **July** post-Q2 (JPM "Memory" equity call, 2026-05-28).
+- **Losing HBM share at Google (near-term):** Samsung's HBM capacity is growing **slower than Google's own TPU demand**, so its share at Google falls to **~low-20s%** this year→next; the two raised capacity-expansion plans should let it **re-match TPU consumption by 2028** (JPM "Memory" equity call, 2026-05-28).
+- **Foundry gap quantified (ex-TSMC sales exec):** Samsung is **~1 year behind TSMC** in logic (vs Intel ~1.5-2yr); TSMC ~**70% foundry share**, Samsung "a little higher than Intel's <10%." The yield gap is a **volume/pipe-cleaner problem** — too little wafer throughput to mature yields — and **over half of Samsung's semiconductor capex is memory, not foundry**; the customer-conflict overhang (Samsung competes with its own foundry customers) remains a structural deterrent (ex-TSMC exec equity call, 2026-04-14).
+- **Cost-structure edge = consolidated Korea footprint:** the ex-Micron VP attributes Samsung's superior memory cost structure to its **almost-all-Korea manufacturing footprint** (fewer sites/management layers/shipping) vs Micron's globally dispersed fabs; he is skeptical the **HBM4E customer-supplied custom logic base die** "really takes off" given warranty/liability/yield issues — a caution on the de-commoditization optionality the bulls lean on (ex-Micron VP equity call, 2026-06-10).
+
+## Debate / thesis
+- **Bull:** Three engines firing from 2H26 — memory + foundry + robotics (Jefferies/Jeff Kim, 2026-05-11: Q2-26 OP **KRW 100tn** vs his KRW 84tn; "cheapest it will be" at 4.7x '27 P/E). The DRAM shortage has "no way out in coming years"; foundry optionality is incremental upside as hyperscalers diversify from TSMC (@techfund1, briefing 2026-06-18). Memory complex tape-positive: Bernstein has long held Samsung as its **top pick in memory** on improving HBM position + a never-stretched valuation (never sustainably above 1.5x P/B), arguing the "lost-leadership" perception drove an abnormal P/B discount vs SK Hynix/Micron since mid-2023 (Bernstein Semis deck, May-2025). MS likewise carries Samsung **OW / Top Pick** across both NAND (AI-NAND upcycle) and AI semis (MS AI NAND overview; MS Asia AI Factories). Korea tape repeatedly rips on the name (Samsung +8.9% 2026-05-21; +4.8% overnight 2026-06-17 on Apple memory pass-through).
+  - **Jefferies' #1 pick — "not just memory" (Conor, 2026-04-07):** Jefferies made Samsung its top Asia-tech idea on a three-legged story: (1) **memory** (Jeff Kim's KBI note: Samsung earns more OP than Nvidia next year at ~1/5 the market cap); (2) **foundry turning profitable** — if Samsung takes ~30% of the HBM market next year that volume runs through a Samsung-tailored fab with its own base die, plus wins cited include a Sony wide-angle image sensor for Apple, Tesla, the Groq chip (~3M units) and active talks with Qualcomm and AMD — foundry has been valued at zero-to-negative EV, so profitability is a "potential valuation kicker"; (3) **panels** — ~10M foldable iPhones this year = ~20M Samsung panels off Apple. Sentiment tailwind: **foreign ownership of Samsung sat at a 10-year low** as of the call (Jefferies "Asia tech", 2026-04-07). BofA's TSMC expert corroborated the foundry-leverage angle: Samsung is "leveraging its memory business" (HBM4 leadership) to win foundry designs, e.g. pressing AMD to fab on Samsung in exchange for HBM4 supply (BofA "Best ideas", 2026-04-09).
+- **Bear:** Samsung is the **HBM laggard** — HBM4 qualified but volume not ramped, product still trails SK Hynix on power/speed; SK Hynix is the relative-performance long (JPM memory-China, 2026-05-28; [hbm-memory](themes/hbm-memory.md)). SemiAnalysis is the sharpest bear: Samsung's HBM struggles stem from poor front-end DRAM (1a node, mobile-derived) + packaging, yielding "even worse" than peers and an inferior product NVIDIA won't fully qualify; HBM3E share has bled to SK Hynix/Micron (AMD MI300X failures, ASIC sockets migrating, Amazon Trainium2e the main retained socket); and **HBM4 1c test-wafer yields remain "extremely low"** with meaningful volume only later in 2026 — so the bullish 50-60% yield checks (Techknowledge) and SemiAnalysis "still very low" framing directly conflict (SemiAnalysis HBM vs Q425 Techknowledge takeaways). The ex-Micron VP frames HBM as commoditizing once 2nd/3rd vendors qualify, but notes **Samsung's cost structure is actually better than Micron's** — relatively advantaged in a snap-back but still riding a cyclical top (2026-06-10). Foundry yields lag TSMC; wins are availability-driven, not leadership. Union strike risk: JPM flagged 7–12% downside to 2026 OP (briefing 2026-05-08).
+- **Where the sell-side/buy-side stands:** Jefferies (Jeff Kim) raising estimates, Q2-26 OP KRW 100tn, 4.7x '27 P/E (2026-05-11). Bernstein OW (top memory pick, valuation-discount thesis), MS OW/Top Pick (NAND + AI semis); SemiAnalysis the contra on HBM execution. SK Hynix ~5.3x vs Samsung ~5.9x fwd P/E; FinTwit memory books underweight Samsung vs SK Hynix on HBM/yield edge (@paradislabs, 2026-05-07). Net: consensus likes the memory cycle, prefers SK Hynix for HBM purity, owns Samsung for the cheaper multiple + NAND scale + foundry/robotics optionality — the swing factor remains whether 1c HBM4 yields are genuinely on track (Techknowledge) or "still very low" (SemiAnalysis).
+- **Chris Wood (Jefferies GREED & fear) adds +1ppt across three portfolios (2026-06-25).** Christopher Wood is increasing Samsung Electronics exposure by +1ppt in his global long-only, international long-only, and Asia ex-Japan portfolios (selling Alphabet and Alibaba to fund). Thesis: "The story that the DRAM industry has changed structurally, and that the companies should now be valued on a price to earnings basis rather than on a price to book basis, looks to GREED & fear an increasingly powerful argument. And by this measure these companies still look cheap." He frames Korean memory/DRAM as a "picks and shovels" play on the AI compute cycle, citing Jevons Paradox: as GLM-5.2 and cheaper Chinese models cut token costs, the resulting demand explosion drives DRAM prices higher. Bull signal (Jefferies / Christopher Wood "GREED & fear: The mother of all cycles", 2026-06-25). [../relat%C3%B3rios%20bons/Chris_Wood.html](../relat%C3%B3rios%20bons/Chris_Wood.html)
+  - **JPM's "catch-up didn't work" (Jay, 2026-05-28):** JPM's own call that Samsung should close the gap to Hynix post-strike "didn't work" — Hynix kept outperforming on single-stock-ETF/passive flows + ADR catalyst, leaving Samsung underperforming Hynix despite outperforming the index. JPM's Samsung catalysts: **HBM4 volume production actually starting** (qualified but large-volume not begun is the realistic catalyst), a bigger **AMD chiplet/foundry order** disclosed at Samsung's late-Jun/early-Jul US Foundry Day, and a shareholder-return/cash-use update (likely the October season, so ~4-5 months of low return visibility). Near-term EPS drag: the **labor-union settlement provision (~12% of profit) hits Q2**, ~2pts above JPM's prior 10% reflection — trimming the EPS beat (JPM "Memory", 2026-05-28).
+  - **High-NA as a foundry leapfrog (BofA litho expert, Sam Sivakumar, 2026-05-21):** done right, high-NA EUV is "an advantage" via design simplification and ~75% fewer process steps vs low-NA double patterning; the half-field/stitching constraint is "not as serious as we thought," and **DRAM is "eminently suitable" for high-NA** (small die, simpler interconnect) — a structural opening for Samsung Foundry/memory to leapfrog TSMC (a slow high-NA adopter, comfortable with its pitch-division process) if executed, though the gating risk is a competitive 14A-class node and customer PDK migration (BofA "Litho expert", 2026-05-21).
+
+## Catalysts / what to watch
+- **HBM4 volume ramp at NVIDIA** — qualification disclosed as "fully booked," but the share-gain proof point is volume share vs SK Hynix through 2H26; checks put 2025 share ~20% rising in 2026, with NVIDIA timeline 1H26 sample / 2H26 volume (Q1-2026 call; Q425 Techknowledge takeaways).
+- **1c HBM4 yield resolution** — the key bull/bear fault line: ~50-60% test yields "on track" (Q425 Techknowledge takeaways) vs "extremely low" (SemiAnalysis HBM).
+- **HBM4E samples → qualification** (Q2-26 samples, 16 Gbps / 4.0 TB/s) — the de-commoditization optionality (custom base die, Samsung's in-house foundry edge vs Hynix/Micron's TSMC dependence; SemiAnalysis HBM).
+- **Foundry wins:** AMD 2nm (post-Lisa Su Pyeongtaek visit), Google Axion ~2028 / TPU, Tesla — concrete contract confirmations (briefings 2026-05-07 / 2026-06-18). Taylor TX mass production 2027; 1.4nm; BSPDN 2027 (Bernstein Semis deck, May-2025).
+- **Q2-2026 print (~late Jul 2026):** test of Jefferies' KRW 100tn OP; DRAM ASP trajectory (server DRAM C3Q26 +30-40% q/q per @QQ_Timmy, 2026-06-16).
+- **Union strike** resolution / production impact (announced May 21–Jun 7 window; foundry/LSI unresolved per trendforce 2026-05-16).
+- 1d (7th-gen) DRAM mass production, earliest 1H27 (@jukan05, briefing 2026-06-17).
+
+## Risks
+- **HBM share loss to SK Hynix** — laggard on NVIDIA qualification/yield; HBM3E share already lost to SK Hynix/Micron (AMD MI300X reliability issues, ASIC sockets migrating; SemiAnalysis HBM; JPM 2026-05-28). 1c HBM4 a high-risk leapfrog with low test yields.
+- **Memory commodity snap-back** — current cycle led by conventional DRAM ASP (+~90% q/q); new fab capacity (Samsung/SK/Micron) landing ~CY27-28 could break pricing (ex-Micron VP, 2026-06-10). Custom HBM4 base dies raise switching costs, disproportionately hurting roadmap-laggards like Samsung (SemiAnalysis HBM).
+- **Foundry yield gap vs TSMC** — wins are availability-driven; profitability/utilization remains the swing.
+- **Korea-specific:** union strike (7–12% OP downside, JPM 2026-05-08); concentrated chaebol governance.
+- **Macro:** tariffs (mainstream-memory pricing sustainability tariff-sensitive per Q425 Techknowledge takeaways), FX (KRW), China demand; memory cost inflation pressuring own MX/SDC margins (Q1-2026 call).
+- **Capex intensity:** "substantial" 2026 increase into a potentially cyclical top.
+
+<!-- Consensus estimates (BBG) block auto-injected here by the HTML builder (KRW) -->
+
+## In the inbox (Outlook — recent sell-side flow)
+- **Nutty "Part 4 — BSPDN & PowerVia" (nuttycld.substack.com, 2026-04-25):** Pre-print piece on Backside Power Delivery Networks (BSPDN) that briefly mentions Samsung in the context of the broader industry shift toward BSPDN and hybrid bonding for advanced memory. Samsung's BSPDN roadmap targets 2027 adoption via Direct Backside Contact (vs Intel's PowerVia approach); the piece frames Samsung as a laggard on BSPDN vs Intel (first mover, 18A) and TSMC (A16 Super Power Rail, late-2026 volume). Separately, hybrid bonding for HBM was noted as a Samsung disclosure area to watch — consistent with the later Redburn/Conor O'Mara Asia trip report (2026-06-23) confirming Samsung's first-ever hybrid-bonding disclosure at a management meeting. (Nutty "Part 4", nuttycld.substack.com, 2026-04-25)
+- **Digitimes** _(2026-06-19)_: Samsung Foundry signed a strategic deal to **make 'Claros' power-management chips for AI data centers** — foundry AI-DC traction.
+- **Capstone Morning Briefing** _(2026-06-19)_: memory super-cycle tape — conventional-DRAM ASP melt-up + HBM5 (2028-29) roadmap; Samsung framed as the **HBM4 catch-up** story vs SK Hynix.
+
+## Intra-quarter — calls, commentary & reports (since the last print)
+_Q1-2026 print → intra-quarter · Apr 30 → Jun 23, 2026 · sell-side / expert calls / reports between earnings. Timeline visual: [timeline.html](timeline.html)._
+
+**Signal vs management** — what management said on the last call × what the intra-quarter flow is saying (✓ confirms · ⚠ nuances · ✗ contests):
+
+| Theme | Management said (Q1'26 / Apr 30) | Intra-quarter flow | Signal |
+|---|---|---|---|
+| **HBM** | HBM4 in mass production since Feb; "fully booked"; HBM sales >3x YoY in 2026 | StoneX/TrendForce: real chance of becoming #1 in HBM in 2027 · Redburn/Conor: HBM4 price still not closed "despite already shipping" (+90-100% vs LTA) · @paradislabs: books underweight vs Hynix on yield | **⚠ nuance** (ramp ok, price/yield open) |
+| **DRAM / NAND pricing** | DRAM ASP +low-90s% q/q; NAND ASP +high-80s% q/q | @QQ_Timmy: server DRAM C3Q26 +30-40% q/q · Jefferies/@techfund1: shortage with "no way out" for years | **✓ confirms** (melt-up continues) |
+| **Foundry** | Double-digit YoY growth; Taylor TX move-in; 1.4nm on track | Digitimes: 'Claros' PMIC deal for AI-DC · @techfund1: AMD/Google/Tesla migrate from TSMC · BofA/Sivakumar: high-NA as leapfrog | **✓ confirms** (caveat: gains driven by availability, not leadership — @paradislabs) |
+| **Capex / supply** | 2026 capex with a "substantial increase" | StoneX/TrendForce: largest DRAM cap (~740K/month) but only +45K in '27; clean-room is the bottleneck until end-2028; P5L ph.1 only mid-2028 | **⚠ nuance** (capex rises but new supply arrives only late) |
+| **Margin / durability** | Record OP KRW 57tn; margin 43% | ex-Micron VP: HBM commoditizes, cycle at the top, new cap CY27-28 could break pricing · GS: 5-6x "disbelieves" the durability · CW (Jefferies): adds +1ppt, DRAM structural P/E re-rating thesis | **✗ contests** (cycle sustainability) |
+
+**Full log** (all intra-quarter flow, by date):
+
+| Date | Source | Theme | Bias | What was said |
+|---|---|---|---|---|
+| 05-07 | @paradislabs (FinTwit memory) | competition | bear | FinTwit memory books underweight Samsung vs SK Hynix on the HBM/yield advantage; SK Hynix ~5.3x vs Samsung ~5.9x fwd P/E. Hyperscalers diversifying away from TSMC engage Samsung Foundry (AMD/Google/Tesla) for availability despite lagging yields. |
+| 05-08 | JPM | guidance | bear | JPM flagged a union strike with 7-12% downside to 2026 OP (briefing). |
+| 05-11 | Jefferies · Jeff Kim | guidance | bull | Three engines firing from 2H26 — memory + foundry + robotics. Q2-26 OP KRW 100tn vs his estimate of KRW 84tn; "the cheapest it will get" at 4.7x '27 P/E. DRAM shortage "with no way out for the next few years." |
+| 05-21 | BofA · Sam Sivakumar (litho expert) | product | bull | High-NA EUV done well is "an advantage" via design simplification and ~75% fewer process steps vs low-NA double patterning; the half-field/stitching constraint is "not as serious as we thought"; DRAM "eminently suited" for high-NA — a structural opening for Samsung Foundry/memory to leapfrog TSMC (a slow high-NA adopter) if it executes. |
+| 05-28 | JPM · Jay | competition | bear | JPM's call that Samsung would close the gap with Hynix post-strike "didn't work" — Hynix kept outperforming on passive/single-stock ETF flows + an ADR catalyst. Samsung catalysts: a real start to HBM4 volume production, a larger AMD chiplet/foundry order at US Foundry Day (late-June/early-July), and a shareholder-return update (~October). Near-term EPS drag: the union-settlement provision (~12% of profit) hits Q2, ~2pts above JPM's prior 10%. |
+| 06-08 | Goldman Sachs · Memory (longevity of cycle) | valuation | mixed | 5-6x earnings disbelieves the durability of the cycle; 9x would be "conservative" (briefing). |
+| 06-10 | ex-Micron VP (expert call) | margin | mixed | HBM commoditizes once 2nd/3rd vendors qualify, but Samsung's cost structure is actually better than Micron's — relatively advantaged in a snap-back, but still at the cyclical top. New capacity (Samsung/SK/Micron) arriving ~CY27-28 could break pricing. |
+| 06-16 | @QQ_Timmy (FinTwit) | margin | bull | Server DRAM C3Q26 +30-40% q/q — DRAM ASP trajectory (a test of Jefferies' KRW 100tn OP estimate for Q2-26). |
+| 06-17 | @jukan05 (FinTwit) | product | bull | DRAM 1d (7th generation) mass production, earlier in 1H27 (briefing). The Korean tape rose +4.8% overnight on memory pass-through from Apple. |
+| 06-18 | @techfund1 (FinTwit) | competition | bull | DRAM shortage "with no way out for the next few years"; foundry optionality is incremental upside as hyperscalers diversify away from TSMC — TSMC advanced-node capacity pre-booked into 2028+ pushes AMD, Google (Axion ~2028 / TPU), Tesla to engage Samsung Foundry. |
+| 06-19 | Digitimes | product | bull | Samsung Foundry signed a strategic deal to make 'Claros' power-management chips for AI data centers — AI-DC foundry traction. |
+| 06-19 | Capstone Morning Briefing | demand | bull | Memory super-cycle tape — a melt-up in conventional DRAM ASP + the HBM5 roadmap (2028-29); Samsung framed as the HBM4 catch-up story vs SK Hynix. |
+| 06-23 | StoneX/TrendForce · Memory expert call (Avril) | supply | mixed | Samsung exits 2026 with the largest DRAM wafer capacity at ~740K wafers/month (vs SK Hynix ~610K, Micron ~365K), adding only ~45K in 2027 (clean-room is the constraint until end-2028); P5L phase-1 only ready mid-2028, phase-2 announced with output ~2030. NAND→DRAM conversion drives global NAND cap -3% in 2026 and Samsung loses NAND share. A real possibility Samsung overtakes SK Hynix as #1 in HBM in 2027. Anthropic's HBM deal (2028) with Samsung implies an in-house ASIC. |
+| 06-23 | Redburn · Conor O'Mara (Asia Trip Takeaways) | margin | bull | HBM4 price still not finalized two weeks ago "despite Samsung already shipping," expected +90-100% vs last year's LTA. First disclosure that Samsung has a hybrid-bonding project and is "willing to offer it at a premium" (for taller stacks / HBM4E) — read bullishly by Besi holders. Samsung said that if wafers are short it would optimize the mix — pushing conventional DRAM at the expense of HBM (a TSV backend penalty), further limiting HBM capacity. |
+| 06-25 | Jefferies · Christopher Wood (GREED & fear) | valuation | bull | Chris Wood adds +1ppt to Samsung position across global long-only, international long-only, and Asia ex-Japan portfolios (selling Alphabet and Alibaba). DRAM structural rerating thesis: "valued on P/E not P/B… and by this measure still look cheap." Jevons Paradox: cheaper tokens → more compute demand → rising DRAM prices. Picks and shovels framing. (Jefferies "GREED & fear: The mother of all cycles", 2026-06-25) |
+
+**Quarter synthesis:** the debate has shifted from "can Samsung qualify HBM4?" (resolved — already in mass production and shipping) to the still-open HBM4 price/yield and, above all, to the *durability* of the DRAM cycle — with the thesis of becoming #1 in HBM in 2027 and the foundry angle gaining traction against top-of-cycle skepticism (GS/ex-Micron).
+
+## Management commentary — evolution (last 4 quarters)
+
+| Theme | Q2'25 (Jul 31) | Q3'25 (Oct 30) | Q4'25 (Jan 28) | Q1'26 (Apr 30) |
+|---|---|---|---|---|
+| Headline (rev / OP) | KRW 74.6tn / OP 4.7tn; 6.3% margin (trough) | KRW 86.1tn / OP 12.2tn (+7.5tn q/q) | KRW 93.8tn / OP 20.1tn — record | KRW 134tn / OP 57tn; 43% margin |
+| Memory / DS | DS +11% q/q; HBM/DRAM the 2H engine | Best memory sales ever; HBM3E + server SSD | Strongest ever; AI the driver | DS 81.7tn (+225% y/y); memory 74.8tn (+292%) |
+| HBM | Positioned as 2H recovery engine | HBM3E demand; HBM4 pre-production | HBM sales to triple y/y in 2026 | HBM4 mass production Feb; "fully booked," >3x y/y |
+| DRAM / NAND pricing | — | — | — | DRAM ASP +low-90s%; NAND ASP +high-80s% q/q |
+| Foundry | — | Utilization up; 2nm GAA ramp in Q4 | — | Double-dgt y/y; Taylor TX move-in; 1.4nm on track |
+| Capex / returns | KRW 3.9tn buyback final tranche | — | — | Q1 capex 11.2tn; 2026 "substantial increase"; div 372/sh |
+
+_Source: SAMSUNG earnings calls (dates above); management commentary, paraphrased._
+
+## Sources
+- **Filings:** none — Korean issuer, no SEC registration (no 10-K/10-Q/20-F).
+- **Transcripts (public English, KRW; not verbatim):** [Q1-2026 (2026-04-30)](../SAMSUNG/transcripts/SAMSUNG_Q1-2026-earnings_2026-04-30.md) · [Q4-2025 (2026-01-28)](../SAMSUNG/transcripts/SAMSUNG_Q4-2025-earnings_2026-01-28.md) · [Q3-2025 (2025-10-30)](../SAMSUNG/transcripts/SAMSUNG_Q3-2025-earnings_2025-10-30.md) · [Q2-2025 (2025-07-31)](../SAMSUNG/transcripts/SAMSUNG_Q2-2025-earnings_2025-07-31.md). Read in full: Q1-2026, Q4-2025.
+- **Research reports (relatórios bons):**
+  - [Bernstein Semis deck (May-2025)](../relat%C3%B3rios%20bons/Bernstein_Deck_Semis_Maio25.html)
+  - [Q4-25 Techknowledge tech takeaways](../relat%C3%B3rios%20bons/Q425_Techknowledge_tech_takeaways.html)
+  - [SemiAnalysis on HBM](../relat%C3%B3rios%20bons/Semianalysis_in_HBM.html)
+  - [MS AI NAND overview](../relat%C3%B3rios%20bons/AI_Nand_overview_MS.html)
+  - [MS Asia on AI Factories](../relat%C3%B3rios%20bons/MS_asia_on_AI_Factories.html)
+  - [Jefferies Asia tech (2026-04-07)](../relat%C3%B3rios%20bons/2026_04_07_jef_asia_7_apr_2026.html) — Jefferies' #1 Asia pick: memory + foundry (Sony/Tesla/Groq/AMD) + panels
+  - [BofA Best ideas / TSMC expert (2026-04-09)](../relat%C3%B3rios%20bons/2026_04_09_baml_best_ideas_9_apr_2026.html) — HBM4 leverage to win AMD foundry; Taylor fab/XAI traction skepticism
+  - [BofA ASML call (2026-04-15)](../relat%C3%B3rios%20bons/2026_04_15_asml_baml_call_15_apr_26.html) — Samsung logic + memory EUV demand
+  - [BofA Litho expert (2026-05-21)](../relat%C3%B3rios%20bons/2026_05_21_lihto_expert_baml_21_may_26.html) — high-NA as foundry leapfrog; DRAM suited to high-NA
+  - [JPM Memory (2026-05-28)](../relat%C3%B3rios%20bons/2026_05_28_jpm_memory_28_may_26.html) — catch-up "didn't work"; AMD chiplet; union 12% provision in Q2
+  - [GS Memory — longevity of cycle (2026-06-08)](../relat%C3%B3rios%20bons/2026_06_08_gs_memory_8_jun_26.html) — 5-6x earnings disbelieves durability; 9x "conservative"
+  - [Redburn "Conor O'Mara Asia Trip Takeaways" (2026-06-23)](../relat%C3%B3rios%20bons/77420a6c-61c1-4757-8047-3a24cced258c_Key_Takeaways_from_Conor_OMaras_recent_Management_Meetings_across_ASIA_1.html) — HBM4 price unfinalized despite shipping; first-ever hybrid-bonding disclosure at a premium; wafer-shortage product-mix risk
+  - [StoneX/TrendForce "Memory expert call — Avril" (2026-06-23)](../relat%C3%B3rios%20bons/TrendForce.html) — DRAM cap ~740K end-2026 (largest); P5L ph.1 mid-2028 / ph.2 ~2030; NAND→DRAM conversion; possible #1 HBM in 2027; Anthropic deal
+  - [Jefferies Christopher Wood "GREED & fear: The mother of all cycles" (2026-06-25)](../relat%C3%B3rios%20bons/Chris_Wood.html)
+- **Equity calls (thematic; Samsung-specific content only):**
+  - [Conor (Jefferies) — memory (2026-04-07)](../_equity_calls/Semis/2026-04-07_Conor_memory.md) — #1 Asia pick (memory+foundry+panels); hyperscaler memory-affordability ceiling 30-35% of OCF (Q1 ~20%)
+  - [TSMC former exec — foundry (2026-04-14)](../_equity_calls/Semis/2026-04-14_TSMC-former-exec_foundry.md) — Samsung ~1yr behind TSMC; TSMC ~70% foundry share; >half Samsung semi capex is memory; customer-conflict overhang
+  - [JPM (Jay/Anila) — memory/China (2026-05-28)](../_equity_calls/Semis/2026-05-28_JPM_memory-China.md) — EUV ~90 tools/yr insufficient (Samsung/Hynix need 20-25 each); Vera CPU 500K→3M; +30% blended HBM ASP for '27; losing Google HBM share to low-20s%
+  - [ex-Micron VP — procurement (2026-06-10)](../_equity_calls/Semis/2026-06-10_Micron-exVP_procurement.md) — Samsung cost edge = consolidated Korea footprint; skeptical HBM4E custom base die takes off
+- **IR:** Samsung Electronics IR (KRX:005930); AlphaSpread / Seeking Alpha / MarketScreener / GuruFocus / Quartr transcript mirrors.
+- **Themes:** [HBM / memory super-cycle](themes/hbm-memory.md) · [semicap / WFE](themes/semicap-wfe.md).
+- **Briefings:** `E:\briefings\2026\*.md` — Jefferies KRW 100tn OP (2026-05-11), AMD/Google/Tesla foundry inquiries (2026-05-07 / 2026-06-18), union strike OP downside (2026-05-08 / 2026-05-16), Korea tape moves (2026-05-21 / 2026-06-17). No `_briefings/by-ticker/SAMSUNG.md` roll-up yet.
+- **Outlook:** unavailable in this session (Python alias not resolvable in shell) — no sell-side emails pulled; to be added separately.
+
+## Changelog
+- **2026-06-26** — Linked 4 previously-unlinked thematic equity calls and wove in Samsung-specific net-new datapoints: Jefferies/Conor (2026-04-07) hyperscaler memory-affordability ceiling 30-35% of OCF (Q1 ~20%); JPM memory/China (2026-05-28) EUV ~90-tools/yr cap insufficient (Samsung/Hynix need 20-25 tools each), Vera CPU 500K→3M and >15-20% server-DRAM lift, +30% blended HBM ASP for '27, Google HBM share falling to low-20s%; ex-TSMC exec (2026-04-14) Samsung ~1yr behind TSMC / >half capex is memory / customer-conflict overhang; ex-Micron VP (2026-06-10) consolidated-Korea cost edge + HBM4E custom-base-die skepticism. Added byline "+ equity calls." No decks read — `SAMSUNG/apresentações` folder is empty.

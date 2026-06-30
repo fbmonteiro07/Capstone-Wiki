@@ -1,0 +1,128 @@
+<!-- Per-company wiki page. Synthesis of co-located disk sources with attribution. Buy-side voice. -->
+
+# ANET — Arista Networks
+
+_Wiki · generated 2026-06-18 · sources: `E:\Wiki Felipe\ANET` (filings + transcripts) · `_equity_calls` · `_briefings\by-ticker\ANET.md`. Master index: [../INDEX.md](../INDEX.md)._
+
+<!-- SNAPSHOT:START (auto: _tools/build_snapshot.py — do not hand-edit) -->
+### 📊 Consensus snapshot — BBG · asof 2026-06-22 · USD
+
+| Metric | CY2026E | CY2027E |
+|---|--:|--:|
+| Revenue | $11.5bn | $14.2bn |
+| Gross profit | $7.2bn | $8.9bn |
+| Gross margin | 62.6% | 62.6% |
+| EBITDA | $5.4bn | $6.7bn |
+| EPS | $3.57 | $4.43 |
+| Capex | $167m | $163m |
+| OCF (≈EBITDA) | $5.4bn | $6.7bn |
+
+<svg xmlns="http://www.w3.org/2000/svg" width="326" height="88" viewBox="0 0 326 88" font-family="-apple-system,Segoe UI,Roboto,sans-serif"><text x="0" y="10" font-size="11" font-weight="600" fill="#33405c">FY1 EPS revision</text><rect x="0" y="17.5" width="20" height="40.5" rx="2" fill="#1c5fd6"/><text x="10" y="69" font-size="9" text-anchor="middle" fill="#8492ad">6m</text><rect x="28" y="15.2" width="20" height="42.8" rx="2" fill="#1c5fd6"/><text x="38" y="69" font-size="9" text-anchor="middle" fill="#8492ad">3m</text><rect x="56" y="14.0" width="20" height="44.0" rx="2" fill="#1c5fd6"/><text x="66" y="69" font-size="9" text-anchor="middle" fill="#8492ad">1m</text><rect x="84" y="14.0" width="20" height="44.0" rx="2" fill="#1c7d3f"/><text x="94" y="69" font-size="9" text-anchor="middle" fill="#8492ad">now</text><text x="0" y="84" font-size="10" fill="#1c7d3f">+2.8% 3m · +8.6% 6m</text><text x="176" y="10" font-size="11" font-weight="600" fill="#33405c">FY2 EPS revision</text><rect x="176" y="17.9" width="20" height="40.1" rx="2" fill="#1c5fd6"/><text x="186" y="69" font-size="9" text-anchor="middle" fill="#8492ad">6m</text><rect x="204" y="15.4" width="20" height="42.6" rx="2" fill="#1c5fd6"/><text x="214" y="69" font-size="9" text-anchor="middle" fill="#8492ad">3m</text><rect x="232" y="14.0" width="20" height="44.0" rx="2" fill="#1c5fd6"/><text x="242" y="69" font-size="9" text-anchor="middle" fill="#8492ad">1m</text><rect x="260" y="14.0" width="20" height="44.0" rx="2" fill="#1c7d3f"/><text x="270" y="69" font-size="9" text-anchor="middle" fill="#8492ad">now</text><text x="176" y="84" font-size="10" fill="#1c7d3f">+3.2% 3m · +9.7% 6m</text></svg>
+
+_Gross profit = Revenue × GM%. OCF: no forward BBG consensus — EBITDA shown as proxy._
+<!-- SNAPSHOT:END -->
+
+## Snapshot
+Arista is the merchant high-end data-center / AI Ethernet switching vendor — software (EOS / CloudVision) layered on Broadcom-class merchant silicon, sold to the cloud titans, AI/specialty providers and enterprise. FY2025 revenue $9.0B, +28.6% YoY; mix: Cloud & AI Titans 48%, Enterprise & Financials 32%, AI & Specialty Providers (incl. Apple, Oracle, Anthropic) 20% (Q4 FY25 call, 2026-02-12). By product, core cloud/AI/DC ~65%, campus & routing ~18%, software/services subscription ~17%. The core debate is leverage to AI back-end Ethernet (scale-out 800G Etherlink today, scale-across in 2026, scale-up 2027+) against the question of how fast a record backlog/deferred balance converts to revenue, and gross-margin pressure from component inflation.
+
+## At a glance — product · buyer · supplier
+| | |
+|---|---|
+| **Sells (top 3)** | 1) Cloud/AI/DC Ethernet switching (EOS/CloudVision SW on merchant silicon, 800G Etherlink) ~65% · 2) Campus & routing ~18% · 3) Software/services subscription ~17% |
+| **Main buyer(s)** | Cloud & AI Titans 48%, Enterprise & Financials 32%, AI & Specialty Providers 20% (incl. Apple, Oracle, Anthropic); concentration: 2 customers = 16–20% of FY25 rev |
+| **Key suppliers** | Broadcom (primary merchant silicon) · TSMC-fabbed silicon · memory (cost inflation) · CPUs · optics |
+
+## Current state (latest quarter — Q1 FY26, call 2026-05-05)
+Beat-and-raise gated by supply. Q1 FY26 revenue $2.709B (+35.1% YoY), above the $2.6B guide; non-GAAP GM 62.4% (in 62–63% guide); non-GAAP op margin 47.8%; diluted EPS $0.87 (+31.8% YoY, vs ~$0.808 consensus); record OCF $1.69B (Q1 FY26 call, 2026-05-05).
+- **Demand vs supply is the whole story.** Ullal: "Our demand is actually the best I have ever seen in my Arista tenure"; supply is "a slightly different and opposite tale… demand is outstripping our supply" across wafers, silicon, CPUs, optics, memory, with ~52-week lead times. Purchase commitments raised to **$8.9B** (from $6.8B prior quarter); deferred-revenue acceptance cycles stretched to **6–8 quarters** vs 2–4 historically (Q1 FY26 call, 2026-05-05). Component lead times run 38–52 weeks but management says supply is "addressed through [their] purchase commitments" with no revenue constraint; JPM notes ANET's primary merchant-silicon supplier Broadcom shows no supply-constraint commentary (JPM, 2026-12-15).
+- **Guidance raised.** FY26 revenue to **$11.5B (+27.7%)** from prior $11.25B/25%; **AI fabrics target $3.5B** (from $3.25B, >2x prior year); campus $1.25B held; GM 62–64%, op margin ~46%. Q2 FY26: revenue ~$2.8B, EPS ~$0.88 (Q1 FY26 call, 2026-05-05). JPM's own FY26 model is deliberately below the guide at $10.69B/+25%, EPS $3.30 (FY25 $8.9B/$2.88), arguing co. conservative guide-setting "underappreciates the total magnitude of the acceleration" (JPM, 2026-12-15).
+- **Margin watch.** GM stepped down from FY25's 64.6% toward 62–64% on memory/silicon cost inflation. Q4 FY25 (2026-02-12), Ullal on memory: "the situation has worsened significantly… the prices are horrendous" — flagging selective price increases on memory-intensive SKUs. On the post-print callback ANET sounded **better on GM than the public-call confusion implied** — expects gross margin **resilient ~62–63%** (less path to 63%+ for the year), with back-half benefit from the **Q1 price increases**, and is **comfortable passing through the higher cost of Tomahawk 6 next year — which Celestica is NOT** (JPM "Networking recap", 2026-05-08).
+- **"De-commit" is a delay, not a cancellation.** What ANET flagged as Broadcom "de-commits" is really a **shipment delay** ("committed for the quarter but didn't get it"), not a technical de-commit (i.e. removed from the board) — a language difference (JPM "Networking recap", 2026-05-08). On supply more broadly, BofA reads ANET's constraint as **temporary**: as it lines up wins one after another, the customer must allocate it supply; ex-deferred, **1Q underlying shipments were >50% higher YoY** — navigating supply well (BofA optical supply-chain call, 2026-06-12). The implicit high-rate-switching wins at **Google (Virgo) and Anthropic** sit behind the commentary even though ANET doesn't name them (BofA optical supply-chain call, 2026-06-12).
+- **30%+ FY26 achievable.** With the guide at 28%, JPM sees 30%+ as readily achievable on ANET's historical pattern of ~10-pt full-year upgrades (even in supply-constrained years); 35% is where the bull case moderates as some upside pushes into 2027, and deferred revenue is the swing call option that JPM has "given up trying to predict" (JPM "Networking recap", 2026-05-08).
+- **Product/roadmap:** 800G Etherlink >100 cumulative customers; >150M cumulative Ethernet ports; three customers with >100k-GPU Ethernet deployments; XPO optics (12.8 Tbps/module) toward 1.6T/3.2T; founding member ESUN scale-up standard; UEC 1.0 complete (Q4 FY25, 2026-02-12; Q1 FY26, 2026-05-05).
+
+## Debate / thesis
+- **Bull:** AI front-end and traditional-compute network intensity is being structurally underestimated. 650 Group (Alan Weckel, 2026-06-04): agentic/MoE inference is pushing front-end from "one front-end port per 80 GPUs to one to four," everything moving to 400G+; data-center switching is a "40%+ growth this year… well north of $100B by end of decade" market where it is "not a winner take all." Scale-across is "~$500M last year… going to a $10B market." MS (Meta Marshall, 2026-05-12) raised FY25–28 revenue CAGR to ~20%+ from mid-teens and called the ~20% post-print pullback "overdone"; PT $190 (via Tom Wigg, 2026-06-12) on agentic front-end refresh, Dell'Oro AI front-end $1.8B'25→$6.3B'30 (MS up to ~$10B). Supply constraints are read as a positive by some: Tal Liani (BofA wrap, 2026-06-08) — constraints "actually help them because… they still have a backlog to grow." Google Virgo architecture seen as *more* Arista/Ethernet-friendly, opening a branded software-value lane (650 Group, 2026-06-04; JPM Meyers, 2026-06-08).
+- **Bull — deferred-rev realization is the "top-pick" engine.** JPM (Samik Chatterjee, 2026-12-15) names ANET its #1 Hardware & Networking pick for 2026 (OW + AFL, PT $175 Dec-26), thesis "centered around the accelerating pace of networking growth with the increasing size of XPU clusters… as well as the tailwinds in the realization of deferred revenue balances with material upside a matter of 'when' and not 'if'." Model is deliberately conservative (FY26 $10.69B/+25%, EPS $3.30, below co.'s $11.5B guide); AI mix 18%'25→27%'26→36%'27. At 39.2x P/E ANET has re-rated ~+17% since early-2024 on rising AI mix (JPM, 2026-12-15).
+- **Bull — scale-up optionality via "Bluebox" / merchant switching.** TD Cowen (Joshua Buchalter, initiation 2026-03-11, Buy, $157 ref): views ANET as "likely to emerge as the preferred vendor of choice for Ethernet-based scale out and scale across switching," with a NetDL-based **Bluebox** strategy giving it a shot at the **merchant scale-up switch market — a ~$34B TAM by 2030** (SUE-only ~$30B). The latency/determinism/fault-tolerance demands of scale-up are seen as a natural fit for ANET's HFT-era enterprise heritage; Microsoft's Maia 200 detailing looks "quite favorable" given ANET's long MSFT history and MSFT's de minimis white-box use, with Meta MTIA a similar (unannounced-protocol) optionality. TD Cowen rates this "possible rather than probable," assigning low share today on lack of visibility — NVL72 is the only switched scale-up platform at volume, and Trainium 3 / AMD MI450 are not expected to use Arista switches near-term. MS (Marshall, scale-up primer) frames Ethernet scale-up as addressable for ANET by **2028** as customers gain GPU choice and "prefer an open, flexible and multi-vendor" fabric vs. NVLink today; Ethernet AI-networking TAM +39% '24-29 CAGR. TD Cowen also flags ANET (alongside Marvell, Coherent, Lumentum) as well-positioned in **scale-across / DCI** given its hybrid switching-routing AI-spine foothold.
+- **Bear:** Backlog/deferred conversion risk into rich valuation. Tal Liani (BofA wrap, 2026-06-08) — across the big-three networking names, backlog/deferred "tripled, quadrupled" over four years; as Oracle/Microsoft builds finish 2H26, "these backlogs will decline… unless the orders are extremely strong to offset it" — flags it explicitly "because of the valuation." Note Street is at +34–35% FY26 vs ANET's 28% guide, i.e. a gap to defend. JPM (Samik Chatterjee) ran an "ANET: The Lost Charm" note and AMA "How to Get Its Groove Back" (2026-06-08/09) — relative underperformance vs AI-infra peers; EPS 2027E ~$5 referenced. GM compression from memory/silicon is real and ongoing (Q4 FY25, 2026-02-12). Deferred-rev practice is an idiosyncratic black box — Arista books long SLA acceptance windows that peers (CSCO, NVDA) do not, a startup-era legacy that lags revenue recognition (650 Group, 2026-06-04). Competitive: Cisco Silicon One has closed the gap to ~1–2 quarters at 800G and supply-chain resilience may be a "durable advantage"; NVIDIA strongest in neo-clouds; HPE/Nokia gaining share in the rising tide (650 Group, 2026-06-04).
+- **Where the sell-side stands:** JPM (Chatterjee) OW + AFL, PT $175 (Dec-26), ANET = top Hardware & Networking pick into 2026 (2026-12-15) — note this supersedes the earlier "Lost Charm" reset framing; in the 2025-12-05 cut JPM had ANET at $128.55/OW. TD Cowen (Buchalter) initiated Buy ($157 ref, 2026-03-11), top pick of its connectivity coverage. MS (Marshall) OW, PT $180→$190 (2026-05-12 / 2026-06-12). Citi (Atif Malik) Buy, PT lowered to $176 on supply constraints (2026-05-06); Citi also flagged the 1.6T rack-scale portfolio launch with Meta/Microsoft/Oracle + AMD/AVGO silicon (2026-06-12). Barclays desk read: "well debated but… investors are positive, just some disagreement on how quickly deferred will turn into revenue" (2026-05-22).
+
+## Catalysts / what to watch
+- **Q2 FY26 print** (guide ~$2.8B rev / ~$0.88 EPS) — the key tell on whether the 28% guide closes the gap to Street's 34–35%, and on GM trajectory.
+- **1.6T rack-scale portfolio ramp:** per Citi (2026-06-12), 1 platform launches Q4'26, 2 in Q1'27 — partners Meta/Microsoft/Oracle, silicon AMD + AVGO. TD Cowen sees the 800G→1.6T transition driving switching + optical content step-up (2026-03-11).
+- **Scale-across inflection (2026)** — management targets ≥1/3 of AI revenue; **scale-up (2027+)** on eSun specs is the next leg, with TD Cowen's ~$34B-by-2030 merchant scale-up TAM and MS's 2028 Ethernet-scale-up addressability the upside markers.
+- **Maia 200 (MSFT) / MTIA (Meta) accelerator ramps** — the concrete tells on whether ANET's Bluebox scale-up optionality converts; both depend on multi-generational volume (TD Cowen, 2026-03-11).
+- **Microsoft InfiniBand→Ethernet shift in 2026** (Tal Liani, 2026-06-08) — supportive for back-end; watch front-end deceleration offset.
+- **OCP (October 2026)** as the industry scale-up / CPO milestone window (650 Group, 2026-06-04).
+- **Tomahawk 6 / 1.6T timing:** Tomahawk 6 shipped for revenue in 1Q26 but **2026 is "all about Tomahawk 5" / the 51.2T generation** — Tomahawk 6 is more a 2027 event; the four main scale-out switch-ASIC suppliers are **Broadcom, Cisco (Silicon One, doing very well), Anovium/Marvell, and Nvidia (Spectrum-X)** (650 Group, 2026-05-26). On scale-up fabric, the likely path is **UALink-over-Ethernet → standalone UALink → back to Ethernet**, with Ethernet + NVLink the two durable scale-up fabrics — supportive of ANET's Ethernet position (650 Group, 2026-05-26).
+- **Deferred-revenue balance trajectory** — management said it will "flatten out"; the 2H26 hyperscaler build completions are the test.
+
+## Risks
+- **Customer concentration:** two customers were 16–20% of FY25 revenue; 1–2 additional 10%+ customers expected in 2026 — order/topology decisions by a handful of titans swing the model (Q4 FY25, 2026-02-12).
+- **Supply chain:** ~52-week lead times, $8.9B purchase commitments locked multiyear; component shortfall caps revenue near term (Q1 FY26, 2026-05-05).
+- **Gross-margin erosion** from memory ("horrendous" prices) and TSMC-concentrated silicon cost inflation (Q4 FY25, 2026-02-12).
+- **Deferred-revenue volatility / conversion** — long acceptance windows make quarters unpredictable; backlog drawdown risk as builds complete (CFO Breithaupt, Q4 FY25; Tal Liani, 2026-06-08).
+- **Competition / share** — Cisco Silicon One gap-closing + supply resilience, NVIDIA in neo-clouds, HPE/Nokia gaining; white-box (Celestica) in software-light workloads (650 Group, 2026-06-04). In scale-up specifically, ANET's share is unproven vs. incumbent NVLink and merchant entrants (Broadcom SUE, Marvell UALink); Trainium 3 / MI450 not expected on Arista switches near-term (TD Cowen, 2026-03-11).
+
+## Intra-quarter — calls, commentary & reports (since the last print)
+_Q1 FY26 · May 05 → Jun 15, 2026 · sell-side / expert calls / reports between earnings. Timeline visual: [timeline.html](timeline.html)._
+
+**Signal vs management** — what management said on the last call × what the intra-quarter flow is saying (✓ confirms · ⚠ nuances · ✗ contests):
+
+| Theme | Management said (Q1'26 · 2026-05-05) | Intra-quarter flow | Signal |
+|---|---|---|---|
+| **Demand / supply** | Ullal: "the best demand I've ever seen in my Arista tenure"; demand outstrips supply, ~52wk lead times; PCs $8.9B | 650 Group: agentic front-end goes from 1 port/80 GPUs to 1-4, DC switching "+40% this year"; BofA: ex-deferred, 1Q shipments +50% y/y, constraint "temporary", implicit wins at Google (Virgo) and Anthropic | **✓ confirms** (real demand, supply is the bottleneck) |
+| **FY26 guidance** | revenue to $11.5B (+27.7%); AI fabrics $3.5B (>2x prior year) | JPM: 30%+ "readily achievable" given the track record of ~10pt/yr upgrades, conservative guide "underappreciates the magnitude"; but Street already at +34-35% — a gap to defend | **⚠ nuance** (guide is a floor, conversion = swing) |
+| **Gross margin** | 62.4%, low end of the 62-64% guide; component cost pressure | JPM callback: better than the public-call confusion implied — GM resilient ~62-63%, 2H benefit from the Q1 price increases, passes through Tomahawk 6 cost (Celestica does NOT) | **✓ confirms** (GM defensible) |
+| **Deferred / conversion** | acceptance cycles stretched to 6-8 qtrs vs 2-4 historically | Tal Liani (BofA): backlog/deferred "tripled, quadrupled" over 4 years, should decline once the Oracle/MSFT builds finish in 2H26 "unless orders are very strong" — explicit flag "because of the valuation" | **✗ contests** (drawdown risk at the valuation) |
+| **Product / roadmap** | 800G Etherlink >100 customers; 1.6T rack-scale portfolio | Citi: 1.6T with Meta/MSFT/Oracle + AMD/AVGO silicon; 1 platform in Q4'26, 2 in Q1'27 | **✓ confirms** (1.6T ramp on the calendar) |
+
+**Full log** (all intra-quarter flow, by date):
+
+| Date | Source | Theme | Bias | What was said |
+|---|---|---|---|---|
+| 05-05 | ANET · Q1 FY26 earnings call | demand | bull | Ullal: "Our demand is actually the best I have ever seen in my Arista tenure"; demand exceeds supply across wafers, silicon, CPUs, optics and memory with lead times of ~52 weeks. Purchase commitments raised to US$8.9B (from US$6.8B). |
+| 05-05 | ANET · Q1 FY26 earnings call | guidance | bull | Guidance raised: FY26 revenue to US$11.5B (+27.7%) from US$11.25B/25%; AI fabrics target US$3.5B (from US$3.25B, >2x prior year); campus US$1.25B; GM 62–64%, op margin ~46%. Q2 FY26: revenue ~US$2.8B, EPS ~US$0.88. |
+| 05-05 | ANET · Q1 FY26 earnings call | supply | mixed | Deferred-revenue acceptance cycles stretched to 6–8 quarters vs 2–4 historically; component lead times 38–52 weeks, but management says supply is "addressed" via purchase commitments with no revenue constraint. |
+| 05-06 | Citi · Atif Malik | valuation | bull | Citi (Atif Malik) Buy, PT cut to US$176 on the supply constraints. |
+| 05-08 | JPM · Networking recap (Samik/Joe) | margin | bull | On the post-print callback ANET sounded better on GM than the confusion of the public call implied: expects resilient GM ~62–63%, second-half benefit from the Q1 price increases, and is comfortable passing through the higher Tomahawk 6 cost next year — which Celestica is NOT. |
+| 05-08 | JPM · Networking recap (Samik/Joe) | supply | mixed | What ANET called Broadcom "de-commits" is actually shipment delay ("committed for the quarter but didn't get it"), not a technical de-commit — a difference in language. |
+| 05-08 | JPM · Networking recap (Samik/Joe) | guidance | bull | With the guide at 28%, JPM sees 30%+ for FY26 as readily achievable given the track record of ~10-pt upgrades through the year; 35% is where the bull case moderates; deferred revenue is the call option JPM "gave up trying to predict." |
+| 05-12 | Morgan Stanley · Meta Marshall | valuation | bull | MS (Meta Marshall) raised FY25–28 revenue CAGR to ~20%+ from mid-teens and called the ~20% post-print pullback "overdone"; OW. |
+| 05-22 | Barclays · desk read | valuation | mixed | Barclays desk: "well debated but… investors are positive, just some disagreement on how quickly deferred will turn into revenue." |
+| 06-04 | 650 Group · Alan Weckel | demand | bull | 650 Group (Alan Weckel): agentic/MoE inference pushes the front-end from "one port per 80 GPUs to one to four"; data-center switching is a market with "40%+ growth this year… well north of US$100B by end of decade", "not a winner take all". Scale-across goes from ~US$500M to a US$10B market. |
+| 06-04 | 650 Group · Alan Weckel | competition | bear | 650 Group: Cisco Silicon One closed the gap to ~1–2 quarters in 800G and supply resilience may be a durable advantage; NVIDIA stronger in neo-clouds; HPE/Nokia gaining share. |
+| 06-08 | BofA · Tal Liani (conference wrap) | valuation | bear | Tal Liani (BofA): across the three big networking names, backlog/deferred "tripled, quadrupled" over 4 years; as Oracle/Microsoft builds finish in 2H26 "these backlogs will decline… unless the orders are extremely strong" — explicitly flags "because of the valuation." |
+| 06-08 | JPM · Samik Chatterjee | valuation | mixed | JPM ran a note "ANET: The Lost Charm" and an AMA "How to Get Its Groove Back" — relative underperformance vs AI-infra peers; 2027E EPS ~US$5 referenced. |
+| 06-12 | BofA · optical supply-chain call | supply | bull | BofA reads ANET's constraint as temporary: ex-deferred, underlying 1Q shipments were >50% higher YoY. Implied high-rate switching wins at Google (Virgo) and Anthropic are behind the commentary even though ANET did not name them. |
+| 06-12 | Citi · Atif Malik | product | bull | Citi flagged the launch of the 1.6T rack-scale portfolio with Meta/Microsoft/Oracle + AMD/AVGO silicon; 1 platform launches in Q4'26, 2 in Q1'27. |
+
+**Quarter synthesis:** with demand and margin largely off the table, the debate concentrated entirely on deferred-conversion risk — JPM ("a call option I've given up trying to predict") and Barclays see upside of "when, not if", while BofA's Tal Liani explicitly flags the backlog declining once the hyperscaler builds finish in 2H26, all amplified by the valuation at ~39x.
+
+## Management commentary — evolution (last 6 quarters)
+
+| Theme | Q4'24 (2025-02-18) | Q1'25 (2025-05-06) | Q2'25 (2025-08-05) | Q3'25 (2025-11-04) | Q4'25 (2026-02-12) | Q1'26 (2026-05-05) |
+|---|---|---|---|---|---|---|
+| Revenue & guide | Q4 $1.93B +25%; FY25 guide ~$8.2B/+17% | Q1 $2.005B +27.6%; first $2B qtr | Q2 $2.205B +30.4%; FY25 raised to $8.75B/+25% | Q3 $2.308B +27.5%; FY25 ~$8.87B/26-27% | Q4 $2.493B +28.9%; FY25 $9.0B/+28.6% | Q1 $2.709B +35.1%; FY26 raised to $11.5B/+27.7% |
+| AI networking target | FY25 back-end $750M; AI center $1.5B | Reiterated back-end $715M / AI $1.5B | AI center >$1.5B; 4 titans + 25-30 others | AI center ≥$1.5B; FY26 set $2.75B | FY26 AI target raised to $3.25B | FY26 AI fabrics $3.5B (>2x prior yr) |
+| Gross margin | 64.2%; FY25 guide 60-62% | 64.1%, above guide; minimal tariff hit | 65.6%, beat on favorable mix | 65.2% on mix + inventory | 63.4%; memory "horrendous" prices | 62.4%, low end; component cost pressure |
+| Supply / commitments | — | Tariff focus; PCs $3.5B, inventory build | Navigating tariffs; VeloCloud announced | "Demand greater than ability to ship"; 38-52wk leads | Memory/silicon inflation; PCs rising | "Demand outstripping supply"; PCs $8.9B, ~52wk leads |
+| Demand tone | "Pivotal turning point"; ~20% GenAI-led | "Even more bullish" absent tariffs | "Once-in-a-lifetime opportunity" | 19th consecutive record quarter | Multiyear demand shipping over years | "Best I have ever seen in my Arista tenure" |
+| Deferred rev / acceptance | — | Product deferred up $219M; 12-18mo cycles | — | — | Product deferred +$469M to $5.4B; 6-18mo windows | Acceptance cycles stretched to 6-8 qtrs vs 2-4 |
+
+_Source: ANET earnings calls (dates above); management commentary, paraphrased._
+
+## Sources
+- **Filings:** [10-K FY2025 (2026-02-17)](../ANET/ANET_10-K_2026-02-17_0001596532-26-000013.html); [10-Q Q1 FY26 (2026-05-06)](../ANET/ANET_10-Q_2026-05-06_0001596532-26-000078.html).
+- **Transcripts:** [Q1 FY26 (2026-05-05)](../ANET/transcripts/ANET_Q1-2026-earnings_2026-05-05.md); [Q4 FY25 (2026-02-12)](../ANET/transcripts/ANET_Q4-2025-earnings_2026-02-12.md).
+- **Equity calls:** [2026-06-04 650 Group — networking](../_equity_calls/Semis/2026-06-04_650Group_networking.md); [2026-06-08 BofA — conference wrap (Tal Liani)](../_equity_calls/Overall/2026-06-08_BofA_conference-wrap.md). (See the ANET section in [INDEX](../INDEX.md).)
+- **Briefings:** [ANET roll-up](../_briefings/by-ticker/ANET.md) — 17 datapoints / 9 days (MS, Citi, JPM, Barclays).
+- **Research reports (relatórios bons):**
+  - [JPM Hardware & Networking (2025-12-15)](../relat%C3%B3rios%20bons/JPM_Hardware___Networkin_2025-12-15_5155719.html)
+  - [JPM Hardware & Networking (2025-12-05)](../relat%C3%B3rios%20bons/JPM_Hardware___Networkin_2025-12-05_5142283.html)
+  - [TD Cowen — Connectivity (Arista Buy initiation, 2026-03-11)](../relat%C3%B3rios%20bons/TDCOWEN.html)
+  - [MS — Scale-up primer](../relat%C3%B3rios%20bons/Scale_up_primer_MS.html)
+  - [JPM — Networking recap (Samik/Joe, 2026-05-08)](../relat%C3%B3rios%20bons/2026_05_08_jpm_nw_recap_8_may_2024.html) — ANET GM 62–63%, Tomahawk-6 cost pass-through (vs Celestica not), "de-commit" = delay, 30%+ FY26 achievable.
+  - [650 Group — networking research (2026-05-26)](../relat%C3%B3rios%20bons/2026_05_26_650_group_26_05.html) — Tomahawk 5/6 timing, four scale-out ASIC suppliers, UALink-over-Ethernet path.
+  - [BofA — CIEN optical supply chain (2026-06-12)](../relat%C3%B3rios%20bons/2026_06_12_cien_baml_supply_chain_12_jun_26.html) — ANET supply temporary, ex-deferred 1Q shipments +50% YoY, Google/Anthropic implicit wins.

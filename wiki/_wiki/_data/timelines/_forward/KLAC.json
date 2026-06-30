@@ -1,0 +1,35 @@
+{"ticker":"KLAC","forward":[
+{"metric":"WFE CY26","horizon":"CY26","trend":"up","trail":[
+{"date":"2025-10-30","val":"mid-to-high-single-digit growth","src":"Q1 FY26 call"},
+{"date":"2026-01-29","val":"~low-$120B","src":"Q2 FY26 call"},
+{"date":"2026-04-29","val":">$140B","src":"Q3 FY26 call"},
+{"date":"2026-05-22","val":">$140B; 80% of incremental WFE in adv foundry/logic + DRAM + adv-packaging","src":"Sur/JPM"},
+{"date":"2026-06-22","val":"WFE $149B (2026)","src":"MS On Memory and Semicap"}
+],"note":"KLA raised the CY26 WFE number every quarter this fiscal year."},
+{"metric":"CY27 WFE / growth stance","horizon":"CY27","trend":"up","trail":[
+{"date":"2026-01-29","val":"H2 acceleration on backlog","src":"Q2 FY26 call"},
+{"date":"2026-04-29","val":"CY27 growth > CY26; 'unprecedented' visibility","src":"Q3 FY26 call"},
+{"date":"2026-05-15","val":"CY27 rotates to new-node leaders KLAC/ASML; KLA the call for positive revisions into 2027","src":"Sur/JPM"},
+{"date":"2026-06-22","val":"WFE $191B (2027)","src":"MS On Memory and Semicap"}
+],"note":"KLA the only large-cap to commit publicly that CY27 growth > CY26; UBS disputes process-control share holding into CY27."},
+{"metric":"Process-control systems revenue growth","horizon":"CY26","trend":"up","trail":[
+{"date":"2026-01-29","val":"PC systems +19% y/y, outpacing industry","src":"Q2 FY26 call"},
+{"date":"2026-04-29","val":">20% growth; company-wide high-teen %; ~360bps share gain since 2021","src":"Q3 FY26 call"},
+{"date":"2026-04-30","val":"high-teens total sales growth in 2026 vs LAM/AMAT 'more in the 20s'","src":"Citi (Malik)"}
+],"note":"CY26 mix shifted to foundry/logic ~82% / memory ~18% on the sub-2nm node wave."},
+{"metric":"Advanced packaging revenue","horizon":"2026E","trend":"up","trail":[
+{"date":"2025-07-31","val":"CY25 raised to >$925M (from $850M)","src":"Q4 FY25 call"},
+{"date":"2026-01-29","val":"$950M CY25 (+70%); 2026 mid-to-high-teens growth","src":"Q2 FY26 call"},
+{"date":"2026-04-29","val":"~$635M (2025) -> ~$1B (2026E), ~+70% y/y","src":"Q3 FY26 call"},
+{"date":"2026-05-15","val":"~60-70% growth again in 2026","src":"Sur/JPM"}
+],"note":"Differentiated growth leg on TSMC CoWoS where peers are under-indexed."},
+{"metric":"Gross-margin trajectory","horizon":"CY26 / structural","trend":"contested","trail":[
+{"date":"2026-01-29","val":"DRAM-component costs a ~75-100bps GM headwind through CY26; +50-100bps tariff drag","src":"Q2 FY26 call"},
+{"date":"2026-04-29","val":"FQ4 GM guided down sequentially to 61.75% +/-1pt despite strong revenue","src":"Q3 FY26 call"},
+{"date":"2026-04-30","val":"still points to 62% full-year GM; KLA 'underestimated' memory-price impact on system GM","src":"Citi (Malik)"}
+],"note":"Near-term margin capped by elevated DRAM component costs and slightly weaker systems mix."},
+{"metric":"Through-2030 revenue CAGR model","horizon":"through-2030","trend":"up","trail":[
+{"date":"2026-04-29","val":"raised to 13-17% revenue CAGR; >90% of FCF returned; +150bps further WFE share","src":"Q3 FY26 call"},
+{"date":"2026-06-17","val":"Redburn raises estimates +1-7% on revenue (2-8% above consensus EBIT FY27-30)","src":"Redburn"}
+],"note":"Long-term model raised at Q3; Redburn says upside well reflected in expectations."}
+]}

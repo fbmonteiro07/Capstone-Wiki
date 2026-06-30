@@ -1,0 +1,23 @@
+{"ticker":"TM","forward":[
+{"metric":"Operating income / margin","horizon":"FY27","trend":"down","trail":[
+{"date":"FY26 Q1 (2025-08-07)","val":"FY guide cut to ¥3.2tn","src":"TM FY26Q1 deck"},
+{"date":"FY26 H1 (2025-11-05)","val":"FY26 guide raised to ¥3.4tn","src":"TM FY26Q2 deck"},
+{"date":"FY26 FY (2026-05-08)","val":"FY27 guide OI ¥3.0tn (-¥766bn), margin 5.9% (vs 7.4% FY26 actual)","src":"TM FY26Q4 deck"}
+],"note":"Third year of margin erosion guided (10.0%→7.4%→5.9%); tariff structural."},
+{"metric":"BEV retail ramp","horizon":"FY27","trend":"contested","trail":[
+{"date":"FY26 Q1 (2025-08-07)","val":"FY26 BEV guidance","src":"TM FY26Q1 deck"},
+{"date":"FY26 H1 (2025-11-05)","val":"FY26 BEV guide cut 308k→277k retail","src":"TM FY26Q2 deck"},
+{"date":"FY26 FY (2026-05-08)","val":"FY27 BEV retail 598k (+146%), off low base; FY26 actual 243k (+68%)","src":"TM FY26Q4 deck slide 11"}
+],"note":"Aggressive +146% FY27 BEV guide against a history of cuts — show-me."},
+{"metric":"Value-chain OI target","horizon":"by 2030","trend":"up","trail":[
+{"date":"FY25 FY (2025-05-08)","val":"value chain ~+¥150bn/yr, toward >¥2tn; 20% ROE goal","src":"TM FY25Q4 deck"},
+{"date":"FY26 FY (2026-05-08)","val":"+¥2.1tn value-chain OI targeted by 2030 (from ¥1.4tn in 2025); 20% ROE goal","src":"TM FY26Q4 deck slides 21,23"}
+],"note":"Structural earning-power program; the bull's offset to auto-margin compression."},
+{"metric":"FY27 revenue / volume","horizon":"FY27","trend":"flat","trail":[
+{"date":"FY26 FY (2026-05-08)","val":"FY27 revenues ¥51.0tn (+0.6%); volume 9,600k (+0.1%); FX ¥150/US$, ¥180/€","src":"TM FY26Q4 deck slide 12"}
+],"note":"Essentially flat top-line; FY27 guided decline driven by Middle East (-¥400bn), labor/D&A/R&D, Hino deconsolidation."},
+{"metric":"Dividend","horizon":"FY27","trend":"up","trail":[
+{"date":"FY25 FY (2025-05-08)","val":"FY26 forecast ¥95 (+5)","src":"TM FY25Q4 deck"},
+{"date":"FY26 FY (2026-05-08)","val":"FY27 forecast ¥100 (+5)","src":"TM FY26Q4 deck slides 15-16"}
+],"note":"Rising dividend + record FY26 buyback (¥3.657tn, Toyota Industries take-private)."}
+]}

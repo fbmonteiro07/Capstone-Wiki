@@ -1,0 +1,32 @@
+{"ticker":"VST","forward":[
+{"metric":"EBITDA outlook","horizon":"FY26→FY27","trend":"up","trail":[
+{"date":"Q2'25","val":"raised 2026 midpoint opportunity to >=$6.8B","src":"Q2'25 call"},
+{"date":"Q3'25","val":"formal 2026 guidance $6.8-7.6B","src":"Q3'25 call"},
+{"date":"2026-02-26","val":"FY26 reaffirmed; FCF/sh >$12.50","src":"Q4 FY25 call"},
+{"date":"2026-05-07","val":"FY26 reaffirmed and FY27 midpoint opportunity held - both EXCLUDE pending Cogentrix + Meta PJM-nuclear PPAs","src":"Q1 FY26 call"}
+],"note":"Guidance excludes Cogentrix + Meta PPAs to be folded in post-close; ~$700-750M potential FY27 add."},
+{"metric":"FCF/share bridge","horizon":"FY26→2030","trend":"up","trail":[
+{"date":"2026-02-26","val":">$12.50 adj FCF-before-growth/share FY26; ~$16 w/ Cogentrix + Meta operating PPAs; $22-25 illustrative if 2026-30 cash all to buybacks","src":"Q4 FY25 call"},
+{"date":"2026-05-07","val":"line of sight >$10B cash gen 2026-2027 (~$3B equity, ~$4B growth, ~$3B unallocated) at ~2.3x net debt/EBITDA by YE27","src":"Q1 FY26 call"}
+],"note":"Aggressive buyback into high FCF yield is core to the bull; 10b5-1 designed to accelerate on weakness."},
+{"metric":"Cogentrix close / accretion","horizon":"2H26→2027-29","trend":"up","trail":[
+{"date":"2026-02-26","val":"Cogentrix 5,500MW gas, ~$730/kW net of tax; mid-single-digit FCF/sh accretion 2027, high-single-digit avg 2027-29; close 2H26","src":"Q4 FY25 call"},
+{"date":"2026-05-07","val":"Cogentrix on track to close 2H26 - triggers FY26 guidance + FY27 midpoint update","src":"Q1 FY26 call"}
+],"note":"Close is the catalyst that resets guidance upward; ~$500M EBITDA run-rate add."},
+{"metric":"Nuclear PPA ramps","horizon":"2027→2034","trend":"up","trail":[
+{"date":"Q3'25","val":"Comanche Peak 1,200MW 20-yr (Amazon) signed","src":"Q3'25 call"},
+{"date":"2026-02-26","val":"~3.8GW nuclear under 20-yr PPAs: Amazon Comanche Peak (energize 2027, full ramp 2032) + Meta 2,176MW operating + 433MW uprates (online 2031-2034)","src":"Q4 FY25 call"},
+{"date":"2026-06-16","val":"JPM deal table: Vistra-Meta 2.6 GW 20-yr across Beaver Valley/Davis-Besse/Perry (announced 1/9/26)","src":"JPM AI Capex 2.0"}
+],"note":"Contracted nuclear de-risks the model toward ~half of EBITDA from stable sources once PPAs ramp."},
+{"metric":"DC contracting cadence","horizon":"2026→2028","trend":"contested","trail":[
+{"date":"2026-02-26","val":"~3.2GW more nuclear (Beaver Valley + Comanche Peak) uncontracted; appetite 'as high as ever'; meaningful DC tightening not until 'late 2027/early 2028'","src":"Q4 FY25 call"},
+{"date":"2026-05-07","val":"ERCOT total growth ~30-40GW by 2030 (~10-15GW DC); load 'real but not at extremely elevated levels'; deals 'complicated' and slow","src":"Q1 FY26 call"},
+{"date":"2025-11-10","val":"Jefferies HOLD - IPPs ceding DC-contracting race to regulated utilities/BTM; prefers NRG/NI/ETR","src":"Jefferies"}
+],"note":"Mgmt more cautious on pace than the market; Jefferies sees IPPs losing share to regulated/BTM - the central contested point."},
+{"metric":"Load growth","horizon":"to 2030","trend":"up","trail":[
+{"date":"Q1'25","val":"low-to-mid single digit to 2030","src":"Q1'25 call"},
+{"date":"2026-02-26","val":"US ~4,200 TWh +2.5% YoY; peak 3-5%","src":"Q4 FY25 call"},
+{"date":"2026-05-07","val":"ERCOT 5-6% and PJM 2-3% to 2030; fleet only ~60% utilized = operating leverage","src":"Q1 FY26 call"},
+{"date":"2026-06-16","val":"JPM models 138 GW US DC capacity growth through 2030 (up from 122 GW); power the binding constraint","src":"JPM AI Capex 2.0"}
+],"note":"Higher utilization of existing fleet without greenfield risk is the operating-leverage thesis; forwards don't yet reflect mgmt's own view."}
+]}

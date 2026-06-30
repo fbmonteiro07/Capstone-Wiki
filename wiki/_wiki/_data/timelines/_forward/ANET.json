@@ -1,0 +1,34 @@
+{"ticker":"ANET","forward":[
+{"metric":"FY26 Revenue","horizon":"FY26","trend":"up","trail":[
+{"date":"2026-02-12","val":"FY25 $9.0B +28.6%; FY26 implied trajectory","src":"Q4 FY25 call"},
+{"date":"2026-05-05","val":"FY26 raised to $11.5B / +27.7% (from prior $11.25B/25%)","src":"Q1 FY26 call"},
+{"date":"2026-05-08","val":"30%+ FY26 readily achievable vs 28% guide on ~10-pt full-year upgrade pattern; 35% where bull case moderates as upside pushes to 2027","src":"JPM Networking recap"}],
+"note":"Street at +34-35% FY26 vs co. 28% guide; JPM own model deliberately below at $10.69B/+25%."},
+{"metric":"AI fabrics target FY26","horizon":"FY26","trend":"up","trail":[
+{"date":"2025-11-04","val":"FY26 AI set $2.75B","src":"Q3 FY25 call"},
+{"date":"2026-02-12","val":"FY26 AI target raised to $3.25B","src":"Q4 FY25 call"},
+{"date":"2026-05-05","val":"FY26 AI fabrics $3.5B (>2x prior year)","src":"Q1 FY26 call"}],
+"note":"AI mix 18%'25 -> 27%'26 -> 36%'27 per JPM."},
+{"metric":"1.6T rack-scale ramp","horizon":"Q4'26 -> Q1'27","trend":"up","trail":[
+{"date":"2026-03-11","val":"800G->1.6T transition drives switching + optical content step-up","src":"TD Cowen"},
+{"date":"2026-06-12","val":"1 platform launches Q4'26, 2 in Q1'27; partners Meta/Microsoft/Oracle, silicon AMD + AVGO","src":"Citi"}],
+"note":"Concrete near-term content step-up tell."},
+{"metric":"Scale-across inflection","horizon":"2026","trend":"up","trail":[
+{"date":"2026-02-12","val":"scale-across in 2026 (next leg after scale-out 800G)","src":"Q4 FY25 call"},
+{"date":"2026-06-04","val":"scale-across ~$500M last year going to a $10B market","src":"650 Group (Alan Weckel)"}],
+"note":"Mgmt targets >=1/3 of AI revenue from scale-across."},
+{"metric":"Scale-up merchant TAM","horizon":"2027+ -> 2028 / 2030","trend":"up","trail":[
+{"date":"2026-03-11","val":"Bluebox scale-up shot at merchant scale-up switch market ~$34B TAM by 2030 (SUE-only ~$30B); rated 'possible rather than probable'","src":"TD Cowen"},
+{"date":"2026-05-05","val":"scale-up 2027+ on eSun specs; founding member ESUN scale-up standard","src":"Q1 FY26 call"}],
+"note":"MS frames Ethernet scale-up addressable by 2028 as customers gain GPU choice."},
+{"metric":"Deferred-rev conversion","horizon":"2H26 -> 2027","trend":"contested","trail":[
+{"date":"2026-02-12","val":"Product deferred +$469M to $5.4B; mgmt said it will 'flatten out'","src":"Q4 FY25 call"},
+{"date":"2026-05-05","val":"acceptance cycles stretched to 6-8 quarters vs 2-4 historically; swing call option","src":"Q1 FY26 call"},
+{"date":"2026-06-08","val":"Tal Liani: backlog/deferred tripled-quadrupled over 4yrs; as Oracle/MSFT builds finish 2H26 'these backlogs will decline unless orders extremely strong' (flagged b/c of valuation)","src":"BofA wrap"}],
+"note":"JPM: deferred realization material upside a matter of 'when not if'; bears see drawdown risk into rich multiple."},
+{"metric":"Gross-margin trajectory","horizon":"FY26 / structural","trend":"down","trail":[
+{"date":"2026-02-12","val":"GM 63.4%; memory 'horrendous' prices","src":"Q4 FY25 call"},
+{"date":"2026-05-05","val":"FY26 GM 62-64% (down from FY25 64.6%) on memory/silicon cost inflation","src":"Q1 FY26 call"},
+{"date":"2026-05-08","val":"GM resilient ~62-63%, back-half benefit from Q1 price increases; comfortable passing through Tomahawk 6 cost (vs Celestica not)","src":"JPM Networking recap"}],
+"note":"Stepping down from FY25 peak; price increases offset."}
+]}

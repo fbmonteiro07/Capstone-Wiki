@@ -1,0 +1,22 @@
+{"ticker":"QCOM","forward":[
+{"metric":"Data-center revenue ramp","horizon":"2027→FY28","trend":"up","trail":[
+{"date":"2025-10-27","val":"AI200/AI250 inference cards launched; AI200 commercial 2026, AI250 in 2027","src":"TD Cowen"},
+{"date":"2025-12-15","val":"DC opportunity starting FY27, reaching multi-billion-dollar by ~FY28","src":"JPM/Chatterjee (OW)"},
+{"date":"2026-04-29","val":"initial hyperscaler shipments expected December 2026; framed margin-accretive","src":"Q2 FY26 call"},
+{"date":"2026-05-22","val":"four DC sockets pursued; quantified as multi-billion dollars in 2027","src":"JPM \"Conf feedback\""}
+],"note":"Bull/bear pivot — JPM says DC roadmap updates dictate the stock; UBS says years from moving the needle."},
+{"metric":"Automotive run-rate","horizon":"FY26→FY29","trend":"up","trail":[
+{"date":"2025-07-30","val":"Auto +21% YoY; FY29 Auto+IoT target $22B","src":"Q3 FY25 call"},
+{"date":"2026-04-29","val":"Auto $1.33B (+38% YoY); >$5B annualized first time, exiting FY26 at >$6B run-rate","src":"Q2 FY26 call"}
+],"note":"Diversification proof point; ADAS/AD ~1/3 of the $45B design-win pipeline."},
+{"metric":"Apple modem in-sourcing drag","horizon":"next few years","trend":"down","trail":[
+{"date":"2025-11-05","val":"Apple modem in-sourcing an explicit \"significant negative\" to QCT","src":"10-K FY25"},
+{"date":"2025-12-15","val":"sizes drag at $6-7B revenue headwind, \"likely to overwhelm most\" other growth","src":"JPM/Chatterjee"},
+{"date":"2026-04-29","val":"no change to 20% share assumption for fall Apple phones","src":"Q2 FY26 call"}
+],"note":"UBS sizes internal-competition risk: Apple modem ~$5B + QTL ~$1.5B + Samsung ~$1B."},
+{"metric":"Valuation re-rate / multiple","horizon":"FY27→FY28","trend":"contested","trail":[
+{"date":"2025-12-15","val":"re-rate from mid-teens to low-20x multiple on mix shift away from smartphones (OW)","src":"JPM/Chatterjee"},
+{"date":"2025-12-19","val":"Neutral PT $185; smartphones >50% of OP in CY27/28; adjacencies \"not needle moving\"","src":"UBS/Arcuri"},
+{"date":"2026-04-30","val":"estimates coming down but stock re-rated up off ~12x on custom-silicon teaser; short interest high","src":"Citi/Malik"}
+],"note":"Disagreement is whether DC/diversification outruns the Apple drag and forces upgrades."}
+]}

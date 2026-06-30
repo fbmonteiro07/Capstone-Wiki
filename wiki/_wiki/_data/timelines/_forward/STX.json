@@ -1,0 +1,25 @@
+{"ticker":"STX","forward":[
+{"metric":"Q4 FY26 revenue/EPS","horizon":"Q4 FY26 (Jun-qtr)","trend":"up","trail":[
+{"date":"2026-04-28","val":"Q4 FY26 guide rev $3.45B +/-$100M (+41% y/y), op margin 'lower 40% range', EPS $5.00 +/-$0.20 (vs Q3 $3.1B / 47% / $4.10)","src":"Q3 FY26 call"}],
+"note":"EPS trajectory $2.59->$2.61->$3.11->$4.10 over four quarters."},
+{"metric":"Long-term revenue growth target","horizon":"structural","trend":"up","trail":[
+{"date":"2025-07-29","val":"LT annual revenue growth target low-to-mid-teens","src":"Q4 FY25 call"},
+{"date":"2026-04-28","val":"LT annual revenue growth target RAISED to 'at least 20%' on demand acceleration + CY27 visibility","src":"Q3 FY26 call"}],
+"note":"Explicit upward revision of the through-cycle growth algorithm."},
+{"metric":"Nearline pricing $/TB","horizon":"CY27->CY28","trend":"up","trail":[
+{"date":"2026-05-26","val":"Pricing biggest incremental upside; mid-teens price increases in 12mo 'could be'; STX more cost-driven (faster HAMR cost declines)","src":"JPM Networking"},
+{"date":"2026-06-16","val":"Vendors targeting ~$25/TB CY27, ~$30 CY28 vs ~$14.50 today; STX CY27 EPS $52 base / $66 bull, 'more than $70 CY27, >$100 CY28' if checks hold; Google HAMR contract reprices higher Jun->Sept-26","src":"MS/Woodring equity call"}],
+"note":"Google HAMR 'sweetheart' reprice is the clearest near-term GM/EPS swing."},
+{"metric":"HAMR/Mozaic nearline-EB mix","horizon":"FY26->FY28","trend":"up","trail":[
+{"date":"2025-10-23","val":"HAMR guided to 40% of nearline EB by end FY26 -> 50% 1H FY27 -> 70% end FY27 -> 80% end FY28","src":"Bernstein HDD"},
+{"date":"2026-04-09","val":"FY27 '>50% of total exabytes HAMR' target UNCHANGED; Mozaic 4 not a standalone 2H GM 'game-changer' (first-gen ramp drives GM)","src":"JPM HDD"},
+{"date":"2026-04-28","val":"Mozaic 4 shipping for revenue late Mar; majority of HAMR EB by end CY26; Mozaic 5 (50TB) qual shipments late 2027","src":"Q3 FY26 call"}],
+"note":"HAMR mix-up is the GM-expansion engine; capacity roadmap 36TB->40TB->50TB."},
+{"metric":"Nearline allocation / RPO","horizon":"CY2027","trend":"up","trail":[
+{"date":"2026-01-27","val":"CY2026 fully booked; pricing flat-to-up","src":"Q2 FY26 call"},
+{"date":"2026-04-28","val":"Nearline almost fully allocated through CY2027; top-3 CSP remaining performance obligations nearly doubled to $1.1T","src":"Q3 FY26 call"}],
+"note":"Build-to-order/LTA model locks forward volume; pricing still being set for CY27."},
+{"metric":"Out-year EPS (bear view)","horizon":"FY27->FY28","trend":"down","trail":[
+{"date":"2025-12-22","val":"UBS Neutral TP $230: STX EPS DECLINES into out-years (FY27 ~$12.08, FY28 ~$11.80) — a peak-earnings call; HAMR share gains 'temporary' as ePMR bridges WDC","src":"UBS 2026 overview"}],
+"note":"The explicit bear: above-trendline shipments / double-ordering risk into a peak."}
+]}

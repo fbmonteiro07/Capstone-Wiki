@@ -1,0 +1,133 @@
+<!-- per-company wiki page — CSCO -->
+
+# CSCO — Cisco Systems
+
+_Wiki · generated 2026-06-18 · sources: `E:\Wiki Felipe\CSCO` (filings + transcripts + decks) · `_equity_calls` · `_briefings\by-ticker\CSCO.md`. Master index: [../INDEX.md](../INDEX.md)._
+
+<!-- SNAPSHOT:START (auto: _tools/build_snapshot.py — do not hand-edit) -->
+### 📊 Consensus snapshot — BBG · asof 2026-06-22 · USD
+
+| Metric | CY2026E | CY2027E |
+|---|--:|--:|
+| Revenue | $66.1bn | $70.8bn |
+| Gross profit | $43.8bn | $46.9bn |
+| Gross margin | 66.2% | 66.3% |
+| EBITDA | $24.7bn | $26.6bn |
+| EPS | $4.54 | $5.04 |
+| Capex | $1.3bn | $1.4bn |
+| OCF (≈EBITDA) | $24.7bn | $26.6bn |
+
+<svg xmlns="http://www.w3.org/2000/svg" width="326" height="88" viewBox="0 0 326 88" font-family="-apple-system,Segoe UI,Roboto,sans-serif"><text x="0" y="10" font-size="11" font-weight="600" fill="#33405c">FY1 EPS revision</text><rect x="0" y="15.6" width="20" height="42.4" rx="2" fill="#1c5fd6"/><text x="10" y="69" font-size="9" text-anchor="middle" fill="#8492ad">6m</text><rect x="28" y="15.2" width="20" height="42.8" rx="2" fill="#1c5fd6"/><text x="38" y="69" font-size="9" text-anchor="middle" fill="#8492ad">3m</text><rect x="56" y="14.0" width="20" height="44.0" rx="2" fill="#1c5fd6"/><text x="66" y="69" font-size="9" text-anchor="middle" fill="#8492ad">1m</text><rect x="84" y="14.0" width="20" height="44.0" rx="2" fill="#1c7d3f"/><text x="94" y="69" font-size="9" text-anchor="middle" fill="#8492ad">now</text><text x="0" y="84" font-size="10" fill="#1c7d3f">+2.9% 3m · +3.8% 6m</text><text x="176" y="10" font-size="11" font-weight="600" fill="#33405c">FY2 EPS revision</text><rect x="176" y="17.0" width="20" height="41.0" rx="2" fill="#1c5fd6"/><text x="186" y="69" font-size="9" text-anchor="middle" fill="#8492ad">6m</text><rect x="204" y="16.6" width="20" height="41.4" rx="2" fill="#1c5fd6"/><text x="214" y="69" font-size="9" text-anchor="middle" fill="#8492ad">3m</text><rect x="232" y="14.1" width="20" height="43.9" rx="2" fill="#1c5fd6"/><text x="242" y="69" font-size="9" text-anchor="middle" fill="#8492ad">1m</text><rect x="260" y="14.0" width="20" height="44.0" rx="2" fill="#1c7d3f"/><text x="270" y="69" font-size="9" text-anchor="middle" fill="#8492ad">now</text><text x="176" y="84" font-size="10" fill="#1c7d3f">+6.2% 3m · +7.3% 6m</text></svg>
+
+_Gross profit = Revenue × GM%. OCF: no forward BBG consensus — EBITDA shown as proxy._
+<!-- SNAPSHOT:END -->
+
+## Snapshot
+Cisco is the incumbent enterprise/SP networking franchise re-rating into an AI-infrastructure story. Revenue is grouped into **Networking** (switching, routing, wireless, servers — the largest bucket and the standout grower), **Security** (incl. Splunk), **Collaboration**, and **Observability**, plus a large services/subscription annuity (FY26-FY10-K, 2025-09-03). Subscription was ~49% of total revenue and software ~$5.7B in Q3 FY26 (Q3 FY26 call, 2026-05-13). The new edge is twofold: (1) **AI infrastructure for hyperscalers** — Silicon One ASICs/systems + Acacia coherent pluggable optics; (2) a **multiyear enterprise campus refresh** (switching/WiFi 7/routing). 650 Group frames CSCO as one of three volume-scale data-center switch players alongside NVDA and Arista/Celestica (650 Group, 2026-06-04). In the broader DC networking-equipment market (~$36B), Cisco is the #2 vendor at ~16% share behind Arista at ~17% (BofA DC primer).
+
+## At a glance — product · buyer · supplier
+| | |
+|---|---|
+| **Sells (top 3)** | 1) Networking (switching/routing/wireless/servers, the largest bucket) · 2) AI infrastructure (Silicon One ASICs/systems + Acacia coherent optics) · 3) Security (incl. Splunk) |
+| **Main buyer(s)** | Enterprises & public sector (campus refresh) + hyperscalers for AI infra — 5 top hyperscalers drove SP/cloud orders +105% in Q3 FY26 |
+| **Key suppliers** | TSMC foundry (3nm-class switch ASICs); DRAM/memory (Nanya 3-yr supply deal, DDR5); laser/InP components for transceivers |
+
+## Current state (latest quarter — Q3 FY26, reported 2026-05-13)
+- **P&L:** record revenue **$15.8B, +12% YoY**, above high end of guide; product revenue +17%, services -1% (contract-start timing). Non-GAAP EPS **$1.06, +10%**; non-GAAP op margin 34.2% (Q3 FY26 call).
+- **Orders — the headline:** total product orders **+35% YoY**; ex-hyperscaler +19%; enterprise +18%, public sector +27%, SP/cloud **+105%** (5 top hyperscalers each triple-digit). Networking orders **+50%+**, 7th straight double-digit quarter. All geos accelerating (Americas +35%, EMEA +39%, APJC +25%) (Q3 FY26 call).
+- **AI infra:** hyperscaler AI orders **$1.9B** in Q3 (vs $600M yr-ago); **YTD $5.3B already exceeds the prior $5B FY26 target with a quarter left**. Management **raised FY26 hyperscaler AI orders to ~$9B (4.5x FY25)** and **~$4B AI revenue**. Acacia >$1B orders in Q3, on track to >200% YoY; 5 new hyperscaler design wins (2 optics, 3 systems incl. first two **Silicon One P200** scale-across wins, plus a third in early Q4). Neocloud/sovereign/enterprise AI: ~$300M orders Q3, ~$900M YTD, ~$3B pipeline (Q3 FY26 call).
+- **Margins / mix:** non-GAAP GM 66.0% (-260bps YoY); product GM 64.3% (-330bps) on mix + memory cost. Mgmt: GM **stabilized** (Q4 guide midpoint also ~66%); mix (hardware ~30% growth vs software ~1%) is the bigger drag than memory. Op leverage protected — OpEx fell from 34.1% to 31.9% of rev YoY, holding ~34% op margin (Patterson, Q3 FY26).
+- **Guidance:** Q4 FY26 rev **$16.7–16.9B**, EPS **$1.16–1.18**, op margin 34–35%. FY26 rev **$62.8–63.0B**, EPS **$4.27–4.29**. **Restructuring** announced (~4,000 jobs / ~5% of workforce per 2026-05-15 briefing) — up to $1B pretax charge ($450M in Q4), explicitly reallocation toward silicon/optics/security/AI, **not** a savings play (Patterson, Q3 FY26).
+- **FY27 early frame:** Patterson — expect **≥$6B** hyperscaler AI revenue in FY27; rest of portfolio grows in line with the 4-6% long-term model (Q3 FY26 Q&A). GS sees F2027 framework >$68B rev (Mike Ng, briefing 2026-05-14).
+- **Campus refresh — the EOL "forcing function" (BofA IR call, 2026-05-15):** Cat 4k/6k end-of-life is the structural driver — **Cat 4k EOL/EOS concludes end-CY26, Cat 6k end-CY27** (and 6k is a *much* larger install base than 4k, so 2027 is the bigger wave). The aged campus gear in scope is **~$40B** ("tens of billions" of low-single-digit-growth campus revenue now getting a forcing function), upsold with software/security where the old hardware-only boxes carried none; financial institutions move fastest. Smart Switch (Silicon One + DPUs, port-level firewall) sits alongside Cat 9k; an up-leveled version is due at Cisco Live next year (Sammy, BofA IR call, 2026-05-15).
+- **AI / silicon detail (BofA IR call, 2026-05-15):** half of Q3 AI orders were optics (incl. Acacia), half systems; the bulk of AI order wins are Acacia-tagged. The implied ~$2B sequential Q4 step is **more systems-weighted** (Acacia capped by assembly ramp). **P200 design wins are NOT in the updated $9B AI-orders number**; the team is now selling **G300** (102.4T, announced ~90 days ago — 2x the 51.2T G200 throughput) with **no design win or order yet**. Gross margin flat Q3→Q4 despite the AI mix; OpEx attach on incremental hyperscaler growth is low, so operating margin is the more controllable lever as hyperscale scales (Sammy, BofA IR call, 2026-05-15). **CPO view turned more constructive at OFC** as foundry yield rates improved — optics is now an explicit investment area in the script alongside AI/security/silicon; first CPO expected in Silicon One (Sammy, BofA IR call, 2026-05-15).
+
+- **Long-term framework — the FY24 Investor Day baseline (CSCO Investor Day, 2024-06-04):** the 4-6% total-revenue model now quoted on the Q3 call was first laid out here, with the **segment-level build for FY26 & FY27**: **Product 5-7%** (Networking **2-5%**, Security & Observability **15-17%**, Other ~flat), **Services 2-4%**, **Total 4-6%**, driving **non-GAAP EPS 6-8%** (GM lift from software/subscription mix + pricing/cost discipline; op-margin lift from AI productivity + Splunk synergies). Growth drivers named: AI infra revenue, Splunk attach, security infused into the network fabric, core-networking normalization, and **50%+ subscription mix** (CFO Herren deck, 2024-06-04). Useful as the yardstick for how far the AI/campus inflection has run vs the original plan.
+- **TAM framing (CSCO Investor Day, 2024-06-04):** management sizes a **2027 total addressable market of ~$575B (9% CAGR 25-27)** = **Current Markets ~$370B (6% CAGR)** + **Expansion Markets ~$205B (16% CAGR)**; adding **~$375B Adjacent Markets** gets to a **~$950B total opportunity**. Segment TAMs: **Networking $221B · Security $118B · Collaboration $90B · Observability $51B · Services $94B**. Cybersecurity alone is framed at **$68B (2025E) → $118B (2027E)**, ~$40B of the step from new/expansion markets (Robbins + CFO Herren decks, 2024-06-04). Sources cited: IDC/Gartner/Dell'Oro/Synergy/451/650 Group/Cignal AI/LightCounting + internal.
+- **Capital allocation policy (CFO Herren deck, 2024-06-04):** **commit to returning ≥50% of FCF annually** (93% average FCF returned FY19-Q3'24); priorities = grow organically/inorganically, grow the dividend (annualized $1.60 in FY24), buybacks "consistent with recent levels," then delever; **AA- (S&P) credit rating maintained post-Splunk**. Splunk was guided **non-GAAP EPS accretive in FY26+** (dilutive FY25 on ~$350M/qtr OI&E drag). Against the FY21 plan, CSCO had by Q3'24 hit subscription **53%** (vs 50%-by-FY25 goal) and a FY21-24e EPS CAGR ~**7%** (top of the 5-7% goal) on rev CAGR ~**4%** (below the 5-7% goal) — i.e. the original plan delivered on profitability/mix but missed on top-line, which is the gap the AI/campus cycle is now meant to close.
+
+## Debate / thesis
+- **Bull:**
+  - Silicon One is the moat — "if you don't have silicon, you're going to struggle to be relevant to hyperscalers" (Robbins, Q3 FY26). Gives supply-chain control: secured silicon through CY26, no decommits, +$11.6B YoY inventory/APC build. 650 Group confirms CSCO has parallel supply vectors vs the Broadcom ecosystem and is "one of the better supply-chain managed companies" (650 Group, 2026-06-04). JPM corroborates: hardware is a smaller part of CSCO's mix vs peers, advance purchase commitments (many Silicon One in FQ425/FQ126) and scaled-buyer status help secure capacity; TSMC is incentivized to work with Cisco for customer diversification and incremental margin (JPM, 2025-12-15).
+  - Acacia/optics inflection: shipped >750k 400G + >40k 800G coherent pluggables; 650 Group "very bullish" on the **1.6T PAM4 receiver** — first inside-the-DC organic optic — millions of units, multibillion-$ opportunity" (650 Group, 2026-06-04; JPM/650 Group briefing 2026-06-08).
+  - **Scale-across (DC-to-DC distributed training) is an emerging leg.** JPM sizes a **$10B+ incremental DCI TAM** (vs ~$10B existing market), at **$300–500M of content per DCI connection** for training, and names **Arista + Cisco best-positioned for the switch opportunity**, with Cisco also a coherent-pluggable-module beneficiary alongside Ciena/Coherent/Lumentum/Fabrinet. First concrete use case: a large U.S. hyperscaler interconnecting two ≥100k-XPU sites ~100km apart (JPM, 2025-12-05 & 2025-12-15). Ties directly to CSCO's first Silicon One P200 scale-across wins above.
+  - Campus refresh in early innings — record campus orders +25%, wireless +40% (WiFi 7 = half the mix); 650 Group: ~12-18 month cycle with CSCO gaining share at Juniper's expense; revenue outgrowing units on price (650 Group, 2026-06-04). Citi calls campus "early innings" (Malik, briefing 2026-05-14). JPM frames it as a stronger-for-longer AI-readiness upgrade cycle in Campus Switching + WiFi (JPM, 2025-12-15).
+  - Sell-side OW/Buy cluster: MS **OW PT $120** (Marshall — "AI rev to 4x FY26, ≥50% YoY FY27"); Citi **Buy PT $112** at 22x (Malik, FY26-28 EPS +3/7/8%); UBS **Buy** (Vogt upgrade validated) (briefing 2026-05-14, morning table 2026-06-13). JPM **OW** (Chatterjee, close $77.80) — 2026 share price hinges on (1) durability/magnitude of the Enterprise Campus up-cycle, (2) sustaining/scaling AI orders (then annualizing to ~$4.2B) and converting the $2B+ Enterprise/Sovereign/Neocloud pipeline, (3) navigating a likely supply-constrained environment; views the FY26 guide (~7% growth; product orders started year +13%/+9% ex-AI) as conservative, leaving F2H26 upside, and flags the **Nvidia partnership** as positioning CSCO for Enterprise AI (JPM, 2025-12-15).
+  - GS framing: print is "Validation of Hyperscaler Capex" + "Networking as the New AI Bottleneck" — reduces AI air-pocket fear (Armbrust/Ng, briefing 2026-05-15). Cramer/firstadopter pushing back on dot-com analogies; buyers are profitable incumbents (Robbins, briefing 2026-05-16).
+- **Bear:**
+  - **Valuation + sustainability.** Barclays' Tim Long stays **EW** (PT raised $76→$121) — "AI Orders Drive Beat and Raise, But Sustainability More of a Question"; stock ~25x CY27 EPS vs historical ~15x; implied AI multiple ~2x ANET's; he **prefers OW-rated ANET (PT $195)** in the campus/AI pair (briefing 2026-05-15, 2026-05-21). On CY25 comps CSCO screens at ~16.9x P/E on ~6.2% 24-26E rev CAGR vs ANET ~49.1x on ~22.7% — i.e. the gap is a growth call, not a cheap-vs-expensive one (Bernstein, 2025-09-15).
+  - **AI mix too low to move the needle.** JPM bear tenet: AI revenue mix stays below 10% in FY26, so some investors see it as inconsequential as a near-term driver (JPM, 2025-12-15).
+  - **Margin dilution from AI optics.** JPM: heavy weighting of AI revenue in optics carries ~40% GM vs Cisco's ~68% aggregate — structural mix drag as AI scales (JPM, 2025-12-15). Consistent with mgmt's own hardware/software mix caveat.
+  - **Pull-forward risk.** Some ex-webscale acceleration (19% vs 10% prior Q) is price, not units — ~4-5pts of the 9pt acceleration was pure pricing (Patterson, Q3 FY26). 650 Group: real price headroom thins once the refresh moves past price-insensitive early adopters (650 Group, 2026-06-04). JPM noted "some grumbling about pull-forward" (Meyers, briefing 2026-05-15).
+  - **AI orders are nonlinear / lumpy** — Q3 $1.9B dipped below Q2's $2.1B; the implied ~$3.7B Q4 hinges on timing of large wins (Rakers Q&A, Q3 FY26). Conservatism on the prior $5B target suggests low visibility.
+  - **Margin mix drag persists** as hardware AI revenue scales (~$4B→$6B+) vs flat software; security still soft — JPM notes Security growth running single-digit % vs the 15-17% target post-Splunk, implying share loss despite the acquisitions; Splunk on-prem→cloud transition a near-term revenue drag into FY27 (Robbins/Patterson, Q3 FY26; JPM, 2025-12-15).
+  - **Dot-com analogy.** GQG's "Dotcom on Steroids" reminds that CSCO was the "Nvidia of the internet era," briefly ~5% of US GDP and >20x NTM revenue at the 2000 peak on a thesis that traffic would double every 100 days — a caution against extrapolating incumbent management's inflection calls (GQG, 2025-09-11). Cited as macro framing, not a CSCO-specific downgrade.
+  - Redburn at **Neutral** (briefing 2026-06-03).
+- **Where the sell-side stands:** Net constructive post-print — **OW/Buy: MS ($120), Citi ($112), UBS, JPM (OW, $77.80 close); GS positive; EW: Barclays ($121, valuation).** The open debates the whole desk converges on: (1) durability of the AI-order run-rate into FY27, (2) GM trajectory on hardware/optics mix + memory, (3) is the multiple stretched (briefing 2026-05-14/15; JPM 2025-12-15).
+
+## Catalysts / what to watch
+- **Q4 FY26 print — Wed Aug 12, 2026 (AMC)** — first formal FY27 guide; watch whether AI orders sustain a ~$2-3.7B/qtr run-rate and the FY27 ≥$6B AI-rev frame is confirmed (Sami Badri close, Q3 FY26).
+- Cisco Live Las Vegas content (May 31–Jun 4) already digested — Cloud Control, agentic ops, sovereign portfolio (briefing 2026-06-03/08).
+- Silicon One P200 **scale-across** ramp — early Q4 orders, "at scale" only in FY27 (Robbins, Q3 FY26). Switch + coherent-pluggable content here maps to JPM's $10B+ incremental DCI TAM / $300-500M per connection (JPM, 2025-12-05/15). CPO into Silicon One 102T/51.2T is the next milestone; OCP (~Oct) is the scale-up show (650 Group, 2026-06-04).
+- Acacia 1.6T PAM4 receiver / 800G LPO ramp inside the data center (650 Group, 2026-06-08).
+- Restructuring execution — remaining charges into FY27; reallocation to silicon/optics/security/AI.
+- Memory market — DDR4→DDR5 conversions, 20+ memory-reduction programs, Nanya 3-yr supply agreement (Patterson, Q3 FY26; JPM, briefing 2026-05-13).
+
+## Risks
+- Multiple compression if hyperscaler AI orders prove lumpy/peakish — bulk of the bull case rides on a sustained run-rate the company itself calls nonlinear.
+- Product mix + memory cost weighing on product gross margin; AI optics at ~40% GM vs ~68% aggregate dilutes as AI scales; reliance on OpEx discipline to hold ~34% op margin (JPM, 2025-12-15).
+- Hyperscaler concentration in AI orders (5 customers driving SP/cloud +105%); design-win timing opaque.
+- Splunk cloud transition + legacy-security decline continue to drag the software/security line into FY27; Security growth single-digit % vs 15-17% target implies share loss (JPM, 2025-12-15).
+- Supply: 3nm-class switch ASICs and laser/InP for transceivers are the genuine constraints (memory is costly but available) — incremental orders most exposed (650 Group, 2026-06-04).
+- Competition broadening in DC switching (HPE, Nokia, Juniper gaining in a >$100B TAM) and the structural AI-networking pair-trade vs ANET; CSCO is #2 (~16%) behind Arista (~17%) in the ~$36B DC networking-equipment market (650 Group, 2026-06-04; Barclays, briefing 2026-05-21; BofA DC primer).
+- Tariff/exemption assumptions baked into guidance; macro on enterprise/public-sector IT budgets (10-K risk factors, 2025-09-03).
+
+## Intra-quarter — calls, commentary & reports
+
+**Signal vs management** — what management said on the last call × what the intra-quarter flow is saying (✓ confirms · ⚠ nuances · ✗ contests):
+
+| Theme | Management said (Q3 FY26) | Intra-quarter flow | Signal |
+|---|---|---|---|
+| **Silicon One / switching** | Silicon is the moat ("without silicon you're not relevant to a hyperscaler"); P200 scale-across wins | BTG/LightCounting (Bob): in large-scale switching Cisco appears "primarily supplying systems" (≠ a merchant-chip vendor like Broadcom) | **⚠ nuance** (systems, not merchant chip) |
+| **Acacia / coherent optics** | Acacia >$1B orders Q3, on track >200% y/y; emerging scale-across leg | BTG: Cisco-Acacia one of the captives in 800ZR (vs Nokia/Ciena) competing in DCI; wants to enter the DSP market | **✓ confirms** (Acacia in scale-across) |
+| **AI / NVDA partnership** | NVDA partnership positions for Enterprise AI | BTG: Cisco+NVDA work together — supports Spectrum X in Silicon One and designs around NVDA silicon, serving enterprise Ethernet | **✓ confirms** (cooperates with NVDA) |
+
+| Date | Source | Theme | Bias | What was said |
+|---|---|---|---|---|
+| 06-25 | BTG · LightCounting call | product | mixed | Expert (Bob): **Cisco and NVDA work together** — Cisco supports **Spectrum X** both in Silicon One systems and by designing around NVDA Spectrum X silicon, serving the traditional enterprise customer that needs Ethernet while Ultra Ethernet is not yet mature. In coherent/scale-across (800ZR), **Cisco-Acacia** is one of the captives supplying modules (alongside Nokia/Ciena), competing on Ciena's turf in DCI. Cisco-Acacia also wants to enter the **DSP market**. In large-scale switching/AI-networking, Cisco appears "primarily supplying systems" (≠ a merchant-chip vendor like Broadcom). (BTG "LightCounting", 2026-06-25) |
+
+**Quarter synthesis:** the expert flow nuances the "silicon is the moat" framing — in large-scale AI-networking CSCO is seen as a vendor of **systems**, not a merchant chip, and cooperates (rather than competes) with NVDA via Spectrum X; the cleanest confirmed leg is Acacia/coherent in scale-across (DCI), where Cisco-Acacia competes on Ciena's turf and targets the DSP market.
+
+## Management commentary — evolution (last 6 quarters)
+
+| Theme | Q2 FY25 (2025-02-12) | Q3 FY25 (2025-05-14) | Q4 FY25 (2025-08-13) | Q1 FY26 (2025-11-12) | Q2 FY26 (2026-02-11) | Q3 FY26 (2026-05-13) |
+|---|---|---|---|---|---|---|
+| Hyperscaler AI infra orders | >$350M; YTD ~$700M, on track >$1B FY25 | >$600M; YTD >$1B, beat FY25 target early | record >$800M; FY25 >$2B (2x target) | $1.3B; guide ~$3B AI revenue FY26 | $2.1B; raised FY26 orders to >$5B | $1.9B; YTD $5.3B, raised FY26 to ~$9B (4.5x) |
+| Total product orders | +29% (+11% ex-Splunk) | +20% (+9% ex-Splunk) | +7% YoY | +13%; +9% ex-hyperscale | +18%; +10% ex-hyperscale | +35%; +19% ex-hyperscale |
+| Campus / enterprise refresh | campus switching +double digits; WiFi7 early | campus +high-single; WiFi7 +triple-digit seq | new Cat9k smart switches; multiyear cycle starts | campus +high-single; "multi-billion" refresh | campus orders ~+double digits; WiFi7 +80% seq | record campus +25%; wireless +40%, WiFi7 half mix |
+| Acacia / coherent optics | optics part of AI mix (~half silicon/systems) | optics ~1/3 of $600M AI mix | optics ~1/3 of AI orders | all hyperscalers now Acacia customers | record qtr; triple-digit bookings growth | >$1B orders; on track >200% YoY FY26 |
+| Security & Splunk | Security +117% (Splunk); +4% ex-Splunk | orders +high double digits; largest Splunk deal | orders +mid-single; ex-Fed double digits | revenue -2% on Splunk cloud-shift timing | revenue -4%; ~4,000 net-new product customers | revenue flat; exiting FY26 near double-digit organic |
+| Gross margin / pricing | 68.7% NG GM; tariffs built into guide | 68.6% NG GM; tariff impact favorable | 68.4% NG GM; small tariff impact | 68.1% NG GM; product GM -170bps mix/price | 67.5% NG GM; memory cost + price increases | 66.0% NG GM; "stabilized," price covers memory |
+
+_Source: CSCO earnings calls (dates above); management commentary, paraphrased._
+
+## Sources
+- **Filings:** [10-K FY2025 (2025-09-03)](../CSCO/CSCO_10-K_2025-09-03_0000858877-25-000111.html) — business overview + risk factors.
+- **Decks:** [Investor Day 2024 — Robbins "Our Plan to Win" (2024-06-04)](../CSCO/apresenta%C3%A7%C3%B5es/CSCO_InvestorDay2024_02-Our-Plan-to-Win-Robbins_2024-06-04.pdf) (TAM framework $575B/$950B, cybersecurity $68B→$118B, hyperscaler AI momentum) · [Investor Day 2024 — CFO Herren "Positioned for Growth" (2024-06-04)](../CSCO/apresenta%C3%A7%C3%B5es/CSCO_InvestorDay2024_06-Positioned-for-Growth-CFO-Herren_2024-06-04.pdf) (FY26&27 segment growth framework, EPS 6-8%, capital allocation ≥50% FCF / AA-, FY21 goal scorecard).
+- **Transcripts:** [Q3 FY26 (2026-05-13)](../CSCO/transcripts/CSCO_Q3-FY26-earnings_2026-05-13.md) · [Q2 FY26 (2026-02-11)](../CSCO/transcripts/CSCO_Q2-FY26-earnings_2026-02-11.md).
+- **Equity calls:** [2026-06-04 · 650 Group networking](../_equity_calls/Semis/2026-06-04_650Group_networking.md) (Silicon One vs Broadcom, Acacia optics, campus refresh, supply chain). See [INDEX](../INDEX.md) §CSCO (also 2026-06-12 Ciena optical).
+- **Briefings:** [CSCO roll-up](../_briefings/by-ticker/CSCO.md) — 25 datapoints / 15 days (MS, Citi, Barclays, GS, UBS, JPM, Jefferies, Redburn).
+- **Research reports (relatórios bons):**
+  - [JPM Hardware & Networking (2025-12-15)](../relat%C3%B3rios%20bons/JPM_Hardware___Networkin_2025-12-15_5155719.html) — CSCO OW ($77.80), 2026 share-price tenets, bull/bear, scale-across switch positioning, AI-optics GM dilution, supply chain.
+  - [JPM Hardware & Networking (2025-12-05)](../relat%C3%B3rios%20bons/JPM_Hardware___Networkin_2025-12-05_5142283.html) — scale-across $10B+ incremental DCI TAM, $300-500M per connection; Arista + Cisco best-positioned for switch.
+  - [Bernstein initiation on AAPL/STX/DELL/SNDK](../relat%C3%B3rios%20bons/Bernstein_initiation_on_AAPL_STX_DELL_SNDK.html) — networking comps (CSCO ~16.9x P/E, ~6.2% 24-26E rev CAGR vs ANET).
+  - [Dotcom on Steroids (2025-09-11)](../relat%C3%B3rios%20bons/Dotcom-on-Steroids-11Sep2025.html) — dot-com analogy; CSCO as the "Nvidia of the internet era" at the 2000 peak (macro framing).
+  - [Primer DC overall (BofA)](../relat%C3%B3rios%20bons/Primer_DC_overall_BofA.html) — ~$36B DC networking-equipment market, Cisco ~16% share (#2 behind Arista ~17%).
+  - [BofA — CSCO IR call (Sammy, 2026-05-15)](../relat%C3%B3rios%20bons/2026_05_15_csco_baml_call_15_may_26.html) — campus 4k/6k EOL forcing function (~$40B TAM), AI orders optics/systems split, P200 not in $9B, G300 no win yet, CPO turned constructive at OFC.
+  - [JPM — Networking recap (2026-05-08)](../relat%C3%B3rios%20bons/2026_05_08_jpm_nw_recap_8_may_2024.html) — networking callbacks (LITE/COHR/ANET).
+  - [BofA — CIEN optical supply chain (2026-06-12)](../relat%C3%B3rios%20bons/2026_06_12_cien_baml_supply_chain_12_jun_26.html) — Cisco optics/systems inflection, Silicon One traction.
+  - [650 Group — networking research (2026-05-26)](../relat%C3%B3rios%20bons/2026_05_26_650_group_26_05.html) — Silicon One, Tomahawk 6 timing, CPO/copper-at-400G-per-lane.
+  - [BTG — LightCounting optics/CPO expert call (2026-06-25)](../relat%C3%B3rios%20bons/BTG_LightCounting_Optics_Expert_Call_2026-06-25.html) — Cisco+NVDA suportam Spectrum X (Silicon One + silício NVDA); Cisco-Acacia captive em 800ZR competindo no DCI e querendo entrar no DSP; Cisco "primariamente sistemas" em switching.
+
+## Changelog
+- **2026-06-26** — Read the FY24 Investor Day decks (Robbins "Our Plan to Win" + CFO Herren "Positioned for Growth", both 2024-06-04). Added to Current state: the long-term FY26&27 segment growth framework (Product 5-7% / Networking 2-5% / Security & Obs 15-17% / Services 2-4% → Total 4-6%, EPS 6-8%), the 2027 TAM build (~$575B total, $370B current + $205B expansion + $375B adjacent = ~$950B; segment TAMs; cyber $68B→$118B), capital-allocation policy (≥50% FCF returned, AA- post-Splunk, 93% avg FCF returned FY19-Q3'24), and the FY21-plan scorecard (sub 53%, EPS CAGR ~7%, rev CAGR ~4%). Added Decks line to Sources and "+ decks" to byline.

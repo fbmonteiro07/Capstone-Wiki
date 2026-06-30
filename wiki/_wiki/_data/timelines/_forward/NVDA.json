@@ -1,0 +1,41 @@
+{"ticker":"NVDA","forward":[
+{"metric":"$1T Blackwell+Rubin visibility","horizon":"cal25→cal27","trend":"up","trail":[
+{"date":"Q3 FY26 (Nov'25)","val":"$0.5T Blackwell+Rubin visibility thru cal'26","src":"NVDA call"},
+{"date":"Q4 FY26 (Feb'26)","val":"$500B+ visibility","src":"NVDA call"},
+{"date":"2026-05-20","val":"$1T Blackwell+Rubin revenue visibility cal-25 through cal-27 reiterated","src":"NVDA Q1 FY27 call"}
+],"note":"Headline multi-year revenue-visibility anchor management keeps raising."},
+{"metric":"Revenue DC FY27 (cal-27)","horizon":"2027","trend":"contested","trail":[
+{"date":"2026-05-19","val":"sell-side ~$500B DC 2027 vs bulls toward ~$600B; buy-side incremental share debate","src":"BofA Vivek Arya setup call"},
+{"date":"2026-05-21","val":"~$130B revenue exiting the year achievable on supply (PCs+inventory $145B); well above Street","src":"UBS Arcuri recap"},
+{"date":"2026-06-17","val":"Capstone model 2027E revenue $661B, DC $629B (compute/networking $518B/$111B)","src":"Capstone official model"}
+],"note":"Core 2027 DC magnitude debate; house model far above Street."},
+{"metric":"GW deployed/sold per year","horizon":"2025→2027E","trend":"up","trail":[
+{"date":"2026-02-25","val":"~9 GW Blackwell deployed (FY26)","src":"NVDA Q4 FY26 call"},
+{"date":"2026-06-17","val":"~9→16→25 GW sold/yr (25/26/27E); cumulative install base ~35 GW by 2027E","src":"Capstone model"},
+{"date":"2026-06-18","val":"NVDA 40 GW US chip sales '25-30 vs ~21 GW DC built in prior 25 yrs","src":"Cantor CoreWeave call"}
+],"note":"Capacity/GW trajectory underpinning the revenue ramp."},
+{"metric":"Vera standalone CPU TAM","horizon":"structural / FY27","trend":"contested","trail":[
+{"date":"2026-05-20","val":"Vera standalone CPU = $200B TAM; ~$20B CPU revenue visibility this year (standalone)","src":"NVDA Q1 FY27 call (Vivek Arya Q&A)"},
+{"date":"2026-05-21","val":"Arcuri cuts the $20B to ~$5B 'apples-to-apples' chip equivalent (rest systems+DRAM)","src":"UBS Arcuri recap"},
+{"date":"2026-05-22","val":"$20B back-solves to implausible units; bundles NVLink+head-node+Smart-NIC CPUs, ~3-4M head nodes","src":"Citi/Jefferies Asia recal"}
+],"note":"NVDA's $20B framing disputed by sell-side as systems+memory, not clean merchant CPU."},
+{"metric":"AI infra spend / hyperscale capex","horizon":"end of decade / 2027","trend":"up","trail":[
+{"date":"Q2 FY26 (Aug'25)","val":"$3-4T by end of decade; ~$600B capex this yr","src":"NVDA call"},
+{"date":"Q4 FY26 (Feb'26)","val":"capex approaching $700B","src":"NVDA call"},
+{"date":"2026-05-20","val":"AI infra spend reaching $3-4T/yr by end of decade; hyperscale capex >$1T in 2027","src":"NVDA Q1 FY27 call"},
+{"date":"2026-06-16","val":"JPM models aggregate; OpenAI compute commitments >$1T over 4-5 yrs","src":"JPM AI Capex 2.0"}
+],"note":"Macro TAM frame Jensen keeps escalating; binding constraint is power."},
+{"metric":"Gross margin trajectory","horizon":"FY27 / structural","trend":"flat","trail":[
+{"date":"Q3 FY26 (Nov'25)","val":"guide 74.8-75%","src":"NVDA call"},
+{"date":"Q4 FY26 (Feb'26)","val":"mid-70s for FY27","src":"NVDA call"},
+{"date":"2026-05-20","val":"75% flat; mid-70s for FY","src":"NVDA Q1 FY27 call"},
+{"date":"2026-05-21","val":"GM mid-70s defensible into FY28 even as BOM shifts to ~2x-pricier HBM4E","src":"UBS Arcuri recap"},
+{"date":"2026-06-23","val":"HBM $17-18→$30-32/GB (+70-80%) 2027; HBM-consignment risk to margin/ASP/EPS","src":"Redburn Conor O'Mara"}
+],"note":"Mgmt holds mid-70s; HBM4E cost step-up and consignment push are the swing risk."},
+{"metric":"Vera Rubin ramp","horizon":"2H FY27 (Q3→Q4)","trend":"up","trail":[
+{"date":"Q3 FY26 (Nov'25)","val":"Rubin 2H26","src":"NVDA call"},
+{"date":"Q4 FY26 (Feb'26)","val":"Rubin unveiled at CES; first samples shipped","src":"NVDA call"},
+{"date":"2026-05-19","val":"ships to supply chain Q3, real external-customer ramp Q4 into early next year","src":"BofA Vivek Arya setup call"},
+{"date":"2026-05-20","val":"Vera Rubin production shipments begin 2H, starting Q3 (Oct qtr), ramping into Q4/Q1","src":"NVDA Q1 FY27 call"}
+],"note":"Product-cycle catalyst; stays in NVL72 scale-up domain so ramp should be cleaner than Hopper→Blackwell."}
+]}

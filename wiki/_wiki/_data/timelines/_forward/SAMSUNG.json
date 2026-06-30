@@ -1,0 +1,30 @@
+{"ticker":"SAMSUNG","forward":[
+{"metric":"HBM sales growth / HBM4 ramp","horizon":"2026 -> 2027","trend":"up","trail":[
+{"date":"2026-01-28","val":"HBM sales to triple y/y in 2026","src":"Q4-2025 call"},
+{"date":"2026-04-30","val":"HBM4 mass production Feb; 'fully booked'; HBM4 >50% of HBM sales from Q3; HBM sales >3x y/y in 2026","src":"Q1-2026 call"},
+{"date":"2026-06-23","val":"real possibility Samsung overtakes SK Hynix as #1 HBM supplier in 2027","src":"StoneX/TrendForce (Avril)"}
+],"note":"HBM4 catch-up vs SK Hynix is the central debate; 1c yield resolution the bull/bear fault line."},
+{"metric":"1c HBM4 yield","horizon":"2026","trend":"contested","trail":[
+{"date":"2026-01-28","val":"Techknowledge checks: 1c HBM4 test yields ~50-60%, ramp 'on track'","src":"Q425 Techknowledge takeaways"},
+{"date":"2026-04-30","val":"SemiAnalysis: 1c HBM4 test-wafer yields remain 'extremely low'; volume only later in 2026","src":"SemiAnalysis HBM"}
+],"note":"Directly conflicting checks on the key proof point; riskier swing jumping straight to 1c DRAM."},
+{"metric":"Q2-2026 operating profit","horizon":"Q2-2026","trend":"up","trail":[
+{"date":"2026-05-11","val":"Jefferies (Jeff Kim) Q2-26 OP KRW 100tn vs his prior KRW 84tn","src":"Jefferies"},
+{"date":"2026-05-28","val":"union-settlement provision (~12% of profit) hits Q2, ~2pts above JPM's prior 10%","src":"JPM (Jay)"}
+],"note":"Test of Jefferies' KRW 100tn OP; union provision trims the EPS beat."},
+{"metric":"HBM4 / HBM4E ASP","horizon":"2027 LTA","trend":"up","trail":[
+{"date":"2026-04-30","val":"HBM4E samples Q2 (16 Gbps, 4.0 TB/s)","src":"Q1-2026 call"},
+{"date":"2026-06-23","val":"HBM4 price still unfinalized despite Samsung already shipping; expected +90-100% vs last year's LTA","src":"Redburn (Conor O'Mara)"}
+],"note":"De-commoditization optionality via custom base die (Samsung's in-house foundry edge)."},
+{"metric":"DRAM wafer capacity","horizon":"end-2026 -> 2030","trend":"flat","trail":[
+{"date":"2026-06-23","val":"largest DRAM cap ~740K wfr/mo end-2026 (~180K HBM); only +45K in 2027; P5L ph.1 mid-2028, ph.2 ~2030","src":"StoneX/TrendForce (Avril)"}
+],"note":"Clean-room space the binding constraint; 2027 supply growth 'very limited' -> supports pricing."},
+{"metric":"Foundry wins / Taylor TX ramp","horizon":"2027 -> 2028","trend":"up","trail":[
+{"date":"2025-10-30","val":"utilization up; 2nm GAA ramp in Q4","src":"Q3-2025 call"},
+{"date":"2026-04-30","val":"Taylor TX move-in Apr 23, ops 2026 / mass production 2027; 1.4nm on track; BSPDN target 2027","src":"Q1-2026 call"},
+{"date":"2026-06-19","val":"Samsung Foundry signed deal to make 'Claros' power-management chips for AI data centers","src":"Digitimes"}
+],"note":"Foundry valued at zero-to-negative EV; AMD/Google/Tesla inquiries on TSMC capacity scarcity = valuation kicker."},
+{"metric":"NAND wafer capacity / share","horizon":"2026","trend":"down","trail":[
+{"date":"2026-06-23","val":"NAND->DRAM conversion drives global NAND wafer cap -3% in 2026; Samsung losing NAND share as it prioritizes DRAM/HBM","src":"StoneX/TrendForce (Avril)"}
+],"note":"Capex diverted to DRAM/HBM; supportive of NAND pricing but Samsung cedes share."}
+]}

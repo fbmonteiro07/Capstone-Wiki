@@ -1,0 +1,24 @@
+{"ticker":"WDC","forward":[
+{"metric":"Q4 FY26 revenue/EPS","horizon":"Q4 FY26 (Jun-qtr)","trend":"up","trail":[
+{"date":"2026-04-30","val":"Q4 FY26 guide rev $3.65B +/-$100M (~40% y/y), GM 51-52%, EPS $3.25 +/-$0.15 (vs Q3 $3.3B / 50.5% / $2.72)","src":"Q3 FY26 call"}],
+"note":"Beat-and-raise cadence; GM marching toward the next leg."},
+{"metric":"Nearline pricing $/TB","horizon":"CY27->CY28","trend":"up","trail":[
+{"date":"2026-05-26","val":"Pricing the biggest upside; from ~+9% q/q level, mid-teens price increases in 12 months 'could be'; WDC more price-driven (cost -~10%/EB)","src":"JPM Networking"},
+{"date":"2026-06-16","val":"Vendors targeting ~$25/TB blended nearline CY27, ~$30 CY28 vs ~$14.50 today; spot $30-35; WDC CY27/CY28 EPS 'a little over $45 / over $70' if checks hold","src":"MS/Woodring equity call"}],
+"note":"LTA escalators roughly doubling pricing in two years is the single biggest EPS swing."},
+{"metric":"HAMR qualification / ramp","horizon":"H1 CY27","trend":"contested","trail":[
+{"date":"2025-12-17","val":"Supply chain: 'WDC too optimistic on HAMR for 2027'; high-volume HAMR 'not easy'","src":"Jefferies Techknowledge"},
+{"date":"2025-12-22","val":"Pulled one HAMR customer qual forward to 1H26; may bridge gap with another ePMR generation","src":"UBS 2026 overview"},
+{"date":"2026-04-09","val":"HAMR-lag worry 'too much in focus'; ePMR cost-optimized to ~60TB; LT margins converge with STX","src":"JPM HDD"},
+{"date":"2026-06-16","val":"WDC hasn't qualified HAMR yet; ramps 44TB only H1 CY27 (vs STX 40TB 2H CY26) — lacks near-term pricing/GM juice","src":"MS/Woodring equity call"}],
+"note":"Pace/feasibility of 2027 HAMR is the core bull/bear fault line vs Seagate."},
+{"metric":"LTA coverage / pricing resets","horizon":"CY2028-2029","trend":"up","trail":[
+{"date":"2026-01-29","val":"'Sold out CY26'; agreements through CY27-28","src":"Q2 FY26 call"},
+{"date":"2026-04-30","val":"LTAs now extend into CY2028-2029; exabyte-volume commitments with pricing that may reset on new-capacity introductions","src":"Q3 FY26 call"}],
+"note":"Lengthening LTA horizon; reset clauses tie pricing to areal-density transitions."},
+{"metric":"Exabyte demand CAGR","horizon":"structural","trend":"up","trail":[
+{"date":"2025-12-22","val":"UBS caution: TTM EB shipments already above long-term trendline; shadow-order risk + accelerated eSSD replacement","src":"UBS 2026 overview"},
+{"date":"2026-04-30","val":"Long-term storage demand framed >25% CAGR; EB +34% y/y; no planned unit-capacity increase (areal-density growth)","src":"Q3 FY26 call"},
+{"date":"2026-06-16","val":"Supply capped ~30-35% annual EB growth -> imbalance elongates the cycle rather than adding near-term volume","src":"MS/Woodring equity call"}],
+"note":"Supply discipline (no unit adds) is what underwrites the multi-year pricing thesis."}
+]}

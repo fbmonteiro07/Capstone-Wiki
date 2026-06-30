@@ -1,0 +1,22 @@
+{"ticker":"GOOG","forward":[
+{"metric":"Capex FY26→FY28","horizon":"FY26→FY28","trend":"up","trail":[
+{"date":"2026-02-04","val":"FY26 guide $175-185B","src":"Q4'25 call"},
+{"date":"2026-04-29","val":"FY26 guide raised to $180-190B; FY27 'significant increase'","src":"Q1 FY26 call"},
+{"date":"2026-06-05","val":"Capstone model: capex $183B 2026E → $310B 2027E (~48% of revenue); FCF −$3B → −$55B","src":"Capstone official model"},
+{"date":"2026-06-16","val":"JPM: FY26 $185B → ~$300B FY27E → ~$350B FY28E; FCF ~$12B FY26E → −$27B FY27E","src":"JPM 'AI Capex 2.0'"}],"note":"$84.75B equity raise (largest-ever US offering) to pre-fund FY27/FY28 ramp."},
+{"metric":"TPU unit production / merchant ramp","horizon":"2026→2027","trend":"up","trail":[
+{"date":"2025-12-17","val":"~3.1-3.2mn units 2026, doubling to 5-6mn 2027 (~5mn Broadcom + ~1mn MediaTek); v8 2nm $23-34K","src":"Jefferies Techknowledge"},
+{"date":"2026-06-16","val":"JPM: TPU units 1.8M (2025) → 4.5M (2026E) → 8.0M (2027E); Ironwood ~2x perf/watt vs Trillium","src":"JPM 'AI Capex 2.0'"}],"note":"External TPU hardware sales begin late C26, majority C27; one of two dominant merchant ASICs."},
+{"metric":"Google Cloud revenue / backlog","horizon":"24-month conversion","trend":"up","trail":[
+{"date":"2026-02-04","val":"Q4'25 Cloud +48% to $17.7B; backlog $240B (+55% q/q)","src":"Q4'25 call"},
+{"date":"2026-04-29","val":"Q1'26 Cloud +63% to $20B; backlog ~doubled q/q to $462B, ~50%+ converts within 24 months; now incl. TPU sales","src":"Q1 FY26 call"},
+{"date":"2026-04-30","val":"Expert: ~$85B TPU dollars entered 1Q26 backlog; ex-TPU 'pure' backlog ~$365B (+$134B q/q), ~70%/62% growth CY26/27","src":"expert recap"}],"note":"TPU sales booked gross (~10-15% license markup); revenue recognition mostly a 2027 event."},
+{"metric":"Revenue / EPS","horizon":"2026E→2027E","trend":"up","trail":[
+{"date":"2026-04-30","val":"Citi: print drove '27 EPS ests 'way closer to $15'","src":"Citi C1Q26 recap"},
+{"date":"2026-06-05","val":"Capstone model: revenue $505B/$641B (26/27E, +25%/+27%); EPS $11.80/$16.20; 27E above consensus ~$14.5","src":"Capstone official model"}],"note":"House EPS above the Street; op margin ~36%→37%."},
+{"metric":"Search & advertising growth","horizon":"FY26 (Q2→Q4)","trend":"up","trail":[
+{"date":"2026-06-17","val":"UBS Legg: Search Q2 27% / Q4 +25% (raised +3pts), FY ~26%; AI Max mandatory for large advertisers from Sept (~1pt); YouTube FY ~21%","src":"UBS (Ben Legg)"},
+{"date":"2026-06-22","val":"UBS Linzer: Search Q2 2% / Q4 5.5-6% / FY high-5s-low-6s; YouTube Q2 −1% → Q4 7-8% (World Cup catalyst)","src":"UBS (Scott Linzer)"}],"note":"Search re-accelerating after the April war wobble; AI Mode/Overviews framed expansionary."},
+{"metric":"TPU GW / compute base","horizon":"2026E→2027E","trend":"up","trail":[
+{"date":"2026-06-05","val":"Capstone model: compute base ~4.6 GW 2026E → ~7.75 GW 2027E","src":"Capstone official model"}],"note":"Underpins the capex ramp and TPU-driven cloud capacity."}
+]}

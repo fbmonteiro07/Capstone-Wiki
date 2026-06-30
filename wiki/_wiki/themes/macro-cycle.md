@@ -1,0 +1,64 @@
+# Theme — AI Macro Cycle: Bubble vs Supercycle
+
+_Wiki · generated 2026-06-25 · cross-company theme · sources: equity calls, briefing roll-ups, earnings transcripts, research library, Twitter/X corpus (ported from research-wiki). Company pages: [../00_INDEX.md](../00_INDEX.md) · themes index: [00_THEMES.md](00_THEMES.md)._
+
+## What it is / why it matters
+
+The meta-question over every semi and semicap name: **is AI capex a durable multi-year supercycle or a venture/circular-finance-inflated bubble analogous to 1999 telecom?** The debate turns on whether AI revenue growth can justify the $5–10T infrastructure investment, whether GPU depreciation accounting masks true earnings, and whether hyperscaler OCF can self-fund the capex path through 2030. If the bubble camp is right, semicap names re-rate violently when hyperscaler capex digests — as they did in 2018 and 2022. If the supercycle camp is right, WFE estimates are still too low and current multiples are defensible. The current sell-side split is ~70/30 bull vs skeptic, but the skeptic case has gotten more sophisticated (FCF/EPS divergence, circular deal accounting, depreciation-life debate).
+
+## State of play (latest)
+
+### Bull signals
+- **NVDA CUDA moat is software, not hardware** — "99% of AI chip startups have slides showing their chip is way better, but 99% of custom ASICs fail." AI chips are about software; relatively easy to build silicon and put numbers on slides, hard to build great software — NVDA structural moat continues to compound (SA, Jun 2026 / 2026-06-19; 121k views, 721 likes).
+- **H100 hourly rental rate $2.70–$3.01/hr band for 146 straight days** (early 2026 through Jun 12); spot market thin — most H100 on-demand sold out across coverage; OCPI index ($2.63) misleading due to thin tape; compute scarcity confirmed (SA, 2026-06-12; 60k views, 337 likes).
+- **Coding-assistant market $30B+ ARR today → $100B ARR by year-end** (SA Tokenomics model); "greatest B2B SaaS application the world has ever seen." Claude Opus 4.8 scores **69.2% on SWE-bench Pro**, 74.6% on Terminal-Bench 2.1. RL training as a scaling law — performance climbs log-linearly with training compute (Dario Amodei); RL efficiency the binding constraint on how much capability labs can afford to elicit (SA, RL Systems Mind the Gap, 2026-06-16).
+- Anthropic/Bedrock driving **AWS EBIT margin +213bp Q/Q** while Azure, Oracle, and CoreWeave margins lagged or declined; Amazon only CSP with rising true margins; Anthropic ARR outperformance + higher Bedrock 3P-model revenue share key drivers; AWS token-as-a-service model structurally different from IaaS peers (SA, Anthropic Growth & Bedrock Mix, 2026-05-27).
+- **Anthropic ARR $9B → $44B** in Q1 2026 alone; gross margins **38% → 70%** over same period. SemiAnalysis annualized token spend peaked at **$10.95M**; blended effective price for Opus 4.7 on agentic tasks ~$0.99/MTok despite sticker of $5/$25 (300:1 input:output ratio + 90%+ cache hit rate). AI labs capturing all value now — shift from infra layer (2023–25); agentic AI crossed "real inflection point" Dec 2025 (SA, AI Value Capture, 2026-05-01).
+- **H100 1-year contract pricing up +40%** from Oct 2025 lows ($1.70 → $2.35/hr/GPU); on-demand sold out across all GPU types; Anthropic ARR nearly tripled in one quarter driven by Claude Code; "all capacity coming online until August–September 2026 already booked" (SA, Great GPU Shortage, 2026-04-02).
+- H100 lease price indices turned upward (first sustained rebound after April-2025 decline); AWS raised ML GPU pricing ~15% (Jan 2026) — "challenges two decades of monotonic price decline"; Anthropic ARR growth even higher than OpenAI, **could exit 2026 with >$30B ARR**; bottleneck = systems, not FLOPs (FundaAI LLM, Jan 2026).
+- Semis +34% in 2025; **SOX offers ~2× S&P growth at almost no valuation premium**; semis under-owned by active investors; inference benefits from Jevons Paradox; US hyperscale capex expected +34% Y/Y in 2026; top semicap picks LRCX/AMAT/TER (UBS, 2026 Semis Outlook, Dec 2025).
+- OpenAI running **~15% ahead** of The Information's 2025 forecast; ~50% ahead of 2027; **$100B ARR now expected ~2027** (a year early); 2027 rev revised $60B → $90B, WAUs 1.4B → 1.8B; compute budget ~$450B opex 2024–2030 (peak ~$110B in 2028); signed obligations ~$650B over the decade — ORCL ~$300B, MSFT Azure ~$250B (Barclays, Unpacking AI Demand from OpenAI, Nov 2025).
+
+### Bear / skeptic signals
+- "**Neocloud Winter**" — NBIS/CRWV becoming forced-debt vehicles; GPU rental price tracker (H100/H200/B200/GB200) and 450+ LLM token-volume database; short NBIS/CRWV; removed LRCX short; added AAPL long (outperform MAG7 in 2026) (Hedgeye, Global Technology BB, Dec 2025).
+- Howard Marks (Oaktree) balanced/agnostic — AI genuinely transformational but "the subject of great enthusiasm." JPMorgan napkin: AI infra bill ≈ **$5T**; ~$0.5T spending next year vs only ~$350B cash collectively at MSFT/GOOGL/AMZN/META/ORCL; OpenAI commitments = $1.4T, no profit yet; GS: 2026 median NTM P/E 31× vs Dec-99 median **41×** (MSFT was 69×; CSCO 101×). "If that doesn't produce a bubble conforming to historical patterns, that will be a first" (Oaktree, Is It a Bubble?, Dec 2025).
+- **MAG7 = 54.5% of US GDP**; MAG7 NTM FCF flat since start of 2024 while EPS exploded; S&P FCF/EPS ~0.78. GPU depreciation: Meta books 11–12 yr useful life vs Chanos' 2–3 yr economic reality → "profits materially overstated." Double/triple-ordering risk (2000–01 order collapse drove S&P EPS −40% peak-to-trough); $100B vendor financing in 2000 telecom "pales" vs AI 2027–28 needs (MacroTourist / Kevin Muir, Nov 2025 / 2025-11-03).
+- **"Dotcom on Steroids"** — "we are in 1999, not 1995." Big-tech capex/EBITDA 50–70% ≈ AT&T 72% / Exxon 65% at prior bubble peaks; S&P tech P/S 10× vs 4× into 1999, P/E 42× vs 46× peak; Nvidia = ~15% of US GDP, Cisco peaked at 5%; most AI capex funded by cyclical ad revenue; MIT survey: 95% of gen-AI enterprise pilots failing; Nvidia fell ~60% in both 2018 and 2022 downcycles (GQG Partners, Dotcom on Steroids, Sep 2025).
+
+### AI capex peak call
+- **Barclays (Ross Sandler) — sole hard peak call:** AI capex peaks **~2028 at ~$1T**, then modestly declines; ~$300B above current 2028 consensus. Peak = ~90% of hyperscaler OCF (some companies well above 100%). Pop mechanism: "what would cause OpenAI to miss" → labs brake compute → "crash the AI capex super cycle." Specific watches: WAU net-adds below 50M/mo; free-to-paid below 4%; API not scaling 6×; "recursive self-improvement" requiring more than forecast compute (Barclays, AI Demand/Supply/Capex Framework, Mar 2026 / 2026-03-11).
+
+## Key debates
+
+- **Bull / supercycle:** AI revenue growth is *beating* forecasts (OpenAI ~50% ahead of The Information's 2027 model); H100 lease prices and AWS GPU pricing rebounding after the April-2025 decline; inference adoption follows Jevons Paradox (lower cost/token drives volume, not substitution). Anthropic ARR could exit 2026 with >$30B (FundaAI); OpenAI $25B now (Barclays); models compound at ~2–3× capability/yr; agentic AI = "third inflection" to always-on work. SOX +34% in 2025 at "almost no valuation premium" vs historical (UBS); semis offer ~2× S&P earnings growth and remain under-owned.
+- **Bear / bubble:** MAG7 market cap = **54% of US GDP** (MacroTourist); Nvidia = 15% of US GDP vs Cisco's 5% peak in 1999. FCF/EPS divergence: MAG7 NTM FCF flat since start of 2024 while EPS exploded; S&P FCF/EPS ~0.78 (MacroTourist citing Chanos); Meta depreciating GPUs over 11–12 years vs economic life of ~2–3 years (Chanos) → profits materially overstated. Circular/vendor financing: OpenAI commitments = $1.4T (Marks); GS estimates ~15% of NVDA FY+1 sales from "circular deals" — analog to telecom-2000 vendor financing that collapsed. "We are in 1999, not 1995" (GQG); big-tech capex/EBITDA 50–70%; S&P tech P/S 10× vs 4× into 1999.
+- **Timeline / inflection points:** Barclays' sole hard peak call is ~2028 at ~$1T (~90% of hyperscaler OCF), with the "what would cause OpenAI to miss" watchlist (WAU net-adds <50M/mo, free-to-paid <4%, API not scaling 6×) the cleanest tell on the brake (Barclays, 2026-03-11).
+
+## Who's exposed (companies)
+
+| Ticker | Angle | Read |
+|---|---|---|
+| [AMAT](../AMAT.md) | Semicap — re-rates on capex durability | UBS top semicap pick; re-rates violently if capex digests (UBS, Dec 2025) |
+| [KLAC](../KLAC.md) | Semicap — re-rates on capex durability | Same cyclical exposure to capex durability (research-wiki) |
+| [LRCX](../LRCX.md) | Semicap — re-rates on capex durability | UBS top pick; Hedgeye *removed* its LRCX short (UBS, Dec 2025; Hedgeye, Dec 2025) |
+| [TER](../TER.md) | Semicap / test — re-rates on capex durability | UBS top semicap pick alongside LRCX/AMAT (UBS, Dec 2025) |
+| [NVDA](../NVDA.md) | Cycle epicenter — GPU demand + CUDA software moat | CUDA moat compounds; GS ~15% of FY+1 sales flagged as "circular deals" (SA, 2026-06-19; Oaktree/MacroTourist) |
+| [NBIS](../NBIS.md) | Neocloud — "forced-debt vehicle" in the bear case | Hedgeye short; "Neocloud Winter" (Hedgeye, Dec 2025) |
+| [CRWV](../CRWV.md) | Neocloud — "forced-debt vehicle" in the bear case | Hedgeye short; "Neocloud Winter" (Hedgeye, Dec 2025) |
+| [AAPL](../AAPL.md) | Bear-case hedge — Hedgeye long to outperform MAG7 | Added as Hedgeye 2026 long vs MAG7 (Hedgeye, Dec 2025) |
+| [AMZN](../AMZN.md) | Hyperscaler capex funder; AWS/Bedrock margin tell | AWS EBIT +213bp Q/Q on Anthropic/Bedrock; only CSP with rising true margins (SA, 2026-05-27) |
+| [ORCL](../ORCL.md) | Hyperscaler capex funder; OpenAI ~$300B signed obligation | ~$300B of OpenAI's ~$650B decade obligations (Barclays, Nov 2025) |
+| [MSFT](../MSFT.md) | Hyperscaler capex funder; Azure ~$250B OpenAI obligation | ~$250B of OpenAI's ~$650B decade obligations (Barclays, Nov 2025) |
+| [ANTHROPIC](../ANTHROPIC.md) | Demand anchor — ARR ramp the key bull datapoint | ARR $9B→$44B Q1'26, GM 38%→70%; could exit 2026 >$30B (SA, 2026-05-01; FundaAI, Jan 2026) |
+| [OPENAI](../OPENAI.md) | Demand anchor — ARR ahead of forecast | ~50% ahead of 2027 forecast; $100B ARR ~2027; ~$650B signed obligations (Barclays, Nov 2025) |
+| MAG7 (aggregate) | Capex funders; bubble-valuation focus | 54.5% of US GDP; FCF flat since 2024 while EPS exploded (MacroTourist, Nov 2025). No single page |
+
+## Sources
+
+- **Sell-side / research library:** UBS (2026 Semis Outlook, Dec 2025); Barclays (Unpacking AI Demand from OpenAI, Nov 2025; AI Demand/Supply/Capex Framework, 2026-03-11); Oaktree / Howard Marks (Is It a Bubble?, Dec 2025); GQG Partners (Dotcom on Steroids, Sep 2025); Hedgeye (Global Technology BB, Dec 2025); MacroTourist / Kevin Muir (Nov 2025); FundaAI (LLM, Jan 2026).
+- **Twitter/X corpus / SA:** CUDA moat (2026-06-19); H100 rental band (2026-06-12); RL Systems / coding $100B ARR (2026-06-16); Anthropic Growth & Bedrock Mix (2026-05-27); AI Value Capture (2026-05-01); Great GPU Shortage (2026-04-02).
+- **Company pages:** [AMAT](../AMAT.md) · [KLAC](../KLAC.md) · [LRCX](../LRCX.md) · [TER](../TER.md) · [NVDA](../NVDA.md) · [NBIS](../NBIS.md) · [CRWV](../CRWV.md) · [AAPL](../AAPL.md) · [AMZN](../AMZN.md) · [ORCL](../ORCL.md) · [MSFT](../MSFT.md) · [ANTHROPIC](../ANTHROPIC.md) · [OPENAI](../OPENAI.md).
+- **Related themes:** [AI data-center power & nuclear](ai-datacenter-power.md) · [Semicap / WFE](semicap-wfe.md).
+
+## Changelog
+- 2026-06-25 — page created; ported from research-wiki corpus.

@@ -1,0 +1,26 @@
+{"ticker":"ARM","forward":[
+{"metric":"Server-CPU TAM 2030","horizon":"2030","trend":"up","trail":[
+{"date":"2026-02-23","val":"server CPU TAM ~$60B by CY30E from ~$27B CY25; Arm value share to ~20-25%+","src":"BofA/Arya"},
+{"date":"2026-05-06","val":">$100B data-center CPU TAM by 2030 (agentic AI needs >4x CPU)","src":"Q4 FY26 call"},
+{"date":"2026-05-21","val":"server-CPU market ~$170bn by 2030; ARM unit share 16% (2025)→42% (2030)","src":"UBS/Lin"},
+{"date":"2026-06-17","val":"server CPU TAM raised to $223B; Arm targeting $22B revenue by 2030","src":"Bernstein/Rasgon"}
+],"note":"The swing variable behind the bull re-rate; internal Arm framing pegs $200-300B by 2030 (Expert)."},
+{"metric":"AGI CPU own-silicon revenue","horizon":"FY27→FY31","trend":"up","trail":[
+{"date":"2026-05-06","val":"launched w/ Meta lead; ~$2B demand across FY27+FY28 (>2x analyst-day); FY27 ~$1B (supply-constrained); FY31 ~$15B AGI + ~$10B IP","src":"Q4 FY26 call"},
+{"date":"2026-05-07","val":"FY27 licensing guide includes ~$100M AGI; backlog ~2x in 6 weeks but memory-constrained (HBM)","src":"Expert \"SiTime/ARM call\""},
+{"date":"2026-06-17","val":"Redburn bakes in only $1bn AGI over coming 18 months; does NOT include guided $15bn 2030","src":"Redburn (Neutral)"}
+],"note":"Pivot to ~30% GM hardware, dilutive to ~49% IP model; bears discount the demand conversion."},
+{"metric":"CSS share of royalties","horizon":"FY27→FY28","trend":"up","trail":[
+{"date":"2025-12-17","val":"v9 royalty ≈ 2x v8, CSS ≈ 2x v9 (royalty stacking, SoftBank framing)","src":"Jefferies Techknowledge"},
+{"date":"2026-02-04","val":"CSS could be \"upwards of 50% of royalties within a couple of years\"; >10% of ASP","src":"CFO Child, Q3 FY26 call"}
+],"note":"Royalty mix-up is the highest-multiple part of the story; MediaTek CSS-billing dispute live."},
+{"metric":"FY31 / FY27 EPS","horizon":"FY27→FY31","trend":"up","trail":[
+{"date":"2025-12-22","val":"FY27E rev $6,056M / EPS $2.42 (CY27 $3.01); above Street","src":"UBS/Arcuri (Buy $195)"},
+{"date":"2026-05-06","val":"FY31 combined (AGI+IP) EPS >$9","src":"Q4 FY26 call"},
+{"date":"2026-06-17","val":"FY31E EPS lifted $9.83 → $11.79; PT $300→$500","src":"Bernstein/Rasgon"}
+],"note":"Royalty re-acceleration is the watch into Q1 FY27 print; Q4 royalty was light at +11%."},
+{"metric":"Royalty/licensing growth FY27","horizon":"FY27","trend":"up","trail":[
+{"date":"2026-05-06","val":"Q1 FY27 guide rev $1.26B ±$50M (~+20%), EPS $0.40 ±$0.04","src":"Q4 FY26 call"},
+{"date":"2026-05-07","val":"both royalty and licensing guided +20% YoY in fiscal Q1 and across FY27; cloud royalty ~2x YoY","src":"Expert \"SiTime/ARM call\""}
+],"note":"FY27 acceleration after a lumpy +11% Q4 royalty (tough MediaTek-9400 comp)."}
+]}

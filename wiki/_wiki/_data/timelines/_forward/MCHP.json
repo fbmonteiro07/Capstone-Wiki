@@ -1,0 +1,23 @@
+{"ticker":"MCHP","forward":[
+{"metric":"GM trajectory to model","horizon":"FY27→FY28","trend":"up","trail":[
+{"date":"2026-05-07","val":"GM 61.6%; LT goal 65% / 40% op margin (vs 30.6% today)","src":"Q4 FY26 call"},
+{"date":"2025-12-22","val":"UBS models GM to 65% by exit-FY27, op margin to ~42%","src":"UBS/Arcuri"}
+],"note":"Operating-leverage torque off the destocked base (~95% incremental GM)."},
+{"metric":"FY27/FY28 revenue & EPS","horizon":"FY27→FY28","trend":"up","trail":[
+{"date":"2025-12-22","val":"FY27E rev $5,687M / EPS $2.84; FY28E rev $7,048M / EPS $4.36 (well above cons)","src":"UBS/Arcuri (Buy $85)"},
+{"date":"2026-05-07","val":"FQ1 FY27 guide +11% q/q (≈$1.44-1.47B); EPS $0.67-0.71, ~19% above Street","src":"Q4 FY26 call"},
+{"date":"2026-05-29","val":"CY27 EPS for TI/ADI/MCHP +23% over two seasons, more revision runway (restocking still ahead)","src":"JPM/Sur (OW top pick)"}
+],"note":"Estimate-revision cycle; restocking is the \"second leg\" still ahead."},
+{"metric":"FCF build / deleveraging","horizon":"FY26→FY28","trend":"up","trail":[
+{"date":"2026-05-07","val":"net debt/EBITDA 3.54x (from 4.18x); buybacks paused; target 1.5x","src":"Q4 FY26 call"},
+{"date":"2025-12-22","val":"FCF building $1.0B FY26 → $1.5B FY27 → $2.3B FY28","src":"UBS/Arcuri"}
+],"note":"Deleveraging pace toward 1.5x target gates buyback resumption."},
+{"metric":"Data-center growth leg","horizon":"CY27","trend":"up","trail":[
+{"date":"2026-02-05","val":"3 Gen6 design wins; large win CY27 $100M+","src":"Q3 FY26 call"},
+{"date":"2026-05-07","val":"6 Gen6 wins; retimers, CXL controllers; DC 18% of mix; PCIe Gen6 production CQ1 2027","src":"Q4 FY26 call"}
+],"note":"New growth leg, though MS frames DC sub-segment as lagging TXN/ADI."},
+{"metric":"Pricing into 2H/next year","horizon":"2H26→2027","trend":"up","trail":[
+{"date":"2026-05-29","val":"holding price to rebuild relationships, but did not rule out broader hikes into 2H/next year","src":"JPM/Sur"},
+{"date":"2026-06-15","val":"announced a broad-based price increase starting in June; MCU still ~20% below prior peak (laggard, runway ahead)","src":"Citi \"800V power\""}
+],"note":"MCU is the laggard category yet to inflect, leaving restocking/pricing runway."}
+]}

@@ -1,0 +1,180 @@
+# MRVL — Marvell Technology, Inc.
+
+_Wiki · generated 2026-06-19 · sources: `E:\Wiki Felipe\MRVL` (filings + transcripts) · `_equity_calls` · `_briefings\by-ticker\MRVL.md` (none on disk). Master index: [00_INDEX.md](00_INDEX.md). Themes: [custom-asic-tpu](themes/custom-asic-tpu.md) · [optical-cpo](themes/optical-cpo.md)._
+
+<!-- SNAPSHOT:START (auto: _tools/build_snapshot.py — do not hand-edit) -->
+### 📊 Consensus snapshot — BBG · asof 2026-06-22 · USD
+
+| Metric | CY2026E | CY2027E |
+|---|--:|--:|
+| Revenue | $11.5bn | $16.8bn |
+| Gross profit | $6.7bn | $9.6bn |
+| Gross margin | 58.6% | 57.4% |
+| EBITDA | $4.5bn | $6.7bn |
+| EPS | $4.03 | $6.42 |
+| Capex | $479m | $607m |
+| OCF (≈EBITDA) | $4.5bn | $6.7bn |
+
+<svg xmlns="http://www.w3.org/2000/svg" width="326" height="88" viewBox="0 0 326 88" font-family="-apple-system,Segoe UI,Roboto,sans-serif"><text x="0" y="10" font-size="11" font-weight="600" fill="#33405c">FY1 EPS revision</text><rect x="0" y="19.0" width="20" height="39.0" rx="2" fill="#1c5fd6"/><text x="10" y="69" font-size="9" text-anchor="middle" fill="#8492ad">6m</text><rect x="28" y="16.6" width="20" height="41.4" rx="2" fill="#1c5fd6"/><text x="38" y="69" font-size="9" text-anchor="middle" fill="#8492ad">3m</text><rect x="56" y="16.7" width="20" height="41.3" rx="2" fill="#1c5fd6"/><text x="66" y="69" font-size="9" text-anchor="middle" fill="#8492ad">1m</text><rect x="84" y="14.0" width="20" height="44.0" rx="2" fill="#1c7d3f"/><text x="94" y="69" font-size="9" text-anchor="middle" fill="#8492ad">now</text><text x="0" y="84" font-size="10" fill="#1c7d3f">+6.2% 3m · +12.9% 6m</text><text x="176" y="10" font-size="11" font-weight="600" fill="#33405c">FY2 EPS revision</text><rect x="176" y="27.7" width="20" height="30.3" rx="2" fill="#1c5fd6"/><text x="186" y="69" font-size="9" text-anchor="middle" fill="#8492ad">6m</text><rect x="204" y="23.7" width="20" height="34.3" rx="2" fill="#1c5fd6"/><text x="214" y="69" font-size="9" text-anchor="middle" fill="#8492ad">3m</text><rect x="232" y="23.1" width="20" height="34.9" rx="2" fill="#1c5fd6"/><text x="242" y="69" font-size="9" text-anchor="middle" fill="#8492ad">1m</text><rect x="260" y="14.0" width="20" height="44.0" rx="2" fill="#1c7d3f"/><text x="270" y="69" font-size="9" text-anchor="middle" fill="#8492ad">now</text><text x="176" y="84" font-size="10" fill="#1c7d3f">+28.1% 3m · +45.3% 6m</text></svg>
+
+_Gross profit = Revenue × GM%. OCF: no forward BBG consensus — EBITDA shown as proxy._
+<!-- SNAPSHOT:END -->
+
+## Snapshot
+Fabless data-infrastructure semiconductor supplier "spanning the data center core to the network edge" — core IP in complex SoCs integrating analog, mixed-signal, DSP, **electro-optics and silicon photonics** (FY26 10-K, 2026-03-11). One reportable segment; the **data center end market is 74% of revenue** ($6.10B of $8.19B in FY26, +46% y/y) with comms/enterprise/carrier the rest after the August-2025 divestiture of the automotive-Ethernet unit to Infineon for $2.5B (FY26 10-K). Three AI franchises drive the story: **custom compute ASICs/XPUs** for hyperscalers (the #2 merchant custom-silicon partner behind AVGO), **electro-optics** (1.6T PAM DSPs, 2nm coherent DCI, now CPO via Celestial AI), and **data-center switching/interconnect** (51.2T/100T, AEC/retimers, CXL via XConn). Highly concentrated: top-10 customers = 82% of FY26 revenue; one direct customer 14%, one distributor 37% (FY26 10-K).
+
+## At a glance — product · buyer · supplier
+| | |
+|---|---|
+| **Sells (top 3)** | 1) Custom compute ASICs/XPUs · 2) Electro-optics + DSP (1.6T PAM, 2nm coherent DCI) · 3) Data-center switching/interconnect (51.2T/100T, AEC, CXL) |
+| **Main buyer(s)** | US hyperscalers (AWS Trainium, Microsoft Maia, Google, Meta) — highly concentrated: top-10 = 82% of FY26 rev; one distributor 37%, one direct customer 14% |
+| **Key suppliers** | TSMC foundry (3nm/2nm); HBM (SK hynix/Micron); IP/EDA (Arm, Cadence, Synopsys); substrates; InP/EML lasers + SiPh |
+
+## Position in the value chain
+MRVL is a fabless designer sitting between the foundry/IP/memory supply base and the hyperscalers. It owns no fabs — it co-designs custom ASICs and electro-optic/DSP/switching silicon, manufactured at TSMC, and sells the bulk of its data-center output to the four US hyperscalers (AWS Trainium, Microsoft Maia roadmaps it owns that AVGO does not; per JPM Sur, 2026-06-17). It is the **#2 merchant custom-silicon partner behind Broadcom**, levered to (a) hyperscaler ASIC insourcing and (b) the copper-to-optical interconnect transition.
+
+<svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+  <rect x="0" y="0" width="720" height="220" fill="#ffffff"/>
+  <!-- Suppliers -->
+  <rect x="10" y="40" width="180" height="140" rx="8" fill="#eef3fb" stroke="#3b5bA9" stroke-width="1.5"/>
+  <text x="100" y="60" text-anchor="middle" font-weight="bold" fill="#1f3a6e">Suppliers</text>
+  <text x="100" y="86" text-anchor="middle">TSMC foundry (3nm/2nm)</text>
+  <text x="100" y="108" text-anchor="middle">HBM (SK hynix/Micron)</text>
+  <text x="100" y="130" text-anchor="middle">IP / EDA (Arm, Cadence,</text>
+  <text x="100" y="146" text-anchor="middle">Synopsys); substrates</text>
+  <text x="100" y="168" text-anchor="middle">InP/EML lasers; SiPh</text>
+  <!-- MRVL -->
+  <rect x="270" y="30" width="190" height="160" rx="8" fill="#fdeee6" stroke="#c0622a" stroke-width="2"/>
+  <text x="365" y="52" text-anchor="middle" font-weight="bold" fill="#9c3d12">MRVL (fabless)</text>
+  <text x="365" y="78" text-anchor="middle">Custom ASIC / XPU</text>
+  <text x="365" y="100" text-anchor="middle">Electro-optics + DSP</text>
+  <text x="365" y="116" text-anchor="middle">(1.6T PAM, 2nm coherent,</text>
+  <text x="365" y="132" text-anchor="middle">Celestial AI CPO)</text>
+  <text x="365" y="154" text-anchor="middle">Switching silicon</text>
+  <text x="365" y="170" text-anchor="middle">(51.2T/100T, AEC, CXL)</text>
+  <!-- Customers -->
+  <rect x="540" y="40" width="170" height="140" rx="8" fill="#eaf6ee" stroke="#2f8f4e" stroke-width="1.5"/>
+  <text x="625" y="60" text-anchor="middle" font-weight="bold" fill="#1d6b38">Customers</text>
+  <text x="625" y="86" text-anchor="middle">Hyperscalers:</text>
+  <text x="625" y="108" text-anchor="middle">AWS (Trainium)</text>
+  <text x="625" y="128" text-anchor="middle">Microsoft (Maia)</text>
+  <text x="625" y="148" text-anchor="middle">Google, Meta</text>
+  <text x="625" y="170" text-anchor="middle">+ DCI to all 5 US HS</text>
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#555"/>
+    </marker>
+  </defs>
+  <line x1="192" y1="110" x2="266" y2="110" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="462" y1="110" x2="536" y2="110" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="360" y="208" text-anchor="middle" font-style="italic" fill="#444">#2 merchant custom-silicon partner behind AVGO — levered to ASIC insourcing + optical interconnect</text>
+</svg>
+
+## Current state (latest quarter)
+**Q1 FY27 (reported 2026-05-27, quarter ended May 2, 2026):**
+- Revenue **$2.418B**, +9% q/q, **+28% y/y** (10-Q, 2026-05-28; transcript 2026-05-27); data center **$1.8B = 76% of total**, +27% y/y, driven by AI demand (data-center end market +27% per 10-Q).
+- Non-GAAP EPS **$0.80** (+29% y/y), ~$0.05 above the ~$0.75 Street; non-GAAP GM 58.9%, GAAP GM 52.1% (GAAP gross profit $1,260.8M on $2,417.5M).
+- **Custom silicon:** >20% growth in FY27, **more than double in FY28**; management gave new **"line of sight to >$10B annual custom silicon revenue for FY29"** across existing programs, XPU-attach, and new tier-1 wins (transcript 2026-05-27).
+- **Interconnect raised to >70% y/y growth in FY27** (from ~50%); DCI to $1B annualized in FY28; **Celestial AI** closed in the quarter (Photonic Fabric / EAM modulators, already selected by a tier-1 hyperscaler for next-gen XPU scale-up), plus **Polariton** (plasmonic SiPh, >1THz modulator, 3.2T+). NVIDIA partnership across optics, NVLink Fusion, AI-RAN.
+- **Guidance:** Q2 FY27 ~$2.7B (±5%, +35% y/y); **FY27 ~$11.5B (~+40%)**; **FY28 raised to ~$16.5B (~+45%)**, +$1.5B vs prior, data center ~+55% y/y; op-margin target upper-end 38–40%. ~$1B FY27 supply prepayments (transcript 2026-05-27).
+- **ASIC pipeline confirmed (JPM Harlan Sur, Semis Spring Series, 2026-05-29):** MRVL ships **~$9B AI ASIC+networking in 2025 → ~$15B in 2026**. **Trainium 3 ships this quarter with a strong 2H ramp** (numbers visible from the July quarter); **Trainium 4 (2nm) design started last year, on track to ramp 2H next year**, adding **CPO content (Celestial AI), Elink IO chiplets and a UALink scale-up switch** on the XPU-attach. **Microsoft Maia 3nm on track, all milestones hit "without any issues"** (vs Microsoft's stalled 5nm COT/JUC part), with a **2nm Maia follow-on for cal-28**. New: a **multi-billion, multi-year Google SmartNIC/DPU program ramping 2H**, a **Google CXL-controller ASIC ramping 2H**, and read-through from the **Groq LPU heritage** (MRVL designed Groq's first-gen SRAM-based LPU) — other hyperscalers now exploring SRAM-based inference-offload engines and "in discussion with Marvell," whose 3nm/2nm dense SRAM is the highest-density (6T cell) in the industry. Optical "on fire": MRVL still owns **~65-70% of the optical-DSP market**, with 800G/1.6T PAM4 DSP the primary driver of its recent upward revisions.
+
+## Debate / thesis
+- **Bull:**
+  - **JPM Harlan Sur (2026-06-17) calls MRVL his "#2 pick in semis," and explicitly defended both the AWS Trainium and Microsoft Maia 3nm roadmaps as un-lost** — refuting Asia/US-bear claims from a year ago that have since been disproven by the stock's outperformance. MRVL "owns the Trainium and Maia XPU roadmaps Broadcom does not," plus CXL and Ethernet scale-up, and a possible Google LPU win (Sur, 2026-06-05 / 2026-06-17; theme [custom-asic-tpu](themes/custom-asic-tpu.md)).
+  - **UBS names MRVL its favorite compute name (Buy, PT $120, 2025-12-22):** UBS "favors MRVL the most" among compute names and views it as attractively valued; models AMZN+MSFT XPU contributions reaching **$3.3B+ by C2028** and a **path to ~$6 EPS by C2028**. UBS believes the Street is "overly negative on the MSFT + AWS revenue contributions" and expects upward revisions; sees MSFT targeting **~1MM+ Maia 300 units at HSD-$K ASP** (ramping very late '26/early '27), plus revenue from Trainium 3 — the Celestial AI deal "helps ensure MRVL remains an important part of the Trainium roadmap" (UBS, 2025-12-22). UBS FY28E/FY29E revenue $12.34B/$14.35B.
+  - Self-reinforcing custom pipeline: Murphy — "every program we looked at a year ago is larger a year later"; **>$10B custom revenue line-of-sight for FY29**, off a $75B lifetime-opportunity funnel and 18+ XPU/XPU-attach sockets (transcripts 2025-12-02, 2026-05-27).
+  - **Optical leadership is real and being extended:** first to 200G/lane and 1.6T into production; 2nm coherent DCI to all five US hyperscalers; Celestial AI + Polariton push MRVL into scale-up CPO (theme [optical-cpo](themes/optical-cpo.md), which notes MRVL still has the Google 1.6T DSP design and ~80% of the prior-gen 800G DSP market — Susquehanna, 2026-05-19). Jefferies pegs MRVL at **~75% DSP share** and argues CPO is "years away from real volume," so scale-out CPO is "less of an existential threat than consensus expects"; any shift to back-end AECs ("Alaska" AEC DSP) or optical DSPs ("Nova 2") is **TAM-additive** (Jefferies/Curtis, CPO Primer).
+  - **Scale-up & scale-across are TAM expanders, not just defense:** MS models scale-up networking at a **34% CAGR 2024–30 to ~$17B**, with MRVL positioned via UALink (consortium member; UALink IP in custom-compute platforms) and next-gen optics (LPO/CPO); MS is "most excited about MRVL's optical positioning — higher margin and durability vs. the ASIC opportunity" (MS Scale-up primer). TD Cowen adds that the nascent scale-across (DCI) domain is a coherent-optics tailwind, and that the Celestial AI + XConn acquisitions make MRVL "increasingly competitive" in merchant UALink switching — "an underappreciated growth opportunity for Marvell."
+  - Trainium 4 scale-up optionality: of four T4 variants, MRVL is in the Ethernet-scale-up and Celestial-AI/NVLink-Fusion paths; "Marvell can do Ethernet scale up" (Sur, 2026-06-17).
+  - **Under-appreciated IP / margin assets (Irrational Analysis, 2026-06-03):** (1) **Custom dense SRAM IP** shown at Hot Chips runs at **500mV (450mV pushed)** vs a typical ~630mV floor — "rock solid" data the author judges **better than most/all internal SRAM IP at NVDA/AMD/Broadcom**, and well ahead of licensable (Synopsys) stock IP. (2) **Structera CXL controller** (DDR4 + DDR5 versions): the DRAM shortage has flipped it "from worthless garbage to extremely valuable" — hyperscalers can pool fully-depreciated DDR4 from de-commissioned CPU servers; the author calls it **probably Marvell's highest-GM product (~85% margins)** going "from zero to a large revenue number," with Marvell's interface IP + dense-SRAM cache rated **"way better" than the Synopsys IP Astera Labs licenses**. (3) **NVDA's $2B stake** read as strategic (NVLink-Fusion lock-in vs Celestial, blocking AMD switching, Broadcom-weakening, SRAM/Celestial IP optionality) — with prior NVDA/MRVL friction over optical-DSP pricing/performance (NVDA's internal 1.6T DSP demoed at OFC) (Irrational Analysis "What's going on with Marvell?", 2026-06-03).
+- **Bear:**
+  - **Customer concentration is extreme** — top-10 = 82% of FY26 revenue, and the four US hyperscalers are where the capex sits (FY26 10-K; Murphy: "that is where the dollars are going to go"). Any single design-win loss/slip is material.
+  - **Merchant-DSP share erosion at 1.6T:** Susquehanna (2026-05-19) flags pushback on Marvell's 1.6T DSP performance; NVDA is not sourcing MRVL for 1.6T (Broadcom + captive only), and "it's going to look very different than the ~80% share Marvell had at 800G" — Broadcom gains share as the market broadens beyond Google. Jefferies notes CPO could long-term be **30%+ of the market**, an eventual scale-out headwind to the transceiver/DSP base (CPO Primer). 650 Group corroborates the math (networking research, 2026-05-26): with a *new* NVDA DSP transceiver entering plus dual-sourcing in a constrained, much-bigger 1.6T market, **"by definition Marvell will be at a slightly lower market share at 1.6T versus 800G."**
+  - **Trainium economics / units (Citi/Jefferies "Blaine," Asia recal, 2026-05-22):** Trainium server production is **~flat in Q2 on the Trn2→Trn3 transition**; Blaine is below the buy-side's ~3M-units-'25 / ~4M-'26 enthusiasm, doesn't view the chip as great standalone, and warns **MRVL "doesn't get paid on all the units"** in its Amazon agreement — so MRVL may not capture the full volume upside even if it materializes. Sees the FQ2 beat-and-raise as a "couple hundred million" affair, optical the source of strength (+20%+), ASIC less so given the Trainium transition. The **Structera/CXL expander** (Google white paper lists Marvell CXL for memory tiering) is a real new XPU-attach vector but "not in the billions yet."
+  - **CPO/co-light competition moves inside the data center (BofA Tal/Ciena call, 2026-06-12):** Ciena's CEO names **Marvell (alongside Cisco) as the competitor he "worries about" as coherent/co-packaged optics migrate from DCI into the campus and inside the data center** — MRVL is "very strong in IMDD, recognizing the technology shift, working on co-light, and very good at high-volume low-cost implementation." Two-way read: validates MRVL's optical reach into scale-up/CPO, but the merchant CPO arena is contested (Broadcom + Marvell both pushing own switch-chip CPO into an ecosystem hyperscalers are forcing open).
+  - **Valuation caps the call for some (MS, EW, PT $80, 2025-12-22):** MS expects the AI-optical growth to play out and MRVL to outgrow DC spend, but stays **Equal-Weight on valuation** plus high SBC drag; MS CY26 EPS bull/base/bear $2.72 / $2.25 / $1.92 at 47x/35x/27x; MS FY28E revenue $9.81B vs. UBS $12.34B and management's ~$16.5B FY28 guide — a wide Street dispersion on the ASIC ramp's pace.
+  - **GM mix:** custom/ASIC scales faster than higher-margin optics/switching — same structural drag the Street debates at AVGO; non-GAAP GM has drifted from ~59.7% (Q3 FY26) to 58.9% (Q1 FY27). MS models MW GM easing 60.2% (2025) → 58.9% (2026e) → 57.7% (2028e).
+  - **"Hock's dig at Marvell":** Sur relays that AVGO won't ratchet guidance "every quarter — a dig at maybe Marvell" (2026-06-17), implying MRVL's higher-frequency guide-raises carry less durability; MRVL's ASIC business is also "where Broadcom was 2–3 years ago" in scale.
+  - **UALink switching is now contested:** TD Cowen flags MRVL's UALink-switch entry as direct competition with AVGO's strong Ethernet switching and a headwind to Astera — a two-way fight where execution, not consortium membership, decides share.
+- **Where the sell-side stands:** **UBS Buy, PT $120** (top compute pick, 2025-12-22); **MS Equal-Weight, PT $80** (likes the optics franchise, capped on valuation/SBC, 2025-12-22); **JPM (Sur)** = #2 semis pick, roadmaps defended (2026-06-05 / 2026-06-17). TD Cowen and Jefferies are constructive on the optics/scale-up/scale-across TAM expansion. The bull-bear axis is now less "is the ASIC real" and more **pace of the ASIC ramp** (MS FY28 $9.8B vs. UBS $12.3B vs. guide $16.5B) and **1.6T DSP share durability** (Susquehanna bear vs. Jefferies ~75% share defense). The optical-cpo theme places MRVL in the "stronger copper+optics" bucket (vs weaker pure-play optics) per @crux_capital_ (2026-06-19).
+
+## Catalysts / what to watch
+- **Q2 FY27 print: ~late August 2026** — watch the ~$2.7B/+35% guide, custom-silicon ramp, and any FY28 raise above ~$16.5B.
+- Custom: new tier-1 XPU program announcements feeding the >$10B FY29 line-of-sight; Trainium 4 scale-up protocol resolution (UALink vs Ethernet vs NVLink Fusion); Maia 300 ramp (UBS ~1MM+ units very late '26/early '27).
+- Optical: 1.6T ramp pace and share vs AVGO/NVDA captive DSP; 2nm coherent DCI to 5 US hyperscalers; Celestial AI CPO progress (**$500M run-rate exit-FY28 → ~$1B by CY28**; earn-out tied to **$2.0B cumulative revenue by Jan-2029**, with AWS warrants at a **$87.00 strike** vesting on Photonic Fabric purchases — SemiAnalysis CPO book); Polariton/3.2T.
+- Switching: 51.2T ramp + 100T sampling (H1 FY27); UALink 115T sampling H2 FY27 → volume FY28; XConn CXL 3.1; merchant UALink-switch share fight vs AVGO/Astera (TD Cowen).
+
+## Risks
+- **Customer concentration** — significant revenue from a few customers; top-10 = 82%, with sales heavily concentrated in the **data center end market** (FY26 10-K). Loss/reduction at a major customer "would likely harm" results.
+- **Design-win dependence** — revenue swings on timing/number of design wins; custom programs are multi-year and binary.
+- **Foundry/supply dependence** — fabless; relies on TSMC and third-party manufacturers/substrates/HBM; $1B FY27 capacity prepayments to secure supply (10-Q).
+- **Merchant-silicon competition** — AVGO (custom + DSP share gains at 1.6T), captive hyperscaler/COT teams, NVDA captive DSP; pricing/share pressure as customers diversify suppliers. CPO long-term (30%+ of market, Jefferies) is a scale-out transceiver/DSP headwind.
+- **Margin mix** — ASIC growth dilutive to gross margin vs optics/switching.
+- **Macro / AI-capex cyclicality & geopolitics** — China/export-policy exposure; substantial non-US operations (FY26 10-K).
+
+<!-- Consensus estimates (BBG) block auto-injected here by the HTML builder -->
+
+## In the inbox (Outlook — recent sell-side flow)
+- **JPM Index Research (M. Moon)** _(2026-06-18)_: **MRVL added to the S&P 500** in the June rebalance ($88bn notional, 2nd-biggest quarterly) — passive demand tailwind.
+- **Harlan Sur (JPM) call note** _(2026-06-17)_: Marvell tied to the **Trainium 3** program; flags **a US sell-side competitor downgraded MRVL** on 1.6T DSP share concerns.
+- **AlphaSense expert alert** _(2026-06-17)_: Marvell AVP on yield optimization for advanced nodes (initial challenges, improving over time).
+
+## Intra-quarter — calls, commentary & reports
+
+**Signal vs management** — what management said on the last call × what the intra-quarter flow is saying (✓ confirms · ⚠ nuances · ✗ contests):
+
+| Theme | Management said (Q1 FY27) | Intra-quarter flow | Signal |
+|---|---|---|---|
+| **CPO scale-up / Celestial** | Celestial AI closed in the quarter (already selected by a tier-1 for scale-up); interconnect >70% y/y FY27 | BTG/LightCounting (Bob): Celestial takes MRVL into scale-up CPO, "going to explode" by end-'27; legacy PAM4 CPO scaling to ~$150M too; BofA: Celestial CPO $0→$901M CY26-28E | **✓ confirms** (Celestial is the new leg) |
+| **Optical DSP / 1.6T** | 1.6T in production; DCI to all 5 US HS; optical leadership | BTG: MRVL was first at 1.6T but the delay/dissipation made everyone respin in 3nm → AVGO caught up (**lockstep**); still dominant but the market now has ~7 vendors | **⚠ nuance** (leadership eroding toward lockstep) |
+| **Custom silicon** | Line of sight >$10B custom FY29; >20% FY27, doubles FY28 | BofA: MSFT custom only ~$600M of contribution CY27 vs $2bn of supply | **⚠ nuance** (contribution < supply in '27) |
+| **Competitive position** | #2 merchant ASIC; NVDA optics/NVLink Fusion partnership | BTG: "TSMC loving MRVL"; NVDA sees it as an ecosystem piece, not a competitor (≠ Broadcom) | **✓ confirms** (ecosystem, not rival) |
+
+| Date | Source | Theme | Bias | What was said |
+|---|---|---|---|---|
+| 05-13 | BofA · Vivek Arya | valuation | bull | **Implicitly raises rating to BUY (C-1-7) and PO $125 → $200** (30x CY28E PE incl. SBC), on the back of a raised AI-networking TAM of **~$316bn (from ~$240bn)**. Raises sales FY28/29E +1%/+8% and EPS +3%/+15% to **$5.60/$7.80**. Drivers: 1.6T ramp (Ethernet transceivers TAM +$7bn/$10bn CY27/28, MRVL supplies DSP/TIA/drivers, ~60-70% share), **CPO scale-up via Celestial AI** ($0 → $145M → $901M CY26-28E, +$111M in CY28E vs prior) and custom-silicon (MSFT program in CY28; only ~$600mn of contribution in CY27 vs $2bn of supply). (BofA "AI 2030", 2026-05-13) |
+| 06-25 | BTG · LightCounting call | product | bull | Expert (Bob): the **Celestial AI acquisition** takes MRVL into scale-up CPO, ramping **by the end of next year** — "going to explode." Surprise from the last call: beyond Celestial ($150M of revenue next year), MRVL now talks about **legacy PAM4 CPO scaling to the same $150M** — a strategy of offering a broad portfolio (Celestial, VCSEL arrays, micro-LEDs) and letting the customer choose, ≠ competitors locked into a single technology. On DSP, MRVL was first at 1.6T but the delay/dissipation made everyone respin in 3nm → AVGO caught up (**lockstep**); near-term 1.6T demand is Google (uses MRVL) + NVDA (internal). MRVL still dominant in optical DSP (market now with ~7 vendors). In DCI/scale-across, MRVL strong in 400/800 ZR (founded 400ZR with Microsoft). "TSMC loving MRVL" — NVDA sees it as an ecosystem piece, not a competitor (≠ Broadcom). (BTG "LightCounting", 2026-06-25) |
+| 06-19 | Nutty "Optics Primer" (nuttycld.substack.com, 2026-06-19) | product | bull | Nutty's CPO/silicon-photonics primer names MRVL among the top-mentioned companies (15 mentions), framing it in the DSP/silicon-photonics context: MRVL is identified as the leading optical DSP supplier (~65-70% market share at 800G PAM4) and is noted in the context of its Celestial AI acquisition positioning it for CPO scale-up. The primer also notes the 1.6T DSP competition (AVGO caught up on 3nm respin) and covers MRVL's Polariton asset for 3.2T silicon-photonics integration. The CPO/optics lens reinforces the view that MRVL's optical franchise extends from pluggable transceivers into the scale-up CPO era, adding durability to the DSP revenue base. (Nutty "Optics Primer", nuttycld.substack.com, 2026-06-19) |
+| 06-27 | Compiled briefing / press | product | bull | **Teralynx T100 — industry's first 102.4 Tbps AI data center switch, 25% lower power** — announced at COMPUTEX 2026. Marvell's Teralynx T100 is the first merchant silicon switch ASIC to break the 100 Tbps barrier, delivering 102.4 Tbps of switching capacity at 25% lower power than prior generation solutions. Key read-through: (1) MRVL extends its switching leadership vs Tomahawk 6/7 at the very high end (complements rather than competes — targets scale-out AI clusters, while AVGO's Tomahawk leads in scale-up); (2) 25% lower power is critical as AI DC power envelopes are the binding constraint; (3) confirms MRVL's strategy of covering both the optical DSP/CPO stack AND the switching silicon in the AI DC — a broader total-addressable exposure than Arista/Cisco. (Compiled briefing / press, 2026-06-27) |
+
+**Quarter synthesis:** the flow confirms the two strategic legs — Celestial AI as the entry into scale-up CPO ("going to explode") and the ecosystem (not rival) position alongside NVDA/TSMC. The nuance that shifted this quarter is the **erosion of optical-DSP leadership** (1.6T in lockstep with AVGO) and the '27 custom contribution gap vs supply. New from 06-27: **Teralynx T100 (102.4 Tbps, 25% lower power)** — industry's first switch breaking the 100 Tbps barrier, announced at COMPUTEX 2026; extends MRVL's switching capability into the ultra-high-bandwidth AI DC tier and adds a revenue vector beyond optics/DSP.
+
+## Management commentary — evolution (last 4 quarters)
+
+| Theme | Q2 FY26 (Aug'25) | Q3 FY26 (Dec'25) | Q4 FY26 (Mar'26) | Q1 FY27 (May'26) |
+|---|---|---|---|---|
+| Total revenue / EPS | $2.006B, +58% y/y; EPS $0.67 | $2.075B, +37% y/y; EPS $0.76 | FY26 $8.195B +42%; Q4 $2.219B; EPS $2.84 | $2.418B, +28% y/y; EPS $0.80 |
+| Data center | $1.490B, 74%, +69% y/y | $1.52B, 73%, +38% y/y | FY26 >$6B +46%; Q4 $1.5B, 74% | $1.8B, 76%, +27% y/y |
+| Custom silicon / XPU | 18 sockets; share 13%→20% by 2028 | 18 wins; >20% FY27, double FY28 | Custom $1.5B FY26 (doubled y/y) | Line of sight >$10B custom by FY29 |
+| Electro-optics / interconnect | 1.6T DSPs begin shipping; 51.2T ramp | 1.6T "exceptionally strong"; 3.2T ~2028 | 1.6T into production; DCI to all 5 HS | Interconnect >70% FY27; DCI $1B FY28 |
+| Switching & scale-up | 51.2T ramping; 12.8T high volume | FY26 >$300M; FY27 >$500M; 100T next yr | FY27 raised >$600M; Celestial+XConn CPO | Scale-up = "multibillion" lifetime wins |
+| FY framing / guidance | Q3 ~$2.060B, +36% y/y | FY27 ~$10B; DC >25% growth | FY27 ~$11B; FY28 ~$15B, EPS >$5 | FY27 ~$11.5B; FY28 raised ~$16.5B |
+
+_Source: MRVL earnings calls (dates above); management commentary, paraphrased._
+
+## Sources
+- **Filings:** [10-K FY2026 (2026-03-11)](../MRVL/MRVL_10-K_2026-03-11_0001835632-26-000011.html); [10-Q Q1 FY27 (2026-05-28)](../MRVL/MRVL_10-Q_2026-05-28_0001835632-26-000019.html).
+- **Transcripts:** [Q1 FY27 (2026-05-27)](../MRVL/transcripts/MRVL_Q1-FY27-earnings_2026-05-27.md); [Q4/FY26 (2026-03-05)](../MRVL/transcripts/MRVL_Q4-FY26-earnings_2026-03-05.md); [Q3 FY26 (2025-12-02)](../MRVL/transcripts/MRVL_Q3-FY26-earnings_2025-12-02.md); [Q2 FY26 (2025-08-28)](../MRVL/transcripts/MRVL_Q2-FY26-earnings_2025-08-28.md).
+- **Equity calls:** [2026-06-17 Sur/JPM — AVGO/Marvell (Trainium/Maia roadmaps defended, #2 pick)](../_equity_calls/Semis/2026-06-17_Harlan_AVGO-Marvell.md); [2026-06-05 Sur/JPM — post-AVGO (MRVL #2 pick, LPU)](../_equity_calls/Semis/2026-06-05_Harlan_AVGO.md); [2026-05-19 Susquehanna — networking (1.6T DSP share, Celestial/CXL/XConn)](../_equity_calls/Semis/2026-05-19_Susquehanna_networking.md).
+- **Themes:** [custom-asic-tpu](themes/custom-asic-tpu.md) (MRVL = #2 ASIC beneficiary); [optical-cpo](themes/optical-cpo.md) (MRVL in stronger copper+optics bucket; Celestial AI CPO).
+- **Research reports (relatórios bons):**
+  - [UBS 2026 US Semiconductors overview — MRVL top compute pick, Buy PT $120 (2025-12-22)](../relat%C3%B3rios%20bons/UBS_2026_overview.html)
+  - [MS Scale-up Networking primer — MRVL EW PT $80, optics-led scale-up positioning](../relat%C3%B3rios%20bons/Scale_up_primer_MS.html)
+  - [TD Cowen — Celestial AI/XConn, UALink switching, scale-across DCI tailwind](../relat%C3%B3rios%20bons/TDCOWEN.html)
+  - [Co-Packaged Optics (CPO) — Scaling with Light (Celestial AI run-rate/earn-out, AWS warrants)](../relat%C3%B3rios%20bons/Co_Packaged_Optics_CPO_Scaling_with_Light_for_the_Next_Wave_of_Interconnect.html)
+  - [CPO Primer (Jefferies/Curtis) — MRVL ~75% DSP share, CPO additive on scale-up](../relat%C3%B3rios%20bons/CPO_Primer.html)
+  - [Irrational Analysis — "What's going on with Marvell?" (2026-06-03): dense SRAM (500mV), Structera DDR4-CXL ~85% GM, NVDA $2B stake](../relat%C3%B3rios%20bons/Marvell_Irrational_Analysis.html)
+  - [JPM (Harlan Sur) — Semis Spring Series (2026-05-29)](../relat%C3%B3rios%20bons/2026_05_29_jpm_semis_29_may_26.html) — ~$9B '25 → ~$15B '26 ASIC+networking; Trainium 3 ships now / T4 2nm 2H'27 + Celestial CPO + UALink + Elink IO; Maia 3nm on track + 2nm cal-28; Google SmartNIC/DPU + CXL; Groq LPU heritage / SRAM-offload interest.
+  - [Citi/Jefferies (Blaine) — Asia recal call (2026-05-22)](../relat%C3%B3rios%20bons/2026_05_22_jef_asia_recal_call_22_may_2026.html) — Trainium flat Q2 (T2→T3), MRVL "doesn't get paid on all units," optical the FQ2 beat driver, CXL expander vector.
+  - [650 Group — networking research (2026-05-26)](../relat%C3%B3rios%20bons/2026_05_26_650_group_26_05.html) — MRVL slightly lower share at 1.6T vs 800G on new entrants + dual-sourcing; copper/AEC longevity; UALink-over-Ethernet end-state.
+  - [BofA (Tal) — Ciena supply-chain call (2026-06-12)](../relat%C3%B3rios%20bons/2026_06_12_cien_baml_supply_chain_12_jun_26.html) — Marvell named as the CPO/co-light competitor to watch as coherent optics move inside the data center.
+  - [BofA (Vivek Arya) — "AI 2030: Stronger for Longer" (2026-05-13)](../relat%C3%B3rios%20bons/Vivek_State_of_the_union.html) — sobe MRVL p/ BUY, PO $125→$200 (30x CY28); AI-networking TAM ~$316bn; CPO Celestial CY28E $901M; FY28/29E EPS $5.60/$7.80.
+  - [BTG — LightCounting optics/CPO expert call (2026-06-25)](../relat%C3%B3rios%20bons/BTG_LightCounting_Optics_Expert_Call_2026-06-25.html) — Celestial AI takes MRVL into scale-up CPO ramping by the end of next year ("set to explode"); legacy CPO scales to ~$150M too; broad portfolio; DSP in lockstep with AVGO on 3nm; "TSMC loving MRVL".
+- **Outlook / sell-side notes:** no Outlook tool available in this environment — none pulled. **Briefings:** no `_briefings/by-ticker/MRVL.md` on disk.
+
+## Changelog
+| Date | Change |
+|---|---|
+| 2026-06-27 | Added 1 intra-quarter row (06-27): Teralynx T100 (102.4 Tbps, 25% lower power, COMPUTEX 2026) — industry's first switch breaking 100 Tbps. Updated quarter synthesis. |

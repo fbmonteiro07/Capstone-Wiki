@@ -1,0 +1,27 @@
+{"ticker":"NVTS","forward":[
+{"metric":"Q2 2026 revenue guide","horizon":"Q2'26","trend":"up","trail":[
+{"date":"Q1'26 (2026-05-05)","val":"Q2'26 guide $10.0m ± $0.5m (16%+ sequential); non-GAAP GM 39.25% ± 75bps; opex $14.5–15.5m","src":"NVTS Q1 2026 call"}],
+"note":"Sequential ramp off $8.6m Q1; mobile/consumer 'insignificant by year-end'."},
+{"metric":"NVIDIA 800V HVDC P&L / in-rack proof","horizon":"2027","trend":"up","trail":[
+{"date":"Q2'25 (2025-08-04)","val":"selected; $2.6bn TAM; ramp late-2026/2027","src":"NVTS Q2 2025 call"},
+{"date":"Q3'25 (2025-11-03)","val":"power-selected partner; 2027 material P&L","src":"NVTS Q3 2025 call"},
+{"date":"Q4'25 (2026-02-24)","val":"10kW all-GaN 800V-to-50V DC-DC at 98.5% peak efficiency, co-developed","src":"NVTS Q4 2025 call"},
+{"date":"Q1'26 (2026-05-05)","val":"3-phase architecture; in-rack GaN proof points Q1–Q2'27 (the gate to production revenue)","src":"NVTS Q1 2026 call"}],
+"note":"The swing factor; no material AI-DC P&L until 2027, tied to NVDA Kyber/Rubin-Ultra ramp."},
+{"metric":"Path to breakeven","horizon":"structural","trend":"up","trail":[
+{"date":"Q2'25 (2025-08-04)","val":"~$10–11m/qtr burn; $161m cash","src":"NVTS Q2 2025 call"},
+{"date":"Q1'26 (2026-05-05)","val":"breakeven needs revenue 'high-30s [m/qtr]' vs $8.6m actual; $221m cash, zero debt","src":"NVTS Q1 2026 call"}],
+"note":">4x revenue gap to breakeven; runway funded by $221m cash."},
+{"metric":"Power-only SAM / per-kW content","horizon":"2030","trend":"up","trail":[
+{"date":"2025-12-22","val":"power-only SAM ~$750m (2025) → ~$2.6bn (2030); ~$45/kW 800V content ($10 UHV SiC + $10–15 SiC/HV GaN + $25–30 LV GaN)","src":"UBS / T. Arcuri"},
+{"date":"2026-06-09","val":"WBG market $1bn→$5bn+ (2030, Navitas-sourced); $25–35K/MW split ~evenly SiC/GaN; GaN primarily inside DC","src":"JPM 'Watts Up! 800V'"}],
+"note":"Largest bucket (LV GaN) is GPU-proximate where incumbents TXN/MPWR/IFX entrenched — share capture not assured."},
+{"metric":"Mgmt TAM target","horizon":"2030","trend":"up","trail":[
+{"date":"Q1'26 (2026-05-05)","val":"$3.5bn by 2030 at 60%+ CAGR","src":"NVTS Q1 2026 call"}],
+"note":"Mgmt framing; FinTwit skeptical ('CEO TAM bullshit')."},
+{"metric":"GaN foundry migration (TSMC exit)","horizon":"2027","trend":"contested","trail":[
+{"date":"Q2'25 (2025-08-04)","val":"Powerchip 8-inch added; TSMC GaN supply to mid-'27","src":"NVTS Q2 2025 call"},
+{"date":"Q4'25 (2026-02-24)","val":"GlobalFoundries US GaN, production late-26/'27","src":"NVTS Q4 2025 call"},
+{"date":"Q1'26 (2026-05-05)","val":"GF US 8-inch GaN 2027; TSMC exits GaN Jul-'27","src":"NVTS Q1 2026 call"}],
+"note":"Forced migration off TSMC with re-qualification risk; execution proof point."}
+]}

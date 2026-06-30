@@ -1,0 +1,28 @@
+{"ticker":"GLW","forward":[
+{"metric":"Springboard / revenue 2028 -> 2030","horizon":"2028 -> 2030","trend":"up","trail":[
+{"date":"2026-01-28","val":"Springboard upgraded to +$11B incremental annualized sales by 2028","src":"Q4 FY25 call"},
+{"date":"2026-04-28","val":"plan to extend to 2030 on May 6","src":"Q1 FY26 call"},
+{"date":"2026-05-06","val":"extended to 2030 with ~$40B total-revenue-by-2030 target + new $10B Photonics MAP (CPO/inside-the-box)","src":"NYC investor event"}],
+"note":"JPM: ~20% op margin ~a year ahead of original Springboard goal."},
+{"metric":"Hyperscaler optical LTAs","horizon":"2026","trend":"up","trail":[
+{"date":"2026-01-28","val":"Meta up-to-$6B; others 'similar size' pending","src":"Q4 FY25 call"},
+{"date":"2026-04-28","val":"two more hyperscaler LTAs of similar size/duration concluded; working on others","src":"Q1 FY26 call (Weeks)"},
+{"date":"2026-06-09","val":"Amazon deal already 'baked in Springboard'","src":"JPM (Neutral, PT $185)"}],
+"note":"Prepay + take-or-pay structure de-risks capex (grow into AI without FCF dip)."},
+{"metric":"NVIDIA partnership / Photonics","horizon":"2028+","trend":"up","trail":[
+{"date":"2026-05-06","val":"$10B Photonics MAP anchored at investor event","src":"NYC investor event"},
+{"date":"2026-05-12","val":"NVIDIA partnership: multi-billion upfront prepayment, ~$3.2B warrant for NVDA equity, 10x US connectivity capacity, +50% fiber; first CPO revenue inflection framed 2028+; CPO penetration 10-50% by 2030","src":"Corning IR optical call"}],
+"note":"Bear: content/adoption story not pricing; back-end loaded to 2028+."},
+{"metric":"DCI optical-fiber opportunity","horizon":"end of decade","trend":"up","trail":[
+{"date":"2025-12-05","val":"JPM models Lumen greenfield alone at $200-300M (fiber miles 17mn->47mn by 2028, ~549 incremental amplifier sites at ~$500K/site); two more SP customers ramping later","src":"JPM"},
+{"date":"2026-05-12","val":"~$1B DCI optical-fiber revenue opportunity by end of decade; some investors read as conservative vs Arista's $1B already","src":"Corning IR optical call"}],
+"note":""},
+{"metric":"Operating margin","horizon":"structural","trend":"up","trail":[
+{"date":"2025-10-28","val":"19.6%, +130bp; 20% target pulled a year early","src":"Q3 FY25 call"},
+{"date":"2026-04-28","val":"20.2%, +220bp; op profit/EPS compounding ~2x rate of sales","src":"Q1 FY26 call"}],
+"note":"JPM: GLW ~20% op margin about a year ahead of original Springboard goal."},
+{"metric":"Solar wafer ramp to target","horizon":"2028","trend":"up","trail":[
+{"date":"2026-01-28","val":"$2.5B by '28; ~$0.03-0.05 ramp drag","src":"Q4 FY25 call"},
+{"date":"2026-04-28","val":"+80% YoY; raising plan; ~$0.07 Q2 drag from extended maintenance shutdown / permanent-power transition; polysilicon >20% op margin, modules cross 20% in Q2","src":"Q1 FY26 call"}],
+"note":"Wafer ramp an open-ended EPS drag + execution risk (power/utility delays)."}
+]}

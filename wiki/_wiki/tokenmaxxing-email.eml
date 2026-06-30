@@ -1,0 +1,68 @@
+From: Felipe Monteiro <Felipe.monteiro@capstone.com.br>
+To: Felipe Monteiro <Felipe.monteiro@capstone.com.br>
+Subject: Tokenmaxxing / AI Monetization — theme overview, gap audit & open-source winners
+X-Unsent: 1
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+
+<html>
+<body style="margin:0;padding:0;background:#f4f5f7;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1c2330;line-height:1.55">
+<div style="max-width:720px;margin:0 auto;padding:24px">
+
+<h1 style="font-size:21px;margin:0 0 4px">Tokenmaxxing / AI Monetization</h1>
+<p style="color:#6b7384;font-size:13px;margin:0 0 18px">Theme overview, deep-dive gap audit &amp; the open-source "who-wins" read · synthesis through 2026-06-29 · built from the empresas wiki</p>
+
+<p style="font-size:15px"><b>"Tokenmaxxing"</b> was the 2025 reflex of maxing out token consumption to look AI-forward. The 2026 sequel is the pullback — enterprises now demanding <b>control</b> over token spend, routing cheap tasks to cheap models, and testing open-source / Chinese substitutes.</p>
+
+<div style="border-left:3px solid #3b6cf0;background:#eef2fd;padding:12px 16px;border-radius:0 6px 6px 0;margin:14px 0;font-size:15px">
+<b>The buy-side fork:</b> does economic value keep accruing to frontier models (Anthropic / OpenAI pricing power + the GPU capex that underwrites it) — or does substitution &amp; cost discipline cap the monetization curve?
+</div>
+
+<p>The evidence is deliberately two-sided, and that tension <i>is</i> the theme: spend is still climbing fast and the frontier still captures <b>~90% of economic value</b> even as open-source takes <b>~80% of tokens</b> — but a real cost-control backlash is now moving enterprise behavior, vendor pricing, and hyperscaler demand. The deepest framing is <b>Jevons Paradox</b>: per-token cost falls 60–70%/yr, but usage more than re-absorbs it.</p>
+
+<h2 style="font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#3b6cf0;border-bottom:1px solid #dfe3ea;padding-bottom:6px;margin:26px 0 12px">Snapshot</h2>
+<ul style="margin:0;padding-left:20px">
+<li>Frontier ~90% of value vs open-source ~80% of tokens (BG2Pod, 06-12)</li>
+<li>Per-business AI token spend up <b>15×</b> Jan-25 → May-26, +14% m/m last print (Ramp, 06-18)</li>
+<li>Anthropic run-rate <b>~$50B</b> (from ~$9B YE2025); OpenAI <b>&gt;$25B</b> (JPM, 06-16)</li>
+<li>3 leading labs <b>&gt;$130B CY26 revenue</b> / ~$200B exit-ARR — a year ahead of forecast (Barclays, 06-01)</li>
+<li>Google: <b>3.2 quadrillion tokens/month</b> (~7× Y/Y)</li>
+<li><b>~60% of enterprises now throttling</b> AI spend via guardrails (UBS, 06-23)</li>
+<li>Still early: median AI spend just <b>$11</b>/employee/mo; &lt;2% of non-payroll spend</li>
+</ul>
+
+<h2 style="font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#3b6cf0;border-bottom:1px solid #dfe3ea;padding-bottom:6px;margin:26px 0 12px">Bull vs bear</h2>
+<p style="margin:0 0 6px"><b style="color:#1a8a5a">Bull</b> — "two things can be true": value to the frontier, tokens to open-source; and the better open-source does, the more labs spend on raw compute. Inference gross margins inflecting (~34%→~65%, Barclays); long-running agents make token demand structural (Stripe refactored a 50M-line codebase in a day). MS Byrd: corporate AI is still &lt;1% penetrated.</p>
+<p style="margin:0"><b style="color:#c0392b">Bear</b> — "a big speed bump" (Databricks): cost-control backlash is real; enterprises deploying cheap open Chinese models. Capital-intensive price war is "historically toxic" (ORCL OCI capex/sales &gt;100%). Funding gap: ~$623B 2026 hyperscaler capex vs ~$635B CFO (Bernstein). New signal from the audit: <b>H100 spot −40%</b> to $2.42/hr.</p>
+
+<h2 style="font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#3b6cf0;border-bottom:1px solid #dfe3ea;padding-bottom:6px;margin:26px 0 12px">What the deep-dive audit added (not yet in the dossier)</h2>
+<p>Four parallel sweeps over the raw sources surfaced six real gaps + one missing source:</p>
+<ol style="margin:0;padding-left:20px">
+<li><b>Consumer / on-device Jevons</b> (whole missing angle): AAPL on-device AI driving DRAM content + shortages (+20% Q3 hike, CXMT lobbying); MacBook/iPad +15–25% → <b>$263B single-day mcap loss</b>; MU &gt;$1B HBM4.</li>
+<li><b>FundaAI Part 1 (06-23)</b> — on disk but never cited (only Part 2 was): Agent Scaling Law, Fable 5 $10/$50 per Mtok (~2× Opus), Silicon Data "premium pullback ≠ demand collapse," the Linux Foundation "Tokenomics Foundation" metering standard, Uber's $1,500/seat cap, Priceline Cursor +4–5×.</li>
+<li><b>Named cost-control behavior</b>: Anthropic enterprises cutting Claude cost 90%+ via routing+caching; Block/Square "no Ferrari to the grocery store"; Vaudit found ~5% overcharges across $34M audited Claude spend.</li>
+<li><b>Sharper China cost gap</b>: DeepSeek V4 Flash $0.1 vs GPT-5.5 $4.4 vs Fable 5 $7.7 /Mtok; Chinese APIs &lt;20% of US; GLM-5.2 near-parity in ~2 weeks; DeepSeek's $7.4B raise.</li>
+<li><b>New supply-side econ</b>: CoreWeave/Cantor (06-18) — efficiency accrues to the hyperscaler not the infra provider; $10–12M → $15–16M/MW contracts; GPU useful life 3–4yr → 7–8yr.</li>
+<li><b>Alt-silicon / vertical integration</b>: OpenAI "Jalapeño" in-house chip (TSMC 3nm); Sol 5.6 on Cerebras at 750 tok/s; SambaNova $1B at $10B (5× in 4 months).</li>
+</ol>
+
+<h2 style="font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#3b6cf0;border-bottom:1px solid #dfe3ea;padding-bottom:6px;margin:26px 0 12px">If open-source "wins" — who benefits</h2>
+<p>The counterintuitive read: the money flows to <b>compute and memory, not the model layer</b> ("the better open source does, the better it is for compute providers" — Baker).</p>
+<ul style="margin:0;padding-left:20px">
+<li><b>Memory / DRAM — SK Hynix, Samsung, Micron:</b> cleanest direct trade. Chris Wood sells Alphabet, buys SK Hynix (new 4%) + Samsung: "falling token prices should lead to rising DRAM prices."</li>
+<li><b>Compute / semis — NVDA, AMD:</b> net positive on volume; AMD benefits more as routing shifts workloads to cheaper inference. UBS rates semis "no material risk."</li>
+<li><b>Multi-model hyperscalers — GOOG (most), AMZN, MSFT:</b> capture the token regardless of which model wins; multi-model = an edge "like Snowflake/MongoDB being multi-cloud."</li>
+<li><b>Inference specialists — CoreWeave, Cerebras, SambaNova;</b> model-neutral "token optimizers" — Palantir (AIP Evolve).</li>
+<li><b>The Chinese vendors themselves</b> — Qwen, GLM/Z.ai, Kimi, DeepSeek — but China-gated.</li>
+</ul>
+<p style="margin:10px 0 0"><b>Losers:</b> pure-play frontier pricing <i>premium</i> (not the compute bill); seat-based SaaS (CRM, NOW, Workday); ORCL &amp; Datadog ("outsized frontier exposure"). The hedge: "a token is not a token" — mission-critical work (coding, legal) stays on frontier even if open-source takes the routine long tail.</p>
+
+<h2 style="font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#3b6cf0;border-bottom:1px solid #dfe3ea;padding-bottom:6px;margin:26px 0 12px">Dashboard</h2>
+<p>An interactive single-page dashboard with all of the above (KPI cards, bull/bear ledger, the token-price bar chart, company exposure table, and the audit gaps) is built at:<br>
+<code style="background:#eef0f4;padding:2px 6px;border-radius:4px">E:\Wiki Felipe empresas\_wiki\tokenmaxxing-dashboard.html</code></p>
+
+<p style="color:#6b7384;font-size:12px;margin-top:26px;border-top:1px solid #dfe3ea;padding-top:12px">Sources: BG2Pod · Ramp/Big Technology · UBS Keirstead/Arcuri · WFC · Jefferies/Thill &amp; Chris Wood · Barclays · Bernstein · JPM · BofA · Morgan Stanley/Byrd · SemiAnalysis · CoreWeave/Cantor · FundaAI Deep|LLM 26H1 Pt 1 &amp; Pt 2 · morning/company-specific briefings (06-20 → 06-28). Built from _wiki/themes/tokenmaxxing.md + a 4-sweep gap audit.</p>
+
+</div>
+</body>
+</html>

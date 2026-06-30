@@ -1,0 +1,30 @@
+{"ticker":"AIXA","forward":[
+{"metric":"FY26 revenue guide","horizon":"FY26","trend":"up","trail":[
+{"date":"2026-02-26","val":"FY26 initial EUR 520m +/-30m, GM ~40%","src":"Q4/FY25 call"},
+{"date":"2026-04-30","val":"FY26 raised to EUR 560m +/-30m (was 520m), GM ~42%, EBIT margin 17-20%","src":"Q1/26 IR call"}
+],"note":"Mgmt raised FY26 guide mid-April on the opto order inflection; Q2/26 guided EUR 110m +/-10m."},
+{"metric":"Optoelectronics / AI-datacom laser revenue","horizon":"FY26 -> FY28","trend":"up","trail":[
+{"date":"2025-10-30","val":"datacom recovery into 2026+; ~EUR 150m ballpark","src":"Q3/25 call"},
+{"date":"2026-02-10","val":"opto EUR 100m FY25 -> EUR 155m FY26 (+18.5% vs cons) -> EUR 150m FY27","src":"Jefferies (Bakhda)"},
+{"date":"2026-02-26","val":"set to 'more than double yoy' in 2026","src":"Q4/FY25 call"},
+{"date":"2026-04-30","val":"'clear inflection point'; >2/3 of order intake","src":"Q1/26 call"},
+{"date":"2026-06-19","val":"transceiver units ~5x 2025-2028 against ~100% InP MOCVD share","src":"Jefferies (Beavington)"}
+],"note":"The current order driver; copper->optical shift at 800G/1600G for AI data centers."},
+{"metric":"Jefferies PT / target valuation","horizon":"FY27/FY28","trend":"up","trail":[
+{"date":"2026-02-10","val":"upgrade Hold->Buy, PT EUR 18.20 -> EUR 27 (off FY27E 19.0x EV/EBITDA)","src":"Jefferies (Bakhda/Menon)"},
+{"date":"2026-06-19","val":"PT raised to EUR 73; +8%/+16% vs consensus FY28 rev/EPS","src":"Jefferies (Beavington)"}
+],"note":"PT moved from EUR 27 to EUR 73 in four months as the US optical model was built out."},
+{"metric":"Jefferies revenue model FY26-FY28","horizon":"FY26-FY28","trend":"up","trail":[
+{"date":"2026-02-10","val":"FY26 EUR 568.5m / FY27 EUR 670m / FY28 EUR 710m; FY27 EBIT EUR 156.7m, FY28 EBITDA EUR 196m","src":"Jefferies (Bakhda/Menon)"}
+],"note":"+8% above cons FY26 rev, +5% above cons FY27 rev."},
+{"metric":"800V-HVDC GaN power inflection","horizon":"2026H2 / 2027H1 -> 2027/28","trend":"up","trail":[
+{"date":"2026-02-26","val":"GaN 300mm 'significant developments Q3/Q4 2026'","src":"Q4/FY25 call"},
+{"date":"2026-02-10","val":"power-semi makers to place epi-tool orders H2'26/H1'27 ahead of NVIDIA Kyber ramp; ~90% GaN MOCVD share","src":"Jefferies (Bakhda/Menon)"},
+{"date":"2026-04-30","val":"GaN pickup expected 'later 2026 / H1 2027'; SiC/GaN volume 'around 2027/28' on NVIDIA Kyber/Rubin-Ultra","src":"Q1/26 call"}
+],"note":"GaN growth engine; SiC mix down sharply in 2026 (overcapacity + EV slowdown)."},
+{"metric":"SiC power mix","horizon":"2026","trend":"down","trail":[
+{"date":"2025-10-30","val":"end demand soft; SiC -20pp of group mix in 2026","src":"Q3/25 call"},
+{"date":"2026-02-10","val":"Jefferies reads SiC ~-70% to ~EUR 40m (cautious given China 8-inch upside)","src":"Jefferies (Bakhda/Menon)"},
+{"date":"2026-04-30","val":"underutilized; #1 in epi; utilization gradually up","src":"Q1/26 call"}
+],"note":"Opto strength masks SiC weakness; the named near-term drag on the power core."}
+]}

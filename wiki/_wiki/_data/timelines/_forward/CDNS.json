@@ -1,0 +1,17 @@
+{"ticker":"CDNS","forward":[
+{"metric":"Backlog (RPO)","horizon":"forward","trend":"up","trail":[
+{"date":"2026-02-19","val":"backlog $7.8B at FY25 year-end","src":"CDNS 10-K FY25"},
+{"date":"Q1 FY26 (2026-03-31)","val":"backlog (contracted RPO) $8.0B, ~53% converts within 12 months","src":"CDNS Q1 FY26 10-Q"}
+],"note":"Visibility cushion the buy-side underwrites the premium multiple on."},
+{"metric":"FY26 revenue growth / guide","horizon":"FY26","trend":"up","trail":[
+{"date":"2026-02-19","val":"FY25 revenue $5,296.8M, +14% y/y","src":"CDNS 10-K FY25"},
+{"date":"Q1 FY26 (2026-05-01)","val":"Q1 ran +18.7% y/y ($1,474.2M); watch for FY26 guide raise vs 14% FY25","src":"CDNS Q1 FY26 10-Q"}
+],"note":"Re-acceleration off the 2025 China air-pocket; potential FY26 guide raise the print catalyst."},
+{"metric":"AI-design / agentic monetization","horizon":"structural","trend":"up","trail":[
+{"date":"2026-02-19","val":"three AI 'horizons' (Infrastructure/Physical/Life Sciences AI); Cadence.AI/Verisium/Cerebrus agentic flows sold into workflow","src":"CDNS 10-K FY25"},
+{"date":"2026-06-11","val":"CDNS signed for Intel 14A node IP — foundry-credibility/collateral-win signal","src":"firstadopter / Tae Kim briefing"}
+],"note":"AI design-start growth + selling AI into the tools = ARPU/seat-value expansion thesis."},
+{"metric":"NVLink Fusion IP optionality","horizon":"structural","trend":"up","trail":[
+{"date":"2025-08-25","val":"CDNS named ASIC-side partner for NVIDIA NVLink Fusion; interface-IP positioned to monetize custom-silicon+NVLink stack as Fusion scales","src":"MS Scale-up primer (Moore/Marshall)"}
+],"note":"Interface-IP franchise read-through as custom-accelerator interconnect opens up; MS rates OW."}
+]}

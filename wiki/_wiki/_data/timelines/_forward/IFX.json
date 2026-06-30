@@ -1,0 +1,25 @@
+{"ticker":"IFX","forward":[
+{"metric":"AI-power revenue","horizon":"FY26→FY28","trend":"up","trail":[
+{"date":"2025-11-12","val":"FY25 >EUR 700m; FY26 EUR 1.5bn; NVIDIA 800V anchor","src":"Q4 FY25 call"},
+{"date":"2026-02-04","val":"EUR 1.5bn FY26, EUR 2.5bn FY27; ramp faster","src":"Q1 FY26 call"},
+{"date":"2026-05-06","val":"Reconfirmed EUR 1.5bn FY26 → EUR 2.5bn FY27; in allocation; ~$175 semi content/kW","src":"Q2 FY26 call"},
+{"date":"2026-06-22","val":"AlphaSense primer: AI-power EUR 750m FY25 → 1.6bn FY26 → 3.3bn FY28 (~17% of sales) at 55-60% GM","src":"AlphaSense IFX Primer"}],"note":"Structural AI-DC pull, the re-rating driver; EUR 8-12bn DC-power SAM by 2030."},
+{"metric":"AI server-power-semi share","horizon":"2026→decade-end","trend":"contested","trail":[
+{"date":"2026-06-15","val":"Citi: incumbent in GPU power-delivery, but TXN positioned as share gainer vs IFX/MPWR/Renesas from 2H26","src":"Citi '800V power'"},
+{"date":"2026-06-22","val":"43% AI server-power-semi share rising to 47% in 2026; targeting 30-40% of AI power market by decade-end","src":"AlphaSense IFX Primer"}],"note":"Debate is IFX's share of the pie, not pie size; IVR threat post-2028 a structural risk."},
+{"metric":"Segment margin","horizon":"FY26→FY28","trend":"up","trail":[
+{"date":"2025-11-12","val":"FY26 guide high-teens","src":"Q4 FY25 call"},
+{"date":"2026-05-06","val":"FY26 guide raised to ~20% segment margin","src":"Q2 FY26 call"},
+{"date":"2026-06-03","val":"Jefferies: PSS-division margin ~30% by Q4 FY26 → ~35% (above FY22 peak)","src":"Jefferies 'Analog Semis'"},
+{"date":"2026-06-22","val":"Kepler: adj. op margin 20% FY26E → 24% FY27E → ~27% peak by FY28E","src":"AlphaSense IFX Primer"}],"note":"Silicon MOSFETs reframed as 'almost a new analog business' >30% op margin."},
+{"metric":"FY26 revenue guide","horizon":"FY26","trend":"up","trail":[
+{"date":"2025-11-12","val":"FY26 high-teens growth framing","src":"Q4 FY25 call"},
+{"date":"2026-05-06","val":"Raised FY26 guide to >EUR 16bn revenue (~+10%)","src":"Q2 FY26 call"}],"note":"Backlog ~EUR 25bn (+25% YoY) underwrites the cyclical recovery."},
+{"metric":"GaN 300mm / cost-down","horizon":"ahead of 800V ramp","trend":"up","trail":[
+{"date":"2025-12-17","val":"InnoScience: IFX has 6\" GaN, no 8\", 12\" unlikely before 2027/28","src":"Jefferies Techknowledge"},
+{"date":"2026-02-10","val":"Building 300mm GaN in Villach — cost-down lever ahead of 800V","src":"Jefferies AIXA"},
+{"date":"2026-06-15","val":"Fully-scaled 300mm GaN drives GaN cost parity with silicon","src":"Citi '800V power'"}],"note":"GaN capacity gap a competitive risk into the 800V ramp; mitigated by Villach."},
+{"metric":"Analog pricing / price hikes","horizon":"next 12-18 months","trend":"up","trail":[
+{"date":"2026-06-03","val":"2nd price increase effective July 1 2026; pricing 'bigger and bigger part of outlook over next 12-18 months'","src":"Jefferies 'Analog Semis'"},
+{"date":"2026-06-15","val":"IFX joined second round of analog price hikes effective June/July","src":"Citi '800V power'"}],"note":"MOSFETs the fastest-rising; second hike came faster this cycle than in 2021."}
+]}

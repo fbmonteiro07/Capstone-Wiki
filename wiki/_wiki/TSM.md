@@ -1,0 +1,247 @@
+# TSM — Taiwan Semiconductor Manufacturing Company
+
+_Wiki · generated 2026-06-18 · sources: `E:\Wiki Felipe\TSM` (20-F + transcripts + decks) · `_equity_calls` · `_briefings\by-ticker\TSM.md`. Master index: [../INDEX.md](../INDEX.md)._
+
+<!-- SNAPSHOT:START (auto: _tools/build_snapshot.py — do not hand-edit) -->
+### 📊 Snapshot — Capstone official model + BBG · asof 2026-06-22 · TWD
+
+| Metric | CY2026E | CY2027E |
+|---|--:|--:|
+| Revenue | NT$5199.8bn | NT$6593.3bn |
+| Gross profit | NT$3431.9bn | NT$4305.4bn |
+| Gross margin | **66.0%** | 65.3% |
+| EBITDA | NT$3765.9bn | NT$4775.7bn |
+| EPS | **NT$102.50** | **NT$143.50** |
+| Capex | NT$1770.2bn | NT$2073.9bn |
+| OCF (≈EBITDA) | NT$3765.9bn | NT$4775.7bn |
+
+<svg xmlns="http://www.w3.org/2000/svg" width="326" height="88" viewBox="0 0 326 88" font-family="-apple-system,Segoe UI,Roboto,sans-serif"><text x="0" y="10" font-size="11" font-weight="600" fill="#33405c">FY1 EPS revision</text><rect x="0" y="23.5" width="20" height="34.5" rx="2" fill="#1c5fd6"/><text x="10" y="69" font-size="9" text-anchor="middle" fill="#8492ad">6m</text><rect x="28" y="17.9" width="20" height="40.1" rx="2" fill="#1c5fd6"/><text x="38" y="69" font-size="9" text-anchor="middle" fill="#8492ad">3m</text><rect x="56" y="14.2" width="20" height="43.8" rx="2" fill="#1c5fd6"/><text x="66" y="69" font-size="9" text-anchor="middle" fill="#8492ad">1m</text><rect x="84" y="14.0" width="20" height="44.0" rx="2" fill="#1c7d3f"/><text x="94" y="69" font-size="9" text-anchor="middle" fill="#8492ad">now</text><text x="0" y="84" font-size="10" fill="#1c7d3f">+9.6% 3m · +27.4% 6m</text><text x="176" y="10" font-size="11" font-weight="600" fill="#33405c">FY2 EPS revision</text><rect x="176" y="26.1" width="20" height="31.9" rx="2" fill="#1c5fd6"/><text x="186" y="69" font-size="9" text-anchor="middle" fill="#8492ad">6m</text><rect x="204" y="19.0" width="20" height="39.0" rx="2" fill="#1c5fd6"/><text x="214" y="69" font-size="9" text-anchor="middle" fill="#8492ad">3m</text><rect x="232" y="14.5" width="20" height="43.5" rx="2" fill="#1c5fd6"/><text x="242" y="69" font-size="9" text-anchor="middle" fill="#8492ad">1m</text><rect x="260" y="14.0" width="20" height="44.0" rx="2" fill="#1c7d3f"/><text x="270" y="69" font-size="9" text-anchor="middle" fill="#8492ad">now</text><text x="176" y="84" font-size="10" fill="#1c7d3f">+12.8% 3m · +37.8% 6m</text></svg>
+
+_Gross profit = Revenue × GM%. OCF: no forward BBG consensus — EBITDA shown as proxy._
+_**Bold** = Capstone official model; plain = BBG consensus._
+<!-- SNAPSHOT:END -->
+
+## Snapshot
+World's largest pure-play foundry, ~70% of leading-edge foundry share (TSMC former exec, 2026-04-14); leading-edge share was ~2/3 in Q1-2025 vs Samsung 7.7% — the size of that gap is itself the central antitrust overhang (StoneX/John Su, 2025-08-20). Sells wafer capacity to fabless logic designers (NVIDIA, AMD, Broadcom, Apple, Qualcomm, MediaTek) plus advanced packaging (CoWoS, SoIC). No products competing with customers — the structural moat per the former exec call. Mix has flipped to compute: in FY25 HPC was 58% of revenue (+48% y/y), smartphone 29%, IoT/auto/DCE the rest; advanced nodes (≤7nm) were 74% of wafer revenue, up from 69% in 2024 (Q4 FY25, 2026-01-15). AI accelerators (GPU/ASIC/HBM controllers — excludes data-center CPU) were "high teens %" of total revenue in 2025 (Q4 FY25). On a broader cloud-AI definition (logic + CoWoS dollar content of AI accelerators), Fubon estimates AI was ~12% of revenue in FY24, ~24% in FY25 and potentially 30%+ in FY26 (Fubon/Jefferies, 2025-10-28). The 20-F (filed 2026-04-16) reports FY25 revenue of TWD 3.8tn / USD 122bn, +35.9% in USD. Apple was the #1 customer at 24% in 2024; NVIDIA expected to take #1 at ~20%+ in 2025, roughly level with Apple (StoneX/John Su, 2025-08-20).
+
+## At a glance — product · buyer · supplier
+| | |
+|---|---|
+| **Sells (top 3)** | 1) Leading-edge logic foundry / wafer capacity (N3·N5·N2, ≤7nm = 74% of wafer rev) · 2) Advanced packaging (CoWoS, SoIC, COUPE CPO) · 3) Mature/specialty nodes (N7+, IoT/auto/DCE) |
+| **Main buyer(s)** | Fabless logic designers & AI-accelerator/ASIC customers — NVIDIA (#1 ~20%+ in 2025), Apple (24% in 2024), AMD, Broadcom, Qualcomm, MediaTek; AI accelerators "high teens %" of FY25 rev |
+| **Key suppliers** | Semiconductor equipment (litho/etch/depo); ABF substrates (Ibiden ~70%, Unimicron ~20%); specialty chemicals & gases; back-end OSAT offload to ASE/Amkor/SPIL |
+
+## Current state (Q1 FY26, 2026-04-16)
+Revenue USD 35.9bn, +6.4% q/q, above the high end of guidance. GM 66.2% (+390bp q/q), OpM 58.1% (+410bp), EPS TWD 22.08, ROE 40.5% (Q1 FY26). Mix: HPC +20% q/q to 61% of revenue, smartphone −11% to 26%. N3 = 25% of wafer revenue, N5 36%, N7 13%. Capex USD 11.1bn in the quarter.
+
+**Guidance / messages (Q1 FY26):**
+- Q2 FY26 revenue USD 39.0–40.2bn (+10% q/q, +32% y/y at midpoint); GM 65.5–67.5%, OpM 56.5–58.5%; Q2 tax ~20% (undistributed-earnings accrual), FY tax 17–18%.
+- FY26 revenue now guided **"above 30%" in USD** (raised from "close to 30%" at Q4 FY25, 2026-01-15) — "AI-related demand continues to be extremely robust… shift from generative to agentic AI is another step-up in tokens" (C.C. Wei).
+- FY26 capex revised to the **high end of USD 52–56bn** (i.e. ~USD 56bn); 70–80% advanced process, ~10% specialty, 10–20% packaging/test/mask (Q4 FY25). CFO: next 3 years of capex "significantly higher" than the USD 101bn of the prior 3 years (Q1 FY26). Fubon models FY26 capex US$50bn+ on its own bottoms-up (advanced nodes 80% / specialty 10% / packaging 10%), using ~US$28bn per 50kwpm of N2, $20bn N3, $16bn N5, $12.5bn N7, and overseas-fab build cost ~10% (Japan) / ~60% (US) above Taiwan (Fubon/Jefferies, 2025-10-28).
+- N2 in HVM since Q4 FY25 with good yield, ramping at Hsinchu + Kaohsiung. N3 capacity being *expanded* (a first — historically TSMC doesn't add to a node post-target): new Tainan N3 fab (1H27), Arizona Fab 2 N3 (2H27), Japan Fab 2 N3 (2028), plus N5→N3 tool conversion. A14 on track for 2028.
+- Margin puts/takes: N2 ramp dilutes FY26 GM by **2–3pts**; overseas fabs dilute **2–3pts early / 3–4pts later**; N3 GM crosses corporate average in 2H26; Middle East situation may lift chemical/gas costs (unquantified). Long-term targets reaffirmed: GM **56%+** and ROE high-20s through cycle (Q1 FY26, raised from 53%+ a year ago).
+
+**Capacity build (third-party estimates):**
+- Front-end 12" managed capacity ~17.2m wafers (2024) → ~17.9m (2025) → ~18.5m (2026) → ~19.1m (2027); headline growth slows to 3–4% as TSMC converts N7→N5 and N5→N3 tools rather than adding gross capacity (Fubon/Jefferies, 2025-10-28).
+- N2: ~40–45k WPM end-2025 → 65–70k end-2026 → 110–120k end-2027 (N2 nearly doubles in 2027); N2 GAA+backside-power requires net-new tooling vs N5/N3 tool reuse. N2 first-year revenue contribution ~6% in 2025, with ~60k capacity exiting Q4-25 but shipments lagging (StoneX/John Su, 2025-08-20; Fubon/Jefferies, 2025-10-28).
+- N3: ~140k WPM end-2025 → ~160k end-2027; N7/N5/N4 capacity declines 2026–27 on tool conversion (Fubon/Jefferies, 2025-10-28).
+- Intel already booking ~10k WPM of N2 by end-2026 (Nova Lake outsourcing) — an incremental 2027 growth driver (Fubon/Jefferies, 2025-10-28).
+- Long horizon: ~770k WPM of sub-7nm (1–7nm) capacity by 2030; US (Phoenix) only ~3–5% of total even by 2030 (StoneX/John Su, 2025-08-20).
+- **Fab-by-fab leading-edge build (MS Research estimates):** see the "Leading-edge capacity by node & fab (MS)" table below — N3 →200–205k, N2/A16 →210k by 2028, A14 →~120k by 2029; MS runs above both UBS and the StoneX/Fubon figures here.
+
+**Pricing / wafer-shortage / EUV (Conor O'Mara Asia trip, 2026-06-23):**
+- 3nm "tight and nobody's cutting anything." **2026 wafer-price hikes by customer: AI/HPC ~+10%, consumer ~+5%, Apple low-single-digit → blended ASP ex-2nm only +3-4%.** **2027 wafer prices +≥10% across ALL customers including Apple**, with GM potentially reaching **high-60s to 70%**. Supply/demand gap widens to **15-20% in 2027**. (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23)
+- **Wafer-shortage risk:** TSMC already at its prior peak of **~8M wafers/month** with limited new capacity, so the agentic-CPU surge could tip the system into a broad wafer shortage; Samsung acknowledged the same risk (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23).
+- **EUV constrains capex upside:** TSMC has already **booked 40-45 EUV units for 2027** and will struggle to get more given competition from memory makers (DRAM EUV demand) — capping 2027 capex around **$70-75B** vs other brokers' $80-85B (consistent with the FY27 capex view above) (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23).
+- **H2'26 GM tone turned more positive** — flattish vs prior guidance of a 2H decline (super-hot-run orders + favorable AI/HPC mix) (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23).
+- **CPU outsourcing to AAC:** TSMC outsources Vera (NVIDIA) and Venus (AMD) CPU packaging to **AAC**, with KingSus benefiting from Unimicron capacity constraints (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23).
+- **Aggressive SOIC expansion 2027-28:** each 10,000-unit SOIC line needs **15-20 hybrid bonders**; new SOIC use cases = silicon-photonics chips + Broadcom's next-gen TPU (Redburn "Conor O'Mara Asia Trip Takeaways", 2026-06-23).
+
+**Advanced packaging (CoWoS / SoIC / CPO):**
+- In-house CoWoS: ~75–80k WPM exiting 2025; expanding to ~100–105k by end-2026 (TSMC not raising FY26 plan — CoW tools carry 6–9mo lead time, no time to accelerate AP7) (Fubon/Jefferies, 2025-10-28). More recent checks raise the trajectory to **120k end-2026 / 140k end-2027** (vs prior 110k/130k), as TSMC turns aggressive on 2027 CoWoS (Q425 Techknowledge/Jefferies, 2025-12-17). AP8 already fully loaded; new AP7 phase 1 is Apple WMCM, phase 2 not ready until late-2026.
+- Offload strategy: TSMC routing non-AI-accelerator packaging (AMD Venice CPU, AVGO networking processors) to ASE FoCoS and SPIL to free in-house CoWoS for GPUs/ASICs; all AI accelerators stay on TSMC CoWoS (Fubon/Jefferies, 2025-10-28; Q425 Techknowledge, 2025-12-17). US CoWoS will come via Amkor outsourcing (~20–30k WPM by 2028, US$7bn invest); TSMC's two US AP fabs do SoIC (AP9) / CoPoS (2030), not CoWoS (Fubon, 2025-10-28).
+- CPO: TSMC's **COUPE** (Compact Universal Photonic Engine) is emerging as the integration option of choice — NVIDIA showed COUPE optical engines at GTC-2025 (first to ship), AVGO and Ayar Labs on the roadmap. EIC on N7, PIC on SOI; TSMC is the only foundry with die-to-wafer hybrid bonding at scale (volume on AMD parts). Adopting COUPE locks customers into TSMC PICs (TSMC won't package SiPho wafers from other foundries) (CPO/SemiAnalysis, 2026-01-02).
+
+## N3 bottoms-up supply/demand model (UBS)
+_Source: UBS (Sunny Lin / Randy Abrams), N3 capacity model accompanying the Q2 FY26 preview (2026-06-28). Quarterly columns are **kwpm** (monthly run-rate that quarter); annual columns (**2026E / 2027E**) are **thousand wafers** for the full year (≈ sum of the four quarters' kwpm × 3). Die size in mm²._
+
+**Read:** the model shows N3 running at **102–110% utilisation every quarter through 2027** (a structural sold-out node), with the demand mix flipping hard from consumer to Cloud AI. Cloud AI goes from **7% of N3 demand in Q126E to 64% by Q426E and ~71–72% across 2027**, as Apple's consumer base (iPhone/Mac/iPad) gives way to NVIDIA Rubin/Rubin Ultra/Vera CPU, Broadcom (Google TPU v7/v8i, Meta MTIA v3, OpenAI), Alchip (Amazon Trainium 3) and MediaTek (Google TPU v8t). Total N3 demand grows from 1,837k wafers (2026E) to 2,266k (2027E) against TSMC capacity of 1,710k → 2,190k — i.e. demand persistently runs ahead of capacity, consistent with the "supply-demand gap widens to 15–20% in 2027" view elsewhere on this page and UBS's N3-capacity road to ~220kwpm by 2028E.
+
+| Client | Product | Die (mm²) | Q126E | Q226E | Q326E | Q426E | **2026E (k)** | Q127E | Q227E | Q327E | Q427E | **2027E (k)** |
+|---|---|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|
+| Nvidia | Rubin | 1,628 | 0 | 4 | 15 | 26 | 137 | 34 | 39 | 32 | 15 | 360 |
+| Nvidia | Rubin Ultra | 1,628 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 16 | 36 | 169 |
+| Nvidia | Vera CPU | 800 | 0 | 1 | 5 | 11 | 51 | 11 | 13 | 13 | 12 | 146 |
+| Broadcom | Google — TPU v7 Ironwood | 1,400 | 6 | 11 | 16 | 21 | 158 | 14 | 8 | 6 | 0 | 85 |
+| Broadcom | Google — TPU v8i | 1,400 | 0 | 0 | 2 | 4 | 18 | 7 | 17 | 25 | 35 | 250 |
+| Broadcom | Meta — MTIA v3 | 1,600 | 0 | 0 | 0 | 0 | 2 | 1 | 1 | 2 | 3 | 19 |
+| Broadcom | OpenAI | 1,600 | 0 | 0 | 0 | 3 | 11 | 3 | 4 | 4 | 1 | 36 |
+| AMD | MI355 | 840 | 2 | 2 | 1 | 1 | 17 | 1 | 1 | 0 | 0 | 7 |
+| Alchip | Amazon — Trainium 3 | 1,600 | 0 | 4 | 11 | 22 | 110 | 20 | 17 | 10 | 2 | 149 |
+| Marvell | Amazon — Trainium 2.5 | 1,600 | 0 | 0 | 0 | 2 | 7 | 0 | 0 | 0 | 0 | 2 |
+| MediaTek | Google — TPU v8t | 800 | 0 | 0 | 1 | 4 | 15 | 7 | 10 | 9 | 7 | 101 |
+| _Other_ | CPUs / accelerators & networking | — | 2 | 4 | 10 | 19 | 105 | 20 | 23 | 23 | 28 | 281 |
+| **Cloud AI** | **Capacity requirement (kwpm)** | | **9** | **26** | **61** | **114** | **631** | **117** | **138** | **140** | **139** | **1,604** |
+| _% of N3 demand_ | | | _7%_ | _19%_ | _37%_ | _64%_ | _34%_ | _66%_ | _72%_ | _72%_ | _72%_ | _71%_ |
+| Apple | iPhone apps processor | 110 | 43 | 43 | 39 | 22 | 442 | 13 | 11 | 9 | 10 | 128 |
+| Apple | Mac processor | 165 | 10 | 10 | 8 | 7 | 106 | 7 | 6 | 6 | 6 | 74 |
+| Apple | iPad M processor (Pro & Air) | 160 | 14 | 12 | 12 | 8 | 135 | 11 | 10 | 8 | 8 | 111 |
+| Apple | iPad A17 Pro processor | 104 | 2 | 2 | 1 | 1 | 15 | 3 | 2 | 2 | 2 | 30 |
+| Qualcomm | Flagship smartphone SoC | 120 | 17 | 13 | 9 | 3 | 129 | 5 | 5 | 4 | 3 | 51 |
+| MediaTek | 5G smartphone SoC | 120 | 5 | 4 | 3 | 1 | 39 | 2 | 2 | 2 | 1 | 19 |
+| Intel | Outsourced PC CPUs | 100 | 19 | 19 | 11 | 4 | 161 | 8 | 8 | 8 | 5 | 85 |
+| _Other_ | Bitcoin, tablet, ARM-based PC CPU | — | 10 | 10 | 20 | 20 | 180 | 10 | 10 | 15 | 20 | 165 |
+| **Consumer & other** | **Capacity requirement (kwpm)** | | **120** | **113** | **104** | **65** | **1,206** | **60** | **53** | **53** | **55** | **663** |
+| _% of N3 demand_ | | | _93%_ | _81%_ | _63%_ | _36%_ | _66%_ | _34%_ | _28%_ | _28%_ | _28%_ | _29%_ |
+| **Total N3 demand** | | | **129** | **139** | **164** | **180** | **1,837** | **177** | **191** | **193** | **194** | **2,266** |
+| **TSMC N3 capacity** | | | 120 | 130 | 150 | 170 | 1,710 | 175 | 180 | 185 | 190 | 2,190 |
+| _Capacity utilisation_ | | | _107%_ | _107%_ | _110%_ | _106%_ | _107%_ | _101%_ | _106%_ | _104%_ | _102%_ | _103%_ |
+
+## Leading-edge capacity by node & fab (MS)
+_Source: **Morgan Stanley Research estimates** — "Exhibit 16: TSMC fab roadmap" (MS TSMC coverage, Charlie Chan; exhibit date not stated — tentatively the MS Asia AI Supply Chain note, 2026-06-23, date inferred). Figures are **end-of-year installed capacity, kwpm** (monthly run-rate); ranges are MS's. Tainan F22 P7/P8/P9 (N2) is highlighted in the source as a recent addition._
+
+**Read:** MS's fab-by-fab supply roadmap. N3 plateaus at **~200–205k by 2028** (broadly in line with the ~220kwpm-by-2028E road and the 102–110% N3 utilisation in the UBS N3 model above), while **N2/A16 is the real ramp — 45k (2025) → 90–100k (2026) → 150–170k (2027) → 210k (2028)** — led by Kaohsiung F22 (→100k) and the newly-added Tainan F22 P7/P8/P9 (→60k). **A14** (HsinChu F20 + Taichung F25) starts in 2027 and scales to **~120k by 2029**, with **A10** (Tainan F26, 5k 2029) and the German **N28/16** fab (F24, →40k by 2028) rounding out the build. MS's N2/N3 numbers run **above** both UBS and the StoneX/Fubon figures elsewhere on this page (MS N2/A16 →210k by 2028 vs UBS N2 ~160k by 2028E; MS N2/A16 150–170k for 2027 vs Fubon's N2 110–120k) — a genuine cross-broker divergence on the N2 ramp.
+
+| Node | Location | Fab (phases) | 2025 | 2026 | 2027 | 2028 | 2029 |
+|---|---|---|--:|--:|--:|--:|--:|
+| **N3** | Tainan | F18 – P4/P5/P6/P8/P9 | 110k | 160–170k | | | |
+| | Arizona | F21 – P2 | | | 20k | | |
+| | Japan | F23 – P2 | | | | 15k | |
+| | **Total** | | **110k** | **180–190k** | **190k** | **200–205k** | |
+| **N2/A16** | HsinChu | F20 – P1/P2 | 20k | 30k | | | |
+| | Tainan | F22 – P7/P8/P9 _(new)_ | | | 40–50k | 60k | |
+| | KaoHsiung | F22 – P1/P2/P3/P4/P5/P6 | 25k | 60k | 80–90k | 100k | |
+| | Arizona | F21 – P3/P4/P5/P6 | | | | 20k | |
+| | **Total** | | **45k** | **90–100k** | **150–170k** | **210k** | |
+| **A14** | HsinChu | F20 – P3/P4 | | | 10–20k | 30–40k | 40k |
+| **A14/A13/A12** | Taichung | F25 – P1/P2/P3/P4 | | | 10–20k | 30–40k | 80k |
+| | **Total** | | | | **20–40k** | **60–80k** | **120k** |
+| **A10** | Tainan | F26 – P1/P2/P3/P4 | | | | | 5k |
+| **N40/28/22/12** | Japan | F23 – P1 | 25k | | | | |
+| **N28/16** | Germany | F24 | | | 5k | 40k | |
+
+## Capstone estimates (house model)
+_Source: Capstone official model (`Modelo Felipe TSM 1Q26.xlsm`, 2026-06-10)._
+
+| | 2024 | 2025E | 2026E | 2027E |
+|---|--:|--:|--:|--:|
+| EPS (NT$) | 45.3 | 66.3 | 102.5 | 143.5 |
+| Revenue (US$bn) | 90 | 122 | 165 | — |
+| Gross margin | ~56% | ~60% | ~66% | — |
+
+**House read:** EPS NT$45 → NT$143 (24-27E, +40/+46/+55/+40%); USD revenue ~+30-36%/yr; GM expanding to ~66% on the ramp of N2. (Capstone official model, 2026-06-10)
+
+## Debate / thesis
+- **Capstone model (house view):** EPS NT$45.3 / 66.3 / **102.5** / 143.5 (2024-27E, +40%/+46%/+55%/+40%); USD revenue $90B / $122B / $165B (2024-26E, ~+30%/+36%/+35%); GM expanding ~56%→60%→66%, op margin ~46%→51%→58%. (Capstone official model, 2026-06-10)
+- **Bull:** Sole credible leading-edge supplier — ~70% foundry share, Samsung ~1yr behind, Intel ~1.5–2yrs behind on yield/density (TSMC former exec, 2026-04-14). Wafers remain the binding AI constraint into 2027 ("we expect this to continue to be very tight," C.C. Wei, Q1 FY26). Bernstein (Mark Li) OP, PT **$430** vs ~$351, calling TSM the "most trustworthy compounder in AI" — 28% EPS CAGR thru '28, +50% EPS this year, '27 capex $68B, trading at ~20% discount to SOX (briefing, 2026-05-18). AI-accelerator revenue still guided to mid-/high-50s % CAGR 2024–29 (Bruce Lu Q, Q1 FY26). Pricing has real headroom — N3 hot-run/super-hot-run premiums rising further in Q3, regular N3 hikes ~10% and N2 ~5–6% into Jan-27 (Gokul/JPM CoWoS update, 2026-05-27); AI-related wafer prices set for 10%+ hikes in 2026 on top of the value-priced packaged-chip model (Fubon/Jefferies, 2025-10-28). GW-scale data-center economics are a structural tailwind: each GW ≈ 7,200 NVL72 racks ≈ ~33k TSMC wafers and ~US$1.0–1.5bn of TSMC revenue (foundry + CoWoS + other BOM); ~40GW of announced sovereign/hyperscaler projects imply ≥1.32m incremental wafers and ~US$60bn of potential revenue (≈50% of FY25 sales), before counting the major US hyperscalers (Fubon/Jefferies, 2025-10-28). AI-accelerator die (800mm²+) run only ~50–60% yield vs ~90% on consumer SoC, so wafer demand per shipped unit nearly doubles — a hidden volume amplifier (Fubon, 2025-10-28). Intel tie-up notwithstanding, Intel likely outsources more leading-edge to TSMC (Bernstein deck, May-2025). **Server-CPU TAM is a fresh leg:** UBS (Sunny Lin) sizes the server-CPU market at **~$170bn by 2030** (units 23m→63m, 30% CAGR) and models server CPUs needing ~200kwpm of leading-edge capacity by 2030 (from 71kwpm in 2025), of which TSMC serves **122kwpm — a ~$44bn TSMC revenue opportunity (11% of sales) by 2030, up from $3.7bn/3% in 2025**; this drove UBS to raise TSMC sales 3-7% / EPS 4-9% in 2027-30 (UBS "Quantifying the server CPU opportunity", 2026-05-21). **Pricing tightening into 2027:** Fubon estimates the 2027 supply-demand gap widens to **15-20%**, N2/N3 utilization runs 110-120%, super-hot-run orders carry a **15-20% wafer premium**, and 2027 wafer-price hikes start at **10% including Apple** (vs only +1-2% for Apple in 2026, +10% AI/HPC / +5% consumer) — lifting blended ASP ≥10% and pushing GM to a **68-70%** range; Fubon's FY27 rev NT$7,057bn (+37%, a Street high, vs cons NT$6,057bn) and FY27 EPS **NT$144** (vs cons NT$123) (Fubon "2027 semi outlook", 2026-06-05). On overseas margin dilution, Fubon's checks say **Arizona P1 GM has already reached ~50% after two years** — better than management's conservative framing (Fubon, 2026-06-05).
+- **Bear:** Margin dilution stack is real and structural — overseas (US/Japan/Germany) wafers genuinely cost more (US labor ~30% higher) yet TSMC prices uniformly, so Arizona/JASM/ESMC ramps compress GM (former exec, 2026-04-14; CFO Q4 FY25). Pricing capped by monopoly-scrutiny fear, not just customer goodwill — "we could have 70–75% gross margins… they're worried about being called a monopoly" (former exec, 2026-04-14). Antitrust is the binding lid on the multiple: with ~2/3 leading-edge share, the legal team hired ~40% more antitrust lawyers in 2024; strong earnings/profit growth but the stock can't re-rate while geopolitical/antitrust risk sits ahead — TSMC even *wants* Intel to survive to relieve antitrust pressure (StoneX/John Su, 2025-08-20). US pressure mounting: CHIPS-to-equity Intel stake, tariff leverage, and a push to lift TSMC's US commitment from US$65bn toward US$200bn (~US$35bn+ gap) (StoneX/John Su, 2025-08-20). Demand-double-counting risk: customers' forecasts historically sum to multiples of the real end market; TSMC itself discounts them (former exec). Consumer softness from memory price hikes hitting price-sensitive PC/smartphone (C.C. Wei, Q1 FY26). Packaging is the bottleneck shifting away from TSMC: CoWoS increasingly farmed to ASE/Amkor, EMIB (Intel) and panel-level CoPoS threaten to move value to substrate vendors (Gokul, 2026-05-27); EMIB-T flagged to make a meaningful contribution from 2H26 for Google TPU v9 and Meta MTIA as a multi-vendor hedge against CoWoS scarcity (Q425 Techknowledge/Jefferies, 2025-12-17).
+- **Where the sell-side stands:** Bernstein OP, $430 (2026-05-18); China H20/B20/MI308 export restrictions seen as ~1% revenue hit, effectively negligible given lead times + prepayments and no China AI baked beyond 2025 (Bernstein deck, May-2025). JPM (Gokul) constructive — raising CoWoS capacity forecasts again to 115k/175k/220k WPM by end-26/27/28, total CoWoS consumption +86% this year / +30% next (2026-05-27). Fubon (distributed by Jefferies) Buy, TP NT$1,650 (~20x FY26 EPS NT$73.5), longer-term bull case NT$2,025 (22x FY27 EPS NT$91.2); FY27 the inflection on N2/A16 + GW data-center demand (Fubon/Jefferies, 2025-10-28). Fubon has since **raised its TP to NT$3,500** (post stock-split-equivalent base; top pick in Taiwan semis) on the ASP/GM upside (Fubon, 2026-06-05). UBS **Buy, PT raised NT$2,650 → NT$3,000** (23x 2027E PE, on a 23% LT earnings CAGR), FY27/28 EPS NT$130.5/170.0, ~5-12% above consensus, viewing competition from Intel/Samsung as "manageable given the much larger expected TAM" (UBS, 2026-05-21). Consistent Street view that supply stays tight through 2027.
+- **Chris Wood (Jefferies) flags TSMC capex as the AI-cycle proof point (2026-06-25).** In his GREED & fear newsletter, Chris Wood cites TSMC's estimate to increase capex to **US$56bn in 2026 (vs US$41bn in 2025)** and estimates of **US$65–70bn in 2027**, alongside Taiwan GDP +14.55% YoY in 1Q26 and export orders +53.4% YoY (3 months to May). He frames TSMC as part of the "picks and shovels" AI trade — the primary semiconductor-foundry read-through from the ongoing AI capex arms race. The macroeconomic data (Taiwan GDP fastest quarterly growth in 48 years) is a direct validation of the TSMC demand pipeline. Bull read-through (Jefferies / Christopher Wood "GREED & fear: The mother of all cycles", 2026-06-25). [../relat%C3%B3rios%20bons/Chris_Wood.html](../relat%C3%B3rios%20bons/Chris_Wood.html)
+
+## Catalysts / what to watch
+- **Q2 FY26 print (mid-July 2026)** — C.C. Wei deferred the precise above-30% FY number to July ("a more precise number to share in July," Q1 FY26).
+- 2027 capacity-balance commentary ("we'll announce when we enter '27," C.C. Wei); 1Q26 the likely point at which TSMC confirms any FY27 CoWoS upside above 130k (Fubon, 2025-10-28).
+- N3 GM crossover to corporate average in 2H26; N2 dilution onset in 2H26.
+- Jan-2027 annual price reset (N3 ~10%, N2 ~5–6% per JPM, 2026-05-27); AI-wafer hikes 10%+ in 2026 (Fubon, 2025-10-28).
+- Arizona ramp (Fab 2 N3 in 2H27, possibly pulled into late-FY26; second land parcel → ~5–7 fabs + CoWoS); A14 HVM 2028. US commitment escalation toward ~US$200bn under US pressure (StoneX, 2025-08-20).
+- EMIB vs CoWoS-L decision on Google TPU V9 (MediaTek "Puma Fish"), expected late-2026/early-2027 (Gokul, 2026-05-27); EMIB-T meaningful from 2H26 (Q425 Techknowledge, 2025-12-17). Fubon pushes back on the EMIB-T threat: Intel's **EMIB yield is only ~60-70% vs TSMC CoWoS 95%+** and EMIB-T "is not yet ready to enter mass production," so the priority stays TSMC CoWoS-L (Fubon, 2026-06-05).
+- **CoWoS / CoPoS capacity:** Fubon raises 2027 year-end CoWoS to **180kwpm** (from 170k) and models 2028 reaching **220kwpm + 20-30kwpm CoPoS** (a top-priority TSMC project, though MP timing 2028/29 still uncertain); strong 2027 allocation to TPU (AVGO + MediaTek) and AWS — Fubon believes **AVGO's TPU V9 is not cancelled** and enters MP late 3Q27 (two-3D-stack chip, 2× N2P + 2× N3P compute dies) (Fubon, 2026-06-05). MS independently raised its **2027 CoWoS capacity assumption to 200kwpm by year-end (from 170k)**, implying ~60% Y/Y AI-XPU industry growth, and breaks down the preliminary 2027 customer allocation: **Nvidia CoWoS-L ~910k (+~40% Y/Y)** single-sourced for Blackwell/Rubin (with strong CoWoS-R bookings implying Vera CPU shipments nearly doubling — consistent with Joe Moore's +52% Y/Y NVDA data-center rev); **Google TPU** the #2 user via MediaTek 180k CoWoS-S (~3.6mn TPU v8t ZebraFish, above MS's 2.5mn) and Broadcom 365k CoWoS-S (~330k to v8i SunFish ≈ ~3.9mn units, plus v7 Ironwood / Tomahawk 5/6); **CPU now a material 2.5D consumer** on agentic-AI demand — Nvidia 3nm Vera CPU to **5.75mn units in 2027**, AMD 2nm Venice CPU to **6.75mn (vs ~1.25mn in 2026)**. MS reiterates OW TSMC (MS Asia AI Supply Chain, 2026-06-23).
+- **Second-source noise:** Apple/other customers reportedly in talks with Intel for a second-source partnership; Fubon doesn't think Apple will use Intel "even in some legacy products" — reads it as Apple leverage for capacity allocation given Intel foundry "has not yet provided a comparable service vs. TSMC"; Qualcomm may shift some allocation to Samsung on TSMC tightness (Fubon, 2026-06-05).
+- NVIDIA roadmap: Rubin stays on N3P in 2H26 (too late to redesign to N2), Feynman jumps to A16 in 2028; NVIDIA takes ~2/3 of CoWoS in 2025 and >70% in 2026 (StoneX/John Su, 2025-08-20). COUPE first shipments (NVIDIA) — CPO inflection.
+
+## Risks
+- Overseas-fab GM dilution (2–3pts early → 3–4pts later) as US/Japan/Germany footprint scales (Q1 FY26; former exec); overseas build cost ~10% (Japan) to ~60% (US) above Taiwan (Fubon, 2025-10-28).
+- Geographic/geopolitical concentration in Taiwan — earthquake + cross-strait risk is the stated rationale for diversification (former exec, 2026-04-14).
+- U.S.–China export controls (BIS entity list); TSMC self-limits to ~3 generations behind for restricted destinations (former exec). China AI (H20/B20/MI308) restriction ~1% revenue, negligible (Bernstein deck, May-2025).
+- Monopoly/antitrust scrutiny constrains pricing power and the multiple despite sole-source position — ~2/3 leading-edge share invites US action (former exec; StoneX/John Su, 2025-08-20).
+- N2/A14 capex-per-wafer rising sharply (N2 ~US$28bn/50kwpm vs ~US$20bn N3, ~US$16bn N5; A14 higher still) — capital intensity risk if revenue growth fails to outpace capex (CFO Q4 FY25; Fubon, 2025-10-28; though mgmt expects revenue to keep outpacing capex, Q1 FY26).
+- Input-cost shock from Middle East (specialty chemicals/gases) — unquantified (Q1 FY26). Materials (RDL interposer in-house, ABF substrate from Ibiden ~70%/Unimicron ~20%) are the binding CoWoS constraint as package sizes scale, not equipment (StoneX/John Su, 2025-08-20).
+- Advanced-packaging value migration to OSATs/substrate (EMIB-T, CoPoS, FoCoS) (Gokul, 2026-05-27; Q425 Techknowledge, 2025-12-17).
+- Cyclical consumer/smartphone exposure amid memory-driven component inflation (C.C. Wei, Q1 FY26); smartphone units near-flat (+1–2%) vs AI ~100% growth (StoneX, 2025-08-20).
+
+## Intra-quarter — calls, commentary & reports (since the last print)
+_Q1 FY26 · Apr 16 → Jun 23 2026 · sell-side / expert calls / reports between earnings. Timeline visual: [timeline.html](timeline.html)._
+
+**Signal vs management** — what management said on the last call × what the intra-quarter flow is saying (✓ confirms · ⚠ nuances · ✗ contests):
+
+| Theme | Management said (Q1'26) | Intra-quarter flow | Signal |
+|---|---|---|---|
+| **AI/HPC demand** | AI "extremely robust"; agentic shift lifts tokens; FY26 "above 30%"; CAGR toward high-50s | UBS Lin: server-CPU ~$170bn/'30, ~$44bn for TSMC · MS Chan: CoWoS 200kwpm/'27 (~60% YoY XPU); CPU becomes a material 2.5D consumer | **✓ confirms** (CPU is a new leg) |
+| **Margin / pricing** | GM 66.2%; pricing "strategic not opportunistic"; N3 crosses corporate avg 2H26 | Fubon: hikes 10% incl. Apple in '27, GM 68-70% · Redburn: 2027 +≥10% all-in, GM high-60s/70% · supply-demand gap 15-20% '27 | **✓ confirms** (pricing has headroom) |
+| **CoWoS / packaging** | CoWoS "very tight"; largest reticle; CoPoS pilot, MP years out | JPM Gokul: 115k/175k/220k WPM end-26/27/28, consumption +86% this year · EMIB vs CoWoS-L decision on TPU V9 | **⚠ nuance** (value migrates to OSAT) |
+| **Capex** | FY26 to the high end (~$56bn); next 3 years significantly higher | Redburn: 40-45 EUV already booked for '27, capping capex at ~$70-75B vs others' $80-85B | **⚠ nuance** (EUV limits upside) |
+
+**Full log** (all intra-quarter flow, by date):
+
+| Date | Source | Theme | Bias | What was said |
+|---|---|---|---|---|
+| 04-25 | Nutty "Part 4 — BSPDN & PowerVia" (nuttycld.substack.com, 2026-04-25) | product | mixed | At the TSMC North America Technology Symposium (April 2026), TSMC disclosed the **Super Power Rail** on A16 — its implementation of backside power delivery, confirmed production-ready for 2026 with volume ramp pushed to 2027 (previously H2 2026). Nutty's Part 4 frames NVIDIA Feynman (2028) as the first potential mainstream AI-accelerator on A16/Super Power Rail, making it the inflection year for this node. Intel is identified as an 18A/BSPDN first mover (ahead of TSMC's late-2026 A16 volume ramp), framing the Super Power Rail timeline as a competitive response. Read-through: A16's delayed volume ramp to 2027 opens a window where Intel's PowerVia-based 18A products are nominally ahead on backside power, though TSMC's overall yield/process advantage remains intact. (Nutty Part 4, nuttycld.substack.com, 2026-04-25) |
+| 05-18 | Bernstein · Mark Li | valuation | bull | Bernstein OP, PT $430 vs ~$351, calling TSM the 'most reliable compounder in AI' — 28% EPS CAGR through '28, +50% EPS this year, '27 capex $68B, trading at ~20% discount vs SOX. |
+| 05-21 | UBS · Sunny Lin | demand | bull | Quantifying the server CPU opportunity: sizes the server-CPU market at ~$170bn by 2030 (units 23m→63m, 30% CAGR); server CPUs need ~200kwpm of leading-edge by 2030, of which TSMC serves 122kwpm — an opportunity of ~$44bn of TSMC revenue (11% of sales) in 2030, from $3.7bn/3% in 2025. Raises sales 3-7%/EPS 4-9% in 2027-30. Buy, PT NT$3,000. |
+| 05-27 | JPM · Gokul | supply | bull | CoWoS update: TSMC turning aggressive on CoWoS 2027, raising capacity to 115k/175k/220k WPM by end-26/27/28; total CoWoS consumption +86% this year / +30% next. N3 hot-run/super-hot-run pricing rising further in Q3, regular N3 hikes ~10% and N2 ~5-6% in Jan-27. EMIB vs CoWoS-L decision on Google TPU V9 expected late-2026/early-2027. |
+| 06-05 | Fubon | margin | bull | 2027 semi outlook: supply-demand gap widens to 15-20% in 2027, N2/N3 util 110-120%, super-hot-run at a 15-20% premium; 2027 wafer-price hikes start at 10% including Apple (vs only +1-2% Apple in 2026) — lifting blended ASP ≥10% and GM into the 68-70% range. FY27 rev NT$7,057bn (+37%, Street-high). Raises TP to NT$3,500. Arizona P1 GM already ~50% after 2 years. |
+| 06-23 | Redburn · Conor O'Mara | margin | bull | Asia Trip Takeaways: 3nm 'tight and nobody cutting anything'. 2026 hikes by customer: AI/HPC ~+10%, consumer ~+5%, Apple low-single-digit → blended ASP ex-2nm only +3-4%. 2027 +≥10% across ALL customers incl. Apple, with GM potentially reaching high-60s to 70%. Supply/demand gap widens to 15-20% in 2027. More positive tone on H2'26 GM (flattish vs guidance of a decline). |
+| 06-23 | Redburn · Conor O'Mara | supply | mixed | TSMC already at its prior peak of ~8M wafers/month with limited new capacity, so the agentic CPU surge could push the system into a broad wafer shortage; Samsung acknowledged the same risk. EUV constrains capex upside: 40-45 EUV units already booked for 2027 (memory makers competing for DRAM EUV), capping 2027 capex at ~$70-75B vs others' $80-85B. |
+| 06-23 | MS · Charlie Chan | supply | bull | Preliminary 2027 CoWoS allocation: raises 2027 CoWoS capacity assumption to 200kwpm by year-end (from 170k) = ~60% Y/Y AI-XPU growth. NVDA CoWoS-L ~910k (+40% Y/Y); Google TPU #2 via MediaTek 180k + Broadcom 365k; CPU becomes a material consumer of 2.5D — NVDA Vera 5.75mn / AMD Venice 6.75mn units in 2027 (vs ~1.25mn '26). Reiterates OW TSMC. |
+
+| 06-26 | @dnystedt (FinTwit) | produto | bull | **TSMC Technology Symposium (Shanghai) takeaways:** (1) 6T SRAM breakthrough with **30% area reduction** on nanosheet/GAA architecture; (2) CoWoS **5.5× reticle size** hit **98% yield** in mass production — meaningfully above the prior ~95% bar and a CoWoS-L capacity enabler; (3) N2 wafer output update (details not captured). Positive read for CoWoS-L ramp reliability and 2027 AI-XPU throughput. (@dnystedt, 2026-06-26) |
+| 06-26 | @dnystedt (FinTwit) | demanda | bull | **OpenAI's "Jalapeno" AI inference chip (announced 2026-06-24) to be manufactured by TSMC on 3nm**, with "Jalapeno2" targeting TSMC **A16 + CoWoS** advanced packaging — per media reports. Confirms TSMC as the foundry partner for OpenAI's proprietary silicon (Broadcom as the design partner), extending TSMC's role from logic wafers to CoWoS packaging for a major new AI-ASIC customer. Also: **QCOM's Dragonfly C100 data-center CPUs and AI300 AI accelerators expected on TSMC 3nm/2nm** with CoWoS or SoIC advanced packaging (QCOM Investor Day read-through). Both confirm incremental TSMC CoWoS demand beyond the existing Nvidia/Google/AVGO allocation. (@dnystedt, 2026-06-26) |
+| 06-25 | Jefferies · Christopher Wood (GREED & fear) | capital | bull | CW cites TSMC capex $56bn in 2026 (vs $41bn 2025), estimates $65–70bn in 2027. Taiwan GDP +14.55% YoY 1Q26 (fastest in 48 years); export orders +53.4% YoY (3mo to May). Frames TSMC as the picks-and-shovels AI capex beneficiary. (Jefferies "GREED & fear", 2026-06-25) |
+| 06-26 | Morgan Stanley · Stephen Byrd (TMT Thematic Research) | valuation | bull | MS frames TSMC as a "premium advanced compute partner" for frontier AI models; Jevons Paradox bull thesis — falling token costs drive more compute demand. Read-through positive for AI infrastructure providers. (MS "Stephen Byrd on Tokenmaxxing", 2026-06-26) |
+| 06-27 | SFG · Mehdi Hosseini | valuation | bull | **"Feeding the Foundry Beast"** — Susquehanna Financial Group note on the AI-driven foundry demand wave, current price reference $432.35, **Positive** rating. Hosseini frames the multi-year AI capex buildout as a structural demand floor for TSMC's advanced nodes, with the SCA/LTA wave (MU's $100B RPO template) being replicated across compute: hyperscalers are locking in wafer capacity under take-or-pay frameworks, creating a "feeding the beast" dynamic that insulates TSMC from cyclical demand normalization. Read-through: the SCA/LTA template moves from memory → logic/foundry, compressing TSMC's revenue volatility and justifying a higher structural multiple. (SFG / Mehdi Hosseini, 2026-06-27) |
+| 06-28 | UBS · Sunny Lin / Randy Abrams | guidance | bull | **Q226 earnings preview — Buy, PT raised NT$3,400 from NT$3,000** (21× 2027-28E PE, LT earnings CAGR 24%). Sales growth estimates raised to **37% in 2026E and 38% in 2027E** (in USD; vs April guidance "above 30%"); capex raised to **$60/$80/$95bn for 2026/27/28E** (from $56/$75/$85bn prior). **N3 capacity** expected to grow from ~120kwpm end-2025 to **~220kwpm by 2028E**; **N2 capacity** potentially reaching **~160kwpm by 2028E**. Q2 FY26 expected sales +12% QoQ, GM 67.3% — both at high-end of guidance. Q3 FY26 expected +11% QoQ on smartphone seasonal + new Cloud AI accelerator/CPU ramps; Q3 GM may dip slightly to 65.4% on N2/overseas dilution. Key Q2 call watch items: overall semi cycle, capex strategy for next 3-4 years, competition (Samsung/Terafab), and GM in H226/2027. **Leading-edge pricing +5-10% in early 2027**; HPC revenue to grow 58%/51% in 2026/27E, reaching 67%/73% of sales. Q2 FY26 earnings conference: **July 16 after market close**. (UBS / Sunny Lin, Randy Abrams, 2026-06-28) |
+| 06-28 | Jefferies Asia TMT Sales · Conor O'Mara | supply | bull | **Foundry 2.0 framing (Counterpoint):** global foundry 2.0 market revenue +23% YoY to $86bn in Q1 2026, led by AI GPUs and ASICs. TSMC +41% YoY in Q1 2026; expected 36% full-year 2026 growth. "Unprecedented capacity reallocations across multiple fabs — mature-node capacity increasingly converted to support advanced technologies." Pricing actions differ from TSMC's traditional annual framework — demand intensity unprecedented. CoWoS constraints ongoing. **SMIC** +12% YoY Q1 2026 on localization demand. **MediaTek securing larger share of Google TPUs** — potential incremental wafer demand driver. **Apple M7 on Intel 18A-P** flagged as a potential design win. (Jefferies Asia TMT Sales / Conor O'Mara, 2026-06-28) |
+
+**Quarter synthesis:** the debate has shifted from "does AI demand hold?" to "how much margin can TSMC extract" — the flow (Fubon, Redburn, UBS, JPM) is unanimously bullish on 2027 pricing (hikes ≥10% incl. Apple, GM toward 70%) and adds the server-CPU as a new leg. New from 06-26: TSMC's Shanghai Symposium revealed a CoWoS 5.5× reticle at 98% yield + 6T SRAM GAA area win, pointing to higher CoWoS throughput. New from 06-27: **SFG "Feeding the Foundry Beast"** (Hosseini, $432.35, Positive) frames SCA/LTA templates migrating from memory to foundry logic, compressing TSMC's revenue volatility and justifying multiple expansion. New from 06-28: **UBS raises PT to NT$3,400** (from NT$3,000) ahead of the July 16 Q2 print, lifting 2026 growth to 37%, 2027 to 38%, and capex to $60/$80/$95bn; N3 capacity road to 220kwpm and N2 to 160kwpm by 2028E; +5-10% leading-edge pricing in early 2027. Foundry 2.0 data (Counterpoint via Jefferies) confirms TSMC +41% YoY in Q1 2026 with CoWoS still constrained. OpenAI Jalapeno (3nm) + Jalapeno2 (A16+CoWoS) + QCOM Dragonfly/AI300 (3nm/2nm+CoWoS) add incremental demand vectors beyond the NVDA/AVGO/Google anchor.
+
+## Management commentary — evolution (last 5 quarters)
+
+| Theme | Q1'25 | Q2'25 | Q3'25 | Q4'25 | Q1'26 |
+|---|---|---|---|---|---|
+| **HPC/AI revenue & outlook** | AI accelerators to double in 2025; mid-40s % CAGR '24–29 | AI/HPC "robust"; FY25 raised to ~30%; sovereign AI added | AI "stronger than 3mo ago"; mid-40s CAGR "a little better" | AI accel high-teens % of FY25 rev; CAGR raised to mid-/high-50s; FY26 ~30% | AI "extremely robust"; agentic shift lifts tokens; FY26 raised "above 30%"; CAGR toward higher-50s |
+| **Capex** | FY25 budget USD 38–42bn | Maintained USD 38–42bn | Narrowed to USD 40–42bn | FY26 USD 52–56bn; next 3yrs ">>" prior USD 101bn | FY26 to high end (~USD 56bn); next 3yrs significantly higher |
+| **N2/A16 nodes** | N2 HVM 2H25, ramp like N3; A16 2H26 | N2 on track 2H25; tape-outs > N3/N5; A14 in 2028 | N2 HVM "later this quarter"; faster ramp '26 | N2 in HVM 4Q25, good yield; fast ramp '26; N2 dilutes GM 2–3pts | N2 ramping multi-phase; N3 capacity now expanded (new fabs); A14 2028 |
+| **CoWoS / advanced packaging** | Doubling CoWoS in 2025; demand "insane" | "Narrowing the gap"; building back-end capacity | Front+back-end "very tight"; 2 AZ AP fabs + OSAT | Back-end ~8% of FY25 rev, >10% in '26; faster than corporate | CoWoS "very tight"; largest reticle; CoPoS pilot line, MP couple yrs out |
+| **Pricing / gross margin** | GM 58.8%; LT 53%+ achievable | GM 58.6%; FX −180bp; reaffirm 53%+ "and higher" | GM 59.5%; overseas dilution cut to 1–2% FY25 | GM 62.3% (FY 59.9%); LT raised to 56%+, ROE high-20s | GM 66.2%; N3 crosses corporate avg 2H26; pricing "strategic, not opportunistic" |
+| **Overseas fabs (Arizona)** | Fab1 HVM (N4); +USD 100bn → USD 165bn; ~30% of N2 in AZ | 6 AZ fabs; speeding Fab2 (N3) several qtrs | Speeding up; upgrading to more advanced nodes; near 2nd land | Fab2 HVM pulled to 2H27; Fab4 permits; 2nd land bought | 2nd land secured; more strategic; cost structure improving |
+
+_Source: TSMC earnings calls (dates above); management commentary, paraphrased._
+
+## In the inbox (Outlook — recent sell-side flow)
+- **JPM (Gokul) — TSMC 1Q preview** _(2026-04-02)_: previewed Q1 +7% q/q (above high end) with the **bigger beat on GM ~67% vs 65% high-end guide** (N3 util 120% / N4 110%, hot/super-hot runs +50-100% ASP "pure profit," cross-fab activity, ~70-100bp TWD tailwind). FY26 capex to the high end (~$55B), **raised CY27/28 capex to ~$63-64B / >$70B** ($190B cumulative 26-28, ~2x the 23-25 spend). N3 capacity ~165-170k end-2026 (peak potential ~210k); CoWoS +~70% to ~1.1M (2026), ~1.5M (2027); **SoIC ~30-40k by end-2027**; high-NA EUV not at TSMC until A10 (~2030-31). **Intel 18A yield ~60%±**; expects most foundry customers will eventually put "one small product" at Intel given TSMC tightness. TSMC EUV-tool receipt ~30-31 (2026), mid-to-late 30s (2027) (JPM "TSMC preview/Gokul", 2026-04-02).
+- **BofA (Hoss Cathy) — TSMC preview** _(2026-04-13)_: previewed Q1 GM toward the upper half of the 63-65% guide (modeled 64.6%), Q2 sales +7-9% driven **purely by pricing (+11% blended ASP q/q)** not shipments (mature-node shipments down ~10% on consumer-fab cuts); Q2 GM 65-66%+, normalizing to mid-60s in H2 on the N2 ramp. 3nm pricing "getting much closer to 2nm." Energy ~9-10% of COGS, fully passed through; second-tier foundries (UMC/Vanguard, ~80-85% util) more exposed to electricity-cost hikes (BofA "TSMC preview", 2026-04-13).
+- **MS (Charlie Chan) — TSMC post-print review** _(2026-04-16)_: read the FY guide-raise to "above 30%" (from ~30%) and Q2 "+10%" guide as **an upside surprise** (sees mid-to-high-30s FY, low-teens Q2 achievable); capex to the high end, "next 3 years stronger than the last 3"; **2027 EUV-unit checks raised to ~40 (from mid-30s)** (MS "TSM post-print review", 2026-04-16).
+- **MS (Charlie Chan) — memory/TSMC webcast** _(2026-04-14)_: TSMC Q2 +5-10% q/q even after the Q1 beat (smartphone poor, offset by AI/networking/CPU); 3-year capex frame ~$190B (could hit $200B); within-90-kÅ package size TSMC CoWoS competitive vs Intel EMIB, beyond that Intel EMIB-T / 3D packaging gains a relative edge (MS "Memory webcast", 2026-04-14).
+- **MS (Charlie Chan) — Preliminary 2027 TSMC CoWoS allocation** _(2026-06-23)_: raised 2027 CoWoS capacity assumption to **200kwpm by year-end (from 170k)** = ~60% Y/Y AI-XPU industry growth; reiterates OW TSMC. Customer-mix checks: Nvidia CoWoS-L ~**910k (+40% Y/Y)** for Blackwell/Rubin + CoWoS-R for Vera CPU (~2x); Google TPU #2 via MediaTek 180k CoWoS-S (~3.6mn v8t ZebraFish) + Broadcom 365k CoWoS-S (~330k to v8i SunFish ≈ 3.9mn); **CPU a fresh 2.5D leg** on agentic AI — Nvidia Vera 5.75mn / AMD Venice 6.75mn units in 2027 (vs ~1.25mn '26). Folded into "Catalysts → CoWoS / CoPoS capacity" above (MS Asia AI Supply Chain, 2026-06-23).
+
+## Sources
+- **Filings:** [TSM 20-F FY25 (2026-04-16)](../TSM/TSM_20-F_2026-04-16_0001628280-26-025362.html); prior [20-F 2025-04-17](../TSM/TSM_20-F_2025-04-17_0001193125-25-083423.html).
+- **Equity-call .txt (relatórios bons):**
+  - [JPM (Gokul) — TSMC preview (2026-04-02)](../relat%C3%B3rios%20bons/2026_04_02_gokul_tsm_preview_2_apr_2026.html) — Q1/Q2 GM beat, capex $63-64B/>$70B 27/28, CoWoS/SoIC, Intel 18A ~60% yield, TSMC EUV-tool receipt.
+  - [BofA (Hoss) — TSMC preview (2026-04-13)](../relat%C3%B3rios%20bons/2026_04_13_tsm_baml_preview_13_apr_26.html) — Q2 driven by +11% blended ASP not shipments; 3nm pricing nearing 2nm; energy pass-through.
+  - [MS (Charlie Chan) — TSM post-print review (2026-04-16)](../relat%C3%B3rios%20bons/2026_04_16_tsm_ms_reivew_16_apr_2026.html) — guide-raise an upside surprise; 2027 EUV units raised to ~40.
+  - [MS — Memory/TSMC webcast (2026-04-14)](../relat%C3%B3rios%20bons/2026_04_14_ms_memory_14_apr_2026.html) — Q2 +5-10%; CoWoS vs Intel EMIB within/beyond 90-kÅ; $190-200B 3yr capex.
+  - [BofA — TSMC/ASML review (2026-04-16)](../relat%C3%B3rios%20bons/2026_04_16_tsm_baml_16_apr_2026.html) — Q2 GM 66.5% midpoint beat; 3nm price hikes through the year toward 70%+ GM by 2027; A14 ramp 2029.
+- **Transcripts:** [Q1 FY26 (2026-04-16)](../TSM/transcripts/TSM_Q1-2026-earnings_2026-04-16.md); [Q4 FY25 (2026-01-15)](../TSM/transcripts/TSM_Q4-2025-earnings_2026-01-15.md).
+- **Equity calls:** [2026-05-27 Gokul/JPM — CoWoS update](../_equity_calls/Semis/2026-05-27_Gokul_CoWoS-update.md); [2026-04-14 TSMC former exec — foundry](../_equity_calls/Semis/2026-04-14_TSMC-former-exec_foundry.md). (Full TSM list: [INDEX §TSM](../INDEX.md).)
+
+## Changelog
+| Date | Change |
+|---|---|
+| 2026-06-29 | Added "Leading-edge capacity by node & fab (MS)" table — fab-level installed-capacity roadmap 2025–29 across N3 / N2-A16 / A14 / A10 / N40-28-22-12 / N28-16; plus a pointer bullet in "Capacity build." **Source corrected to Morgan Stanley Research estimates** ("Exhibit 16: TSMC fab roadmap") — initially mis-attributed to UBS; confirmed by the user. Exhibit date not stated; tentatively the MS Asia AI Supply Chain note (Charlie Chan, 2026-06-23). The MS N2/A16 →210k-by-2028 figure (vs UBS N2 ~160k) is a cross-broker divergence, not a UBS internal mismatch. |
+| 2026-06-29 | Added "N3 bottoms-up supply/demand model (UBS)" section — full client/product N3 wafer-demand table by quarter (Q126E–Q427E) with Cloud-AI vs consumer split, total demand vs TSMC capacity, and 102–110% utilisation. (UBS / Sunny Lin, Randy Abrams, 2026-06-28) |
+| 2026-06-27 | Added 1 intra-quarter row (06-27): SFG "Feeding the Foundry Beast" (Hosseini, $432.35, Positive) — SCA/LTA template migrating from memory to foundry logic. Updated quarter synthesis. |
+- **Capstone model:** `P:\Felipe Monteiro\US Equities\Modelos oficiais\Modelo Felipe TSM 1Q26.xlsm` (house estimates).
+- **Briefings:** [TSM roll-up](../_briefings/by-ticker/TSM.md) — 2 datapoints / 2 days — Bernstein PT $430 (2026-05-18).
+- **Research reports (relatórios bons):**
+  - [Fubon/Jefferies — Both front-end and back-end capacity growth are the key to foundry (2025-10-28)](../relat%C3%B3rios%20bons/Both_front-end_and_back-end_capacity_growth_are_the_key_to_f.html)
+  - [DeepResearch — TSMC initiation framework](../relat%C3%B3rios%20bons/DeepResearch_TSM.html)
+  - [Bernstein Semis deck (May-2025)](../relat%C3%B3rios%20bons/Bernstein_Deck_Semis_Maio25.html)
+  - [StoneX Market Intelligence — John Su — TSMC (2025-08-20)](../relat%C3%B3rios%20bons/StoneX_Market_Intelligence_-_John_Su_-_20250820_-_TSMC_11.html)
+  - [Co-Packaged Optics (CPO) — Scaling with Light (SemiAnalysis, 2026-01-02)](../relat%C3%B3rios%20bons/Co_Packaged_Optics_CPO_Scaling_with_Light_for_the_Next_Wave_of_Interconnect.html)
+  - [Q425 Techknowledge tech takeaways (Jefferies, 2025-12-17)](../relat%C3%B3rios%20bons/Q425_Techknowledge_tech_takeaways.html)
+  - [UBS — Quantifying the server CPU opportunity (Sunny Lin, 2026-05-21; Buy, PT NT$3,000)](../relat%C3%B3rios%20bons/CPU_TAM_-_UBS.html)
+  - [Fubon — 2027 Semiconductor Outlook / Sector Snapshot (2026-06-05; Buy, TP NT$3,500)](../relat%C3%B3rios%20bons/Semi_2027_outlook_Sector_Snapshot_English_06052026.html)
+  - [Redburn (Conor O'Mara) — Asia Trip Takeaways (2026-06-23)](../relat%C3%B3rios%20bons/77420a6c-61c1-4757-8047-3a24cced258c_Key_Takeaways_from_Conor_OMaras_recent_Management_Meetings_across_ASIA_1.html) — 2026 wafer hikes (AI +10%/consumer +5%/Apple LSD, blended ex-2nm +3-4%); 2027 +≥10% incl Apple, GM toward 70%; 15-20% supply gap 2027; ~8M wafers/mo peak / wafer-shortage risk; 40-45 EUV booked 2027 capping capex $70-75B; SOIC expansion (15-20 bonders/10K line); AAC Vera/Venus packaging.
+  - [Jefferies Christopher Wood "GREED & fear: The mother of all cycles" (2026-06-25)](../relat%C3%B3rios%20bons/Chris_Wood.html) — TSM capex $56bn ('26) / $65-70bn ('27), Taiwan GDP/macro read
+  - [Morgan Stanley Stephen Byrd "Tokenmaxxing discussion" (2026-06-26)](../relat%C3%B3rios%20bons/2026_06_26_stephen_byrd_on_tokenmaxxing.html) — TSMC as premium compute partner read-through

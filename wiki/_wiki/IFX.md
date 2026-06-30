@@ -1,0 +1,165 @@
+<!-- per-company wiki page. "Consensus estimates (BBG)" block auto-injected by build_wiki_html.py from _data/estimates.json (EUR) — do NOT hand-write it. -->
+
+# IFX — Infineon Technologies AG
+
+_Wiki · generated 2026-06-19 · **German issuer — NO SEC 10-K/10-Q/20-F filings exist.** Covered via earnings-call transcripts (`E:\Wiki Felipe\IFX\transcripts`) + Infineon IR + BBG consensus (EUR). Equity calls: `E:\equity_calls_transcripts`. Briefing roll-ups: `E:\briefings\2026`. Master index: [INDEX.md](../INDEX.md)._
+
+<!-- SNAPSHOT:START (auto: _tools/build_snapshot.py — do not hand-edit) -->
+### 📊 Consensus snapshot — BBG · asof 2026-06-22 · EUR
+
+| Metric | CY2026E | CY2027E |
+|---|--:|--:|
+| Revenue | €17.0bn | €19.3bn |
+| Gross profit | €7.2bn | €8.6bn |
+| Gross margin | 42.1% | 44.5% |
+| EBITDA | €5.6bn | €7.2bn |
+| EPS | €1.99 | €2.64 |
+| Capex | €2.9bn | €3.0bn |
+| OCF (≈EBITDA) | €5.6bn | €7.2bn |
+
+<svg xmlns="http://www.w3.org/2000/svg" width="326" height="88" viewBox="0 0 326 88" font-family="-apple-system,Segoe UI,Roboto,sans-serif"><text x="0" y="10" font-size="11" font-weight="600" fill="#33405c">FY1 EPS revision</text><rect x="0" y="17.8" width="20" height="40.2" rx="2" fill="#1c5fd6"/><text x="10" y="69" font-size="9" text-anchor="middle" fill="#8492ad">6m</text><rect x="28" y="15.8" width="20" height="42.2" rx="2" fill="#1c5fd6"/><text x="38" y="69" font-size="9" text-anchor="middle" fill="#8492ad">3m</text><rect x="56" y="14.0" width="20" height="44.0" rx="2" fill="#1c5fd6"/><text x="66" y="69" font-size="9" text-anchor="middle" fill="#8492ad">1m</text><rect x="84" y="14.1" width="20" height="43.9" rx="2" fill="#1c7d3f"/><text x="94" y="69" font-size="9" text-anchor="middle" fill="#8492ad">now</text><text x="0" y="84" font-size="10" fill="#1c7d3f">+3.9% 3m · +9.2% 6m</text><text x="176" y="10" font-size="11" font-weight="600" fill="#33405c">FY2 EPS revision</text><rect x="176" y="21.1" width="20" height="36.9" rx="2" fill="#1c5fd6"/><text x="186" y="69" font-size="9" text-anchor="middle" fill="#8492ad">6m</text><rect x="204" y="20.0" width="20" height="38.0" rx="2" fill="#1c5fd6"/><text x="214" y="69" font-size="9" text-anchor="middle" fill="#8492ad">3m</text><rect x="232" y="15.0" width="20" height="43.0" rx="2" fill="#1c5fd6"/><text x="242" y="69" font-size="9" text-anchor="middle" fill="#8492ad">1m</text><rect x="260" y="14.0" width="20" height="44.0" rx="2" fill="#1c7d3f"/><text x="270" y="69" font-size="9" text-anchor="middle" fill="#8492ad">now</text><text x="176" y="84" font-size="10" fill="#1c7d3f">+15.9% 3m · +19.1% 6m</text></svg>
+
+_Gross profit = Revenue × GM%. OCF: no forward BBG consensus — EBITDA shown as proxy._
+<!-- SNAPSHOT:END -->
+
+## Snapshot
+Infineon is the world's **#1 power-semiconductor** vendor and **#1 automotive-semiconductor** vendor — an IDM (own fabs) spanning silicon MOSFETs/IGBTs, SiC and GaN power devices, automotive microcontrollers (AURIX), sensors and security controllers. FY2025 revenue EUR 14.66bn (Q4 FY25 call, 2025-11-12). Four segments today: **Automotive (ATV, ~50% of revenue)**, **Green Industrial Power (GIP, ~11%)**, **Power & Sensor Systems (PSS, ~29%)**, **Connected Secure Systems (CSS, ~10%)** (segment-split per IR / Bristlemoon, FY25). Re-orgs into 3 divisions — Automotive, Power Systems, Edge Systems — effective 2026-07-01 (Q2 FY26 call, 2026-05-06). For a tech/semis book the live story is the pivot of a legacy auto/industrial power franchise into the **AI data-center power** supply chain (800V DC), which is re-rating the whole analog/power group.
+
+## At a glance — product · buyer · supplier
+| | |
+|---|---|
+| **Sells (top 3)** | 1) Power semis — Si MOSFET/IGBT, SiC & GaN (#1 power) · 2) Automotive MCUs/power — AURIX (ATV ~50% of rev) · 3) Sensors & security controllers (PSS/CSS) |
+| **Main buyer(s)** | Auto OEMs/Tier-1s (~50% of rev) + industrial/renewables-EV; fast-growing data-center power via NVIDIA 800V DC (AI-power EUR 1.5bn FY26→2.5bn FY27); China ~38% of rev |
+| **Key suppliers** | Si/SiC/GaN wafers, epi & substrates; select outsourced foundry partners (IDM — fabs/packages most in-house) |
+
+## Position in the value chain
+IFX is a vertically-integrated (IDM) power & systems semi player: it buys Si/SiC/GaN wafers and uses some foundry partners upstream, fabs and packages its own power devices, MCUs, sensors and security chips, and sells into auto OEMs/Tier-1s, industrial, renewables/EV, and — increasingly — **data-center power (800V DC)**. The AI-datacenter-power read-through is the key incremental driver: IFX guides AI-power revenue EUR 1.5bn FY26 → EUR 2.5bn FY27, on ~$175 of semi content per kW (Q2 FY26 call, 2026-05-06), via its NVIDIA 800V centralized-DC collaboration.
+
+**Where IFX content sits in the 800V HVDC stack (Jefferies, 2026-02-10):** NVIDIA is moving AI-DC power distribution to 800V HVDC, expected to anchor on the Kyber rack architecture (launch H2'27), with rack power rising toward 1MW from 2029. By conversion stage: 800V→54V favours **SiC MOSFETs** replacing Si IGBTs (SiC cost de-risked by China substrate oversupply; GaN still unproven >600V today and higher-cost); 54V→12V is the **GaN** opportunity (likely GaN-input/Si-output initially, full-GaN later); 12V→sub-12V VRMs stay a pure-Si MOSFET market with ~3x content uplift on the vertical-power shift. Jefferies estimates ~60% of power-semi value sits in this final Si-MOSFET stage and expects IFX to remain market leader there. IFX offers both 2-stage and 3-stage 800V conversion topologies. IFX is named in NVIDIA's 800V silicon-partner list alongside ADI, AOS, EPC, Innoscience, MPS, Navitas, OnSemi, Power Integrations, Renesas, Richtek, ROHM, STM and TI (Jefferies Q425 Techknowledge, 2025-12-17). Content benchmarks: **>$100k semi content in a >1MW rack (FY29); EUR 8–12bn DC-power SAM by 2030** (IFX co. data via UBS, 2025-12-22). IFX is building **300mm GaN production in Villach** — the move to 300mm GaN is a cost-down lever ahead of the 800V ramp (Jefferies AIXA note, 2026-02-10).
+
+<svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+  <rect x="8" y="55" width="170" height="110" rx="6" fill="#eef3fb" stroke="#3b5b92"/>
+  <text x="93" y="78" text-anchor="middle" font-weight="bold">Suppliers</text>
+  <text x="93" y="98" text-anchor="middle">Si / SiC / GaN wafers</text>
+  <text x="93" y="116" text-anchor="middle">epi &amp; substrates</text>
+  <text x="93" y="134" text-anchor="middle">foundry partners</text>
+  <text x="93" y="152" text-anchor="middle">(select outsourced)</text>
+
+  <rect x="262" y="35" width="196" height="150" rx="6" fill="#dceede" stroke="#2f7d46"/>
+  <text x="360" y="58" text-anchor="middle" font-weight="bold">IFX — IDM</text>
+  <text x="360" y="78" text-anchor="middle">power semis (Si/SiC/GaN)</text>
+  <text x="360" y="96" text-anchor="middle">auto MCUs (AURIX)</text>
+  <text x="360" y="114" text-anchor="middle">sensors, security</text>
+  <text x="360" y="138" text-anchor="middle" font-weight="bold">#1 power semis</text>
+  <text x="360" y="156" text-anchor="middle" font-weight="bold">#1 auto semis</text>
+
+  <rect x="542" y="40" width="170" height="140" rx="6" fill="#fbf0e6" stroke="#b3691f"/>
+  <text x="627" y="62" text-anchor="middle" font-weight="bold">Customers</text>
+  <text x="627" y="82" text-anchor="middle">auto OEMs / Tier-1s</text>
+  <text x="627" y="100" text-anchor="middle">industrial</text>
+  <text x="627" y="118" text-anchor="middle">data-center power</text>
+  <text x="627" y="134" text-anchor="middle" font-weight="bold">800V DC (NVDA)</text>
+  <text x="627" y="154" text-anchor="middle">renewables / EV</text>
+
+  <line x1="178" y1="110" x2="258" y2="110" stroke="#444" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="458" y1="110" x2="538" y2="110" stroke="#444" stroke-width="2" marker-end="url(#a)"/>
+  <defs>
+    <marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#444"/>
+    </marker>
+  </defs>
+  <text x="360" y="206" text-anchor="middle" fill="#666">AI-datacenter-power (800V) read-through: ~$100–250 semi content / kW</text>
+</svg>
+
+## Current state (latest quarter)
+**Q2 FY26 (quarter ended 2026-03-31, call 2026-05-06):** Revenue EUR 3.812bn (+6% YoY, +4% QoQ; ~+14% currency-adjusted); segment result EUR 653m, **margin 17.1%** (down from 17.9% in Q1 — idle/underutilization costs and CSS drag). **Order backlog ~EUR 25bn (+EUR 4bn QoQ, +25% YoY)** — the standout. FCF EUR -63m (seasonal; FY build in H2). Management **raised FY26 guidance to >EUR 16bn revenue (~+10%) and ~20% segment margin** (from high-teens). AI-power business is **in allocation**; reconfirmed **EUR 1.5bn AI-power revenue FY26 → EUR 2.5bn FY27**. Segment detail: ATV EUR 1.83bn @18.1% (MCU share 32%→36%; HV-EV powertrain ~7% of ATV is the profit drag), PSS EUR 1.26bn @20.4% (AI DC momentum), GIP EUR 403m @11.7% (+15% QoQ), CSS EUR 319m @5.6%. GaN ramping for AI DC power with select customers; SiC low-double-digit growth from AI. (All Q2 FY26 call, 2026-05-06.)
+
+## Debate / thesis
+- **Bull:** Backlog +25% YoY to ~EUR 25bn and a raised ~20% margin guide point to a clean cyclical recovery layered on a structural AI-power ramp (Q2 FY26 call, 2026-05-06). Jefferies (Janardan Menon) frames this as the start of a powerful analog upcycle that — like 2021-23 — is driven not by end-demand (auto/industrial still weak) but by a supply-tightness inflection, except this time the demand pull is **structural AI-datacenter** (silicon-MOSFET consumption by data centers ~1/4 of automotive's in 2024 → roughly equal by 2026 → much bigger by 2027/28), so the EPS-upgrade cycle could run "another 7-8 quarters" with 50-150% upside to 2027/28 EPS; Jefferies sees IFX **PSS-division segment margin hitting ~30% by Q4 FY26 → ~35%** (above the FY22 peak), and reframes **silicon MOSFETs as "almost a new analog business"** — >30% operating margin, driven by data-center VRM growth, with almost no new capacity being added by anyone (Jefferies "Analog Semis," 2026-06-03). Jefferies adds the IFX automotive moat is the **proprietary TriCore-based AURIX MCU** (everyone else — Renesas/NXP/TI/MCHP/ST — is on ARM), which "is outperforming ARM in real-time compute," driving MCU share **9% (2018) → 36% (2025)** toward 40%+, and should win in robotics too (Jefferies "Analog Semis," 2026-06-03). The AlphaSense Infineon primer compiles the structural-AI bull case with hard numbers: **43% AI server-power-semi share rising to 47% in 2026**; AI-related power revenue **EUR 750m FY25 → EUR 1.6bn FY26 → EUR 3.3bn FY28 (~17% of sales)** at **55-60% gross margin vs ~40% corporate average**; the CoolSiC trench architecture delivers **30% more chips per wafer** than planar; ~450 GaN patent families; targeting **30-40% of the AI power market** via vertical-power-delivery modules by decade-end; Kepler Cheuvreux projects a **58% CAGR in AI-DC power sales FY25-28** and adjusted operating margin rebounding 20% FY26E → 24% FY27E → back to the 27% peak by FY28E (AlphaSense "IFX Primer", 2026-06-22). AI-power EUR 0.7bn FY25 → EUR 1.5bn FY26 → EUR 2.5bn FY27, into an EUR 8–12bn addressable market by decade-end, with the NVIDIA 800V DC collaboration as the anchor (Q4 FY25 call, 2025-11-12). Citi groups IFX among power-semi names guiding 40–100% DC-power growth this year; sell-side framing is that >20% DC sales mix re-rates the analog group ([800v-dc-power theme](themes/800v-dc-power.md); Citi 2026-06-16, via theme page). Citi names **Infineon (with MPWR and Renesas) as a current incumbent in the GPU power-delivery market** (800V-to-1V conversion), a market it sizes at **~$2B in 2025 → ~$12B by 2028 (~75% CAGR)** with Stage-2 sub-1V VRMs ~60% of content — though TXN is positioned as the relative share gainer vs these incumbents from 2H26. On the 800V-industrial (grid-to-core) side IFX is a key SiC beneficiary, and IFX's own data anchors the Industrial TAM Citi cites: **ESS semi content ~$2,500/MW with ~31% ESS-shipment CAGR 2025–30; SST market ~$1bn by 2030; solid-state circuit breakers >$800m by 2030** (Citi "800V power", 2026-06-15). IFX also reiterated that **fully-scaled 300mm GaN production drives GaN cost parity with silicon** — "GaN performance at the cost of silicon" — and Citi flags IFX joined the **second round of analog price hikes effective June/July** (Citi "800V power", 2026-06-15). IFX flagged at 12m relative highs alongside the AI-semi complex (Redburn, briefing 2026-05-26). On the supply chain: Lite-On has **signed long-term supply deals with IFX (SiC) and TI (GaN)** for HVDC power racks, calling "high-end SiC in power-management IC from Infineon a key component" — a hard demand signal that IFX content is locked into the early 800V build (Jefferies Q425 Techknowledge, 2025-12-17). A German auto Tier-1 expert reinforced the auto moat: **NXP and Infineon are "doing well" on the pipeline** (vs Renesas, more susceptible) on more stabilized supply chains, and in safety-critical sockets — e.g. ASIL-D **zonal controllers** — "most of these chipsets are from **Qualcomm and Infineon**," with NXP/STM "don't stand a chance at the moment to work on these product lines," a structural design-in advantage for IFX (Expert call, 2026-06-08). **UBS Buy, PT EUR 44** (Bouvignies, 2025-12-22); UBS comp sheet has IFX revenue +9%/+8% FY26/27, segment margin to ~20%→23%, ~21x/20.6x P/E.
+- **Bear:** "Less about the size of the AI power pie and more about IFX's share of it" — TXN/ADI/ON are gaining DC-power share with TXN explicitly "gaining share vs Infineon/MPWR/Renesas" (Citi/BofA, briefing 2026-06-15). On server power for the GB300 ramp, **Renesas is starting to ramp and share is likely split across MPWR, IFX and Renesas** — not IFX-dominant (Jefferies Asia Takeaways, 2025-09-26, where IFX is rated HOLD). Competitive read is unsettled at the device level: ROHM notes GaN-vs-SiC for 800V is "nothing determined… won't be finalized until 2027," and flags IFX trying to do the power supply itself, making it a potential **competitor to Delta**; InnoScience claims IFX has 6" GaN but no 8" capacity and unlikely 12" before 2027/28 (Jefferies Q425 Techknowledge, 2025-12-17). The legacy book is the drag: auto HV-EV semis have "unacceptable profitability" amid China EV slowdown + US incentive expiry (Q2 FY26 call, 2026-05-06; Q4 FY25 call), CSS margin is sub-6%, and FY25 carried ~EUR 1bn idle costs (~EUR 800m guided FY26). The AlphaSense primer quantifies the HV-auto drag: Kepler Cheuvreux models the **high-voltage xEV-component business declining to EUR 500m FY26E from EUR 750m FY25** on Chinese IGBT dumping + Western SiC discounting, capping ATV margins (which would otherwise be near 25% today) (AlphaSense "IFX Primer", 2026-06-22). The primer also flags two structural mid-term debates: **SiC oversupply** (bulls cite the trench-density premium, bears the Kulim-3 expansion if EV stays flat) and **hyperscaler disintermediation / the IVR threat** — a former IFX senior director warned the AI power market transitions toward **Integrated Voltage Regulator (IVR) tech after 2028, where IFX "currently lacks a competitive proprietary offering,"** potentially requiring dilutive M&A to hold its ~45% share (AlphaSense "IFX Primer", 2026-06-22). The 800V ramp is also a "slower than hype" risk and China can flood SiC/GaN supply ([800v-dc-power theme](themes/800v-dc-power.md); @bubbleboi, briefing 2026-06-15).
+- **Where the sell-side/buy-side stands:** Constructive into the AI-power ramp but IFX is read more as a beneficiary-by-association than a top pick — BofA's 800V "best ideas" are TXN/ADI/ON, not IFX (BofA Vivek Arya, briefing 2026-05-26). UBS rates **Buy, PT EUR 44** (2025-12-22) and Jefferies **Buy** (AIXA note context, 2026-02-10, IFX ref EUR 41.99) on the equipment/power complex, while Jefferies' Asia analog desk carried IFX at **HOLD** (2025-09-26) — a stance spread that itself is the edge. JPM spec sales lists IFX among SiC names doing "more work" on 800V at 15–20% adoption (JPM AI-power pitch, 2026-06-11). Jefferies is constructive on both IFX and STM but is **tactically tilted to STMicro near-term** (catch-up + optical re-rating), noting IFX "sounds more positive on pricing" (MOSFETs the fastest-rising) and has implemented a **second price increase effective July 1, 2026** (its second this cycle, vs the first only coming ~10 months in during 2021) — pricing now "a bigger and bigger part of IFX's outlook over the next 12-18 months"; on valuation Jefferies notes IFX trades ~35x two-year-forward EPS (above prior peak) and frames a bull-case ~EUR 6 EPS in FY28 at ~15-25x (Jefferies "Analog Semis," 2026-06-03). Sell-side PTs per the AlphaSense primer: **Kepler Cheuvreux Buy, PT raised to EUR 70** (from EUR 54, "Most Preferred") and **Bernstein Outperform, PT EUR 74** (~20% upside off ~EUR 61.5), with a contrarian **Santander tactical Sell** on overbought signals (AlphaSense "IFX Primer", 2026-06-22). Recent tape was technical: IFX sold off then +5% on "rotation from analog into WFE, not fundamentals" (Beavington/Jefferies, briefing 2026-06-18). Note: a desk-level Outlook pull was attempted but the Outlook script is not callable in this environment (no working Python launcher) — sell-side stance above is sourced from research reports + the briefing archive.
+
+## Humanoid-robot / physical-AI optionality
+Morgan Stanley (Humanoids, 2025-04-29; IFX **Overweight, PT EUR 40**, Lee Simpson) puts IFX in the "Body" enabler bucket of its Humanoid 100, estimating **~$150+ of eBoM TAM per humanoid** depending on size/form. IFX content spans sensors (ToF vision/radar, inertial/magnetic orientation, force), power semis, drive controllers and interconnect; MS sees the key focus as **joint actuation** — brushed/brushless PSoC drive controllers for fine finger movement and higher-power hip/knee motion — plus small-form-factor **GaN** power devices and automotive-ethernet connectivity. The M&A path supports the thesis: GaN Systems (2023) and International Rectifier (2015) for GaN, Cypress (2020) for PSoC controllers, and Marvell's auto-ethernet business (closing end-2025). Sizing model: MS frames a $5tn humanoid market by 2050 — long-dated optionality layered on the core auto/power franchise.
+
+## Catalysts / what to watch
+- **2026-06-29 — IFX AI-power fireside chat** (BofA / Didier Scemama) with **Adam White, head of PSS AI-power division** — direct read on the EUR 2.5bn FY27 AI-power target and 800V traction (briefing 2026-06-19).
+- **2026-07-01 — re-org into 3 divisions** (Automotive / Power Systems / Edge Systems) — new segment reporting.
+- **NVIDIA Kyber rack / 800V HVDC ramp (H2'27)** — the architecture inflection that pulls SiC (800V→54V) and GaN (54V→12V) content; power-semi vendors expected to add capacity through H2'26/H1'27 ahead of launch. GaN-vs-SiC mix for 800V "won't be finalized until 2027" (Jefferies, 2026-02-10 / 2025-12-17).
+- **Q3 FY26 print (early Aug 2026)** — guidance is for AI-power in allocation; watch the FY26 >EUR 16bn / ~20% margin bridge and HV-auto commentary.
+- **ams OSRAM sensor-portfolio acquisition close** (~EUR 570m, targeted Q2 2026; ~EUR 230m annual revenue) (Q1 FY26 call, 2026-02-04).
+- **Smart Power Fab Dresden completion** targeted summer 2026; **300mm GaN capacity in Villach** — capex/idle-cost trajectory and the 8"/12" GaN capacity question (Q4 FY25 call; Jefferies, 2026-02-10).
+
+## Risks
+- **Auto/EV cyclicality + pricing:** ~50% of revenue is Automotive; HV-EV powertrain semis at "unacceptable profitability," China EV slowdown, US incentive expiry (Q2 FY26 / Q4 FY25 calls).
+- **DC-power share loss:** TXN/ADI/ON/MPWR/Renesas competing aggressively for the same 800V content; GB300 server-power share split across MPWR/IFX/Renesas; share, not TAM, is the swing (Citi/BofA, briefings 2026-06-15/05-26; Jefferies, 2025-09-26).
+- **GaN capacity gap:** InnoScience flags IFX with 6" but no 8" GaN and 12" unlikely before 2027/28 — a competitive risk into the 800V ramp; mitigated by 300mm Villach build (Jefferies, 2025-12-17 / 2026-02-10).
+- **Underutilization / idle costs:** ~EUR 1bn in FY25, ~EUR 800m guided FY26; margin highly utilization-sensitive (~80% util) (Q4 FY25 call).
+- **China exposure:** ~38% of revenue (~29ppts mainland) — demand and geopolitical risk (Q4 FY25 call).
+- **800V ramp timing:** "slower than hype," whole supply chain "isn't ready" for 800V from semis to factory compliance per Lite-On; potential SiC/GaN oversupply from China ([800v-dc-power theme](themes/800v-dc-power.md); Jefferies, 2025-12-17).
+- **FX:** EUR reporting vs USD-priced semis — currency-adjusted growth materially higher than reported (Q2 FY26 call).
+
+<!-- Consensus estimates (BBG) block auto-injected here by the HTML builder (figures in EUR) -->
+
+## In the inbox (Outlook — recent sell-side flow)
+- **Nutty "Part 2 — NVIDIA Kyber Rack & 800V Ecosystem" (nuttycld.substack.com, 2026-04-17):** Pre-print piece covering the NVIDIA Kyber rack (1MW, 800V HVDC) and the ecosystem of power-semi vendors positioned around it. IFX is named in the 800V ecosystem alongside NVTS as a key supplier of power semiconductors for the 800V architecture — the note frames 800V adoption as a structural inflection for IFX's SiC/GaN portfolio and datacenter-power revenue trajectory. Context: source date (Apr 17) is before the Q2 FY26 print (May 06), so this represents pre-print field work directionally consistent with the EUR 1.5bn FY26 AI-power guide IFX confirmed on May 06. (Nutty "Part 2", nuttycld.substack.com, 2026-04-17)
+- **Nutty "Part 3 — 800V Ecosystem Follow-up" (nuttycld.substack.com, ~2026-04-21):** Brief follow-up naming IFX alongside NVTS and ADI (3 mentions total) in the 800V power-semiconductor stack. Directionally reinforces the 800V theme without providing company-specific new data. (Nutty "Part 3", nuttycld.substack.com, ~2026-04-21)
+- **JPM Euro TMT Daily (S. Silver)** _(2026-06-18)_ & **BofA EU TMT** _(2026-06-18)_: Infineon carried in the EU power/analog semis complex (BESI/AMS context); cyclical-recovery tape.
+- _(IFX-specific broker notes are thinner in the 90-day inbox window; sell-side stance leans on the dated briefings, the research reports below + the 800V theme.)_
+
+## Intra-quarter — calls, commentary & reports (since the last print)
+_Q2 FY26 · May 06 → Jun 23, 2026 · sell-side / expert calls / reports between earnings. Timeline visual: [timeline.html](timeline.html)._
+
+**Signal vs management** — what management said on the last call × what the intra-quarter flow is saying (✓ confirms · ⚠ nuances · ✗ contests):
+
+| Theme | Management said (Q2 FY26) | Intra-quarter flow | Signal |
+|---|---|---|---|
+| **Demand / AI-power** | AI-power in allocation; reconfirms €1.5bn FY26 → €2.5bn FY27; backlog ~€25bn (+€4bn QoQ) | AlphaSense primer: 43%→47% power-semi share in AI servers; AI rev €750m FY25 → €1.6bn FY26 → €3.3bn FY28 · Citi: incumbent in 800V GPU power-delivery (~$2B→$12B 2028) | **✓ confirms** (structural AI-DC) |
+| **Margin** | Segment margin 17.1%; FY26 guide raised to ~20% | Jefferies: analog upcycle of "another 7-8 quarters", PSS toward ~30% Q4 → ~35%; 2nd price hike effective Jul 1 | **✓ confirms** (margin upcycle) |
+| **Competition / sockets** | Leadership in safety-critical sockets (zonal/ASIL-D) | Tier-1 auto expert: "most of these chipsets are Qualcomm and Infineon", NXP/STM "no chance at the moment" | **✓ confirms** (design-in advantage) |
+| **800V positioning** | NVIDIA 800V; ~$175 of semi content/kW | BofA: 800V "best ideas" are TXN/ADI/ON, not IFX — beneficiary "by association", not a top pick · IVR risk post-2028 | **⚠ nuance** (not the 800V top pick) |
+
+**Full log** (all intra-quarter flow, by date):
+
+| Date | Source | Theme | Bias | What was said |
+|---|---|---|---|---|
+| 05-26 | BofA · Vivek Arya (briefing) | competition | mixed | BofA's 800V 'best ideas' are TXN/ADI/ON, not IFX — IFX is read more as a beneficiary by association than a top pick. IFX flagged at 12-month relative highs alongside the AI-semi complex (Redburn). |
+| 06-03 | Jefferies · Janardan Menon (Analog Semis) | margin | bull | Start of a powerful analog upcycle driven by tightening supply + structural AI-datacenter demand; the EPS upgrade cycle could last 'another 7-8 quarters' with 50-150% upside to 2027/28 EPS. PSS division margin reaching ~30% by Q4 FY26 → ~35%. Silicon MOSFETs reframed as 'almost a new analog business' (>30% op margin). IFX implemented a second price hike effective Jul 1, 2026; valuation ~35x two-year-forward EPS. |
+| 06-08 | Expert call · Tier-1 German auto | competition | bull | NXP and Infineon 'doing well' in the pipeline (vs Renesas, more vulnerable) on more stable supply chains; in safety-critical sockets — e.g. zonal controllers ASIL-D — 'most of these chipsets are from Qualcomm and Infineon', with NXP/STM 'having no chance at the moment' — a structural design-in advantage for IFX. |
+| 06-15 | Citi · 800V power | demand | bull | Citi names Infineon (with MPWR and Renesas) as the current incumbent in the GPU power-delivery market (800V-to-1V conversion), sized at ~$2B (2025) → ~$12B (2028, ~75% CAGR). On the industrial 800V side (grid-to-core) IFX is a key SiC beneficiary; ESS semi content ~$2,500/MW with ~31% CAGR in ESS shipments 2025-30. IFX entered the second round of analog price hikes effective Jun/Jul. |
+| 06-18 | Jefferies · Beavington (briefing) | valuation | mixed | Technical tape: IFX sold off and then +5% on 'rotation from analog into WFE, not fundamentals'. |
+| 06-22 | AlphaSense · Infineon Primer | demand | bull | Compiles the structural AI bull case: 43% power-semi share in AI servers rising to 47% in 2026; AI-related revenue EUR 750m FY25 → 1.6bn FY26 → 3.3bn FY28 (~17% of sales) at 55-60% gross margin. Kepler Cheuvreux projects 58% CAGR in AI-DC sales FY25-28; PTs: Kepler Buy EUR 70 (from EUR 54) and Bernstein Outperform EUR 74; contrarian Santander tactical Sell. Risk flags: SiC oversupply and the IVR threat (Integrated Voltage Regulator tech post-2028, where IFX 'lacks a competitive proprietary offering'). |
+
+**Quarter synthesis:** the flow broadly confirmed the structural AI-power + analog-upcycle thesis (Jefferies sees 7-8 quarters of upgrades, a 2nd price hike in July) and the auto design-in advantage, but the finer debate shifted to *relative positioning in 800V* — BofA prefers TXN/ADI/ON and treats IFX as a beneficiary by association, with the post-2028 IVR risk as the long-term hole.
+
+## Management commentary — evolution (last 4 quarters)
+
+| Theme | Q3 FY25 (2025-08-05) | Q4/FY25 (2025-11-12) | Q1 FY26 (2026-02-04) | Q2 FY26 (2026-05-06) |
+|---|---|---|---|---|
+| Revenue / top-line | €3.074bn, +3% QoQ; inflection up | €3.943bn Q4, FY25 €14.66bn (-2% YoY) | €3.662bn, +7% YoY | €3.812bn, +6% YoY, +4% QoQ |
+| Segment margin | 18.0%, above forecast | 18.2% Q4; FY26 guide high-teens | 17.9%; FY26 high-double-digit guide | 17.1%; FY26 guide raised to ~20% |
+| AI / data-center power | AI-power ramp inflection begins | FY25 >€700m; FY26 €1.5bn; NVIDIA 800V | €1.5bn FY26, €2.5bn FY27; ramp faster | In allocation; ~$175 semi content/kW |
+| Order backlog | — | — | ~€21bn (+€1bn QoQ) | ~€25bn (+€4bn QoQ, +25% YoY) |
+| Automotive / HV-EV | — | China/US EV slowing; Europe improving | ATV 22.1% margin; SiC/SDV/48V shift | "Unacceptable profitability" HV; MCU 32→36% |
+| Capex / idle costs | FY25 FCF ~€1bn | Capex €2.2bn; idle ~€800m FY26 | Investments €2.7bn (€500m AI accel) | FY26 FCF €1.25bn reported / €1.65bn adj |
+
+_Source: IFX earnings calls (dates above); management commentary, paraphrased._
+
+## Sources
+- **Filings:** none — **Infineon is a German issuer with no SEC 10-K/10-Q/20-F**. Financials sourced from IR/earnings calls + BBG consensus (EUR).
+- **Transcripts:** [Q2 FY26 (2026-05-06)](../IFX/transcripts/IFX_Q2-FY26-earnings_2026-05-06.md) · [Q1 FY26 (2026-02-04)](../IFX/transcripts/IFX_Q1-FY26-earnings_2026-02-04.md) · [Q4/FY25 (2025-11-12)](../IFX/transcripts/IFX_Q4-FY25-earnings_2025-11-12.md) · [Q3 FY25 (2025-08-05)](../IFX/transcripts/IFX_Q3-FY25-earnings_2025-08-05.md).
+- **Themes:** [800v-dc-power](themes/800v-dc-power.md) · [ai-datacenter-power](themes/ai-datacenter-power.md).
+- **800V model project** (`E:\800V_Model` — standalone, IFX-centric model + filings/transcripts, **not duplicated here**): [Investment Thesis deck](../../800V_Model/800V_Investment_Thesis.pdf) · [IFX model](../../800V_Model/IFX.xlsx) · [800V GW model](../../800V_Model/800V_GW_Model.xlsx) · IFX FY25/Q1/Q2-FY26 PRs + call intros under [`../../800V_Model/filings/`](../../800V_Model/filings/) · IFX Q1/Q2-FY26 call notes under [`../../800V_Model/transcripts/`](../../800V_Model/transcripts/).
+- **Equity calls:** UBS 800V power (2026-05-14), JPM AI-power pitch (2026-06-11) — `E:\equity_calls_transcripts\Semis`.
+- **Research reports (relatórios bons):**
+  - [Underappreciated AI Play with an Inflection Ahead — Upgrade — AIXA (Jefferies, 2026-02-10)](../relat%C3%B3rios%20bons/Underappreciated_AI_Play_with_an_Inflection_Ahead_-_Upgrade_-_AIXA.html)
+  - [Q425 Techknowledge tech takeaways (Jefferies, 2025-12-17)](../relat%C3%B3rios%20bons/Q425_Techknowledge_tech_takeaways.html)
+  - [UBS 2026 overview (UBS, 2025-12-22)](../relat%C3%B3rios%20bons/UBS_2026_overview.html)
+  - [Asia Takeaways — WFE/Memory Better, NVDA/AVGO Strong C26 (Jefferies, 2025-09-26)](../relat%C3%B3rios%20bons/Asia_Takeaways_WFE_Memory_Better_NVDA_AVGO_Strong_C26_An.html)
+  - [Citi 800V DC Transition — power-delivery incumbent, ESS/SST/SSCB TAM (2026-06-15)](../relat%C3%B3rios%20bons/800v_Citi.html)
+  - [Jefferies "Analog Semis" — IFX/STM analog upcycle deep-dive, AI-DC demand pull, PSS ~30-35% margin, MOSFET = new analog, July price hike (Menon, 2026-06-03)](../relat%C3%B3rios%20bons/2026_06_03_jef_analog_semis_3_jun_26.html)
+  - [AlphaSense Infineon Primer — 43%→47% AI-power share, EUR 750m→1.6bn→3.3bn AI-power rev, Kepler PT EUR 70 / Bernstein EUR 74, IVR threat (2026-06-22)](../relat%C3%B3rios%20bons/IFX_Primer_Alphasense.html)
+  - [Expert call — IFX pipeline strength, ASIL-D zonal-controller moat (2026-06-08)](../relat%C3%B3rios%20bons/IFXDE_-_ExpertCall_document_dated_09-06-2026.html)
+  - [Humanoids (Morgan Stanley, 2025-04-29)](../relat%C3%B3rios%20bons/Humanoids.html)
+- **Briefings:** `E:\briefings\2026` — 2026-06-19 (IFX fireside chat catalyst), 2026-06-18 (WFE rotation), 2026-06-15 / 2026-05-26 (DC-power share, BofA 800V best ideas).
+- **IR / press:** Infineon IR "at a glance"; press release INFXX202508-130 (Q3 FY25). BBG estimates: `_data/estimates.json` (IFX GR Equity, EUR).
