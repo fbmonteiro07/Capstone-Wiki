@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capstone Wiki — Sector Map &amp; Repo State</title>
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>
+<style>
+  :root{
+    --bg:#12161e; --panel:#191f2a; --panel2:#1f2733; --line:#2b3546; --line2:#38455c;
+    --text:#e8e5dc; --mut:#97a0b0; --faint:#6b7484;
+    --amber:#e2a95c; --amber-dim:#8a6a3e;
+    --steel:#7d9cc0; --bull:#79b087; --bear:#cd7663;
+    --mono:"Cascadia Code",Consolas,"SF Mono",Menlo,monospace;
+    --sans:"Segoe UI",system-ui,-apple-system,sans-serif;
+  }
+  html{background:var(--bg)}
+  body{font-family:var(--sans);color:var(--text);line-height:1.5;font-size:15px}
+  .wrap{max-width:1240px;margin:0 auto;padding:36px 22px 80px}
+  a{color:var(--steel)}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+  h1{font-family:var(--mono);font-weight:600;font-size:clamp(22px,3.4vw,34px);letter-spacing:-.01em;margin:10px 0 6px;text-wrap:balance}
+  .sub{color:var(--mut);max-width:70ch}
+  section{margin-top:56px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:20px}
+  .sec-head h2{font-family:var(--mono);font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin:0}
+  .sec-head .n{font-family:var(--mono);color:var(--amber);font-size:13px}
+  .sec-head .note{color:var(--faint);font-size:12.5px;margin-left:auto;text-align:right}
+  .statband{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:26px}
+  .stat{background:var(--panel);padding:14px 16px}
+  .stat b{display:block;font-family:var(--mono);font-size:24px;font-weight:600;color:var(--text);font-variant-numeric:tabular-nums}
+  .stat span{font-size:11.5px;color:var(--mut);letter-spacing:.04em;text-transform:uppercase}
+  .stat b em{font-style:normal;color:var(--amber)}
+
+  /* sector map */
+  .sectors{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px}
+  .sector{background:var(--panel);border:1px solid var(--line);padding:14px 14px 12px}
+  .sector h3{margin:0 0 2px;font-size:13.5px;font-weight:600}
+  .sector .meta{font-family:var(--mono);font-size:11px;color:var(--faint);margin-bottom:10px}
+  .chips{display:flex;flex-wrap:wrap;gap:5px}
+  .chip{font-family:var(--mono);font-size:11.5px;padding:2.5px 7px;border:1px solid var(--line2);background:var(--panel2);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .chip .c{color:var(--faint);font-size:10px;margin-left:4px}
+  .chip.deep{border-color:var(--amber-dim);color:var(--amber)}
+  .chip.thin{border-style:dashed;color:var(--mut)}
+  .legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px;color:var(--mut);font-size:12px}
+  .legend .k{display:inline-flex;align-items:center;gap:7px}
+  .sw{width:14px;height:14px;border:1px solid var(--line2);background:var(--panel2);display:inline-block}
+  .sw.deep{border-color:var(--amber-dim)} .sw.thin{border-style:dashed}
+
+  /* graph */
+  .graph-shell{background:var(--panel);border:1px solid var(--line);padding:10px 0 0}
+  .graph-scroll{overflow-x:auto}
+  svg{display:block}
+  .rowlab{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;fill:var(--faint)}
+  .node rect{fill:var(--panel2);stroke:var(--line2);rx:2}
+  .node text{font-family:var(--mono);font-size:11px;fill:var(--text)}
+  .node{cursor:pointer}
+  .node.dim{opacity:.22}
+  .node.hot rect{stroke:var(--amber);fill:#2a2417}
+  .node.hot text{fill:var(--amber)}
+  .edge{fill:none;stroke:var(--steel);stroke-opacity:.09;stroke-width:1}
+  .edge.comp{stroke:var(--bear);stroke-dasharray:3 4;stroke-opacity:.14}
+  .edge.on{stroke-opacity:.95;stroke-width:1.6}
+  .edge.off{stroke-opacity:.015}
+  .gleg{display:flex;flex-wrap:wrap;gap:18px;padding:10px 16px;border-top:1px solid var(--line);color:var(--mut);font-size:12px;align-items:center}
+  .gleg .ln{display:inline-block;width:22px;height:0;border-top:2px solid var(--steel);vertical-align:middle}
+  .gleg .ln.c{border-top-style:dashed;border-top-color:var(--bear)}
+  #detail{background:var(--panel2);border-top:1px solid var(--line);padding:12px 16px;min-height:56px;font-size:13px}
+  #detail .tk{font-family:var(--mono);color:var(--amber);font-weight:600}
+  #detail .grp{margin-top:4px}
+  #detail .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-right:8px}
+  #detail .it{font-family:var(--mono);font-size:12px;color:var(--text);white-space:nowrap}
+  #detail .it small{color:var(--mut);font-size:11px}
+  #detail .hintt{color:var(--faint)}
+
+  /* bars */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  @media(max-width:860px){.cols{grid-template-columns:1fr}}
+  .barrow{display:grid;grid-template-columns:150px 1fr 46px;gap:10px;align-items:center;margin:7px 0;font-size:12.5px}
+  .barrow .nm{font-family:var(--mono);color:var(--text);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .barrow .tr{background:var(--panel2);border:1px solid var(--line);height:16px;position:relative}
+  .barrow .fl{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,#3b537a,var(--steel))}
+  .barrow.amb .fl{background:linear-gradient(90deg,#7a5a2e,var(--amber))}
+  .barrow .v{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--mut);text-align:right;font-size:12px}
+  .minihead{font-size:13px;font-weight:600;margin:0 0 10px;color:var(--text)}
+  .minihead small{color:var(--faint);font-weight:400;margin-left:8px}
+  .tiernote{margin-top:14px;padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);font-size:13px;color:var(--mut)}
+  .tiernote b{color:var(--text)}
+
+  /* updates */
+  .updates{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+  .upd{background:var(--panel);border:1px solid var(--line);padding:13px 15px}
+  .upd .top{display:flex;gap:10px;align-items:baseline;margin-bottom:6px}
+  .upd .tk{font-family:var(--mono);font-weight:600;color:var(--amber);font-size:13px}
+  .upd .dt{font-family:var(--mono);font-size:11px;color:var(--faint);font-variant-numeric:tabular-nums}
+  .upd .tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;padding:1px 6px;margin-left:auto;border:1px solid var(--line2);color:var(--mut);text-transform:uppercase}
+  .upd .tag.drift{color:var(--bear);border-color:#5c3a33}
+  .upd .tag.pt{color:var(--bull);border-color:#3c5643}
+  .upd p{margin:0;font-size:13px;color:var(--mut)}
+  .upd p b{color:var(--text);font-weight:600}
+  .health{margin-top:22px;background:var(--panel);border:1px solid var(--line);padding:14px 16px}
+  .health h3{margin:0 0 10px;font-size:13px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
+  .health ul{margin:0;padding-left:18px;color:var(--mut);font-size:13px}
+  .health li{margin:5px 0}
+  .health li b{color:var(--text)}
+  .ok{color:var(--bull)} .warn{color:var(--amber)} .bad{color:var(--bear)}
+
+  /* roadmap */
+  .roadmap{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+  .rc{background:var(--panel);border:1px solid var(--line);padding:14px 16px;display:flex;flex-direction:column;gap:7px}
+  .rc .rtop{display:flex;align-items:center;gap:10px}
+  .rc .num{font-family:var(--mono);font-size:12px;color:var(--faint);font-variant-numeric:tabular-nums}
+  .rc .tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:1.5px 7px;border:1px solid var(--line2);color:var(--mut);margin-left:auto}
+  .rc .tag.quick{color:var(--bull);border-color:#3c5643}
+  .rc .tag.struct{color:var(--steel);border-color:#3a4d68}
+  .rc .tag.hyg{color:var(--amber);border-color:var(--amber-dim)}
+  .rc h3{margin:0;font-size:14px;font-weight:600}
+  .rc p{margin:0;font-size:12.8px;color:var(--mut)}
+  .rc p code{font-family:var(--mono);font-size:11.5px;color:var(--steel);background:var(--panel2);padding:0 4px}
+  footer{margin-top:64px;border-top:1px solid var(--line);padding-top:14px;color:var(--faint);font-size:12px;font-family:var(--mono)}
+  @media (prefers-reduced-motion: no-preference){
+    .edge{transition:stroke-opacity .15s} .node{transition:opacity .15s}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Capstone · Wiki Felipe — Empresas · state of the repo · 2026-07-02</div>
+    <h1>One AI supply chain, 101 pages,<br>~3,100 attributed documents.</h1>
+    <p class="sub">Sector map and curated read-through graph of everything the wiki covers, an inventory of the raw archive underneath it, the last seven days of thesis drift — and a roadmap for where the repo should go next.</p>
+    <div class="statband">
+      <div class="stat"><b>101</b><span>ticker pages</span></div>
+      <div class="stat"><b>14</b><span>sectors</span></div>
+      <div class="stat"><b>15</b><span>cross-company themes</span></div>
+      <div class="stat"><b>~3,123</b><span>documents on disk</span></div>
+      <div class="stat"><b>142<em>+23</em></b><span>supply edges + compete edges</span></div>
+      <div class="stat"><b>07-01</b><span>last full refresh</span></div>
+    </div>
+  </header>
+
+  <section id="sectors">
+    <div class="sec-head"><span class="n">01</span><h2>Sector map</h2><span class="note">chip number = raw docs in the ticker's archive folder</span></div>
+    <div class="sectors" id="sectorGrid"></div>
+    <div class="legend">
+      <span class="k"><span class="sw deep"></span>deep archive (≥30 docs)</span>
+      <span class="k"><span class="sw"></span>standard (10–29)</span>
+      <span class="k"><span class="sw thin"></span>thin / no folder yet (&lt;10) — page fed by briefings &amp; inbox only</span>
+    </div>
+  </section>
+
+  <section id="graph">
+    <div class="sec-head"><span class="n">02</span><h2>Supply-chain graph</h2><span class="note">curated edges from graph.json · hover or tap a ticker; click to pin</span></div>
+    <div class="graph-shell">
+      <div class="graph-scroll"><svg id="g" role="img" aria-label="Layered supply-chain graph of covered tickers"></svg></div>
+      <div class="gleg">
+        <span><span class="ln"></span>&nbsp;supplies → (upstream sells into downstream)</span>
+        <span><span class="ln c"></span>&nbsp;competes</span>
+        <span style="margin-left:auto">upstream at top · AI labs at bottom</span>
+      </div>
+      <div id="detail"><span class="hintt">Hover a ticker to see its suppliers, customers and competitors — every edge is a read-through channel: a datapoint on one end moves the other.</span></div>
+    </div>
+  </section>
+
+  <section id="materials">
+    <div class="sec-head"><span class="n">03</span><h2>Materials inventory</h2><span class="note">what actually sits under the pages</span></div>
+    <div class="cols">
+      <div>
+        <p class="minihead">Corpus by source type <small>files on disk</small></p>
+        <div id="srcBars"></div>
+        <div class="tiernote"><b>18 pages have no raw-archive folder at all</b> (the June-2026 adds — TSLA, PLTR, NET, AKAM, FSLY, SANM, TSEM, POET, AXTI, ETN, BE, MP, VEEV, APP, AOSL, POWI — plus the two private labs). Their pages are fed entirely by <b>_inbox</b> ingests and briefing roll-ups.</div>
+      </div>
+      <div>
+        <p class="minihead">Deepest ticker archives <small>top 12 folders</small></p>
+        <div id="tickBars"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="updates">
+    <div class="sec-head"><span class="n">04</span><h2>Last 7 days — what moved</h2><span class="note">from diff-latest.md (2026-06-24 → 07-01) · ⭐ = rating/PT move</span></div>
+    <div class="updates">
+      <div class="upd"><div class="top"><span class="tk">SAMSUNG · SKHYNIX · MU</span><span class="dt">06-29→07-01</span><span class="tag drift">thesis drift</span></div>
+        <p><b>Korea AI mega-plan revised $880B → ~$3.1T within 48h</b> (JPM/Jay Kwon): ₩4,755tn Samsung+SK Group capex through 2040, doubling Korean DRAM capacity in 5 yrs; JPM sizes a $12–20T cumulative memory-revenue opportunity. Two plan scopes still unreconciled on the MU page.</p></div>
+      <div class="upd"><div class="top"><span class="tk">META · NBIS · AMZN</span><span class="dt">07-01</span><span class="tag drift">thesis drift</span></div>
+        <p><b>"Meta Compute" confirmed</b> (Bloomberg/MS Nowak): Meta goes from compute-starved buyer to seller of surplus AI capacity — $40/W sensitivity, ~8% 2028 EPS per 250MW leased. Negative read-through added to NBIS/CRWV; AMZN named a partner.</p></div>
+      <div class="upd"><div class="top"><span class="tk">TSM</span><span class="dt">07-01</span><span class="tag drift">thesis drift</span></div>
+        <p><b>CoWoS capacity raised again</b>: UBS (Sunny Lin) to 130k WPM end-26 / 180k end-27 (from 120k/150k); sits beside JPM 115k/175k/220k and Nomura's 2,000kpcs-2027 target vs 1,800k modeled (WoS bottleneck). Old Jefferies 120k/140k moved to changelog.</p></div>
+      <div class="upd"><div class="top"><span class="tk">ANTHROPIC · SPCX</span><span class="dt">06-30→07-01</span><span class="tag">new thread</span></div>
+        <p><b>xAI sells Colossus 1 to Anthropic at $1.25bn/mo</b> (220k+ GPUs, JPM) — xAI pivots to compute reseller; Fable 5 export restrictions lifted outright; Amazon billing shifts compute-hours → tokens next year.</p></div>
+      <div class="upd"><div class="top"><span class="tk">AVGO · MEDIATEK</span><span class="dt">07-01</span><span class="tag drift">reversal</span></div>
+        <p><b>Google "Pumafish" TPU reportedly cancelled/postponed at Broadcom</b> (JPM/Hariharan) — cedes v9-gen share to MediaTek; GS takes MTK to PT NT$6,800 w/ 2027E ASIC rev $20.3bn. Prior "on-track" framing superseded.</p></div>
+      <div class="upd"><div class="top"><span class="tk">MRVL</span><span class="dt">06-29</span><span class="tag pt">⭐ PT move</span></div>
+        <p><b>UBS PT $120 → $340</b> (Arcuri, CXL re-examination: $7–10B 2030 TAM, MRVL ~$1B C27E). Also named on Meta MTIA 450 + SoftBank Gen2 sockets (Jefferies ASIC map).</p></div>
+      <div class="upd"><div class="top"><span class="tk">CRWD · STX</span><span class="dt">07-01</span><span class="tag pt">⭐ ratings</span></div>
+        <p><b>Redburn Sell on CRWD</b> at 33x EV/sales on split day — first dedicated multiple on the page. <b>BofA lifts STX FY28 EPS +42% to $50.75</b>, PT $1,150.</p></div>
+      <div class="upd"><div class="top"><span class="tk">TSLA · SPCX · INTC</span><span class="dt">07-01</span><span class="tag drift">reframe</span></div>
+        <p><b>Terafab reframed JV → de-facto merger speculation</b> (The Information): shared execs, SpaceX personnel running Terafab, first big hire is an 18-yr Intel Arizona fab veteran — a talent-departure signal on the INTC page.</p></div>
+    </div>
+    <div class="health">
+      <h3>Repo health flags</h3>
+      <ul>
+        <li><span class="ok">●</span> Transcripts current — <b>0 pages</b> with a transcript &gt;100 days stale; scaffold TODOs all filled.</li>
+        <li><span class="warn">●</span> <b>19 pages with no transcripts on disk</b> (TSLA, PLTR, CDNS, SNPS, NET, AKAM, ETN, VEEV, APP, SANM, TSEM, POET, AXTI, BE, MP, AOSL, POWI, FSLY, CEREBRAS).</li>
+        <li><span class="warn">●</span> <b>00_INDEX.md header is stale</b> — says "56 companies + 2 labs (58 pages)", actual count is 101; the five Asia hardware names in the graph (MEDIATEK, TOKYOELEC, ADVANTEST, DISCO, BESI) have pages but no index section.</li>
+        <li><span class="bad">●</span> <b>CEREBRAS</b>: BBG estimates missing/errored (recent IPO, no consensus loaded).</li>
+        <li><span class="warn">●</span> <b>_wiki/_models/ is untracked in git</b> — 6 bottom-up xlsx models (AAOI, CIEN, CSCO, GLW, TXN, VECO) + the TXN 800V memo live outside the documented map.</li>
+        <li><span class="warn">●</span> <b>book.json still seed data</b> — position weights pending, so the book-exposure dashboard is directional only.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <div class="sec-head"><span class="n">05</span><h2>Roadmap — making it better</h2><span class="note">ordered by leverage; tags = effort class</span></div>
+    <div class="roadmap">
+      <div class="rc"><div class="rtop"><span class="num">R1</span><span class="tag quick">quick win</span></div>
+        <h3>Formalize the models layer</h3>
+        <p>Commit <code>_wiki/_models/</code>, add it to the CLAUDE.md map, link each xlsx from its ticker page, and reconcile model outputs into <code>house.json</code> so the assumptions dashboard ties to the official models (the hyperscaler-capex theme already flags that they don't).</p></div>
+      <div class="rc"><div class="rtop"><span class="num">R2</span><span class="tag quick">quick win</span></div>
+        <h3>Regenerate the master index</h3>
+        <p><code>00_INDEX.md</code> undercounts by 43 pages and is missing sections for the Asia hardware bench (MEDIATEK, TOK, ADV, DISCO, BESI, SPCX). Make the index a derived artifact of <code>refresh_features.py</code> so it can never drift again.</p></div>
+      <div class="rc"><div class="rtop"><span class="num">R3</span><span class="tag struct">structural</span></div>
+        <h3>Close the graph's software blind spot</h3>
+        <p>~20 covered names (PANW, CRWD, CRM, NET, SHOP, BKNG, UBER, PLTR, APP…) have <b>zero edges</b> — read-through never fires for them. Add a second edge type (<code>exposed-to-theme</code> or platform/customer edges: SHOP→agentic-commerce, RDDT→GOOG) so the graph covers the whole book, not just hardware.</p></div>
+      <div class="rc"><div class="rtop"><span class="num">R4</span><span class="tag struct">structural</span></div>
+        <h3>Outcomes ledger → hit-rate scorecard</h3>
+        <p>14 catalysts resolved (2 bull, 0 bear, 12 neutral). Build a small dashboard cut of bull-won/bear-won by ticker, theme and broker — that's the edge tracker's missing feedback loop: which desks' calls actually resolve your way.</p></div>
+      <div class="rc"><div class="rtop"><span class="num">R5</span><span class="tag struct">structural</span></div>
+        <h3>Unreconciled-figures tracker</h3>
+        <p>The Korea-plan $880B→$3.1T 48-hour revision was caught by hand and flagged in prose. Promote that pattern: a <code>conflicts.md</code> ledger (figure, two sources, status) surfaced on the hub, fed by the ingest flow whenever two sources disagree on the same quantity.</p></div>
+      <div class="rc"><div class="rtop"><span class="num">R6</span><span class="tag hyg">hygiene</span></div>
+        <h3>Transcript backfill, prioritized</h3>
+        <p>Of the 19 no-transcript names, prioritize the ones with the richest live debates: TSLA, PLTR, CDNS/SNPS, NET, VEEV (AI-disclosure overhang into its Q4 Investor Day). Small-caps with nil coverage (AOSL, POWI, AXTI) can stay briefing-fed.</p></div>
+      <div class="rc"><div class="rtop"><span class="num">R7</span><span class="tag hyg">hygiene</span></div>
+        <h3>Inbox lifecycle + folder-on-ingest</h3>
+        <p>327 files sit in <code>_inbox/</code> and 18 newer names have no archive folder. After ingest, file PDFs into per-ticker folders (creating them on first sight) so the archive keeps growing where the search index and staleness checks expect it.</p></div>
+      <div class="rc"><div class="rtop"><span class="num">R8</span><span class="tag quick">quick win</span></div>
+        <h3>Fill the book, weight the graph</h3>
+        <p>Hand-fill <code>book.json</code> weights, then size graph nodes and edge alerts by position — a thesis-drift event on a 4% position should shout louder than one on a watchlist name. Also fixes the book dashboard in one move.</p></div>
+    </div>
+  </section>
+
+  <footer>Generated 2026-07-02 · sources: 00_INDEX.md · graph.json · staleness.md (07-01) · diff-latest.md (07-01) · outcomes.md · folder scan of E:\Wiki Felipe empresas · attribution preserved throughout.</footer>
+</div>
+
+<script>
+// ---------- data ----------
+const DOCS={GOOG:98,LITE:69,AMD:63,TM:56,NFLX:51,TSM:47,CSCO:45,CDNS:44,META:42,GEV:39,MU:38,ASML:37,NOW:35,COHR:32,ANET:32,GLW:31,WMB:30,UBER:30,PWR:30,ORCL:30,NVDA:30,AGX:30,CEG:29,AVGO:29,AAOI:29,MSFT:28,BKNG:28,AMZN:28,AAPL:28,VST:27,CIEN:27,NVTS:24,WOLF:22,VRT:22,PANW:22,MRVL:21,CRDO:21,WDC:20,VECO:20,TXN:20,TER:20,TEL:20,STX:20,SMCI:20,QCOM:20,ON:20,NXPI:20,NVT:20,MCHP:20,LRCX:20,KLAC:20,INTC:20,HPE:20,FLEX:20,DELL:20,CRWD:20,CRM:20,APH:20,AMAT:20,ADI:20,CEREBRAS:17,SNPS:16,RDDT:15,TLN:14,SPOT:14,ALAB:13,SHOP:12,SNDK:11,NBIS:9,CRWV:9,ARM:7,SMIC:4,SKHYNIX:4,SAMSUNG:4,MEDIATEK:4,IFX:4,DISCO:4,BESI:4,AIXA:4,ADVANTEST:4,TOKYOELEC:2,SPCX:2,KIOXIA:2};
+const SECTORS=[
+ ["AI — Semis & Compute",["NVDA","AVGO","AMD","TSM","ASML","MU","MRVL","AXTI","TSEM","POET","INTC","IFX","SMIC"]],
+ ["AI — Hyperscalers & Software",["MSFT","AMZN","GOOG","META","ORCL","NOW"]],
+ ["AI labs (private)",["ANTHROPIC","OPENAI"]],
+ ["Semicap / WFE",["AMAT","KLAC","LRCX","TER","VECO","AIXA","TOKYOELEC","ADVANTEST","DISCO","BESI"]],
+ ["Memory & storage",["SAMSUNG","SKHYNIX","KIOXIA","SNDK","WDC","STX"]],
+ ["Analog & processors",["ADI","TXN","QCOM","ARM","NXPI","MCHP","ON","MEDIATEK"]],
+ ["Optical / Networking",["ANET","CIEN","COHR","LITE","AAOI","GLW","CSCO","CRDO","ALAB"]],
+ ["Power & Energy",["CEG","VST","TLN","GEV","PWR","WMB","AGX","ETN","BE"]],
+ ["Power components & DC infra",["APH","TEL","NVT","VRT","FLEX","WOLF","NVTS","POWI","AOSL"]],
+ ["Software / security / internet",["PANW","CRWD","CRM","RDDT","SHOP","PLTR","APP","VEEV"]],
+ ["CDN / Edge cloud",["NET","AKAM","FSLY"]],
+ ["Systems & neoclouds",["DELL","HPE","SMCI","CRWV","SANM","NBIS","CEREBRAS","SPCX"]],
+ ["Consumer / Internet / Other",["AAPL","NFLX","BKNG","UBER","SPOT","TM","TSLA","MP"]],
+ ["EDA & design software",["CDNS","SNPS"]]
+];
+// supplies: [upstream, downstream, product]
+const SUP=[["ASML","TSM","EUV/DUV litho"],["ASML","SAMSUNG","litho"],["ASML","INTC","litho"],["ASML","SMIC","DUV"],["ASML","SKHYNIX","litho"],["ASML","MU","litho"],
+["AMAT","TSM","WFE"],["AMAT","SAMSUNG","WFE"],["AMAT","INTC","WFE"],["AMAT","MU","WFE"],["AMAT","SKHYNIX","WFE"],["AMAT","SMIC","WFE"],
+["LRCX","TSM","etch/dep"],["LRCX","SAMSUNG","etch/dep"],["LRCX","MU","NAND/HBM WFE"],["LRCX","SKHYNIX","WFE"],["LRCX","INTC","WFE"],
+["KLAC","TSM","process control"],["KLAC","SAMSUNG","process control"],["KLAC","INTC","process control"],["KLAC","MU","process control"],["KLAC","SMIC","process control"],
+["TOKYOELEC","TSM","WFE"],["TOKYOELEC","SAMSUNG","WFE"],["TOKYOELEC","SKHYNIX","WFE"],["TOKYOELEC","MU","WFE"],
+["ADVANTEST","TSM","ATE test"],["ADVANTEST","SAMSUNG","ATE test"],["DISCO","TSM","dicing/grinding"],["DISCO","SAMSUNG","dicing/grinding"],
+["BESI","TSM","hybrid bonding"],["BESI","INTC","adv packaging"],
+["TSM","NVDA","foundry N3/N2 + CoWoS"],["TSM","AMD","foundry"],["TSM","AAPL","foundry"],["TSM","AVGO","foundry"],["TSM","MRVL","foundry"],["TSM","QCOM","foundry"],["TSM","ALAB","foundry"],["TSM","CRDO","foundry"],["TSM","MEDIATEK","foundry"],
+["SKHYNIX","NVDA","HBM"],["SKHYNIX","AMD","HBM"],["SKHYNIX","AVGO","HBM"],["SAMSUNG","NVDA","HBM/foundry"],["SAMSUNG","AMD","HBM"],
+["MU","NVDA","HBM/LPDDR"],["MU","AMD","HBM"],["MU","AVGO","HBM"],
+["KIOXIA","NVDA","NAND (Super IO)"],["KIOXIA","AMZN","NAND"],["KIOXIA","MSFT","NAND"],
+["SNDK","AMZN","NAND/SSD"],["SNDK","MSFT","NAND/SSD"],["SNDK","GOOG","NAND/SSD"],["SNDK","META","NAND/SSD"],
+["WDC","AMZN","nearline HDD"],["WDC","MSFT","nearline HDD"],["WDC","GOOG","nearline HDD"],["WDC","META","nearline HDD"],
+["STX","AMZN","nearline HDD"],["STX","MSFT","nearline HDD"],["STX","GOOG","nearline HDD"],["STX","META","nearline HDD"],
+["COHR","NVDA","optical/InP"],["COHR","ANET","optical"],["COHR","AMZN","optical"],["COHR","MSFT","optical"],["COHR","GOOG","optical"],
+["LITE","NVDA","optical"],["LITE","ANET","optical"],["LITE","AMZN","optical"],["LITE","MSFT","optical"],
+["AAOI","AMZN","optical transceivers"],["AAOI","MSFT","optical transceivers"],
+["CIEN","AMZN","DCI/optical"],["CIEN","MSFT","DCI/optical"],["CIEN","GOOG","DCI/optical"],
+["GLW","NVDA","optical fiber"],["GLW","META","optical fiber (LTA)"],["GLW","AMZN","optical fiber"],
+["AIXA","COHR","MOCVD tools"],["AIXA","LITE","MOCVD tools"],["AIXA","AAOI","MOCVD tools"],
+["POET","NVDA","optical engine/CPO"],
+["CRDO","NVDA","AEC/SerDes"],["CRDO","AMZN","AEC/connectivity"],["CRDO","MSFT","connectivity"],
+["ALAB","NVDA","retimers/fabric"],["ALAB","AMZN","PCIe/CXL"],["ALAB","MSFT","scale-up fabric"],
+["MRVL","AMZN","custom ASIC (Trainium)"],["MRVL","MSFT","custom ASIC (Maia)"],["MRVL","GOOG","optical DSP"],
+["AVGO","GOOG","custom ASIC (TPU)"],["AVGO","META","custom ASIC"],["AVGO","MSFT","custom ASIC"],["AVGO","AMZN","networking"],["AVGO","ORCL","networking"],
+["NVDA","MSFT","GPUs"],["NVDA","AMZN","GPUs"],["NVDA","GOOG","GPUs"],["NVDA","META","GPUs"],["NVDA","ORCL","GPUs"],["NVDA","CRWV","GPUs"],["NVDA","NBIS","GPUs"],["NVDA","TSLA","GPUs"],["NVDA","ANTHROPIC","GPUs"],["NVDA","OPENAI","GPUs"],["NVDA","SMCI","GPUs"],["NVDA","DELL","GPUs"],["NVDA","HPE","GPUs"],
+["AMD","MSFT","MI GPUs"],["AMD","META","MI GPUs"],["AMD","ORCL","MI GPUs"],["AMD","OPENAI","MI GPUs"],["AMD","CRWV","MI GPUs"],["AMD","SANM","ZT rack integration"],
+["ARM","NVDA","CPU IP"],["ARM","AMD","IP"],["ARM","QCOM","CPU IP"],["ARM","AAPL","IP"],["ARM","AVGO","IP"],["ARM","MEDIATEK","IP"],
+["CDNS","NVDA","EDA"],["CDNS","AMD","EDA"],["CDNS","AVGO","EDA"],["CDNS","QCOM","EDA"],["CDNS","INTC","EDA"],["CDNS","TSM","EDA"],["CDNS","ARM","EDA"],
+["SNPS","NVDA","EDA/IP"],["SNPS","AMD","EDA/IP"],["SNPS","AVGO","EDA/IP"],["SNPS","QCOM","EDA/IP"],["SNPS","INTC","EDA/IP"],["SNPS","TSM","EDA/IP"],["SNPS","ARM","EDA"],
+["IFX","NVDA","power semis (800V)"],["ON","NVDA","SiC power"],["ADI","NVDA","power (Empower)"],["TXN","NVDA","power"],
+["POWI","NVDA","power ICs (800V)"],["AOSL","NVDA","power MOSFET (800V)"],["NVTS","NVDA","GaN/SiC (800V)"],["WOLF","NVDA","SiC (800V)"],["MP","NVDA","rare-earth magnets"],
+["APH","NVDA","interconnect/busbar"],["TEL","NVDA","connectors"],["NVT","NVDA","power+cooling (CDU)"],["VRT","NVDA","power+cooling (800VDC)"],["FLEX","NVDA","power/EMS + cooling"],
+["ETN","AMZN","electrical/switchgear"],["ETN","MSFT","electrical"],["GEV","AMZN","grid/power equip"],["PWR","AMZN","grid construction"],["AGX","AMZN","EPC gas power"],["WMB","AMZN","gas midstream"],["BE","GOOG","on-site fuel cells"],["BE","NBIS","fuel cells"],
+["CEG","MSFT","nuclear PPA"],["CEG","AMZN","nuclear PPA"],["VST","AMZN","merchant power"],["TLN","AMZN","nuclear PPA"],
+["SMCI","AMZN","rack integration"],["SMCI","MSFT","rack integration"],["DELL","AMZN","AI servers"],["DELL","MSFT","AI servers"],["HPE","AMZN","AI servers"],["SANM","AMZN","EMS integration"],
+["MSFT","OPENAI","Azure compute"],["ORCL","OPENAI","OCI compute"],["NBIS","OPENAI","neocloud compute"],["CRWV","OPENAI","neocloud compute"],["CRWV","MSFT","neocloud compute"],
+["AMZN","ANTHROPIC","AWS Trainium compute"],["GOOG","ANTHROPIC","TPU compute"]];
+const COMP=[["NVDA","AMD","AI accelerators"],["NVDA","AVGO","merchant vs custom ASIC"],["AVGO","MRVL","custom ASIC"],
+["TSM","SAMSUNG","foundry"],["TSM","INTC","foundry"],["TSM","SMIC","foundry"],["SAMSUNG","SKHYNIX","HBM/DRAM"],["SKHYNIX","MU","HBM"],
+["COHR","LITE","optical/InP"],["CDNS","SNPS","EDA"],["AMD","INTC","server CPU"],
+["CEG","VST","merchant power"],["VST","TLN","merchant power"],["DELL","HPE","AI servers"],["DELL","SMCI","AI servers"],
+["STX","WDC","nearline HDD"],["ANET","CSCO","AI networking"],["AMAT","LRCX","WFE overlap"],
+["ANTHROPIC","OPENAI","frontier models"],["SNDK","KIOXIA","NAND"],["NET","AKAM","edge/CDN"],["NET","FSLY","edge/CDN"]];
+const ROWS=[
+ ["EDA / IP",["CDNS","SNPS","ARM"]],
+ ["SEMICAP / WFE",["ASML","AMAT","LRCX","KLAC","TOKYOELEC","ADVANTEST","DISCO","BESI","AIXA"]],
+ ["FOUNDRY & MEMORY",["TSM","SAMSUNG","INTC","SMIC","SKHYNIX","MU","KIOXIA","SNDK","WDC","STX"]],
+ ["OPTICAL · POWER · CONNECTIVITY COMPONENTS",["COHR","LITE","AAOI","GLW","CIEN","POET","CRDO","ALAB","IFX","ON","ADI","TXN","POWI","AOSL","NVTS","WOLF","MP","APH","TEL","NVT","VRT","FLEX"]],
+ ["CHIP DESIGNERS",["NVDA","AMD","AVGO","MRVL","QCOM","MEDIATEK","AAPL"]],
+ ["SYSTEMS · NETWORKING · POWER GEN · EDGE",["SMCI","DELL","HPE","SANM","ANET","CSCO","NET","AKAM","FSLY","ETN","GEV","PWR","AGX","WMB","BE","CEG","VST","TLN"]],
+ ["HYPERSCALERS & NEOCLOUDS",["MSFT","AMZN","GOOG","META","ORCL","CRWV","NBIS","TSLA"]],
+ ["AI LABS",["ANTHROPIC","OPENAI"]]
+];
+
+// ---------- sector map ----------
+const grid=document.getElementById("sectorGrid");
+SECTORS.forEach(([name,ts])=>{
+  const total=ts.reduce((a,t)=>a+(DOCS[t]||0),0);
+  const el=document.createElement("div");el.className="sector";
+  el.innerHTML=`<h3>${name}</h3><div class="meta">${ts.length} names · ${total} docs</div>
+  <div class="chips">${ts.map(t=>{const d=DOCS[t]||0;const cls=d>=30?"deep":(d<10?"thin":"");
+    return `<span class="chip ${cls}">${t}<span class="c">${d}</span></span>`;}).join("")}</div>`;
+  grid.appendChild(el);
+});
+
+// ---------- graph ----------
+(function(){
+  const svg=document.getElementById("g");
+  const NS="http://www.w3.org/2000/svg";
+  const NH=22, ROWGAP=92, TOP=46, PADX=24;
+  const w=t=>Math.max(40,t.length*7.4+16);
+  // width = widest row
+  let W=0;
+  const rowsPos=ROWS.map(([lab,ts])=>{
+    const widths=ts.map(w), rw=widths.reduce((a,b)=>a+b,0)+(ts.length-1)*7;
+    W=Math.max(W,rw);
+    return {lab,ts,widths,rw};
+  });
+  W+=PADX*2;
+  const H=TOP+(ROWS.length-1)*ROWGAP+NH+70;
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  svg.setAttribute("width",W);svg.setAttribute("height",H);
+  svg.style.minWidth=W+"px";
+  const pos={};
+  rowsPos.forEach((r,i)=>{
+    const y=TOP+i*ROWGAP;
+    const lab=document.createElementNS(NS,"text");
+    lab.setAttribute("x",PADX);lab.setAttribute("y",y-8);lab.setAttribute("class","rowlab");
+    lab.textContent=r.lab;svg.appendChild(lab);
+    let x=PADX+(W-2*PADX-r.rw)/2;
+    r.ts.forEach((t,j)=>{pos[t]={x:x,y:y,w:r.widths[j],row:i};x+=r.widths[j]+7;});
+  });
+  // edges under nodes
+  const edgeG=document.createElementNS(NS,"g");svg.appendChild(edgeG);
+  const edges=[];
+  function addEdge(u,d,label,comp){
+    const a=pos[u],b=pos[d];if(!a||!b)return;
+    const p=document.createElementNS(NS,"path");
+    let dPath;
+    if(a.row===b.row){
+      const x1=a.x+a.w/2,x2=b.x+b.w/2,y=a.y+NH;
+      const dip=18+Math.abs(x2-x1)*0.06;
+      dPath=`M ${x1} ${y} C ${x1} ${y+dip}, ${x2} ${y+dip}, ${x2} ${y}`;
+    }else{
+      const s=a.row<b.row?a:b, t=a.row<b.row?b:a;
+      const x1=s.x+s.w/2,y1=s.y+NH,x2=t.x+t.w/2,y2=t.y;
+      const m=(y2-y1)*0.5;
+      dPath=`M ${x1} ${y1} C ${x1} ${y1+m}, ${x2} ${y2-m}, ${x2} ${y2}`;
+    }
+    p.setAttribute("d",dPath);p.setAttribute("class","edge"+(comp?" comp":""));
+    edgeG.appendChild(p);
+    edges.push({u,d,label,comp,el:p});
+  }
+  SUP.forEach(e=>addEdge(e[0],e[1],e[2],false));
+  COMP.forEach(e=>addEdge(e[0],e[1],e[2],true));
+  // nodes
+  const nodeEls={};
+  Object.keys(pos).forEach(t=>{
+    const p=pos[t];
+    const g=document.createElementNS(NS,"g");g.setAttribute("class","node");
+    g.setAttribute("tabindex","0");g.setAttribute("role","button");
+    g.setAttribute("aria-label",t);
+    const r=document.createElementNS(NS,"rect");
+    r.setAttribute("x",p.x);r.setAttribute("y",p.y);r.setAttribute("width",p.w);r.setAttribute("height",NH);
+    const tx=document.createElementNS(NS,"text");
+    tx.setAttribute("x",p.x+p.w/2);tx.setAttribute("y",p.y+15);tx.setAttribute("text-anchor","middle");
+    tx.textContent=t;
+    g.appendChild(r);g.appendChild(tx);svg.appendChild(g);
+    nodeEls[t]=g;
+    g.addEventListener("mouseenter",()=>{if(!pinned)focus(t);});
+    g.addEventListener("mouseleave",()=>{if(!pinned)clear();});
+    g.addEventListener("click",ev=>{ev.stopPropagation();pinned=(pinned===t)?null:t;pinned?focus(t):clear();});
+    g.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();pinned=(pinned===t)?null:t;pinned?focus(t):clear();}});
+  });
+  let pinned=null;
+  svg.addEventListener("click",()=>{pinned=null;clear();});
+  const detail=document.getElementById("detail");
+  const hint=detail.innerHTML;
+  function focus(t){
+    const conn=new Set([t]);
+    edges.forEach(e=>{
+      const on=(e.u===t||e.d===t);
+      e.el.classList.toggle("on",on);e.el.classList.toggle("off",!on);
+      if(on){conn.add(e.u);conn.add(e.d);}
+    });
+    Object.keys(nodeEls).forEach(k=>{
+      nodeEls[k].classList.toggle("dim",!conn.has(k));
+      nodeEls[k].classList.toggle("hot",k===t);
+    });
+    const sup=edges.filter(e=>!e.comp&&e.d===t).map(e=>`<span class="it">${e.u} <small>${e.label}</small></span>`);
+    const cust=edges.filter(e=>!e.comp&&e.u===t).map(e=>`<span class="it">${e.d} <small>${e.label}</small></span>`);
+    const comp=edges.filter(e=>e.comp&&(e.u===t||e.d===t)).map(e=>`<span class="it">${e.u===t?e.d:e.u} <small>${e.label}</small></span>`);
+    detail.innerHTML=`<span class="tk">${t}</span> <small style="color:var(--faint)">${DOCS[t]!==undefined?DOCS[t]+" docs on disk":"no archive folder"}</small>`+
+      (sup.length?`<div class="grp"><span class="lbl">suppliers ←</span>${sup.join(" · ")}</div>`:"")+
+      (cust.length?`<div class="grp"><span class="lbl">sells into →</span>${cust.join(" · ")}</div>`:"")+
+      (comp.length?`<div class="grp"><span class="lbl">competes vs</span>${comp.join(" · ")}</div>`:"");
+  }
+  function clear(){
+    edges.forEach(e=>{e.el.classList.remove("on","off");});
+    Object.keys(nodeEls).forEach(k=>{nodeEls[k].classList.remove("dim","hot");});
+    detail.innerHTML=hint;
+  }
+})();
+
+// ---------- bars ----------
+function bars(elId,data,max,amber){
+  const el=document.getElementById(elId);
+  el.innerHTML=data.map(([n,v,note])=>`<div class="barrow${amber?" amb":""}">
+    <span class="nm" title="${n}">${n}</span>
+    <span class="tr"><span class="fl" style="width:${Math.max(2,v/max*100)}%"></span></span>
+    <span class="v">${v.toLocaleString("en-US")}</span></div>`).join("");
+}
+bars("srcBars",[
+ ["ticker archives (83)",1970],["_inbox (to file)",327],["relatórios bons",324],
+ ["_wiki pages+meta",160],["_briefings",150],["Stratechery",113],["_equity_calls",79]
+],1970,false);
+bars("tickBars",[
+ ["GOOG",98],["LITE",69],["AMD",63],["TM",56],["NFLX",51],["TSM",47],
+ ["CSCO",45],["CDNS",44],["META",42],["GEV",39],["MU",38],["ASML",37]
+],98,true);
+</script>
+
+</body>
+</html>

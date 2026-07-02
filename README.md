@@ -7,6 +7,7 @@ Buyside dashboards — semis, AI infrastructure and AI labs. Live site published
 
 | Pasta | Dashboard | Conteúdo |
 |---|---|---|
+| [`wiki-map/`](wiki-map/) | Wiki Map & Repo State 🗺️ | Sector map da wiki de research (101 páginas/14 setores), grafo interativo da supply chain, inventário do acervo, thesis drift semanal + roadmap (snapshot 02-Jul-26) |
 | [`ai-labs/`](ai-labs/) | AI Labs 🧪 | OpenAI & Anthropic estimated PnL (WFS) — revenue build, compute spend, EBIT bridges 2023-2030, ARR tracker, valuation |
 | [`capex-cloud/`](capex-cloud/) | Capex Cloud ☁️ | Hyperscaler capex (MSFT/AMZN/GOOGL/META/ORCL) — BBG consensus, revision tracker, PP&E breakdown, XLSX download |
 | [`wfe/`](wfe/) | Claude WFE ✨ | Scenario-driven WFE — Capstone vs UBS vs live Street, EUV cost model, scenario valuation |
