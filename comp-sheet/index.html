@@ -2369,6 +2369,7 @@ function flat(c){
     cy27eps:e27, pe27cy:(c.px&&e27>0)? c.px/e27 : null,
     pe2:y2.pe, eps2:y2.eps,
     px4wk:pxc.chg4wk, px3mo:pxc.chg3mo, px6mo:pxc.chg6mo, eps3m2y:y2.chg3mo,
+    rerate3m:(pxc.chg3mo!=null&&y2.chg3mo!=null)? pxc.chg3mo-y2.chg3mo : null,
     gr12:(y2.eps&&c.ntm.eps&&c.ntm.eps>0)? y2.eps/c.ntm.eps-1 : null,
     numest:c.ntm.numest, chg4wk:c.ntm.chg4wk, chg3mo:c.ntm.chg3mo, chg6mo:c.ntm.chg6mo,
     rev_cagr:c.rev_cagr, eps_cagr:c.eps_cagr, mcap_usd:c.mcap_usd, crncy:c.crncy};
@@ -2382,7 +2383,7 @@ const COLS = [
   ["hi","Street Hi"],["hivs","Hi vs cons"],
   ["numest","#Est"],["chg4wk","Δ4wk"],["chg3mo","Δ3m"],["chg6mo","Δ6m"],
   ["rev_cagr","Rev CAGR 25-27"],["eps_cagr","EPS CAGR 25-27"],
-  ["eps3m2y","EPS 3m 2Y"]
+  ["eps3m2y","EPS 3m 2Y"],["rerate3m","Re-rate 3m 2Y"]
 ];
 
 const COLDEFS = {
@@ -2408,6 +2409,7 @@ const COLDEFS = {
   chg3mo:"NTM EPS consensus revision over the trailing 3 months.",
   chg6mo:"NTM EPS consensus revision over the trailing 6 months.",
   eps3m2y:"Δ over 3 months in the 2Y-out (2BF) consensus EPS estimate. Positive = upward revisions to the 2-year-out EPS.",
+  rerate3m:"Re-rating gauge = Px Δ3m − 2Y-out EPS Δ3m revision. Positive = stock re-rated (price ran ahead of estimate revisions); negative = de-rating (2Y EPS estimates rose faster than the price).",
   rev_cagr:"Revenue CAGR, CY2025 → CY2027 (fiscal-aligned).",
   eps_cagr:"EPS CAGR, CY2025 → CY2027 (fiscal-aligned).",
   updated:"Date the Capstone (house) model was last updated.",
@@ -2470,7 +2472,8 @@ function renderTable(){
     <td class="${cls(r.chg6mo)}">${pctRaw(r.chg6mo)}</td>
     <td class="${cls(r.rev_cagr)}">${pct(r.rev_cagr)}</td>
     <td class="${cls(r.eps_cagr)}">${pct(r.eps_cagr)}</td>
-    <td class="${cls(r.eps3m2y)}"><b>${pctRaw(r.eps3m2y)}</b></td></tr>`).join("");
+    <td class="${cls(r.eps3m2y)}">${pctRaw(r.eps3m2y)}</td>
+    <td class="${cls(r.rerate3m)}"><b>${pctRaw(r.rerate3m)}</b></td></tr>`).join("");
   tb.querySelectorAll("tr").forEach(tr=>tr.onclick=()=>{select(tr.dataset.k);});
   tb.querySelectorAll("td.tk").forEach(td=>td.onclick=e=>{
     e.stopPropagation(); const k=td.parentElement.dataset.k; select(k); openFund(k);});
@@ -2645,6 +2648,7 @@ const AXIS_METRICS = {
   chg3mo:   {label:"EPS rev Δ3m",       scale:1,     unit:"%"},
   chg6mo:   {label:"EPS rev Δ6m",       scale:1,     unit:"%"},
   eps3m2y:  {label:"EPS 3m 2Y",         scale:1,     unit:"%"},
+  rerate3m: {label:"Re-rate 3m 2Y",     scale:1,     unit:"%"},
   eps:      {label:"NTM EPS",           scale:1,     unit:""},
   numest:   {label:"# Estimates",       scale:1,     unit:""},
   mcap_usd: {label:"Mkt cap (USD)",     scale:0.001, unit:"bn"},
@@ -2695,7 +2699,7 @@ function initScatterCtl(){
 }
 
 const METRICS = {chg4wk:"Δ4wk", chg3mo:"Δ3m", chg6mo:"Δ6m",
-  eps3m2y:"EPS 3m 2Y", eps_cagr:"EPS CAGR", rev_cagr:"Rev CAGR"};
+  eps3m2y:"EPS 3m 2Y", rerate3m:"Re-rate 3m 2Y", eps_cagr:"EPS CAGR", rev_cagr:"Rev CAGR"};
 function renderMbtns(){
   const el = document.getElementById("mbtns");
   el.innerHTML = Object.entries(METRICS).map(([k,l])=>
