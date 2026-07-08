@@ -180,8 +180,12 @@ nav.tabs a:hover{color:var(--txt);border-color:var(--acc)}
 
 <!-- FLUXO DOS GW (Sankey 4 camadas) -->
 <div class="panel" id="fluxgw">
-  <h2>Fluxo dos GW <span class="sub">estoque AI (avg): designer → cloud → cliente → uso final · hover/clique num nó</span>
-    <span class="btns" id="fluxYear" style="margin-left:auto">
+  <h2>Fluxo dos GW <span class="sub" id="fluxSub">estoque AI (avg): designer → cloud → cliente → uso final · hover/clique num nó</span>
+    <span class="btns" id="fluxMetricSel" style="margin-left:auto">
+      <button class="mbtn on" data-fm="avg">Estoque médio</button>
+      <button class="mbtn" data-fm="delta">Demanda marginal</button>
+    </span>
+    <span class="btns" id="fluxYear" style="margin-left:8px">
       <button class="mbtn" data-y="0">CY24</button>
       <button class="mbtn" data-y="1">CY25</button>
       <button class="mbtn on" data-y="2">CY26E</button>
@@ -579,18 +583,21 @@ const FLUX_BIG = ["MSFT","AMZN","GOOGLE","META"];
 const FLUX_NEO = ["ORCL","CRWV","SPACEX","OUTROS"];
 const FLUX_NODE_LBL = {SPACEX:"SpaceX"};
 const FLUX_PLAYERS = ["MSFT","AMZN","GOOGLE","META","ORCL","CRWV","SpaceX","OUTROS"];
-let fluxChart, fluxYi = 2;
+let fluxChart, fluxYi = 2, fluxMetric = "avg";
 window.fluxCharts = [];
 
 function buildFluxGw(){
   const yi = fluxYi;
   const pos = v => Math.max(v||0, 0);
-  const V = (c,f) => pos(FLUXTAB[c][f] && FLUXTAB[c][f][yi]);
+  // 'avg' = estoque médio AI no ano · 'delta' = demanda marginal (adição no ano, ΔYoY, floor 0)
+  const at = arr => { if(!arr) return 0; return fluxMetric==="delta" ? (yi===0 ? (arr[0]||0) : (arr[yi]||0)-(arr[yi-1]||0)) : (arr[yi]||0); };
+  const V = (c,f) => pos(at(FLUXTAB[c][f]));
   const L = FLUXTAB.labs;
+  const avgTot = at(AVGGW.total);
 
   const neoSum = FLUX_NEO.reduce((s,c)=>s+V(c,"total"), 0);
   const bigSum = FLUX_BIG.reduce((s,c)=>s+V(c,"total"), 0);
-  const k4 = bigSum > 0 ? Math.max(AVGGW.total[yi]-neoSum, 0)/bigSum : 0;
+  const k4 = bigSum > 0 ? Math.max(avgTot-neoSum, 0)/bigSum : 0;
   const node = {};
   FLUX_BIG.forEach(c=>node[c] = V(c,"total"));
   FLUX_NEO.forEach(c=>node[c] = V(c,"total"));
@@ -601,10 +608,10 @@ function buildFluxGw(){
   Object.keys(node).forEach(c=>{
     if(!node[c]) return;
     const inflow = node[c] * (FLUX_BIG.includes(c) ? k4 : 1);
-    const tot = Object.keys(DESMIX).reduce((s,d)=>s+((DESMIX[d][c]||[])[yi]||0), 0);
+    const tot = Object.keys(DESMIX).reduce((s,d)=>s+pos(at(DESMIX[d][c])), 0);
     if(!tot || !inflow) return;
     Object.keys(DESMIX).forEach(d=>{
-      const w = ((DESMIX[d][c]||[])[yi]||0) / tot * inflow;
+      const w = pos(at(DESMIX[d][c])) / tot * inflow;
       if(w > 0.01) flows.push({from:d, to:nodeLbl(c), flow:w});
     });
   });
@@ -626,10 +633,10 @@ function buildFluxGw(){
 
   // camada 3: labs → uso final
   const push = (f,t,w)=>{ if(w > 0.005) flows.push({from:f, to:t, flow:w}); };
-  push("OpenAI","Treinamento", pos(L.treinOai[yi]));
-  push("OpenAI","Inferência",  pos(L.infOai[yi]));
-  push("Anthropic","Treinamento", pos(L.treinAnt[yi]));
-  push("Anthropic","Inferência",  pos(L.infAnt[yi]));
+  push("OpenAI","Treinamento", pos(at(L.treinOai)));
+  push("OpenAI","Inferência",  pos(at(L.infOai)));
+  push("Anthropic","Treinamento", pos(at(L.treinAnt)));
+  push("Anthropic","Inferência",  pos(at(L.infAnt)));
 
   const totals = {};
   flows.forEach(f=>{ totals[f.to] = (totals[f.to]||0) + f.flow; });
@@ -637,9 +644,15 @@ function buildFluxGw(){
   flows.forEach(f=>{ if(FLUX_PLAYERS.includes(f.from)) return; totals[f.from] = (totals[f.from]||0) + (FLUX_PLAYERS.includes(f.to) ? f.flow : 0); });
   Object.keys(node).forEach(c=>{ totals[nodeLbl(c)] = node[c]; });
 
+  const modeLbl = fluxMetric==="delta" ? "demanda marginal (ΔYoY — adição no ano)" : "estoque AI (avg)";
+  const _sub=document.getElementById("fluxSub");
+  if(_sub) _sub.textContent = `${modeLbl}: designer → cloud → cliente → uso final · hover/clique num nó`;
   fluxNoteDefault =
-    `Réplica da 'Resumo |  Total': clouds = painel 'Por Cloud' (estoque contábil, ${fmt(bigSum+neoSum,1)} GW) e usos = painel 'Por uso final'. `+
-    `Chips físicos = ${fmt(AVGGW.total[yi],1)} GW (designers): big4 recebem menos chip do que o estoque contábil — o gap (${fmt(bigSum+neoSum-AVGGW.total[yi],1)} GW) é alugado de neoclouds, o Intersegment da tabela.`;
+    `<b style="color:var(--txt)">${YEARS[yi]} · ${modeLbl}.</b> `+
+    `Réplica da 'Resumo |  Total': clouds = painel 'Por Cloud' (${fmt(bigSum+neoSum,1)} GW) e usos = painel 'Por uso final'. `+
+    (fluxMetric==="delta"
+      ? `Chips físicos adicionados = ${fmt(avgTot,1)} GW (designers, no ano): a diferença para o estoque contábil (${fmt(bigSum+neoSum-avgTot,1)} GW) é capacidade alugada de neoclouds — o Intersegment da tabela.`
+      : `Chips físicos = ${fmt(avgTot,1)} GW (designers): big4 recebem menos chip do que o estoque contábil — o gap (${fmt(bigSum+neoSum-avgTot,1)} GW) é alugado de neoclouds, o Intersegment da tabela.`);
   fluxData = {flows, totals};
   fluxPin = null;
   fluxRenderRows();
@@ -769,6 +782,10 @@ fxWrap.addEventListener("click",()=>{ fluxPin=null; fluxClear(); });
 document.querySelectorAll("#fluxYear .mbtn").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("#fluxYear .mbtn").forEach(x=>x.classList.remove("on"));
   b.classList.add("on"); fluxYi = +b.dataset.y; buildFluxGw();
+});
+document.querySelectorAll("#fluxMetricSel .mbtn").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#fluxMetricSel .mbtn").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); fluxMetric = b.dataset.fm; buildFluxGw();
 });
 let fxRz;
 window.addEventListener("resize",()=>{ clearTimeout(fxRz); fxRz=setTimeout(fluxDrawEdges,120); });
