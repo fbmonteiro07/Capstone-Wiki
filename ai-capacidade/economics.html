@@ -233,13 +233,16 @@ const DES_REV = {
 /* ====== HELPERS ====== */
 const fmt=(n,d=0)=>(n==null||isNaN(n))?"–":Number(n).toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
 const fmtPct=(n)=>n==null?"–":fmt(n,1)+"%";
+// GW vendidos NO ANO (adição anual) = ΔYoY do estoque cumulativo DES_GW — base correta p/ receita/GW
+// (dividir a receita anual pelo estoque CUMULATIVO subestimava a receita/GW e piorava a cada ano)
+const gwSoldYr=(k,yi)=>{const a=DES_GW[k]; if(!a) return 0; return yi>0 ? Math.max(0,(a[yi]||0)-(a[yi-1]||0)) : Math.max(0,a[yi]||0);};
 document.getElementById("asof").textContent="as of "+new Date().toISOString().slice(0,10);
 
 /* ====== KPIs — resposta direta p/ 1 GW (NVDA, CY26E) ====== */
 (()=>{
   const yi=YEARS.indexOf("CY26E"), k="NVDA";
   const chipC=CHIP_PGW[k][yi], tot=chipC+NET_PGW[yi]+OTH_PGW[yi];
-  const gw=DES_GW[k][yi], rev=DES_REV[k][yi];
+  const gw=gwSoldYr(k,yi), rev=DES_REV[k][yi];
   const rpw=gw>0?rev/gw:0, payback=rpw>0?tot/rpw:null;
   const kk=[
     {l:"Capex de 1 GW (NVDA, CY26E)",v:"$"+fmt(tot/1000,1)+" bn",s:"Chip $"+fmt(chipC/1000,1)+"bn + Net $"+fmt(NET_PGW[yi]/1000,1)+"bn + Power/Land $"+fmt(OTH_PGW[yi]/1000,1)+"bn"},
@@ -261,7 +264,7 @@ document.getElementById("asof").textContent="as of "+new Date().toISOString().sl
     const k=selDes.value, yi=+selYr.value;
     const chipC=CHIP_PGW[k][yi], netC=NET_PGW[yi], othC=OTH_PGW[yi];
     const totC=chipC+netC+othC, cpw=CHIPS_PGW[k][yi];
-    const gw0=DES_GW[k]?.[yi]||0, rev0=DES_REV[k]?.[yi]||0;
+    const gw0=gwSoldYr(k,yi), rev0=DES_REV[k]?.[yi]||0;
     const rpw=gw0>0?rev0/gw0:0;
     const metric=document.getElementById("cvMetric").value;
     const val=parseFloat(document.getElementById("cvVal").value)||0;
@@ -295,7 +298,7 @@ function renderEcon(yi){
   Object.keys(CHIP_PGW).forEach(k=>{
     const chipC=CHIP_PGW[k][yi], chipsG=CHIPS_PGW[k][yi];
     const totC=chipC+netV+othV;
-    const gw=DES_GW[k]?.[yi]||0, rev=DES_REV[k]?.[yi]||0;
+    const gw=gwSoldYr(k,yi), rev=DES_REV[k]?.[yi]||0;
     const revG=(gw>0)?fmt(rev/gw,0):"–";
     h+=`<tr><td>${k}</td><td>${fmt(chipC)}</td><td>${fmt(netV)}</td><td>${fmt(othV)}</td><td>${fmt(totC)}</td><td>${fmt(chipsG)}</td><td>${revG}</td></tr>`;
     if(totC>0){labels.push(k);chipVals.push(chipC);netVals.push(netV);othVals.push(othV);}
