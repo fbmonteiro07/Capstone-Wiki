@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semis MAP — Capex → Receita</title>
+</head>
+<body>
+
+<style>
+:root{
+  --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,.10);
+  --c1:#2a78d6; --c2:#1baf7a; --c3:#eda100; --c4:#008300; --c5:#4a3aa7; --c6:#e34948; --c7:#e87ba4; --c8:#eb6834;
+  --neut:#a8a69e; --neut2:#77756d;
+  --good:#0ca30c; --warn:#fab219; --crit:#d03b3b;
+  --accent:#2a78d6;
+}
+@media (prefers-color-scheme: dark){:root{
+  --page:#0d0d0d; --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.10);
+  --c1:#3987e5; --c2:#199e70; --c3:#c98500; --c4:#008300; --c5:#9085e9; --c6:#e66767; --c7:#d55181; --c8:#d95926;
+  --neut:#5c5b55; --neut2:#8b897f; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  --page:#0d0d0d; --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.10);
+  --c1:#3987e5; --c2:#199e70; --c3:#c98500; --c4:#008300; --c5:#9085e9; --c6:#e66767; --c7:#d55181; --c8:#d95926;
+  --neut:#5c5b55; --neut2:#8b897f; --accent:#3987e5;
+}
+:root[data-theme="light"]{
+  --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,.10);
+  --c1:#2a78d6; --c2:#1baf7a; --c3:#eda100; --c4:#008300; --c5:#4a3aa7; --c6:#e34948; --c7:#e87ba4; --c8:#eb6834;
+  --neut:#a8a69e; --neut2:#77756d; --accent:#2a78d6;
+}
+*{box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;margin:0}
+.app{max-width:1240px;margin:0 auto;padding:20px 22px 60px}
+.hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;margin-bottom:4px}
+.hd h1{font-size:21px;font-weight:600;letter-spacing:-.01em;margin:0;text-wrap:balance}
+.hd .sub{color:var(--ink2);font-size:12.5px}
+.meta{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.controls{position:sticky;top:0;z-index:30;background:var(--page);padding:10px 0 12px;border-bottom:1px solid var(--grid);
+  display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;margin-bottom:18px}
+.ctl{display:flex;align-items:center;gap:10px}
+.ctl label{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+input[type=range]{width:200px;accent-color:var(--accent)}
+.capexval{font-variant-numeric:tabular-nums;font-weight:600;font-size:14px;min-width:170px}
+.capexval small{color:var(--ink2);font-weight:400}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--ring);background:var(--surface);color:var(--ink2);border-radius:999px;
+  padding:4px 11px;font-size:12px;cursor:pointer;font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.chip:focus-visible,.tabbtn:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:4px;flex-wrap:wrap}
+.tabbtn{border:0;background:none;color:var(--ink2);font-size:13px;padding:6px 12px;cursor:pointer;border-radius:7px}
+.tabbtn[aria-selected="true"]{background:var(--surface);color:var(--ink);font-weight:600;box-shadow:inset 0 0 0 1px var(--ring)}
+section{display:none}
+section.on{display:block}
+.card{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:14px 16px}
+h2{font-size:14px;font-weight:600;margin:0 0 2px}
+.h2s{color:var(--muted);font-size:11.5px;margin:0 0 12px}
+.grid{display:grid;gap:14px}
+.g3{grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}
+.g4{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin:10px 0 4px;font-size:11.5px;color:var(--ink2)}
+.legend .sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+svg text{font-family:inherit}
+.tt{position:fixed;pointer-events:none;background:var(--surface);border:1px solid var(--ring);border-radius:8px;
+  padding:8px 10px;font-size:12px;box-shadow:0 6px 24px rgba(0,0,0,.18);z-index:99;max-width:280px;display:none}
+.tt b{font-variant-numeric:tabular-nums}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;text-align:right;
+  padding:7px 8px;border-bottom:1px solid var(--axis);cursor:pointer;white-space:nowrap}
+th.l,td.l{text-align:left}
+td{padding:6px 8px;border-bottom:1px solid var(--grid);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:hover{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.bar{height:12px;border-radius:3px;display:flex;overflow:hidden;min-width:120px}
+.bar i{display:block;height:100%;margin-right:2px;border-radius:2px}
+.pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:600}
+.p-ok{background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good)}
+.p-warn{background:color-mix(in srgb,var(--warn) 18%,transparent);color:color-mix(in srgb,var(--warn) 70%,var(--ink))}
+.p-crit{background:color-mix(in srgb,var(--crit) 14%,transparent);color:var(--crit)}
+.tile{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:12px 14px}
+.tile .k{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.tile .v{font-size:24px;font-weight:600;margin-top:2px}
+.tile .d{font-size:11.5px;color:var(--ink2);margin-top:2px}
+.note{color:var(--ink2);font-size:11.5px;line-height:1.5}
+.foot{margin-top:26px;border-top:1px solid var(--grid);padding-top:12px;color:var(--muted);font-size:11px;line-height:1.6;max-width:72ch}
+.scroll{overflow-x:auto}
+.checkrow{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:7px 0;border-bottom:1px solid var(--grid);font-size:12.5px}
+.checkrow .s{color:var(--muted);font-size:11px;max-width:46ch}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="app">
+  <div class="hd">
+    <h1>Semis MAP — do capex à receita</h1>
+    <span class="sub">como o dólar de capex de IA vira TAM por linha de produto e receita por empresa</span>
+    <span class="meta" id="meta"></span>
+  </div>
+  <div class="controls">
+    <div class="ctl"><label for="fslider">Capex</label>
+      <input type="range" id="fslider" min="40" max="160" value="100" step="5" aria-label="fator de capex">
+      <span class="capexval" id="capexval"></span></div>
+    <div class="ctl"><label>Ano</label><div class="chips" id="yearchips" role="group" aria-label="ano"></div></div>
+    <div class="tabs" role="tablist" id="tabs"></div>
+  </div>
+
+  <section id="sec-flow" class="on">
+    <div class="card">
+      <h2>Fluxo do capex — <span class="yr"></span></h2>
+      <p class="h2s">capex ativo → linhas de produto (TAM calibrado, $bn) → top empresas por receita implícita. Passe o mouse nas fitas.</p>
+      <div class="scroll"><svg id="flowsvg" width="1180" height="640" role="img" aria-label="fluxo capex para linhas para empresas"></svg></div>
+      <div class="legend" id="flowlegend"></div>
+    </div>
+  </section>
+
+  <section id="sec-lines">
+    <div class="grid g3" id="linecards"></div>
+  </section>
+
+  <section id="sec-comp">
+    <div class="card">
+      <h2>Empresas — receita implícita no mapa vs consenso</h2>
+      <p class="h2s">barras empilhadas por linha de produto · % do consenso BBG (CY26/CY27) · sensibilidade a capex −20%. * = bloco WFE, não responde ao slider.</p>
+      <div class="scroll"><table id="comptable"></table></div>
+      <div class="legend" id="complegend"></div>
+    </div>
+  </section>
+
+  <section id="sec-phys">
+    <div class="grid g4" id="phystiles" style="margin-bottom:14px"></div>
+    <div class="grid g3">
+      <div class="card"><h2>Gargalos físicos — <span class="yr"></span></h2>
+        <p class="h2s">utilizações recalculadas com o fator de capex</p><div id="gauges"></div></div>
+      <div class="card"><h2>Conteúdo por GW de computação ($bn/GW)</h2>
+        <p class="h2s">invariante ao slider (numerador e denominador escalam juntos)</p><div class="scroll"><table id="cgwtable"></table></div></div>
+      <div class="card"><h2>Ponte de memória — % do capex street</h2>
+        <p class="h2s">estático (base do xlsx); pernas: mapeado + reprecificação HBM/NAND + frota</p><div id="membridge"></div></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h2>Checks vs material (valores do xlsx, cenário base)</h2>
+      <p class="h2s">bandas nos comentários das células · fora da banda = investigar, não necessariamente erro</p>
+      <div id="checks"></div>
+    </div>
+  </section>
+
+  <div class="foot" id="foot"></div>
+</div>
+<div class="tt" id="tt"></div>
+
+<script>
+const DATA = {"years": [2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035], "asof": "2026-07-10", "file": "AI_Chip_Designers_TAM_v9.xlsx", "capex": [85.0, 228.5, 431.7, 899.6, 1679.8, 2588.4, 3054.3, 3481.9, 3830.1, 4136.5, 4384.7, 4603.9, 4788.1], "capex_street": [85.0, 228.5, 431.7, 699.4, 902.2, 1037.5, 1224.2, 1395.6, 1535.2, 1658.0, 1757.5, 1845.4, 1919.2], "lines": {"Aceleradores": [40.5, 109.5, 200.2, 399.9, 692.0, 1051.3, 1240.6, 1414.2, 1555.7, 1680.1, 1780.9, 1870.0, 1944.8], "Switching": [3.8, 7.7, 12.5, 31.0, 62.4, 94.6, 111.6, 127.2, 139.9, 151.1, 160.2, 168.2, 174.9], "Óptica": [2.8, 7.5, 15.3, 36.0, 58.8, 82.8, 97.6, 111.3, 122.4, 132.2, 140.2, 147.2, 153.1], "CPU": [1.7, 3.5, 9.3, 24.6, 48.4, 77.8, 91.8, 104.7, 115.2, 124.4, 131.9, 138.4, 144.0], "Storage": [2.6, 7.2, 13.5, 27.4, 48.9, 75.4, 89.0, 101.5, 111.6, 120.6, 127.8, 134.2, 139.6], "SmartNIC": [1.6, 2.9, 4.8, 23.6, 47.1, 78.4, 92.5, 105.4, 116.0, 125.2, 132.8, 139.4, 145.0], "Cobre": [0.4, 0.7, 2.0, 5.1, 10.7, 20.1, 23.7, 27.0, 29.7, 32.1, 34.0, 35.7, 37.1], "Power & Cooling": [44, 61, 85, 106.9, 133.3, 165, 194.7, 222.0, 244.1, 263.7, 279.5, 293.5, 305.2], "Outros (DDR/SSD/mobo)": [2.0, 5.4, 10.3, 19.6, 35.1, 51.9, 61.3, 69.9, 76.8, 83.0, 88.0, 92.4, 96.1]}, "hbm_memo": [3.5, 15.4, 35.0, 78.3, 127.0, 162.4, 191.6, 218.4, 240.2, 259.5, 275.0, 288.8, 300.3], "companies": {"Aceleradores": [{"n": "NVDA", "v": [36.6, 97.1, 168.8, 311.8, 503.6, 677.9, 795.3, 900.0, 982.8, 1053.6, 1108.6, 1155.3, 1192.5]}, {"n": "AMD", "v": [0.5, 5.4, 8.0, 20.7, 38.4, 51.8, 60.7, 68.7, 75.1, 80.5, 84.7, 88.2, 91.1]}, {"n": "AVGO (ASIC)", "v": [2.9, 5.5, 20.1, 60.4, 125.5, 284.6, 340.3, 394.2, 440.5, 483.1, 520.0, 554.3, 585.0]}, {"n": "MRVL", "v": [0, 0.8, 2.9, 6.9, 9.3, 13.3, 15.9, 18.4, 20.6, 22.6, 24.3, 25.9, 27.3]}, {"n": "MediaTek", "v": [0, 0, 0, 0.2, 12.3, 20.3, 24.2, 28.1, 31.3, 34.4, 37.0, 39.4, 41.6]}, {"n": "Alchip", "v": [0.5, 0.7, 0.4, 0, 3.0, 3.5, 4.2, 4.9, 5.4, 6.0, 6.4, 6.9, 7.2]}], "CPU": [{"n": "Intel", "v": [1.0, 1.4, 2.6, 5.4, 8.7, 11.7, 13.8, 15.7, 17.3, 18.7, 19.8, 20.8, 21.6]}, {"n": "AMD", "v": [0.6, 1.2, 2.8, 6.4, 11.6, 17.1, 20.2, 23.0, 25.3, 27.4, 29.0, 30.5, 31.7]}, {"n": "NVDA (Grace)", "v": [0, 0.3, 2.3, 8.1, 17.4, 29.6, 34.9, 39.8, 43.8, 47.3, 50.1, 52.6, 54.7]}, {"n": "ARM cativo+outros", "v": [0.2, 0.5, 1.6, 4.7, 10.7, 19.5, 23.0, 26.2, 28.8, 31.1, 33.0, 34.6, 36.0]}], "HBM (memo)": [{"n": "SK Hynix", "v": [1.8, 8.2, 21.0, 44.6, 63.5, 76.3, 90.0, 102.7, 112.9, 121.9, 129.3, 135.7, 141.2]}, {"n": "Samsung", "v": [1.4, 5.2, 5.9, 14.1, 31.8, 45.5, 53.6, 61.2, 67.3, 72.7, 77.0, 80.9, 84.1]}, {"n": "Micron", "v": [0.4, 2.0, 8.0, 19.6, 31.8, 40.6, 47.9, 54.6, 60.1, 64.9, 68.8, 72.2, 75.1]}], "Switching": [{"n": "NVDA", "v": [1.7, 3.8, 5.6, 12.4, 22.5, 31.2, 36.8, 42.0, 46.2, 49.9, 52.9, 55.5, 57.7]}, {"n": "Arista", "v": [0.5, 1.1, 2.3, 6.2, 13.1, 20.8, 24.6, 28.0, 30.8, 33.3, 35.2, 37.0, 38.5]}, {"n": "AVGO (silício)", "v": [0.6, 1.1, 1.9, 5.0, 10.6, 17.0, 20.1, 22.9, 25.2, 27.2, 28.8, 30.3, 31.5]}, {"n": "Cisco", "v": [0.3, 0.5, 0.8, 2.2, 5.0, 7.6, 8.9, 10.2, 11.2, 12.1, 12.8, 13.5, 14.0]}, {"n": "Whitebox/ODM", "v": [0.8, 1.2, 2.0, 5.3, 11.2, 18.0, 21.2, 24.2, 26.6, 28.7, 30.4, 32.0, 33.2]}], "SmartNIC": [{"n": "NVDA", "v": [1.2, 2.1, 3.4, 15.3, 29.2, 47.0, 55.5, 63.3, 69.6, 75.1, 79.7, 83.6, 87.0]}, {"n": "AMD", "v": [0.1, 0.2, 0.4, 2.4, 4.7, 7.8, 9.2, 10.5, 11.6, 12.5, 13.3, 13.9, 14.5]}, {"n": "Intel", "v": [0.2, 0.2, 0.3, 1.4, 2.4, 3.9, 4.6, 5.3, 5.8, 6.3, 6.6, 7.0, 7.2]}, {"n": "AVGO+cativo", "v": [0.2, 0.4, 0.7, 4.5, 10.8, 19.6, 23.1, 26.4, 29.0, 31.3, 33.2, 34.8, 36.2]}], "Óptica": [{"n": "Innolight", "v": [0.8, 2.3, 4.3, 13.2, 20.5, 28.3, 33.4, 38.1, 41.9, 45.3, 48.0, 50.4, 52.4]}, {"n": "Eoptolink", "v": [0.3, 0.9, 3.2, 7.5, 14.4, 20.6, 24.4, 27.8, 30.6, 33.0, 35.0, 36.7, 38.2]}, {"n": "Coherent", "v": [0.6, 1.6, 2.6, 4.6, 7.2, 10.2, 12.0, 13.7, 15.0, 16.2, 17.2, 18.1, 18.8]}, {"n": "NVDA/Fabrinet", "v": [0.3, 0.8, 1.1, 2.5, 3.9, 5.5, 6.5, 7.4, 8.2, 8.8, 9.3, 9.8, 10.2]}, {"n": "Accelink", "v": [0.2, 0.6, 1.1, 1.9, 3.0, 4.3, 5.1, 5.8, 6.4, 6.9, 7.3, 7.7, 8.0]}, {"n": "Cisco/Acacia", "v": [0.2, 0.5, 0.9, 1.5, 2.4, 3.3, 3.9, 4.5, 4.9, 5.3, 5.7, 5.9, 6.2]}, {"n": "AOI", "v": [0.1, 0.2, 0.5, 1.1, 1.8, 2.6, 3.1, 3.6, 3.9, 4.2, 4.5, 4.7, 4.9]}, {"n": "Lumentum", "v": [0.1, 0.2, 0.4, 0.9, 1.4, 1.9, 2.3, 2.6, 2.8, 3.1, 3.2, 3.4, 3.5]}, {"n": "Outros", "v": [0.1, 0.3, 1.2, 2.7, 4.3, 5.9, 7.0, 7.9, 8.7, 9.4, 10.0, 10.5, 10.9]}], "Storage": [{"n": "Samsung", "v": [0.7, 2.0, 3.8, 7.4, 12.7, 18.9, 22.3, 25.4, 27.9, 30.1, 32.0, 33.5, 34.9]}, {"n": "Hynix+Solidigm", "v": [0.6, 1.7, 3.4, 6.9, 12.2, 18.9, 22.3, 25.4, 27.9, 30.1, 32.0, 33.5, 34.9]}, {"n": "Micron", "v": [0.3, 0.9, 2.0, 4.4, 7.8, 12.1, 14.2, 16.2, 17.9, 19.3, 20.4, 21.5, 22.3]}, {"n": "Kioxia+SanDisk", "v": [0.4, 1.0, 1.8, 3.3, 5.9, 9.1, 10.7, 12.2, 13.4, 14.5, 15.3, 16.1, 16.7]}, {"n": "Sistemas/SW", "v": [0.6, 1.5, 2.6, 5.5, 10.3, 16.6, 19.6, 22.3, 24.6, 26.5, 28.1, 29.5, 30.7]}], "Cobre": [{"n": "Amphenol (DAC)", "v": [0.2, 0.3, 0.4, 0.6, 1.0, 1.3, 1.5, 1.7, 1.9, 2.0, 2.1, 2.2, 2.3]}, {"n": "TE Conn (DAC)", "v": [0.1, 0.2, 0.2, 0.4, 0.6, 0.8, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.5]}, {"n": "MRVL (ACC)", "v": [0, 0, 0, 0.2, 0.6, 1.1, 1.3, 1.4, 1.6, 1.7, 1.8, 1.9, 2.0]}, {"n": "Credo (ACC)", "v": [0, 0, 0, 0.1, 0.4, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.2, 1.3]}, {"n": "Credo (AEC)", "v": [0.1, 0.1, 1.0, 2.5, 5.0, 9.6, 11.3, 12.9, 14.1, 15.3, 16.2, 17.0, 17.7]}, {"n": "Astera (AEC)", "v": [0, 0.0, 0.2, 0.5, 1.2, 2.6, 3.1, 3.5, 3.9, 4.2, 4.4, 4.6, 4.8]}], "Power & Cooling": [{"n": "Schneider", "v": [4.3, 6, 7.7, 9.6, 12.0, 14.8, 17.5, 20.0, 22.0, 23.7, 25.2, 26.4, 27.5]}, {"n": "Eaton", "v": [2.9, 4, 5.6, 7.0, 9.2, 12.2, 14.3, 16.3, 18.0, 19.4, 20.6, 21.6, 22.5]}, {"n": "Vertiv (power)", "v": [2.9, 4, 5.6, 7.0, 9.2, 12.2, 14.3, 16.3, 18.0, 19.4, 20.6, 21.6, 22.5]}, {"n": "Vertiv (thermal)", "v": [2.4, 3.2, 4.2, 5.5, 6.9, 8.4, 9.9, 11.3, 12.4, 13.4, 14.2, 14.9, 15.5]}, {"n": "nVent", "v": [0.4, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 2.9, 3.0, 3.2, 3.3]}, {"n": "Envicool", "v": [0.6, 1.0, 1.5, 2.0, 2.7, 3.3, 3.9, 4.4, 4.9, 5.3, 5.6, 5.9, 6.1]}], "Upstream": [{"n": "TSM (AI)", "v": [4.0, 10.9, 20.0, 40.0, 69.2, 105.1, 124.1, 141.4, 155.6, 168.0, 178.1, 187.0, 194.5]}, {"n": "ASML*", "v": [21.6, 26.4, 31.2, 36.7, 47.4, 55.4, 61.2, 65.3, 68.4, 71.0, 73.4, 75.6, 77.3]}, {"n": "AMAT*", "v": [16.2, 19.8, 23.4, 27.5, 35.5, 41.6, 45.9, 49.0, 51.3, 53.3, 55.1, 56.7, 58.0]}, {"n": "LRCX*", "v": [13.5, 16.5, 19.5, 22.9, 29.6, 34.6, 38.2, 40.8, 42.8, 44.4, 45.9, 47.2, 48.3]}, {"n": "KLAC*", "v": [7.2, 8.8, 10.4, 12.2, 15.8, 18.5, 20.4, 21.8, 22.8, 23.7, 24.5, 25.2, 25.8]}, {"n": "TokyoElectron*", "v": [9.9, 12.1, 14.3, 16.8, 21.7, 25.4, 28.1, 29.9, 31.4, 32.6, 33.7, 34.6, 35.4]}]}, "rollup": [{"n": "NVDA", "cy25": 181.3, "cy26": 350.2, "cy27": 576.6, "cy28": 791.2, "cy30": 1052.5, "cy35": 1402.1, "cons26": 390.7, "cons27": 559.8, "pct26": 0.896, "pct27": 1.03, "sens": -0.206, "note": "Accelerators + switching (SYSTEM value, incl own silicon) + ConnectX + NVDA-branded optics + Grace content"}, {"n": "AMD", "cy25": 11.2, "cy26": 29.4, "cy27": 54.8, "cy28": 76.7, "cy30": 102.3, "cy35": 137.2, "cons26": 49, "cons27": 75.4, "pct26": 0.601, "pct27": 0.726, "sens": -0.145, "note": "MI GPUs + EPYC head-node + Pensando"}, {"n": "AVGO", "cy25": 22.0, "cy26": 65.3, "cy27": 136.1, "cy28": 301.7, "cy30": 417.1, "cy35": 616.5, "cons26": 123, "cons27": 189.1, "pct26": 0.531, "pct27": 0.72, "sens": -0.144, "note": "Custom ASIC + merchant switch silicon. House TPU ramp >> street"}, {"n": "MRVL", "cy25": 2.9, "cy26": 7.0, "cy27": 9.9, "cy28": 14.3, "cy30": 19.8, "cy35": 29.3, "cons26": 11.5, "cons27": 16.8, "pct26": 0.613, "pct27": 0.587, "sens": -0.117, "note": "Trainium et al + ACC silicon"}, {"n": "MEDIATEK", "cy25": 0, "cy26": 0.2, "cy27": 12.3, "cy28": 20.3, "cy30": 28.1, "cy35": 41.6, "cons26": 20.2, "cons27": 32.5, "pct26": 0.008, "pct27": 0.378, "sens": -0.076, "note": "TPU co-design only; consensus mostly handset SoC"}, {"n": "Alchip", "cy25": 0.4, "cy26": 0, "cy27": 3.0, "cy28": 3.5, "cy30": 4.9, "cy35": 7.2, "cons26": null, "cons27": null, "pct26": null, "pct27": null, "sens": null, "note": "No BBG coverage in estimates.json"}, {"n": "INTC", "cy25": 2.9, "cy26": 6.8, "cy27": 11.1, "cy28": 15.6, "cy30": 21.0, "cy35": 28.8, "cons26": 57.3, "cons27": 65.3, "pct26": 0.119, "pct27": 0.17, "sens": -0.034, "note": "Xeon head-node + IPU; excludes foundry optionality"}, {"n": "ANET", "cy25": 2.3, "cy26": 6.2, "cy27": 13.1, "cy28": 20.8, "cy30": 28.0, "cy35": 38.5, "cons26": 11.5, "cons27": 14.2, "pct26": 0.54, "pct27": 0.923, "sens": -0.185, "note": "AI switching systems; ANET's own 'AI' definition narrower"}, {"n": "CSCO", "cy25": 1.6, "cy26": 3.7, "cy27": 7.4, "cy28": 10.9, "cy30": 14.7, "cy35": 20.2, "cons26": 66.2, "cons27": 70.8, "pct26": 0.056, "pct27": 0.104, "sens": -0.021, "note": "Switching + Acacia optics; tiny vs company"}, {"n": "Whitebox/ODM (CLS, Accton...)", "cy25": 2.0, "cy26": 5.3, "cy27": 11.2, "cy28": 18.0, "cy30": 24.2, "cy35": 33.2, "cons26": null, "cons27": null, "pct26": null, "pct27": null, "sens": null, "note": "Multi-company plug - contains AVGO silicon"}, {"n": "SKHYNIX", "cy25": 24.4, "cy26": 51.5, "cy27": 75.8, "cy28": 95.2, "cy30": 128.0, "cy35": 176.0, "cons26": 252.5, "cons27": 400.5, "pct26": 0.204, "pct27": 0.189, "sens": -0.038, "note": "HBM + eSSD (Solidigm). KRW/1380. Excl head-node DRAM (no vendor split)"}, {"n": "SAMSUNG", "cy25": 9.7, "cy26": 21.5, "cy27": 44.5, "cy28": 64.3, "cy30": 86.5, "cy35": 119.0, "cons26": 503.3, "cons27": 684.9, "pct26": 0.043, "pct27": 0.065, "sens": -0.013, "note": "HBM + eSSD only; consensus = all Samsung Electronics"}, {"n": "MU", "cy25": 10.1, "cy26": 24.0, "cy27": 39.6, "cy28": 52.7, "cy30": 70.8, "cy35": 97.4, "cons26": 164.2, "cons27": 264, "pct26": 0.146, "pct27": 0.15, "sens": -0.03, "note": "HBM + eSSD; excludes head-node DRAM upside"}, {"n": "KIOXIA + SNDK", "cy25": 1.8, "cy26": 3.3, "cy27": 5.9, "cy28": 9.1, "cy30": 12.2, "cy35": 16.7, "cons26": 86.5, "cons27": 128.8, "pct26": 0.038, "pct27": 0.046, "sens": -0.009, "note": "Consensus = Kioxia (JPY/155) + SanDisk summed"}, {"n": "Innolight", "cy25": 4.3, "cy26": 13.2, "cy27": 20.5, "cy28": 28.3, "cy30": 38.1, "cy35": 52.4, "cons26": null, "cons27": null, "pct26": null, "pct27": null, "sens": null, "note": "No BBG row in estimates.json"}, {"n": "Eoptolink", "cy25": 3.2, "cy26": 7.5, "cy27": 14.4, "cy28": 20.6, "cy30": 27.8, "cy35": 38.2, "cons26": null, "cons27": null, "pct26": null, "pct27": null, "sens": null, "note": "No BBG row"}, {"n": "COHR", "cy25": 2.6, "cy26": 4.6, "cy27": 7.2, "cy28": 10.2, "cy30": 13.7, "cy35": 18.8, "cons26": 8.2, "cons27": 11, "pct26": 0.562, "pct27": 0.654, "sens": -0.131, "note": "Transceivers only"}, {"n": "AAOI", "cy25": 0.5, "cy26": 1.1, "cy27": 1.8, "cy28": 2.6, "cy30": 3.6, "cy35": 4.9, "cons26": 1, "cons27": 2.5, "pct26": 1.144, "pct27": 0.729, "sens": -0.146, "note": ""}, {"n": "LITE", "cy25": 0.4, "cy26": 0.9, "cy27": 1.4, "cy28": 1.9, "cy30": 2.6, "cy35": 3.5, "cons26": 4.3, "cons27": 7.1, "pct26": 0.21, "pct27": 0.194, "sens": -0.039, "note": "Cloudlight merchant modules only"}, {"n": "APH", "cy25": 0.4, "cy26": 0.6, "cy27": 1.0, "cy28": 1.3, "cy30": 1.7, "cy35": 2.3, "cons26": 32.7, "cons27": 38.1, "pct26": 0.019, "pct27": 0.026, "sens": -0.005, "note": "DAC only - broader server content excluded (% reads low)"}, {"n": "TEL (TE Conn)", "cy25": 0.2, "cy26": 0.4, "cy27": 0.6, "cy28": 0.8, "cy30": 1.1, "cy35": 1.5, "cons26": 20, "cons27": 21.5, "pct26": 0.02, "pct27": 0.03, "sens": -0.006, "note": "DAC only, same caveat"}, {"n": "CRDO", "cy25": 1.0, "cy26": 2.6, "cy27": 5.3, "cy28": 10.3, "cy30": 13.8, "cy35": 19.0, "cons26": 2.1, "cons27": 3.5, "pct26": 1.252, "pct27": 1.526, "sens": -0.305, "note": "AEC + ACC"}, {"n": "ALAB", "cy25": 0.2, "cy26": 0.5, "cy27": 1.2, "cy28": 2.6, "cy30": 3.5, "cy35": 4.8, "cons26": 1.5, "cons27": 2.3, "pct26": 0.364, "pct27": 0.526, "sens": -0.105, "note": "AEC only - excludes retimers/PCIe/Scorpio (% reads low)"}, {"n": "VRT", "cy25": 9.8, "cy26": 12.5, "cy27": 16.1, "cy28": 20.6, "cy30": 27.6, "cy35": 38.0, "cons26": 13.8, "cons27": 17.8, "pct26": 0.902, "pct27": 0.905, "sens": -0.181, "note": "Power + thermal implied total"}, {"n": "ETN", "cy25": 5.6, "cy26": 7.0, "cy27": 9.2, "cy28": 12.2, "cy30": 16.3, "cy35": 22.5, "cons26": 31.8, "cons27": 35.4, "pct26": 0.22, "pct27": 0.261, "sens": -0.052, "note": "DC power equipment slice only"}, {"n": "NVT", "cy25": 0.9, "cy26": 1.2, "cy27": 1.5, "cy28": 1.8, "cy30": 2.4, "cy35": 3.3, "cons26": 4.9, "cons27": 5.8, "pct26": 0.239, "pct27": 0.253, "sens": -0.051, "note": "DC thermal slice only"}, {"n": "TSM", "cy25": 20.0, "cy26": 40.0, "cy27": 69.2, "cy28": 105.1, "cy30": 141.4, "cy35": 194.5, "cons26": 162.8, "cons27": 208.8, "pct26": 0.246, "pct27": 0.331, "sens": -0.066, "note": "AI-accelerator slice only (TWD/32)"}, {"n": "ASML", "cy25": 31.2, "cy26": 36.7, "cy27": 47.4, "cy28": 55.4, "cy30": 65.3, "cy35": 77.3, "cons26": 46, "cons27": 57.9, "pct26": 0.798, "pct27": 0.819, "sens": -0.164, "note": "WFE block - NOT scenario-linked"}, {"n": "AMAT", "cy25": 23.4, "cy26": 27.5, "cy27": 35.5, "cy28": 41.6, "cy30": 49.0, "cy35": 58.0, "cons26": 36.1, "cons27": 44.9, "pct26": 0.763, "pct27": 0.792, "sens": -0.158, "note": "WFE block - not scenario-linked"}, {"n": "LRCX", "cy25": 19.5, "cy26": 22.9, "cy27": 29.6, "cy28": 34.6, "cy30": 40.8, "cy35": 48.3, "cons26": 27, "cons27": 33.4, "pct26": 0.85, "pct27": 0.887, "sens": -0.177, "note": "WFE block - not scenario-linked"}, {"n": "KLAC", "cy25": 10.4, "cy26": 12.2, "cy27": 15.8, "cy28": 18.5, "cy30": 21.8, "cy35": 25.8, "cons26": 15.2, "cons27": 18.9, "pct26": 0.805, "pct27": 0.836, "sens": -0.167, "note": "WFE block - not scenario-linked"}, {"n": "TOKYOELEC", "cy25": 14.3, "cy26": 16.8, "cy27": 21.7, "cy28": 25.4, "cy30": 29.9, "cy35": 35.4, "cons26": 19.9, "cons27": 24.2, "pct26": 0.846, "pct27": 0.898, "sens": -0.18, "note": "WFE block - not scenario-linked"}], "gw": {"total": [2.2, 5.9, 11.2, 22.7, 40.0, 62.7, 72.6, 81.3, 88.9, 95.5, 100.7, 106.2, 110.9], "nvda": [1.9, 5.0, 8.7, 15.6, 24.6, 31.5, 35.3, 38.3, 40.9, 43.0, 44.3, 46.2, 47.7], "amd": [0.0, 0.3, 0.5, 1.3, 2.4, 3.2, 3.8, 4.3, 4.7, 5.0, 5.3, 5.5, 5.7], "asic": [0.3, 0.6, 2.0, 5.9, 13.0, 28.0, 33.4, 38.7, 43.3, 47.5, 51.1, 54.5, 57.5], "cum": [2.0, 8.0, 19.0, 42.0, 82.0, 145.0, 217.0, 299.0, 388.0, 483.0, 584.0, 690.0, 801.0]}, "cgw": {"Networking": [3.92, 3.17, 3.09, 4.21, 4.47, 4.4, 4.48, 4.56, 4.59, 4.61, 4.64, 4.62, 4.6], "Storage": [1.2, 1.21, 1.21, 1.21, 1.22, 1.2, 1.23, 1.25, 1.26, 1.26, 1.27, 1.26, 1.26], "HBM": [1.59, 2.6, 3.13, 3.44, 3.18, 2.59, 2.64, 2.69, 2.7, 2.72, 2.73, 2.72, 2.71], "Outros": [0.9, 0.91, 0.92, 0.86, 0.88, 0.83, 0.84, 0.86, 0.86, 0.87, 0.87, 0.87, 0.87], "Power": [19.98, 10.3, 7.6, 4.7, 3.33, 2.63, 2.68, 2.73, 2.75, 2.76, 2.77, 2.76, 2.75], "Total sistemas": [25.19, 24.36, 23.94, 24.94, 25.08, 24.42, 24.91, 25.34, 25.5, 25.64, 25.77, 25.66, 25.56]}, "cowos": {"demand": [304.0, 565.0, 686.0, 1231.0, 1934.0, 2059.0, 2393.0, 2711.0, 2890.0, 2992.0, 3040.0, 3059.0, 3049.0], "cap_end": [28, 45, 80, 115, 175, 220, 245, 270, 290, 310, 330, 350, 370]}, "n3n2": {"ai": [7.0, 18.0, 35.6, 74.4, 134.8, 223.7, 260.3, 293.5, 322.3, 347.7, 368.3, 389.3, 407.5], "phone": [45, 60, 65, 75, 85, 90, 92, 94, 96, 98, 100, 102, 104], "cpu_net": [5, 8, 12, 18, 28, 35, 38, 40, 42, 44, 46, 48, 50], "cap_end": [60, 110, 150, 230, 300, 380, 410, 440, 470, 500, 530, 560, 590]}, "tsm": {"ai_rev": [4.0, 10.9, 20.0, 40.0, 69.2, 105.1, 124.1, 141.4, 155.6, 168.0, 178.1, 187.0, 194.5], "capex": [30.4, 29.8, 41.5, 58, 78, 84, 88, 92, 97, 102, 107, 112, 118]}, "memory_bridge": {"mapped": [10.3, 32.1, 65.4, 137.6, 222.4, 290.2, 341.7, 388.6, 427.1, 460.8, 487.7, 511.2, 530.7], "hbm_uplift": [1.7, 1.1, 0.0, -0.9, 66.7, 61.6, 63.8, 65.0, 69.4, 68.9, 70.0, 67.6, 66.2], "nand_uplift": [0, 0, 0, 2.7, 24.5, 30.2, 31.2, 30.4, 31.3, 30.1, 28.1, 26.8, 27.9], "fleet": [5, 10, 25, 120, 150, 160, 168, 176, 185, 194, 204, 214, 225], "total": [17.0, 43.2, 90.4, 259.5, 463.6, 542.0, 604.7, 660.0, 712.7, 753.7, 789.8, 819.7, 849.8], "pct_street": [0.2, 0.189, 0.209, 0.371, 0.514, 0.522, 0.494, 0.473, 0.464, 0.455, 0.449, 0.444, 0.443], "target": [0.1, 0.13, 0.18, 0.32, 0.45, 0.5, 0.5, 0.5, 0.48, 0.46, 0.44, 0.42, 0.4]}, "units": {"nvda": [2702.0, 4423, 5280.0, 7608.0, 7675, 4950.0, 5531.0, 5961.0, 6200.0, 6330.0, 6343.0, 6295.0, 6189.0], "amd": [53.0, 516.0, 476.0, 671.0, 1100, 1100, 1229.0, 1325.0, 1378.0, 1407.0, 1410.0, 1399.0, 1375.0], "asic": [3000.0, 4397.0, 4450.0, 7170.0, 12610, 17350, 19754.0, 21793.0, 23193.0, 24228.0, 24835.0, 25211.0, 25344.0]}, "checks": [{"lab": "CoWoS: v9 vs modelo oficial (CY27)", "v": 0.9939847885297289, "fmt": "pct", "band": [0.8, 1.2], "src": "AI Model 'CoWoS Demand' — MS 910k / Nomura 1.8-2.0M / JPM +86%"}, {"lab": "Utilização CoWoS (CY27, TSMC-only)", "v": 1.1116063218390804, "fmt": "pct", "band": [0.85, 1.1], "src": ">100% = overflow p/ OSAT (FoCoS/Amkor)"}, {"lab": "Utilização N3/N2 total (CY27)", "v": 0.9350560761731933, "fmt": "pct", "band": [0, 0.95], "src": "AI + smartphone + CPU vs capacidade — Redburn: gap 15-20% 2027"}, {"lab": "HBM: Hynix implícito vs street $28bn (CY25)", "v": -0.25004128568278217, "fmt": "pct", "band": [-0.25, 0.25], "src": "Tensão canônica $35bn vs Hynix 28@60% — aguarda Inspectrum"}, {"lab": "Óptica: TAM vs Susq indústria (CY25)", "v": 0.08670463439876808, "fmt": "pct", "band": [-0.05, 0.3], "src": "BofA inclui AOC/CPO vs Susq Ethernet-only"}, {"lab": "Switching: bottoms-up vs TAM (CY26)", "v": 0.6975648098815624, "fmt": "pct", "band": [0.55, 0.95], "src": "caixa vs valor de sistema"}, {"lab": "SmartNIC: bottoms-up vs TAM (CY26)", "v": 0.9029978751547303, "fmt": "pct", "band": [0.75, 1.05], "src": "fit mais justo do mapa"}, {"lab": "HDD: STX+WDC implícito vs consenso (CY26)", "v": 0.8424489795918368, "fmt": "pct", "band": [0.75, 0.95], "src": "Bernstein share WDC 44-45/STX 41-43/Toshiba 13-14"}, {"lab": "Sistemas CY30 vs BofA $1.7T", "v": 0.21262517489701427, "fmt": "pct", "band": [-0.15, 0.35], "src": "prêmio house esperado ~+20%"}, {"lab": "Capex acumulado 24-30 vs JPM $5.5T", "v": 1.2480286697537295, "fmt": "pct", "band": [-0.2, 0.3], "src": "cenário 1 = +125% (house-bull explícito); street = +8%"}, {"lab": "TSM: capex×60% como % do WFE (CY26)", "v": 0.22745098039215683, "fmt": "pct", "band": [0.18, 0.28], "src": "TSM ~20-25% do WFE historicamente"}, {"lab": "Memória: % do capex street vs alvo (CY27)", "v": 0.06388085510440816, "fmt": "pct", "band": [-0.1, 0.1], "src": "JPM/KB/GS: 40-50% do capex em 2027"}]};
+const LINECOLORS = {"Aceleradores":"--c1","Switching":"--c2","Óptica":"--c3","CPU":"--c4","HBM (memo)":"--c5",
+  "Storage":"--c6","SmartNIC":"--c7","Cobre":"--c8","Power & Cooling":"--neut2","Outros (DDR/SSD/mobo)":"--neut","Upstream":"--neut2"};
+const WFE_STAR = n => /\*$/.test(n);
+let YEAR = 2027, F = 1.0;
+const YI = () => DATA.years.indexOf(YEAR);
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const col = line => css(LINECOLORS[line] || "--neut");
+const $ = id => document.getElementById(id);
+const fmtB = v => v==null ? "–" : (v>=1000 ? (v/1000).toFixed(2)+" T" : v>=100 ? v.toFixed(0)+" B" : v.toFixed(1)+" B");
+const fmtP = v => v==null ? "–" : (v*100).toFixed(v*100>=100?0:1)+"%";
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+
+// tooltip
+const tt = $("tt");
+function showTT(ev, html){ tt.innerHTML = html; tt.style.display="block";
+  const w = tt.offsetWidth, x = Math.min(ev.clientX+14, innerWidth-w-10);
+  tt.style.left = x+"px"; tt.style.top = (ev.clientY+14)+"px"; }
+function hideTT(){ tt.style.display="none"; }
+
+// header meta + capex readout
+function renderMeta(){
+  $("meta").textContent = DATA.file+" · cenário base · "+DATA.asof;
+  const base = DATA.capex[YI()], v = base*F;
+  $("capexval").innerHTML = "US$ "+fmtB(v)+" <small>("+(F===1?"base":(F>1?"+":"")+Math.round((F-1)*100)+"% vs base")+" · "+YEAR+")</small>";
+  document.querySelectorAll(".yr").forEach(e=>e.textContent="CY"+YEAR);
+}
+
+// year chips + tabs
+const YEARS_SHOWN = [2025,2026,2027,2028,2030,2035];
+function renderChips(){
+  $("yearchips").innerHTML = YEARS_SHOWN.map(y=>`<button class="chip" aria-pressed="${y===YEAR}" data-y="${y}">${y}</button>`).join("");
+  document.querySelectorAll("#yearchips .chip").forEach(b=>b.onclick=()=>{YEAR=+b.dataset.y; renderAll();});
+}
+const TABS = [["sec-flow","Fluxo"],["sec-lines","Linhas de produto"],["sec-comp","Empresas"],["sec-phys","Física & checks"]];
+function renderTabs(){
+  $("tabs").innerHTML = TABS.map(([id,l],i)=>`<button class="tabbtn" role="tab" aria-selected="${document.getElementById(id).classList.contains("on")}" data-t="${id}">${l}</button>`).join("");
+  document.querySelectorAll(".tabbtn").forEach(b=>b.onclick=()=>{
+    TABS.forEach(([id])=>$(id).classList.toggle("on", id===b.dataset.t));
+    renderTabs(); renderAll();
+  });
+}
+
+// scaled getters
+const lineVal = (name,i) => { const v = DATA.lines[name][i]; return v==null?null:v*F; };
+const CANON = {"SK Hynix":"SK Hynix","Hynix+Solidigm":"SK Hynix","Kioxia+SanDisk":"Kioxia+SNDK",
+  "NVDA/Fabrinet":"NVDA","Cisco/Acacia":"Cisco","AVGO (ASIC)":"AVGO","AVGO (silício)":"AVGO",
+  "Vertiv (power)":"Vertiv","Vertiv (thermal)":"Vertiv","TE Conn (DAC)":"TE Conn","Amphenol (DAC)":"Amphenol",
+  "MRVL (ACC)":"MRVL","Credo (ACC)":"Credo","Credo (AEC)":"Credo","Astera (AEC)":"Astera","NVDA (Grace)":"NVDA"};
+const EXCLUDE = new Set(["ARM cativo+outros","Sistemas/SW","Outros","Whitebox/ODM","AVGO+cativo"]);
+function companyAgg(i){ // canonical company -> [{line, v}]
+  const m = {};
+  for (const [line, comps] of Object.entries(DATA.companies)){
+    if (line==="Upstream") continue;
+    for (const c of comps){
+      if (EXCLUDE.has(c.n)) continue;
+      let v = c.v[i]; if (v==null || v<0.05) continue;
+      v *= F;
+      const key = CANON[c.n] || c.n;
+      (m[key] = m[key] || []).push({line, v, sub:c.n});
+    }
+  }
+  return m;
+}
+// rollup name -> canonical agg key
+const ROLLKEY = {"NVDA":"NVDA","AMD":"AMD","AVGO":"AVGO","MRVL":"MRVL","MEDIATEK":"MediaTek","Alchip":"Alchip",
+  "INTC":"Intel","ANET":"Arista","CSCO":"Cisco","SKHYNIX":"SK Hynix","SAMSUNG":"Samsung","MU":"Micron",
+  "KIOXIA + SNDK":"Kioxia+SNDK","Innolight":"Innolight","Eoptolink":"Eoptolink","COHR":"Coherent","AAOI":"AOI",
+  "LITE":"Lumentum","APH":"Amphenol","TEL (TE Conn)":"TE Conn","CRDO":"Credo","ALAB":"Astera",
+  "VRT":"Vertiv","ETN":"Eaton","NVT":"nVent"};
+
+// ---------- FLOW ----------
+function renderFlow(){
+  const i = YI(), svg = $("flowsvg");
+  const lines = Object.keys(DATA.lines).map(n=>({n, v: lineVal(n,i)||0})).filter(d=>d.v>0.3);
+  const capex = DATA.capex[i]*F;
+  const sysSum = lines.reduce((s,d)=>s+d.v,0);
+  const agg = companyAgg(i);
+  const top = Object.entries(agg).map(([n,parts])=>({n, parts, v: parts.reduce((s,p)=>s+p.v,0)}))
+    .sort((a,b)=>b.v-a.v).slice(0,14);
+  const H=640, pad=26, colW=150, x2=560, x3=930;
+  const scale = (H-2*pad-lines.length*4) / sysSum;
+  let el = "";
+  // col 1: capex block (full height = total capex; filled part = mapped lines)
+  el += `<rect x="10" y="${pad}" width="${colW}" height="${H-2*pad}" rx="6" fill="${css('--neut')}" opacity="0.25"
+        data-tt="Capex ativo CY${YEAR}: <b>US$ ${fmtB(capex)}</b><br>não mapeado = shells/terra/geração"></rect>`;
+  el += `<rect x="10" y="${pad}" width="${colW}" height="${Math.min(1,sysSum/capex)*(H-2*pad)}" rx="6" fill="${css('--accent')}" opacity="0.85"
+        data-tt="Capex ativo CY${YEAR}: <b>US$ ${fmtB(capex)}</b><br>mapeado em linhas: <b>US$ ${fmtB(sysSum)}</b> (${fmtP(sysSum/capex)})"></rect>`;
+  el += `<text x="${10+colW/2}" y="${pad-8}" text-anchor="middle" font-size="11" fill="${css('--muted')}" style="text-transform:uppercase;letter-spacing:.06em">Capex US$ ${fmtB(capex)}</text>`;
+  el += `<text x="${x2}" y="${pad-8}" text-anchor="middle" font-size="11" fill="${css('--muted')}" style="text-transform:uppercase;letter-spacing:.06em">Linhas de produto</text>`;
+  el += `<text x="${x3+colW/2}" y="${pad-8}" text-anchor="middle" font-size="11" fill="${css('--muted')}" style="text-transform:uppercase;letter-spacing:.06em">Top empresas</text>`;
+  // col 2: lines
+  let y = pad;
+  for (const d of lines){
+    d.h = Math.max(3, d.v*scale); d.y = y; d._off = 0;
+    el += `<rect x="${x2-colW/2}" y="${y}" width="${colW}" height="${d.h}" rx="3" fill="${col(d.n)}"
+      data-tt="<b>${esc(d.n)}</b><br>TAM calibrado CY${YEAR}: <b>US$ ${fmtB(d.v)}</b><br>${fmtP(d.v/capex)} do capex"></rect>`;
+    if (d.h>11) el += `<text x="${x2-colW/2-8}" y="${y+d.h/2+3.5}" text-anchor="end" font-size="11.5" fill="${css('--ink2')}">${esc(d.n)}</text>
+      <text x="${x2+colW/2+8}" y="${y+d.h/2+3.5}" font-size="11" fill="${css('--muted')}">${fmtB(d.v)}</text>`;
+    y += d.h+4;
+  }
+  // ribbons capex -> lines (proportional slots on the capex side)
+  let cy = pad, ribbons = "";
+  const capScale = (Math.min(1,sysSum/capex)*(H-2*pad)) / sysSum;
+  for (const d of lines){
+    const h1 = d.v*capScale, y1 = cy;
+    ribbons += `<path d="M ${10+colW} ${y1} C ${x2-colW/2-90} ${y1}, ${10+colW+90} ${d.y}, ${x2-colW/2} ${d.y}
+      L ${x2-colW/2} ${d.y+d.h} C ${10+colW+90} ${d.y+d.h}, ${x2-colW/2-90} ${y1+h1}, ${10+colW} ${y1+h1} Z"
+      fill="${col(d.n)}" opacity="0.28" data-tt="<b>${esc(d.n)}</b>: US$ ${fmtB(d.v)}"></path>`;
+    cy += h1;
+  }
+  // col 3: companies (offsets computed BEFORE drawing ribbons)
+  const compSum = top.reduce((s,c)=>s+c.v,0);
+  const cScale = (H-2*pad-top.length*4)/compSum;
+  let yy = pad, ribbons2 = "";
+  for (const c of top){
+    c.h = Math.max(3,c.v*cScale); c.y = yy;
+    const partsSorted = [...c.parts].sort((a,b)=>b.v-a.v);
+    let off = 0;
+    for (const p of partsSorted){ p._oy = off; off += (p.v/c.v)*c.h; }
+    // company stacked bar (2px surface gaps)
+    let px = x3;
+    for (const p of partsSorted){
+      const w = Math.max(1.5, (p.v/c.v)*colW - 1.5);
+      el += `<rect x="${px.toFixed(1)}" y="${yy}" width="${w.toFixed(1)}" height="${c.h}" rx="2" fill="${col(p.line)}"
+        data-tt="<b>${esc(c.n)}</b> · ${esc(p.line)}<br>US$ ${fmtB(p.v)}"></rect>`;
+      px += w+1.5;
+    }
+    el += `<text x="${x3+colW+8}" y="${yy+Math.max(c.h/2+3.5,9)}" font-size="11.5" fill="${css('--ink')}">${esc(c.n)} <tspan fill="${css('--muted')}" font-size="10.5">${fmtB(c.v)}</tspan></text>`;
+    // ribbons line -> company
+    for (const p of partsSorted){
+      const ld = lines.find(l=>l.n===p.line);
+      if (!ld) continue;
+      const ph1 = Math.max(0.8, Math.min(ld.h-ld._off, p.v*scale));
+      const ly = ld.y + ld._off; ld._off += ph1;
+      const ph2 = (p.v/c.v)*c.h, cy2 = c.y + p._oy;
+      ribbons2 += `<path d="M ${x2+colW/2} ${ly.toFixed(1)} C ${x3-90} ${ly.toFixed(1)}, ${x2+colW/2+90} ${cy2.toFixed(1)}, ${x3} ${cy2.toFixed(1)}
+        L ${x3} ${(cy2+ph2).toFixed(1)} C ${x2+colW/2+90} ${(cy2+ph2).toFixed(1)}, ${x3-90} ${(ly+ph1).toFixed(1)}, ${x2+colW/2} ${(ly+ph1).toFixed(1)} Z"
+        fill="${col(p.line)}" opacity="0.22" data-tt="${esc(p.line)} → <b>${esc(c.n)}</b><br>US$ ${fmtB(p.v)}"></path>`;
+    }
+    yy += c.h+4;
+  }
+  svg.innerHTML = ribbons + ribbons2 + el;
+  svg.querySelectorAll("[data-tt]").forEach(n=>{
+    n.addEventListener("mousemove",ev=>showTT(ev,n.dataset.tt));
+    n.addEventListener("mouseleave",hideTT);
+  });
+  $("flowlegend").innerHTML = Object.keys(DATA.lines).map(n=>`<span><i class="sw" style="background:${col(n)}"></i>${esc(n)}</span>`).join("")
+    + `<span style="color:var(--muted)">HBM (memo, dentro de Aceleradores) em violeta nas barras de empresa</span>`;
+}
+
+// ---------- LINE CARDS ----------
+function spark(vals, color){
+  const w=300,h=64,p=6; const vs = vals.map(v=>v==null?0:v*F);
+  const mx = Math.max(...vs,1);
+  const pts = vs.map((v,i)=>[p+i*(w-2*p)/(vs.length-1), h-p-(v/mx)*(h-2*p)]);
+  const line = pts.map((pt,i)=>(i?"L":"M")+pt[0].toFixed(1)+" "+pt[1].toFixed(1)).join(" ");
+  const area = line+` L ${pts[pts.length-1][0]} ${h-p} L ${pts[0][0]} ${h-p} Z`;
+  const yi = YI();
+  return `<svg width="${w}" height="${h}" role="img">
+    <path d="${area}" fill="${color}" opacity="0.13"></path>
+    <path d="${line}" fill="none" stroke="${color}" stroke-width="2"></path>
+    <circle cx="${pts[yi][0]}" cy="${pts[yi][1]}" r="4" fill="${color}" stroke="var(--surface)" stroke-width="2"></circle>
+  </svg>`;
+}
+function cagr(vals,a,b){ const i=DATA.years.indexOf(a), j=DATA.years.indexOf(b);
+  const x=vals[i], y=vals[j]; if(!x||!y) return "–";
+  return ((Math.pow(y/x,1/(b-a))-1)*100).toFixed(0)+"%"; }
+function renderLines(){
+  const i = YI();
+  const order = ["Aceleradores","Switching","Óptica","CPU","Storage","SmartNIC","Cobre","Outros (DDR/SSD/mobo)","Power & Cooling"];
+  let html = "";
+  for (const name of order){
+    const vals = DATA.lines[name]; if(!vals) continue;
+    const v = lineVal(name,i);
+    const comps = (DATA.companies[name==="Outros (DDR/SSD/mobo)"?"__none":name]||[]).map(c=>({n:c.n,v:(c.v[i]||0)*F})).filter(c=>c.v>0.05).sort((a,b)=>b.v-a.v).slice(0,4);
+    const cmax = comps.length?comps[0].v:1;
+    html += `<div class="card">
+      <h2><i class="sw" style="background:${col(name)};display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px"></i>${esc(name)}</h2>
+      <p class="h2s">CY${YEAR}: <b style="color:var(--ink)">US$ ${fmtB(v)}</b> · CAGR 25-28 ${cagr(vals,2025,2028)} · 28-35 ${cagr(vals,2028,2035)}</p>
+      ${spark(vals,col(name))}
+      ${comps.map(c=>`<div style="display:flex;align-items:center;gap:8px;margin-top:5px">
+        <span style="font-size:11.5px;color:var(--ink2);width:118px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(c.n)}</span>
+        <div style="flex:1;background:var(--grid);border-radius:3px;height:9px"><div style="width:${(c.v/cmax*100).toFixed(1)}%;background:${col(name)};height:9px;border-radius:3px"></div></div>
+        <span style="font-size:11px;font-variant-numeric:tabular-nums;color:var(--ink2);width:52px;text-align:right">${fmtB(c.v)}</span></div>`).join("")}
+    </div>`;
+    if (name==="Aceleradores"){
+      const hv = DATA.hbm_memo[i]*F;
+      html += `<div class="card" style="border-style:dashed">
+        <h2><i class="sw" style="background:${col("HBM (memo)")};display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px"></i>HBM — memo (dentro de Aceleradores)</h2>
+        <p class="h2s">CY${YEAR}: <b style="color:var(--ink)">US$ ${fmtB(hv)}</b> · não somar ao TAM · calibrado no canônico $35bn CY25</p>
+        ${spark(DATA.hbm_memo,col("HBM (memo)"))}
+        ${(DATA.companies["HBM (memo)"]||[]).map(c=>({n:c.n,v:(c.v[i]||0)*F})).sort((a,b)=>b.v-a.v).map(c=>`<div style="display:flex;align-items:center;gap:8px;margin-top:5px">
+          <span style="font-size:11.5px;color:var(--ink2);width:118px">${esc(c.n)}</span>
+          <div style="flex:1;background:var(--grid);border-radius:3px;height:9px"><div style="width:${(c.v/((DATA.companies["HBM (memo)"][0].v[i]||1)*F)*100).toFixed(1)}%;background:${col("HBM (memo)")};height:9px;border-radius:3px"></div></div>
+          <span style="font-size:11px;font-variant-numeric:tabular-nums;color:var(--ink2);width:52px;text-align:right">${fmtB(c.v)}</span></div>`).join("")}
+      </div>`;
+    }
+  }
+  $("linecards").innerHTML = html;
+}
+
+// ---------- COMPANIES ----------
+let sortKey = "impl", sortDir = -1;
+function renderComp(){
+  const i = YI();
+  const agg = companyAgg(i);
+  const rows = DATA.rollup.map(r=>{
+    const star = /WFE/.test(r.note) && !/TSM/.test(r.n);
+    const parts = agg[ROLLKEY[r.n]] || agg[r.n] || [];
+    const implBase = ({2025:r.cy25,2026:r.cy26,2027:r.cy27,2028:r.cy28,2030:r.cy30,2035:r.cy35})[YEAR];
+    const impl = implBase==null?null:implBase*(star?1:F);
+    const pct26 = r.cons26? (r.cy26*(star?1:F))/r.cons26 : null;
+    const pct27 = r.cons27? (r.cy27*(star?1:F))/r.cons27 : null;
+    return {n:r.n+(star?" *":""), impl, parts, pct26, pct27, sens: pct27==null?null:-0.2*pct27, note:r.note};
+  }).filter(r=>r.impl!=null && r.impl>0.05);
+  rows.sort((a,b)=>{ const k=sortKey; const av=a[k]==null?-1:a[k], bv=b[k]==null?-1:b[k]; return (av<bv?1:av>bv?-1:0)*(-sortDir); });
+  const mx = Math.max(...rows.map(r=>r.impl));
+  const head = [["n","Empresa","l"],["impl","Implícito CY"+YEAR],["mix","Mix por linha","l"],["pct26","% cons 26"],["pct27","% cons 27"],["sens","Δ capex −20%"]];
+  let html = "<thead><tr>"+head.map(([k,l,cl])=>`<th class="${cl||""}" data-k="${k}">${l}</th>`).join("")+"</tr></thead><tbody>";
+  for (const r of rows){
+    const segs = [...r.parts].sort((a,b)=>b.v-a.v).map(p=>`<i style="width:${Math.max(1,(p.v*(1))/mx*260)}px;background:${col(p.line)}" title="${esc(p.line)}: ${fmtB(p.v)}"></i>`).join("");
+    html += `<tr data-tt="<b>${esc(r.n)}</b><br>${[...r.parts].sort((a,b)=>b.v-a.v).map(p=>esc(p.line)+": <b>"+fmtB(p.v)+"</b>").join("<br>")}<br><span style='color:var(--muted)'>${esc(r.note)}</span>">
+      <td class="l">${esc(r.n)}</td>
+      <td><b>${fmtB(r.impl)}</b></td>
+      <td class="l"><div class="bar">${segs}</div></td>
+      <td>${fmtP(r.pct26)}</td><td>${fmtP(r.pct27)}</td>
+      <td style="color:${r.sens!=null&&r.sens<-0.1?css('--crit'):'inherit'}">${r.sens==null?"–":(r.sens*100).toFixed(1)+" pp"}</td></tr>`;
+  }
+  $("comptable").innerHTML = html+"</tbody>";
+  document.querySelectorAll("#comptable th").forEach(th=>th.onclick=()=>{
+    const k = th.dataset.k; if(k==="mix"||k==="n") return;
+    if (sortKey===k) sortDir*=-1; else {sortKey=k; sortDir=-1;}
+    renderComp();
+  });
+  document.querySelectorAll("#comptable tr[data-tt]").forEach(n=>{
+    n.addEventListener("mousemove",ev=>showTT(ev,n.dataset.tt));
+    n.addEventListener("mouseleave",hideTT);
+  });
+  $("complegend").innerHTML = Object.keys(LINECOLORS).filter(k=>k!=="Upstream").map(n=>`<span><i class="sw" style="background:${col(n)}"></i>${esc(n)}</span>`).join("");
+}
+
+// ---------- PHYSICS ----------
+function gauge(label, val, band, sub){
+  const pct = Math.min(1.45, val), w=100;
+  const status = val<=band[1]&&val>=band[0] ? "ok" : (val>band[1]*1.15||val<band[0]*0.85 ? "crit":"warn");
+  const color = status==="ok"?css("--good"):status==="warn"?css("--warn"):css("--crit");
+  return `<div style="margin:10px 0">
+    <div style="display:flex;justify-content:space-between;font-size:12px"><span>${esc(label)}</span><b style="font-variant-numeric:tabular-nums;color:${color}">${fmtP(val)}</b></div>
+    <div style="background:var(--grid);border-radius:4px;height:10px;position:relative;margin-top:4px">
+      <div style="width:${(Math.min(pct/1.45,1)*100).toFixed(1)}%;background:${color};height:10px;border-radius:4px"></div>
+      <div style="position:absolute;left:${(1/1.45*100).toFixed(1)}%;top:-2px;width:2px;height:14px;background:var(--axis)"></div>
+    </div>
+    <div style="font-size:10.5px;color:var(--muted);margin-top:3px">${esc(sub)}</div></div>`;
+}
+function renderPhys(){
+  const i = YI(), pi = Math.max(0,i-1);
+  const gwT = DATA.gw.total[i]*F, gwN = DATA.gw.nvda[i]*F, gwA = DATA.gw.asic[i]*F, gwAmd = DATA.gw.amd[i]*F;
+  $("phystiles").innerHTML = [
+    ["GW adicionados / ano", gwT.toFixed(1)+" GW", "NVDA "+gwN.toFixed(1)+" · ASIC "+gwA.toFixed(1)+" · AMD "+gwAmd.toFixed(1)],
+    ["GW acumulado desde CY23", (DATA.gw.cum[i]*F).toFixed(0)+" GW", "bruto, sem aposentadoria — BofA ~233 GW até CY30"],
+    ["TSM receita IA", "US$ "+fmtB(DATA.tsm.ai_rev[i]*F), "capture 0.10 × silício designers"],
+    ["Unidades aceleradores", ((DATA.units.nvda[i]+DATA.units.amd[i]+DATA.units.asic[i])*F/1000).toFixed(1)+" M", "NVDA "+(DATA.units.nvda[i]*F/1000).toFixed(1)+"M · ASIC "+(DATA.units.asic[i]*F/1000).toFixed(1)+"M"],
+  ].map(([k,v,d])=>`<div class="tile"><div class="k">${k}</div><div class="v" style="font-variant-numeric:tabular-nums">${v}</div><div class="d">${d}</div></div>`).join("");
+  // gauges
+  const cowosCap = ((DATA.cowos.cap_end[pi]||DATA.cowos.cap_end[i])+DATA.cowos.cap_end[i])/2*12;
+  const cowosU = DATA.cowos.demand[i]*F/cowosCap;
+  const n3cap = ((DATA.n3n2.cap_end[pi]||DATA.n3n2.cap_end[i])+DATA.n3n2.cap_end[i])/2;
+  const n3U = (DATA.n3n2.ai[i]*F + DATA.n3n2.phone[i] + DATA.n3n2.cpu_net[i])/n3cap;
+  const hbmGap = F-1;
+  $("gauges").innerHTML =
+    gauge("CoWoS (TSMC-only)", cowosU, [0.85,1.10], ">100% = overflow p/ OSAT; >120% = plano fisicamente inentregável")
+    + gauge("N3/N2 total (IA + smartphone + CPU)", n3U, [0.5,0.95], "acima de 95%: Apple deslocada ou preço/capacidade sobem — Redburn: gap 15-20% em 2027")
+    + gauge("HBM: demanda vs oferta", 1+Math.max(0,hbmGap), [0.99,1.01], hbmGap>0.001?"corte de margem pede +"+(hbmGap*100).toFixed(0)+"% de bits num mercado sold-out":"base: demanda = oferta (sold-out)");
+  // content per GW table
+  let ct = "<thead><tr><th class='l'>Camada</th>"+[2026,2027,2028,2030].map(y=>`<th>${y}</th>`).join("")+"</tr></thead><tbody>";
+  for (const [k,vals] of Object.entries(DATA.cgw)){
+    ct += `<tr><td class="l">${esc(k)}</td>`+[2026,2027,2028,2030].map(y=>{const v=vals[DATA.years.indexOf(y)];return `<td>${v==null?"–":"$"+v.toFixed(1)}</td>`;}).join("")+"</tr>";
+  }
+  $("cgwtable").innerHTML = ct+"</tbody>";
+  // memory bridge (static, CY27 + selected)
+  const mi = DATA.years.indexOf(2027);
+  const mb = DATA.memory_bridge;
+  const legs = [["Mapeado no TAM de sistemas", mb.mapped[mi], "--c5"],["Reprecificação HBM", mb.hbm_uplift[mi], "--c1"],
+    ["Reprecificação NAND", mb.nand_uplift[mi], "--c6"],["Frota (fora do escopo IA)", mb.fleet[mi], "--neut2"]];
+  const tot = mb.total[mi];
+  $("membridge").innerHTML = `<div class="bar" style="height:22px;margin:8px 0">${legs.map(([n,v,c])=>`<i style="width:${(v/tot*100).toFixed(1)}%;background:${css(c)}" title="${n}: ${fmtB(v)}"></i>`).join("")}</div>
+    <div style="font-size:12px;color:var(--ink2)">CY27: <b style="color:var(--ink)">US$ ${fmtB(tot)}</b> = ${fmtP(mb.pct_street[mi])} do capex street <span style="color:var(--muted)">(alvo ${fmtP(mb.target[mi])} — JPM/KB/GS)</span></div>
+    <div class="legend">${legs.map(([n,,c])=>`<span><i class="sw" style="background:${css(c)}"></i>${esc(n)}</span>`).join("")}</div>`;
+  // checks
+  $("checks").innerHTML = DATA.checks.map(c=>{
+    const ok = c.v!=null && c.v>=c.band[0] && c.v<=c.band[1];
+    const cls = ok?"p-ok":(c.v!=null && (c.v<c.band[0]*1.3||c.v<=c.band[1]*1.3))?"p-warn":"p-crit";
+    return `<div class="checkrow"><div><div>${esc(c.lab)}</div><div class="s">${esc(c.src)}</div></div>
+      <span class="pill ${ok?"p-ok":"p-warn"}">${ok?"OK":"CHECK"} · ${fmtP(c.v)}</span></div>`;
+  }).join("");
+}
+
+function renderFoot(){
+  $("foot").innerHTML = `Fonte: <b>${DATA.file}</b> (cenário base, knobs zerados, ${DATA.asof}) — TAMs = capex × mix BofA × capture calibrado (CY25 ≈ dólares publicados/reportados). O slider escala linearmente todas as linhas ligadas ao cenário (mix, capture e margens fixos); knobs de GM, ratio CPU 1:1 e cenários nomeados vivem no xlsx. Linhas marcadas com * (bloco WFE) não respondem ao slider. Consenso BBG via estimates.json (2026-07-02, FX aprox.). HBM é memo dentro de Aceleradores — nunca somar ao TAM. Atribuição completa (broker/analista + data) nos comentários das células do workbook. Uso interno Capstone.`;
+}
+
+function renderAll(){ renderMeta(); renderChips(); renderFlow(); renderLines(); renderComp(); renderPhys(); renderFoot(); }
+$("fslider").addEventListener("input", e=>{ F = e.target.value/100; renderAll(); });
+renderTabs(); renderAll();
+</script>
+</body>
+</html>
