@@ -108,7 +108,22 @@ tbody tr:hover{background:color-mix(in srgb,var(--accent) 6%,transparent)}
     <div class="tabs" role="tablist" id="tabs"></div>
   </div>
 
-  <section id="sec-flow" class="on">
+  <section id="sec-ov" class="on">
+    <div class="grid g4" id="ovtiles" style="margin-bottom:14px"></div>
+    <div class="card" style="margin-bottom:14px">
+      <h2>O mapa inteiro — TAM por linha, CY23-35</h2>
+      <p class="h2s">áreas empilhadas = linhas calibradas (inclui Power &amp; Cooling; HBM não somado — é memo) · linha sólida = capex house · tracejada = capex street (cenário 3). Passe o mouse nos anos.</p>
+      <div class="scroll"><svg id="ovarea" width="1140" height="300" role="img" aria-label="TAM empilhado por linha e capex"></svg></div>
+      <div class="legend" id="ovlegend"></div>
+    </div>
+    <div class="card">
+      <h2>Overview geral — índice do mapa (espírito do Build | Overview do v9)</h2>
+      <p class="h2s">TAM calibrado por linha ($bn) · players âncora · CAGRs. Linhas em itálico não somam ao TAM de sistemas.</p>
+      <div class="scroll"><table id="ovtable"></table></div>
+    </div>
+  </section>
+
+  <section id="sec-flow">
     <div class="card">
       <h2>Fluxo do capex — <span class="yr"></span></h2>
       <p class="h2s">capex ativo → linhas de produto (TAM calibrado, $bn) → top empresas por receita implícita. Passe o mouse nas fitas.</p>
@@ -186,7 +201,7 @@ function renderChips(){
   $("yearchips").innerHTML = YEARS_SHOWN.map(y=>`<button class="chip" aria-pressed="${y===YEAR}" data-y="${y}">${y}</button>`).join("");
   document.querySelectorAll("#yearchips .chip").forEach(b=>b.onclick=()=>{YEAR=+b.dataset.y; renderAll();});
 }
-const TABS = [["sec-flow","Fluxo"],["sec-lines","Linhas de produto"],["sec-comp","Empresas"],["sec-phys","Física & checks"]];
+const TABS = [["sec-ov","Overview"],["sec-flow","Fluxo"],["sec-lines","Linhas de produto"],["sec-comp","Empresas"],["sec-phys","Física & checks"]];
 function renderTabs(){
   $("tabs").innerHTML = TABS.map(([id,l],i)=>`<button class="tabbtn" role="tab" aria-selected="${document.getElementById(id).classList.contains("on")}" data-t="${id}">${l}</button>`).join("");
   document.querySelectorAll(".tabbtn").forEach(b=>b.onclick=()=>{
@@ -222,6 +237,95 @@ const ROLLKEY = {"NVDA":"NVDA","AMD":"AMD","AVGO":"AVGO","MRVL":"MRVL","MEDIATEK
   "KIOXIA + SNDK":"Kioxia+SNDK","Innolight":"Innolight","Eoptolink":"Eoptolink","COHR":"Coherent","AAOI":"AOI",
   "LITE":"Lumentum","APH":"Amphenol","TEL (TE Conn)":"TE Conn","CRDO":"Credo","ALAB":"Astera",
   "VRT":"Vertiv","ETN":"Eaton","NVT":"nVent"};
+
+// ---------- OVERVIEW ----------
+const OV_ORDER = ["Aceleradores","Switching","Óptica","CPU","Storage","SmartNIC","Cobre","Outros (DDR/SSD/mobo)","Power & Cooling"];
+const PLAYERS = {
+ "Aceleradores":"NVDA · AMD · ASICs: AVGO / MRVL / MediaTek / Alchip",
+ "Switching":"NVDA · Arista · AVGO silício · Cisco · whitebox",
+ "Óptica":"Innolight · Eoptolink · Coherent · Lumentum",
+ "CPU":"Intel · AMD · NVDA Grace · ARM cativo",
+ "Storage":"Samsung · Hynix+Solidigm · Micron · Kioxia+SanDisk",
+ "SmartNIC":"NVDA ConnectX · AMD Pensando · Intel · cativo",
+ "Cobre":"DAC: APH+TE · ACC: MRVL+CRDO · AEC: CRDO ~80% / ALAB ~14%",
+ "Outros (DDR/SSD/mobo)":"slice de memória — ver ponte de memória",
+ "Power & Cooling":"Vertiv · Eaton · Schneider · nVent (fora do TAM de sistemas)",
+ "HBM (memo)":"SK Hynix · Samsung · Micron — memo dentro de Aceleradores",
+ "TSM (IA)":"capture 0.10 × silício designers — física CoWoS/N3-N2 no xlsx",
+ "Memória total (CSP)":"ponte: mapeado + reprecificação HBM/NAND + frota — % do capex street"};
+function ovArea(){
+  const w=1140,h=300,pL=52,pR=12,pT=12,pB=20,n=DATA.years.length;
+  const capexS = DATA.capex.map(v=>v*F);
+  const mx = Math.max(...capexS)*1.04;
+  const X = i => pL + i*(w-pL-pR)/(n-1);
+  const Y = v => pT + (1-v/mx)*(h-pT-pB);
+  let g = "";
+  for (let k=1;k<=4;k++){ const v = mx*k/4;
+    g += `<line x1="${pL}" y1="${Y(v)}" x2="${w-pR}" y2="${Y(v)}" stroke="${css('--grid')}" stroke-width="1"></line>
+          <text x="${pL-6}" y="${Y(v)+3.5}" text-anchor="end" font-size="10" fill="${css('--muted')}">${v>=1000?(v/1000).toFixed(1)+"T":v.toFixed(0)}</text>`; }
+  let cum = DATA.years.map(()=>0), areas = "";
+  for (const name of OV_ORDER){
+    const vals = DATA.years.map((_,i)=>lineVal(name,i)||0);
+    const c0 = [...cum]; cum = cum.map((v,i)=>v+vals[i]);
+    const topPts = cum.map((v,i)=>`${X(i).toFixed(1)} ${Y(v).toFixed(1)}`);
+    const botPts = c0.map((v,i)=>`${X(i).toFixed(1)} ${Y(v).toFixed(1)}`).reverse();
+    areas += `<path d="M ${topPts.join(" L ")} L ${botPts.join(" L ")} Z" fill="${col(name)}" opacity="0.82" stroke="${css('--surface')}" stroke-width="1"></path>`;
+  }
+  const lineP = arr => arr.map((v,i)=>(i?"L":"M")+X(i).toFixed(1)+" "+Y(v).toFixed(1)).join(" ");
+  const capexLine = `<path d="${lineP(capexS)}" fill="none" stroke="${css('--ink')}" stroke-width="2"></path>`;
+  const streetLine = `<path d="${lineP(DATA.capex_street)}" fill="none" stroke="${css('--muted')}" stroke-width="1.6" stroke-dasharray="5 4"></path>`;
+  let xlab = "", hov = "";
+  DATA.years.forEach((yr,i)=>{
+    if (i%2===0) xlab += `<text x="${X(i)}" y="${h-4}" text-anchor="middle" font-size="10" fill="${css('--muted')}">${String(yr).slice(2)}</text>`;
+    const tot = cum[i], parts = OV_ORDER.map(nm=>({nm,v:lineVal(nm,i)||0})).sort((a,b)=>b.v-a.v).slice(0,4);
+    hov += `<rect x="${(X(i)-(w-pL-pR)/(n-1)/2).toFixed(1)}" y="${pT}" width="${((w-pL-pR)/(n-1)).toFixed(1)}" height="${h-pT-pB}" fill="transparent"
+      data-tt="<b>CY${yr}</b><br>Capex: <b>US$ ${fmtB(capexS[i])}</b> · street US$ ${fmtB(DATA.capex_street[i])}<br>TAM mapeado: <b>US$ ${fmtB(tot)}</b> (${fmtP(tot/capexS[i])})<br>${parts.map(p=>esc(p.nm)+": "+fmtB(p.v)).join("<br>")}"></rect>`;
+    if (yr===YEAR) hov += `<line x1="${X(i)}" y1="${pT}" x2="${X(i)}" y2="${h-pB}" stroke="${css('--axis')}" stroke-width="1.5" stroke-dasharray="2 3"></line>`;
+  });
+  $("ovarea").innerHTML = g + areas + capexLine + streetLine + xlab + hov;
+  $("ovarea").querySelectorAll("[data-tt]").forEach(nd=>{
+    nd.addEventListener("mousemove",ev=>showTT(ev,nd.dataset.tt));
+    nd.addEventListener("mouseleave",hideTT);
+  });
+  $("ovlegend").innerHTML = OV_ORDER.map(nm=>`<span><i class="sw" style="background:${col(nm)}"></i>${esc(nm)}</span>`).join("")
+    + `<span><i class="sw" style="background:${css('--ink')}"></i>Capex house</span><span><i class="sw" style="background:${css('--muted')}"></i>Capex street</span>`;
+}
+function renderOv(){
+  const i = YI();
+  const capex = DATA.capex[i]*F;
+  const sys = OV_ORDER.filter(nm=>nm!=="Power & Cooling").reduce((s,nm)=>s+(lineVal(nm,i)||0),0);
+  const acc = lineVal("Aceleradores",i)||0;
+  const okN = DATA.checks.filter(c=>c.v!=null&&c.v>=c.band[0]&&c.v<=c.band[1]).length;
+  const mi27 = DATA.years.indexOf(2027);
+  $("ovtiles").innerHTML = [
+    ["Capex ativo CY"+YEAR, "US$ "+fmtB(capex), F===1?"cenário base (house)":"base "+(F>1?"+":"")+Math.round((F-1)*100)+"%"],
+    ["TAM de sistemas mapeado", "US$ "+fmtB(sys), fmtP(sys/capex)+" do capex · resto = shells/terra/geração"],
+    ["Aceleradores", "US$ "+fmtB(acc), fmtP(acc/sys)+" do TAM · HBM memo US$ "+fmtB(DATA.hbm_memo[i]*F)],
+    ["GW de computação / ano", (DATA.gw.total[i]*F).toFixed(1)+" GW", "acumulado "+(DATA.gw.cum[i]*F).toFixed(0)+" GW desde CY23"],
+    ["Memória total CSP (CY27)", "US$ "+fmtB(DATA.memory_bridge.total[mi27]), fmtP(DATA.memory_bridge.pct_street[mi27])+" do capex street · alvo "+fmtP(DATA.memory_bridge.target[mi27])],
+    ["Checks vs material", okN+" / "+DATA.checks.length+" OK", "detalhe na aba Física & checks"],
+  ].map(([k,v,d])=>`<div class="tile"><div class="k">${k}</div><div class="v" style="font-variant-numeric:tabular-nums">${v}</div><div class="d">${d}</div></div>`).join("");
+  ovArea();
+  const YRS = [2025,2026,2027,2028,2030,2035];
+  let ht = `<thead><tr><th class="l">Linha</th><th class="l">Players âncora</th>`+YRS.map(y=>`<th>${y}</th>`).join("")+`<th>CAGR 25-28</th><th>CAGR 28-35</th></tr></thead><tbody>`;
+  const rowsDef = OV_ORDER.map(nm=>({nm, vals: DATA.years.map((_,j)=>lineVal(nm,j)), italic:false}))
+    .concat([{nm:"HBM (memo)", vals: DATA.years.map((_,j)=>DATA.hbm_memo[j]*F), italic:true},
+             {nm:"TSM (IA)", vals: DATA.years.map((_,j)=>DATA.tsm.ai_rev[j]*F), italic:true},
+             {nm:"Memória total (CSP)", vals: DATA.memory_bridge.total, italic:true}]);
+  for (const r of rowsDef){
+    const raw = r.vals.map(v=>v==null?null:v);
+    ht += `<tr style="${r.italic?"font-style:italic;color:var(--ink2)":""}">
+      <td class="l"><i class="sw" style="background:${col(r.nm)};display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px"></i>${esc(r.nm)}</td>
+      <td class="l" style="font-size:11px;color:var(--muted);max-width:260px;white-space:normal">${esc(PLAYERS[r.nm]||"")}</td>`
+      + YRS.map(y=>{const v = raw[DATA.years.indexOf(y)]; return `<td style="${y===YEAR?"font-weight:700":""}">${v==null?"–":fmtB(v)}</td>`;}).join("")
+      + `<td>${cagr(raw,2025,2028)}</td><td>${cagr(raw,2028,2035)}</td></tr>`;
+  }
+  const sysRow = DATA.years.map((_,j)=>OV_ORDER.filter(nm=>nm!=="Power & Cooling").reduce((s,nm)=>s+(lineVal(nm,j)||0),0));
+  ht += `<tr style="font-weight:700;border-top:2px solid var(--axis)"><td class="l">TAM de sistemas (soma)</td><td class="l" style="font-size:11px;color:var(--muted)">ex-Power &amp; Cooling · HBM não somado</td>`
+    + YRS.map(y=>`<td>${fmtB(sysRow[DATA.years.indexOf(y)])}</td>`).join("")
+    + `<td>${cagr(sysRow,2025,2028)}</td><td>${cagr(sysRow,2028,2035)}</td></tr></tbody>`;
+  $("ovtable").innerHTML = ht;
+}
 
 // ---------- FLOW ----------
 function renderFlow(){
@@ -454,7 +558,7 @@ function renderFoot(){
   $("foot").innerHTML = `Fonte: <b>${DATA.file}</b> (cenário base, knobs zerados, ${DATA.asof}) — TAMs = capex × mix BofA × capture calibrado (CY25 ≈ dólares publicados/reportados). O slider escala linearmente todas as linhas ligadas ao cenário (mix, capture e margens fixos); knobs de GM, ratio CPU 1:1 e cenários nomeados vivem no xlsx. Linhas marcadas com * (bloco WFE) não respondem ao slider. Consenso BBG via estimates.json (2026-07-02, FX aprox.). HBM é memo dentro de Aceleradores — nunca somar ao TAM. Atribuição completa (broker/analista + data) nos comentários das células do workbook. Uso interno Capstone.`;
 }
 
-function renderAll(){ renderMeta(); renderChips(); renderFlow(); renderLines(); renderComp(); renderPhys(); renderFoot(); }
+function renderAll(){ renderMeta(); renderChips(); renderOv(); renderFlow(); renderLines(); renderComp(); renderPhys(); renderFoot(); }
 $("fslider").addEventListener("input", e=>{ F = e.target.value/100; renderAll(); });
 renderTabs(); renderAll();
 </script>
