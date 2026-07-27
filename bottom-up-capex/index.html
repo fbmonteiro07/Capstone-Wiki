@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bottom-Up AI Capex — units × content × price</title>
+</head>
+<body>
+
+<style>
+:root{
+  --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,.10);
+  --c1:#2a78d6; --c2:#eb6834; --c3:#1baf7a; --c4:#eda100; --c5:#e87ba4; --c6:#008300; --c7:#4a3aa7; --c8:#e34948;
+  --good:#0ca30c; --warn:#b97f00; --crit:#d03b3b; --accent:#2a78d6;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --page:#0d0d0d; --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.10);
+  --c1:#3987e5; --c2:#d95926; --c3:#199e70; --c4:#c98500; --c5:#d55181; --c6:#008300; --c7:#9085e9; --c8:#e66767;
+  --good:#2fbf2f; --warn:#fab219; --crit:#e66767; --accent:#3987e5;
+}}
+:root[data-theme="dark"]{
+  --page:#0d0d0d; --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.10);
+  --c1:#3987e5; --c2:#d95926; --c3:#199e70; --c4:#c98500; --c5:#d55181; --c6:#008300; --c7:#9085e9; --c8:#e66767;
+  --good:#2fbf2f; --warn:#fab219; --crit:#e66767; --accent:#3987e5;
+}
+*{box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;margin:0}
+.app{max-width:1240px;margin:0 auto;padding:20px 22px 60px}
+.hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;margin-bottom:2px}
+.hd h1{font-size:21px;font-weight:600;letter-spacing:-.01em;margin:0;text-wrap:balance}
+.hd .sub{color:var(--ink2);font-size:12.5px}
+.meta{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.controls{position:sticky;top:0;z-index:30;background:var(--page);padding:10px 0 12px;border-bottom:1px solid var(--grid);
+  display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;margin-bottom:18px}
+.ctl{display:flex;align-items:center;gap:10px}
+.ctl label{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--ring);background:var(--surface);color:var(--ink2);border-radius:999px;
+  padding:4px 11px;font-size:12px;cursor:pointer;font-variant-numeric:tabular-nums;transition:background .12s}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.chip:focus-visible,.tabbtn:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:4px;flex-wrap:wrap}
+.tabbtn{border:0;background:none;color:var(--ink2);font-size:13px;padding:6px 12px;cursor:pointer;border-radius:7px}
+.tabbtn[aria-selected="true"]{background:var(--surface);color:var(--ink);font-weight:600;box-shadow:inset 0 0 0 1px var(--ring)}
+section{display:none}
+section.on{display:block}
+.card{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:14px 16px}
+h2{font-size:14px;font-weight:600;margin:0 0 2px}
+.h2s{color:var(--muted);font-size:11.5px;margin:0 0 12px;line-height:1.5}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fill,minmax(430px,1fr))}
+.g3{grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
+.g5{grid-template-columns:repeat(auto-fill,minmax(212px,1fr))}
+.tile .lab{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px}
+.tile .val{font-size:24px;font-weight:650;letter-spacing:-.01em}
+.tile .sub{font-size:11.5px;color:var(--ink2);margin-top:4px;font-variant-numeric:tabular-nums;line-height:1.45}
+.badge{display:inline-block;border-radius:6px;padding:1px 7px;font-size:11px;font-weight:600;font-variant-numeric:tabular-nums;vertical-align:1px}
+.b-good{background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good)}
+.b-warn{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
+.b-crit{background:color-mix(in srgb,var(--crit) 14%,transparent);color:var(--crit)}
+.b-mut{background:color-mix(in srgb,var(--muted) 16%,transparent);color:var(--ink2)}
+.b-acc{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0 4px;font-size:11.5px;color:var(--ink2)}
+.legend .sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.legend .lk{display:inline-block;width:14px;height:0;border-top:2px solid;margin-right:5px;vertical-align:3px}
+svg{display:block;width:100%;height:auto}
+svg text{font-family:inherit}
+.tt{position:fixed;pointer-events:none;background:var(--surface);border:1px solid var(--ring);border-radius:8px;
+  padding:8px 10px;font-size:11.5px;box-shadow:0 4px 18px rgba(0,0,0,.13);z-index:60;display:none;min-width:160px;max-width:320px}
+.tt .y{font-weight:650;margin-bottom:4px}
+.tt .row{display:flex;justify-content:space-between;gap:14px;font-variant-numeric:tabular-nums}
+.tt .row .n{color:var(--ink2)}
+details.tbl{margin-top:10px;font-size:12px}
+details.tbl summary{cursor:pointer;color:var(--muted);font-size:11.5px}
+.dtable{width:100%;border-collapse:collapse;margin-top:8px;font-variant-numeric:tabular-nums;font-size:11.5px}
+.dtable th,.dtable td{text-align:right;padding:3px 7px;border-bottom:1px solid var(--grid);white-space:nowrap}
+.dtable th:first-child,.dtable td:first-child{text-align:left}
+.dtable thead th{color:var(--muted);font-weight:600}
+.note{font-size:12px;color:var(--ink2);line-height:1.55;margin:8px 0 0}
+.note b{color:var(--ink)}
+.callout{border-left:3px solid var(--warn);padding:2px 0 2px 12px;margin:10px 0 0;font-size:12px;color:var(--ink2);line-height:1.55}
+.callout.info{border-left-color:var(--accent)}
+.callout b{color:var(--ink)}
+.checkhd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.checkhd h3{margin:0;font-size:13.5px;font-weight:600}
+.checkhd .src{color:var(--muted);font-size:11px}
+.ratios{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 2px}
+.ratio{border:1px solid var(--ring);border-radius:8px;padding:5px 10px;font-size:12px;background:color-mix(in srgb,var(--surface) 60%,transparent)}
+.ratio .k{color:var(--muted);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;display:block}
+.ratio .v{font-weight:650;font-size:15px;font-variant-numeric:tabular-nums}
+.gradeline{display:grid;grid-template-columns:150px 60px 1fr;gap:10px;align-items:baseline;padding:9px 4px;border-bottom:1px solid var(--grid);font-size:12.5px}
+.gradeline .nm{font-weight:600}
+.gradeline .note2{color:var(--ink2);font-size:11.8px;line-height:1.5}
+.openitem{display:grid;grid-template-columns:14px 1fr;gap:10px;padding:9px 4px;border-bottom:1px solid var(--grid);font-size:12.5px;line-height:1.5}
+.openitem .dot{width:9px;height:9px;border-radius:50%;margin-top:4px}
+.openitem b{font-weight:600}
+.openitem .why{color:var(--ink2);font-size:11.8px}
+.foot{color:var(--muted);font-size:11px;margin-top:26px;line-height:1.7}
+.foot b{color:var(--ink2)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+@media print{.controls{position:static}.chip,.tabbtn{display:none}section{display:block!important}}
+</style>
+<div class="app">
+  <div class="hd">
+    <h1>Bottom-Up AI Capex — units × content × price</h1>
+    <span class="sub">sum of the physical lines → implied <b>all-buyer, total-DC</b> capex · top-down paths are checks, not engines</span>
+    <span class="meta" id="meta"></span>
+  </div>
+  <div class="controls">
+    <div class="ctl"><label>Horizon</label><div class="chips" id="hzChips" role="group" aria-label="Horizon"></div></div>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <button class="chip" id="themeBtn" title="Toggle light/dark" style="margin-left:auto">◐ theme</button>
+  </div>
+
+  <!-- ===================== OVERVIEW ===================== -->
+  <section id="tab-overview" class="on">
+    <div class="grid g5" id="tiles" style="margin-bottom:14px"></div>
+    <div class="grid g2">
+      <div class="card" style="grid-column:1/-1">
+        <h2>Implied bottom-up capex vs the top-down paths ($bn)</h2>
+        <p class="h2s">The blue line is the sum of six physical builds (accelerators, CPUs+servers, direct-purchase memory, network, infra equipment, non-IT shell/energy). The four thin lines are <b>checks</b>: Street five-name consensus (BBG MSFT/AMZN/GOOGL/META/ORCL), JPM “AI Capex 2.0” (06-16), the Capstone house AI Model, and the wiki all-buyer estimate (top-4 + ORCL + neocloud + sovereign + China). Only the all-buyer line shares this total's scope.</p>
+        <div id="pathLegend" class="legend"></div>
+        <div id="pathChart"></div>
+        <details class="tbl"><summary>data table</summary><div id="pathTable" style="overflow-x:auto"></div></details>
+        <div class="callout"><b>CY27 $1.98T is three stacked bulls, disclosed:</b> accelerators on the house path (+$190bn vs JPM), memory at realized prices (+$60–135bn vs contract blends), and non-IT at $13.5M/MW (+13% vs Mizuho ~$50bn/GW all-in). With accelerators on the JPM path the implied total falls to <b>~$1.7T</b>. Do <b>not</b> compare 1:1 with the AI-scoped $1.2–1.4T buy-side bogey — this total is all-buyer <i>and</i> total-DC (it includes the general-purpose fleet and the facility).</div>
+      </div>
+      <div class="card" style="grid-column:1/-1">
+        <h2>Bottom-up ÷ each path (×)</h2>
+        <p class="h2s">Street/JPM/house are AI-scoped in CY23-25, so the ratio is only like-for-like against the all-buyer line (magenta): <b>0.98× CY24 · 0.88× CY25 (hindcast ✓) · 1.13× CY26 · 1.37× CY27</b>. The CY26+ wedge = memory supercycle + house accelerator bull.</p>
+        <div id="ratioLegend" class="legend"></div>
+        <div id="ratioChart"></div>
+        <details class="tbl"><summary>data table</summary><div id="ratioTable" style="overflow-x:auto"></div></details>
+      </div>
+      <div class="card">
+        <h2>How this engine works</h2>
+        <p class="h2s">Method &amp; conventions</p>
+        <div class="note">Every line is <b>units × content × price</b> from the physical layer up — accelerator units from the house AI Model (hard to CY28), memory bits from UBS (05-12), network units/ASPs from the house Susquehanna-based deck, GW from units × kW × PUE. Top-down paths never feed the engine; they only grade it.</div>
+        <div class="note"><b>Anti-double-count conventions:</b> HBM + LPDDR travel <i>inside</i> accelerator ASPs (kept as memo lines); the memory line sums only what hyperscalers buy directly (server DDR5 + DC NAND + nearline HDD); NVDA revenue base is <b>Compute ex-networking</b> (swapping to DC-total would inject ~$125bn of double-count in CY27); Grace/Vera CPUs live inside NVDA Compute, so the CPU line counts merchant x86 only.</div>
+        <div class="note"><b>Audit trail:</b> 4 hostile skeptic passes (2026-07-16 → 07-24), PARTIAL→PASS after fixes; 204 source comments in the workbook, every datapoint carrying broker/analyst + date.</div>
+      </div>
+      <div class="card">
+        <h2>Reading the confidence</h2>
+        <p class="h2s">Grade of the total, by year</p>
+        <div class="note"><span class="badge b-good">CY25 — B</span>&nbsp; Hindcast: 0.88× the all-buyer estimate — a bottom-up assembled from mid-2026 sources under-counts a year everyone already reported. Acceptable.</div>
+        <div class="note"><span class="badge b-good">CY26 — B</span>&nbsp; Pieces carry closures (NVDA 1.01×, AMD 1.03×, MRVL 1.00×); 1.13× all-buyer = memory repricing that consensus capex lines haven't fully absorbed.</div>
+        <div class="note"><span class="badge b-warn">CY27 — B−</span>&nbsp; Stacks the house accelerator bull on realized memory prices. The honest range is <b>$1.7T (JPM accel) → $1.98T (house)</b>.</div>
+        <div class="note"><span class="badge b-mut">CY28 — C · CY29-35 — D</span>&nbsp; CY28 calibrated but EST-heavy; beyond that everything glides. Shown for shape, not for levels.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== THE BUILD ===================== -->
+  <section id="tab-build">
+    <div class="grid g2">
+      <div class="card" style="grid-column:1/-1">
+        <h2>The six physical lines ($bn · stacked)</h2>
+        <p class="h2s" id="stackSub">Toggle to % to see the mix shift: memory goes from ~14% of the build (CY25) to ~25% (CY27) on direct purchases alone — 37% counting HBM/LPDDR riding inside accelerator ASPs.</p>
+        <div class="ctl" style="margin-bottom:8px"><div class="chips" id="stackMode"></div></div>
+        <div id="stackLegend" class="legend"></div>
+        <div id="stackChart"></div>
+        <details class="tbl"><summary>data table</summary><div id="stackTable" style="overflow-x:auto"></div></details>
+      </div>
+      <div class="card" style="grid-column:1/-1">
+        <h2>Line-by-line: how each build is made</h2>
+        <p class="h2s">Confidence grades are for the anchored window (CY25-27); every line degrades to D in the CY29-35 glide.</p>
+        <div id="compCards" class="grid g3"></div>
+      </div>
+      <div class="card">
+        <h2>Memory — direct purchases vs the full supplier wallet ($bn)</h2>
+        <p class="h2s">Bars = what hyperscalers buy directly (sums into capex). Ink line = total supplier-side memory incl HBM + LPDDR that travel inside accelerator/rack ASPs (memo — summing it again would double-count).</p>
+        <div id="memLegend" class="legend"></div>
+        <div id="memChart"></div>
+        <details class="tbl"><summary>data table</summary><div id="memTable" style="overflow-x:auto"></div></details>
+        <div class="note">DDR5: UBS server bits (Total-DDR minus LPDDR — the identity the first skeptic enforced) × realized $11/$14 per GB CY26/27, 2×-audited; contract basis would add $60–70bn. NAND: physical EB × $/TB (SNDK floor $290/TB + UBS cadence; CY27 fork resolved at $400/TB base). HDD: EB × $/TB × ~85% cloud share.</div>
+      </div>
+      <div class="card">
+        <h2>Memory share of the implied capex</h2>
+        <p class="h2s">Supplier-side memory total ÷ implied capex (memo r24/r11) vs the accelerator share — the two biggest slices of the AI dollar.</p>
+        <div id="shareLegend" class="legend"></div>
+        <div id="shareChart"></div>
+        <details class="tbl"><summary>data table</summary><div id="shareTable" style="overflow-x:auto"></div></details>
+        <div class="note">22% → <b>34% → 37%</b> of implied capex CY25→26→27 — consistent with the wiki memory-capex dashboard (19/36/45% on smaller denominators), JPM's ">50% of hardware", and the GS "40-50% of capex" claim (tweet-sourced). The memory supercycle is what breaks the $35bn/GW rule of thumb (see GW &amp; Power tab).</div>
+      </div>
+      <div class="card" style="grid-column:1/-1">
+        <h2>Head-node DRAM — the fork this build resolved</h2>
+        <p class="h2s">Reconciliation block (does not sum): LPDDR Grace/Vera (UBS bits × 0.70 NVDA nerf, cross-checked vs Mizuho physical −5%) + host x86 DDR5 (UBS carve-out, reproduced by CPUs × ~1TB/host &lt;1%).</p>
+        <div class="ratios" id="headnodeRatios"></div>
+        <div class="note">This build's head-node DRAM: <b>$14bn CY25 → $66bn CY26 → $129bn CY27</b> realized. The Semis MAP v11 carried $11.7/$22.1/$28.9bn — i.e. the map runs <b>1.2× → 3.0× → 4.5× light</b>. The gap decomposes into price ($5.5/GB v7-era frozen constant vs $11-14 realized, 2.5×) × content (896GB flat vs Vera 1.5TB SOCAMM + ~1TB hosts, 1.5-1.8×). A cycle error, not a physics error — in 2025 the map even over-counted. Queued as map v12 input (decision open: re-target the memory-bridge band or accept ~62-66% of street).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REVENUE CHECKS ===================== -->
+  <section id="tab-revenue">
+    <div class="card" style="margin-bottom:14px">
+      <h2>Company closures — bottom-up lines + non-modeled segments vs BBG consensus (×)</h2>
+      <p class="h2s">The discipline: each vendor's modeled line + coarse estimates for its non-modeled segments must land on the company's consensus. ~1.0× = the build is consistent with how the market already prices that company; big deviations = wrong share/attribution, or stale consensus. BBG as of 07-15.</p>
+      <div id="closureLegend" class="legend"></div>
+      <div id="closureChart"></div>
+      <details class="tbl"><summary>data table</summary><div id="closureTable" style="overflow-x:auto"></div></details>
+    </div>
+    <div class="grid g3" id="closureCards" style="margin-bottom:14px"></div>
+    <div class="card" style="margin-bottom:14px">
+      <h2>TAM rails — the build vs printed 2030 paths</h2>
+      <p class="h2s">Rails, not answer keys: independent printed TAM paths the build should ride, not reuse as anchors.</p>
+      <div id="railCards" class="grid g3"></div>
+    </div>
+    <div class="card">
+      <h2>Optics — our build (× box→system uplift) ÷ BofA optical TAM path</h2>
+      <p class="h2s">BofA “AI 2030” (Arya, 05-13): $15.3bn CY25 → $87.7bn CY30. Our units×ASP optics tracks it 0.97–1.08× in <b>every</b> year — the ×1.18 uplift (calibrated on the only bull-free observable: CY25 vendor layer = 1.00×) closes the level. What diverges is internal mix: our scale-up slice (CPO+LPO) runs ~0.5× the Lumentum Investor-Day scale-up TAM at the terminal — non-modeled upside, gated on CPO prints.</p>
+      <div id="opticsChart"></div>
+      <details class="tbl"><summary>data table</summary><div id="opticsTable" style="overflow-x:auto"></div></details>
+    </div>
+  </section>
+
+  <!-- ===================== GW & POWER ===================== -->
+  <section id="tab-gw">
+    <div class="grid g2">
+      <div class="card">
+        <h2>GW added per year — physics vs the $35bn/GW rule</h2>
+        <p class="h2s">Physical = accelerator units × kW/SKU × PUE (independent of $). Rule = implied capex ÷ $35bn/GW. Squares = Jefferies satellite (US-only, built).</p>
+        <div id="gwLegend" class="legend"></div>
+        <div id="gwChart"></div>
+        <details class="tbl"><summary>data table</summary><div id="gwTable" style="overflow-x:auto"></div></details>
+        <div class="callout info"><b>The rule overestimates GW by 40–60%.</b> The classic $35bn/GW ruler is pre-supercycle: dividing this capex by 35 yields 56.6 GW in CY27 vs 35.0 GW of physics. Memory + content inflation is the wedge (AMZN “+20% per-unit capex”, JPM 04-30).</div>
+      </div>
+      <div class="card">
+        <h2>$/GW effective — the conversion number</h2>
+        <p class="h2s">Output, not input: implied capex ÷ physical GW. Validates Mizuho ~$50bn/GW “incl rising memory content” (07-11) and JPM $45–55bn NVDA-infra.</p>
+        <div id="dpgwChart"></div>
+        <details class="tbl"><summary>data table</summary><div id="dpgwTable" style="overflow-x:auto"></div></details>
+        <div class="note">~$47bn (CY25) → <b>~$57bn (CY26-27)</b> → ~$60bn (CY28), rising with memory. Within 8-13% of Mizuho — treat $/GW as a moving target, not a constant.</div>
+      </div>
+      <div class="card" style="grid-column:1/-1">
+        <h2>Cumulative GW since CY23 — two independent routes to the same place <span class="badge b-good">CHECK 1.03×</span></h2>
+        <p class="h2s">Our route: units × watts, summed (no retirement — starts biting ~CY29-30). Their route: capex-based. Diamonds at CY30: BofA 233 GW global (ours 243 = 1.03× ✓) · house map 299 = the bull case. SemiAnalysis lands in the same place — its own check below.</p>
+        <div id="cumLegend" class="legend"></div>
+        <div id="cumChart"></div>
+        <details class="tbl"><summary>data table</summary><div id="cumTable" style="overflow-x:auto"></div></details>
+      </div>
+      <div class="card" style="grid-column:1/-1">
+        <h2>Check — SemiAnalysis Datacenter model <span class="badge b-good">CHECK 0.98×</span> <span class="badge b-mut">chart-read 07-24 · ±5 GW</span></h2>
+        <p class="h2s">“Global DC Critical IT by Type — EX CHINA” (SemiAnalysis Datacenter model, pasted 07-24): installed critical-IT demand ~60 → ~230 GW and supply/shells ~65 → ~255 GW, 2025→2030. Series converted to our facility basis ×1.25 PUE (ledger rule: facility ≠ IT-load ≠ 800V subset). ±35 GW of non-AI DC + sovereign/robotics depending on their cut.</p>
+        <div id="saLegend" class="legend"></div>
+        <div id="saChart"></div>
+        <details class="tbl"><summary>data table</summary><div id="saTable" style="overflow-x:auto"></div></details>
+        <div class="callout info"><b>What it says:</b> SA facility-adds ex-China 2025-30 ≈ (230−60)×1.25 ≈ <b>213 GW</b>; add China ~20-25 GW → ~235 GW vs our cumulative 243 GW CY30 = <b>0.98× ✓</b> (we sit at the top of the band). Their supply&gt;demand crossover from 2027 is <b>shells, not generation</b> — empty buildings waiting for power. Our power stack below is what turns that into a deficit.</div>
+      </div>
+      <div class="card" style="grid-column:1/-1">
+        <h2>Check — can generation deliver this GW path? <span class="badge b-warn">STRUCTURAL DEFICIT 15-25% IN '27-28</span></h2>
+        <p class="h2s">Supply stack for DC: gas turbines energizing (prior-year shipments × DC share of <i>deliveries</i> × 0.90 nameplate→facility derate, ~1yr lag) + CAT/Cummins reciprocating gensets + nuclear re-dedication (CEG/VST/TLN PPAs — existing fleet, not new build) + grid headroom & renewables ex-gas. Ink line = our GW demand.</p>
+        <div id="pwrLegend" class="legend"></div>
+        <div id="pwrChart"></div>
+        <div id="covStrip" style="margin-top:10px"></div>
+        <details class="tbl"><summary>data table</summary><div id="pwrTable" style="overflow-x:auto"></div></details>
+        <div class="callout"><b>Verdict (post-skeptic 07-24):</b> coverage ~1.15× (CY25) → 0.87× (CY26) → <b>0.72× (CY27-28)</b>. The deficit matches three independent sources: GEV “US ~10 GW of gas short every year”, MS/Byrd ~38 GW shortfall through '28, BofA 100+ GW gap. Integrated reading: our GW demand validated against the satellite (shells get built), but <b>energization runs 15-25% behind</b> — so ~20-25% of the '27-28 shell footprint waits for power. That mechanizes “delays, not cancellations”: power/labor is the constraint, not demand. Supply is deliberately conservative — GEV already raised to ~30 GW by 2030 (Q2), Siemens “30+”, MHI 2×, BofA sees 94.</div>
+      </div>
+      <div class="card" style="grid-column:1/-1">
+        <h2>The GEV order book — the system buying this path 2-4 years ahead</h2>
+        <p class="h2s">Why the power check leans on GEV: gas turbines are the marginal electron for DC, and GEV's book is the cleanest forward print of it.</p>
+        <div class="grid g3" id="gevCards"></div>
+        <div class="note" style="margin-top:10px"><b>Cross-checks on the demand side:</b> our US GW (~65% of global) runs <b>0.90×</b> the Jefferies/SinMax “Vulcan” satellite in CY26 (13.5 vs 14-16 GW built) and <b>1.14×</b> in CY27 (22.8 vs ~20) — between the tracked-built and the proposed pipeline (40-45 GW, ~50% realization haircut), exactly where unconstrained demand should sit if misses are delays. And our cumulative US 2025-28 (~73 GW) = <b>1.06×</b> the MS transformer-supercycle incremental demand (~74 GW, 03-29), whose 9-18 GW shortfall is the same grid gap.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONFIDENCE ===================== -->
+  <section id="tab-conf">
+    <div class="grid g2">
+      <div class="card" style="grid-column:1/-1">
+        <h2>Confidence by line (anchored window CY25-27)</h2>
+        <p class="h2s"><b>A</b> = hard anchor + independent validation · <b>B</b> = one hard axis + one estimated, with closure/guardrail · <b>C</b> = calibrated but EST-heavy · <b>D</b> = CY29-35 glide (every line degrades to D after CY28). Cell tags in the workbook: HARD / PARTIAL / EST; blue cells = knobs.</p>
+        <div id="gradeList"></div>
+      </div>
+      <div class="card" style="grid-column:1/-1">
+        <h2>Open items &amp; live tensions</h2>
+        <p class="h2s">What a hostile reviewer should poke first — each with why it matters and what resolves it.</p>
+        <div id="openList"></div>
+      </div>
+      <div class="card" style="grid-column:1/-1">
+        <h2>Provenance</h2>
+        <div class="note">Built 2026-07-16 → 07-24 from: <b>AI_Chip_Designers_TAM_v11</b> physical layers (units/ASPs by speed &amp; family), the wiki <b>memory-capex model</b> (2× skeptic-audited), and the corpus — Conor (Jefferies), JPM (AI Capex 2.0 06-16, WattsUp 06-09, server-CPU 07-12), UBS (Memory Semis 05-12, Sunny Lin), BofA (AI 2030 05-13, DC Primer), Bernstein (Rasgon server-CPU 06-16, rack BOM 06-08), Mizuho ($/GW 07-11), Morgan Stanley (transformers 03-29, Woodring HDD), Redburn, TrendForce, SemiAnalysis (chart 07-24), GEV Q2'26 call (07-22), Jefferies/SinMax Vulcan satellite (06-22), Lumentum Investor Day (03-17), AMD Advancing AI (07-23). Every cell carries broker/analyst + date in its comment (204 comments). Four double-check skeptic audits; all headline rows recomputed to the cent.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot" id="foot"></div>
+</div>
+<div class="tt" id="tt"></div>
+<script>
+const D = {"meta": {"workbook": "Bottom_Up_Capex_v3.xlsx", "workbook_mtime": "2026-07-24", "extracted": "2026-07-27", "years": ["CY23", "CY24", "CY25", "CY26E", "CY27E", "CY28E", "CY29E", "CY30E", "CY31E", "CY32E", "CY33E", "CY34E", "CY35E"]}, "capex": {"buTotal": [166.2755, 314.6175, 528.0437, 1181.6909, 1980.007, 2744.1479, 3269.5543, 3787.827, 4196.4553, 4550.5483, 4840.4186, 5064.5536, 5245.6884], "street": [85, 228.5, 431.7, 699.4, 902.2, 1037.5, 1224.2, 1395.6, 1535.2, 1658, 1757.5, 1845.4, 1919.2], "jpm": [85, 228.5, 431.7, 751.2, 1164.3, 1513.6, 1786, 2036.1, 2239.7, 2418.9, 2564, 2692.2, 2799.9], "house": [85, 228.5, 431.7, 899.6, 1679.8, 2588.4, 3054.3, 3481.9, 3830.1, 4136.5, 4384.7, 4603.9, 4788.1], "allBuyer": [120, 320, 600, 1050, 1450, 1608, 1898, 2163, 2380, 2570, 2724, 2861, 2975], "ratio": {"street": [1.9562, 1.3769, 1.2232, 1.6896, 2.1946, 2.645, 2.6708, 2.7141, 2.7335, 2.7446, 2.7541, 2.7444, 2.7333], "jpm": [1.9562, 1.3769, 1.2232, 1.5731, 1.7006, 1.813, 1.8307, 1.8603, 1.8737, 1.8812, 1.8878, 1.8812, 1.8735], "house": [1.9562, 1.3769, 1.2232, 1.3136, 1.1787, 1.0602, 1.0705, 1.0879, 1.0957, 1.1001, 1.1039, 1.1001, 1.0956], "allBuyer": [1.3856, 0.9832, 0.8801, 1.1254, 1.3655, 1.7066, 1.7226, 1.7512, 1.7632, 1.7706, 1.777, 1.7702, 1.7633]}, "grade": "B"}, "components": {"accel": {"v": [40.4949, 109.4946, 200.1709, 399.901, 692.0009, 1051.3381, 1240.5756, 1414.2468, 1555.6747, 1680.1359, 1780.9366, 1869.9934, 1944.7803], "grade": "A-"}, "cpu": {"v": [26.7705, 36.2447, 50.8606, 78.9558, 116.1465, 164.5712, 188.4487, 215.2392, 239.3967, 262.4851, 283.027, 304.4937, 323.3325], "grade": "B-"}, "memDirect": {"v": [28.1875, 38.1855, 75.7176, 301.3439, 495.7092, 628.11, 751.81, 898.4225, 1029.5625, 1142.6425, 1239.5, 1320.3725, 1387.36], "grade": "B+"}, "network": {"v": [18.8361, 36.2578, 55.8229, 101.3701, 157.8367, 217.0786, 266.8258, 306.1752, 328.6714, 346.94, 361.1912, 371.8558, 381.1433], "grade": "B"}, "infra": {"v": [24.21, 33.9, 43.97, 65.49, 97.97, 139, 165.69, 190.43, 212.36, 231.33, 247.02, 260.02, 271.2], "grade": "B-"}, "nonIT": {"v": [27.7765, 60.5349, 101.5017, 234.6301, 420.3436, 544.05, 656.2042, 763.3132, 830.79, 887.0149, 928.7438, 937.8181, 937.8723], "grade": "B-"}}, "memory": {"totalSupplier": [34.1375, 56.8605, 118.3026, 404.9085, 738.5994, 965.985, 1150.31, 1364.0975, 1563.375, 1720.5175, 1855.25, 1967.5475, 2061.085], "shareOfCapex": [0.2053, 0.1807, 0.224, 0.3427, 0.373, 0.352, 0.3518, 0.3601, 0.3725, 0.3781, 0.3833, 0.3885, 0.3929], "accelShare": [0.2435, 0.348, 0.3791, 0.3384, 0.3495, 0.3831, 0.3794, 0.3734, 0.3707, 0.3692, 0.3679, 0.3692, 0.3707], "hbmSupplier": [5.2, 16.5, 34.972, 71.9425, 164.8664, 240, 288, 336, 387, 414, 437.25, 454.125, 467.5], "hbmEmbedded": [15.6, 49.5, 104.916, 215.8275, 494.5992, 720, 864, 1008, 1161, 1242, 1311.75, 1362.375, 1402.5], "lpddrSupplier": [0.75, 2.175, 7.613, 31.6221, 78.0238, 97.875, 110.5, 129.675, 146.8125, 163.875, 178.5, 193.05, 206.225], "ddr5": [7.5625, 13.6, 33.2676, 153.8639, 223.5468, 236.25, 248.625, 275.975, 302.0625, 329.475, 355.25, 382.525, 408.8], "nand": [10.5, 12.71, 25.65, 123, 232, 327.6, 427.45, 534.6, 628.05, 702.625, 763.125, 806.65, 837.8], "hdd": [10.125, 11.8755, 16.8, 24.48, 40.1625, 64.26, 75.735, 87.8475, 99.45, 110.5425, 121.125, 131.1975, 140.76], "headNode": {"build": [13.949, 65.9421, 128.9838], "mapV11": [11.7, 22.1, 28.9], "ratio": [1.1922, 2.9838, 4.4631]}}, "gw": {"physical": [4.2733, 8.0713, 11.278, 20.7637, 35.0286, 45.3375, 54.6837, 63.6094, 69.2325, 73.9179, 77.3953, 78.1515, 78.156], "implied35": [4.7507, 8.9891, 15.087, 33.7626, 56.5716, 78.4042, 93.4158, 108.2236, 119.8987, 130.0157, 138.2977, 144.7015, 149.8768], "dollarPerGw": [38.9102, 38.9797, 46.8208, 56.9113, 56.5254, 60.5271, 59.7903, 59.5482, 60.614, 61.5622, 62.5415, 64.8043, 67.1182], "cumPhysical": [4.2733, 12.3446, 23.6226, 44.3863, 79.4149, 124.7524, 179.4361, 243.0456, 312.2781, 386.196, 463.5913, 541.7428, 619.8988], "cum35": [4.7507, 13.7398, 28.8268, 62.5894, 119.161, 197.5652, 290.981, 399.2047, 519.1034, 649.1191, 787.4167, 932.1183, 1081.9951], "checkBofA233": 1.0431, "vsJefferies": {"CY26E": 1.3842, "CY27E": 1.7514}}, "power": {"turbinesGlobal": [48, 51, 55, 62, 70, 78, 82, 87, 90, 92, 94, 95, 96], "turbinesEnergizing": [5.184, 5.184, 6.426, 7.92, 11.16, 15.12, 18.954, 19.926, 21.141, 21.87, 22.356, 22.842, 23.085], "recips": [0.3, 0.6, 1.2, 2.2, 3.5, 5, 6.5, 7.5, 8, 8.5, 8.5, 8.5, 8.5], "nuclear": [0, 0.3, 0.8, 1.5, 2.5, 3, 3, 3, 2.5, 2, 2, 1.5, 1.5], "gridRenewables": [2, 3, 4.5, 6.5, 8, 9.5, 10.5, 11.5, 12, 12.5, 12.5, 12.5, 12.5], "supplyTotal": [7.484, 9.084, 12.926, 18.12, 25.16, 32.62, 38.954, 41.926, 43.641, 44.87, 45.356, 45.342, 45.585], "demand": [4.2733, 8.0713, 11.278, 20.7637, 35.0286, 45.3375, 54.6837, 63.6094, 69.2325, 73.9179, 77.3953, 78.1515, 78.156], "coverage": [1.7513, 1.1255, 1.1461, 0.8727, 0.7183, 0.7195, 0.7124, 0.6591, 0.6304, 0.607, 0.586, 0.5802, 0.5833], "gevOwn": [13, 20, 22, 24, 25, 26], "satelliteUS": [11, 15, 20], "ourUS": [2.7777, 5.2464, 7.3307, 13.4964, 22.7686, 29.4694, 35.5444, 41.3461, 45.0011, 48.0466, 50.307, 50.7985, 50.8014], "ratioUsVsSatellite": [0.6664, 0.8998, 1.1384], "msCheckCum2528": 1.0583}, "semianalysis": {"yearsSA": ["CY25", "CY26E", "CY27E", "CY28E", "CY29E", "CY30E"], "demandIT": [60, 85, 115, 155, 195, 230], "supplyIT": [65, 88, 135, 185, 230, 255], "demandFacility": [75, 106.25, 143.75, 193.75, 243.75, 287.5], "checkCY30": 0.982}, "closures": {"nvda": {"implied": [395.8162, 632.5721], "bbg": [391.1, 562.9], "ratio": [1.0121, 1.1238], "compute": [311.8162, 503.5721], "networking": [67, 111], "nonDC": [17, 18]}, "avgo": {"implied": [136.3, 221.3], "bbg": [123, 189.5], "ratio": [1.1081, 1.1678]}, "amd": {"implied": [50.7, 72.4], "bbg": [49.1, 75.9], "ratio": [1.0326, 0.9539]}, "mrvl": {"ratio": [1, 0.9167]}, "memoryDcShare": {"model": [404.9085, 738.5994], "bbgSum": [819, 1227], "ratio": [0.4944, 0.602]}, "hdd": {"ratio": [0.8373, 1.0014]}, "vrt": {"ratio": [0.5812, 0.6043]}}, "rails": {"accelBofa2030": 1171, "accelAmd2030": 1400, "accelOurs2030": 1414.2468, "accelVsBofa": 1.2077, "accelVsAmd": 1.0102, "opticsVsBofa": [1.0827, 0.994, 1.0326, 0.9719, 1.0037, 0.9756], "netAllIn2030": {"rails": 308, "ratio": 0.9941}, "vendorsSum": [55.8, 128.8, 222.8], "vendorsRatio": [0.9996, 1.2706, 1.4116], "nvdaOnlyRatio": [0.5553, 0.6609, 0.7033], "crdoGuardrail": [1.3272, 1.5752], "cpuVsBernsteinBase": [0.8223, 1.1457, 1.5295, 1.6977, 1.4952, 1.312], "cpuVsBernsteinBull": [0.8223, 1.0576, 1.3095, 1.3482, 1.0378, 0.806], "cpuVsAmdScenario": [0.8223, 1.0576, 1.2746, 1.3096, 1.0177, 0.817], "amdPrintsCheck": [0.8022, 0.9064, 1.1972], "pncTension": [0.7887, 1.1798, 1.5549, 1.5301]}};
+const YRS = D.meta.years;
+const state = { hz: 8, tab: 'overview', stackPct: false };  // hz = number of years shown (8 = CY23-30)
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmt0 = v => v==null?'—':Math.round(v).toLocaleString('en-US');
+const fmt1 = v => v==null?'—':v.toLocaleString('en-US',{maximumFractionDigits:1,minimumFractionDigits:1});
+const fx2  = v => v==null?'—':v.toFixed(2)+'×';
+const pc0  = v => v==null?'—':Math.round(v*100)+'%';
+const sub2 = y => "'"+String(y).replace('CY','').slice(0,2);
+
+// ---------- tooltip ----------
+const tt = document.getElementById('tt');
+function showTT(evt, html){ tt.innerHTML=html; tt.style.display='block';
+  const w=tt.offsetWidth,h=tt.offsetHeight;
+  tt.style.left=Math.min(evt.clientX+14, innerWidth-w-8)+'px';
+  tt.style.top=Math.min(evt.clientY+12, innerHeight-h-8)+'px'; }
+function hideTT(){ tt.style.display='none'; }
+const swatch = c => `<span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:${c};margin-right:5px"></span>`;
+
+// ---------- svg helpers ----------
+function makeSVG(w,h){ const s=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  s.setAttribute('viewBox',`0 0 ${w} ${h}`); return s; }
+function el(n,attrs,parent){ const e=document.createElementNS('http://www.w3.org/2000/svg',n);
+  for(const k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+function niceMax(v){ if(v<=0) return 1; const p=Math.pow(10,Math.floor(Math.log10(v))); const d=v/p;
+  return (d<=1?1:d<=1.5?1.5:d<=2?2:d<=2.5?2.5:d<=3?3:d<=4?4:d<=5?5:d<=6?6:d<=8?8:10)*p; }
+
+function frame(svg, X, Y, n, W, H, ML, MR, ymax, yfmt, years){
+  const ticks=4;
+  for(let t=0;t<=ticks;t++){ const v=ymax*t/ticks, y=Y(v);
+    el('line',{x1:ML,x2:W-MR,y1:y,y2:y,stroke:css('--grid'),'stroke-width':1},svg);
+    el('text',{x:ML-6,y:y+3.5,'text-anchor':'end','font-size':10,fill:css('--muted')},svg).textContent=yfmt(v); }
+  years.forEach((yr,i)=>{ const every = n>9?2:1;
+    if(i%every===0) el('text',{x:X(i),y:H-4,'text-anchor':'middle','font-size':10,fill:css('--muted')},svg).textContent=sub2(yr); });
+}
+function crosshair(svg, X, n, W, H, ML, MR, kx, htmlFor){
+  const cross=el('line',{y1:8,y2:H-18,stroke:css('--axis'),'stroke-width':1,visibility:'hidden'},svg);
+  const zone=el('rect',{x:ML-kx/2,y:0,width:W-ML-MR+kx,height:H,fill:'transparent'},svg);
+  zone.addEventListener('mousemove',e=>{
+    const r=svg.getBoundingClientRect(); const px=(e.clientX-r.left)*(svg.viewBox.baseVal.width/r.width);
+    let i=Math.round((px-ML)/kx); i=Math.max(0,Math.min(n-1,i));
+    const x=X(i); cross.setAttribute('x1',x); cross.setAttribute('x2',x); cross.setAttribute('visibility','visible');
+    showTT(e, htmlFor(i)); });
+  zone.addEventListener('mouseleave',()=>{cross.setAttribute('visibility','hidden');hideTT();});
+}
+
+// multi-line chart with end labels (collision-resolved with leader ticks) and optional marks/bands
+function lineChart(box, years, series, opts={}){
+  const {yfmt=fmt0, h=320, full=true, dots=[], hline=null, band=null, ymin=0} = opts;
+  const W=full?1160:560, H=h, ML=48, MR=full?150:120, MT=12, MB=22;
+  const n=years.length, kx=(W-ML-MR)/Math.max(n-1,1), X=i=>ML+i*kx;
+  const allv=series.flatMap(s=>s.v.slice(0,n).filter(x=>x!=null)).concat(dots.map(d=>d.v)).concat(hline?[hline.y]:[]).concat(band?[band.hi]:[]);
+  const ymax=niceMax(Math.max(...allv)*1.06);
+  const Y=v=>MT+(H-MT-MB-MT)*(1-(v-ymin)/(ymax-ymin));
+  const svg=makeSVG(W,H);
+  if(band){ el('rect',{x:X(0),y:Y(band.hi),width:X(n-1)-X(0),height:Y(band.lo)-Y(band.hi),fill:css(band.color||'--c2'),opacity:.08},svg);
+    el('text',{x:X(0)+5,y:Y(band.hi)+11,'font-size':9.5,fill:css('--muted')},svg).textContent=band.label; }
+  frame(svg,X,Y,n,W,H,ML,MR,ymax,yfmt,years);
+  if(hline){ el('line',{x1:ML,x2:W-MR,y1:Y(hline.y),y2:Y(hline.y),stroke:css('--axis'),'stroke-width':1.5},svg);
+    el('text',{x:ML+4,y:Y(hline.y)-5,'font-size':10,fill:css('--muted')},svg).textContent=hline.label; }
+  // lines
+  series.forEach(s=>{
+    let d='',started=false;
+    for(let i=0;i<n;i++){ const v=s.v[i]; if(v==null){started=false;continue;} d+=(started?'L':'M')+X(i)+' '+Y(v); started=true; }
+    el('path',{d,fill:'none',stroke:css(s.c),'stroke-width':s.em?3:2,'stroke-linejoin':'round','stroke-linecap':'round',opacity:s.em?1:.9,'stroke-dasharray':s.dash?'5,4':'none'},svg);
+  });
+  // end labels with collision resolution
+  const ends=series.map(s=>{ let li=-1; for(let i=n-1;i>=0;i--){ if(s.v[i]!=null){li=i;break;} }
+    return li<0?null:{s, i:li, y:Y(s.v[li])}; }).filter(Boolean).sort((a,b)=>a.y-b.y);
+  for(let k=1;k<ends.length;k++) if(ends[k].y-ends[k-1].y<14) ends[k].y=ends[k-1].y+14;
+  ends.forEach(e2=>{
+    const yTrue=Y(e2.s.v[e2.i]);
+    el('circle',{cx:X(e2.i),cy:yTrue,r:e2.s.em?4:3,fill:css(e2.s.c),stroke:css('--surface'),'stroke-width':2},svg);
+    if(Math.abs(e2.y-yTrue)>6) el('line',{x1:X(e2.i)+5,y1:yTrue,x2:X(e2.i)+13,y2:e2.y,stroke:css('--axis'),'stroke-width':1},svg);
+    const t=el('text',{x:X(e2.i)+15,y:e2.y+3.5,'font-size':10.5,'font-weight':e2.s.em?650:400,fill:css('--ink2')},svg);
+    t.textContent=(e2.s.short||e2.s.n) + (e2.s.showVal?` ${yfmt(e2.s.v[e2.i])}`:'');
+  });
+  // external marks
+  dots.forEach(dt=>{ const i=years.indexOf(dt.year); if(i<0)return;
+    if(dt.shape==='sq') el('rect',{x:X(i)-4,y:Y(dt.v)-4,width:8,height:8,rx:1.5,fill:css('--ink2'),stroke:css('--surface'),'stroke-width':1.5},svg);
+    else el('path',{d:`M${X(i)} ${Y(dt.v)-5.5}l5.5 5.5l-5.5 5.5l-5.5 -5.5Z`,fill:css(dt.c||'--ink2'),stroke:css('--surface'),'stroke-width':1.5},svg);
+    if(dt.lab) el('text',{x:X(i)+9,y:Y(dt.v)+3.5,'font-size':9.5,fill:css('--muted')},svg).textContent=dt.lab;
+  });
+  crosshair(svg,X,n,W,H,ML,MR,kx,i=>{
+    let h2=`<div class="y">${years[i]}</div>`;
+    series.forEach(s=>{ if(s.v[i]!=null) h2+=`<div class="row"><span class="n">${swatch(css(s.c))}${s.n}</span><b>${yfmt(s.v[i])}</b></div>`; });
+    dots.filter(d=>years.indexOf(d.year)===i).forEach(d=>h2+=`<div class="row"><span class="n">${d.shape==='sq'?'■':'◆'} ${d.lab||''}</span><b>${yfmt(d.v)}</b></div>`);
+    return h2; });
+  box.replaceChildren(svg);
+}
+
+// stacked bars (optionally 100%) with optional overlay line
+function stackedBars(box, years, series, opts={}){
+  const {yfmt=fmt0, h=340, pct=false, overlay=null, full=true} = opts;
+  const W=full?1160:560, H=h, ML=48, MR=overlay?150:26, MT=12, MB=22;
+  const n=years.length, kx=(W-ML-MR)/n, Xc=i=>ML+i*kx+kx/2;
+  const totals=years.map((_,i)=>series.reduce((a,s)=>a+(s.v[i]||0),0));
+  const ymax = pct?1:niceMax(Math.max(...totals, overlay?Math.max(...overlay.v.slice(0,n)):0)*1.06);
+  const Y=v=>MT+(H-MT-MB-MT)*(1-v/ymax);
+  const svg=makeSVG(W,H);
+  frame(svg,Xc,Y,n,W,H,ML,MR,ymax,pct?pc0:yfmt,years);
+  const bw=Math.min(kx*0.62,26);
+  years.forEach((_,i)=>{ let cum=0;
+    series.forEach((s,si)=>{ let v=s.v[i]||0; if(pct&&totals[i]>0) v=v/totals[i]; if(v<=0)return;
+      const yT=Y(cum+v), yB=Y(cum);
+      el('rect',{x:Xc(i)-bw/2,y:yT,width:bw,height:Math.max(0.5,yB-yT-2),rx:2.5,fill:css(s.c)},svg);
+      cum+=v; });
+  });
+  if(overlay && !pct){ let d='';
+    for(let i=0;i<n;i++){ const v=overlay.v[i]; if(v==null)continue; d+=(d?'L':'M')+Xc(i)+' '+Y(v); }
+    el('path',{d,fill:'none',stroke:css('--ink'),'stroke-width':2,'stroke-linejoin':'round','stroke-dasharray':overlay.dash?'5,4':'none'},svg);
+    const li=n-1, ly=Y(overlay.v[li]);
+    el('circle',{cx:Xc(li),cy:ly,r:3.5,fill:css('--ink'),stroke:css('--surface'),'stroke-width':2},svg);
+    el('text',{x:Xc(li)+8,y:ly+3.5,'font-size':10.5,fill:css('--ink2')},svg).textContent=overlay.n;
+  }
+  if(!pct){ const li=n-1;
+    el('text',{x:Xc(li),y:Y(totals[li])-6,'text-anchor':'middle','font-size':10.5,'font-weight':600,fill:css('--ink')},svg).textContent=yfmt(totals[li]); }
+  const zone=el('rect',{x:ML,y:0,width:W-ML-MR,height:H,fill:'transparent'},svg);
+  zone.addEventListener('mousemove',e=>{ const r=svg.getBoundingClientRect();
+    const px=(e.clientX-r.left)*(W/r.width); let i=Math.floor((px-ML)/kx); i=Math.max(0,Math.min(n-1,i));
+    let h2=`<div class="y">${years[i]} · total ${yfmt(totals[i])}</div>`;
+    [...series].reverse().forEach(s=>{ const v=s.v[i]||0;
+      h2+=`<div class="row"><span class="n">${swatch(css(s.c))}${s.n}</span><b>${pct? (totals[i]?Math.round(100*v/totals[i])+'%':'—') : yfmt(v)}${pct?'':(totals[i]? ' · '+Math.round(100*v/totals[i])+'%':'')}</b></div>`; });
+    if(overlay) h2+=`<div class="row" style="margin-top:3px"><span class="n">${overlay.n}</span><b>${yfmt(overlay.v[i])}</b></div>`;
+    showTT(e,h2); });
+  zone.addEventListener('mouseleave',hideTT);
+  box.replaceChildren(svg);
+}
+
+// grouped vertical bars (closures)
+function groupedBars(box, cats, groups, opts={}){
+  const {yfmt=fx2, h=300, hline=null, note={}} = opts;
+  const W=1160, H=h, ML=48, MR=26, MT=14, MB=40;
+  const n=cats.length, kx=(W-ML-MR)/n, Xc=i=>ML+i*kx+kx/2;
+  const allv=groups.flatMap(g=>g.v.filter(x=>x!=null));
+  const ymax=niceMax(Math.max(...allv,hline?hline.y:0)*1.15);
+  const Y=v=>MT+(H-MT-MB-MT)*(1-v/ymax);
+  const svg=makeSVG(W,H);
+  for(let t=0;t<=4;t++){ const v=ymax*t/4, y=Y(v);
+    el('line',{x1:ML,x2:W-MR,y1:y,y2:y,stroke:css('--grid'),'stroke-width':1},svg);
+    el('text',{x:ML-6,y:y+3.5,'text-anchor':'end','font-size':10,fill:css('--muted')},svg).textContent=v.toFixed(1); }
+  cats.forEach((c,i)=>{ el('text',{x:Xc(i),y:H-22,'text-anchor':'middle','font-size':11,'font-weight':600,fill:css('--ink2')},svg).textContent=c;
+    if(note[c]) el('text',{x:Xc(i),y:H-9,'text-anchor':'middle','font-size':9.5,fill:css('--muted')},svg).textContent=note[c]; });
+  if(hline){ el('line',{x1:ML,x2:W-MR,y1:Y(hline.y),y2:Y(hline.y),stroke:css('--ink2'),'stroke-width':1.5},svg);
+    el('text',{x:W-MR-4,y:Y(hline.y)-5,'text-anchor':'end','font-size':10,fill:css('--ink2')},svg).textContent=hline.label; }
+  const bw=Math.min(20,(kx*0.55)/groups.length);
+  cats.forEach((c,i)=>{ groups.forEach((g,gi)=>{ const v=g.v[i]; if(v==null)return;
+    const x=Xc(i)+(gi-groups.length/2)*(bw+2)+1;
+    el('rect',{x,y:Y(v),width:bw,height:Y(0)-Y(v),rx:2.5,fill:css(g.c)},svg);
+    el('text',{x:x+bw/2,y:Y(v)-5,'text-anchor':'middle','font-size':9.5,'font-weight':600,fill:css('--ink2')},svg).textContent=v.toFixed(2);
+    const hit=el('rect',{x:x-2,y:0,width:bw+4,height:H-MB,fill:'transparent'},svg);
+    hit.addEventListener('mousemove',e=>showTT(e,`<div class="y">${c} · ${g.n}</div><div class="row"><span class="n">implied ÷ BBG</span><b>${v.toFixed(2)}×</b></div>`));
+    hit.addEventListener('mouseleave',hideTT);
+  }); });
+  box.replaceChildren(svg);
+}
+
+// ---------- generic table ----------
+function dataTable(boxId, years, rows, yfmt){
+  const box=document.getElementById(boxId); if(!box)return;
+  const t=document.createElement('table'); t.className='dtable';
+  const thr=document.createElement('tr'); thr.appendChild(document.createElement('th'));
+  years.forEach(y=>{ const th=document.createElement('th'); th.textContent=y; thr.appendChild(th); });
+  const thead=document.createElement('thead'); thead.appendChild(thr); t.appendChild(thead);
+  const tb=document.createElement('tbody');
+  rows.forEach(r=>{ const tr=document.createElement('tr');
+    const td0=document.createElement('td'); td0.textContent=r.n; tr.appendChild(td0);
+    for(let i=0;i<years.length;i++){ const td=document.createElement('td');
+      td.textContent=(r.v[i]==null)?'—':(r.f||yfmt)(r.v[i]); tr.appendChild(td); }
+    tb.appendChild(tr); });
+  t.appendChild(tb); box.replaceChildren(t);
+}
+function legend(id, items){ document.getElementById(id).replaceChildren(...items.map(([n,c,line])=>{
+  const s=document.createElement('span');
+  const sw=document.createElement('span'); sw.className=line?'lk':'sw';
+  if(line) sw.style.borderTopColor=css(c); else sw.style.background=css(c);
+  s.appendChild(sw); s.appendChild(document.createTextNode(n)); return s; })); }
+
+// ---------- slices ----------
+const hzYears = () => YRS.slice(0, state.hz);
+const S = a => a.slice(0, state.hz);
+
+// ---------- renderers ----------
+function renderTiles(){
+  const c=D.capex, m=D.memory, g=D.gw;
+  const tiles=[
+    {lab:'Implied capex CY25', val:'$'+fmt0(c.buTotal[2])+'bn', sub:`hindcast: ${c.ratio.allBuyer[2].toFixed(2)}× the all-buyer estimate ✓`},
+    {lab:'Implied capex CY26E', val:'$'+fmt0(c.buTotal[3])+'bn', sub:`${c.ratio.allBuyer[3].toFixed(2)}× all-buyer · ${c.ratio.jpm[3].toFixed(2)}× JPM top-4 path`},
+    {lab:'Implied capex CY27E', val:'$'+fmt0(c.buTotal[4])+'bn', sub:'three stacked bulls — ~$1.7T on the JPM accelerator path'},
+    {lab:'Memory share CY27E', val:pc0(m.shareOfCapex[4]), sub:'of implied capex, supplier-side incl HBM/LPDDR memo'},
+    {lab:'$/GW effective CY26E', val:'$'+fmt0(g.dollarPerGw[3])+'bn', sub:'vs Mizuho ~$50bn incl memory · $35bn ruler is pre-supercycle'},
+  ];
+  document.getElementById('tiles').replaceChildren(...tiles.map(t=>{
+    const d=document.createElement('div'); d.className='card tile';
+    d.innerHTML=`<div class="lab"></div><div class="val"></div><div class="sub"></div>`;
+    d.querySelector('.lab').textContent=t.lab; d.querySelector('.val').textContent=t.val; d.querySelector('.sub').textContent=t.sub;
+    return d; }));
+}
+
+const PATHS=[
+  {k:'buTotal', n:'Bottom-up (this build)', short:'Bottom-up', c:'--c1', em:1, showVal:1},
+  {k:'street',  n:'Street five-name', short:'Street 5-name', c:'--c2'},
+  {k:'jpm',     n:'JPM AI Capex 2.0', short:'JPM', c:'--c3'},
+  {k:'house',   n:'House (AI Model)', short:'House', c:'--c4'},
+  {k:'allBuyer',n:'All-buyer wiki EST', short:'All-buyer', c:'--c5'},
+];
+function renderPaths(){
+  const years=hzYears();
+  lineChart(document.getElementById('pathChart'), years,
+    PATHS.map(p=>({n:p.n, short:p.short, v:S(D.capex[p.k]), c:p.c, em:p.em, showVal:p.showVal})),
+    {yfmt:fmt0, h:360});
+  legend('pathLegend', PATHS.map(p=>[p.n, p.c, true]));
+  dataTable('pathTable', years, PATHS.map(p=>({n:p.n, v:S(D.capex[p.k])})), fmt0);
+}
+function renderRatio(){
+  const years=hzYears();
+  const R=[ {k:'allBuyer',n:'÷ all-buyer (like-for-like)',short:'÷ all-buyer',c:'--c5',em:1},
+            {k:'street',n:'÷ street five-name',short:'÷ street',c:'--c2'},
+            {k:'jpm',n:'÷ JPM',c:'--c3'},
+            {k:'house',n:'÷ house',c:'--c4'} ];
+  lineChart(document.getElementById('ratioChart'), years,
+    R.map(p=>({n:p.n, short:p.short, v:S(D.capex.ratio[p.k]), c:p.c, em:p.em})),
+    {yfmt:v=>v.toFixed(1)+'×', h:280, hline:{y:1,label:'1.0×'}});
+  legend('ratioLegend', R.map(p=>[p.n,p.c,true]));
+  dataTable('ratioTable', years, R.map(p=>({n:p.n, v:S(D.capex.ratio[p.k]), f:fx2})), fx2);
+}
+
+const COMPS=[
+  {k:'accel',    n:'Accelerators', c:'--c1',
+   note:'Units HARD (house AI Model to CY28: NVDA 7.6M CY26 vs JPM 8.9M — house conservative) × house-implied ASPs, base = NVDA Compute ex-networking. Validated: NVDA closure 1.01× CY26; brackets Sherman $52k/chip and Bernstein $9.1M/rack ($126k all-in). CY27 is the disclosed house bull (+$190bn vs JPM path). HBM + LPDDR ride inside these ASPs.'},
+  {k:'memDirect',n:'Memory (direct purchase)', c:'--c2',
+   note:'Server DDR5 (UBS bits × realized $11/$14 — 2×-audited; A−) + DC NAND (physical EB × $/TB: eSSD base ~500EB JPM + KV-cache +75-100EB SNDK; CY27 fork explicit; B) + nearline HDD (physics = consensus; A−). The weak link used to be the NAND share-%; replaced by physics in v3.3.'},
+  {k:'nonIT',    n:'Non-IT: shell + energy + E&C', c:'--c3',
+   note:'GW physical (units × kW × PUE) × $/GW ex-equipment, decomposed into 5 site components ($11.3M/MW CY26). Total anchored on 3 independent site sources (broker $12-13, Stargate $13-18 with 0.94-0.99 check ✓, MS $11-19); component split is C+ (no printed $/sqft in the corpus).'},
+  {k:'network',  n:'Network + DCI', c:'--c4',
+   note:'Optics/switching/NIC units × ASP from the house Susq-based deck, × box→system uplift ×1.18 calibrated on the CY25 vendor layer (= 1.00, the only bull-free observable) + copper physical (attach × ASP per XPU) + DCI (JPM $300-500M/connection; C+). Vendor-sum ratio 1.27/1.41 CY26/27 = house-bull residual, documented.'},
+  {k:'cpu',      n:'CPUs + general-purpose servers', c:'--c5',
+   note:'Per-family engine: JPM proprietary server-CPU units 26→68M ('+"'25-28"+', A−) × ASP with Sherman +15-20% hikes ×2 + ARM-captive under the ARM.md 50% ceiling + head-node merchant (Grace/Vera excluded — inside NVDA Compute). Checks: AMD prints 0.80/0.91/1.20 ✓, ARM share 34-41% < ceiling ✓. General boxes ex-memory still the weakest link (C).'},
+  {k:'infra',    n:'Infra: P&C equipment + storage systems + other IT', c:'--c6',
+   note:'Power & cooling equipment counted 100% separately (the $/GW above is ex-equipment by construction — de-circularized in v2.1): JPM WattsUp $20→45bn power path + BofA thermal. Open tension: implied equipment TAM runs ~1.2-1.5× the sourced path forward — reads pro-VRT/ETN (triangulates the VRT 0.58× closure).'},
+];
+function renderStack(){
+  const years=hzYears();
+  stackedBars(document.getElementById('stackChart'), years,
+    COMPS.map(cp=>({n:cp.n, v:S(D.components[cp.k].v), c:cp.c})),
+    {pct:state.stackPct, yfmt:fmt0, h:360});
+  legend('stackLegend', COMPS.map(cp=>[cp.n+' ('+D.components[cp.k].grade+')', cp.c]));
+  dataTable('stackTable', years,
+    COMPS.map(cp=>({n:cp.n, v:S(D.components[cp.k].v)})).concat([{n:'TOTAL implied', v:S(D.capex.buTotal)}]), fmt0);
+  const mode=document.getElementById('stackMode');
+  mode.replaceChildren(...[['$bn',false],['% of build',true]].map(([lab,val])=>{
+    const b=document.createElement('button'); b.className='chip'; b.textContent=lab;
+    b.setAttribute('aria-pressed', state.stackPct===val);
+    b.onclick=()=>{ state.stackPct=val; renderStack(); };
+    return b; }));
+}
+function renderCompCards(){
+  document.getElementById('compCards').replaceChildren(...COMPS.map(cp=>{
+    const comp=D.components[cp.k];
+    const d=document.createElement('div'); d.className='card';
+    const gcls = comp.grade.startsWith('A')?'b-good':comp.grade.startsWith('B')?'b-acc':'b-warn';
+    d.innerHTML=`<div class="checkhd"><span class="sw" style="display:inline-block;width:10px;height:10px;border-radius:3px;background:${css(cp.c)}"></span><h3></h3><span class="badge ${gcls}"></span></div>
+      <div class="ratios">
+        <span class="ratio"><span class="k">CY26E</span><span class="v">$${fmt0(comp.v[3])}bn</span></span>
+        <span class="ratio"><span class="k">CY27E</span><span class="v">$${fmt0(comp.v[4])}bn</span></span>
+        <span class="ratio"><span class="k">CY30E</span><span class="v">$${fmt0(comp.v[7])}bn</span></span>
+      </div><div class="note"></div>`;
+    d.querySelector('h3').textContent=cp.n;
+    d.querySelector('.badge').textContent=comp.grade;
+    d.querySelector('.note').textContent=cp.note;
+    return d; }));
+}
+function renderMemory(){
+  const years=hzYears(), m=D.memory;
+  stackedBars(document.getElementById('memChart'), years,
+    [ {n:'Server DDR5', v:S(m.ddr5), c:'--c1'},
+      {n:'DC NAND / eSSD', v:S(m.nand), c:'--c2'},
+      {n:'Nearline HDD', v:S(m.hdd), c:'--c3'} ],
+    {yfmt:fmt0, h:300, full:false, overlay:{n:'Supplier-side total (memo)', v:S(m.totalSupplier)}});
+  legend('memLegend', [['Server DDR5','--c1'],['DC NAND / eSSD','--c2'],['Nearline HDD','--c3']]);
+  dataTable('memTable', years, [
+    {n:'Server DDR5', v:S(m.ddr5)}, {n:'DC NAND', v:S(m.nand)}, {n:'Nearline HDD', v:S(m.hdd)},
+    {n:'= Direct-purchase memory (in capex)', v:S(D.components.memDirect.v)},
+    {n:'HBM supplier-side (memo — inside accel ASPs)', v:S(m.hbmSupplier)},
+    {n:'LPDDR/SOCAMM supplier-side (memo — inside racks)', v:S(m.lpddrSupplier)},
+    {n:'TOTAL supplier-side (memo)', v:S(m.totalSupplier)} ], fmt0);
+  const sh=[ {n:'Memory ÷ implied capex', v:S(m.shareOfCapex), c:'--c1', em:1},
+             {n:'Accelerators ÷ implied capex', v:S(m.accelShare), c:'--c2'} ];
+  lineChart(document.getElementById('shareChart'), years, sh, {yfmt:pc0, h:300, full:false});
+  legend('shareLegend', sh.map(s=>[s.n,s.c,true]));
+  dataTable('shareTable', years, sh.map(s=>({n:s.n, v:s.v, f:pc0})), pc0);
+  document.getElementById('headnodeRatios').replaceChildren(...['CY25','CY26E','CY27E'].map((y,i)=>{
+    const sp=document.createElement('span'); sp.className='ratio';
+    sp.innerHTML=`<span class="k">${y} — this build ÷ map v11</span><span class="v">${m.headNode.ratio[i].toFixed(1)}×</span>`;
+    return sp; }));
+}
+
+// ---- revenue checks ----
+const CLOSURES=[
+  {n:'NVDA', r:D.closures.nvda.ratio, verdict:['PASS','b-good'],
+   note:'Compute $312bn + networking $67bn (AI Model split) + non-DC ~$17bn = $396bn vs BBG $391bn → 1.01× CY26. The cleanest validation of the compute-ex-networking base. CY27 1.12× = the house bull made visible against the street.'},
+  {n:'AVGO', r:D.closures.avgo.ratio, verdict:['OPEN','b-warn'],
+   note:'Closes only with coarse software/non-AI estimates. What matters: XPU $60bn CY26 vs the ">$100bn FY27 backlog, conservative" (JPM 06-16), and networking silicon at ~35% of AI rev (Hock ceiling 40%→~30%). The XPU-vs-networking attribution is tangled — flagged as an IR/print question.'},
+  {n:'AMD', r:D.closures.amd.ratio, verdict:['PASS','b-good'],
+   note:'1.03× CY26 / 0.95× CY27. Cross: MI450 ramp 2H26, Meta/OpenAI 6GW deals at $15-20bn/GW capture, server-CPU >70% y/y guide.'},
+  {n:'MRVL', r:D.closures.mrvl.ratio, verdict:['PASS','b-good'],
+   note:'1.00× CY26 / 0.92× CY27 on the v11 rollup (custom ASIC + DSP + interconnect) + non-AI estimate.'},
+  {n:'HDD (STX+WDC)', r:D.closures.hdd.ratio, verdict:['PASS','b-good'],
+   note:'Physical nearline TAM × 86% combined share = 0.84× CY26 / 1.00× CY27 vs consensus — same guardrail as v11. The 0.84 reads as consensus still catching up to July pricing.'},
+  {n:'VRT', r:D.closures.vrt.ratio, verdict:['KNOWN-CONSERVATIVE','b-mut'],
+   note:'0.58× by construction: the model carries equipment-only (BofA share × power/thermal TAM) vs VRT total revenue incl services/IT. Points the same direction as the P&C tension — sourced equipment TAMs look low. Pro-VRT/ETN reading.'},
+];
+function renderClosures(){
+  groupedBars(document.getElementById('closureChart'),
+    CLOSURES.map(c=>c.n),
+    [ {n:'CY26E', c:'--c1', v:CLOSURES.map(c=>c.r[0])},
+      {n:'CY27E', c:'--c2', v:CLOSURES.map(c=>c.r[1])} ],
+    {hline:{y:1,label:'1.00× = closure'}, h:300});
+  legend('closureLegend', [['CY26E','--c1'],['CY27E','--c2']]);
+  dataTable('closureTable', ['CY26E','CY27E'],
+    CLOSURES.map(c=>({n:c.n, v:c.r, f:fx2}))
+      .concat([{n:'Memory — model ÷ Σ BBG suppliers (= DC share, not a closure)', v:D.closures.memoryDcShare.ratio, f:fx2}]), fx2);
+  document.getElementById('closureCards').replaceChildren(
+    ...CLOSURES.map(c=>{
+      const d=document.createElement('div'); d.className='card';
+      d.innerHTML=`<div class="checkhd"><h3></h3><span class="badge ${c.verdict[1]}"></span></div>
+        <div class="ratios">
+          <span class="ratio"><span class="k">CY26E</span><span class="v">${c.r[0]==null?'—':c.r[0].toFixed(2)+'×'}</span></span>
+          <span class="ratio"><span class="k">CY27E</span><span class="v">${c.r[1]==null?'—':c.r[1].toFixed(2)+'×'}</span></span>
+        </div><div class="note"></div>`;
+      d.querySelector('h3').textContent=c.n+' — implied ÷ BBG';
+      d.querySelector('.badge').textContent=c.verdict[0];
+      d.querySelector('.note').textContent=c.note;
+      return d; }),
+    (()=>{ const c=D.closures.memoryDcShare; const d=document.createElement('div'); d.className='card';
+      d.innerHTML=`<div class="checkhd"><h3></h3><span class="badge b-good">PASS</span></div>
+        <div class="ratios">
+          <span class="ratio"><span class="k">CY26E</span><span class="v">${c.ratio[0].toFixed(2)}×</span></span>
+          <span class="ratio"><span class="k">CY27E</span><span class="v">${c.ratio[1].toFixed(2)}×</span></span>
+        </div><div class="note"></div>`;
+      d.querySelector('h3').textContent='Memory — model ÷ Σ supplier consensus';
+      d.querySelector('.note').textContent='Not a 1.0×-target closure: the model is DC-only, suppliers sell everywhere — so the ratio IS the DC share of supplier revenue: 0.49× → 0.60×, rising with mix ✓ matches MU "DC bits >50% and climbing". Σ BBG (07-15): MU + SK Hynix + Samsung-mem×55% + SNDK + Kioxia + STX/WDC = $819bn CY26 / $1,227bn CY27.';
+      return d; })()
+  );
+  // rails
+  const rails=[
+    {t:'Accelerators — CY30 rails', v:[[fx2(D.rails.accelVsAmd),'÷ AMD $1.4T'],[fx2(D.rails.accelVsBofa),'÷ BofA $1,171bn']], b:['ON THE RAIL','b-good'],
+     note:`Our build reaches $${fmt0(D.rails.accelOurs2030)}bn in CY30 — 1.01× the TAM AMD printed at Advancing AI (07-23, up from ">$1T" at the Nov-25 FAD) and 1.21× BofA "AI 2030". Company-event TAMs skew high; the glide arrived where the company did.`},
+    {t:'Networking all-in — CY30', v:[[fx2(D.rails.netAllIn2030.ratio),'÷ 650G/BofA rails']], b:['PASS','b-good'],
+     note:'Our network+DCI CY30 ($306bn) = 0.99× the 650 Group ~$300bn / BofA $316bn all-in rails. Level closes; the open question is internal mix (scale-up content per lane).'},
+    {t:'Server CPU — vs Bernstein & AMD', v:[[fx2(D.rails.cpuVsAmdScenario[2]),'÷ AMD path CY27'],[fx2(D.rails.cpuVsAmdScenario[5]),'÷ AMD path CY30']], b:['BETWEEN BASE & BULL','b-warn'],
+     note:'AMD\'s $220bn-by-2030 server-CPU TAM (Advancing AI) ≈ Bernstein\'s bull ($223bn, 1:1 CPU:GPU pairing). Our build front-loads the agentic ramp (1.06-1.27× the path through \'27) and lands 0.82× at 2030 — the gap is the full 1:1 leg we keep as memo. AMD@>50% share target implies $110bn vs our implied ~$25bn CY27: Lisa Su\'s bet is 4.4× our path. Watch 2H26 share prints.'},
+    {t:'Network vendor-sum — box vs system', v:[[fx2(D.rails.vendorsRatio[1]),'CY26'],[fx2(D.rails.vendorsRatio[2]),'CY27']], b:['DOCUMENTED','b-mut'],
+     note:'Σ vendors (system/module layer, each name counted in ONE layer only) ÷ our build = 1.00× CY25 (calibration year) → 1.27/1.41× CY26/27. The residual is house-bull NVDA networking + AVGO consigned-whitebox ramp — a disclosed wedge, not a price error.'},
+    {t:'CRDO guardrail — copper attach', v:[[fx2(D.rails.crdoGuardrail[0]),'CY26'],[fx2(D.rails.crdoGuardrail[1]),'CY27']], b:['OPEN','b-crit'],
+     note:'Our physical AEC/ACC build implies CRDO revenue 1.33/1.58× consensus — above the informal 0.7-1.3 band. Either the ~1.5:1 AEC attach per XPU is too hot, or CRDO consensus is low ("show-me territory", JPM 06-01). Unresolved; inherited watch item.'},
+    {t:'AMD prints check — server CPU', v:[[fx2(D.rails.amdPrintsCheck[1]),'CY26'],[fx2(D.rails.amdPrintsCheck[2]),'CY27']], b:['IN BAND','b-good'],
+     note:'Our implied AMD server-CPU revenue vs the print-anchored path ($9.5/16.2/21bn CY25-27, >70% y/y 2H26 guide): 0.80/0.91/1.20 — inside the band, tilting hot in CY27 with the Venice ramp.'},
+  ];
+  document.getElementById('railCards').replaceChildren(...rails.map(r=>{
+    const d=document.createElement('div'); d.className='card';
+    d.innerHTML=`<div class="checkhd"><h3></h3><span class="badge ${r.b[1]}"></span></div>
+      <div class="ratios">${r.v.map(x=>`<span class="ratio"><span class="k">${x[1]}</span><span class="v">${x[0]}</span></span>`).join('')}</div>
+      <div class="note"></div>`;
+    d.querySelector('h3').textContent=r.t;
+    d.querySelector('.badge').textContent=r.b[0];
+    d.querySelector('.note').textContent=r.note;
+    return d; }));
+  // optics rail chart
+  const oy=['CY25','CY26E','CY27E','CY28E','CY29E','CY30E'];
+  lineChart(document.getElementById('opticsChart'), oy,
+    [{n:'our optics × uplift ÷ BofA', v:D.rails.opticsVsBofa, c:'--c1', em:1}],
+    {yfmt:v=>v.toFixed(2)+'×', h:220, hline:{y:1,label:'1.0×'}});
+  dataTable('opticsTable', oy, [{n:'ratio', v:D.rails.opticsVsBofa, f:fx2}], fx2);
+}
+
+// ---- GW & power ----
+function renderGW(){
+  const years=hzYears(), g=D.gw;
+  lineChart(document.getElementById('gwChart'), years,
+    [ {n:'Physical (units × kW × PUE)', v:S(g.physical), c:'--c1', em:1, showVal:1},
+      {n:'$35bn/GW rule (capex ÷ 35)', v:S(g.implied35), c:'--c2'} ],
+    {yfmt:fmt1, h:290, full:false,
+     dots:[{year:'CY25',v:11,shape:'sq',lab:'Jefferies US 11'},{year:'CY26E',v:15,shape:'sq',lab:'14-16'},{year:'CY27E',v:20,shape:'sq',lab:'~20'}]});
+  legend('gwLegend', [['Physical GW','--c1',true],['$35bn/GW rule','--c2',true]]);
+  dataTable('gwTable', years, [
+    {n:'Physical GW facility', v:S(g.physical), f:fmt1},
+    {n:'GW at $35bn rule', v:S(g.implied35), f:fmt1} ], fmt1);
+  lineChart(document.getElementById('dpgwChart'), years,
+    [ {n:'$/GW effective', v:S(g.dollarPerGw), c:'--c1', em:1, showVal:1} ],
+    {yfmt:fmt0, h:290, full:false, band:{lo:45,hi:55,label:'JPM $45-55bn NVDA-infra',color:'--c2'}, hline:{y:50,label:'Mizuho ~$50'}});
+  dataTable('dpgwTable', years, [{n:'$bn per GW', v:S(g.dollarPerGw), f:fmt1}], fmt1);
+  lineChart(document.getElementById('cumChart'), years,
+    [ {n:'Cumulative physical GW', v:S(g.cumPhysical), c:'--c1', em:1, showVal:1},
+      {n:'Cumulative at $35bn rule', v:S(g.cum35), c:'--c2'} ],
+    {yfmt:fmt0, h:320,
+     dots:[ {year:'CY30E',v:233,lab:'BofA 233 global'},
+            {year:'CY30E',v:299,lab:'house map 299 (bull)'} ]});
+  legend('cumLegend', [['Cumulative physical','--c1',true],['Cumulative @ $35bn rule','--c2',true]]);
+  dataTable('cumTable', years, [
+    {n:'Cumulative physical GW', v:S(g.cumPhysical), f:fmt0},
+    {n:'Cumulative @ $35bn rule', v:S(g.cum35), f:fmt0} ], fmt0);
+  // SemiAnalysis
+  const sa=D.semianalysis, say=sa.yearsSA;
+  const cumSlice=D.gw.cumPhysical.slice(2, 2+say.length);
+  lineChart(document.getElementById('saChart'), say,
+    [ {n:'Our cumulative facility GW', v:cumSlice, c:'--c1', em:1, showVal:1},
+      {n:'SA demand → facility (×1.25)', v:sa.demandFacility, c:'--c2'},
+      {n:'SA supply/shells → facility (×1.25)', v:sa.supplyIT.map(v=>v*1.25), c:'--c3'} ],
+    {yfmt:fmt0, h:300});
+  legend('saLegend', [['Our cumulative facility','--c1',true],['SA demand (facility basis)','--c2',true],['SA shells (facility basis)','--c3',true]]);
+  dataTable('saTable', say, [
+    {n:'Our cumulative facility GW', v:cumSlice, f:fmt0},
+    {n:'SA demand critical-IT ex-China (as printed)', v:sa.demandIT, f:fmt0},
+    {n:'SA supply/shells critical-IT ex-China (as printed)', v:sa.supplyIT, f:fmt0},
+    {n:'SA demand × 1.25 → facility', v:sa.demandFacility, f:fmt0} ], fmt0);
+  // power
+  const p=D.power;
+  stackedBars(document.getElementById('pwrChart'), years,
+    [ {n:'Gas turbines energizing DC', v:S(p.turbinesEnergizing), c:'--c1'},
+      {n:'Recip gensets (CAT/Cummins)', v:S(p.recips), c:'--c2'},
+      {n:'Nuclear re-dedicated (PPAs)', v:S(p.nuclear), c:'--c3'},
+      {n:'Grid headroom + renewables ex-gas', v:S(p.gridRenewables), c:'--c4'} ],
+    {yfmt:fmt1, h:320, overlay:{n:'Our GW demand', v:S(p.demand)}});
+  legend('pwrLegend', [['Turbines energizing','--c1'],['Recips','--c2'],['Nuclear re-dedicated','--c3'],['Grid + renewables ex-gas','--c4']]);
+  const cov=document.getElementById('covStrip');
+  cov.replaceChildren(...YRS.slice(2,8).map((y,ix)=>{
+    const i=ix+2, v=p.coverage[i];
+    const cls=v>=1?'b-good':v>=0.8?'b-warn':'b-crit';
+    const sp=document.createElement('span'); sp.style.marginRight='8px';
+    sp.innerHTML=`<span class="badge ${cls}">${y} · ${v.toFixed(2)}×</span>`;
+    return sp; }));
+  dataTable('pwrTable', years, [
+    {n:'Turbines energizing DC', v:S(p.turbinesEnergizing), f:fmt1},
+    {n:'Recip gensets', v:S(p.recips), f:fmt1},
+    {n:'Nuclear re-dedicated', v:S(p.nuclear), f:fmt1},
+    {n:'Grid + renewables ex-gas', v:S(p.gridRenewables), f:fmt1},
+    {n:'Supply total', v:S(p.supplyTotal), f:fmt1},
+    {n:'Our demand (GW facility)', v:S(p.demand), f:fmt1},
+    {n:'Coverage', v:S(p.coverage), f:fx2} ], fmt1);
+  // GEV cards
+  const gev=[
+    {t:'GEV Q2\'26 call (07-22)', body:'21 GW of new agreements in the quarter; 100 GW under contract (44 firm + 56 slot-reservation), ≥110 GW by YE26. 25 turbines shipped, +32% y/y. Capacity ~20 GW annualized mid-26 → 24 GW by 2028, now guiding ~30 GW by 2030. ~80% traditional customers / ~20% direct DC — but "traditional" includes utilities building for DC load.'},
+    {t:'Pricing & backlog', body:'Pricing +10-20pts $/kW in H1 plus +10-20pts inside the slot-reservation agreements; "$200B backlog by 2027" pulled forward from 2028. Barclays (01-21): sold out for 2030 delivery by end-2026, ~10 GW of 2029 slots left. That is the system pre-buying this GW path 2-4 years ahead.'},
+    {t:'Industry capacity (oligopoly)', body:'GEV + Siemens Energy + MHI: 55 GW/yr (2025) → 87 GW/yr (2030) (GEV preview 04-17) — plus ~17 GW/yr of "other" (CAT/Doosan/Ansaldo) largely non-addressable to DC. GEV: "US is ~10 GW of gas short every year". Model uses deliveries-basis DC share (backlog ~80/20), ×0.90 nameplate→facility derate (Chakri: install 140 MW to serve 100), ~1yr ship→energize lag (BofA/Barclays). Siemens at 65%-DC in YTD orders = post-2028 upside.'},
+  ];
+  document.getElementById('gevCards').replaceChildren(...gev.map(x=>{
+    const d=document.createElement('div'); d.className='card';
+    d.innerHTML='<h3 style="margin:0 0 6px;font-size:13px"></h3><div class="note" style="margin:0"></div>';
+    d.querySelector('h3').textContent=x.t; d.querySelector('.note').textContent=x.body;
+    return d; }));
+}
+
+// ---- confidence ----
+function renderConf(){
+  const rows=[
+    ['Accelerators','A-','Units HARD (AI Model to CY28); ASPs house-implied with NVDA closure 1.01× CY26 ✓ and Sherman/Bernstein brackets. CY27 = disclosed house bull → B+ there.'],
+    ['Memory (direct)','B+','DDR5 A− (UBS bits + 2×-audited price) · NAND B (physical EB × $/TB, CY27 fork explicit) · HDD A−. The old share-% weak link was replaced by physics.'],
+    ['Network + DCI','B','Units × ASP house deck + ×1.18 uplift calibrated on the CY25 vendor observable; DCI C+ (good anchors, EST path).'],
+    ['Non-IT (shell/energy/E&C)','B-','Total anchored on 3 independent site sources + JPM box check; 5-component split C+ (no printed $/sqft).'],
+    ['Infra: P&C + storage + other IT','B-','P&C TAMs sourced (JPM WattsUp/BofA) but ~1.2-1.5× forward tension open (pro-VRT/ETN); other-IT C (vague composition).'],
+    ['CPUs + servers','B-','Was C+; per-family engine (JPM units A−) + AMD-prints and ARM-ceiling checks. General boxes ex-memory still C — ODM double-click pending.'],
+    ['CAPEX TOTAL','B / B-','CY26 B (hindcast + closures) · CY27 B− (stacked bulls) · CY28 C · CY29-35 D (glide everywhere).'],
+  ];
+  document.getElementById('gradeList').replaceChildren(...rows.map(r=>{
+    const d=document.createElement('div'); d.className='gradeline';
+    const gcls=r[1].startsWith('A')?'b-good':r[1].startsWith('B')?'b-acc':'b-warn';
+    d.innerHTML=`<span class="nm"></span><span><span class="badge ${gcls}"></span></span><span class="note2"></span>`;
+    d.querySelector('.nm').textContent=r[0];
+    d.querySelector('.badge').textContent=r[1];
+    d.querySelector('.note2').textContent=r[2];
+    return d; }));
+  const items=[
+    ['warn','P&C equipment tension ~1.2-1.5× forward','Implied equipment TAM (IT-GW × BofA content) runs 0.79/1.18/1.55× the sourced JPM+BofA path CY25-27. Residual says the sourced TAM is conservative — triangulates the VRT 0.58× closure. Pro-VRT/ETN; watch prints.'],
+    ['crit','CRDO guardrail 1.33/1.58× above band','Physical AEC attach (~1.5:1 per XPU long-term) implies CRDO revenue well above consensus. Attach too hot, or consensus too low. Show-me item.'],
+    ['warn','HBM CY27 price fork','$22.75/GB (JPM blended, base here) vs $31 (Redburn contract) vs ~$40 (TrendForce) vs $53 (Bernstein). At $31 × supply-cut bits, HBM alone is ~$194bn (the Semis MAP combo) vs $165bn here. Both kept; fork documented.'],
+    ['warn','DC NAND CY27 fork','$400/TB base (+33%) sits between BofA (+7%) and Mizuho (+50%); July decks favored the hot side. ±$50/TB ≈ ±$29bn on the line.'],
+    ['warn','Head-node DRAM → Semis MAP v12','This build runs 3.0×/4.5× the map\'s head-node DRAM line CY26/27 (stale $5.5/GB constant + flat 896GB content there). Fix queued as map v12; would push the map\'s memory-bridge to ~62-66% of street AI-capex — re-target decision open.'],
+    ['warn','AVGO XPU vs networking attribution','1.11× closure only works with coarse segment ESTs; the "~35% of AI rev is networking silicon" base is ambiguous. IR/print question.'],
+    ['mut','No retirement in cumulative GW','Cumulative 243 GW CY30 is gross; 5-6yr useful life starts biting ~CY29-30. Next version item — matters for the terminal years, not for CY26-28.'],
+    ['mut','Optics level closed, mix open','Bottoms-up optics was 0.71× the top-down CY27; DCI + the ×1.18 uplift close the LEVEL (BofA rail 0.97-1.08×), but our scale-up slice is ~0.5× the Lumentum ID TAM in 29-30 — content-per-lane upside not modeled, gated on CPO prints.'],
+    ['mut','NVDA units: house 7.6M CY26 vs JPM 8.9M','The engine inherits the house AI Model\'s conservative unit count (ledger nvda-units-gw). More units at these ASPs = upside to the implied total.'],
+    ['mut','All-buyer denominator is itself an estimate','The one like-for-like check path (top-4 + ORCL + neocloud + sovereign + China) is a wiki EST (skeptics range to $1,650bn CY27). MAP all-in $1,680bn corroborates the high side.'],
+  ];
+  document.getElementById('openList').replaceChildren(...items.map(it=>{
+    const d=document.createElement('div'); d.className='openitem';
+    const col=it[0]==='crit'?'--crit':it[0]==='warn'?'--warn':'--muted';
+    d.innerHTML=`<span class="dot" style="background:${css(col)}"></span><span><b></b> — <span class="why"></span></span>`;
+    d.querySelector('b').textContent=it[1];
+    d.querySelector('.why').textContent=it[2];
+    return d; }));
+}
+
+// ---------- shell ----------
+const TABS=[['overview','Overview'],['build','The Build'],['revenue','Checks · Revenue'],['gw','Checks · GW & Power'],['conf','Confidence & Open Items']];
+function renderTabs(){
+  const t=document.getElementById('tabs');
+  t.replaceChildren(...TABS.map(([id,lab])=>{
+    const b=document.createElement('button'); b.className='tabbtn'; b.setAttribute('role','tab');
+    b.textContent=lab; b.setAttribute('aria-selected', state.tab===id);
+    b.onclick=()=>{ state.tab=id;
+      document.querySelectorAll('section').forEach(s=>s.classList.toggle('on', s.id==='tab-'+id));
+      renderTabs(); };
+    return b; }));
+}
+function renderHz(){
+  const t=document.getElementById('hzChips');
+  t.replaceChildren(...[['CY23-28 anchored',6],['CY23-30',8],['CY23-35 glide',13]].map(([lab,h])=>{
+    const b=document.createElement('button'); b.className='chip'; b.textContent=lab;
+    b.setAttribute('aria-pressed', state.hz===h);
+    b.onclick=()=>{ state.hz=h; renderAll(); };
+    return b; }));
+}
+function renderAll(){
+  renderHz(); renderTabs(); renderTiles(); renderPaths(); renderRatio();
+  renderStack(); renderCompCards(); renderMemory();
+  renderClosures(); renderGW(); renderConf();
+  document.getElementById('meta').textContent =
+    `${D.meta.workbook} · workbook ${D.meta.workbook_mtime} · extracted ${D.meta.extracted}`;
+  document.getElementById('foot').innerHTML =
+    `Source: <b>${D.meta.workbook}</b> (P:\\Felipe Monteiro\\Semis MAP) — the summary sheet of the bottom-up capex engine; numbers extracted from the workbook, prose curated from its 204 source comments. `+
+    `Companion piece to the <a href="../semis-map/" style="color:var(--accent)">Semis MAP</a> (capex → revenue by product line; this engine inverts it: physical lines → implied capex). `+
+    `Conventions: all-buyer + total-DC scope; HBM/LPDDR inside accelerator ASPs; facility GW ≠ IT-load GW ≠ 800V subset — never mix bases. `+
+    `Confidence: CY25-26 anchored, CY27 = disclosed stacked bulls, CY28 calibrated, CY29-35 glide. Capstone internal — not investment advice.`;
+}
+document.getElementById('themeBtn').onclick=()=>{
+  const r=document.documentElement;
+  const cur=r.getAttribute('data-theme')|| (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  r.setAttribute('data-theme', cur==='dark'?'light':'dark');
+  renderAll();
+};
+renderAll();
+</script>
+
+</body>
+</html>
