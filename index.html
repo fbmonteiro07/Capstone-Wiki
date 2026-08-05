@@ -25,6 +25,8 @@
     .card.sub { margin-left: 32px; margin-top: -6px; padding: 14px 22px; background: #12171f; border-color: #262d36; }
     .card.sub h2 { font-size: 15px; }
     .card.sub h2::before { content: "↳  "; color: #6e7681; font-weight: 400; }
+    /* marcador de link externo (sai deste site — abre em aba nova) */
+    .card h2 .ext { color: #6e7681; font-weight: 400; font-size: 13px; }
     footer { margin-top: 32px; color: #6e7681; font-size: 12px; }
   </style>
 </head>
@@ -33,7 +35,11 @@
     <h1>Capstone Wiki</h1>
     <p class="sub">Buyside dashboards — semis, AI infrastructure &amp; AI labs</p>
 
-    <a class="card" href="wiki-map/">
+    <a class="card" href="https://fbmonteiro07.github.io/wiki-empresas/_wiki/" target="_blank" rel="noopener">
+      <h2>Research Wiki 📚 <span class="ext">↗</span></h2>
+      <span>A wiki de research em si — <b>uma página sintetizada por ticker</b> (~101 nomes) mais os temas cross-company, cada página com Thesis · Debate (bull vs bear) · Catalysts · Changelog, e <b>todo datapoint atribuído a broker/analista + data</b>. Em cima do acervo bruto (filings, transcripts, decks por ticker). Traz também o hub de dashboards da wiki: edge tracker (house vs Street), read-through da supply chain, catalyst loop &amp; timeline, what-changed, coverage audit, assumptions canônicas, knowledge graph, book exposure e management communication. Atualizada pela rotina diária das 18:15</span>
+    </a>
+    <a class="card sub" href="wiki-map/">
       <h2>Wiki Map &amp; Repo State 🗺️</h2>
       <span>Mapa da wiki de research — 101 páginas em 14 setores, grafo interativo da supply chain (142 supply + 23 compete edges, hover/click por ticker), inventário do acervo (~3.1k docs, tiers de cobertura), thesis drift dos últimos 7 dias e roadmap do repositório — snapshot 02-Jul-26</span>
     </a>
