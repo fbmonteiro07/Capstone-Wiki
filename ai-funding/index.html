@@ -127,6 +127,28 @@ td.lease{color:var(--s-hyp)}
 .chip.warn{background:var(--chip-warn); color:var(--chip-warn-ink)}
 .chip.info{background:var(--chip-info); color:var(--chip-info-ink)}
 
+/* comparação por camada */
+.cmp-box{overflow-x:auto}
+.cmp{display:grid; grid-template-columns:118px 1fr 1fr; min-width:720px}
+.cmp .r{display:contents}
+.cmp .r>div{padding:12px 16px; border-top:1px solid var(--line2); font-size:13px; line-height:1.5}
+.cmp .r>div:nth-child(3){border-left:1px solid var(--line2)}
+.cmp .r.h>div{border-top:0; padding-bottom:14px}
+.cmp .hd{font-family:Georgia,serif; font-size:16px; font-weight:700; display:flex; align-items:center; gap:9px}
+.cmp .hd em{font-style:normal; font-family:"Segoe UI",sans-serif; font-size:11px; font-weight:600; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--muted); margin-left:auto}
+.cmp .dot{width:11px; height:11px; border-radius:3px; flex:none}
+.cmp .lbl{font-size:10.5px; letter-spacing:.11em; text-transform:uppercase; color:var(--faint); font-weight:700; padding-top:15px}
+.cmp .mut{color:var(--muted)}
+.cmp .num{font-variant-numeric:tabular-nums}
+.pill{display:inline-block; font-size:11.5px; padding:2px 9px; margin:0 5px 5px 0; border-radius:20px;
+  background:var(--line2); color:var(--muted); border:1px solid var(--line); white-space:nowrap}
+.cmp .ev>div:not(.lbl){display:flex; flex-direction:column; gap:7px}
+.cmp .e{font-size:12.3px; color:var(--muted); padding-left:12px; position:relative}
+.cmp .e::before{content:''; position:absolute; left:0; top:7px; width:4px; height:4px; border-radius:50%; background:var(--faint)}
+.cmp .e b{color:var(--ink)}
+.cmp .e i{font-style:normal; color:var(--faint); font-size:11px}
+
 /* aggregates + quotes */
 .cards3{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:12px}
 .mini{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:15px 16px}
@@ -257,40 +279,60 @@ footer .disc{margin-top:16px; font-size:11.5px; color:var(--faint); border-top:1
   </div>
 
   <div class="card" style="margin-top:16px">
-    <h3 style="font-family:Georgia,serif; font-size:17px; margin-bottom:10px">Mapa de financiamento por camada</h3>
-    <div class="tbl-box"><table class="ledger" id="layer-tbl">
-      <thead><tr><th>Camada</th><th>Ativo · vida</th><th>Quando compromete</th><th>Instrumentos típicos</th><th>Custo observado</th><th>Onde fica o risco residual</th><th>Datapoints (fonte · data)</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><b>Shell &amp; site</b></td>
-          <td>terra, prédio, power, cooling · <b>15–25 anos</b></td>
-          <td><b>anos</b> antes (long-lead)</td>
-          <td>operating leases · SPV / project finance · developer + backstop de lease do tomador · colocation</td>
-          <td class="num">SPV ~6,5% (Hyperion) · 7,0% (Meta Texas) · leases até 15 anos · colo US$ 120–160/kW-mês (até 200)</td>
-          <td>developer / SPV / private credit — <b>com backstop, volta ao tomador</b> (garantia de valor residual)</td>
-          <td style="color:var(--muted)">MSFT US$ 329 bi de leases assinados não iniciados (Rothschild, 30-jul) · META US$ 183 bi + US$ 28 bi de garantias residuais (Redburn) · GOOG US$ 43,8 bi de backstops p/ Hut 8, TeraWulf, Cypher — com warrants 14%/5,4% (10-Q + The Information, 27-jul) · colo: SemiAnalysis, 30-jun</td>
-        </tr>
-        <tr>
-          <td><b>Compute — chips &amp; servidores</b></td>
-          <td>GPU/XPU, HBM, servidores · <b>~5–6 anos contábil</b> (debate: 2–3 econômico)</td>
-          <td><b>meses</b> antes (short-lived)</td>
-          <td>OCF · bonds IG · dívida garantida por GPU + contrato · pré-pagamento de cliente · vendor floor (NVDA) · warrants-como-rebate</td>
-          <td class="num">IG ~5% · NBIS SOFR+250 · CRWV DDTL 5,9% (backstop Meta) · unsecured ~10% · floor SharonAI ~US$ 2,33/hr</td>
-          <td>tomador; no vendor floor, <b>contingente na NVDA</b> (off-balance até acionar; exposição 10-Q: US$ 3,5 bi)</td>
-          <td style="color:var(--muted)">NBIS: ~70% dos deals pré-pagos, cobrindo 50–60% do capex (call 2T26, 12-ago) · CRWV &gt;US$ 32 bi captados (call, 11-ago) · AMD-OpenAI: warrants ≈105% de rebate/GW; Meta ≈85% (SemiAnalysis, 24-jul) · plataforma NVDA US$ 500 bi a ~7–8% (10-ago)</td>
-        </tr>
-        <tr>
-          <td><b>Networking + CPU + storage</b></td>
-          <td>switches/ótica, CPUs, NAND/HDD · vida intermediária</td>
-          <td>junto do compute</td>
-          <td>mesmo pacote do compute (OCF, bonds, secured)</td>
-          <td class="num">—</td>
-          <td>tomador</td>
-          <td style="color:var(--muted)">sobe de ~14% para ~25% do stack (CY23→28E, AI Model) — a parte do capex que mais acelera; BofA CY30: CPU ~10% do TAM de sistemas (12-ago)</td>
-        </tr>
-      </tbody>
-    </table></div>
-    <p class="note"><b>A consequência contábil:</b> à medida que o shell migra para operating lease e SPV, ele <b>sai do capex reportado</b> (MSFT: ~US$ 15 bi/ano só na reclassificação) — o capex reportado converge para a camada de silício, e comparações y/y entre bases quebram. E a cancelabilidade é assimétrica: o shell está contratado; <b>a opção de parar existe só no silício</b> — por isso pedido de GPU mercante é a linha frágil e roadmap de ASIC próprio (anual) é a estável.</p>
+    <h3 style="font-family:Georgia,serif; font-size:17px">Mapa de financiamento por camada</h3>
+    <p style="font-size:13px; color:var(--muted); margin:4px 0 16px">Cada camada tem seu próprio relógio, seu próprio instrumento e seu próprio dono do risco residual.</p>
+    <div class="cmp-box"><div class="cmp">
+      <div class="r h">
+        <div></div>
+        <div class="hd"><span class="dot" style="background:var(--sp-shell)"></span>Shell &amp; site<em>~36% do capex 28E</em></div>
+        <div class="hd"><span class="dot" style="background:var(--sp-chip)"></span>Compute<em>~64% do capex 28E</em></div>
+      </div>
+      <div class="r">
+        <div class="lbl">Ativo</div>
+        <div>Terra, prédio, power, cooling</div>
+        <div>GPU/XPU, HBM, servidores <span class="mut">— networking, CPU e storage viajam no mesmo pacote</span></div>
+      </div>
+      <div class="r">
+        <div class="lbl">Vida contábil</div>
+        <div><b>15–25 anos</b> <span class="mut">MSFT estendeu 15→25 no FY27</span></div>
+        <div><b>~5–6 anos</b> <span class="mut">META servidores 5,5 · debate: 2–3 de vida econômica</span></div>
+      </div>
+      <div class="r">
+        <div class="lbl">Compromete</div>
+        <div><b>anos</b> antes <span class="mut">long-lead</span></div>
+        <div><b>meses</b> antes <span class="mut">short-lived</span></div>
+      </div>
+      <div class="r">
+        <div class="lbl">Instrumentos</div>
+        <div><span class="pill">operating lease</span><span class="pill">SPV / project finance</span><span class="pill">developer + backstop</span><span class="pill">colocation</span></div>
+        <div><span class="pill">OCF</span><span class="pill">bonds IG</span><span class="pill">dívida garantida por GPU</span><span class="pill">pré-pagamento</span><span class="pill">vendor floor</span><span class="pill">warrants-rebate</span></div>
+      </div>
+      <div class="r">
+        <div class="lbl">Custo observado</div>
+        <div class="num">SPV ~6,5% <span class="mut">Hyperion</span> · 7,0% <span class="mut">Meta Texas</span><br>colo US$ 120–160/kW-mês</div>
+        <div class="num">IG ~5% · CRWV 5,9% <span class="mut">c/ backstop</span> · NBIS SOFR+250<br>sem garantia ~10%</div>
+      </div>
+      <div class="r">
+        <div class="lbl">Risco residual</div>
+        <div>Developer / SPV / private credit — <b>com backstop, volta ao tomador</b></div>
+        <div>Tomador — no vendor floor, <b>contingente na NVDA</b> <span class="mut">off-balance até acionar</span></div>
+      </div>
+      <div class="r ev">
+        <div class="lbl">Evidência</div>
+        <div>
+          <span class="e">MSFT <b>US$ 329 bi</b> de leases assinados não iniciados <i>Rothschild, 30-jul</i></span>
+          <span class="e">META <b>US$ 183 bi</b> de leases + <b>US$ 28 bi</b> de garantias residuais <i>Redburn</i></span>
+          <span class="e">GOOG <b>US$ 43,8 bi</b> de backstops, com warrants de 14% (TeraWulf) e 5,4% (Cypher) <i>10-Q + The Information, 27-jul</i></span>
+        </div>
+        <div>
+          <span class="e">NBIS: <b>~70%</b> dos deals pré-pagos, cobrindo <b>50–60%</b> do capex <i>call 2T26, 12-ago</i></span>
+          <span class="e">CRWV <b>&gt;US$ 32 bi</b> captados <i>call, 11-ago</i></span>
+          <span class="e">AMD–OpenAI: warrants ≈<b>105%</b> de rebate/GW <i>SemiAnalysis, 24-jul</i></span>
+          <span class="e">Plataforma NVDA <b>US$ 500 bi</b> a ~7–8%; exposição em garantias no 10-Q: <b>US$ 3,5 bi</b></span>
+        </div>
+      </div>
+    </div></div>
+    <p class="note"><b>A consequência contábil:</b> à medida que o shell migra para operating lease e SPV, ele <b>sai do capex reportado</b> (MSFT: ~US$ 15 bi/ano só na reclassificação) — o capex reportado converge para a camada de silício, e comparações y/y entre bases quebram. E a cancelabilidade é assimétrica: o shell está contratado; <b>a opção de parar existe só no silício</b> — por isso pedido de GPU mercante é a linha frágil e roadmap de ASIC próprio (anual) é a estável. <b>Networking + CPU + storage</b> financia-se junto do compute, mas é a linha que mais acelera: ~14% → ~25% do stack (CY23→28E).</p>
   </div>
 </section>
 
