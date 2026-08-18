@@ -89,9 +89,11 @@ tbody tr:hover td{background:#172436}
 .qq .qt .w{color:var(--warn)}
 /* alto o suficiente para a serie ter forma: 588x178 dava 3.3:1 (achatado). 248px leva a
    ~2.4:1, e em tela larga o grafico ganha mais 30px. */
-.qq .qc{position:relative; height:248px}
-@media(min-width:1500px){.qq .qc{height:278px}}
-.qq .qmiss{height:248px; display:flex; align-items:center; justify-content:center;
+/* +22px em relacao ao tamanho sem legenda: a legenda clicavel come uma faixa no topo
+   e sem isso a area de plot voltaria a 226px */
+.qq .qc{position:relative; height:270px}
+@media(min-width:1500px){.qq .qc{height:300px}}
+.qq .qmiss{height:270px; display:flex; align-items:center; justify-content:center;
   color:var(--mut); font-size:11.5px; border:1px dashed var(--line); border-radius:8px}
 .qleg{display:flex; gap:13px; flex-wrap:wrap; margin:2px 0 0; font-size:10.5px; color:var(--mut)}
 .qleg i{width:16px; height:0; border-top-width:2px; display:inline-block; margin-right:5px;
@@ -316,6 +318,9 @@ other three tabs, as of <b>2026-08-18</b>. Charts render as you scroll.</div>
   <span class="chip on" data-p="q" data-f="all">All groups (26)</span>
   <span class="chip" data-p="q" data-f="Hyperscalers">Hyperscalers (6)</span><span class="chip" data-p="q" data-f="Memory">Memory (5)</span><span class="chip" data-p="q" data-f="Logic / accelerators">Logic / accelerators (3)</span><span class="chip" data-p="q" data-f="Foundry">Foundry (3)</span><span class="chip" data-p="q" data-f="Semicap">Semicap (4)</span><span class="chip" data-p="q" data-f="Optics">Optics (5)</span>
   <span class="sp"></span>
+  <label>hide everywhere</label>
+  <span class="chip" data-hide="hi">street hi/lo</span>
+  <span class="chip" data-hide="y2">2nd year (CY28 · 2Y)</span>
   <label for="viewSelQ">revision charts</label>
   <select id="viewSelQ">
     <option value="idx">indexed · start = 100</option>
@@ -371,7 +376,8 @@ const CXCYS = ["2027", "2028"], Q = [{"t":"MSFT","name":"MICROSOFT CORP","grp":"
 // (2 meses de folga cobre defasagem de feriado/primeiro ponto)
 const SHORT_AFTER = "2021-10-19";
 const ST = {pe:{f:"all", s:"vs", tbl:false}, rev:{f:"all", s:"mult", tbl:false, v:"idx"},
-            cx:{f:"all", s:"up", tbl:false, v:"lvl"}, q:{f:"all", s:"grp", v:"idx"}};
+            cx:{f:"all", s:"up", tbl:false, v:"lvl"},
+            q:{f:"all", s:"grp", v:"idx", hide:{hi:false, y2:false}}};
 let tab = "pe", charts = [];
 const SECTIONS = {pe:"tab-pe", rev:"tab-rev", cx:"tab-cx", q:"tab-q"};
 const TBLID = {pe:"tblPE", rev:"tblREV", cx:"tblCX"};
@@ -811,10 +817,18 @@ const axNum = (step, u, hi) => {
   };
 };
 
+// Legenda LIGADA e clicavel: e' o toggle nativo do Chart.js (clique na entrada esconde
+// aquela linha so naquele card). As linhas de REFERENCIA -- banda +-1sd, a media de 5a e
+// o 100 do indexado -- ficam fora da legenda de proposito: sao regua, nao serie, e
+// ocupariam metade da linha. Para esconder em TODOS os cards de uma vez existem os chips
+// "street hi/lo" e "2nd year" na barra.
 const qBase = (g, gi, yy, fmtY, tipY) => ({
   maintainAspectRatio:false, animation:false, normalized:true,
   interaction:{mode:"index", intersect:false},
-  plugins:{legend:{display:false}, tooltip:{displayColors:true, callbacks:{
+  plugins:{legend:{display:true, position:"top", align:"start",
+    labels:{boxWidth:12, boxHeight:2, padding:9, color:"#8696ad", font:{size:9.5},
+            filter:it => !/^(5y |±|p16|start = )/.test(it.text)}},
+    tooltip:{displayColors:true, callbacks:{
     title:it=>g[it[0].dataIndex],
     label:it=>`${it.dataset.label}: ${it.parsed.y==null?"–":(tipY||fmtY)(it.parsed.y)}`}}},
   scales:{
@@ -826,17 +840,28 @@ const qBase = (g, gi, yy, fmtY, tipY) => ({
        color:"#6b7c94", font:{size:10}, callback:fmtY}, grid:{color:"rgba(31,43,62,.7)"}}}
 });
 
+// tags que os chips da barra usam para esconder a mesma serie nos 26 cards de uma vez.
+// Uma perna pode carregar DUAS tags (o "street hi CY28" e ponta alta E segundo ano), e
+// basta uma estar escondida para ela sair -- por isso e' lista, nao string.
+const qKeep = ds => !(ds._k || []).some(k => ST.q.hide[k]);
+const legTag = L => {
+  const k = [];
+  if(L.kind === "hi") k.push("hi");
+  if(L.cy !== CXCYS[0]) k.push("y2");
+  return k;
+};
+
 function quadCharts(t){
   const d = DBY[t], q = QBY[t], c = CBY[t];
   // 1) forward P/E 5y — identico ao tab 1
   if(d){
     const g = GRIDS[d.gi], el = document.getElementById("q1_"+cid(t));
     if(el) charts.push(new Chart(el, {type:"line", data:{labels:g, datasets:[
-      {label:"1Y fwd P/E", data:d.pe1, borderColor:"#5aa2ff", borderWidth:1.5, pointRadius:0, spanGaps:true},
-      {label:"2Y fwd P/E", data:d.pe2, borderColor:"#3ecf8e", borderWidth:1.2, pointRadius:0, spanGaps:true},
-      {label:d.ctrLbl, data:g.map(()=>d.ctr), borderColor:"#e8b54d", borderWidth:1, borderDash:[6,4], pointRadius:0},
-      {label:d.bandLbl+" hi", data:g.map(()=>d.bhi), borderColor:"rgba(232,181,77,.4)", borderWidth:1, borderDash:[2,4], pointRadius:0},
-      {label:d.bandLbl+" lo", data:g.map(()=>d.blo), borderColor:"rgba(232,181,77,.4)", borderWidth:1, borderDash:[2,4], pointRadius:0}]},
+      {label:"1Y fwd P/E", data:d.pe1, borderColor:"#5aa2ff", borderWidth:1.5, pointRadius:0, spanGaps:true, _k:[]},
+      {label:"2Y fwd P/E", data:d.pe2, borderColor:"#3ecf8e", borderWidth:1.2, pointRadius:0, spanGaps:true, _k:["y2"]},
+      {label:d.ctrLbl, data:g.map(()=>d.ctr), borderColor:"#e8b54d", borderWidth:1, borderDash:[6,4], pointRadius:0, _k:[]},
+      {label:d.bandLbl+" hi", data:g.map(()=>d.bhi), borderColor:"rgba(232,181,77,.4)", borderWidth:1, borderDash:[2,4], pointRadius:0, _k:["hi"]},
+      {label:d.bandLbl+" lo", data:g.map(()=>d.blo), borderColor:"rgba(232,181,77,.4)", borderWidth:1, borderDash:[2,4], pointRadius:0, _k:["hi"]}].filter(qKeep)},
       options:qBase(g, d.gi, {lo:d.lo, hi:d.hi, step:d.step, nt:d.nt},
                     axNum(d.step,"×",d.hi), v=>v.toFixed(1)+"×")}));
   }
@@ -844,11 +869,14 @@ function quadCharts(t){
   if(q.h){
     const g = GRIDS[q.h.gi], el = document.getElementById("q2_"+cid(t));
     if(el) charts.push(new Chart(el, {type:"line", data:{labels:g, datasets:[
-      {label:"street hi", data:q.h.hi, borderColor:"rgba(62,207,142,.8)", borderWidth:1.1, pointRadius:0, spanGaps:true},
+      {label:"street hi", data:q.h.hi, borderColor:"rgba(62,207,142,.8)", borderWidth:1.1, pointRadius:0, spanGaps:true, _k:["hi"]},
+      // o fill:"-1" pinta a banda contra o dataset ANTERIOR; se o "street hi" for
+      // escondido pelo chip, a referencia some e o preenchimento vaza -- entao a perna
+      // lo so pinta quando a hi esta presente
       {label:"street lo", data:q.h.lo, borderColor:"rgba(255,107,122,.7)", borderWidth:1.1, pointRadius:0,
-       spanGaps:true, fill:"-1", backgroundColor:"rgba(90,162,255,.07)"},
-      {label:"consensus 1Y", data:q.h.e1, borderColor:"#5aa2ff", borderWidth:1.8, pointRadius:0, spanGaps:true},
-      {label:"consensus 2Y", data:q.h.e2, borderColor:"#e8b54d", borderWidth:1.4, pointRadius:0, spanGaps:true}]},
+       spanGaps:true, fill:ST.q.hide.hi?false:"-1", backgroundColor:"rgba(90,162,255,.07)", _k:["hi"]},
+      {label:"consensus 1Y", data:q.h.e1, borderColor:"#5aa2ff", borderWidth:1.8, pointRadius:0, spanGaps:true, _k:[]},
+      {label:"consensus 2Y", data:q.h.e2, borderColor:"#e8b54d", borderWidth:1.4, pointRadius:0, spanGaps:true, _k:["y2"]}].filter(qKeep)},
       options:qBase(g, q.h.gi, {lo:q.h.alo, hi:q.h.ahi, step:q.h.astep, nt:q.h.nt},
                     axNum(q.h.astep,"",q.h.ahi), v=>fmt(v, Math.abs(v)<10?2:1))}));
   }
@@ -871,9 +899,9 @@ function quadCharts(t){
     const ty = isIx ? (v=>v.toFixed(1)) : (v=>fmt(v, dec)+(u?" "+u:""));
     const ds = src.legs.map(L=>({label:(L.kind==="cons"?"consensus":"street hi")+" CY"+L.cy.slice(2),
         data:L.d, borderColor:L.hue, borderWidth:L.w, borderDash:L.dash,
-        pointRadius:0, spanGaps:true}));
+        pointRadius:0, spanGaps:true, _k:legTag(L)})).filter(qKeep);
     if(isIx) ds.push({label:"start = 100", data:g.map(()=>100), borderColor:"rgba(232,181,77,.55)",
-                      borderWidth:1, borderDash:[6,4], pointRadius:0});
+                      borderWidth:1, borderDash:[6,4], pointRadius:0, _k:[]});
     charts.push(new Chart(el, {type:"line", data:{labels:g, datasets:ds},
       options:qBase(g, src.gi, {lo:src.lo, hi:src.hi, step:src.step, nt:src.nt}, fy, ty)}));
   });
@@ -915,6 +943,12 @@ document.getElementById("sortSelC").onchange = e => { ST.cx.s = e.target.value; 
 document.getElementById("viewSelC").onchange = e => { ST.cx.v = e.target.value; render(); };
 document.getElementById("sortSelQ").onchange = e => { ST.q.s = e.target.value; render(); };
 document.getElementById("viewSelQ").onchange = e => { ST.q.v = e.target.value; render(); };
+document.querySelectorAll(".chip[data-hide]").forEach(ch=>ch.onclick=()=>{
+  const k = ch.dataset.hide;
+  ST.q.hide[k] = !ST.q.hide[k];
+  ch.classList.toggle("on", ST.q.hide[k]);
+  render();
+});
 render();
 </script>
 </body>
