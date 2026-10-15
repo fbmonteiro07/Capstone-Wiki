@@ -1,10 +1,18 @@
 # AI Labs — OpenAI & Anthropic revenue, ARR and P&L
 
-The default **Revenue & sources** tab uses the saved Capstone `AI Model.xlsx` calculations from 15 October 2026. It includes monthly run rates, annual and quarterly revenue, 22 dated news observations with links, and separate model-estimate and forecast labels. `revenue-data.json` is the downloadable data and source ledger.
+The default **Revenue & sources** tab uses the latest saved Capstone `AI Model.xlsx` calculations, with the workbook timestamp shown on the page. It includes monthly run rates, annual and quarterly revenue, 22 dated news observations with links, and separate model-estimate and forecast labels. `revenue-data.json` is the downloadable data and source ledger.
 
 **Combined system** adds OpenAI and Anthropic for matching months on the selected reporting, net or gross basis. Annual totals use the explicitly labeled workbook basis (OpenAI net + Anthropic gross). A missing component does not become zero.
 
 The six original WFS tabs and `data.json` retain the 11 June 2026 snapshot documented below.
+
+## Automatic refresh
+
+An hourly Codex check reads the official AI Model and rebuilds after a saved-file change. The two companies and the combined system update together. Only validated dashboard HTML and its data download are committed and published; previous model snapshots are retained.
+
+The refresh reads Excel's saved calculated values and does not edit or recalculate the workbook. Invalid selected cells, failed annual tie-outs or mismatched combined totals stop publication. Missing components remain unavailable. News references are retained with their own last-review date; a workbook refresh does not imply new news research.
+
+Runner: `_wiki/_tools/refresh_ai_labs_revenue.py --publish` in the research wiki. `--check` validates a candidate without publication. Repeating a completed run makes no new commit; interrupted publication resumes from its saved state. The local computer, desktop app and network workbook access must be available for the hourly check.
 
 ## Original WFS snapshot — 11 June 2026
 

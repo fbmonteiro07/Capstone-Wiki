@@ -1822,6 +1822,13 @@
   "quarterly": [
     {
       "company": "OpenAI",
+      "period": "Q2 2025",
+      "value": 4250.0,
+      "cell": "ARR Tracker!H33",
+      "basis": "net"
+    },
+    {
+      "company": "OpenAI",
       "period": "Q1 2026",
       "value": 5803.609061250001,
       "cell": "ARR Tracker!R33",

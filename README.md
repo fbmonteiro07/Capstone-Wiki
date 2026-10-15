@@ -8,7 +8,7 @@ Buyside dashboards — semis, AI infrastructure and AI labs. Live site published
 | Pasta | Dashboard | Conteúdo |
 |---|---|---|
 | [`wiki-map/`](wiki-map/) | Wiki Map & Repo State 🗺️ | Sector map da wiki de research (101 páginas/14 setores), grafo interativo da supply chain, inventário do acervo, thesis drift semanal + roadmap (snapshot 02-Jul-26) |
-| [`ai-labs/`](ai-labs/) | AI Labs 🧪 | Capstone AI Model revenue and ARR (15-Oct-2026), OpenAI + Anthropic combined system, net/gross controls and dated news sources; original WFS P&L snapshot (11-Jun-2026) |
+| [`ai-labs/`](ai-labs/) | AI Labs | Capstone AI Model revenue and ARR with hourly saved-workbook change checks; OpenAI + Anthropic combined system, net/gross controls and dated news sources; original WFS P&L snapshot (11-Jun-2026) |
 | [`openrouter-vercel/`](openrouter-vercel/) | OpenRouter + Vercel | Gateway adoption, token share and weekly research; opens the internal research wiki. |
 | [`gpu-pricing/`](gpu-pricing/) | GPU rental pricing | Bloomberg / Silicon Data and SemiAnalysis public indices, H100 one-year ranges; opens the internal research wiki. |
 | [`capex-cloud/`](capex-cloud/) | Capex Cloud ☁️ | Hyperscaler capex (MSFT/AMZN/GOOGL/META/ORCL) — BBG consensus, revision tracker, PP&E breakdown, XLSX download |
